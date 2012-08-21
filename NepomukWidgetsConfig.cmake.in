@@ -1,0 +1,30 @@
+# Config file for nepomuk-widgets. Do not modify this file. Any change will be overwritten by CMake.
+
+# This file will define the following variables:
+#
+# NEPOMUK_WIDGETS_LIB_DIR : The nepomuk-core library directory
+# NEPOMUK_WIDGETS_INCLUDE_DIR : The nepomuk-core include directory
+# NEPOMUK_WIDGETS_VERSION : The nepomuk-core version
+# NEPOMUK_WIDGETS_LIBRARY : The nepomukcore library
+
+get_filename_component(_currentDir ${CMAKE_CURRENT_LIST_FILE} PATH) # The current directory
+get_filename_component(rootDir ${_currentDir}/@relInstallDir@ ABSOLUTE) # The install prefix
+
+# The nepomuk-core version
+set(NEPOMUK_WIDGETS_VERSION_MAJOR @CMAKE_NEPOMUK_WIDGETS_VERSION_MAJOR@)
+set(NEPOMUK_WIDGETS_VERSION_MINOR @CMAKE_NEPOMUK_WIDGETS_VERSION_MINOR@)
+set(NEPOMUK_WIDGETS_VERSION_RELEASE @CMAKE_NEPOMUK_WIDGETS_VERSION_RELEASE@)
+set(NEPOMUK_WIDGETS_VERSION ${NEPOMUK_WIDGETS_VERSION_MAJOR}.${NEPOMUK_WIDGETS_VERSION_MINOR}.${NEPOMUK_WIDGETS_VERSION_RELEASE})
+
+# Include directory
+set(NEPOMUK_WIDGETS_INCLUDE_DIR "@INCLUDE_INSTALL_DIR@")
+
+# Library directory
+set(NEPOMUK_WIDGETS_LIB_DIR "@LIB_INSTALL_DIR@")
+
+# Import the exported targets
+# include(${_currentDir}/NepomukCoreTargetsWithPrefix.cmake)
+
+# Set the libraries names
+set(NEPOMUK_WIDGETS_LIBRARY nepomukwidgets)
+

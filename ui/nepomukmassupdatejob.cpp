@@ -24,8 +24,8 @@
 #include "klocale.h"
 #include "kdebug.h"
 
-#include "tag.h"
-#include "tools.h"
+#include <Nepomuk/Tag>
+#include <nepomuk/tools.h>
 
 
 Nepomuk::MassUpdateJob::MassUpdateJob( QObject* parent )

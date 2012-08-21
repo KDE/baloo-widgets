@@ -29,8 +29,8 @@
 #include <QtCore/QPair>
 #include <QtCore/QTimer>
 
-#include "resource.h"
-#include "variant.h"
+#include <Nepomuk/Resource>
+#include <Nepomuk/Variant>
 
 
 namespace Nepomuk {

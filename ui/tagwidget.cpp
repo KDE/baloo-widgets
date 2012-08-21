@@ -25,9 +25,9 @@
 #include "kedittagsdialog_p.h"
 #include "tagcheckbox.h"
 
-#include "tools.h"
-#include "tag.h"
-#include "resourcemanager.h"
+#include <nepomuk/tools.h>
+#include <Nepomuk/Tag>
+#include <Nepomuk/ResourceManager>
 
 #include <karrowbutton.h>
 #include <kinputdialog.h>

@@ -24,7 +24,7 @@
 
 #include <QtGui/QWidget>
 
-#include "tag.h"
+#include <Nepomuk/Tag>
 #include "tagwidget_p.h"
 
 class QMouseEvent;
