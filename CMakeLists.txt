@@ -45,7 +45,6 @@ install(FILES
 
 set(nepomuk_ui_SRCS
   ui/kblocklayout.cpp
-  ui/nepomukmassupdatejob.cpp
   ui/tagwidget.cpp
   ui/kedittagsdialog.cpp
   ui/tagcheckbox.cpp

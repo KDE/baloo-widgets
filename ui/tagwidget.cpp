@@ -21,12 +21,12 @@
 #include "tagwidget.h"
 #include "tagwidget_p.h"
 #include "kblocklayout.h"
-#include "nepomukmassupdatejob.h"
 #include "kedittagsdialog_p.h"
 #include "tagcheckbox.h"
 
 #include <Nepomuk2/Tag>
 #include <Nepomuk2/ResourceManager>
+#include <Nepomuk2/DataManagement>
 
 #include <karrowbutton.h>
 #include <kinputdialog.h>
@@ -34,6 +34,7 @@
 #include <klocale.h>
 #include <kglobalsettings.h>
 #include <kdebug.h>
+#include <KJob>
 
 #include <QtGui/QPushButton>
 #include <QtGui/QBoxLayout>
@@ -45,6 +46,7 @@
 #include <Soprano/Model>
 #include <Soprano/Vocabulary/NAO>
 
+using namespace Soprano::Vocabulary;
 
 void Nepomuk2::TagWidgetPrivate::init( TagWidget* parent )
 {
@@ -231,15 +233,32 @@ void Nepomuk2::TagWidgetPrivate::selectTags( const QList<Tag>& tags )
     m_blockSelectionChangedSignal = false;
 }
 
+namespace {
+    QList<QUrl> resourcesToUrlList(const QList<Nepomuk2::Resource>& resList) {
+        QList<QUrl> urlList;
+        foreach(const Nepomuk2::Resource& res, resList) {
+            urlList << res.uri();
+        }
+        return urlList;
+    }
+
+    QList<QVariant> tagsToVariantList(const QList<Nepomuk2::Tag>& resList) {
+        QList<QVariant> list;
+        foreach(const Nepomuk2::Tag& res, resList) {
+            list << res.uri();
+        }
+        return list;
+    }
+}
 
 void Nepomuk2::TagWidgetPrivate::updateResources()
 {
     if ( !m_resources.isEmpty() ) {
-        Nepomuk2::MassUpdateJob* job = Nepomuk2::MassUpdateJob::tagResources( m_resources, q->selectedTags() );
+        KJob* job = setProperty( resourcesToUrlList(m_resources), NAO::hasTag(),
+                                 tagsToVariantList(q->selectedTags()) );
         q->connect( job, SIGNAL(result(KJob*)),
                     SLOT(slotTagUpdateDone()) );
         q->setEnabled( false ); // no updates during execution
-        job->start();
     }
 }
 
