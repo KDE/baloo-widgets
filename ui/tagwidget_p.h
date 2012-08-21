@@ -22,7 +22,7 @@
 #define _NEPOMUK_TAG_WIDGET_P_H_
 
 #include "tagwidget.h"
-#include <Nepomuk/Tag>
+#include <Nepomuk2/Tag>
 
 #include <QtCore/QList>
 #include <QtCore/QMap>
@@ -31,7 +31,7 @@ class QPushButton;
 class QLabel;
 class KBlockLayout;
 
-namespace Nepomuk {
+namespace Nepomuk2 {
 
 class TagCheckBox;
 

@@ -33,14 +33,14 @@
 #include <QtTest>
 #include "qtest_kde.h"
 
-using namespace Nepomuk::Utils;
-using namespace Nepomuk::Query;
+using namespace Nepomuk22::Utils;
+using namespace Nepomuk22::Query;
 
-Q_DECLARE_METATYPE(Nepomuk::Utils::Facet*)
+Q_DECLARE_METATYPE(Nepomuk2::Utils::Facet*)
 
 void ProxyFacetTest::initTestCase()
 {
-    qRegisterMetaType<Nepomuk::Utils::Facet*>();
+    qRegisterMetaType<Nepomuk2::Utils::Facet*>();
 }
 
 void ProxyFacetTest::testForward()
@@ -88,8 +88,8 @@ void ProxyFacetTest::testSignals()
     ProxyFacet pf;
     pf.setSourceFacet(&f);
 
-    QSignalSpy selectionSpy(&pf, SIGNAL(selectionChanged(Nepomuk::Utils::Facet*)));
-    QSignalSpy termChangedSpy(&pf, SIGNAL(queryTermChanged(Nepomuk::Utils::Facet*,Nepomuk::Query::Term)));
+    QSignalSpy selectionSpy(&pf, SIGNAL(selectionChanged(Nepomuk2::Utils::Facet*)));
+    QSignalSpy termChangedSpy(&pf, SIGNAL(queryTermChanged(Nepomuk2::Utils::Facet*,Nepomuk2::Query::Term)));
 
     pf.setSelected(1);
     QCOMPARE(selectionSpy.count(), 1);
@@ -103,7 +103,7 @@ void ProxyFacetTest::testSignals()
     QCOMPARE(termChangedSpy.count(), 1);
     termChangedSpy.takeFirst();
 
-    QSignalSpy laySpy(&pf, SIGNAL(layoutChanged(Nepomuk::Utils::Facet*)));
+    QSignalSpy laySpy(&pf, SIGNAL(layoutChanged(Nepomuk2::Utils::Facet*)));
     f.addTerm(QLatin1String("Hello World"), Term());
     QCOMPARE(laySpy.count(), 1);
     laySpy.takeFirst();
@@ -125,7 +125,7 @@ void ProxyFacetTest::testFacetCondition()
     ProxyFacet pf;
     pf.setSourceFacet(&f);
 
-    QSignalSpy laySpy(&pf, SIGNAL(layoutChanged(Nepomuk::Utils::Facet*)));
+    QSignalSpy laySpy(&pf, SIGNAL(layoutChanged(Nepomuk2::Utils::Facet*)));
 
     pf.setFacetCondition(ResourceTypeTerm(Soprano::Vocabulary::NAO::Tag()));
 

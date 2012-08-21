@@ -48,61 +48,61 @@
 #include "kguiitem.h"
 #include "kdebug.h"
 
-using namespace Nepomuk::Query;
+using namespace Nepomuk22::Query;
 
 
-class Nepomuk::Utils::Facet::FacetPrivate
+class Nepomuk2::Utils::Facet::FacetPrivate
 {
 public:
     Query::Query m_clientQuery;
 };
 
 
-Nepomuk::Utils::Facet::Facet( QObject* parent )
+Nepomuk2::Utils::Facet::Facet( QObject* parent )
     : QObject( parent ),
       d(new FacetPrivate())
 {
 }
 
 
-Nepomuk::Utils::Facet::~Facet()
+Nepomuk2::Utils::Facet::~Facet()
 {
     delete d;
 }
 
 
-QString Nepomuk::Utils::Facet::text( int index ) const
+QString Nepomuk2::Utils::Facet::text( int index ) const
 {
     return guiItem( index ).text();
 }
 
 
-KGuiItem Nepomuk::Utils::Facet::guiItem( int index ) const
+KGuiItem Nepomuk2::Utils::Facet::guiItem( int index ) const
 {
     Q_UNUSED(index);
     return KGuiItem();
 }
 
 
-void Nepomuk::Utils::Facet::setQueryTermChanged()
+void Nepomuk2::Utils::Facet::setQueryTermChanged()
 {
     emit queryTermChanged( this, queryTerm() );
 }
 
 
-void Nepomuk::Utils::Facet::setLayoutChanged()
+void Nepomuk2::Utils::Facet::setLayoutChanged()
 {
     emit layoutChanged( this );
 }
 
 
-void Nepomuk::Utils::Facet::setSelectionChanged()
+void Nepomuk2::Utils::Facet::setSelectionChanged()
 {
     emit selectionChanged( this );
 }
 
 
-void Nepomuk::Utils::Facet::setClientQuery( const Nepomuk::Query::Query& query )
+void Nepomuk2::Utils::Facet::setClientQuery( const Nepomuk2::Query::Query& query )
 {
     kDebug() << query;
     if( query != d->m_clientQuery ) {
@@ -112,54 +112,54 @@ void Nepomuk::Utils::Facet::setClientQuery( const Nepomuk::Query::Query& query )
 }
 
 
-Nepomuk::Query::Query Nepomuk::Utils::Facet::clientQuery() const
+Nepomuk2::Query::Query Nepomuk2::Utils::Facet::clientQuery() const
 {
     return d->m_clientQuery;
 }
 
 
-void Nepomuk::Utils::Facet::handleClientQueryChange()
+void Nepomuk2::Utils::Facet::handleClientQueryChange()
 {
     // do nothing
 }
 
 
 // static
-Nepomuk::Utils::Facet* Nepomuk::Utils::Facet::createFileTypeFacet( QObject* parent )
+Nepomuk2::Utils::Facet* Nepomuk2::Utils::Facet::createFileTypeFacet( QObject* parent )
 {
     SimpleFacet* facetTypes = new SimpleFacet( parent );
     facetTypes->setSelectionMode( Facet::MatchAny );
     facetTypes->addTerm( i18nc("@option:check A filter on file type", "Documents"),
-                         ResourceTypeTerm(Nepomuk::Vocabulary::NFO::Document()) );
+                         ResourceTypeTerm(Nepomuk2::Vocabulary::NFO::Document()) );
 
     // need to check the mimetype as well since strigi is still not perfect
     facetTypes->addTerm( i18nc("@option:check A filter on file type - audio files", "Audio"),
-                         ComparisonTerm(Nepomuk::Vocabulary::NIE::mimeType(), LiteralTerm(QLatin1String("audio"))) );
+                         ComparisonTerm(Nepomuk2::Vocabulary::NIE::mimeType(), LiteralTerm(QLatin1String("audio"))) );
     facetTypes->addTerm( i18nc("@option:check A filter on file type - media video", "Video"),
-                         ComparisonTerm(Nepomuk::Vocabulary::NIE::mimeType(), LiteralTerm(QLatin1String("video"))) );
+                         ComparisonTerm(Nepomuk2::Vocabulary::NIE::mimeType(), LiteralTerm(QLatin1String("video"))) );
 
     facetTypes->addTerm( i18nc("@option:check A filter on file type", "Images"),
-                         ResourceTypeTerm(Nepomuk::Vocabulary::NFO::Image()) );
+                         ResourceTypeTerm(Nepomuk2::Vocabulary::NFO::Image()) );
     return facetTypes;
 }
 
 
 // static
-Nepomuk::Utils::Facet* Nepomuk::Utils::Facet::createTypeFacet( QObject* parent )
+Nepomuk2::Utils::Facet* Nepomuk2::Utils::Facet::createTypeFacet( QObject* parent )
 {
     return new TypeFacet( parent );
 }
 
 
 // static
-Nepomuk::Utils::Facet* Nepomuk::Utils::Facet::createDateFacet( QObject* parent )
+Nepomuk2::Utils::Facet* Nepomuk2::Utils::Facet::createDateFacet( QObject* parent )
 {
     return new DateFacet( parent );
 }
 
 
 // static
-Nepomuk::Utils::Facet* Nepomuk::Utils::Facet::createTagFacet( QObject* parent )
+Nepomuk2::Utils::Facet* Nepomuk2::Utils::Facet::createTagFacet( QObject* parent )
 {
     DynamicResourceFacet* facetTags = new DynamicResourceFacet( parent );
     facetTags->setSelectionMode( Facet::MatchAll );
@@ -170,7 +170,7 @@ Nepomuk::Utils::Facet* Nepomuk::Utils::Facet::createTagFacet( QObject* parent )
 
 
 // static
-Nepomuk::Utils::Facet* Nepomuk::Utils::Facet::createPriorityFacet( QObject* parent )
+Nepomuk2::Utils::Facet* Nepomuk2::Utils::Facet::createPriorityFacet( QObject* parent )
 {
     SimpleFacet* priorityFacet = new SimpleFacet( parent );
     priorityFacet->setSelectionMode(Facet::MatchOne);
@@ -183,7 +183,7 @@ Nepomuk::Utils::Facet* Nepomuk::Utils::Facet::createPriorityFacet( QObject* pare
 
 
 // static
-Nepomuk::Utils::Facet* Nepomuk::Utils::Facet::createRatingFacet( QObject* parent )
+Nepomuk2::Utils::Facet* Nepomuk2::Utils::Facet::createRatingFacet( QObject* parent )
 {
     SimpleFacet* facet = new SimpleFacet(parent);
     facet->setSelectionMode(Facet::MatchOne);

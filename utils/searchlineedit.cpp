@@ -30,10 +30,10 @@
 #include "orterm.h"
 #include "literalterm.h"
 
-using namespace Nepomuk::Query;
+using namespace Nepomuk22::Query;
 
 
-class Nepomuk::Utils::SearchLineEdit::Private {
+class Nepomuk2::Utils::SearchLineEdit::Private {
 public:
     KLineEdit* m_lineEdit;
     bool searchWhileTyping;
@@ -47,23 +47,23 @@ public:
     SearchLineEdit* q;
 };
 
-void Nepomuk::Utils::SearchLineEdit::Private::updateCurrentQuery()
+void Nepomuk2::Utils::SearchLineEdit::Private::updateCurrentQuery()
 {
     // cache the current query for performance reasons
     if( m_currentQueryString != m_lineEdit->text() ) {
         m_currentQueryString = m_lineEdit->text();
-        m_currentQuery = Nepomuk::Query::QueryParser::parseQuery( m_currentQueryString );
+        m_currentQuery = Nepomuk2::Query::QueryParser::parseQuery( m_currentQueryString );
     }
 }
 
 
-void Nepomuk::Utils::SearchLineEdit::Private::_k_queryStringChanged( const QString& /*queryString*/ )
+void Nepomuk2::Utils::SearchLineEdit::Private::_k_queryStringChanged( const QString& /*queryString*/ )
 {
     emit q->queryChanged( q->query() );
 }
 
 
-Nepomuk::Utils::SearchLineEdit::SearchLineEdit(QWidget *parent)
+Nepomuk2::Utils::SearchLineEdit::SearchLineEdit(QWidget *parent)
     : QWidget(parent),
       d(new Private)
 {
@@ -81,12 +81,12 @@ Nepomuk::Utils::SearchLineEdit::SearchLineEdit(QWidget *parent)
     setSearchWhileTypingEnabled(false);
 }
 
-Nepomuk::Utils::SearchLineEdit::~SearchLineEdit()
+Nepomuk2::Utils::SearchLineEdit::~SearchLineEdit()
 {
     delete d;
 }
 
-void Nepomuk::Utils::SearchLineEdit::setSearchWhileTypingEnabled(bool enable)
+void Nepomuk2::Utils::SearchLineEdit::setSearchWhileTypingEnabled(bool enable)
 {
     d->searchWhileTyping = enable;
     disconnect( d->m_lineEdit, 0, this, SLOT(_k_queryStringChanged(QString)) );
@@ -99,7 +99,7 @@ void Nepomuk::Utils::SearchLineEdit::setSearchWhileTypingEnabled(bool enable)
     }
 }
 
-Nepomuk::Query::Term Nepomuk::Utils::SearchLineEdit::extractUsableTerms( const Nepomuk::Query::Term& term )
+Nepomuk2::Query::Term Nepomuk2::Utils::SearchLineEdit::extractUsableTerms( const Nepomuk2::Query::Term& term )
 {
     Term restTerm( term );
     QString queryString;
@@ -113,7 +113,7 @@ Nepomuk::Query::Term Nepomuk::Utils::SearchLineEdit::extractUsableTerms( const N
     // from an AndTerm we can extract as many literal values as we like
     else if ( restTerm.isAndTerm() ) {
         QStringList searchTerms;
-        foreach( const Nepomuk::Query::Term& subTerm, restTerm.toAndTerm().subTerms() ) {
+        foreach( const Nepomuk2::Query::Term& subTerm, restTerm.toAndTerm().subTerms() ) {
             if(subTerm.isLiteralTerm()) {
                 searchTerms << subTerm.toLiteralTerm().value().toString();
             }
@@ -130,7 +130,7 @@ Nepomuk::Query::Term Nepomuk::Utils::SearchLineEdit::extractUsableTerms( const N
     else if ( restTerm.isOrTerm() ) {
         QStringList searchTerms;
         OrTerm restOrTerm;
-        foreach( const Nepomuk::Query::Term& subTerm, restTerm.toAndTerm().subTerms() ) {
+        foreach( const Nepomuk2::Query::Term& subTerm, restTerm.toAndTerm().subTerms() ) {
             if(subTerm.isLiteralTerm()) {
                 searchTerms << subTerm.toLiteralTerm().value().toString();
             }
@@ -148,7 +148,7 @@ Nepomuk::Query::Term Nepomuk::Utils::SearchLineEdit::extractUsableTerms( const N
     return restTerm;
 }
 
-Nepomuk::Query::Query Nepomuk::Utils::SearchLineEdit::query() const
+Nepomuk2::Query::Query Nepomuk2::Utils::SearchLineEdit::query() const
 {
     d->updateCurrentQuery();
     return d->m_currentQuery;

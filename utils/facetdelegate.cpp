@@ -28,17 +28,17 @@
 #include <QtGui/QApplication>
 #include <QtGui/QWidget>
 
-Nepomuk::Utils::FacetDelegate::FacetDelegate( QObject* parent )
+Nepomuk2::Utils::FacetDelegate::FacetDelegate( QObject* parent )
     : QItemDelegate( parent ),
       m_isExclusive( false )
 {
 }
 
-Nepomuk::Utils::FacetDelegate::~FacetDelegate()
+Nepomuk2::Utils::FacetDelegate::~FacetDelegate()
 {
 }
 
-void Nepomuk::Utils::FacetDelegate::paint( QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index ) const
+void Nepomuk2::Utils::FacetDelegate::paint( QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index ) const
 {
     // hacky way to not paint anything on title items which we use as spacers for now
     if( index.data(Qt::DisplayRole).toString().isEmpty() ) {
@@ -54,7 +54,7 @@ void Nepomuk::Utils::FacetDelegate::paint( QPainter* painter, const QStyleOption
     QItemDelegate::paint( painter, option, index );
 }
 
-void Nepomuk::Utils::FacetDelegate::drawCheck( QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, Qt::CheckState state ) const
+void Nepomuk2::Utils::FacetDelegate::drawCheck( QPainter* painter, const QStyleOptionViewItem& option, const QRect& rect, Qt::CheckState state ) const
 {
     if( m_isExclusive ) {
         const QStyleOptionViewItemV3 *v3 = qstyleoption_cast<const QStyleOptionViewItemV3 *>( &option );

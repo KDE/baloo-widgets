@@ -36,9 +36,9 @@
 #ifdef Q_OS_WIN
 #include "nepomukutils_export.h"
 
-class NEPOMUKUTILS_EXPORT Nepomuk::Utils::DynamicResourceFacet::Private
+class NEPOMUKUTILS_EXPORT Nepomuk2::Utils::DynamicResourceFacet::Private
 #else
-class Nepomuk::Utils::DynamicResourceFacet::Private
+class Nepomuk2::Utils::DynamicResourceFacet::Private
 #endif
 {
 public:
@@ -64,9 +64,9 @@ public:
     virtual void startQuery( const Query::Query& query );
 
     /// add a resource to the list of choices if it is not already in
-    void addResource( const Nepomuk::Resource& res );
+    void addResource( const Nepomuk2::Resource& res );
 
-    void _k_newEntries( const QList<Nepomuk::Query::Result>& );
+    void _k_newEntries( const QList<Nepomuk2::Query::Result>& );
     void _k_populateFinished();
 
     Query::QueryServiceClient m_queryClient;

@@ -25,7 +25,7 @@
 #include "facet.h"
 #include "nepomukutils_export.h"
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     namespace Utils {
         /**
          * \class SimpleFacet simplefacet.h Nepomuk/Utils/SimpleFacet
@@ -114,14 +114,14 @@ namespace Nepomuk {
              * addTerm(KGuiItem(text), term);
              * \endcode
              */
-            void addTerm( const QString& text, const Nepomuk::Query::Term& queryTerm );
+            void addTerm( const QString& text, const Nepomuk2::Query::Term& queryTerm );
 
             /**
              * Add a new term.
              * \param item The gui item used to present the choice to the user.
              * \param term The query term which represents this choice.
              */
-            void addTerm( const KGuiItem& item, const Nepomuk::Query::Term& queryTerm );
+            void addTerm( const KGuiItem& item, const Nepomuk2::Query::Term& queryTerm );
 
             /**
              * Clear the selection. If selectionMode() is MatchOne the first
@@ -140,7 +140,7 @@ namespace Nepomuk {
              *
              * \sa Facet::selectFromTerm()
              */
-            bool selectFromTerm( const Nepomuk::Query::Term& queryTerm );
+            bool selectFromTerm( const Nepomuk2::Query::Term& queryTerm );
 
         private:
             class Private;

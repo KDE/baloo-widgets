@@ -28,7 +28,7 @@
 #include "queryserviceclient.h"
 
 class QListView;
-namespace Nepomuk {
+namespace Nepomuk2 {
     namespace Utils {
         class SimpleResourceModel;
         class FacetWidget;
@@ -40,7 +40,7 @@ class KPushButton;
 /**
   * WARNING: This class is just an implementation detail.
   */
-class Nepomuk::Utils::SearchWidget::SearchWidgetPrivate
+class Nepomuk2::Utils::SearchWidget::SearchWidgetPrivate
 {
 public:
     SearchWidgetPrivate()
@@ -65,12 +65,12 @@ public:
     KPushButton *m_queryButton;
     QListView *m_itemWidget;
     Utils::SimpleResourceModel* m_resourceModel;
-    Nepomuk::Utils::FacetWidget *m_facetWidget;
+    Nepomuk2::Utils::FacetWidget *m_facetWidget;
 
-    Nepomuk::Query::QueryServiceClient m_queryClient;
-    Nepomuk::Query::Query m_currentQuery;
+    Nepomuk2::Query::QueryServiceClient m_queryClient;
+    Nepomuk2::Query::Query m_currentQuery;
 
-    Nepomuk::Query::Query m_baseQuery;
+    Nepomuk2::Query::Query m_baseQuery;
 
     SearchWidget::ConfigFlags m_configFlags;
 

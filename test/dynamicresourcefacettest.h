@@ -35,7 +35,7 @@
  * as possible. The only change necessary is a friend class declaration in the dynamicresourcefacet.h
  * header.
  */
-class DynamicResourceTestFacet : public Nepomuk::Utils::DynamicResourceFacet
+class DynamicResourceTestFacet : public Nepomuk2::Utils::DynamicResourceFacet
 {
 public:
     DynamicResourceTestFacet();
@@ -62,7 +62,7 @@ private slots:
 private:
     KTempDir* m_storageDir;
     Soprano::Model* m_model;
-    Nepomuk::Tag tag1, tag2, tag3, tag4;
+    Nepomuk2::Tag tag1, tag2, tag3, tag4;
 };
 
 #endif // DYNAMICRESOURCEFACETTEST_H

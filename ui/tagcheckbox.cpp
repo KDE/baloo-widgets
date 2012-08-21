@@ -34,7 +34,7 @@
 #include <QtGui/QLabel>
 
 
-class Nepomuk::TagCheckBox::CheckBoxWithPublicInitStyleOption : public QCheckBox
+class Nepomuk2::TagCheckBox::CheckBoxWithPublicInitStyleOption : public QCheckBox
 {
 public:
     CheckBoxWithPublicInitStyleOption( const QString& text, QWidget* parent )
@@ -47,7 +47,7 @@ public:
 };
 
 
-Nepomuk::TagCheckBox::TagCheckBox( const Tag& tag, TagWidgetPrivate* tagWidget, QWidget* parent )
+Nepomuk2::TagCheckBox::TagCheckBox( const Tag& tag, TagWidgetPrivate* tagWidget, QWidget* parent )
     : QWidget( parent ),
       m_label(0),
       m_checkBox(0),
@@ -73,12 +73,12 @@ Nepomuk::TagCheckBox::TagCheckBox( const Tag& tag, TagWidgetPrivate* tagWidget, 
 }
 
 
-Nepomuk::TagCheckBox::~TagCheckBox()
+Nepomuk2::TagCheckBox::~TagCheckBox()
 {
 }
 
 
-bool Nepomuk::TagCheckBox::isChecked() const
+bool Nepomuk2::TagCheckBox::isChecked() const
 {
     if( m_checkBox )
         return m_checkBox->isChecked();
@@ -87,21 +87,21 @@ bool Nepomuk::TagCheckBox::isChecked() const
 }
 
 
-void Nepomuk::TagCheckBox::setChecked( bool checked )
+void Nepomuk2::TagCheckBox::setChecked( bool checked )
 {
     if( m_checkBox )
         m_checkBox->setChecked( checked );
 }
 
 
-void Nepomuk::TagCheckBox::leaveEvent( QEvent* event )
+void Nepomuk2::TagCheckBox::leaveEvent( QEvent* event )
 {
     QWidget::leaveEvent( event );
     enableUrlHover( false );
 }
 
 
-bool Nepomuk::TagCheckBox::eventFilter( QObject* watched, QEvent* event )
+bool Nepomuk2::TagCheckBox::eventFilter( QObject* watched, QEvent* event )
 {
     if( watched == m_child ) {
         switch( event->type() ) {
@@ -131,13 +131,13 @@ bool Nepomuk::TagCheckBox::eventFilter( QObject* watched, QEvent* event )
 }
 
 
-void Nepomuk::TagCheckBox::slotStateChanged( int state )
+void Nepomuk2::TagCheckBox::slotStateChanged( int state )
 {
     emit tagStateChanged( m_tag, state );
 }
 
 
-QRect Nepomuk::TagCheckBox::tagRect() const
+QRect Nepomuk2::TagCheckBox::tagRect() const
 {
     if( m_checkBox ) {
         QStyleOptionButton opt;
@@ -152,7 +152,7 @@ QRect Nepomuk::TagCheckBox::tagRect() const
 }
 
 
-void Nepomuk::TagCheckBox::enableUrlHover( bool enable )
+void Nepomuk2::TagCheckBox::enableUrlHover( bool enable )
 {
     if( m_urlHover != enable ) {
         m_urlHover = enable;

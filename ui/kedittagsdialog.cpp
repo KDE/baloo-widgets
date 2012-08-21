@@ -32,7 +32,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
-KEditTagsDialog::KEditTagsDialog(const QList<Nepomuk::Tag>& tags,
+KEditTagsDialog::KEditTagsDialog(const QList<Nepomuk2::Tag>& tags,
                                  QWidget* parent,
                                  Qt::WFlags flags) :
     KDialog(parent, flags),
@@ -103,7 +103,7 @@ KEditTagsDialog::~KEditTagsDialog()
 {
 }
 
-QList<Nepomuk::Tag> KEditTagsDialog::tags() const
+QList<Nepomuk2::Tag> KEditTagsDialog::tags() const
 {
     return m_tags;
 }
@@ -130,7 +130,7 @@ void KEditTagsDialog::slotButtonClicked(int button)
             QListWidgetItem* item = m_tagsList->item(i);
             if (item->checkState() == Qt::Checked) {
                 const QString label = item->data(Qt::UserRole).toString();
-                Nepomuk::Tag tag(label);
+                Nepomuk2::Tag tag(label);
                 tag.setLabel(label);
                 m_tags.append(tag);
             }
@@ -222,7 +222,7 @@ void KEditTagsDialog::deleteTag()
         int row = m_tagsList->row( m_deleteCandidate );
 
         const QString label = m_deleteCandidate->data(Qt::UserRole).toString();
-        Nepomuk::Tag tag(label);
+        Nepomuk2::Tag tag(label);
         tag.remove();
 
         delete m_deleteCandidate;
@@ -239,7 +239,7 @@ void KEditTagsDialog::deleteTag()
     }
 }
 
-static bool tagLabelLessThan( const Nepomuk::Tag& t1, const Nepomuk::Tag& t2 )
+static bool tagLabelLessThan( const Nepomuk2::Tag& t1, const Nepomuk2::Tag& t2 )
 {
     return t1.genericLabel() < t2.genericLabel();
 }
@@ -248,10 +248,10 @@ void KEditTagsDialog::loadTags()
 {
     // load all available tags and mark those tags as checked
     // that have been passed to the KEditTagsDialog
-    QList<Nepomuk::Tag> tags = Nepomuk::Tag::allTags();
+    QList<Nepomuk2::Tag> tags = Nepomuk2::Tag::allTags();
     qSort( tags.begin(), tags.end(), tagLabelLessThan );
 
-    foreach (const Nepomuk::Tag& tag, tags) {
+    foreach (const Nepomuk2::Tag& tag, tags) {
         const QString label = tag.genericLabel();
 
         QListWidgetItem* item = new QListWidgetItem(label, m_tagsList);

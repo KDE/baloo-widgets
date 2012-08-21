@@ -57,7 +57,7 @@
 #include <Soprano/LiteralValue>
 #include <Soprano/Vocabulary/NAO>
 
-void Nepomuk::Utils::SearchWidget::SearchWidgetPrivate::setupFacetWidget()
+void Nepomuk2::Utils::SearchWidget::SearchWidgetPrivate::setupFacetWidget()
 {
     m_facetWidget->clear();
     m_facetWidget->addFacet(Facet::createTypeFacet(m_facetWidget));
@@ -67,7 +67,7 @@ void Nepomuk::Utils::SearchWidget::SearchWidgetPrivate::setupFacetWidget()
 }
 
 
-void Nepomuk::Utils::SearchWidget::SearchWidgetPrivate::_k_queryComponentChanged()
+void Nepomuk2::Utils::SearchWidget::SearchWidgetPrivate::_k_queryComponentChanged()
 {
     if ( !m_inQueryComponentChanged ) {
         m_inQueryComponentChanged = true;
@@ -92,12 +92,12 @@ void Nepomuk::Utils::SearchWidget::SearchWidgetPrivate::_k_queryComponentChanged
 }
 
 
-void Nepomuk::Utils::SearchWidget::SearchWidgetPrivate::_k_listingFinished()
+void Nepomuk2::Utils::SearchWidget::SearchWidgetPrivate::_k_listingFinished()
 {
     // TODO: disable busy indicator
 }
 
-void Nepomuk::Utils::SearchWidget::SearchWidgetPrivate::_k_forwardCurrentChanged(
+void Nepomuk2::Utils::SearchWidget::SearchWidgetPrivate::_k_forwardCurrentChanged(
         const QModelIndex & previous, const QModelIndex & current )
 {
     Resource prevRes;
@@ -112,7 +112,7 @@ void Nepomuk::Utils::SearchWidget::SearchWidgetPrivate::_k_forwardCurrentChanged
     emit q->currentResourceChanged(prevRes,currRes);
 }
 
-Nepomuk::Query::Query Nepomuk::Utils::SearchWidget::SearchWidgetPrivate::currentQuery( bool withBaseQuery ) const
+Nepomuk2::Query::Query Nepomuk2::Utils::SearchWidget::SearchWidgetPrivate::currentQuery( bool withBaseQuery ) const
 {
     Query::Query query;
     if( withBaseQuery ) {
@@ -130,7 +130,7 @@ Nepomuk::Query::Query Nepomuk::Utils::SearchWidget::SearchWidgetPrivate::current
 }
 
 
-Nepomuk::Utils::SearchWidget::SearchWidget(QWidget *parent)
+Nepomuk2::Utils::SearchWidget::SearchWidget(QWidget *parent)
     : QWidget(parent),
       d_ptr(new SearchWidgetPrivate())
 {
@@ -140,7 +140,7 @@ Nepomuk::Utils::SearchWidget::SearchWidget(QWidget *parent)
     //query editor widget
     d->m_queryEdit = new SearchLineEdit(this);
     d->m_queryButton = new KPushButton(i18n("Search"), this);
-    connect(d->m_queryEdit, SIGNAL(queryChanged(Nepomuk::Query::Query)), this, SLOT(_k_queryComponentChanged()));
+    connect(d->m_queryEdit, SIGNAL(queryChanged(Nepomuk2::Query::Query)), this, SLOT(_k_queryComponentChanged()));
     connect(d->m_queryButton, SIGNAL(clicked()), this, SLOT(_k_queryComponentChanged()));
 
     //item widget
@@ -152,9 +152,9 @@ Nepomuk::Utils::SearchWidget::SearchWidget(QWidget *parent)
             this, SLOT(_k_forwardCurrentChanged(QModelIndex,QModelIndex)));
 
     //facets widget
-    d->m_facetWidget = new Nepomuk::Utils::FacetWidget(this);
+    d->m_facetWidget = new Nepomuk2::Utils::FacetWidget(this);
     d->setupFacetWidget();
-    connect(d->m_facetWidget, SIGNAL(queryTermChanged(Nepomuk::Query::Term)), this, SLOT(_k_queryComponentChanged()));
+    connect(d->m_facetWidget, SIGNAL(queryTermChanged(Nepomuk2::Query::Term)), this, SLOT(_k_queryComponentChanged()));
 
     //layout and config
     QSplitter* facetSplitter = new QSplitter(this);
@@ -169,8 +169,8 @@ Nepomuk::Utils::SearchWidget::SearchWidget(QWidget *parent)
     layout->setRowStretch(1,1);
 
     // query client setup
-    connect( &d->m_queryClient, SIGNAL(newEntries(QList<Nepomuk::Query::Result>)),
-            d->m_resourceModel, SLOT(addResults(QList<Nepomuk::Query::Result>)) );
+    connect( &d->m_queryClient, SIGNAL(newEntries(QList<Nepomuk2::Query::Result>)),
+            d->m_resourceModel, SLOT(addResults(QList<Nepomuk2::Query::Result>)) );
     connect( &d->m_queryClient, SIGNAL(finishedListing()),
             this, SLOT(_k_listingFinished()));
 
@@ -178,12 +178,12 @@ Nepomuk::Utils::SearchWidget::SearchWidget(QWidget *parent)
     setConfigFlags( DefaultConfigFlags );
 }
 
-Nepomuk::Utils::SearchWidget::~SearchWidget()
+Nepomuk2::Utils::SearchWidget::~SearchWidget()
 {
     delete d_ptr;
 }
 
-void Nepomuk::Utils::SearchWidget::setConfigFlags( ConfigFlags flags )
+void Nepomuk2::Utils::SearchWidget::setConfigFlags( ConfigFlags flags )
 {
     Q_D(SearchWidget);
     d->m_configFlags = flags;
@@ -192,27 +192,27 @@ void Nepomuk::Utils::SearchWidget::setConfigFlags( ConfigFlags flags )
     d->m_queryEdit->setSearchWhileTypingEnabled( flags&SearchWhileYouType );
 }
 
-Nepomuk::Utils::SearchWidget::ConfigFlags Nepomuk::Utils::SearchWidget::configFlags() const
+Nepomuk2::Utils::SearchWidget::ConfigFlags Nepomuk2::Utils::SearchWidget::configFlags() const
 {
     Q_D(const SearchWidget);
     return d->m_configFlags;
 }
 
-void Nepomuk::Utils::SearchWidget::setSelectionMode ( QAbstractItemView::SelectionMode mode )
+void Nepomuk2::Utils::SearchWidget::setSelectionMode ( QAbstractItemView::SelectionMode mode )
 {
     Q_D(SearchWidget);
 
     d->m_itemWidget->setSelectionMode(mode);
 }
 
-QAbstractItemView::SelectionMode Nepomuk::Utils::SearchWidget::selectionMode () const
+QAbstractItemView::SelectionMode Nepomuk2::Utils::SearchWidget::selectionMode () const
 {
     Q_D(const SearchWidget);
 
     return d->m_itemWidget->selectionMode();
 }
 
-Nepomuk::Query::Query Nepomuk::Utils::SearchWidget::setQuery( const Nepomuk::Query::Query &query )
+Nepomuk2::Query::Query Nepomuk2::Utils::SearchWidget::setQuery( const Nepomuk2::Query::Query &query )
 {
     Q_D(SearchWidget);
 
@@ -225,35 +225,35 @@ Nepomuk::Query::Query Nepomuk::Utils::SearchWidget::setQuery( const Nepomuk::Que
     return restQuery;
 }
 
-void Nepomuk::Utils::SearchWidget::setBaseQuery( const Query::Query& query )
+void Nepomuk2::Utils::SearchWidget::setBaseQuery( const Query::Query& query )
 {
     Q_D(SearchWidget);
     d->m_baseQuery = query;
     d->_k_queryComponentChanged();
 }
 
-Nepomuk::Query::Query Nepomuk::Utils::SearchWidget::baseQuery() const
+Nepomuk2::Query::Query Nepomuk2::Utils::SearchWidget::baseQuery() const
 {
     Q_D(const SearchWidget);
     return d->m_baseQuery;
 }
 
-Nepomuk::Query::Query Nepomuk::Utils::SearchWidget::query() const
+Nepomuk2::Query::Query Nepomuk2::Utils::SearchWidget::query() const
 {
     Q_D(const SearchWidget);
     return d->currentQuery();
 }
 
-Nepomuk::Resource Nepomuk::Utils::SearchWidget::currentResource() const
+Nepomuk2::Resource Nepomuk2::Utils::SearchWidget::currentResource() const
 {
     Q_D(const SearchWidget);
     return d->m_itemWidget->currentIndex().data(Utils::ResourceModel::ResourceRole).value<Resource>();
 }
 
-QList<Nepomuk::Resource> Nepomuk::Utils::SearchWidget::selectedResources() const
+QList<Nepomuk2::Resource> Nepomuk2::Utils::SearchWidget::selectedResources() const
 {
     Q_D(const SearchWidget);
-    QList<Nepomuk::Resource> resourceList;
+    QList<Nepomuk2::Resource> resourceList;
     foreach(const QModelIndex& index, d->m_itemWidget->selectionModel()->selectedIndexes()) {
         resourceList << index.data(Utils::ResourceModel::ResourceRole).value<Resource>();
     }
@@ -261,7 +261,7 @@ QList<Nepomuk::Resource> Nepomuk::Utils::SearchWidget::selectedResources() const
 }
 
 
-Nepomuk::Utils::FacetWidget* Nepomuk::Utils::SearchWidget::facetWidget() const
+Nepomuk2::Utils::FacetWidget* Nepomuk2::Utils::SearchWidget::facetWidget() const
 {
     Q_D(const SearchWidget);
     return d->m_facetWidget;
@@ -269,8 +269,8 @@ Nepomuk::Utils::FacetWidget* Nepomuk::Utils::SearchWidget::facetWidget() const
 
 
 // static
-Nepomuk::Resource Nepomuk::Utils::SearchWidget::searchResource( QWidget* parent,
-                                                               const Nepomuk::Query::Query& baseQuery,
+Nepomuk2::Resource Nepomuk2::Utils::SearchWidget::searchResource( QWidget* parent,
+                                                               const Nepomuk2::Query::Query& baseQuery,
                                                                SearchWidget::ConfigFlags flags )
 {
     KDialog dlg( parent );
@@ -286,14 +286,14 @@ Nepomuk::Resource Nepomuk::Utils::SearchWidget::searchResource( QWidget* parent,
         return searchWidget->currentResource();
     }
     else {
-        return Nepomuk::Resource();
+        return Nepomuk2::Resource();
     }
 }
 
 
 // static
-QList<Nepomuk::Resource> Nepomuk::Utils::SearchWidget::searchResources( QWidget* parent,
-                                                                       const Nepomuk::Query::Query& baseQuery,
+QList<Nepomuk2::Resource> Nepomuk2::Utils::SearchWidget::searchResources( QWidget* parent,
+                                                                       const Nepomuk2::Query::Query& baseQuery,
                                                                        SearchWidget::ConfigFlags flags )
 {
     KDialog dlg( parent );
@@ -309,7 +309,7 @@ QList<Nepomuk::Resource> Nepomuk::Utils::SearchWidget::searchResources( QWidget*
         return searchWidget->selectedResources();
     }
     else {
-        return QList<Nepomuk::Resource>();
+        return QList<Nepomuk2::Resource>();
     }
 }
 

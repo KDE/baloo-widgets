@@ -46,7 +46,7 @@
 #include "kdebug.h"
 
 
-class Nepomuk::Utils::DateFacet::Private
+class Nepomuk2::Utils::DateFacet::Private
 {
 public:
     Private()
@@ -73,7 +73,7 @@ public:
 };
 
 
-void Nepomuk::Utils::DateFacet::Private::rebuild()
+void Nepomuk2::Utils::DateFacet::Private::rebuild()
 {
     m_ranges.clear();
     Q_FOREACH( DateRangeCandidate r, m_rangeCandidates ) {
@@ -88,7 +88,7 @@ void Nepomuk::Utils::DateFacet::Private::rebuild()
 }
 
 
-bool Nepomuk::Utils::DateFacet::Private::setCurrentRange( const DateRange& range )
+bool Nepomuk2::Utils::DateFacet::Private::setCurrentRange( const DateRange& range )
 {
     kDebug() << range;
     Q_FOREACH( DateRangeCandidate dr, m_ranges ) {
@@ -112,7 +112,7 @@ bool Nepomuk::Utils::DateFacet::Private::setCurrentRange( const DateRange& range
 }
 
 
-QString Nepomuk::Utils::DateFacet::Private::titleForDateRangeCandidate( DateRangeCandidate range ) const
+QString Nepomuk2::Utils::DateFacet::Private::titleForDateRangeCandidate( DateRangeCandidate range ) const
 {
     switch( range ) {
     case Anytime:
@@ -144,7 +144,7 @@ QString Nepomuk::Utils::DateFacet::Private::titleForDateRangeCandidate( DateRang
 }
 
 
-DateRange Nepomuk::Utils::DateFacet::Private::dateRangeCandidateToDateRange( DateRangeCandidate range ) const
+DateRange Nepomuk2::Utils::DateFacet::Private::dateRangeCandidateToDateRange( DateRangeCandidate range ) const
 {
     const QDate today = QDate::currentDate();
 
@@ -191,7 +191,7 @@ DateRange Nepomuk::Utils::DateFacet::Private::dateRangeCandidateToDateRange( Dat
 }
 
 
-Nepomuk::Utils::DateFacet::DateFacet( QObject* parent )
+Nepomuk2::Utils::DateFacet::DateFacet( QObject* parent )
     : Facet( parent ),
       d( new Private() )
 {
@@ -210,31 +210,31 @@ Nepomuk::Utils::DateFacet::DateFacet( QObject* parent )
 }
 
 
-Nepomuk::Utils::DateFacet::~DateFacet()
+Nepomuk2::Utils::DateFacet::~DateFacet()
 {
     delete d;
 }
 
 
-Nepomuk::Query::Term Nepomuk::Utils::DateFacet::queryTerm() const
+Nepomuk2::Query::Term Nepomuk2::Utils::DateFacet::queryTerm() const
 {
     return createDateRangeTerm( d->dateRangeCandidateToDateRange( d->m_currentRange ) );
 }
 
 
-Nepomuk::Utils::DateFacet::SelectionMode Nepomuk::Utils::DateFacet::selectionMode() const
+Nepomuk2::Utils::DateFacet::SelectionMode Nepomuk2::Utils::DateFacet::selectionMode() const
 {
     return MatchOne;
 }
 
 
-int Nepomuk::Utils::DateFacet::count() const
+int Nepomuk2::Utils::DateFacet::count() const
 {
     return d->m_ranges.count();
 }
 
 
-KGuiItem Nepomuk::Utils::DateFacet::guiItem( int index ) const
+KGuiItem Nepomuk2::Utils::DateFacet::guiItem( int index ) const
 {
     if ( index < d->m_ranges.count() )
         return KGuiItem( d->titleForDateRangeCandidate( d->m_ranges[index] ) );
@@ -243,26 +243,26 @@ KGuiItem Nepomuk::Utils::DateFacet::guiItem( int index ) const
 }
 
 
-bool Nepomuk::Utils::DateFacet::isSelected( int index ) const
+bool Nepomuk2::Utils::DateFacet::isSelected( int index ) const
 {
     return d->m_ranges.indexOf( d->m_currentRange ) == index;
 }
 
 
-void Nepomuk::Utils::DateFacet::setDateRangeCandidates( DateRangeCandidates ranges )
+void Nepomuk2::Utils::DateFacet::setDateRangeCandidates( DateRangeCandidates ranges )
 {
     d->m_enabledRanges = ranges;
     d->rebuild();
 }
 
 
-Nepomuk::Utils::DateFacet::DateRangeCandidates Nepomuk::Utils::DateFacet::dateRangeCandidates() const
+Nepomuk2::Utils::DateFacet::DateRangeCandidates Nepomuk2::Utils::DateFacet::dateRangeCandidates() const
 {
     return d->m_enabledRanges;
 }
 
 
-void Nepomuk::Utils::DateFacet::clearSelection()
+void Nepomuk2::Utils::DateFacet::clearSelection()
 {
     d->m_currentRange = d->m_ranges.isEmpty() ? NoDateRange : d->m_ranges.first();
     setQueryTermChanged();
@@ -270,7 +270,7 @@ void Nepomuk::Utils::DateFacet::clearSelection()
 }
 
 
-void Nepomuk::Utils::DateFacet::setSelected( int index, bool selected )
+void Nepomuk2::Utils::DateFacet::setSelected( int index, bool selected )
 {
     if ( index == d->m_ranges.indexOf( CustomDateRange ) ) {
         bool ok = false;
@@ -294,39 +294,39 @@ void Nepomuk::Utils::DateFacet::setSelected( int index, bool selected )
 }
 
 
-bool Nepomuk::Utils::DateFacet::selectFromTerm( const Nepomuk::Query::Term& term )
+bool Nepomuk2::Utils::DateFacet::selectFromTerm( const Nepomuk2::Query::Term& term )
 {
     DateRange range = extractDateRange( term );
     return range.isValid() ? d->setCurrentRange( range ) : false;
 }
 
 
-Nepomuk::Query::Term Nepomuk::Utils::DateFacet::createDateRangeTerm( const DateRange& range ) const
+Nepomuk2::Query::Term Nepomuk2::Utils::DateFacet::createDateRangeTerm( const DateRange& range ) const
 {
-    return Nepomuk::Query::dateRangeQuery( range.start(), range.end() ).term();
+    return Nepomuk2::Query::dateRangeQuery( range.start(), range.end() ).term();
 }
 
 
 namespace {
-    bool isDateComparisonTerm( const Nepomuk::Query::Term& term ) {
+    bool isDateComparisonTerm( const Nepomuk2::Query::Term& term ) {
         return( term.isComparisonTerm() &&
                 term.toComparisonTerm().subTerm().isLiteralTerm() &&
                 term.toComparisonTerm().subTerm().toLiteralTerm().value().isDateTime() &&
-                ( term.toComparisonTerm().comparator() == Nepomuk::Query::ComparisonTerm::Greater ||
-                  term.toComparisonTerm().comparator() == Nepomuk::Query::ComparisonTerm::Smaller ) );
+                ( term.toComparisonTerm().comparator() == Nepomuk2::Query::ComparisonTerm::Greater ||
+                  term.toComparisonTerm().comparator() == Nepomuk2::Query::ComparisonTerm::Smaller ) );
     }
 
-    Nepomuk::Types::Property isDateTerm( const Nepomuk::Query::Term& term, QDate& start, QDate& end ) {
+    Nepomuk2::Types::Property isDateTerm( const Nepomuk2::Query::Term& term, QDate& start, QDate& end ) {
         if( term.isAndTerm() ) {
             if( term.toAndTerm().subTerms().count() != 2 ||
                 !isDateComparisonTerm( term.toAndTerm().subTerms()[0] ) ||
                 !isDateComparisonTerm( term.toAndTerm().subTerms()[1] ) ||
                 term.toAndTerm().subTerms()[0].toComparisonTerm().property() != term.toAndTerm().subTerms()[1].toComparisonTerm().property() ||
                 term.toAndTerm().subTerms()[0].toComparisonTerm().comparator() == term.toAndTerm().subTerms()[1].toComparisonTerm().comparator() ) {
-                return Nepomuk::Types::Property();
+                return Nepomuk2::Types::Property();
             }
             // at this point we have two ComparisonTerms with QDate subterms and similar properties and different comparators
-            if( term.toAndTerm().subTerms()[0].toComparisonTerm().comparator() == Nepomuk::Query::ComparisonTerm::Greater ) {
+            if( term.toAndTerm().subTerms()[0].toComparisonTerm().comparator() == Nepomuk2::Query::ComparisonTerm::Greater ) {
                 start = term.toAndTerm().subTerms()[0].toComparisonTerm().subTerm().toLiteralTerm().value().toDateTime().toLocalTime().date();
                 end = term.toAndTerm().subTerms()[1].toComparisonTerm().subTerm().toLiteralTerm().value().toDateTime().toLocalTime().date();
             }
@@ -337,7 +337,7 @@ namespace {
             return term.toAndTerm().subTerms()[0].toComparisonTerm().property();
         }
         else if( isDateComparisonTerm( term ) ) {
-            if( term.toComparisonTerm().comparator() == Nepomuk::Query::ComparisonTerm::Greater ) {
+            if( term.toComparisonTerm().comparator() == Nepomuk2::Query::ComparisonTerm::Greater ) {
                 start = term.toComparisonTerm().subTerm().toLiteralTerm().value().toDateTime().toLocalTime().date();
             }
             else {
@@ -346,19 +346,19 @@ namespace {
             return term.toComparisonTerm().property();
         }
         else {
-            return Nepomuk::Types::Property();
+            return Nepomuk2::Types::Property();
         }
     }
 }
 
-DateRange Nepomuk::Utils::DateFacet::extractDateRange( const Query::Term& term ) const
+DateRange Nepomuk2::Utils::DateFacet::extractDateRange( const Query::Term& term ) const
 {
     // this is ugly since creating the query is done in standardqueries.cpp
     // thus, if that impl is changed this code wont work anymore. :(
     if( !term.isOrTerm() ) {
         return DateRange();
     }
-    Nepomuk::Query::OrTerm orTerm = term.toOrTerm();
+    Nepomuk2::Query::OrTerm orTerm = term.toOrTerm();
     if( orTerm.subTerms().count() != 3 ) {
         return DateRange();
     }
@@ -366,23 +366,23 @@ DateRange Nepomuk::Utils::DateFacet::extractDateRange( const Query::Term& term )
     bool mtime = false;
     bool created = false;
     bool nuao = false;
-    Q_FOREACH( const Nepomuk::Query::Term& t, orTerm.subTerms() ) {
-        Nepomuk::Types::Property p = isDateTerm( t, start, end );
-        if( p == Nepomuk::Vocabulary::NIE::lastModified() ) {
+    Q_FOREACH( const Nepomuk2::Query::Term& t, orTerm.subTerms() ) {
+        Nepomuk2::Types::Property p = isDateTerm( t, start, end );
+        if( p == Nepomuk2::Vocabulary::NIE::lastModified() ) {
             mtime = true;
         }
-        else if( p == Nepomuk::Vocabulary::NIE::contentCreated() ) {
+        else if( p == Nepomuk2::Vocabulary::NIE::contentCreated() ) {
             created = true;
         }
         else {
             // check if it is the nuao term
             if( !t.isComparisonTerm() ||
                 !t.toComparisonTerm().isInverted() ||
-                t.toComparisonTerm().property() != Nepomuk::Vocabulary::NUAO::involves() ) {
+                t.toComparisonTerm().property() != Nepomuk2::Vocabulary::NUAO::involves() ) {
                 return DateRange();
             }
-            Nepomuk::Types::Property p = isDateTerm(t.toComparisonTerm().subTerm(), start, end);
-            if( p == Nepomuk::Vocabulary::NUAO::start() )
+            Nepomuk2::Types::Property p = isDateTerm(t.toComparisonTerm().subTerm(), start, end);
+            if( p == Nepomuk2::Vocabulary::NUAO::start() )
                 nuao = true;
             else
                 return DateRange();
@@ -397,7 +397,7 @@ DateRange Nepomuk::Utils::DateFacet::extractDateRange( const Query::Term& term )
 }
 
 
-DateRange Nepomuk::Utils::DateFacet::getCustomRange( bool* ok ) const
+DateRange Nepomuk2::Utils::DateFacet::getCustomRange( bool* ok ) const
 {
     DateRangeSelectionWidget* drw = new DateRangeSelectionWidget();
     drw->setRange( d->dateRangeCandidateToDateRange(d->m_currentRange) );

@@ -52,10 +52,10 @@
 #include "kcalendarsystem.h"
 #include "kguiitem.h"
 
-using namespace Nepomuk::Query;
+using namespace Nepomuk22::Query;
 
 
-class Nepomuk::Utils::FacetModel::Private
+class Nepomuk2::Utils::FacetModel::Private
 {
 public:
     QList<Facet*> m_facets;
@@ -68,46 +68,46 @@ public:
     void handleFacetsChanged();
 
     void _k_queryTermChanged();
-    void _k_facetSelectionChanged( Nepomuk::Utils::Facet* facet );
-    void _k_facetLayoutChanged( Nepomuk::Utils::Facet* );
+    void _k_facetSelectionChanged( Nepomuk2::Utils::Facet* facet );
+    void _k_facetLayoutChanged( Nepomuk2::Utils::Facet* );
 
     FacetModel* q;
 };
 
 
-void Nepomuk::Utils::FacetModel::Private::addFacet( Facet* facet )
+void Nepomuk2::Utils::FacetModel::Private::addFacet( Facet* facet )
 {
-    q->connect(facet, SIGNAL(queryTermChanged(Nepomuk::Utils::Facet*,Nepomuk::Query::Term)),
+    q->connect(facet, SIGNAL(queryTermChanged(Nepomuk2::Utils::Facet*,Nepomuk2::Query::Term)),
                SLOT(_k_queryTermChanged()) );
-    q->connect(facet, SIGNAL(selectionChanged(Nepomuk::Utils::Facet*)),
-               SLOT(_k_facetSelectionChanged(Nepomuk::Utils::Facet*)) );
-    q->connect(facet, SIGNAL(layoutChanged(Nepomuk::Utils::Facet*)),
-               SLOT(_k_facetLayoutChanged(Nepomuk::Utils::Facet*)) );
+    q->connect(facet, SIGNAL(selectionChanged(Nepomuk2::Utils::Facet*)),
+               SLOT(_k_facetSelectionChanged(Nepomuk2::Utils::Facet*)) );
+    q->connect(facet, SIGNAL(layoutChanged(Nepomuk2::Utils::Facet*)),
+               SLOT(_k_facetLayoutChanged(Nepomuk2::Utils::Facet*)) );
     m_facets.append(facet);
 }
 
 
-QModelIndex Nepomuk::Utils::FacetModel::Private::parentIndexForFacet( Facet* facet ) const
+QModelIndex Nepomuk2::Utils::FacetModel::Private::parentIndexForFacet( Facet* facet ) const
 {
     const int i = m_facets.indexOf( facet );
     return q->index( i, 0, QModelIndex() );
 }
 
 
-void Nepomuk::Utils::FacetModel::Private::handleFacetsChanged()
+void Nepomuk2::Utils::FacetModel::Private::handleFacetsChanged()
 {
     if( !m_blockQueryTermChangedSignal )
         emit q->queryTermChanged( q->queryTerm() );
 }
 
 
-void Nepomuk::Utils::FacetModel::Private::_k_queryTermChanged()
+void Nepomuk2::Utils::FacetModel::Private::_k_queryTermChanged()
 {
     handleFacetsChanged();
 }
 
 
-void Nepomuk::Utils::FacetModel::Private::_k_facetSelectionChanged( Nepomuk::Utils::Facet* facet )
+void Nepomuk2::Utils::FacetModel::Private::_k_facetSelectionChanged( Nepomuk2::Utils::Facet* facet )
 {
     kDebug();
     QModelIndex parent = parentIndexForFacet( facet );
@@ -116,14 +116,14 @@ void Nepomuk::Utils::FacetModel::Private::_k_facetSelectionChanged( Nepomuk::Uti
 }
 
 
-void Nepomuk::Utils::FacetModel::Private::_k_facetLayoutChanged( Nepomuk::Utils::Facet* )
+void Nepomuk2::Utils::FacetModel::Private::_k_facetLayoutChanged( Nepomuk2::Utils::Facet* )
 {
     // sadly we do not know the differences
     q->reset();
 }
 
 
-Nepomuk::Utils::FacetModel::FacetModel( QObject* parent )
+Nepomuk2::Utils::FacetModel::FacetModel( QObject* parent )
     : QAbstractItemModel( parent ),
       d(new Private() )
 {
@@ -132,20 +132,20 @@ Nepomuk::Utils::FacetModel::FacetModel( QObject* parent )
 }
 
 
-Nepomuk::Utils::FacetModel::~FacetModel()
+Nepomuk2::Utils::FacetModel::~FacetModel()
 {
     qDeleteAll( d->m_facets );
     delete d;
 }
 
 
-int Nepomuk::Utils::FacetModel::columnCount( const QModelIndex& ) const
+int Nepomuk2::Utils::FacetModel::columnCount( const QModelIndex& ) const
 {
     return 1;
 }
 
 
-QVariant Nepomuk::Utils::FacetModel::data( const QModelIndex& index, int role ) const
+QVariant Nepomuk2::Utils::FacetModel::data( const QModelIndex& index, int role ) const
 {
     if( index.isValid() ) {
         if( index.internalPointer() ) {
@@ -178,7 +178,7 @@ QVariant Nepomuk::Utils::FacetModel::data( const QModelIndex& index, int role ) 
 }
 
 
-bool Nepomuk::Utils::FacetModel::setData( const QModelIndex& index, const QVariant& value, int role )
+bool Nepomuk2::Utils::FacetModel::setData( const QModelIndex& index, const QVariant& value, int role )
 {
     if( role == Qt::CheckStateRole && index.internalPointer() ) {
         Facet* facet = static_cast<Facet*>( index.internalPointer() );
@@ -191,7 +191,7 @@ bool Nepomuk::Utils::FacetModel::setData( const QModelIndex& index, const QVaria
 }
 
 
-bool Nepomuk::Utils::FacetModel::hasChildren( const QModelIndex& parent ) const
+bool Nepomuk2::Utils::FacetModel::hasChildren( const QModelIndex& parent ) const
 {
     // facet terms don't have children
     if( parent.internalPointer() ) {
@@ -203,7 +203,7 @@ bool Nepomuk::Utils::FacetModel::hasChildren( const QModelIndex& parent ) const
 }
 
 
-QModelIndex Nepomuk::Utils::FacetModel::parent( const QModelIndex& index ) const
+QModelIndex Nepomuk2::Utils::FacetModel::parent( const QModelIndex& index ) const
 {
     if( index.internalPointer() ) {
         return d->parentIndexForFacet( static_cast<Facet*>( index.internalPointer() ) );
@@ -214,7 +214,7 @@ QModelIndex Nepomuk::Utils::FacetModel::parent( const QModelIndex& index ) const
 }
 
 
-int Nepomuk::Utils::FacetModel::rowCount( const QModelIndex& parent ) const
+int Nepomuk2::Utils::FacetModel::rowCount( const QModelIndex& parent ) const
 {
     if( !parent.isValid() ) {
         return d->m_facets.count();
@@ -228,7 +228,7 @@ int Nepomuk::Utils::FacetModel::rowCount( const QModelIndex& parent ) const
 }
 
 
-QModelIndex Nepomuk::Utils::FacetModel::index( int row, int column, const QModelIndex& parent ) const
+QModelIndex Nepomuk2::Utils::FacetModel::index( int row, int column, const QModelIndex& parent ) const
 {
     if(row < 0 || row >= rowCount(parent) || column < 0 || column >= columnCount(parent)) {
         return QModelIndex();
@@ -242,7 +242,7 @@ QModelIndex Nepomuk::Utils::FacetModel::index( int row, int column, const QModel
 }
 
 
-Qt::ItemFlags Nepomuk::Utils::FacetModel::flags( const QModelIndex& index ) const
+Qt::ItemFlags Nepomuk2::Utils::FacetModel::flags( const QModelIndex& index ) const
 {
     if(!index.isValid()) {
         return Qt::NoItemFlags;
@@ -256,7 +256,7 @@ Qt::ItemFlags Nepomuk::Utils::FacetModel::flags( const QModelIndex& index ) cons
 }
 
 
-void Nepomuk::Utils::FacetModel::addFacet( Facet* facet )
+void Nepomuk2::Utils::FacetModel::addFacet( Facet* facet )
 {
     d->addFacet( facet );
     reset();
@@ -265,7 +265,7 @@ void Nepomuk::Utils::FacetModel::addFacet( Facet* facet )
 }
 
 
-void Nepomuk::Utils::FacetModel::setFacets( const QList<Facet*>& facets )
+void Nepomuk2::Utils::FacetModel::setFacets( const QList<Facet*>& facets )
 {
     clear();
     Q_FOREACH( Facet* facet, facets ) {
@@ -276,7 +276,7 @@ void Nepomuk::Utils::FacetModel::setFacets( const QList<Facet*>& facets )
 }
 
 
-void Nepomuk::Utils::FacetModel::clearSelection()
+void Nepomuk2::Utils::FacetModel::clearSelection()
 {
     d->m_blockQueryTermChangedSignal = true;
     Q_FOREACH( Facet* facet, d->m_facets ) {
@@ -287,7 +287,7 @@ void Nepomuk::Utils::FacetModel::clearSelection()
 }
 
 
-void Nepomuk::Utils::FacetModel::clear()
+void Nepomuk2::Utils::FacetModel::clear()
 {
     qDeleteAll(d->m_facets);
     d->m_facets.clear();
@@ -295,13 +295,13 @@ void Nepomuk::Utils::FacetModel::clear()
 }
 
 
-QList<Nepomuk::Utils::Facet*> Nepomuk::Utils::FacetModel::facets() const
+QList<Nepomuk2::Utils::Facet*> Nepomuk2::Utils::FacetModel::facets() const
 {
     return d->m_facets;
 }
 
 
-Nepomuk::Query::Term Nepomuk::Utils::FacetModel::queryTerm() const
+Nepomuk2::Query::Term Nepomuk2::Utils::FacetModel::queryTerm() const
 {
     AndTerm term;
     Q_FOREACH( Facet* facet, d->m_facets ) {
@@ -311,7 +311,7 @@ Nepomuk::Query::Term Nepomuk::Utils::FacetModel::queryTerm() const
 }
 
 
-Nepomuk::Query::Query Nepomuk::Utils::FacetModel::extractFacetsFromQuery( const Nepomuk::Query::Query& query )
+Nepomuk2::Query::Query Nepomuk2::Utils::FacetModel::extractFacetsFromQuery( const Nepomuk2::Query::Query& query )
 {
     // safety net to prevent endless loops
     // ===============================
@@ -400,7 +400,7 @@ Nepomuk::Query::Query Nepomuk::Utils::FacetModel::extractFacetsFromQuery( const 
 }
 
 
-void Nepomuk::Utils::FacetModel::setClientQuery( const Nepomuk::Query::Query& query )
+void Nepomuk2::Utils::FacetModel::setClientQuery( const Nepomuk2::Query::Query& query )
 {
     Q_FOREACH( Facet* facet, d->m_facets ) {
         facet->setClientQuery( query );

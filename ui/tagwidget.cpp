@@ -25,9 +25,8 @@
 #include "kedittagsdialog_p.h"
 #include "tagcheckbox.h"
 
-#include <nepomuk/tools.h>
-#include <Nepomuk/Tag>
-#include <Nepomuk/ResourceManager>
+#include <Nepomuk2/Tag>
+#include <Nepomuk2/ResourceManager>
 
 #include <karrowbutton.h>
 #include <kinputdialog.h>
@@ -47,7 +46,7 @@
 #include <Soprano/Vocabulary/NAO>
 
 
-void Nepomuk::TagWidgetPrivate::init( TagWidget* parent )
+void Nepomuk2::TagWidgetPrivate::init( TagWidget* parent )
 {
     q = parent;
     m_maxTags = 10;
@@ -68,7 +67,7 @@ void Nepomuk::TagWidgetPrivate::init( TagWidget* parent )
 }
 
 
-void Nepomuk::TagWidgetPrivate::rebuild()
+void Nepomuk2::TagWidgetPrivate::rebuild()
 {
     if( m_flags & TagWidget::MiniMode ) {
         buildTagHash( q->selectedTags() );
@@ -81,12 +80,12 @@ void Nepomuk::TagWidgetPrivate::rebuild()
 }
 
 
-void Nepomuk::TagWidgetPrivate::buildTagHash( const QList<Tag>& tags )
+void Nepomuk2::TagWidgetPrivate::buildTagHash( const QList<Tag>& tags )
 {
     qDeleteAll(m_checkBoxHash);
     m_checkBoxHash.clear();
 
-    foreach( const Nepomuk::Tag& tag, tags ) {
+    foreach( const Nepomuk2::Tag& tag, tags ) {
         getTagCheckBox( tag );
     }
 
@@ -120,7 +119,7 @@ void Nepomuk::TagWidgetPrivate::buildTagHash( const QList<Tag>& tags )
 }
 
 
-QList<Nepomuk::Tag> Nepomuk::TagWidgetPrivate::loadTags( int max )
+QList<Nepomuk2::Tag> Nepomuk2::TagWidgetPrivate::loadTags( int max )
 {
     // get the "max" first tags with the most resources
     QString query = QString::fromLatin1("select ?r count(distinct ?f) as ?c where { "
@@ -130,7 +129,7 @@ QList<Nepomuk::Tag> Nepomuk::TagWidgetPrivate::loadTags( int max )
                     .arg( Soprano::Node::resourceToN3(Soprano::Vocabulary::NAO::Tag()),
                           Soprano::Node::resourceToN3(Soprano::Vocabulary::NAO::hasTag()))
                     .arg( max );
-    QList<Nepomuk::Tag> tags;
+    QList<Nepomuk2::Tag> tags;
     Soprano::QueryResultIterator it = ResourceManager::instance()->mainModel()->executeQuery( query, Soprano::Query::QueryLanguageSparql );
     while( it.next() ) {
         // workaround for bug in Virtuoso where resources are returned as strings if a count() is in the select clause
@@ -140,7 +139,7 @@ QList<Nepomuk::Tag> Nepomuk::TagWidgetPrivate::loadTags( int max )
 }
 
 
-QList<Nepomuk::Tag> Nepomuk::TagWidgetPrivate::intersectResourceTags()
+QList<Nepomuk2::Tag> Nepomuk2::TagWidgetPrivate::intersectResourceTags()
 {
     if ( m_resources.count() == 1 ) {
         return m_resources.first().tags();
@@ -160,14 +159,14 @@ QList<Nepomuk::Tag> Nepomuk::TagWidgetPrivate::intersectResourceTags()
 }
 
 
-Nepomuk::TagCheckBox* Nepomuk::TagWidgetPrivate::getTagCheckBox( const Tag& tag )
+Nepomuk2::TagCheckBox* Nepomuk2::TagWidgetPrivate::getTagCheckBox( const Tag& tag )
 {
     QMap<Tag, TagCheckBox*>::iterator it = m_checkBoxHash.find(tag);
     if( it == m_checkBoxHash.end() ) {
         kDebug() << "Creating checkbox for" << tag.genericLabel();
         TagCheckBox* checkBox = new TagCheckBox( tag, this, q );
-        q->connect( checkBox, SIGNAL(tagClicked(Nepomuk::Tag)), SIGNAL(tagClicked(Nepomuk::Tag)) );
-        q->connect( checkBox, SIGNAL(tagStateChanged(Nepomuk::Tag,int)), SLOT(slotTagStateChanged(Nepomuk::Tag,int)) );
+        q->connect( checkBox, SIGNAL(tagClicked(Nepomuk2::Tag)), SIGNAL(tagClicked(Nepomuk2::Tag)) );
+        q->connect( checkBox, SIGNAL(tagStateChanged(Nepomuk2::Tag,int)), SLOT(slotTagStateChanged(Nepomuk2::Tag,int)) );
         m_checkBoxHash.insert( tag, checkBox );
         m_flowLayout->addWidget( checkBox );
         return checkBox;
@@ -177,14 +176,14 @@ Nepomuk::TagCheckBox* Nepomuk::TagWidgetPrivate::getTagCheckBox( const Tag& tag 
     }
 }
 
-namespace Nepomuk {
+namespace Nepomuk2 {
 /// operator necessary for QMap::erase
 bool operator<(const Tag& t1, const Tag& t2) {
-    return t1.resourceUri() < t2.resourceUri();
+    return t1.uri() < t2.uri();
 }
 }
 
-void Nepomuk::TagWidgetPrivate::selectTags( const QList<Tag>& tags )
+void Nepomuk2::TagWidgetPrivate::selectTags( const QList<Tag>& tags )
 {
     m_blockSelectionChangedSignal = true;
 
@@ -233,10 +232,10 @@ void Nepomuk::TagWidgetPrivate::selectTags( const QList<Tag>& tags )
 }
 
 
-void Nepomuk::TagWidgetPrivate::updateResources()
+void Nepomuk2::TagWidgetPrivate::updateResources()
 {
     if ( !m_resources.isEmpty() ) {
-        Nepomuk::MassUpdateJob* job = Nepomuk::MassUpdateJob::tagResources( m_resources, q->selectedTags() );
+        Nepomuk2::MassUpdateJob* job = Nepomuk2::MassUpdateJob::tagResources( m_resources, q->selectedTags() );
         q->connect( job, SIGNAL(result(KJob*)),
                     SLOT(slotTagUpdateDone()) );
         q->setEnabled( false ); // no updates during execution
@@ -245,7 +244,7 @@ void Nepomuk::TagWidgetPrivate::updateResources()
 }
 
 
-Nepomuk::TagWidget::TagWidget( const Resource& resource, QWidget* parent )
+Nepomuk2::TagWidget::TagWidget( const Resource& resource, QWidget* parent )
     : QWidget( parent ),
       d( new TagWidgetPrivate() )
 {
@@ -254,7 +253,7 @@ Nepomuk::TagWidget::TagWidget( const Resource& resource, QWidget* parent )
 }
 
 
-Nepomuk::TagWidget::TagWidget( QWidget* parent )
+Nepomuk2::TagWidget::TagWidget( QWidget* parent )
     : QWidget( parent ),
       d( new TagWidgetPrivate() )
 {
@@ -262,29 +261,29 @@ Nepomuk::TagWidget::TagWidget( QWidget* parent )
 }
 
 
-Nepomuk::TagWidget::~TagWidget()
+Nepomuk2::TagWidget::~TagWidget()
 {
     delete d;
 }
 
 
-QList<Nepomuk::Resource> Nepomuk::TagWidget::taggedResources() const
+QList<Nepomuk2::Resource> Nepomuk2::TagWidget::taggedResources() const
 {
     return d->m_resources;
 }
 
 
 #ifndef KDE_NO_DEPRECATED
-QList<Nepomuk::Tag> Nepomuk::TagWidget::assignedTags() const
+QList<Nepomuk2::Tag> Nepomuk2::TagWidget::assignedTags() const
 {
     return selectedTags();
 }
 #endif
 
 
-QList<Nepomuk::Tag> Nepomuk::TagWidget::selectedTags() const
+QList<Nepomuk2::Tag> Nepomuk2::TagWidget::selectedTags() const
 {
-    QList<Nepomuk::Tag> tags;
+    QList<Nepomuk2::Tag> tags;
     QMapIterator<Tag, TagCheckBox*> it( d->m_checkBoxHash );
     while( it.hasNext() ) {
         it.next();
@@ -295,25 +294,25 @@ QList<Nepomuk::Tag> Nepomuk::TagWidget::selectedTags() const
 }
 
 
-int Nepomuk::TagWidget::maxTagsShown() const
+int Nepomuk2::TagWidget::maxTagsShown() const
 {
     return d->m_maxTags;
 }
 
 
-Qt::Alignment Nepomuk::TagWidget::alignment() const
+Qt::Alignment Nepomuk2::TagWidget::alignment() const
 {
     return d->m_flowLayout->alignment();
 }
 
 
-Nepomuk::TagWidget::ModeFlags Nepomuk::TagWidget::modeFlags() const
+Nepomuk2::TagWidget::ModeFlags Nepomuk2::TagWidget::modeFlags() const
 {
     return d->m_flags;
 }
 
 
-void Nepomuk::TagWidget::setTaggedResource( const Resource& resource )
+void Nepomuk2::TagWidget::setTaggedResource( const Resource& resource )
 {
     QList<Resource> l;
     l.append( resource );
@@ -321,7 +320,7 @@ void Nepomuk::TagWidget::setTaggedResource( const Resource& resource )
 }
 
 
-void Nepomuk::TagWidget::setTaggedResources( const QList<Resource>& resources )
+void Nepomuk2::TagWidget::setTaggedResources( const QList<Resource>& resources )
 {
     // reset selection to a sensible default
     d->buildTagHash( d->loadTags( d->m_maxTags ) );
@@ -337,47 +336,47 @@ void Nepomuk::TagWidget::setTaggedResources( const QList<Resource>& resources )
 
 
 #ifndef KDE_NO_DEPRECATED
-void Nepomuk::TagWidget::setAssignedTags( const QList<Tag>& tags )
+void Nepomuk2::TagWidget::setAssignedTags( const QList<Tag>& tags )
 {
     setSelectedTags( tags );
 }
 #endif
 
 
-void Nepomuk::TagWidget::setSelectedTags( const QList<Nepomuk::Tag>& tags )
+void Nepomuk2::TagWidget::setSelectedTags( const QList<Nepomuk2::Tag>& tags )
 {
     d->selectTags( tags );
     d->updateResources();
 }
 
 
-void Nepomuk::TagWidget::setMaxTagsShown( int max )
+void Nepomuk2::TagWidget::setMaxTagsShown( int max )
 {
     d->m_maxTags = max;
     setTaggedResources( d->m_resources );
 }
 
 
-void Nepomuk::TagWidget::setAlignment( Qt::Alignment alignment )
+void Nepomuk2::TagWidget::setAlignment( Qt::Alignment alignment )
 {
     d->m_flowLayout->setAlignment( alignment );
 }
 
 
-void Nepomuk::TagWidget::setModeFlags( ModeFlags flags )
+void Nepomuk2::TagWidget::setModeFlags( ModeFlags flags )
 {
     d->m_flags = flags;
     d->rebuild();
 }
 
 
-void Nepomuk::TagWidget::slotTagUpdateDone()
+void Nepomuk2::TagWidget::slotTagUpdateDone()
 {
     setEnabled( true );
 }
 
 
-void Nepomuk::TagWidget::slotShowAll()
+void Nepomuk2::TagWidget::slotShowAll()
 {
     KEditTagsDialog dlg( selectedTags(), this );
     if( dlg.exec() ) {
@@ -387,7 +386,7 @@ void Nepomuk::TagWidget::slotShowAll()
 }
 
 
-void Nepomuk::TagWidget::slotTagStateChanged( const Nepomuk::Tag&, int )
+void Nepomuk2::TagWidget::slotTagStateChanged( const Nepomuk2::Tag&, int )
 {
     if( !d->m_blockSelectionChangedSignal ) {
         d->updateResources();

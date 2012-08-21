@@ -25,7 +25,7 @@
 
 #include <QtGui/QWidget>
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     class Resource;
     class Tag;
     class TagWidgetPrivate;
@@ -90,7 +90,7 @@ namespace Nepomuk {
          *
          * \since 4.5
          */
-        QList<Nepomuk::Tag> selectedTags() const;
+        QList<Nepomuk2::Tag> selectedTags() const;
 
         /**
          * By default the TagWidget shows the most often used tags in the
@@ -159,14 +159,14 @@ namespace Nepomuk {
         /**
          * This signal is emitted whenever a tag is clicked.
          */
-        void tagClicked( Nepomuk::Tag );
+        void tagClicked( Nepomuk2::Tag );
 
         /**
          * Emitted whenever the selection of tags changes.
          *
          * \since 4.5
          */
-        void selectionChanged( const QList<Nepomuk::Tag>& tags );
+        void selectionChanged( const QList<Nepomuk2::Tag>& tags );
 
     public Q_SLOTS:
         /**
@@ -185,7 +185,7 @@ namespace Nepomuk {
          * \deprecated use setSelectedTags() instead
          */
 #ifndef KDE_NO_DEPRECATED
-        KDE_DEPRECATED void setAssignedTags( const QList<Nepomuk::Tag>& tags );
+        KDE_DEPRECATED void setAssignedTags( const QList<Nepomuk2::Tag>& tags );
 #endif
 
         /**
@@ -195,7 +195,7 @@ namespace Nepomuk {
          *
          * \since 4.5
          */
-        void setSelectedTags( const QList<Nepomuk::Tag>& tags );
+        void setSelectedTags( const QList<Nepomuk2::Tag>& tags );
 
         /**
          * By default the TagWidget shows the most often used tags in the
@@ -229,13 +229,13 @@ namespace Nepomuk {
     private Q_SLOTS:
         void slotShowAll();
         void slotTagUpdateDone();
-        void slotTagStateChanged( const Nepomuk::Tag&, int );
+        void slotTagStateChanged( const Nepomuk2::Tag&, int );
 
     private:
         TagWidgetPrivate* const d;
     };
 }
 
-Q_DECLARE_OPERATORS_FOR_FLAGS( Nepomuk::TagWidget::ModeFlags )
+Q_DECLARE_OPERATORS_FOR_FLAGS( Nepomuk2::TagWidget::ModeFlags )
 
 #endif

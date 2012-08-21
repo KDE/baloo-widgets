@@ -46,21 +46,21 @@
 #include "kdescendantsproxymodel.h"
 
 
-class Nepomuk::Utils::FacetWidget::Private
+class Nepomuk2::Utils::FacetWidget::Private
 {
 public:
-    Nepomuk::Utils::FacetModel *m_facetModel;
+    Nepomuk2::Utils::FacetModel *m_facetModel;
     QListView *m_facetView;
 };
 
 
-Nepomuk::Utils::FacetWidget::FacetWidget( QWidget *parent )
+Nepomuk2::Utils::FacetWidget::FacetWidget( QWidget *parent )
     : QWidget( parent ),
       d( new Private() )
 {
-    d->m_facetModel = new Nepomuk::Utils::FacetModel( this );
-    connect( d->m_facetModel, SIGNAL(queryTermChanged(Nepomuk::Query::Term)),
-             this, SIGNAL(queryTermChanged(Nepomuk::Query::Term)) );
+    d->m_facetModel = new Nepomuk2::Utils::FacetModel( this );
+    connect( d->m_facetModel, SIGNAL(queryTermChanged(Nepomuk2::Query::Term)),
+             this, SIGNAL(queryTermChanged(Nepomuk2::Query::Term)) );
 
     d->m_facetView = new QListView( this );
     d->m_facetView->setItemDelegate( new FacetDelegate( d->m_facetView ) );
@@ -70,7 +70,7 @@ Nepomuk::Utils::FacetWidget::FacetWidget( QWidget *parent )
 
     FacetFilterModel* facetFilterModel = new FacetFilterModel( this );
     facetFilterModel->setSourceModel( d->m_facetModel );
-    connect( d->m_facetModel, SIGNAL(queryTermChanged(Nepomuk::Query::Term)), facetFilterModel, SLOT(invalidate()));
+    connect( d->m_facetModel, SIGNAL(queryTermChanged(Nepomuk2::Query::Term)), facetFilterModel, SLOT(invalidate()));
     connect( d->m_facetModel, SIGNAL(modelReset()), facetFilterModel, SLOT(invalidate()));
 
     KDescendantsProxyModel* proxy = new KDescendantsProxyModel( this );
@@ -81,49 +81,49 @@ Nepomuk::Utils::FacetWidget::FacetWidget( QWidget *parent )
     layout()->addWidget( d->m_facetView );
 }
 
-Nepomuk::Utils::FacetWidget::~FacetWidget()
+Nepomuk2::Utils::FacetWidget::~FacetWidget()
 {
     delete d;
 }
 
 
-QList<Nepomuk::Utils::Facet*> Nepomuk::Utils::FacetWidget::facets() const
+QList<Nepomuk2::Utils::Facet*> Nepomuk2::Utils::FacetWidget::facets() const
 {
     return d->m_facetModel->facets();
 }
 
 
-Nepomuk::Query::Query Nepomuk::Utils::FacetWidget::extractFacetsFromQuery( const Nepomuk::Query::Query& query )
+Nepomuk2::Query::Query Nepomuk2::Utils::FacetWidget::extractFacetsFromQuery( const Nepomuk2::Query::Query& query )
 {
     return d->m_facetModel->extractFacetsFromQuery( query );
 }
 
 
-Nepomuk::Query::Term Nepomuk::Utils::FacetWidget::queryTerm() const
+Nepomuk2::Query::Term Nepomuk2::Utils::FacetWidget::queryTerm() const
 {
     return d->m_facetModel->queryTerm();
 }
 
 
-void Nepomuk::Utils::FacetWidget::setClientQuery(const Nepomuk::Query::Query& query)
+void Nepomuk2::Utils::FacetWidget::setClientQuery(const Nepomuk2::Query::Query& query)
 {
     d->m_facetModel->setClientQuery(query);
 }
 
 
-void Nepomuk::Utils::FacetWidget::addFacet( Nepomuk::Utils::Facet* facet )
+void Nepomuk2::Utils::FacetWidget::addFacet( Nepomuk2::Utils::Facet* facet )
 {
     d->m_facetModel->addFacet(facet);
 }
 
 
-void Nepomuk::Utils::FacetWidget::setFacets( const QList<Nepomuk::Utils::Facet*>& facets )
+void Nepomuk2::Utils::FacetWidget::setFacets( const QList<Nepomuk2::Utils::Facet*>& facets )
 {
     d->m_facetModel->setFacets(facets);
 }
 
 
-void Nepomuk::Utils::FacetWidget::clear()
+void Nepomuk2::Utils::FacetWidget::clear()
 {
     d->m_facetModel->clear();
 }

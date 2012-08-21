@@ -46,9 +46,9 @@
 #include <Soprano/NodeIterator>
 
 
-QString Nepomuk::Utils::formatPropertyValue( const Nepomuk::Types::Property& property,
-                                             const Nepomuk::Variant& value,
-                                             const QList<Nepomuk::Resource>& resources,
+QString Nepomuk2::Utils::formatPropertyValue( const Nepomuk2::Types::Property& property,
+                                             const Nepomuk2::Variant& value,
+                                             const QList<Nepomuk2::Resource>& resources,
                                              PropertyFormatFlags flags )
 {
     // first handle lists
@@ -65,40 +65,40 @@ QString Nepomuk::Utils::formatPropertyValue( const Nepomuk::Types::Property& pro
     // We handle the one special case of referrer URLs of downloads
     // TODO: put stuff like this in a generic rule-based framework
     //
-    if( property == Nepomuk::Vocabulary::NDO::copiedFrom() &&
+    if( property == Nepomuk2::Vocabulary::NDO::copiedFrom() &&
         !resources.isEmpty() ) {
-        Nepomuk::Query::Query query(
-            Nepomuk::Query::AndTerm(
-                Nepomuk::Query::ResourceTypeTerm(
-                    Nepomuk::Vocabulary::NDO::DownloadEvent()
+        Nepomuk2::Query::Query query(
+            Nepomuk2::Query::AndTerm(
+                Nepomuk2::Query::ResourceTypeTerm(
+                    Nepomuk2::Vocabulary::NDO::DownloadEvent()
                     ),
-                Nepomuk::Query::ComparisonTerm(
-                    Nepomuk::Vocabulary::NUAO::involves(),
-                    Nepomuk::Query::ResourceTerm(resources.first())
+                Nepomuk2::Query::ComparisonTerm(
+                    Nepomuk2::Vocabulary::NUAO::involves(),
+                    Nepomuk2::Query::ResourceTerm(resources.first())
                     )
                 )
             );
         query.setLimit(1);
 
         QList<Soprano::Node> results =
-            Nepomuk::ResourceManager::instance()->mainModel()->executeQuery(
+            Nepomuk2::ResourceManager::instance()->mainModel()->executeQuery(
                 query.toSparqlQuery(),
                 Soprano::Query::QueryLanguageSparql).iterateBindings(0).allNodes();
         if( !results.isEmpty() ) {
-            Nepomuk::Resource dlRes(results.first().uri());
+            Nepomuk2::Resource dlRes(results.first().uri());
             KUrl url;
             QString label;
-            if( dlRes.hasProperty(Nepomuk::Vocabulary::NDO::referrer()) ) {
-                Nepomuk::Resource referrerWebPage = dlRes.property(Nepomuk::Vocabulary::NDO::referrer()).toResource();
-                url = referrerWebPage.property(Nepomuk::Vocabulary::NIE::url()).toUrl();
+            if( dlRes.hasProperty(Nepomuk2::Vocabulary::NDO::referrer()) ) {
+                Nepomuk2::Resource referrerWebPage = dlRes.property(Nepomuk2::Vocabulary::NDO::referrer()).toResource();
+                url = referrerWebPage.property(Nepomuk2::Vocabulary::NIE::url()).toUrl();
                 KUrl referrerDomain(url);
                 referrerDomain.setPath(QString());
                 referrerDomain.setQuery(QString());
                 label = referrerDomain.prettyUrl();
             }
             else {
-                Nepomuk::Resource res(value.toResource());
-                url = res.resourceUri();
+                Nepomuk2::Resource res(value.toResource());
+                url = res.uri();
                 label = res.genericLabel();
             }
 
@@ -148,7 +148,7 @@ QString Nepomuk::Utils::formatPropertyValue( const Nepomuk::Types::Property& pro
 
     if( flags & WithKioLinks ) {
         // for all property/value pairs we create a default query
-        Nepomuk::Query::FileQuery query( Nepomuk::Query::Term::fromProperty(property, value) );
+        Nepomuk2::Query::FileQuery query( Nepomuk2::Query::Term::fromProperty(property, value) );
         return QString::fromLatin1("<a href=\"%1\">%2</a>")
             .arg(query.toSearchUrl(property.label() + QLatin1String(": '") + valueString + '\'').url(),
                  valueString);
@@ -159,7 +159,7 @@ QString Nepomuk::Utils::formatPropertyValue( const Nepomuk::Types::Property& pro
 }
 
 
-Nepomuk::Resource Nepomuk::Utils::createCopyEvent( const KUrl& srcUrl, const KUrl& destUrl, const QDateTime& startTime, const KUrl& referrer )
+Nepomuk2::Resource Nepomuk2::Utils::createCopyEvent( const KUrl& srcUrl, const KUrl& destUrl, const QDateTime& startTime, const KUrl& referrer )
 {
     //
     // Remember where a file was downloaded from the semantic way:
@@ -173,45 +173,45 @@ Nepomuk::Resource Nepomuk::Utils::createCopyEvent( const KUrl& srcUrl, const KUr
     QUrl srcType;
     QUrl destType;
     if(srcUrl.isLocalFile()) {
-        srcType = Nepomuk::Vocabulary::NFO::FileDataObject();
+        srcType = Nepomuk2::Vocabulary::NFO::FileDataObject();
     }
     else {
-        srcType = Nepomuk::Vocabulary::NFO::RemoteDataObject();
+        srcType = Nepomuk2::Vocabulary::NFO::RemoteDataObject();
     }
     if(destUrl.isLocalFile()) {
-        destType = Nepomuk::Vocabulary::NFO::FileDataObject();
+        destType = Nepomuk2::Vocabulary::NFO::FileDataObject();
     }
     else {
-        destType = Nepomuk::Vocabulary::NFO::RemoteDataObject();
+        destType = Nepomuk2::Vocabulary::NFO::RemoteDataObject();
     }
 
     // source and dest resources
-    Nepomuk::Resource srcFileRes(srcUrl, srcType);
-    Nepomuk::Resource destFileRes(destUrl, destType);
-    srcFileRes.setProperty(Nepomuk::Vocabulary::NIE::url(), srcUrl);
-    destFileRes.setProperty(Nepomuk::Vocabulary::NIE::url(), destUrl);
+    Nepomuk2::Resource srcFileRes(srcUrl, srcType);
+    Nepomuk2::Resource destFileRes(destUrl, destType);
+    srcFileRes.setProperty(Nepomuk2::Vocabulary::NIE::url(), srcUrl);
+    destFileRes.setProperty(Nepomuk2::Vocabulary::NIE::url(), destUrl);
 
     // relate src and dest
-    destFileRes.setProperty(Nepomuk::Vocabulary::NDO::copiedFrom(), srcFileRes);
+    destFileRes.setProperty(Nepomuk2::Vocabulary::NDO::copiedFrom(), srcFileRes);
 
     // details in the download event
-    Nepomuk::Resource downloadEventRes(QUrl(), Nepomuk::Vocabulary::NDO::DownloadEvent());
-    downloadEventRes.addProperty(Nepomuk::Vocabulary::NUAO::involves(), destFileRes);
-    downloadEventRes.addProperty(Nepomuk::Vocabulary::NUAO::start(), startTime);
+    Nepomuk2::Resource downloadEventRes(QUrl(), Nepomuk2::Vocabulary::NDO::DownloadEvent());
+    downloadEventRes.addProperty(Nepomuk2::Vocabulary::NUAO::involves(), destFileRes);
+    downloadEventRes.addProperty(Nepomuk2::Vocabulary::NUAO::start(), startTime);
 
     // set the referrer
     if(referrer.isValid()) {
         // TODO: we could at this point index the referrer site via strigi
-        Nepomuk::Resource referrerRes(referrer, Nepomuk::Vocabulary::NFO::Website());
-        downloadEventRes.addProperty(Nepomuk::Vocabulary::NDO::referrer(), referrerRes);
+        Nepomuk2::Resource referrerRes(referrer, Nepomuk2::Vocabulary::NFO::Website());
+        downloadEventRes.addProperty(Nepomuk2::Vocabulary::NDO::referrer(), referrerRes);
     }
 
     return downloadEventRes;
 }
 
 
-void Nepomuk::Utils::finishCopyEvent( Resource& /*eventResource*/, const QDateTime& /*endTime*/ )
+void Nepomuk2::Utils::finishCopyEvent( Resource& /*eventResource*/, const QDateTime& /*endTime*/ )
 {
     // FIXME: NUAO doesn't have end() yet.
-    // eventResource.setProperty(Nepomuk::Vocabulary::NUAO::end(), endTime);
+    // eventResource.setProperty(Nepomuk2::Vocabulary::NUAO::end(), endTime);
 }

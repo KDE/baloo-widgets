@@ -36,10 +36,10 @@
 #include "qtest_kde.h"
 
 
-using namespace Nepomuk::Utils;
-using namespace Nepomuk::Query;
-using namespace Nepomuk::Vocabulary;
-using namespace Nepomuk::Types;
+using namespace Nepomuk22::Utils;
+using namespace Nepomuk22::Query;
+using namespace Nepomuk22::Vocabulary;
+using namespace Nepomuk22::Types;
 
 void TypeFacetTest::testBasicLayout()
 {

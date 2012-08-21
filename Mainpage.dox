@@ -32,9 +32,9 @@ Overview |
 
 This is the KDE Meta Data library (not to confuse with KFileMetaData). It consists of
 the following parts:
-\li The main resource handling centered around Nepomuk::Resource
-\li The handling of ontologies via classes in the Nepomuk::Types namespace
-\li The desktop Nepomuk::Query API
+\li The main resource handling centered around Nepomuk2::Resource
+\li The handling of ontologies via classes in the Nepomuk2::Types namespace
+\li The desktop Nepomuk2::Query API
 \li \ref nepomuk_facets
 \li Several utility methods and classes
 
@@ -119,12 +119,12 @@ In general there are two ways of using Nepomuk.
 -# The preferred way: use the Resource subclasses as generated from \ref page_ontology
    This is also the much simpler way since Nepomuk takes care of all type casting and
    list handling automatically.
--# Using Nepomuk::Resource directly. This is much harder since in this case
+-# Using Nepomuk2::Resource directly. This is much harder since in this case
    the type names (i.e. their URIs as defined in \ref page_ontology) have to be known.
    On the other hand it allows to use additional resource types not defined in the ontology
    and handle resources without knowing their type.
 
-Since all resource classes are derived from Nepomuk::Resource and only add additional methods
+Since all resource classes are derived from Nepomuk2::Resource and only add additional methods
 both ways can be used interchangeably.
 
 Resource objects (and thus also all objects of classes derived from Resource) with the same
@@ -143,38 +143,38 @@ corresponding class and passes the resource URI to its constructor.
 In case of a file this would look as follows.
 
 \code
-Nepomuk::File f( "/home/foo/bar.txt" );
+Nepomuk2::File f( "/home/foo/bar.txt" );
 \endcode
 
-Now meta data can be read and set via the methods provided by Nepomuk::File
-such as Nepomuk::File::setAnnotation.
+Now meta data can be read and set via the methods provided by Nepomuk2::File
+such as Nepomuk2::File::setAnnotation.
 
 Each resource class also provides a static method which returns all existing instances
 of this type.
-See Nepomuk::File::allFiles for an example.
+See Nepomuk2::File::allFiles for an example.
 
 See also \ref nepomuk-rcgen
 
 
 \subsection hacking_thehardway Using Resource Directly
 
-Using the Nepomuk::Resource class directly forces one to learn a little more about
+Using the Nepomuk2::Resource class directly forces one to learn a little more about
 the internals of Nepomuk. Resource provides four methods to handle the properties of a
 resource (reminder: all Resource subclasses as generated from \ref page_ontology are based
 one these methods):
 
-- Nepomuk::Resource::property
-- Nepomuk::Resource::setProperty
-- Nepomuk::Resource::removeProperty
-- Nepomuk::Resource::properties
+- Nepomuk2::Resource::property
+- Nepomuk2::Resource::setProperty
+- Nepomuk2::Resource::removeProperty
+- Nepomuk2::Resource::properties
 
-Each property's value is represented by a Nepomuk::Variant object which can contain
+Each property's value is represented by a Nepomuk2::Variant object which can contain
 another Resource or a literal (string, int, ...) or even a list of the former two. Other than
 with the Resource subclasses no automatic type conversion is performed.
 
-In case of a property that can have multiple values (cardinality greater than 1) Nepomuk::Resource::setProperty
+In case of a property that can have multiple values (cardinality greater than 1) Nepomuk2::Resource::setProperty
 has to be called with a list to set more than one (the Resource subclasses simplify this by
-adding add methods in addition to the set method) and Nepomuk::Resource::getProperty
+adding add methods in addition to the set method) and Nepomuk2::Resource::getProperty
 will also return a list (in both cases encapsulated in a Variant object).
 
 When creating a Resource object there are two cases that are dealt with differently:
@@ -187,7 +187,7 @@ When creating a Resource object there are two cases that are dealt with differen
 As a rule of thumb one should always define the type when creating meta data and leave it empty when
 reading meta data.
 
-When using the plain Nepomuk::Resource class one is completely free to choose the
+When using the plain Nepomuk2::Resource class one is completely free to choose the
 resource URIs, the type URIs, and the property URIs. However, to preserve compatibility with
 other applications one is encouraged to stick to those define in \ref page_ontology.
 
@@ -196,11 +196,11 @@ other applications one is encouraged to stick to those define in \ref page_ontol
 Nepomuk is designed so the user (the developer of a client application) does not have to care about loading or
 saving the data. All data is stored directly into the RDF storage and also read from it directly.
 
-Although in normal operation it is sufficient to only work with Nepomuk::Resource and
-its subclasses errors might occur. This is where the Nepomuk::ResourceManager comes
-in: it provides the Nepomuk::ResourceManager::init method which can be called manually
+Although in normal operation it is sufficient to only work with Nepomuk2::Resource and
+its subclasses errors might occur. This is where the Nepomuk2::ResourceManager comes
+in: it provides the Nepomuk2::ResourceManager::init method which can be called manually
 (the resource manager will be initialized automatically anyway) to check if the initialization was
-successful and Nepomuk can be used. In addition it provides the Nepomuk::ResourceManager::error
+successful and Nepomuk can be used. In addition it provides the Nepomuk2::ResourceManager::error
 signal which is emitted whenever an error occurs.
 
 
@@ -223,7 +223,7 @@ Examples |
 Add an annotation (a comment) to a file.
 
 \code
-Nepomuk::File f( "/home/foo/bar.txt" );
+Nepomuk2::File f( "/home/foo/bar.txt" );
 f.setAnnotation( "This is just a test file that contains nothing of interest." );
 \endcode
 
@@ -232,15 +232,15 @@ which works as an identifier. Nepomuk automatically creates a new unique URI if 
 tag does not already exist.
 
 \code
-Nepomuk::Tag tag( "MyTag" );
-Nepomuk::File f( "/home/foo/bar.txt" );
+Nepomuk2::Tag tag( "MyTag" );
+Nepomuk2::File f( "/home/foo/bar.txt" );
 f.addTag( tag );
 \endcode
 
 Reading the information using plain Resource methods:
 
 \code
-Nepomuk::Resource f( "/home/foo/bar.txt" );
+Nepomuk2::Resource f( "/home/foo/bar.txt" );
 QString annotation = f.getProperty( Soprano::Vocabulary::NAO::decription() ).toString();
 QList<Resource> tags = f.getProperty( Soprano::Vocabulary::NAO::hasTag() ).toResourceList();
 QListIterator<Resource> it( tags );
@@ -253,7 +253,7 @@ Reading the information using the convenience classes (be aware that these class
 from an ontology using the \ref nepomuk-rcgen "Resource Generator"):
 
 \code
-Nepomuk::File f( "/home/foo/bar.txt" );
+Nepomuk2::File f( "/home/foo/bar.txt" );
 QString description = f.description();
 QList<Tag> tags = f.getTags();
 QListIterator<Tag> it( tags );
@@ -265,12 +265,12 @@ Present all defined properties of an arbitrary resource to the user including
 internationalized labels:
 
 \code
-Nepomuk::Resource f( "/home/foo/bar.txt" );
+Nepomuk2::Resource f( "/home/foo/bar.txt" );
 QHash<QUrl, Variant> properties = f.properties();
 QHashIterator<QUrl, Variant> it( properties );
 while( it.hasNext() ) {
   it.next();
-  kdDebug() << Nepomuk::Types::Property( it.key() ).label() << ": " << it.value().toString() << endl;
+  kdDebug() << Nepomuk2::Types::Property( it.key() ).label() << ": " << it.value().toString() << endl;
 }
 \endcode
 
@@ -281,48 +281,48 @@ Perform a simple full text query that looks for any resource containing
 the value 'nepomuk':
 
 \code
-Nepomuk::Query::LiteralTerm nepomukTerm("nepomuk");
-Nepomuk::Query::Query query( nepomukTerm );
+Nepomuk2::Query::LiteralTerm nepomukTerm("nepomuk");
+Nepomuk2::Query::Query query( nepomukTerm );
 \endcode
 
 Create a query that lists all resources tagged with a tag whose name
 matches 'nepomuk':
 
 \code
-Nepomuk::Query::ComparisonTerm term( Soprano::Vocabulary::NAO::hasTag(),
-                                     Nepomuk::Query::LiteralTerm("nepomuk") );
-Nepomuk::Query::Query query( term );
+Nepomuk2::Query::ComparisonTerm term( Soprano::Vocabulary::NAO::hasTag(),
+                                     Nepomuk2::Query::LiteralTerm("nepomuk") );
+Nepomuk2::Query::Query query( term );
 \endcode
 
 Create a query that lists all resources tagged with a specific tag:
 
 \code
-Nepomuk::Tag tag = getFancyTag();
-Nepomuk::Query::ComparisonTerm term( Soprano::Vocabulary::NAO::hasTag(),
-                                     Nepomuk::Query::ResourceTerm( tag ) );
-Nepomuk::Query::Query query( term );
+Nepomuk2::Tag tag = getFancyTag();
+Nepomuk2::Query::ComparisonTerm term( Soprano::Vocabulary::NAO::hasTag(),
+                                     Nepomuk2::Query::ResourceTerm( tag ) );
+Nepomuk2::Query::Query query( term );
 \endcode
 
 Create a query that lists all resource tagged with both the tags used
 above:
 
 \code
-Nepomuk::Tag tag = getFancyTag();
-Nepomuk::Query::ComparisonTerm fancyTagTerm( Soprano::Vocabulary::NAO::hasTag(),
-                                             Nepomuk::Query::ResourceTerm( tag ) );
-Nepomuk::Query::ComparisonTerm nepomukTagTerm( Soprano::Vocabulary::NAO::hasTag(),
-                                               Nepomuk::Query::LiteralTerm("nepomuk") );
-Nepomuk::Query::Query query( Nepomuk::Query::AndTerm(fancyTagTerm, nepomukTagTerm) );
+Nepomuk2::Tag tag = getFancyTag();
+Nepomuk2::Query::ComparisonTerm fancyTagTerm( Soprano::Vocabulary::NAO::hasTag(),
+                                             Nepomuk2::Query::ResourceTerm( tag ) );
+Nepomuk2::Query::ComparisonTerm nepomukTagTerm( Soprano::Vocabulary::NAO::hasTag(),
+                                               Nepomuk2::Query::LiteralTerm("nepomuk") );
+Nepomuk2::Query::Query query( Nepomuk2::Query::AndTerm(fancyTagTerm, nepomukTagTerm) );
 \endcode
 
 
 Create a query that lists all \b files tagged with a specific tag:
 
 \code
-Nepomuk::Tag tag = getFancyTag();
-Nepomuk::Query::ComparisonTerm term( Soprano::Vocabulary::NAO::hasTag(),
-                                     Nepomuk::Query::ResourceTerm( tag ) );
-Nepomuk::Query::FileQuery fileQuery( term );
+Nepomuk2::Tag tag = getFancyTag();
+Nepomuk2::Query::ComparisonTerm term( Soprano::Vocabulary::NAO::hasTag(),
+                                     Nepomuk2::Query::ResourceTerm( tag ) );
+Nepomuk2::Query::FileQuery fileQuery( term );
 \endcode
 
 
@@ -330,11 +330,11 @@ Any other term can be used as sub term in a ComparisonTerm (%Vocabulary namespac
 The following query does return all resources related to person contacts that are tagged with \p tag.
 
 \code
-Nepomuk::Query::AndTerm andTerm;
-andTerm.addSubTerm( Nepomuk::Query::ResourceTypeTerm( Nepomuk::Vocabulary::NCO::PersonContact() ) );
-andTerm.addSubTerm( Nepomuk::Query::ComparisonTerm( Soprano::Vocabulary::NAO::hasTag(),
-                                                    Nepomuk::Query::ResourceTerm( tag ) ) );
-Nepomuk::Query::ComparisonTerm cterm( Nepomuk::Vocabulary::NAO::isRelated(),
+Nepomuk2::Query::AndTerm andTerm;
+andTerm.addSubTerm( Nepomuk2::Query::ResourceTypeTerm( Nepomuk2::Vocabulary::NCO::PersonContact() ) );
+andTerm.addSubTerm( Nepomuk2::Query::ComparisonTerm( Soprano::Vocabulary::NAO::hasTag(),
+                                                    Nepomuk2::Query::ResourceTerm( tag ) ) );
+Nepomuk2::Query::ComparisonTerm cterm( Nepomuk2::Vocabulary::NAO::isRelated(),
                                       andTerm );
 \endcode
 
@@ -364,16 +364,16 @@ Restrict the search to files-only (Vocabulary namespace generated via
 using \p ${SHAREDDESKTOPONTOLOGIES_ROOT_DIR}/nie/nfo.trig):
 
 \code
-Nepomuk::Query::Term folderTerm = Nepomuk::Query::ResourceTypeTerm( Nepomuk::Vocabulary::NFO::Folder() );
-Nepomuk::Query::Term noFolderTerm = Nepomuk::Query::NegationTerm::negateTerm(folderTerm);
-fileQuery.setTerm( Nepomuk::Query::AndTerm( fileQuery.term(), noFolderTerm ) );
+Nepomuk2::Query::Term folderTerm = Nepomuk2::Query::ResourceTypeTerm( Nepomuk2::Vocabulary::NFO::Folder() );
+Nepomuk2::Query::Term noFolderTerm = Nepomuk2::Query::NegationTerm::negateTerm(folderTerm);
+fileQuery.setTerm( Nepomuk2::Query::AndTerm( fileQuery.term(), noFolderTerm ) );
 \endcode
 
 List all query results in a KDirModel:
 
 \code
 KDirModel* model = getFancyDirModel();
-Nepomuk::Query::Query query = buildFancyQuery();
+Nepomuk2::Query::Query query = buildFancyQuery();
 KUrl searchUrl = query.toSearchUrl();
 model->dirLister()->open( searchUrl );
 \endcode
@@ -384,17 +384,17 @@ KIO will use the \p nepomuksearch:/ slave to list search results as file entries
 
 Match all EmailAddress instances with a specific email address:
 \code
-Nepomuk::Query::ComparisonTerm email( Nepomuk::Vocabulary::NCO::emailAddress(), Soprano::LiteralValue( "trueg@kde.org" ) );
+Nepomuk2::Query::ComparisonTerm email( Nepomuk2::Vocabulary::NCO::emailAddress(), Soprano::LiteralValue( "trueg@kde.org" ) );
 \endcode
 
 Match all nco:PersonContact instances:
 \code
-Nepomuk::Query::ResourceTypeTerm type( Nepomuk::Vocabulary::NCO::PersonContact() );
+Nepomuk2::Query::ResourceTypeTerm type( Nepomuk2::Vocabulary::NCO::PersonContact() );
 \endcode
 
 Match all person contacts with a specific email address:
 \code
-Nepomuk::Query::AndTerm( type, Nepomuk::Query::ComparisonTerm( Nepomuk::Vocabulary::NCO::hasEmailAddress(), email ) );
+Nepomuk2::Query::AndTerm( type, Nepomuk2::Query::ComparisonTerm( Nepomuk2::Vocabulary::NCO::hasEmailAddress(), email ) );
 \endcode
 */
 
@@ -454,7 +454,7 @@ NEPOMUK_ADD_ONTOLOGY_CLASSES(<sources-var>
 \endcode
 
 If FAST is specified the rcgen parameter --fast will be used which results in resource classes
-not based on Nepomuk::Resource but on a custom class which does not perform any checks and simply
+not based on Nepomuk2::Resource but on a custom class which does not perform any checks and simply
 writes the data to Nepomuk (hence the name fast).
 
 The optional CLASSES parameter allows to specify the classes to be generated (RDF class names) in
@@ -482,23 +482,23 @@ target_link_libraries(foobar
 \endcode
 */
 
-/** \namespace Nepomuk::Types
+/** \namespace Nepomuk22::Types
 \brief The %Types namespace contains all classes used to handle ontology entities such as classes and properties.
 */
 
-/** \namespace Nepomuk::Vocabulary
+/** \namespace Nepomuk22::Vocabulary
 \brief The %Vocabulary namespace contains the most commonly used classes and methods used to easily access the vocabularies.
 
 If the vocabulary you are looking for is not present, it can be created using the \em onto2vocabularyclass tool provided by \em %Soprano. The best way to do that is through the provided cmake macro:
 
 \code
-soprano_add_ontology(my_SRC ${SHAREDDESKTOPONTOLOGIES_ROOT_DIR}/nie/nfo.trig "NFO" "Nepomuk::Vocabulary" "trig")
+soprano_add_ontology(my_SRC ${SHAREDDESKTOPONTOLOGIES_ROOT_DIR}/nie/nfo.trig "NFO" "Nepomuk2::Vocabulary" "trig")
 \endcode
  
 Here both \em %Soprano and \em SharedDesktopOntologies have been found through the cmake macros provided by the packages and kdelibs.
 */
 
-/** \namespace Nepomuk::Query
+/** \namespace Nepomuk22::Query
 
 \brief The %Query namespace contains all classes that make up the Nepomuk %Query API.
 
@@ -524,13 +524,13 @@ following:
 
 \code
 // match all EmailAddress instances with a specific email address:
-Nepomuk::Query::ComparisonTerm email( Nepomuk::Vocabulary::NCO::emailAddress(), Soprano::LiteralValue( "trueg@kde.org" ) );
+Nepomuk2::Query::ComparisonTerm email( Nepomuk2::Vocabulary::NCO::emailAddress(), Soprano::LiteralValue( "trueg@kde.org" ) );
 
 // match all nco:PersonContact instances
-Nepomuk::Query::ResourceTypeTerm type( Nepomuk::Vocabulary::NCO::PersonContact() );
+Nepomuk2::Query::ResourceTypeTerm type( Nepomuk2::Vocabulary::NCO::PersonContact() );
 
 // match all person contacts with a specific email address
-Nepomuk::Query::AndTerm( type, Nepomuk::Query::ComparisonTerm( Nepomuk::Vocabulary::NCO::hasEmailAddress(), email ) );
+Nepomuk2::Query::AndTerm( type, Nepomuk2::Query::ComparisonTerm( Nepomuk2::Vocabulary::NCO::hasEmailAddress(), email ) );
 \endcode
 
 \subsection nepomuk_fancy_query_operators Fancy Operators
@@ -540,26 +540,26 @@ written as:
 
 \code
 // match all EmailAddress instances with a specific email address:
-Nepomuk::Query::ComparisonTerm email = Nepomuk::Vocabulary::NCO::emailAddress() == Soprano::LiteralValue( "trueg@kde.org" );
+Nepomuk2::Query::ComparisonTerm email = Nepomuk2::Vocabulary::NCO::emailAddress() == Soprano::LiteralValue( "trueg@kde.org" );
 
 // match all nco:PersonContact instances
-Nepomuk::Query::ResourceTypeTerm type( Nepomuk::Vocabulary::NCO::PersonContact() );
+Nepomuk2::Query::ResourceTypeTerm type( Nepomuk2::Vocabulary::NCO::PersonContact() );
 
 // match all person contacts with a specific email address
-Nepomuk::Query::AndTerm = type && ( Nepomuk::Vocabulary::NCO::hasEmailAddress() == email );
+Nepomuk2::Query::AndTerm = type && ( Nepomuk2::Vocabulary::NCO::hasEmailAddress() == email );
 \endcode
 
 Furthermore literal comparisons can now be written as:
 
 \code
-Nepomuk::Query::ComparisonTerm mtime
-     = Nepomuk::Vocabulary::NIE::lastModified() > Nepomuk::Query::LiteralTerm( QDateTime::currentDateTime().addDays(-7) );
+Nepomuk2::Query::ComparisonTerm mtime
+     = Nepomuk2::Vocabulary::NIE::lastModified() > Nepomuk2::Query::LiteralTerm( QDateTime::currentDateTime().addDays(-7) );
 \endcode
 
 \sa \ref examples_query
 */
 
-/** \namespace Nepomuk::Utils
+/** \namespace Nepomuk22::Utils
 \brief The %Utils namespace contains utility and convenience methods and classes that help the application developer with
 using %Nepomuk.
 An essential part of the %Utils is the \ref nepomuk_facets which allows developers to easily integrate a filter-based
@@ -571,51 +571,51 @@ search interface into their applications.
 \brief A set of classes which allow for easy filter-based search interfaces.
 
 The Facet API which was introduced in KDE SC 4.6 provides a set of classes that allow the integration of a filter-based
-search interface into applications. It consists of the abstract Nepomuk::Utils::Facet class which has to be subclassed to implement
-a facet of a query and a convenient GUI element Nepomuk::Utils::FacetWidget which provides all the necessary user interaction.
+search interface into applications. It consists of the abstract Nepomuk2::Utils::Facet class which has to be subclassed to implement
+a facet of a query and a convenient GUI element Nepomuk2::Utils::FacetWidget which provides all the necessary user interaction.
 
-If Nepomuk::Utils::FacetWidget does not suit the particular use case in an application Nepomuk::Utils::FacetModel is provided
+If Nepomuk2::Utils::FacetWidget does not suit the particular use case in an application Nepomuk2::Utils::FacetModel is provided
 as a more advanced approach to handling facets. If even that is too constrained one can always handle the facets manually.
 
-For convenience Nepomuk::Utils::SimpleFacet and Nepomuk::Utils::DynamicResourceFacet as well as a set of static factory methods in
-Nepomuk::Utils::Facet are provided to make facet creation as simple as possible.
+For convenience Nepomuk2::Utils::SimpleFacet and Nepomuk2::Utils::DynamicResourceFacet as well as a set of static factory methods in
+Nepomuk2::Utils::Facet are provided to make facet creation as simple as possible.
 
 \section nepomuk_facet_examples Facet Examples
 
-Nepomuk::Utils::ProxyFacet comes with a nice feature which allows to set a condition for the facet (Nepomuk::Utils::ProxyFacet::setFacetCondition()).
+Nepomuk2::Utils::ProxyFacet comes with a nice feature which allows to set a condition for the facet (Nepomuk2::Utils::ProxyFacet::setFacetCondition()).
 The condition is a simple query term and means that the facet will not provide any choices unless the condition is met.
 This is best illustrated with a small example:
 
 Imagine a facet that filters on image sizes:
 
 \code
-Nepomuk::Utils::SimpleFacet* imageSizeFacet = new Nepomuk::Utils::SimpleFacet();
-imageSizeFacet->addTerm( i18n("Small"), Vocabulary::NFO::width() <= Nepomuk::Query::LiteralTerm(300));
-imageSizeFacet->addTerm( i18n("Medium"), (Vocabulary::NFO::width() > Nepomuk::Query::LiteralTerm(300)) &&
-                                         (Vocabulary::NFO::width() <= Nepomuk::Query::LiteralTerm(800)));
-imageSizeFacet->addTerm( i18n("Large"), Vocabulary::NFO::width() > Nepomuk::Query::LiteralTerm(800));
+Nepomuk2::Utils::SimpleFacet* imageSizeFacet = new Nepomuk2::Utils::SimpleFacet();
+imageSizeFacet->addTerm( i18n("Small"), Vocabulary::NFO::width() <= Nepomuk2::Query::LiteralTerm(300));
+imageSizeFacet->addTerm( i18n("Medium"), (Vocabulary::NFO::width() > Nepomuk2::Query::LiteralTerm(300)) &&
+                                         (Vocabulary::NFO::width() <= Nepomuk2::Query::LiteralTerm(800)));
+imageSizeFacet->addTerm( i18n("Large"), Vocabulary::NFO::width() > Nepomuk2::Query::LiteralTerm(800));
 \endcode
 
 So far so good. However, this facet does only make sense for images. Thus, we want the choices to be hidden when the query
 shows other kinds of resources. What is the width of a project or an event? The solution is the facet condition:
 
 \code
-Nepomuk::Utils::ProxyFacet* proxy = new Nepomuk::Utils::ProxyFacet();
+Nepomuk2::Utils::ProxyFacet* proxy = new Nepomuk2::Utils::ProxyFacet();
 proxy->setSourceFacet(imageSizeFacet);
-proxy->setFacetCondition(Nepomuk::Query::ResourceTypeTerm(Vocabulary::NFO::Image()));
+proxy->setFacetCondition(Nepomuk2::Query::ResourceTypeTerm(Vocabulary::NFO::Image()));
 \endcode
 
 Now the proxy facet will only show any choices if the query contains the condition term, ie. if only images are queried.
-Be aware though that this feature does only work if the client uses Nepomuk::Utils::Facet::setClientQuery().
+Be aware though that this feature does only work if the client uses Nepomuk2::Utils::Facet::setClientQuery().
 
-The same approach could be used to filter a Nepomuk::Utils::DynamicResourceFacet which filters on artists only when looking
+The same approach could be used to filter a Nepomuk2::Utils::DynamicResourceFacet which filters on artists only when looking
 for audio files.
 
 \note
 The \e Vocabulary namespace can be generated via the \em onto2vocabularyclass tool provided by \em %Soprano. The best way to do
 that is through the provided cmake macro:
 \code
-soprano_add_ontology(my_SRC ${SHAREDDESKTOPONTOLOGIES_ROOT_DIR}/nie/nfo.trig "NFO" "Nepomuk::Vocabulary" "trig")
+soprano_add_ontology(my_SRC ${SHAREDDESKTOPONTOLOGIES_ROOT_DIR}/nie/nfo.trig "NFO" "Nepomuk2::Vocabulary" "trig")
 \endcode
 Here both \em %Soprano and \em SharedDesktopOntologies have been found through the cmake macros provided by the packages and kdelibs.
 */

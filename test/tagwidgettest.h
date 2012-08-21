@@ -14,8 +14,8 @@ public:
     ~TagWidgetTest();
 
 public slots:
-    void slotTagClicked(const Nepomuk::Tag&);
-    void slotSelectionChanged( const QList<Nepomuk::Tag>& tags );
+    void slotTagClicked(const Nepomuk2::Tag&);
+    void slotSelectionChanged( const QList<Nepomuk2::Tag>& tags );
 
 private slots:
     void enableMinimode( bool enable );
@@ -24,7 +24,7 @@ private slots:
     void setReadOnly( bool enable );
 
 private:
-    Nepomuk::TagWidget* m_tagWidget;
+    Nepomuk2::TagWidget* m_tagWidget;
 };
 
 #endif

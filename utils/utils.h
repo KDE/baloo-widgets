@@ -31,7 +31,7 @@
 
 #include "kurl.h"
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     class Variant;
 
     namespace Types {
@@ -73,9 +73,9 @@ namespace Nepomuk {
          *
          * \since 4.6
          */
-        NEPOMUKUTILS_EXPORT QString formatPropertyValue( const Nepomuk::Types::Property& property,
-                                                         const Nepomuk::Variant& value,
-                                                         const QList<Nepomuk::Resource>& resources = QList<Nepomuk::Resource>(),
+        NEPOMUKUTILS_EXPORT QString formatPropertyValue( const Nepomuk2::Types::Property& property,
+                                                         const Nepomuk2::Variant& value,
+                                                         const QList<Nepomuk2::Resource>& resources = QList<Nepomuk2::Resource>(),
                                                          PropertyFormatFlags flags = NoPropertyFormatFlags );
 
         /**
@@ -87,7 +87,7 @@ namespace Nepomuk {
          *
          * \since 4.6
          */
-        NEPOMUKUTILS_EXPORT Nepomuk::Resource createCopyEvent( const KUrl& src,
+        NEPOMUKUTILS_EXPORT Nepomuk2::Resource createCopyEvent( const KUrl& src,
                                                                const KUrl& dest,
                                                                const QDateTime& startTime = QDateTime(),
                                                                const KUrl& referrer = KUrl() );
@@ -100,10 +100,10 @@ namespace Nepomuk {
          *
          * \since 4.6
          */
-        NEPOMUKUTILS_EXPORT void finishCopyEvent( Nepomuk::Resource& eventResource, const QDateTime& endTime );
+        NEPOMUKUTILS_EXPORT void finishCopyEvent( Nepomuk2::Resource& eventResource, const QDateTime& endTime );
     }
 }
 
-Q_DECLARE_OPERATORS_FOR_FLAGS( Nepomuk::Utils::PropertyFormatFlags )
+Q_DECLARE_OPERATORS_FOR_FLAGS( Nepomuk2::Utils::PropertyFormatFlags )
 
 #endif

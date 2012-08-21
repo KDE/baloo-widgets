@@ -24,7 +24,7 @@
 
 #include <QtGui/QSortFilterProxyModel>
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     namespace Utils {
         /**
          * \class FacetFilterModel facetfiltermodel.h Nepomuk/Utils/FacetFilterModel

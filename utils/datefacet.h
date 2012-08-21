@@ -26,7 +26,7 @@
 
 class DateRange;
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     namespace Utils {
         /**
          * \class DateFacet datefacet.h Nepomuk/Utils/DateFacet
@@ -46,7 +46,7 @@ namespace Nepomuk {
          * The DateFacet works around this problem by using the enumeration DateRangeCandidate
          * instead of fixed terms and creating the terms on the fly based on the enum value.
          *
-         * By default it creates date terms via Nepomuk::Utils::dateRangeQuery() which
+         * By default it creates date terms via Nepomuk2::Utils::dateRangeQuery() which
          * includes the file modification time but also access times and content creation times
          * (the latter includes the date a photo was taken). This can, however, be modified by
          * reimplementing createDateRangeTerm() and its counterpart extractDateRange().
@@ -173,12 +173,12 @@ namespace Nepomuk {
              * \return \p true if \p term could be handled and the current range
              * has been changed accordingly, \p false otherwise.
              */
-            bool selectFromTerm( const Nepomuk::Query::Term& queryTerm );
+            bool selectFromTerm( const Nepomuk2::Query::Term& queryTerm );
 
         protected:
             /**
              * Create the query Term that reflects the dates specified in \p range.
-             * The default implementation uses Nepomuk::Utils::dateRangeQuery().
+             * The default implementation uses Nepomuk2::Utils::dateRangeQuery().
              *
              * Subclasses may reimplement this method to create custom date ranges.
              *
@@ -196,7 +196,7 @@ namespace Nepomuk {
              * work properly.
              *
              * The default implementation can handle query terms created via
-             * Nepomuk::Utils::dateRangeQuery().
+             * Nepomuk2::Utils::dateRangeQuery().
              */
             virtual DateRange extractDateRange( const Query::Term& queryTerm ) const;
 

@@ -28,7 +28,7 @@
 #include "facet.h"
 #include "nepomukutils_export.h"
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     namespace Query {
         class Query;
         class Term;
@@ -85,12 +85,12 @@ namespace Nepomuk {
              *
              * \return The rest term after facets have been extracted.
              */
-            Nepomuk::Query::Query extractFacetsFromQuery( const Nepomuk::Query::Query& query );
+            Nepomuk2::Query::Query extractFacetsFromQuery( const Nepomuk2::Query::Query& query );
 
             /**
              * @returns the query term composed by the facets
              */
-            Nepomuk::Query::Term queryTerm() const;
+            Nepomuk2::Query::Term queryTerm() const;
 
             /**
              * Can be used to set the full query the client is using (this includes facets
@@ -99,20 +99,20 @@ namespace Nepomuk {
              *
              * \sa FacetModel::setClientQuery()
              */
-            void setClientQuery( const Nepomuk::Query::Query& query );
+            void setClientQuery( const Nepomuk2::Query::Query& query );
 
         public Q_SLOTS:
             /**
              * Add \p facet to the widget. Used to populate the widget with facets.
              * Ownership of \p facet is transferred to the widget.
              */
-            void addFacet( Nepomuk::Utils::Facet* facet );
+            void addFacet( Nepomuk2::Utils::Facet* facet );
 
             /**
              * Set \p facets as the list of facets used in this widget. Used to populate the widget with facets.
              * Ownership of the facets is transferred to the widget.
              */
-            void setFacets( const QList<Nepomuk::Utils::Facet*>& facets );
+            void setFacets( const QList<Nepomuk2::Utils::Facet*>& facets );
 
             /**
              * Remove all facets from the widget.
@@ -124,7 +124,7 @@ namespace Nepomuk {
              * Emitted whenever the facets change, i.e. when the user changes the selection
              * or it is changed programmatically via extractFacetsFromQuery()
              */
-            void queryTermChanged( const Nepomuk::Query::Term& term );
+            void queryTermChanged( const Nepomuk2::Query::Term& term );
 
         private:
             class Private;

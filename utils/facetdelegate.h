@@ -26,7 +26,7 @@
 #include <qitemdelegate.h>
 
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     namespace Utils {
         class FacetDelegate : public QItemDelegate
         {

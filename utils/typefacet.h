@@ -24,10 +24,10 @@
 
 #include "facet.h"
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     namespace Utils {
 
-        class TypeFacet : public Nepomuk::Utils::Facet
+        class TypeFacet : public Nepomuk2::Utils::Facet
         {
             Q_OBJECT
 
@@ -44,7 +44,7 @@ namespace Nepomuk {
         public Q_SLOTS:
             void clearSelection();
             void setSelected( int index, bool selected = true );
-            bool selectFromTerm( const Nepomuk::Query::Term& queryTerm );
+            bool selectFromTerm( const Nepomuk2::Query::Term& queryTerm );
 
         private:
             class Private;

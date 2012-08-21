@@ -29,7 +29,7 @@
 #include <QtCore/QAbstractItemModel>
 #include <QtCore/QList>
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     namespace Utils {
         class Facet;
 
@@ -167,7 +167,7 @@ namespace Nepomuk {
              *
              * \return The rest query after facets have been extracted.
              */
-            Nepomuk::Query::Query extractFacetsFromQuery( const Nepomuk::Query::Query& query );
+            Nepomuk2::Query::Query extractFacetsFromQuery( const Nepomuk2::Query::Query& query );
 
             /**
              * Can be used to set the full query the client is using (this includes facets
@@ -183,19 +183,19 @@ namespace Nepomuk {
              *
              * \sa Facet::setClientQuery()
              */
-            void setClientQuery( const Nepomuk::Query::Query& query );
+            void setClientQuery( const Nepomuk2::Query::Query& query );
 
             /**
              * Add \p facet to the model. Used to populate the model with facets.
              * Ownership of \p facet is transferred to the model.
              */
-            void addFacet( Nepomuk::Utils::Facet* facet );
+            void addFacet( Nepomuk2::Utils::Facet* facet );
 
             /**
              * Set \p facets as the list of facets used in this model. Used to populate the model with facets.
              * Ownership of the facets is transferred to the model.
              */
-            void setFacets( const QList<Nepomuk::Utils::Facet*>& facets );
+            void setFacets( const QList<Nepomuk2::Utils::Facet*>& facets );
 
             /**
              * Convenience method that clears the selection on all facets.
@@ -213,19 +213,19 @@ namespace Nepomuk {
              * Emitted whenever the facets change, i.e. when the user changes the selection
              * or it is changed programmatically via extractFacetsFromQuery()
              */
-            void queryTermChanged( const Nepomuk::Query::Term& term );
+            void queryTermChanged( const Nepomuk2::Query::Term& term );
 
         private:
             class Private;
             Private* const d;
 
             Q_PRIVATE_SLOT( d, void _k_queryTermChanged() )
-            Q_PRIVATE_SLOT( d, void _k_facetSelectionChanged( Nepomuk::Utils::Facet* ) )
-            Q_PRIVATE_SLOT( d, void _k_facetLayoutChanged( Nepomuk::Utils::Facet* ) )
+            Q_PRIVATE_SLOT( d, void _k_facetSelectionChanged( Nepomuk2::Utils::Facet* ) )
+            Q_PRIVATE_SLOT( d, void _k_facetLayoutChanged( Nepomuk2::Utils::Facet* ) )
         };
     }
 }
 
-Q_DECLARE_METATYPE( Nepomuk::Utils::Facet* )
+Q_DECLARE_METATYPE( Nepomuk2::Utils::Facet* )
 
 #endif

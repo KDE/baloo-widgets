@@ -31,33 +31,33 @@
 #include "kurl.h"
 
 
-class Nepomuk::Utils::SimpleResourceModel::Private
+class Nepomuk2::Utils::SimpleResourceModel::Private
 {
 public:
-    QList<Nepomuk::Resource> resources;
+    QList<Nepomuk2::Resource> resources;
 };
 
 
-Nepomuk::Utils::SimpleResourceModel::SimpleResourceModel( QObject* parent )
+Nepomuk2::Utils::SimpleResourceModel::SimpleResourceModel( QObject* parent )
     : ResourceModel( parent ),
       d( new Private() )
 {
 }
 
 
-Nepomuk::Utils::SimpleResourceModel::~SimpleResourceModel()
+Nepomuk2::Utils::SimpleResourceModel::~SimpleResourceModel()
 {
     delete d;
 }
 
 
-QModelIndex Nepomuk::Utils::SimpleResourceModel::indexForResource( const Resource& res ) const
+QModelIndex Nepomuk2::Utils::SimpleResourceModel::indexForResource( const Resource& res ) const
 {
     Q_ASSERT( res.isValid() );
     // FIXME: performance
     int i = 0;
-    QList<Nepomuk::Resource>::const_iterator end = d->resources.constEnd();
-    for ( QList<Nepomuk::Resource>::const_iterator it = d->resources.constBegin(); it != end; ++it ) {
+    QList<Nepomuk2::Resource>::const_iterator end = d->resources.constEnd();
+    for ( QList<Nepomuk2::Resource>::const_iterator it = d->resources.constBegin(); it != end; ++it ) {
         if ( *it == res ) {
             return index( i, 0 );
         }
@@ -68,7 +68,7 @@ QModelIndex Nepomuk::Utils::SimpleResourceModel::indexForResource( const Resourc
 }
 
 
-Nepomuk::Resource Nepomuk::Utils::SimpleResourceModel::resourceForIndex( const QModelIndex& index ) const
+Nepomuk2::Resource Nepomuk2::Utils::SimpleResourceModel::resourceForIndex( const QModelIndex& index ) const
 {
     if ( index.isValid() && index.row() < d->resources.count() ) {
         return d->resources[index.row()];
@@ -79,7 +79,7 @@ Nepomuk::Resource Nepomuk::Utils::SimpleResourceModel::resourceForIndex( const Q
 }
 
 
-int Nepomuk::Utils::SimpleResourceModel::rowCount( const QModelIndex& parent ) const
+int Nepomuk2::Utils::SimpleResourceModel::rowCount( const QModelIndex& parent ) const
 {
     if ( parent.isValid() ) {
         return 0;
@@ -90,7 +90,7 @@ int Nepomuk::Utils::SimpleResourceModel::rowCount( const QModelIndex& parent ) c
 }
 
 
-QModelIndex Nepomuk::Utils::SimpleResourceModel::index( int row, int column, const QModelIndex& parent ) const
+QModelIndex Nepomuk2::Utils::SimpleResourceModel::index( int row, int column, const QModelIndex& parent ) const
 {
     if ( !parent.isValid() && row < d->resources.count() ) {
         return createIndex( row, column, 0 );
@@ -101,7 +101,7 @@ QModelIndex Nepomuk::Utils::SimpleResourceModel::index( int row, int column, con
 }
 
 
-bool Nepomuk::Utils::SimpleResourceModel::removeRows(int row, int count, const QModelIndex& parent)
+bool Nepomuk2::Utils::SimpleResourceModel::removeRows(int row, int count, const QModelIndex& parent)
 {
     if( count < 1 || row < 0 || (row + count) > d->resources.size() || parent.isValid() )
         return false;
@@ -119,14 +119,14 @@ bool Nepomuk::Utils::SimpleResourceModel::removeRows(int row, int count, const Q
 }
 
 
-void Nepomuk::Utils::SimpleResourceModel::setResources( const QList<Nepomuk::Resource>& resources )
+void Nepomuk2::Utils::SimpleResourceModel::setResources( const QList<Nepomuk2::Resource>& resources )
 {
     d->resources = resources;
     reset();
 }
 
 
-void Nepomuk::Utils::SimpleResourceModel::addResources( const QList<Nepomuk::Resource>& resources )
+void Nepomuk2::Utils::SimpleResourceModel::addResources( const QList<Nepomuk2::Resource>& resources )
 {
     if(!resources.isEmpty()) {
         beginInsertRows( QModelIndex(), d->resources.count(), d->resources.count() + resources.count() - 1 );
@@ -136,32 +136,32 @@ void Nepomuk::Utils::SimpleResourceModel::addResources( const QList<Nepomuk::Res
 }
 
 
-void Nepomuk::Utils::SimpleResourceModel::addResource( const Nepomuk::Resource& resource )
+void Nepomuk2::Utils::SimpleResourceModel::addResource( const Nepomuk2::Resource& resource )
 {
     addResources( QList<Resource>() << resource );
 }
 
 
-void Nepomuk::Utils::SimpleResourceModel::setResults( const QList<Nepomuk::Query::Result>& results)
+void Nepomuk2::Utils::SimpleResourceModel::setResults( const QList<Nepomuk2::Query::Result>& results)
 {
     clear();
     addResults( results );
 }
 
-void Nepomuk::Utils::SimpleResourceModel::addResults( const QList<Nepomuk::Query::Result>& results )
+void Nepomuk2::Utils::SimpleResourceModel::addResults( const QList<Nepomuk2::Query::Result>& results )
 {
     Q_FOREACH( const Query::Result& result, results ) {
         addResource( result.resource() );
     }
 }
 
-void Nepomuk::Utils::SimpleResourceModel::addResult( const Nepomuk::Query::Result result )
+void Nepomuk2::Utils::SimpleResourceModel::addResult( const Nepomuk2::Query::Result result )
 {
     addResource( result.resource() );
 }
 
 
-void Nepomuk::Utils::SimpleResourceModel::clear()
+void Nepomuk2::Utils::SimpleResourceModel::clear()
 {
     d->resources.clear();
     reset();

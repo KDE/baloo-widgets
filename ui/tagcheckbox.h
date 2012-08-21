@@ -24,13 +24,13 @@
 
 #include <QtGui/QWidget>
 
-#include <Nepomuk/Tag>
+#include <Nepomuk2/Tag>
 #include "tagwidget_p.h"
 
 class QMouseEvent;
 class QLabel;
 
-namespace Nepomuk {
+namespace Nepomuk2 {
 class TagCheckBox : public QWidget
 {
     Q_OBJECT
@@ -47,8 +47,8 @@ public Q_SLOTS:
     void setChecked( bool checked );
 
 Q_SIGNALS:
-    void tagClicked( const Nepomuk::Tag& tag );
-    void tagStateChanged( const Nepomuk::Tag& tag, int state );
+    void tagClicked( const Nepomuk2::Tag& tag );
+    void tagStateChanged( const Nepomuk2::Tag& tag, int state );
 
 protected:
     void leaveEvent( QEvent* event );

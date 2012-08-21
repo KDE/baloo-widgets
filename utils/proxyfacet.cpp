@@ -26,7 +26,7 @@
 #include "kguiitem.h"
 #include "kdebug.h"
 
-class Nepomuk::Utils::ProxyFacet::Private
+class Nepomuk2::Utils::ProxyFacet::Private
 {
 public:
     Private()
@@ -52,13 +52,13 @@ namespace {
      * contains the requested term. All other situations result in an optional usage of \p term
      * or are too complex to handle here.
      */
-    bool containsTerm( const Nepomuk::Query::Query& query, const Nepomuk::Query::Term& term ) {
-        Nepomuk::Query::Term queryTerm = query.term().optimized();
+    bool containsTerm( const Nepomuk2::Query::Query& query, const Nepomuk2::Query::Term& term ) {
+        Nepomuk2::Query::Term queryTerm = query.term().optimized();
         if( queryTerm == term ) {
             return true;
         }
         else if( queryTerm.isAndTerm() ) {
-            Q_FOREACH( const Nepomuk::Query::Term& subTerm, queryTerm.toAndTerm().subTerms() ) {
+            Q_FOREACH( const Nepomuk2::Query::Term& subTerm, queryTerm.toAndTerm().subTerms() ) {
                 if( subTerm == term ) {
                     return true;
                 }
@@ -70,7 +70,7 @@ namespace {
     }
 }
 
-void Nepomuk::Utils::ProxyFacet::Private::updateConditionStatus()
+void Nepomuk2::Utils::ProxyFacet::Private::updateConditionStatus()
 {
     bool newFacetConditionMet = true;
     if( m_facetCondition.isValid() ) {
@@ -90,7 +90,7 @@ void Nepomuk::Utils::ProxyFacet::Private::updateConditionStatus()
 }
 
 
-Nepomuk::Utils::ProxyFacet::ProxyFacet( QObject* parent )
+Nepomuk2::Utils::ProxyFacet::ProxyFacet( QObject* parent )
     : Facet(parent),
       d(new Private())
 {
@@ -98,13 +98,13 @@ Nepomuk::Utils::ProxyFacet::ProxyFacet( QObject* parent )
 }
 
 
-Nepomuk::Utils::ProxyFacet::~ProxyFacet()
+Nepomuk2::Utils::ProxyFacet::~ProxyFacet()
 {
     delete d;
 }
 
 
-void Nepomuk::Utils::ProxyFacet::setSourceFacet( Facet* source )
+void Nepomuk2::Utils::ProxyFacet::setSourceFacet( Facet* source )
 {
     if( d->m_sourceFacet ) {
         d->m_sourceFacet->disconnect(this);
@@ -112,12 +112,12 @@ void Nepomuk::Utils::ProxyFacet::setSourceFacet( Facet* source )
 
     d->m_sourceFacet = source;
     if( d->m_sourceFacet ) {
-        connect(d->m_sourceFacet, SIGNAL(queryTermChanged(Nepomuk::Utils::Facet*,Nepomuk::Query::Term)),
-                this, SIGNAL(queryTermChanged(Nepomuk::Utils::Facet*,Nepomuk::Query::Term)));
-        connect(d->m_sourceFacet, SIGNAL(selectionChanged(Nepomuk::Utils::Facet*)),
-                this, SIGNAL(selectionChanged(Nepomuk::Utils::Facet*)));
-        connect(d->m_sourceFacet, SIGNAL(layoutChanged(Nepomuk::Utils::Facet*)),
-                this, SIGNAL(layoutChanged(Nepomuk::Utils::Facet*)));
+        connect(d->m_sourceFacet, SIGNAL(queryTermChanged(Nepomuk2::Utils::Facet*,Nepomuk2::Query::Term)),
+                this, SIGNAL(queryTermChanged(Nepomuk2::Utils::Facet*,Nepomuk2::Query::Term)));
+        connect(d->m_sourceFacet, SIGNAL(selectionChanged(Nepomuk2::Utils::Facet*)),
+                this, SIGNAL(selectionChanged(Nepomuk2::Utils::Facet*)));
+        connect(d->m_sourceFacet, SIGNAL(layoutChanged(Nepomuk2::Utils::Facet*)),
+                this, SIGNAL(layoutChanged(Nepomuk2::Utils::Facet*)));
     }
 
     setLayoutChanged();
@@ -126,43 +126,43 @@ void Nepomuk::Utils::ProxyFacet::setSourceFacet( Facet* source )
 }
 
 
-Nepomuk::Utils::Facet* Nepomuk::Utils::ProxyFacet::sourceFacet() const
+Nepomuk2::Utils::Facet* Nepomuk2::Utils::ProxyFacet::sourceFacet() const
 {
     return d->m_sourceFacet;
 }
 
 
-Nepomuk::Utils::Facet::SelectionMode Nepomuk::Utils::ProxyFacet::selectionMode() const
+Nepomuk2::Utils::Facet::SelectionMode Nepomuk2::Utils::ProxyFacet::selectionMode() const
 {
     return d->m_sourceFacet ? d->m_sourceFacet->selectionMode() : MatchOne;
 }
 
 
-Nepomuk::Query::Term Nepomuk::Utils::ProxyFacet::queryTerm() const
+Nepomuk2::Query::Term Nepomuk2::Utils::ProxyFacet::queryTerm() const
 {
     return facetConditionMet() && d->m_sourceFacet ? d->m_sourceFacet->queryTerm() : Query::Term();
 }
 
 
-int Nepomuk::Utils::ProxyFacet::count() const
+int Nepomuk2::Utils::ProxyFacet::count() const
 {
     return d->m_sourceFacet && facetConditionMet() ? d->m_sourceFacet->count() : 0;
 }
 
 
-bool Nepomuk::Utils::ProxyFacet::isSelected( int index ) const
+bool Nepomuk2::Utils::ProxyFacet::isSelected( int index ) const
 {
     return d->m_sourceFacet ? d->m_sourceFacet->isSelected(index) : false;
 }
 
 
-KGuiItem Nepomuk::Utils::ProxyFacet::guiItem( int index ) const
+KGuiItem Nepomuk2::Utils::ProxyFacet::guiItem( int index ) const
 {
     return d->m_sourceFacet ? d->m_sourceFacet->guiItem(index) : KGuiItem();
 }
 
 
-void Nepomuk::Utils::ProxyFacet::setSelected( int index, bool selected )
+void Nepomuk2::Utils::ProxyFacet::setSelected( int index, bool selected )
 {
     if( d->m_sourceFacet && facetConditionMet() ) {
         d->m_sourceFacet->setSelected( index, selected );
@@ -170,7 +170,7 @@ void Nepomuk::Utils::ProxyFacet::setSelected( int index, bool selected )
 }
 
 
-void Nepomuk::Utils::ProxyFacet::clearSelection()
+void Nepomuk2::Utils::ProxyFacet::clearSelection()
 {
     if( d->m_sourceFacet ) {
         d->m_sourceFacet->clearSelection();
@@ -178,7 +178,7 @@ void Nepomuk::Utils::ProxyFacet::clearSelection()
 }
 
 
-bool Nepomuk::Utils::ProxyFacet::selectFromTerm( const Nepomuk::Query::Term& term )
+bool Nepomuk2::Utils::ProxyFacet::selectFromTerm( const Nepomuk2::Query::Term& term )
 {
     if( d->m_sourceFacet && facetConditionMet() ) {
         return d->m_sourceFacet->selectFromTerm( term );
@@ -189,7 +189,7 @@ bool Nepomuk::Utils::ProxyFacet::selectFromTerm( const Nepomuk::Query::Term& ter
 }
 
 
-void Nepomuk::Utils::ProxyFacet::handleClientQueryChange()
+void Nepomuk2::Utils::ProxyFacet::handleClientQueryChange()
 {
     d->updateConditionStatus();
     if( d->m_sourceFacet ) {
@@ -198,14 +198,14 @@ void Nepomuk::Utils::ProxyFacet::handleClientQueryChange()
 }
 
 
-void Nepomuk::Utils::ProxyFacet::setFacetCondition( const Nepomuk::Query::Term& term )
+void Nepomuk2::Utils::ProxyFacet::setFacetCondition( const Nepomuk2::Query::Term& term )
 {
     d->m_facetCondition = term;
     d->updateConditionStatus();
 }
 
 
-bool Nepomuk::Utils::ProxyFacet::facetConditionMet() const
+bool Nepomuk2::Utils::ProxyFacet::facetConditionMet() const
 {
     return d->m_facetConditionMet;
 }

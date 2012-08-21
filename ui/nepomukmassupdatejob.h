@@ -29,11 +29,11 @@
 #include <QtCore/QPair>
 #include <QtCore/QTimer>
 
-#include <Nepomuk/Resource>
-#include <Nepomuk/Variant>
+#include <Nepomuk2/Resource>
+#include <Nepomuk2/Variant>
 
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     /**
      * \class MassUpdateJob nepomukmassupdatejob.h Nepomuk/MassUpdateJob
      *
@@ -68,21 +68,21 @@ namespace Nepomuk {
         /**
          * Set a list of resources to change.
          */
-        void setResources( const QList<Nepomuk::Resource>& );
+        void setResources( const QList<Nepomuk2::Resource>& );
 
         /**
          * Set the properties to change in the mass update.
          */
-        void setProperties( const QList<QPair<QUrl, Nepomuk::Variant> >& props );
+        void setProperties( const QList<QPair<QUrl, Nepomuk2::Variant> >& props );
 
         /**
          * Actually start the job.
          */
         void start();
 
-        static MassUpdateJob* tagResources( const QList<Nepomuk::Resource>&, const QList<Nepomuk::Tag>& tags );
-        static MassUpdateJob* rateResources( const QList<Nepomuk::Resource>&, int rating );
-        static MassUpdateJob* commentResources( const QList<Nepomuk::Resource>&, const QString& comment);
+        static MassUpdateJob* tagResources( const QList<Nepomuk2::Resource>&, const QList<Nepomuk2::Tag>& tags );
+        static MassUpdateJob* rateResources( const QList<Nepomuk2::Resource>&, int rating );
+        static MassUpdateJob* commentResources( const QList<Nepomuk2::Resource>&, const QString& comment);
 
     protected:
         bool doKill();
@@ -93,8 +93,8 @@ namespace Nepomuk {
         void slotNext();
 
     private:
-        QList<Nepomuk::Resource> m_resources;
-        QList<QPair<QUrl,Nepomuk::Variant> > m_properties;
+        QList<Nepomuk2::Resource> m_resources;
+        QList<QPair<QUrl,Nepomuk2::Variant> > m_properties;
         int m_index;
         QTimer m_processTimer;
     };

@@ -28,7 +28,7 @@
 #include "query.h"
 #include "nepomukutils_export.h"
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     class Resource;
 
     namespace Utils {
@@ -142,8 +142,8 @@ namespace Nepomuk {
              * \return The Resource the user selected or an invalid one in case there was no result to choose
              * or the user canceled the search.
              */
-            static Nepomuk::Resource searchResource( QWidget* parent = 0,
-                                                     const Nepomuk::Query::Query& baseQuery = Nepomuk::Query::Query(),
+            static Nepomuk2::Resource searchResource( QWidget* parent = 0,
+                                                     const Nepomuk2::Query::Query& baseQuery = Nepomuk2::Query::Query(),
                                                      SearchWidget::ConfigFlags flags = SearchWidget::DefaultConfigFlags );
 
             /**
@@ -153,8 +153,8 @@ namespace Nepomuk {
              * \return The resources the user selected or an empty list in case there was no result to choose
              * or the user canceled the search.
              */
-            static QList<Nepomuk::Resource> searchResources( QWidget* parent = 0,
-                                                             const Nepomuk::Query::Query& baseQuery = Nepomuk::Query::Query(),
+            static QList<Nepomuk2::Resource> searchResources( QWidget* parent = 0,
+                                                             const Nepomuk2::Query::Query& baseQuery = Nepomuk2::Query::Query(),
                                                              SearchWidget::ConfigFlags flags = SearchWidget::DefaultConfigFlags );
 
         public Q_SLOTS:
@@ -166,7 +166,7 @@ namespace Nepomuk {
              *
              * \return The rest query which could not be converted into facets and a desktop query.
              */
-            Nepomuk::Query::Query setQuery( const Nepomuk::Query::Query& query );
+            Nepomuk2::Query::Query setQuery( const Nepomuk2::Query::Query& query );
 
             /**
              * Set the base query. The base query is the fixed part of the query
@@ -179,7 +179,7 @@ namespace Nepomuk {
              *
              * Be aware that setting the base query will reset widget's query components.
              */
-            void setBaseQuery( const Nepomuk::Query::Query& query );
+            void setBaseQuery( const Nepomuk2::Query::Query& query );
 
         Q_SIGNALS:
             /**
@@ -191,7 +191,7 @@ namespace Nepomuk {
             /**
              * \brief Emited when current resource is changed
              */
-            void currentResourceChanged(const Nepomuk::Resource & previous, const Nepomuk::Resource & current );
+            void currentResourceChanged(const Nepomuk2::Resource & previous, const Nepomuk2::Resource & current );
 
 
         private:
@@ -200,7 +200,7 @@ namespace Nepomuk {
 
             Q_DECLARE_PRIVATE(SearchWidget)
 
-            /*! \brief Convert QModelIndex to Nepomuk::Resource and emit currentResourceChanged signal
+            /*! \brief Convert QModelIndex to Nepomuk2::Resource and emit currentResourceChanged signal
              */
             Q_PRIVATE_SLOT( d_ptr, void _k_forwardCurrentChanged( const QModelIndex &, const QModelIndex &));
             Q_PRIVATE_SLOT( d_ptr, void _k_queryComponentChanged() )
@@ -209,6 +209,6 @@ namespace Nepomuk {
     }
 }
 
-Q_DECLARE_OPERATORS_FOR_FLAGS( Nepomuk::Utils::SearchWidget::ConfigFlags )
+Q_DECLARE_OPERATORS_FOR_FLAGS( Nepomuk2::Utils::SearchWidget::ConfigFlags )
 
 #endif // RESOURCESEARCHWIDGET_H

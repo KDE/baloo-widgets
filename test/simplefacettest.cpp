@@ -32,8 +32,8 @@
 #include "qtest_kde.h"
 
 
-using namespace Nepomuk::Utils;
-using namespace Nepomuk::Query;
+using namespace Nepomuk22::Utils;
+using namespace Nepomuk22::Query;
 
 void SimpleFacetTest::testAddTerm()
 {

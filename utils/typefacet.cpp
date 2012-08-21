@@ -52,7 +52,7 @@ enum RootSelection {
 };
 }
 
-class Nepomuk::Utils::TypeFacet::Private
+class Nepomuk2::Utils::TypeFacet::Private
 {
 public:
     Private()
@@ -62,27 +62,27 @@ public:
         // Default file types
         //
         m_fileTypes.append( qMakePair<QString, Query::Term>(i18nc("@option:check A filter on file type", "Documents"),
-                           Query::ResourceTypeTerm(Nepomuk::Vocabulary::NFO::Document())) );
+                           Query::ResourceTypeTerm(Nepomuk2::Vocabulary::NFO::Document())) );
 
         // need to check the mimetype as well since strigi is still not perfect
         m_fileTypes.append( qMakePair<QString, Query::Term>(i18nc("@option:check A filter on file type - audio files", "Audio"),
-                           Query::ComparisonTerm(Nepomuk::Vocabulary::NIE::mimeType(), Query::LiteralTerm(QLatin1String("audio")))) );
+                           Query::ComparisonTerm(Nepomuk2::Vocabulary::NIE::mimeType(), Query::LiteralTerm(QLatin1String("audio")))) );
         m_fileTypes.append( qMakePair<QString, Query::Term>(i18nc("@option:check A filter on file type - media video", "Video"),
-                           Query::ComparisonTerm(Nepomuk::Vocabulary::NIE::mimeType(), Query::LiteralTerm(QLatin1String("video")))) );
+                           Query::ComparisonTerm(Nepomuk2::Vocabulary::NIE::mimeType(), Query::LiteralTerm(QLatin1String("video")))) );
 
         m_fileTypes.append( qMakePair<QString, Query::Term>(i18nc("@option:check A filter on file type", "Images"),
-                           Query::ResourceTypeTerm(Nepomuk::Vocabulary::NFO::Image())) );
+                           Query::ResourceTypeTerm(Nepomuk2::Vocabulary::NFO::Image())) );
 
 
         //
         // Default other types
         //
         m_otherTypes.append(qMakePair<QString, Query::Term>(i18nc("@option:check A filter on resource type", "Contacts"),
-                            Query::ResourceTypeTerm(Nepomuk::Vocabulary::NCO::Contact())));
+                            Query::ResourceTypeTerm(Nepomuk2::Vocabulary::NCO::Contact())));
         m_otherTypes.append(qMakePair<QString, Query::Term>(i18nc("@option:check A filter on resource type", "Emails"),
-                            Query::ResourceTypeTerm(Nepomuk::Vocabulary::NMO::Email())));
+                            Query::ResourceTypeTerm(Nepomuk2::Vocabulary::NMO::Email())));
         m_otherTypes.append(qMakePair<QString, Query::Term>(i18nc("@option:check A filter on resource type", "Tasks"),
-                            Query::ResourceTypeTerm(Nepomuk::Vocabulary::TMO::Task())));
+                            Query::ResourceTypeTerm(Nepomuk2::Vocabulary::TMO::Task())));
         m_otherTypes.append(qMakePair<QString, Query::Term>(i18nc("@option:check A filter on resource type", "Tags"),
                             Query::ResourceTypeTerm(Soprano::Vocabulary::NAO::Tag())));
     }
@@ -109,7 +109,7 @@ public:
 };
 
 
-bool Nepomuk::Utils::TypeFacet::Private::findTerm( const Query::Term& term, int* index, RootSelection* rootSelection ) const
+bool Nepomuk2::Utils::TypeFacet::Private::findTerm( const Query::Term& term, int* index, RootSelection* rootSelection ) const
 {
     for( int i = 0; i < m_fileTypes.count(); ++i ) {
         if( term == m_fileTypes[i].second ) {
@@ -129,7 +129,7 @@ bool Nepomuk::Utils::TypeFacet::Private::findTerm( const Query::Term& term, int*
 }
 
 
-void Nepomuk::Utils::TypeFacet::Private::setRootSelection( RootSelection selection )
+void Nepomuk2::Utils::TypeFacet::Private::setRootSelection( RootSelection selection )
 {
     m_rootSelection = selection;
     if( m_rootSelection == File )
@@ -140,26 +140,26 @@ void Nepomuk::Utils::TypeFacet::Private::setRootSelection( RootSelection selecti
         m_usedTypes = 0;
 }
 
-Nepomuk::Utils::TypeFacet::TypeFacet(QObject *parent)
-    : Nepomuk::Utils::Facet(parent),
+Nepomuk2::Utils::TypeFacet::TypeFacet(QObject *parent)
+    : Nepomuk2::Utils::Facet(parent),
       d(new Private())
 {
 }
 
 
-Nepomuk::Utils::TypeFacet::~TypeFacet()
+Nepomuk2::Utils::TypeFacet::~TypeFacet()
 {
     delete d;
 }
 
-Nepomuk::Utils::Facet::SelectionMode Nepomuk::Utils::TypeFacet::selectionMode() const
+Nepomuk2::Utils::Facet::SelectionMode Nepomuk2::Utils::TypeFacet::selectionMode() const
 {
     return MatchAny;
 }
 
 // while we do return file/other query terms even if there is no sub-selection we do not notify this change since
 // to the user it should just be a preselection
-Nepomuk::Query::Term Nepomuk::Utils::TypeFacet::queryTerm() const
+Nepomuk2::Query::Term Nepomuk2::Utils::TypeFacet::queryTerm() const
 {
     switch(d->m_rootSelection) {
     case None:
@@ -167,7 +167,7 @@ Nepomuk::Query::Term Nepomuk::Utils::TypeFacet::queryTerm() const
 
     case File:
         if( d->m_selectedTypes.isEmpty() && d->m_selectedCustomTypes.isEmpty() ) {
-            return Query::ResourceTypeTerm(Nepomuk::Vocabulary::NFO::FileDataObject());
+            return Query::ResourceTypeTerm(Nepomuk2::Vocabulary::NFO::FileDataObject());
         }
         else {
             Query::OrTerm term;
@@ -182,7 +182,7 @@ Nepomuk::Query::Term Nepomuk::Utils::TypeFacet::queryTerm() const
 
     case Other:
         if( d->m_selectedTypes.isEmpty() && d->m_selectedCustomTypes.isEmpty() ) {
-            return Query::NegationTerm::negateTerm(Query::ResourceTypeTerm(Nepomuk::Vocabulary::NFO::FileDataObject()));
+            return Query::NegationTerm::negateTerm(Query::ResourceTypeTerm(Nepomuk2::Vocabulary::NFO::FileDataObject()));
         }
         else {
             Query::OrTerm term;
@@ -200,7 +200,7 @@ Nepomuk::Query::Term Nepomuk::Utils::TypeFacet::queryTerm() const
     return Query::Term();
 }
 
-int Nepomuk::Utils::TypeFacet::count() const
+int Nepomuk2::Utils::TypeFacet::count() const
 {
     if( d->m_rootSelection == None ) {
         // File and Other
@@ -212,7 +212,7 @@ int Nepomuk::Utils::TypeFacet::count() const
     }
 }
 
-KGuiItem Nepomuk::Utils::TypeFacet::guiItem(int index) const
+KGuiItem Nepomuk2::Utils::TypeFacet::guiItem(int index) const
 {
     if( d->m_rootSelection == None ) {
         switch( index ) {
@@ -244,7 +244,7 @@ KGuiItem Nepomuk::Utils::TypeFacet::guiItem(int index) const
     return KGuiItem();
 }
 
-bool Nepomuk::Utils::TypeFacet::isSelected(int index) const
+bool Nepomuk2::Utils::TypeFacet::isSelected(int index) const
 {
     if( d->m_rootSelection == None ) {
         return false;
@@ -264,7 +264,7 @@ bool Nepomuk::Utils::TypeFacet::isSelected(int index) const
     }
 }
 
-void Nepomuk::Utils::TypeFacet::clearSelection()
+void Nepomuk2::Utils::TypeFacet::clearSelection()
 {
     kDebug();
     d->m_selectedTypes.clear();
@@ -276,7 +276,7 @@ void Nepomuk::Utils::TypeFacet::clearSelection()
     setQueryTermChanged();
 }
 
-void Nepomuk::Utils::TypeFacet::setSelected(int index, bool selected)
+void Nepomuk2::Utils::TypeFacet::setSelected(int index, bool selected)
 {
     kDebug() << index << selected;
     if( d->m_rootSelection == None ) {
@@ -346,7 +346,7 @@ void Nepomuk::Utils::TypeFacet::setSelected(int index, bool selected)
     }
 }
 
-bool Nepomuk::Utils::TypeFacet::selectFromTerm(const Nepomuk::Query::Term &queryTerm)
+bool Nepomuk2::Utils::TypeFacet::selectFromTerm(const Nepomuk2::Query::Term &queryTerm)
 {
     // 1. compare to all the terms in d->m_fileTypes and d->m_otherTypes
     // 2. check if it is a ResourceTypeTerm
@@ -366,7 +366,7 @@ bool Nepomuk::Utils::TypeFacet::selectFromTerm(const Nepomuk::Query::Term &query
     }
     else if( queryTerm.isResourceTypeTerm() ) {
         const Types::Class type = queryTerm.toResourceTypeTerm().type();
-        if( type == Nepomuk::Vocabulary::NFO::FileDataObject() ) {
+        if( type == Nepomuk2::Vocabulary::NFO::FileDataObject() ) {
             if( d->m_rootSelection == None ) {
                 setSelected(0);
                 return true;
@@ -376,7 +376,7 @@ bool Nepomuk::Utils::TypeFacet::selectFromTerm(const Nepomuk::Query::Term &query
             }
         }
         else {
-            const RootSelection reqSel = type.isSubClassOf(Nepomuk::Vocabulary::NFO::FileDataObject()) ? File : Other;
+            const RootSelection reqSel = type.isSubClassOf(Nepomuk2::Vocabulary::NFO::FileDataObject()) ? File : Other;
             if( d->m_rootSelection == None ) {
                 d->setRootSelection(reqSel);
                 d->m_customTypes.append(type);
@@ -400,7 +400,7 @@ bool Nepomuk::Utils::TypeFacet::selectFromTerm(const Nepomuk::Query::Term &query
     }
     else if( queryTerm.isNegationTerm() &&
             queryTerm.toNegationTerm().subTerm().isResourceTypeTerm() &&
-            queryTerm.toNegationTerm().subTerm().toResourceTypeTerm().type() == Nepomuk::Vocabulary::NFO::FileDataObject() ) {
+            queryTerm.toNegationTerm().subTerm().toResourceTypeTerm().type() == Nepomuk2::Vocabulary::NFO::FileDataObject() ) {
         if( d->m_rootSelection == None ) {
             setSelected(1);
             return true;

@@ -23,20 +23,20 @@
 #include "facet.h"
 #include "facetmodel.h"
 
-Nepomuk::Utils::FacetFilterModel::FacetFilterModel(QObject *parent)
+Nepomuk2::Utils::FacetFilterModel::FacetFilterModel(QObject *parent)
     : QSortFilterProxyModel(parent),
       d(0)
 {
 }
 
 
-Nepomuk::Utils::FacetFilterModel::~FacetFilterModel()
+Nepomuk2::Utils::FacetFilterModel::~FacetFilterModel()
 {
     //delete d;
 }
 
 
-bool Nepomuk::Utils::FacetFilterModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
+bool Nepomuk2::Utils::FacetFilterModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     QModelIndex index = sourceModel()->index( source_row, 0, source_parent );
     return index.isValid() && index.data(FacetModel::FacetRole).value<Facet*>()->count() > 0;

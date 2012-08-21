@@ -29,10 +29,10 @@
 
 #include <QtCore/QSet>
 
-using namespace Nepomuk::Query;
+using namespace Nepomuk22::Query;
 
 
-class Nepomuk::Utils::SimpleFacet::Private
+class Nepomuk2::Utils::SimpleFacet::Private
 {
 public:
     Private()
@@ -43,7 +43,7 @@ public:
 
     Facet::SelectionMode m_selectionMode;
 
-    QList<Nepomuk::Query::Term> m_terms;
+    QList<Nepomuk2::Query::Term> m_terms;
     QList<KGuiItem> m_titles;
 
     QSet<int> m_selectedFacets;
@@ -52,13 +52,13 @@ public:
 };
 
 
-int Nepomuk::Utils::SimpleFacet::Private::indexOf( const Term& term ) const
+int Nepomuk2::Utils::SimpleFacet::Private::indexOf( const Term& term ) const
 {
     return m_terms.indexOf( term );
 }
 
 
-Nepomuk::Utils::SimpleFacet::SimpleFacet( QObject* parent )
+Nepomuk2::Utils::SimpleFacet::SimpleFacet( QObject* parent )
     : Facet(parent),
       d(new Private())
 {
@@ -66,26 +66,26 @@ Nepomuk::Utils::SimpleFacet::SimpleFacet( QObject* parent )
 }
 
 
-Nepomuk::Utils::SimpleFacet::~SimpleFacet()
+Nepomuk2::Utils::SimpleFacet::~SimpleFacet()
 {
     delete d;
 }
 
 
-void Nepomuk::Utils::SimpleFacet::setSelectionMode( SelectionMode mode )
+void Nepomuk2::Utils::SimpleFacet::setSelectionMode( SelectionMode mode )
 {
     d->m_selectionMode = mode;
     clearSelection();
 }
 
 
-Nepomuk::Utils::Facet::SelectionMode Nepomuk::Utils::SimpleFacet::selectionMode() const
+Nepomuk2::Utils::Facet::SelectionMode Nepomuk2::Utils::SimpleFacet::selectionMode() const
 {
     return d->m_selectionMode;
 }
 
 
-Nepomuk::Query::Term Nepomuk::Utils::SimpleFacet::queryTerm() const
+Nepomuk2::Query::Term Nepomuk2::Utils::SimpleFacet::queryTerm() const
 {
     if( d->m_terms.isEmpty() ||
         d->m_selectedFacets.isEmpty() ) {
@@ -117,31 +117,31 @@ Nepomuk::Query::Term Nepomuk::Utils::SimpleFacet::queryTerm() const
 }
 
 
-int Nepomuk::Utils::SimpleFacet::count() const
+int Nepomuk2::Utils::SimpleFacet::count() const
 {
     return d->m_terms.count();
 }
 
 
-Nepomuk::Query::Term Nepomuk::Utils::SimpleFacet::termAt( int index ) const
+Nepomuk2::Query::Term Nepomuk2::Utils::SimpleFacet::termAt( int index ) const
 {
     return d->m_terms[index];
 }
 
 
-bool Nepomuk::Utils::SimpleFacet::isSelected( int index ) const
+bool Nepomuk2::Utils::SimpleFacet::isSelected( int index ) const
 {
     return d->m_selectedFacets.contains( index );
 }
 
 
-KGuiItem Nepomuk::Utils::SimpleFacet::guiItem( int index ) const
+KGuiItem Nepomuk2::Utils::SimpleFacet::guiItem( int index ) const
 {
     return d->m_titles[index];
 }
 
 
-void Nepomuk::Utils::SimpleFacet::clear()
+void Nepomuk2::Utils::SimpleFacet::clear()
 {
     d->m_terms.clear();
     d->m_titles.clear();
@@ -150,13 +150,13 @@ void Nepomuk::Utils::SimpleFacet::clear()
 }
 
 
-void Nepomuk::Utils::SimpleFacet::addTerm( const QString& text, const Nepomuk::Query::Term& term )
+void Nepomuk2::Utils::SimpleFacet::addTerm( const QString& text, const Nepomuk2::Query::Term& term )
 {
     addTerm( KGuiItem(text), term );
 }
 
 
-void Nepomuk::Utils::SimpleFacet::addTerm( const KGuiItem& title, const Nepomuk::Query::Term& term )
+void Nepomuk2::Utils::SimpleFacet::addTerm( const KGuiItem& title, const Nepomuk2::Query::Term& term )
 {
     d->m_titles.append( title );
     d->m_terms.append( term );
@@ -165,7 +165,7 @@ void Nepomuk::Utils::SimpleFacet::addTerm( const KGuiItem& title, const Nepomuk:
 }
 
 
-void Nepomuk::Utils::SimpleFacet::setSelected( int index, bool selected )
+void Nepomuk2::Utils::SimpleFacet::setSelected( int index, bool selected )
 {
     if( selectionMode() == MatchOne ) {
         if( d->m_selectedFacets.contains(index) && !selected ) {
@@ -187,7 +187,7 @@ void Nepomuk::Utils::SimpleFacet::setSelected( int index, bool selected )
 }
 
 
-void Nepomuk::Utils::SimpleFacet::clearSelection()
+void Nepomuk2::Utils::SimpleFacet::clearSelection()
 {
     d->m_selectedFacets.clear();
     if( selectionMode() == MatchOne )
@@ -197,7 +197,7 @@ void Nepomuk::Utils::SimpleFacet::clearSelection()
 }
 
 
-bool Nepomuk::Utils::SimpleFacet::selectFromTerm( const Nepomuk::Query::Term& term )
+bool Nepomuk2::Utils::SimpleFacet::selectFromTerm( const Nepomuk2::Query::Term& term )
 {
     // 1. check if term is in our list of terms
     const int i = d->indexOf( term );

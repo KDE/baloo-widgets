@@ -26,7 +26,7 @@
 
 #include "nepomukutils_export.h"
 
-namespace Nepomuk {
+namespace Nepomuk2 {
 
     class Resource;
 
@@ -89,12 +89,12 @@ namespace Nepomuk {
              */
             enum ResourceRoles {
                 /**
-                 * The resource itself, provided as a Nepomuk::Resource instance.
+                 * The resource itself, provided as a Nepomuk2::Resource instance.
                  */
                 ResourceRole = 7766897,
 
                 /**
-                 * The type of the resource, provided as a Nepomuk::Types::Class
+                 * The type of the resource, provided as a Nepomuk2::Types::Class
                  * instance.
                  */
                 ResourceTypeRole = 687585,

@@ -26,7 +26,7 @@
 
 #include "query.h"
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     namespace Utils {
         /**
          * \class SearchLineEdit searchlineedit.h Nepomuk/Utils/SearchLineEdit
@@ -67,23 +67,23 @@ namespace Nepomuk {
             /**
              * @returns the current query
              */
-            Nepomuk::Query::Query query() const;
+            Nepomuk2::Query::Query query() const;
 
         public Q_SLOTS:
             /**
              * Extracts parts from \p term which can be converted into a query using the
              * simple desktop query language that is supported by this widget through
-             * Nepomuk::Query::QueryParser.
+             * Nepomuk2::Query::QueryParser.
              *
              * \return The rest term that could not be converted into a query string.
              */
-            Nepomuk::Query::Term extractUsableTerms( const Nepomuk::Query::Term& term );
+            Nepomuk2::Query::Term extractUsableTerms( const Nepomuk2::Query::Term& term );
 
         Q_SIGNALS:
             /**
              * Acivated when the query is changed (while typing or when finished)
              */
-            void queryChanged( const Nepomuk::Query::Query& query );
+            void queryChanged( const Nepomuk2::Query::Query& query );
 
         private:
             class Private;

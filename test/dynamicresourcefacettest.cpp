@@ -53,27 +53,27 @@
 #include "qtest_kde.h"
 #include "kdebug.h"
 
-using namespace Nepomuk;
-using namespace Nepomuk::Utils;
-using namespace Nepomuk::Query;
-using namespace Nepomuk::Types;
+using namespace Nepomuk2;
+using namespace Nepomuk22::Utils;
+using namespace Nepomuk22::Query;
+using namespace Nepomuk22::Types;
 
 
 class DynamicResourceTestFacet::TestPrivate : public DynamicResourceFacet::Private
 {
 public:
-    void startQuery( const Nepomuk::Query::Query& query ) {
+    void startQuery( const Nepomuk2::Query::Query& query ) {
         // we cannot use the query service since that would ignore our custom model
         // thus, we perform a sync query and call _k_newEntries async from there
-        Nepomuk::Query::Query ourQuery(query);
+        Nepomuk2::Query::Query ourQuery(query);
         // disable result restrictions since we do not support those in our custom model
-        ourQuery.setQueryFlags(Nepomuk::Query::Query::NoResultRestrictions);
+        ourQuery.setQueryFlags(Nepomuk2::Query::Query::NoResultRestrictions);
         Soprano::QueryResultIterator it = ResourceManager::instance()->mainModel()->executeQuery( ourQuery.toSparqlQuery(), Soprano::Query::QueryLanguageSparql );
-        QList<Nepomuk::Query::Result> results;
+        QList<Nepomuk2::Query::Result> results;
         while( it.next() ) {
             results << Result( it[0].uri() );
         }
-        QMetaObject::invokeMethod( q, "_k_newEntries", Qt::QueuedConnection, Q_ARG(QList<Nepomuk::Query::Result>, results) );
+        QMetaObject::invokeMethod( q, "_k_newEntries", Qt::QueuedConnection, Q_ARG(QList<Nepomuk2::Query::Result>, results) );
     }
 };
 
@@ -126,10 +126,10 @@ void DynamicResourceFacetTest::initTestCase()
     m_model = backend->createModel( Soprano::BackendSettings() << Soprano::BackendSetting(Soprano::BackendOptionStorageDir, m_storageDir->name()) );
     QVERIFY( m_model );
 
-    Nepomuk::ResourceManager::instance()->setOverrideMainModel( m_model );
+    Nepomuk2::ResourceManager::instance()->setOverrideMainModel( m_model );
 
     // We need basic ontology knowledge for the ResourceTypeTerm queries to work properly
-    const QUrl graph = Nepomuk::ResourceManager::instance()->generateUniqueUri(QString());
+    const QUrl graph = Nepomuk2::ResourceManager::instance()->generateUniqueUri(QString());
     m_model->addStatement(graph, Soprano::Vocabulary::RDF::type(), Soprano::Vocabulary::NRL::Ontology(), graph);
     m_model->addStatement(graph, Soprano::Vocabulary::RDF::type(), Soprano::Vocabulary::NRL::InstanceBase(), graph);
     m_model->addStatement(Soprano::Vocabulary::NAO::Tag(), Soprano::Vocabulary::RDFS::subClassOf(), Soprano::Vocabulary::NAO::Tag(), graph);
@@ -137,18 +137,18 @@ void DynamicResourceFacetTest::initTestCase()
     m_model->addStatement(Soprano::Vocabulary::NAO::hasTag(), Soprano::Vocabulary::RDFS::range(), Soprano::Vocabulary::NAO::Tag(), graph);
 
     // now some tags which will be our test resources
-    tag1 = Nepomuk::Tag( QLatin1String("Tag 1") );
+    tag1 = Nepomuk2::Tag( QLatin1String("Tag 1") );
     tag1.setLabel( QLatin1String("Tag 1") );
-    kDebug() << tag1.resourceUri() << tag1.label();
-    tag2 = Nepomuk::Tag( QLatin1String("Tag 2") );
+    kDebug() << tag1.uri() << tag1.label();
+    tag2 = Nepomuk2::Tag( QLatin1String("Tag 2") );
     tag2.setLabel( QLatin1String("Tag 2") );
-    kDebug() << tag2.resourceUri() << tag2.label();
-    tag3 = Nepomuk::Tag( QLatin1String("Tag 3") );
+    kDebug() << tag2.uri() << tag2.label();
+    tag3 = Nepomuk2::Tag( QLatin1String("Tag 3") );
     tag3.setLabel( QLatin1String("Tag 3") );
-    kDebug() << tag3.resourceUri() << tag3.label();
-    tag4 = Nepomuk::Tag( QLatin1String("Tag 4") );
+    kDebug() << tag3.uri() << tag3.label();
+    tag4 = Nepomuk2::Tag( QLatin1String("Tag 4") );
     tag4.setLabel( QLatin1String("Tag 4") );
-    kDebug() << tag4.resourceUri() << tag4.label();
+    kDebug() << tag4.uri() << tag4.label();
 
     // and some random resources that we will use for testing setClientQuery
     Resource res1;
@@ -169,7 +169,7 @@ void DynamicResourceFacetTest::initTestCase()
 
 void DynamicResourceFacetTest::cleanupTestCase()
 {
-    Nepomuk::ResourceManager::instance()->setOverrideMainModel( 0 );
+    Nepomuk2::ResourceManager::instance()->setOverrideMainModel( 0 );
     delete m_model;
     delete m_storageDir;
 }
@@ -187,7 +187,7 @@ void DynamicResourceFacetTest::testSetRelation()
 {
     DynamicResourceFacet f;
     f.setRelation(Soprano::Vocabulary::NAO::hasTag());
-    QCOMPARE(f.resourceType(), Nepomuk::Types::Class(Soprano::Vocabulary::NAO::Tag()));
+    QCOMPARE(f.type(), Nepomuk2::Types::Class(Soprano::Vocabulary::NAO::Tag()));
 }
 
 
@@ -202,7 +202,7 @@ void DynamicResourceFacetTest::testMatchOne()
     // we can only wait for the number of choices to become 4
     int i = 4;
     while( f.count() < 4 && i-- > 0 ) {
-        waitForSignal(&f, SIGNAL(layoutChanged(Nepomuk::Utils::Facet*)));
+        waitForSignal(&f, SIGNAL(layoutChanged(Nepomuk2::Utils::Facet*)));
     }
     QCOMPARE(f.count(), 4);
 
@@ -274,7 +274,7 @@ void DynamicResourceFacetTest::testMatchAll()
     // we can only wait for the number of choices to become 4
     int i = 4;
     while( f.count() < 4 && i-- > 0 ) {
-        waitForSignal(&f, SIGNAL(layoutChanged(Nepomuk::Utils::Facet*)));
+        waitForSignal(&f, SIGNAL(layoutChanged(Nepomuk2::Utils::Facet*)));
     }
     QCOMPARE(f.count(), 4);
 
@@ -341,7 +341,7 @@ void DynamicResourceFacetTest::testMatchAny()
     // we can only wait for the number of choices to become 4
     int i = 4;
     while( f.count() < 4 && i-- > 0 ) {
-        waitForSignal(&f, SIGNAL(layoutChanged(Nepomuk::Utils::Facet*)));
+        waitForSignal(&f, SIGNAL(layoutChanged(Nepomuk2::Utils::Facet*)));
     }
     QCOMPARE(f.count(), 4);
 
@@ -408,7 +408,7 @@ void DynamicResourceFacetTest::testSetClientQuery()
 //    // we can only wait for the number of choices to become 4
 //    int i = 4;
 //    while( f.count() < 4 && i-- > 0 ) {
-//        waitForSignal(&f, SIGNAL(layoutChanged(Nepomuk::Utils::Facet*)));
+//        waitForSignal(&f, SIGNAL(layoutChanged(Nepomuk2::Utils::Facet*)));
 //    }
 //    QCOMPARE(f.count(), 4);
 }

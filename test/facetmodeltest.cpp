@@ -34,8 +34,8 @@
 #include <Soprano/Vocabulary/NAO>
 
 
-using namespace Nepomuk::Utils;
-using namespace Nepomuk::Query;
+using namespace Nepomuk22::Utils;
+using namespace Nepomuk22::Query;
 
 
 void FacetModelTest::testExtractFacetsFromTermWithVaryingSelectionMode()
@@ -182,13 +182,13 @@ void FacetModelTest::testExtractFacetsFromTermWithProxyFacet()
     SimpleFacet* f1 = new SimpleFacet;
     f1->setSelectionMode(Facet::MatchAny);
     f1->addTerm( QLatin1String("t1"), ResourceTypeTerm(Soprano::Vocabulary::NAO::Tag()) );
-    f1->addTerm( QLatin1String("t2"), ResourceTypeTerm(Nepomuk::Vocabulary::NFO::FileDataObject()) );
+    f1->addTerm( QLatin1String("t2"), ResourceTypeTerm(Nepomuk2::Vocabulary::NFO::FileDataObject()) );
     model.addFacet(f1);
 
     SimpleFacet* f2 = new SimpleFacet;
     f2->setSelectionMode(Facet::MatchAny);
-    f2->addTerm( QLatin1String("t1"), ResourceTypeTerm(Nepomuk::Vocabulary::NFO::Image()) );
-    f2->addTerm( QLatin1String("t2"), ResourceTypeTerm(Nepomuk::Vocabulary::NFO::Document()) );
+    f2->addTerm( QLatin1String("t1"), ResourceTypeTerm(Nepomuk2::Vocabulary::NFO::Image()) );
+    f2->addTerm( QLatin1String("t2"), ResourceTypeTerm(Nepomuk2::Vocabulary::NFO::Document()) );
 
     ProxyFacet* f2p = new ProxyFacet;
     f2p->setSourceFacet(f2);

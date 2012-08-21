@@ -28,7 +28,7 @@
 
 class KGuiItem;
 
-namespace Nepomuk {
+namespace Nepomuk2 {
     namespace Query {
         class Term;
         class Query;
@@ -243,7 +243,7 @@ namespace Nepomuk {
              * \return \p true if all of \p term could be used to select choices in
              * this term, \p false otherwise.
              */
-            virtual bool selectFromTerm( const Nepomuk::Query::Term& queryTerm ) = 0;
+            virtual bool selectFromTerm( const Nepomuk2::Query::Term& queryTerm ) = 0;
 
             /**
              * The FacetModel will set this to the final query that has been constructed
@@ -252,7 +252,7 @@ namespace Nepomuk {
              * is to only show terms that would actually change the result set. The latter is what
              * DynamicResourceFacet does.
              */
-            void setClientQuery( const Nepomuk::Query::Query& query );
+            void setClientQuery( const Nepomuk2::Query::Query& query );
 
         Q_SIGNALS:
             /**
@@ -264,7 +264,7 @@ namespace Nepomuk {
              * Be aware that in most situations queryTermChanged() and selectionChanged() will
              * have to be emitted at the same time.
              */
-            void queryTermChanged( Nepomuk::Utils::Facet* facet, const Nepomuk::Query::Term& queryTerm );
+            void queryTermChanged( Nepomuk2::Utils::Facet* facet, const Nepomuk2::Query::Term& queryTerm );
 
             /**
              * Emitted when the layout of the facet changed, ie. one of count(), guitItem(), or
@@ -272,7 +272,7 @@ namespace Nepomuk {
              *
              * Subclasses should call setLayoutChanged() instead of emitting this signal manually.
              */
-            void layoutChanged( Nepomuk::Utils::Facet* facet );
+            void layoutChanged( Nepomuk2::Utils::Facet* facet );
 
             /**
              * Emitted when the selection changed - normally triggered by a call to setSelected().
@@ -282,7 +282,7 @@ namespace Nepomuk {
              * Be aware that in most situations queryTermChanged() and selectionChanged() will
              * have to be emitted at the same time.
              */
-            void selectionChanged( Nepomuk::Utils::Facet* facet );
+            void selectionChanged( Nepomuk2::Utils::Facet* facet );
 
         protected Q_SLOTS:
             /**

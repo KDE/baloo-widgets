@@ -39,45 +39,45 @@
 #include <Soprano/Vocabulary/NAO>
 
 
-Q_DECLARE_METATYPE(Nepomuk::Types::Class)
+Q_DECLARE_METATYPE(Nepomuk2::Types::Class)
 
 
-class Nepomuk::Utils::ResourceModel::Private
+class Nepomuk2::Utils::ResourceModel::Private
 {
 public:
 };
 
 
-Nepomuk::Utils::ResourceModel::ResourceModel( QObject* parent )
+Nepomuk2::Utils::ResourceModel::ResourceModel( QObject* parent )
     : QAbstractItemModel( parent ),
       d( new Private() )
 {
 }
 
 
-Nepomuk::Utils::ResourceModel::~ResourceModel()
+Nepomuk2::Utils::ResourceModel::~ResourceModel()
 {
     delete d;
 }
 
 
-QModelIndex Nepomuk::Utils::ResourceModel::parent( const QModelIndex& child ) const
+QModelIndex Nepomuk2::Utils::ResourceModel::parent( const QModelIndex& child ) const
 {
     Q_UNUSED(child);
     return QModelIndex();
 }
 
 
-int Nepomuk::Utils::ResourceModel::columnCount( const QModelIndex& parent ) const
+int Nepomuk2::Utils::ResourceModel::columnCount( const QModelIndex& parent ) const
 {
     Q_UNUSED(parent);
     return ResourceModelColumnCount;
 }
 
 
-QVariant Nepomuk::Utils::ResourceModel::data( const QModelIndex& index, int role ) const
+QVariant Nepomuk2::Utils::ResourceModel::data( const QModelIndex& index, int role ) const
 {
-    Nepomuk::Resource res = resourceForIndex( index );
+    Nepomuk2::Resource res = resourceForIndex( index );
     if( !res.isValid() ) {
         return QVariant();
     }
@@ -98,7 +98,7 @@ QVariant Nepomuk::Utils::ResourceModel::data( const QModelIndex& index, int role
                 return KIcon( iconName );
             }
             else {
-                QIcon icon = Types::Class(res.resourceType()).icon();
+                QIcon icon = Types::Class(res.type()).icon();
                 if( !icon.isNull() )
                     return icon;
                 else
@@ -107,7 +107,7 @@ QVariant Nepomuk::Utils::ResourceModel::data( const QModelIndex& index, int role
         }
 
         case Qt::ToolTipRole:
-            return KUrl( res.resourceUri() ).prettyUrl();
+            return KUrl( res.uri() ).prettyUrl();
 
         }
 
@@ -115,10 +115,10 @@ QVariant Nepomuk::Utils::ResourceModel::data( const QModelIndex& index, int role
         switch( role ) {
         case Qt::DisplayRole:
         case Qt::EditRole:
-            return Types::Class( res.resourceType() ).label();
+            return Types::Class( res.type() ).label();
 
         case Qt::DecorationRole: {
-            QIcon icon = Types::Class(res.resourceType()).icon();
+            QIcon icon = Types::Class(res.type()).icon();
             if( !icon.isNull() )
                 return icon;
             else
@@ -126,7 +126,7 @@ QVariant Nepomuk::Utils::ResourceModel::data( const QModelIndex& index, int role
         }
 
         case Qt::ToolTipRole:
-            return KUrl(res.resourceType()).prettyUrl();
+            return KUrl(res.type()).prettyUrl();
         }
     }
 
@@ -139,8 +139,8 @@ QVariant Nepomuk::Utils::ResourceModel::data( const QModelIndex& index, int role
         // FIXME: sort files before other stuff and so on
 
     case KCategorizedSortFilterProxyModel::CategoryDisplayRole: {
-        Q_ASSERT( !res.resourceType().isEmpty() );
-        Nepomuk::Types::Class c( res.resourceType() );
+        Q_ASSERT( !res.type().isEmpty() );
+        Nepomuk2::Types::Class c( res.type() );
         QString cat = c.label();
         if ( cat.isEmpty() ) {
             cat = c.name();
@@ -156,7 +156,7 @@ QVariant Nepomuk::Utils::ResourceModel::data( const QModelIndex& index, int role
         return QVariant::fromValue( res );
 
     case ResourceTypeRole:
-        return QVariant::fromValue( Nepomuk::Types::Class(res.resourceType()) );
+        return QVariant::fromValue( Nepomuk2::Types::Class(res.type()) );
 
     case ResourceCreationDateRole:
         return res.property( Soprano::Vocabulary::NAO::created() ).toDateTime();
@@ -167,7 +167,7 @@ QVariant Nepomuk::Utils::ResourceModel::data( const QModelIndex& index, int role
 }
 
 
-QVariant Nepomuk::Utils::ResourceModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant Nepomuk2::Utils::ResourceModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if( role == Qt::DisplayRole ) {
         switch( section ) {
@@ -182,7 +182,7 @@ QVariant Nepomuk::Utils::ResourceModel::headerData(int section, Qt::Orientation 
 }
 
 
-Qt::ItemFlags Nepomuk::Utils::ResourceModel::flags( const QModelIndex& index ) const
+Qt::ItemFlags Nepomuk2::Utils::ResourceModel::flags( const QModelIndex& index ) const
 {
     if ( index.isValid() ) {
         return QAbstractItemModel::flags( index ) | Qt::ItemIsDragEnabled;
@@ -193,12 +193,12 @@ Qt::ItemFlags Nepomuk::Utils::ResourceModel::flags( const QModelIndex& index ) c
 }
 
 
-QMimeData* Nepomuk::Utils::ResourceModel::mimeData( const QModelIndexList& indexes ) const
+QMimeData* Nepomuk2::Utils::ResourceModel::mimeData( const QModelIndexList& indexes ) const
 {
     KUrl::List uris;
     foreach ( const QModelIndex& index, indexes ) {
         if (index.isValid()) {
-            uris << index.data( ResourceRole ).value<Resource>().resourceUri();
+            uris << index.data( ResourceRole ).value<Resource>().uri();
         }
     }
 
@@ -214,7 +214,7 @@ QMimeData* Nepomuk::Utils::ResourceModel::mimeData( const QModelIndexList& index
 }
 
 
-QStringList Nepomuk::Utils::ResourceModel::mimeTypes() const
+QStringList Nepomuk2::Utils::ResourceModel::mimeTypes() const
 {
     return( QStringList()
             << QLatin1String( "application/x-nepomuk-resource-uri" )
@@ -222,7 +222,7 @@ QStringList Nepomuk::Utils::ResourceModel::mimeTypes() const
 }
 
 
-bool Nepomuk::Utils::ResourceModel::setData( const QModelIndex& index, const QVariant& value, int role )
+bool Nepomuk2::Utils::ResourceModel::setData( const QModelIndex& index, const QVariant& value, int role )
 {
     return QAbstractItemModel::setData(index, value, role);
 }
