@@ -77,6 +77,7 @@ set_target_properties(nepomukwidgets PROPERTIES
 install(TARGETS nepomukwidgets EXPORT NepomukWidgetsLibraryTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
+  nepomukwidgets_export.h
   ui/tagwidget.h
 
   DESTINATION ${INCLUDE_INSTALL_DIR}/nepomuk2 COMPONENT Devel

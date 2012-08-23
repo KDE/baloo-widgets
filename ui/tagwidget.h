@@ -21,7 +21,7 @@
 #ifndef _NEPOMUK_TAG_WIDGET_H_
 #define _NEPOMUK_TAG_WIDGET_H_
 
-#include "nepomuk_export.h"
+#include "nepomukwidgets_export.h"
 
 #include <QtGui/QWidget>
 
@@ -45,7 +45,7 @@ namespace Nepomuk2 {
      *
      * \author Sebastian Trueg <trueg@kde.org>
      */
-    class NEPOMUK_EXPORT TagWidget : public QWidget
+    class NEPOMUKWIDGETS_EXPORT TagWidget : public QWidget
     {
         Q_OBJECT
 
