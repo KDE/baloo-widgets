@@ -25,17 +25,17 @@
 
 #include "facetmodel.h"
 #include "simplefacet.h"
-#include "comparisonterm.h"
-#include "resourcetypeterm.h"
-#include "literalterm.h"
 #include "proxyfacet.h"
-#include "nfo.h"
+
+#include <Nepomuk2/Query/ComparisonTerm>
+#include <Nepomuk2/Query/ResourceTypeTerm>
+#include <Nepomuk2/Query/LiteralTerm>
+#include <Nepomuk2/Vocabulary/NFO>
 
 #include <Soprano/Vocabulary/NAO>
 
-
-using namespace Nepomuk22::Utils;
-using namespace Nepomuk22::Query;
+using namespace Nepomuk2::Utils;
+using namespace Nepomuk2::Query;
 
 
 void FacetModelTest::testExtractFacetsFromTermWithVaryingSelectionMode()

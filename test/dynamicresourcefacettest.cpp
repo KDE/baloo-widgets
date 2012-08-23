@@ -24,14 +24,15 @@
 
 #include "dynamicresourcefacet.h"
 #include "dynamicresourcefacet_p.h"
-#include "comparisonterm.h"
-#include "resourcetypeterm.h"
-#include "resourceterm.h"
-#include "andterm.h"
-#include "orterm.h"
 
-#include "resourcemanager.h"
-#include "tag.h"
+#include <Nepomuk2/Query/ComparisonTerm>
+#include <Nepomuk2/Query/ResourceTerm>
+#include <Nepomuk2/Query/ResourceTypeTerm>
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/OrTerm>
+
+#include <Nepomuk2/ResourceManager>
+#include <Nepomuk2/Tag>
 
 #include <Soprano/LiteralValue>
 #include <Soprano/Node>
@@ -50,13 +51,13 @@
 #include <QSignalSpy>
 
 #include <QtTest>
-#include "qtest_kde.h"
-#include "kdebug.h"
+#include <qtest_kde.h>
+#include <kdebug.h>
 
 using namespace Nepomuk2;
-using namespace Nepomuk22::Utils;
-using namespace Nepomuk22::Query;
-using namespace Nepomuk22::Types;
+using namespace Nepomuk2::Utils;
+using namespace Nepomuk2::Query;
+using namespace Nepomuk2::Types;
 
 
 class DynamicResourceTestFacet::TestPrivate : public DynamicResourceFacet::Private
@@ -187,7 +188,7 @@ void DynamicResourceFacetTest::testSetRelation()
 {
     DynamicResourceFacet f;
     f.setRelation(Soprano::Vocabulary::NAO::hasTag());
-    QCOMPARE(f.type(), Nepomuk2::Types::Class(Soprano::Vocabulary::NAO::Tag()));
+    QCOMPARE(f.resourceType(), Nepomuk2::Types::Class(Soprano::Vocabulary::NAO::Tag()));
 }
 
 

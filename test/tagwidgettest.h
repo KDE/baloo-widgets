@@ -2,7 +2,7 @@
 #define TAGWIDGETTEST_H
 
 #include <QWidget>
-#include "tag.h"
+#include <Nepomuk2/Tag>
 #include "tagwidget.h"
 
 class TagWidgetTest : public QWidget

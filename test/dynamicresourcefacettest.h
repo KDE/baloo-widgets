@@ -23,8 +23,8 @@
 #define DYNAMICRESOURCEFACETTEST_H
 
 #include <QObject>
-#include "ktempdir.h"
-#include "tag.h"
+#include <KTempDir>
+#include <Nepomuk2/Tag>
 #include "dynamicresourcefacet.h"
 
 #include <Soprano/Model>

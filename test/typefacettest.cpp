@@ -23,11 +23,12 @@
 #include "qtest_querytostring.h"
 
 #include "typefacet.h"
-#include "resourcetypeterm.h"
-#include "nfo.h"
-#include "class.h"
-#include "negationterm.h"
-#include "class.h"
+
+#include <Nepomuk2/Query/ResourceTypeTerm>
+#include <Nepomuk2/Query/NegationTerm>
+
+#include <Nepomuk2/Vocabulary/NFO>
+#include <Nepomuk2/Types/Class>
 
 #include <Soprano/Vocabulary/NAO>
 
@@ -36,10 +37,10 @@
 #include "qtest_kde.h"
 
 
-using namespace Nepomuk22::Utils;
-using namespace Nepomuk22::Query;
-using namespace Nepomuk22::Vocabulary;
-using namespace Nepomuk22::Types;
+using namespace Nepomuk2::Utils;
+using namespace Nepomuk2::Query;
+using namespace Nepomuk2::Vocabulary;
+using namespace Nepomuk2::Types;
 
 void TypeFacetTest::testBasicLayout()
 {

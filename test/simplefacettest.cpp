@@ -23,8 +23,9 @@
 #include "qtest_querytostring.h"
 
 #include "simplefacet.h"
-#include "comparisonterm.h"
-#include "resourcetypeterm.h"
+
+#include <Nepomuk2/Query/ComparisonTerm>
+#include <Nepomuk2/Query/ResourceTypeTerm>
 
 #include <Soprano/Vocabulary/NAO>
 
@@ -32,8 +33,8 @@
 #include "qtest_kde.h"
 
 
-using namespace Nepomuk22::Utils;
-using namespace Nepomuk22::Query;
+using namespace Nepomuk2::Utils;
+using namespace Nepomuk2::Query;
 
 void SimpleFacetTest::testAddTerm()
 {

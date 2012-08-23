@@ -25,6 +25,9 @@ include_directories(
   ${QT_INCLUDES}
   ${KDE4_INCLUDES}
   ${SOPRANO_INCLUDE_DIR}
+  ${CMAKE_SOURCE_DIR}
+  ${CMAKE_SOURCE_DIR}/ui
+  ${CMAKE_SOURCE_DIR}/utils
 )
 
 
@@ -120,4 +123,4 @@ install(FILES
   DESTINATION ${INCLUDE_INSTALL_DIR}/nepomuk2 COMPONENT Devel
 )
 
-#add_subdirectory(utils)
+add_subdirectory(test)
