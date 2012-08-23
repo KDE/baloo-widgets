@@ -25,8 +25,8 @@
 #include <QWidget>
 #include <QAbstractItemView>
 
-#include "query.h"
-#include "nepomukutils_export.h"
+#include "nepomukwidgets_export.h"
+#include <Nepomuk2/Query/Query>
 
 namespace Nepomuk2 {
     class Resource;
@@ -51,7 +51,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        class NEPOMUKUTILS_EXPORT SearchWidget : public QWidget
+        class NEPOMUKWIDGETS_EXPORT SearchWidget : public QWidget
         {
             Q_OBJECT
 

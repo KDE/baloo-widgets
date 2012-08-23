@@ -20,11 +20,12 @@
 */
 
 #include "proxyfacet.h"
-#include "andterm.h"
-#include "query.h"
 
-#include "kguiitem.h"
-#include "kdebug.h"
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/Query>
+
+#include <KGuiItem>
+#include <KDebug>
 
 class Nepomuk2::Utils::ProxyFacet::Private
 {

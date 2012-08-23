@@ -24,19 +24,19 @@
 
 #include "dynamicresourcefacet.h"
 
-#include "query.h"
-#include "queryserviceclient.h"
-#include "property.h"
-#include "class.h"
-#include "resource.h"
-#include "result.h"
+#include <Nepomuk2/Resource>
+#include <Nepomuk2/Query/Result>
+#include <Nepomuk2/Query/Query>
+#include <Nepomuk2/Query/QueryServiceClient>
+#include <Nepomuk2/Types/Property>
+#include <Nepomuk2/Types/Class>
 
 #include <QtCore/QSet>
 
 #ifdef Q_OS_WIN
-#include "nepomukutils_export.h"
+#include "nepomukwidgets_export.h"
 
-class NEPOMUKUTILS_EXPORT Nepomuk2::Utils::DynamicResourceFacet::Private
+class NEPOMUKWIDGETS_EXPORT Nepomuk2::Utils::DynamicResourceFacet::Private
 #else
 class Nepomuk2::Utils::DynamicResourceFacet::Private
 #endif

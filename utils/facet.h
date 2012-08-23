@@ -24,7 +24,7 @@
 
 #include <QtCore/QObject>
 
-#include "nepomukutils_export.h"
+#include "nepomukwidgets_export.h"
 
 class KGuiItem;
 
@@ -71,7 +71,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        class NEPOMUKUTILS_EXPORT Facet : public QObject
+        class NEPOMUKWIDGETS_EXPORT Facet : public QObject
         {
             Q_OBJECT
 

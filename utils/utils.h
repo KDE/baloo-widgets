@@ -22,14 +22,14 @@
 #ifndef _NEPOMUK_UTILS_GLOBAL_H_
 #define _NEPOMUK_UTILS_GLOBAL_H_
 
-#include "nepomukutils_export.h"
-#include "resource.h"
+#include "nepomukwidgets_export.h"
+#include <Nepomuk2/Resource>
 
 #include <QtCore/QFlags>
 #include <QtCore/QDateTime>
 #include <QtCore/QList>
 
-#include "kurl.h"
+#include <KUrl>
 
 namespace Nepomuk2 {
     class Variant;
@@ -73,7 +73,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        NEPOMUKUTILS_EXPORT QString formatPropertyValue( const Nepomuk2::Types::Property& property,
+        NEPOMUKWIDGETS_EXPORT QString formatPropertyValue( const Nepomuk2::Types::Property& property,
                                                          const Nepomuk2::Variant& value,
                                                          const QList<Nepomuk2::Resource>& resources = QList<Nepomuk2::Resource>(),
                                                          PropertyFormatFlags flags = NoPropertyFormatFlags );
@@ -87,7 +87,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        NEPOMUKUTILS_EXPORT Nepomuk2::Resource createCopyEvent( const KUrl& src,
+        NEPOMUKWIDGETS_EXPORT Nepomuk2::Resource createCopyEvent( const KUrl& src,
                                                                const KUrl& dest,
                                                                const QDateTime& startTime = QDateTime(),
                                                                const KUrl& referrer = KUrl() );
@@ -100,7 +100,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        NEPOMUKUTILS_EXPORT void finishCopyEvent( Nepomuk2::Resource& eventResource, const QDateTime& endTime );
+        NEPOMUKWIDGETS_EXPORT void finishCopyEvent( Nepomuk2::Resource& eventResource, const QDateTime& endTime );
     }
 }
 

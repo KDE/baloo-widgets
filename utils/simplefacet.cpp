@@ -20,16 +20,17 @@
 */
 
 #include "simplefacet.h"
-#include "andterm.h"
-#include "orterm.h"
-#include "query.h"
 
-#include "kguiitem.h"
-#include "kdebug.h"
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/OrTerm>
+#include <Nepomuk2/Query/Query>
+
+#include <KGuiItem>
+#include <KDebug>
 
 #include <QtCore/QSet>
 
-using namespace Nepomuk22::Query;
+using namespace Nepomuk2::Query;
 
 
 class Nepomuk2::Utils::SimpleFacet::Private

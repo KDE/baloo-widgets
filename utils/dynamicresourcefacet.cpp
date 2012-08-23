@@ -21,25 +21,24 @@
 
 #include "dynamicresourcefacet.h"
 #include "dynamicresourcefacet_p.h"
-
-#include "andterm.h"
-#include "orterm.h"
-#include "resourceterm.h"
-#include "resourcetypeterm.h"
-#include "comparisonterm.h"
-#include "result.h"
-#include "query.h"
-#include "queryserviceclient.h"
-
-#include "property.h"
-#include "class.h"
-#include "resource.h"
-#include "resourcemanager.h"
-
 #include "searchwidget.h"
 
-#include "kguiitem.h"
-#include "kdebug.h"
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/OrTerm>
+#include <Nepomuk2/Query/ResourceTerm>
+#include <Nepomuk2/Query/ResourceTypeTerm>
+#include <Nepomuk2/Query/ComparisonTerm>
+#include <Nepomuk2/Query/Result>
+#include <Nepomuk2/Query/Query>
+#include <Nepomuk2/Query/QueryServiceClient>
+
+#include <Nepomuk2/Types/Property>
+#include <Nepomuk2/Types/Class>
+#include <Nepomuk2/Resource>
+#include <Nepomuk2/ResourceManager>
+
+#include <KGuiItem>
+#include <KDebug>
 
 #include <QtCore/QSet>
 

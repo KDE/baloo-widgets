@@ -20,23 +20,25 @@
 */
 
 #include "typefacet.h"
-#include "filequery.h"
-#include "term.h"
-#include "class.h"
-#include "andterm.h"
-#include "orterm.h"
-#include "resourcetypeterm.h"
-#include "negationterm.h"
-#include "literalterm.h"
-#include "comparisonterm.h"
-#include "nfo.h"
-#include "nie.h"
-#include "tmo.h"
-#include "nco.h"
-#include "nmo.h"
 
-#include "kguiitem.h"
-#include "kdebug.h"
+#include <Nepomuk2/Query/Term>
+#include <Nepomuk2/Query/FileQuery>
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/OrTerm>
+#include <Nepomuk2/Query/ResourceTypeTerm>
+#include <Nepomuk2/Query/NegationTerm>
+#include <Nepomuk2/Query/LiteralTerm>
+#include <Nepomuk2/Query/ComparisonTerm>
+
+#include <Nepomuk2/Types/Class>
+#include <Nepomuk2/Vocabulary/NIE>
+#include <Nepomuk2/Vocabulary/NFO>
+#include <Nepomuk2/Vocabulary/TMO>
+#include <Nepomuk2/Vocabulary/NCO>
+#include <Nepomuk2/Vocabulary/NMO>
+
+#include <KGuiItem>
+#include <KDebug>
 
 #include <QtCore/QMap>
 #include <QtCore/QSet>

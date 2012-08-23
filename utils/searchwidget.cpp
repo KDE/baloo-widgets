@@ -34,25 +34,26 @@
 #include <QtGui/QSplitter>
 #include <QtCore/QList>
 
-#include "kdebug.h"
-#include "kpushbutton.h"
-#include "kdialog.h"
+#include <KDebug>
+#include <KPushButton>
+#include <KDialog>
 
-#include "query.h"
-#include "queryparser.h"
-#include "result.h"
-#include "andterm.h"
-#include "orterm.h"
-#include "literalterm.h"
-#include "comparisonterm.h"
-#include "resourceterm.h"
-#include "resourcetypeterm.h"
-#include "queryserviceclient.h"
-#include "resource.h"
-#include "filequery.h"
-#include "negationterm.h"
-#include "nfo.h"
-#include "variant.h"
+#include <Nepomuk2/Query/Query>
+#include <Nepomuk2/Query/QueryParser>
+#include <Nepomuk2/Query/Result>
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/OrTerm>
+#include <Nepomuk2/Query/LiteralTerm>
+#include <Nepomuk2/Query/ComparisonTerm>
+#include <Nepomuk2/Query/ResourceTerm>
+#include <Nepomuk2/Query/ResourceTypeTerm>
+#include <Nepomuk2/Query/QueryServiceClient>
+#include <Nepomuk2/Query/FileQuery>
+#include <Nepomuk2/Query/NegationTerm>
+
+#include <Nepomuk2/Resource>
+#include <Nepomuk2/Variant>
+#include <Nepomuk2/Vocabulary/NFO>
 
 #include <Soprano/LiteralValue>
 #include <Soprano/Vocabulary/NAO>

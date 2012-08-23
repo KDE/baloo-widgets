@@ -21,21 +21,22 @@
 
 #include "utils.h"
 
-#include "variant.h"
-#include "resourcemanager.h"
-#include "resource.h"
+#include <Nepomuk2/Variant>
+#include <Nepomuk2/ResourceManager>
+#include <Nepomuk2/Resource>
 
-#include "filequery.h"
-#include "comparisonterm.h"
-#include "andterm.h"
-#include "resourceterm.h"
-#include "resourcetypeterm.h"
-#include "optionalterm.h"
+#include <Nepomuk2/Query/FileQuery>
+#include <Nepomuk2/Query/ComparisonTerm>
+#include <Nepomuk2/Query/FileQuery>
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/ResourceTerm>
+#include <Nepomuk2/Query/ResourceTypeTerm>
+#include <Nepomuk2/Query/OptionalTerm>
 
-#include "nie.h"
-#include "nfo.h"
-#include "nuao.h"
-#include "ndo.h"
+#include <Nepomuk2/Vocabulary/NIE>
+#include <Nepomuk2/Vocabulary/NFO>
+#include <Nepomuk2/Vocabulary/NUAO>
+#include <Nepomuk2/Vocabulary/NDO>
 
 #include <kglobal.h>
 #include <klocale.h>

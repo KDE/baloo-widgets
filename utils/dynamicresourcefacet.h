@@ -23,7 +23,7 @@
 #define _NEPOMUK_QUERY_DYNAMIC_RESOURCE_FACET_H_
 
 #include "facet.h"
-#include "nepomukutils_export.h"
+#include "nepomukwidgets_export.h"
 
 #include <QtCore/QList>
 
@@ -67,7 +67,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        class NEPOMUKUTILS_EXPORT DynamicResourceFacet : public Facet
+        class NEPOMUKWIDGETS_EXPORT DynamicResourceFacet : public Facet
         {
             Q_OBJECT
 

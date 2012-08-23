@@ -50,7 +50,34 @@ set(nepomuk_ui_SRCS
   ui/tagcheckbox.cpp
 )
 
-kde4_add_library(nepomukwidgets ${LIBRARY_TYPE} ${nepomuk_ui_SRCS})
+set(nepomukutils_SRCS
+  utils/typefacet.cpp
+  utils/utils.cpp
+
+  utils/facetdelegate.cpp
+  utils/facetwidget.cpp
+  utils/facetmodel.cpp
+  utils/facetfiltermodel.cpp
+  utils/facet.cpp
+  utils/simplefacet.cpp
+  utils/dynamicresourcefacet.cpp
+  utils/datefacet.cpp
+  utils/proxyfacet.cpp
+
+  utils/daterange.cpp
+  utils/daterangeselectionwidget.cpp
+
+  utils/resourcemodel.cpp
+  utils/simpleresourcemodel.cpp
+  utils/searchlineedit.cpp
+  utils/searchwidget.cpp
+)
+
+kde4_add_ui_files(nepomukutils_SRCS utils/daterangeselectionwidget.ui)
+
+set(nepomukwidgets_SRCS ${nepomuk_ui_SRCS} ${nepomukutils_SRCS})
+
+kde4_add_library(nepomukwidgets ${LIBRARY_TYPE} ${nepomukwidgets_SRCS})
 
 target_link_libraries(nepomukwidgets
   ${QT_QTCORE_LIBRARY}
@@ -79,6 +106,16 @@ install(TARGETS nepomukwidgets EXPORT NepomukWidgetsLibraryTargets ${INSTALL_TAR
 install(FILES
   nepomukwidgets_export.h
   ui/tagwidget.h
+
+  utils/utils.h
+  utils/facet.h
+  utils/simplefacet.h
+  utils/dynamicresourcefacet.h
+  utils/proxyfacet.h
+  utils/facetwidget.h
+  utils/searchwidget.h
+  utils/resourcemodel.h
+  utils/simpleresourcemodel.h
 
   DESTINATION ${INCLUDE_INSTALL_DIR}/nepomuk2 COMPONENT Devel
 )

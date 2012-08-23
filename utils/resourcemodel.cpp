@@ -25,15 +25,15 @@
 #include <QtCore/QList>
 #include <QtCore/QMimeData>
 
-#include "kurl.h"
-#include "kdebug.h"
-#include "kcategorizedsortfilterproxymodel.h"
-#include "kicon.h"
-#include "klocale.h"
+#include <KUrl>
+#include <KDebug>
+#include <KCategorizedSortFilterProxyModel>
+#include <KIcon>
+#include <KLocale>
 
-#include "resource.h"
-#include "class.h"
-#include "variant.h"
+#include <Nepomuk2/Resource>
+#include <Nepomuk2/Variant>
+#include <Nepomuk2/Types/Class>
 
 #include <Soprano/Vocabulary/RDFS>
 #include <Soprano/Vocabulary/NAO>

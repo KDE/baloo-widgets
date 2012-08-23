@@ -21,9 +21,9 @@
 
 #include "daterange.h"
 
-#include "kglobal.h"
-#include "klocale.h"
-#include "kcalendarsystem.h"
+#include <KGlobal>
+#include <KLocale>
+#include <KCalendarSystem>
 
 #include <QtCore/QSharedData>
 #include <QtCore/QDebug>

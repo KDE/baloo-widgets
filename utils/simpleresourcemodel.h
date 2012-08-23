@@ -24,10 +24,10 @@
 
 #include "resourcemodel.h"
 
-#include "nepomukutils_export.h"
+#include "nepomukwidgets_export.h"
 
-#include "resource.h"
-#include "result.h"
+#include <Nepomuk2/Resource>
+#include <Nepomuk2/Query/Result>
 
 #include <QtCore/QList>
 
@@ -44,7 +44,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        class NEPOMUKUTILS_EXPORT SimpleResourceModel : public ResourceModel
+        class NEPOMUKWIDGETS_EXPORT SimpleResourceModel : public ResourceModel
         {
             Q_OBJECT
 

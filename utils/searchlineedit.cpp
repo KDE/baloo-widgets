@@ -21,16 +21,15 @@
 
 #include "searchlineedit.h"
 
-#include "klineedit.h"
-
+#include <KLineEdit>
 #include <QtGui/QHBoxLayout>
 
-#include "queryparser.h"
-#include "andterm.h"
-#include "orterm.h"
-#include "literalterm.h"
+#include <Nepomuk2/Query/QueryParser>
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/OrTerm>
+#include <Nepomuk2/Query/LiteralTerm>
 
-using namespace Nepomuk22::Query;
+using namespace Nepomuk2::Query;
 
 
 class Nepomuk2::Utils::SearchLineEdit::Private {

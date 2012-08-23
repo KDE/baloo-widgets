@@ -26,7 +26,7 @@
 #include <QtCore/QList>
 
 #include "facet.h"
-#include "nepomukutils_export.h"
+#include "nepomukwidgets_export.h"
 
 namespace Nepomuk2 {
     namespace Query {
@@ -54,7 +54,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        class NEPOMUKUTILS_EXPORT FacetWidget : public QWidget
+        class NEPOMUKWIDGETS_EXPORT FacetWidget : public QWidget
         {
             Q_OBJECT
 

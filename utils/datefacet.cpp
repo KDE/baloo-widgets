@@ -23,27 +23,27 @@
 #include "daterange.h"
 #include "daterangeselectionwidget.h"
 
-#include "comparisonterm.h"
-#include "orterm.h"
-#include "andterm.h"
-#include "literalterm.h"
-#include "standardqueries.h"
-#include "query.h"
+#include <Nepomuk2/Query/ComparisonTerm>
+#include <Nepomuk2/Query/OrTerm>
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/LiteralTerm>
+#include <Nepomuk2/Query/StandardQuery>
+#include <Nepomuk2/Query/Query>
 
-#include "nie.h"
-#include "nuao.h"
+#include <Nepomuk2/Vocabulary/NIE>
+#include <Nepomuk2/Vocabulary/NUAO>
 
 #include <QtCore/QDate>
 #include <QtCore/QPair>
 #include <QtGui/QMenu>
 #include <QtGui/QWidgetAction>
 
-#include "kglobal.h"
-#include "klocale.h"
-#include "kcalendarsystem.h"
-#include "kguiitem.h"
-#include "kdialog.h"
-#include "kdebug.h"
+#include <KGlobal>
+#include <KLocale>
+#include <KCalendarSystem>
+#include <KGuiItem>
+#include <KDialog>
+#include <KDebug>
 
 
 class Nepomuk2::Utils::DateFacet::Private

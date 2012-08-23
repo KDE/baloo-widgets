@@ -23,7 +23,7 @@
 #define _NEPOMUK_QUERY_SIMPLE_FACET_H_
 
 #include "facet.h"
-#include "nepomukutils_export.h"
+#include "nepomukwidgets_export.h"
 
 namespace Nepomuk2 {
     namespace Utils {
@@ -47,7 +47,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        class NEPOMUKUTILS_EXPORT SimpleFacet : public Facet
+        class NEPOMUKWIDGETS_EXPORT SimpleFacet : public Facet
         {
             Q_OBJECT
 

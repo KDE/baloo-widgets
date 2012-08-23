@@ -29,30 +29,33 @@
 
 #include <Soprano/Vocabulary/NAO>
 
-#include "query.h"
-#include "andterm.h"
-#include "orterm.h"
-#include "comparisonterm.h"
-#include "literalterm.h"
-#include "resourceterm.h"
-#include "resourcetypeterm.h"
-#include "andterm.h"
-#include "standardqueries.h"
-#include "tag.h"
+#include <Nepomuk2/Query/StandardQuery>
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/OrTerm>
+#include <Nepomuk2/Query/ComparisonTerm>
+#include <Nepomuk2/Query/LiteralTerm>
+#include <Nepomuk2/Query/ResourceTerm>
+#include <Nepomuk2/Query/ResourceTypeTerm>
+#include <Nepomuk2/Query/Query>
 
-#include "tmo.h"
-#include "nmo.h"
-#include "nco.h"
-#include "nfo.h"
-#include "nie.h"
+#include <Nepomuk2/Tag>
 
-#include "kdebug.h"
-#include "kglobal.h"
-#include "klocale.h"
-#include "kcalendarsystem.h"
-#include "kguiitem.h"
+#include <Nepomuk2/Vocabulary/TMO>
+#include <Nepomuk2/Vocabulary/NMO>
+#include <Nepomuk2/Vocabulary/NCO>
+#include <Nepomuk2/Vocabulary/NFO>
+#include <Nepomuk2/Vocabulary/NIE>
 
-using namespace Nepomuk22::Query;
+#include <KGuiItem>
+#include <KDebug>
+
+#include <KGlobal>
+#include <KLocale>
+#include <KCalendarSystem>
+#include <KGuiItem>
+#include <KDebug>
+
+using namespace Nepomuk2::Query;
 
 
 class Nepomuk2::Utils::FacetModel::Private

@@ -32,18 +32,18 @@
 #include <QUrl>
 #include <QtGui/QListView>
 
-#include "query.h"
-#include "queryparser.h"
-#include "result.h"
-#include "comparisonterm.h"
-#include "resourceterm.h"
-#include "resourcetypeterm.h"
-#include "resource.h"
+#include <Nepomuk2/Query/Result>
+#include <Nepomuk2/Query/Query>
+#include <Nepomuk2/Query/QueryParser>
+#include <Nepomuk2/Query/ComparisonTerm>
+#include <Nepomuk2/Query/ResourceTerm>
+#include <Nepomuk2/Query/ResourceTypeTerm>
+#include <Nepomuk2/Resource>
 
 #include <Soprano/Vocabulary/NAO>
 
-#include "kdebug.h"
-#include "kdescendantsproxymodel.h"
+#include <KDebug>
+#include <KDescendantsProxyModel>
 
 
 class Nepomuk2::Utils::FacetWidget::Private

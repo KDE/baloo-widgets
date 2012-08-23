@@ -22,9 +22,10 @@
 #ifndef _NEPOMUK_QUERY_FACET_MODEL_H_
 #define _NEPOMUK_QUERY_FACET_MODEL_H_
 
-#include "query.h"
-#include "term.h"
-#include "nepomukutils_export.h"
+#include "nepomukwidgets_export.h"
+
+#include <Nepomuk2/Query/Term>
+#include <Nepomuk2/Query/Query>
 
 #include <QtCore/QAbstractItemModel>
 #include <QtCore/QList>
@@ -64,7 +65,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        class NEPOMUKUTILS_EXPORT FacetModel : public QAbstractItemModel
+        class NEPOMUKWIDGETS_EXPORT FacetModel : public QAbstractItemModel
         {
             Q_OBJECT
 

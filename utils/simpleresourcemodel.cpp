@@ -24,11 +24,11 @@
 #include <QtCore/QUrl>
 #include <QtCore/QList>
 
-#include "resource.h"
-#include "result.h"
+#include <Nepomuk2/Resource>
+#include <Nepomuk2/Query/Result>
 
-#include "kdebug.h"
-#include "kurl.h"
+#include <KDebug>
+#include <KUrl>
 
 
 class Nepomuk2::Utils::SimpleResourceModel::Private

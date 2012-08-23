@@ -24,8 +24,8 @@
 
 #include "searchwidget.h"
 
-#include "query.h"
-#include "queryserviceclient.h"
+#include <Nepomuk2/Query/Query>
+#include <Nepomuk2/Query/QueryServiceClient>
 
 class QListView;
 namespace Nepomuk2 {

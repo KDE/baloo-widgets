@@ -27,28 +27,29 @@
 
 #include <Soprano/Vocabulary/NAO>
 
-#include "standardqueries.h"
-#include "andterm.h"
-#include "orterm.h"
-#include "comparisonterm.h"
-#include "literalterm.h"
-#include "resourceterm.h"
-#include "resourcetypeterm.h"
-#include "query.h"
+#include <Nepomuk2/Query/StandardQuery>
+#include <Nepomuk2/Query/AndTerm>
+#include <Nepomuk2/Query/OrTerm>
+#include <Nepomuk2/Query/ComparisonTerm>
+#include <Nepomuk2/Query/LiteralTerm>
+#include <Nepomuk2/Query/ResourceTerm>
+#include <Nepomuk2/Query/ResourceTypeTerm>
+#include <Nepomuk2/Query/Query>
 
-#include "tag.h"
-#include "property.h"
 
-#include "tmo.h"
-#include "nmo.h"
-#include "nco.h"
-#include "nfo.h"
-#include "nie.h"
+#include <Nepomuk2/Tag>
+#include <Nepomuk2/Types/Property>
 
-#include "kguiitem.h"
-#include "kdebug.h"
+#include <Nepomuk2/Vocabulary/TMO>
+#include <Nepomuk2/Vocabulary/NMO>
+#include <Nepomuk2/Vocabulary/NCO>
+#include <Nepomuk2/Vocabulary/NFO>
+#include <Nepomuk2/Vocabulary/NIE>
 
-using namespace Nepomuk22::Query;
+#include <KGuiItem>
+#include <KDebug>
+
+using namespace Nepomuk2::Query;
 
 
 class Nepomuk2::Utils::Facet::FacetPrivate

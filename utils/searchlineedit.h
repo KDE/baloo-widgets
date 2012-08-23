@@ -24,7 +24,7 @@
 
 #include <QtGui/QWidget>
 
-#include "query.h"
+#include <Nepomuk2/Query/Query>
 
 namespace Nepomuk2 {
     namespace Utils {

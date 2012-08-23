@@ -23,7 +23,7 @@
 #define _NEPOMUK_QUERY_PROXY_FACET_H_
 
 #include "facet.h"
-#include "nepomukutils_export.h"
+#include "nepomukwidgets_export.h"
 
 namespace Nepomuk2 {
     namespace Utils {
@@ -44,7 +44,7 @@ namespace Nepomuk2 {
          *
          * \since 4.6
          */
-        class NEPOMUKUTILS_EXPORT ProxyFacet : public Facet
+        class NEPOMUKWIDGETS_EXPORT ProxyFacet : public Facet
         {
             Q_OBJECT
 
