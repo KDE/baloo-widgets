@@ -11,6 +11,7 @@ set(KDE_MIN_VERSION "4.7.00")
 find_package(KDE4 4.7.00 REQUIRED)
 include(KDE4Defaults)
 
+find_package(Soprano)
 find_package(NepomukCore REQUIRED)
 
 macro_log_feature(NepomukCore_FOUND "NepomukCore" "NepomukCore contains the core Nepomuk libraries" "http://nepomuk.kde.org" TRUE "Required for running Nepomuk")
