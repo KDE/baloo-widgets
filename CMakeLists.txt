@@ -82,7 +82,7 @@ kde4_add_ui_files(nepomukutils_SRCS utils/daterangeselectionwidget.ui)
 
 set(nepomukwidgets_SRCS ${nepomuk_ui_SRCS} ${nepomukutils_SRCS})
 
-kde4_add_library(nepomukwidgets ${LIBRARY_TYPE} ${nepomukwidgets_SRCS})
+kde4_add_library(nepomukwidgets SHARED ${LIBRARY_TYPE} ${nepomukwidgets_SRCS})
 
 target_link_libraries(nepomukwidgets
   ${QT_QTCORE_LIBRARY}
