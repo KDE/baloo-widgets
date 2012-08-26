@@ -13,6 +13,7 @@ add_definitions(-DBUILDING_NEPOMUK_TESTS)
 kde4_add_executable(tagwidgetapp TEST tagwidgetapp.cpp tagwidgettest.cpp)
 target_link_libraries(tagwidgetapp
   ${KDE4_KIO_LIBS}
+  ${NEPOMUK_CORE_LIBRARY}
   nepomukwidgets
   )
 
@@ -24,6 +25,7 @@ target_link_libraries(simplefacettest
   ${QT_QTTEST_LIBRARY}
   ${SOPRANO_LIBRARIES}
   ${KDE4_KDECORE_LIBS}
+  ${NEPOMUK_CORE_LIBRARY}
   nepomukwidgets
 )
 
@@ -32,6 +34,7 @@ target_link_libraries(dynamicresourcefacettest
   ${QT_QTTEST_LIBRARY}
   ${SOPRANO_LIBRARIES}
   ${KDE4_KDECORE_LIBS}
+  ${NEPOMUK_CORE_LIBRARY}
   nepomukwidgets
 )
 
@@ -40,6 +43,7 @@ target_link_libraries(proxyfacettest
   ${QT_QTTEST_LIBRARY}
   ${SOPRANO_LIBRARIES}
   ${KDE4_KDECORE_LIBS}
+  ${NEPOMUK_CORE_LIBRARY}
   nepomukwidgets
 )
 
@@ -48,6 +52,7 @@ target_link_libraries(facetmodeltest
   ${QT_QTTEST_LIBRARY}
   ${SOPRANO_LIBRARIES}
   ${KDE4_KDECORE_LIBS}
+  ${NEPOMUK_CORE_LIBRARY}
   nepomukwidgets
 )
 
@@ -56,6 +61,7 @@ target_link_libraries(typefacettest
   ${QT_QTTEST_LIBRARY}
   ${SOPRANO_LIBRARIES}
   ${KDE4_KDECORE_LIBS}
+  ${NEPOMUK_CORE_LIBRARY}
   nepomukwidgets
 )
 
