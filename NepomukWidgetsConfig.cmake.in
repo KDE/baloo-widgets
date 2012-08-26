@@ -10,7 +10,7 @@
 get_filename_component(_currentDir ${CMAKE_CURRENT_LIST_FILE} PATH) # The current directory
 get_filename_component(rootDir ${_currentDir}/@relInstallDir@ ABSOLUTE) # The install prefix
 
-# The nepomuk-core version
+# The nepomuk-widgets version
 set(NEPOMUK_WIDGETS_VERSION_MAJOR @CMAKE_NEPOMUK_WIDGETS_VERSION_MAJOR@)
 set(NEPOMUK_WIDGETS_VERSION_MINOR @CMAKE_NEPOMUK_WIDGETS_VERSION_MINOR@)
 set(NEPOMUK_WIDGETS_VERSION_RELEASE @CMAKE_NEPOMUK_WIDGETS_VERSION_RELEASE@)
@@ -23,7 +23,7 @@ set(NEPOMUK_WIDGETS_INCLUDE_DIR "@INCLUDE_INSTALL_DIR@")
 set(NEPOMUK_WIDGETS_LIB_DIR "@LIB_INSTALL_DIR@")
 
 # Import the exported targets
-# include(${_currentDir}/NepomukCoreTargetsWithPrefix.cmake)
+include(${_currentDir}/NepomukWidgetsTargetsWithPrefix.cmake)
 
 # Set the libraries names
 set(NEPOMUK_WIDGETS_LIBRARY nepomukwidgets)

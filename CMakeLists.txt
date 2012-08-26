@@ -126,3 +126,9 @@ install(FILES
 )
 
 add_subdirectory(test)
+
+# install the file with the exported targets
+install(EXPORT NepomukWidgetsLibraryTargets
+        DESTINATION ${LIB_INSTALL_DIR}/cmake/NepomukWidgets
+        FILE NepomukWidgetsTargetsWithPrefix.cmake
+        )
