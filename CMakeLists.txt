@@ -57,7 +57,6 @@ set(nepomuk_ui_SRCS
 
 set(nepomukutils_SRCS
   utils/typefacet.cpp
-  utils/utils.cpp
 
   utils/facetdelegate.cpp
   utils/facetwidget.cpp
@@ -112,7 +111,6 @@ install(FILES
   nepomukwidgets_export.h
   ui/tagwidget.h
 
-  utils/utils.h
   utils/facet.h
   utils/simplefacet.h
   utils/dynamicresourcefacet.h
