@@ -43,7 +43,7 @@
 #include <Soprano/Vocabulary/NAO>
 
 #include <KDebug>
-#include <KDescendantsProxyModel>
+#include <kdescendantsproxymodel.h>
 
 
 class Nepomuk2::Utils::FacetWidget::Private
