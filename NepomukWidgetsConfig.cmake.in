@@ -2,10 +2,10 @@
 
 # This file will define the following variables:
 #
-# NEPOMUK_WIDGETS_LIB_DIR : The nepomuk-core library directory
-# NEPOMUK_WIDGETS_INCLUDE_DIR : The nepomuk-core include directory
-# NEPOMUK_WIDGETS_VERSION : The nepomuk-core version
-# NEPOMUK_WIDGETS_LIBRARY : The nepomukcore library
+# NEPOMUK_WIDGETS_LIB_DIR : The nepomuk-widgets library directory
+# NEPOMUK_WIDGETS_INCLUDE_DIR : The nepomuk-widgets include directory
+# NEPOMUK_WIDGETS_VERSION : The nepomuk-widgets version
+# NEPOMUK_WIDGETS_LIBRARY : The nepomukwidgets library
 
 get_filename_component(_currentDir ${CMAKE_CURRENT_LIST_FILE} PATH) # The current directory
 get_filename_component(rootDir ${_currentDir}/@relInstallDir@ ABSOLUTE) # The install prefix
