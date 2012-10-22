@@ -53,6 +53,11 @@ set(nepomuk_ui_SRCS
   ui/tagwidget.cpp
   ui/kedittagsdialog.cpp
   ui/tagcheckbox.cpp
+  ui/filemetadatawidget.cpp
+  ui/filemetadataprovider.cpp
+  ui/resourceloader.cpp
+  ui/kcommentwidget.cpp
+  ui/knfotranslator.cpp
 )
 
 set(nepomukutils_SRCS
@@ -89,6 +94,7 @@ target_link_libraries(nepomukwidgets
   ${QT_QTDBUS_LIBRARY}
   ${KDE4_KDECORE_LIBS}
   ${KDE4_KDEUI_LIBS}
+  ${KDE4_KIO_LIBS}
   ${SOPRANO_LIBRARIES}
   ${NEPOMUK_CORE_LIBRARY}
 )
