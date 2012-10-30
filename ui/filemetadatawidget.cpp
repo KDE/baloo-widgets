@@ -24,6 +24,7 @@
 
 #include "filemetadatawidget.h"
 #include "metadatafilter.h"
+#include "widgetfactory.h"
 
 #include <kconfig.h>
 #include <kconfiggroup.h>
@@ -84,7 +85,9 @@ public:
     QList<Row> m_rows;
     FileMetaDataProvider* m_provider;
     QGridLayout* m_gridLayout;
+
     MetadataFilter* m_filter;
+    WidgetFactory* m_widgetFactory;
 
 private:
     FileMetaDataWidget* const q;
@@ -98,11 +101,13 @@ FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
 {
     m_filter = new MetadataFilter(q);
 
+    m_widgetFactory = new WidgetFactory(q);
+    connect(m_widgetFactory, SIGNAL(urlActivated(QUrl)), q, SIGNAL(urlActivated(KUrl)));
+
     // TODO: If KFileMetaDataProvider might get a public class in future KDE releases,
     // the following code should be moved into KFileMetaDataWidget::setModel():
     m_provider = new FileMetaDataProvider(q);
     connect(m_provider, SIGNAL(loadingFinished()), q, SLOT(slotLoadingFinished()));
-    connect(m_provider, SIGNAL(urlActivated(KUrl)), q, SIGNAL(urlActivated(KUrl)));
 }
 
 FileMetaDataWidget::Private::~Private()
@@ -167,7 +172,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
         label->setAlignment(Qt::AlignTop | Qt::AlignRight);
 
         // Create value-widget
-        QWidget* valueWidget = m_provider->createValueWidget(key, value, q);
+        QWidget* valueWidget = m_widgetFactory->createWidget(key, value, q);
 
         // Add the label and value-widget to grid layout
         m_gridLayout->addWidget(label, rowIndex, 0, Qt::AlignRight);
@@ -260,6 +265,14 @@ FileMetaDataWidget::~FileMetaDataWidget()
 void FileMetaDataWidget::setItems(const KFileItemList& items)
 {
     d->m_provider->setItems(items);
+
+    QList<QUrl> uriList;
+    foreach(const KFileItem& item, items) {
+        const QUrl uri = item.nepomukUri();
+        if( uri.isValid() )
+            uriList << uri;
+    }
+    d->m_widgetFactory->setUris( uriList );
 }
 
 KFileItemList FileMetaDataWidget::items() const
@@ -270,6 +283,7 @@ KFileItemList FileMetaDataWidget::items() const
 void FileMetaDataWidget::setReadOnly(bool readOnly)
 {
     d->m_provider->setReadOnly(readOnly);
+    d->m_widgetFactory->setReadOnly(readOnly);
 }
 
 bool FileMetaDataWidget::isReadOnly() const

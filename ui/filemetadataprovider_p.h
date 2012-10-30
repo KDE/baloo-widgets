@@ -93,7 +93,6 @@ public:
      */
     virtual QString group(const KUrl& metaDataUri) const;
 
-#ifndef KIO_NO_NEPOMUK
     /**
      * @return Meta data for the items that have been set by
      *         KFileMetaDataProvider::setItems(). The method should
@@ -102,17 +101,6 @@ public:
      */
     virtual QHash<KUrl, Variant> data() const;
 
-    /**
-     * @return Factory method that returns a widget that should be used
-     *         to show the meta data represented by \p metaDataUri. If
-     *         no custom value widget is used for the given URI, the base
-     *         implementation must be invoked. Per default an instance
-     *         of QLabel will be returned.
-     */
-    virtual QWidget* createValueWidget(const KUrl& metaDataUri,
-                                       const Variant& value,
-                                       QWidget* parent) const;
-#endif
 
 Q_SIGNALS:
     /**
@@ -131,11 +119,6 @@ private:
     Private* const d;
 
     Q_PRIVATE_SLOT(d, void slotLoadingFinished(ResourceLoader* loader))
-    Q_PRIVATE_SLOT(d, void slotRatingChanged(unsigned int rating))
-    Q_PRIVATE_SLOT(d, void slotTagsChanged(const QList<Nepomuk2::Tag>& tags))
-    Q_PRIVATE_SLOT(d, void slotCommentChanged(const QString& comment))
-    Q_PRIVATE_SLOT(d, void slotTagClicked(const Nepomuk2::Tag& tag))
-    Q_PRIVATE_SLOT(d, void slotLinkActivated(const QString&))
 };
 
 }
