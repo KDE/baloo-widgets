@@ -139,19 +139,8 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
         m_gridLayout->setSpacing(q->fontMetrics().height() / 4);
     }
 
-    QHash<KUrl, Variant> providerData = m_provider->data();
-
-    QHash<QUrl, Variant> filterData;
-    QHash< KUrl, Variant >::const_iterator it = providerData.constBegin();
-    for( ; it != providerData.constEnd(); it++ ) {
-        filterData.insert( it.key(), it.value() );
-    }
-
-    QList< QHash<QUrl, Variant> > dataList;
-    dataList << filterData;
-
     // Filter the data
-    QHash<QUrl, Variant> data = m_filter->filter( dataList );
+    QHash<QUrl, Variant> data = m_filter->filter( m_provider->data() );
 
     // Iterate through all remaining items embed the label
     // and the value as new row in the widget

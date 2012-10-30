@@ -30,6 +30,11 @@
 #include <Nepomuk2/Types/Property>
 #include <Nepomuk2/Variant>
 
+#include <Soprano/Vocabulary/RDF>
+#include <Soprano/Vocabulary/NAO>
+
+using namespace Soprano::Vocabulary;
+
 namespace Nepomuk2 {
 
 MetadataFilter::MetadataFilter(QObject* parent): QObject(parent)
@@ -96,35 +101,54 @@ void MetadataFilter::initMetaInformationSettings()
     }
 }
 
-QHash< QUrl, Variant > MetadataFilter::filter(const QList< QHash< QUrl, Variant > >& data_)
+QHash<QUrl, Variant> MetadataFilter::filter(const QHash<QUrl, Nepomuk2::Variant>& data)
 {
-    if( data_.isEmpty() )
-        return QHash<QUrl, Variant>();
+    if( data.isEmpty() )
+        return data;
 
-    // Group the data togetgether
-    QHash<QUrl, Variant> data;
-    if( data_.size() > 1 ) {
+    QList<QUrl> types = data.value( RDF::type() ).toUrlList();
 
+    //
+    // Special filtering for certain types
+    //
+
+    if( types.contains( NAO::Tag() ) ) {
+        QHash<QUrl, Variant> finalData;
+
+        if( data.contains(NAO::identifier()) )
+            finalData.insert( NAO::identifier(), data.value(NAO::identifier()) );
+        if( data.contains(NAO::prefLabel()) )
+            finalData.insert( NAO::prefLabel(), data.value(NAO::prefLabel()) );
+
+        return finalData;
     }
-    else {
-        data = data_.first();
-    }
 
+    QHash<QUrl, Variant> finalData( data );
+
+    //
+    // Remove all the meta-properties
+    //
+    finalData.remove( RDF::type() );
+
+    finalData.remove( NAO::lastModified() );
+    finalData.remove( NAO::created() );
+    finalData.remove( NAO::userVisible() );
+
+    //
     // Remove all items, that are marked as hidden in kmetainformationrc
     KConfig config("kmetainformationrc", KConfig::NoGlobals);
     KConfigGroup settings = config.group("Show");
-    QHash<QUrl, Variant>::iterator it = data.begin();
-    while (it != data.end()) {
+    QHash<QUrl, Variant>::iterator it = finalData.begin();
+    while (it != finalData.end()) {
         const QString uriString = it.key().toString();
-        if (!settings.readEntry(uriString, true) ||
-            !Types::Property(it.key()).userVisible()) {
-            it = data.erase(it);
+        if (!settings.readEntry(uriString, true) || !Types::Property(it.key()).userVisible()) {
+            it = finalData.erase(it);
         } else {
             ++it;
         }
     }
 
-    return data;
+    return finalData;
 }
 
 }

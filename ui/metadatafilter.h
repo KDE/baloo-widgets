@@ -38,7 +38,7 @@ namespace Nepomuk2 {
          * Takes all the data by the provider and filters the data.
          * This acts as a filter and a data aggregator
          */
-        QHash<QUrl, Variant> filter(const QList< QHash<QUrl, Variant> >& data );
+        QHash<QUrl, Variant> filter(const QHash<QUrl, Variant>& data );
     private:
         /**
          * Initializes the configuration file "kmetainformationrc"

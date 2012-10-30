@@ -75,7 +75,7 @@ public:
     bool m_nepomukActivated;
     QList<KFileItem> m_fileItems;
 
-    QHash<KUrl, Variant> m_data;
+    QHash<QUrl, Variant> m_data;
 private:
     FileMetaDataProvider* const q;
 };
@@ -250,7 +250,7 @@ bool FileMetaDataProvider::isReadOnly() const
     return d->m_readOnly;
 }
 
-QHash<KUrl, Variant> FileMetaDataProvider::data() const
+QHash<QUrl, Variant> FileMetaDataProvider::data() const
 {
     return d->m_data;
 }

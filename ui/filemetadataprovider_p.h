@@ -99,7 +99,7 @@ public:
      *         be invoked after the signal loadingFinished() has
      *         been received (otherwise no data will be returned).
      */
-    virtual QHash<KUrl, Variant> data() const;
+    QHash<QUrl, Variant> data() const;
 
 
 Q_SIGNALS:
