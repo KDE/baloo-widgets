@@ -23,6 +23,7 @@
 
 
 #include "filemetadatawidget.h"
+#include "metadatafilter.h"
 
 #include <kconfig.h>
 #include <kconfiggroup.h>
@@ -59,13 +60,6 @@ public:
     ~Private();
 
     /**
-     * Initializes the configuration file "kmetainformationrc"
-     * with proper default settings for the first start in
-     * an uninitialized environment.
-     */
-    void initMetaInfoSettings();
-
-    /**
      * Parses the configuration file "kmetainformationrc" and
      * updates the visibility of all rows that got their data
      * from KFileItem.
@@ -79,7 +73,7 @@ public:
     void slotDataChangeStarted();
     void slotDataChangeFinished();
 
-    QList<KUrl> sortedKeys(const QHash< KUrl, Variant >& data) const;
+    QList<QUrl> sortedKeys(const QHash<QUrl, Nepomuk2::Variant>& data) const;
 
     /**
      * @return True, if at least one of the file items \a m_fileItems has
@@ -90,6 +84,7 @@ public:
     QList<Row> m_rows;
     FileMetaDataProvider* m_provider;
     QGridLayout* m_gridLayout;
+    MetadataFilter* m_filter;
 
 private:
     FileMetaDataWidget* const q;
@@ -101,7 +96,7 @@ FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
     , m_gridLayout(0)
     , q(parent)
 {
-    initMetaInfoSettings();
+    m_filter = new MetadataFilter(q);
 
     // TODO: If KFileMetaDataProvider might get a public class in future KDE releases,
     // the following code should be moved into KFileMetaDataWidget::setModel():
@@ -112,63 +107,6 @@ FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
 
 FileMetaDataWidget::Private::~Private()
 {
-}
-
-void FileMetaDataWidget::Private::initMetaInfoSettings()
-{
-    const int currentVersion = 3; // increase version, if the blacklist of disabled
-    // properties should be updated
-
-    KConfig config("kmetainformationrc", KConfig::NoGlobals);
-    if (config.group("Misc").readEntry("version", 0) < currentVersion) {
-        // The resource file is read the first time. Assure
-        // that some meta information is disabled per default.
-
-        // clear old info
-        config.deleteGroup("Show");
-        KConfigGroup settings = config.group("Show");
-
-        static const char* const disabledProperties[] = {
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#comment",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#contentSize",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#depends",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#isPartOf",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#lastModified",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#mimeType",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#plainTextContent",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url",
-            "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#averageBitrate",
-            "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#channels",
-            "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#apertureValue",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#exposureBiasValue",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#exposureTime",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#flash",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#focalLength",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#focalLengthIn35mmFilm",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#isoSpeedRatings",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#make",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#meteringMode",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#model",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#orientation",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#whiteBalance",
-            "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#description",
-            "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#hasTag",
-            "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#lastModified",
-            "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#numericRating",
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-            "kfileitem#owner",
-            "kfileitem#permissions",
-            0 // mandatory last entry
-        };
-
-        for (int i = 0; disabledProperties[i] != 0; ++i) {
-            settings.writeEntry(disabledProperties[i], false);
-        }
-
-        // mark the group as initialized
-        config.group("Misc").writeEntry("version", currentVersion);
-    }
 }
 
 void FileMetaDataWidget::Private::deleteRows()
@@ -196,28 +134,26 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
         m_gridLayout->setSpacing(q->fontMetrics().height() / 4);
     }
 
-    QHash<KUrl, Variant> data = m_provider->data();
+    QHash<KUrl, Variant> providerData = m_provider->data();
 
-    // Remove all items, that are marked as hidden in kmetainformationrc
-    KConfig config("kmetainformationrc", KConfig::NoGlobals);
-    KConfigGroup settings = config.group("Show");
-    QHash<KUrl, Variant>::iterator it = data.begin();
-    while (it != data.end()) {
-        const QString uriString = it.key().url();
-        if (!settings.readEntry(uriString, true) ||
-            !Types::Property(it.key()).userVisible()) {
-            it = data.erase(it);
-        } else {
-            ++it;
-        }
+    QHash<QUrl, Variant> filterData;
+    QHash< KUrl, Variant >::const_iterator it = providerData.constBegin();
+    for( ; it != providerData.constEnd(); it++ ) {
+        filterData.insert( it.key(), it.value() );
     }
+
+    QList< QHash<QUrl, Variant> > dataList;
+    dataList << filterData;
+
+    // Filter the data
+    QHash<QUrl, Variant> data = m_filter->filter( dataList );
 
     // Iterate through all remaining items embed the label
     // and the value as new row in the widget
     int rowIndex = 0;
     //FIXME: Sorting of keys?
-    const QList<KUrl> keys = sortedKeys(data);
-    foreach (const KUrl& key, keys) {
+    const QList<QUrl> keys = sortedKeys(data);
+    foreach (const QUrl& key, keys) {
         const Variant value = data[key];
         QString itemLabel = m_provider->label(key);
         itemLabel.append(QLatin1Char(':'));
@@ -270,16 +206,16 @@ void FileMetaDataWidget::Private::slotDataChangeFinished()
     q->setEnabled(true);
 }
 
-QList<KUrl> FileMetaDataWidget::Private::sortedKeys(const QHash<KUrl, Variant>& data) const
+QList<QUrl> FileMetaDataWidget::Private::sortedKeys(const QHash<QUrl, Variant>& data) const
 {
     // Create a map, where the translated label prefixed with the
     // sort priority acts as key. The data of each entry is the URI
     // of the data. By this the all URIs are sorted by the sort priority
     // and sub sorted by the translated labels.
-    QMap<QString, KUrl> map;
-    QHash<KUrl, Variant>::const_iterator hashIt = data.constBegin();
+    QMap<QString, QUrl> map;
+    QHash<QUrl, Variant>::const_iterator hashIt = data.constBegin();
     while (hashIt != data.constEnd()) {
-        const KUrl uri = hashIt.key();
+        const QUrl uri = hashIt.key();
 
         QString key = m_provider->group(uri);
         key += m_provider->label(uri);
@@ -290,8 +226,8 @@ QList<KUrl> FileMetaDataWidget::Private::sortedKeys(const QHash<KUrl, Variant>& 
 
     // Apply the URIs from the map to the list that will get returned.
     // The list will then be alphabetically ordered by the translated labels of the URIs.
-    QList<KUrl> list;
-    QMap<QString, KUrl>::const_iterator mapIt = map.constBegin();
+    QList<QUrl> list;
+    QMap<QString, QUrl>::const_iterator mapIt = map.constBegin();
     while (mapIt != map.constEnd()) {
         list.append(mapIt.value());
         ++mapIt;

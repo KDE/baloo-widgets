@@ -58,6 +58,7 @@ set(nepomuk_ui_SRCS
   ui/resourceloader.cpp
   ui/kcommentwidget.cpp
   ui/knfotranslator.cpp
+  ui/metadatafilter.cpp
 )
 
 set(nepomukutils_SRCS
