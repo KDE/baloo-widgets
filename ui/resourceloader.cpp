@@ -34,8 +34,13 @@ public:
     {}
 
     virtual void run() {
+        m_shouldExit = false;
+
         m_resourceList.reserve( m_uriList.size() );
         foreach(const QUrl& uri, m_uriList) {
+            if( m_shouldExit )
+                return;
+
             Resource res( uri );
             res.properties();
 
@@ -45,6 +50,8 @@ public:
 
     QList<QUrl> m_uriList;
     QList<Resource> m_resourceList;
+
+    bool m_shouldExit;
 };
 
 ResourceLoader::ResourceLoader(const QList< QUrl >& uriList, QObject* parent)
@@ -56,9 +63,9 @@ ResourceLoader::ResourceLoader(const QList< QUrl >& uriList, QObject* parent)
 
 ResourceLoader::~ResourceLoader()
 {
-    //FIXME: Need some way of gracefully exiting the thread
-    m_thread->quit();
-    m_thread->wait( 200 );
+    m_thread->m_shouldExit = true;
+    m_thread->wait();
+
     delete m_thread;
 }
 
