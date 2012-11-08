@@ -120,14 +120,14 @@ install(FILES
   ui/tagwidget.h
   ui/filemetadatawidget.h
 
-  utils/facet.h
-  utils/simplefacet.h
-  utils/dynamicresourcefacet.h
-  utils/proxyfacet.h
-  utils/facetwidget.h
-  utils/searchwidget.h
-  utils/resourcemodel.h
-  utils/simpleresourcemodel.h
+#  utils/facet.h
+#  utils/simplefacet.h
+#  utils/dynamicresourcefacet.h
+#  utils/proxyfacet.h
+#  utils/facetwidget.h
+#  utils/searchwidget.h
+#  utils/resourcemodel.h
+#  utils/simpleresourcemodel.h
 
   DESTINATION ${INCLUDE_INSTALL_DIR}/nepomuk2 COMPONENT Devel
 )
