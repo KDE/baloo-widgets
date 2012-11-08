@@ -17,6 +17,12 @@ target_link_libraries(tagwidgetapp
   nepomukwidgets
   )
 
+kde4_add_executable(metadatawidgetapp TEST metadatawidgetapp.cpp metadatawidgettest.cpp)
+target_link_libraries(metadatawidgetapp
+  ${KDE4_KIO_LIBS}
+  ${NEPOMUK_CORE_LIBRARY}
+  nepomukwidgets
+  )
 
 # Facet tests
 # -----------------------------------
