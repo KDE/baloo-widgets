@@ -70,6 +70,7 @@ namespace Nepomuk2 {
 
 WidgetFactory::WidgetFactory(QObject* parent): QObject(parent)
 {
+    m_readOnly = false;
 }
 
 WidgetFactory::~WidgetFactory()

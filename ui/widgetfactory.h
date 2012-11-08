@@ -61,6 +61,7 @@ namespace Nepomuk2 {
 
         void slotTagClicked(const Nepomuk2::Tag& tag);
         void slotLinkActivated(const QString& url);
+
     private:
         QWidget* createRatingWidget(int rating, QWidget* parent);
         QWidget* createTagWidget(const QList<Tag>& tags, QWidget* parent);

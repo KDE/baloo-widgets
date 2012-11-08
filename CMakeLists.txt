@@ -118,6 +118,7 @@ install(TARGETS nepomukwidgets EXPORT NepomukWidgetsLibraryTargets ${INSTALL_TAR
 install(FILES
   nepomukwidgets_export.h
   ui/tagwidget.h
+  ui/filemetadatawidget.h
 
   utils/facet.h
   utils/simplefacet.h
