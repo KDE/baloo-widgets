@@ -1,0 +1,2 @@
+LGPL 2.1
+GPL is used for utils/daterange.h,.cpp but these files are not compiled or shipped
