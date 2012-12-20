@@ -158,6 +158,7 @@ FileMetaDataProvider::~FileMetaDataProvider()
 void FileMetaDataProvider::setItems(const KFileItemList& items)
 {
     d->m_fileItems = items;
+    d->m_data.clear();
 
     if (items.isEmpty()) {
         return;
