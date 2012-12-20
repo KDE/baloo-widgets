@@ -161,6 +161,16 @@ void FileMetaDataProvider::Private::insertBasicData()
         }
         m_data.insert(KUrl("kfileitem#totalSize"), KIO::convertSize(totalSize));
     }
+
+    // Insert tags, ratings and comments, if Nepomuk activated
+    if( m_nepomukActivated && !m_readOnly ) {
+        if( !m_data.contains(NAO::hasTag()) )
+            m_data.insert( NAO::hasTag(), Variant() );
+        if( !m_data.contains(NAO::numericRating()) )
+            m_data.insert( NAO::numericRating(), Variant() );
+        if( !m_data.contains(NAO::description()) )
+            m_data.insert( NAO::description(), Variant() );
+    }
 }
 
 
