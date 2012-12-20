@@ -102,7 +102,7 @@ FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
     m_filter = new MetadataFilter(q);
 
     m_widgetFactory = new WidgetFactory(q);
-    connect(m_widgetFactory, SIGNAL(urlActivated(QUrl)), q, SIGNAL(urlActivated(KUrl)));
+    connect(m_widgetFactory, SIGNAL(urlActivated(KUrl)), q, SIGNAL(urlActivated(KUrl)));
 
     // TODO: If KFileMetaDataProvider might get a public class in future KDE releases,
     // the following code should be moved into KFileMetaDataWidget::setModel():

@@ -22,7 +22,7 @@
 #define WIDGETFACTORY_H
 
 #include <QtCore/QObject>
-#include <QUrl>
+#include <KUrl>
 
 class KJob;
 class KCommentWidget;
@@ -50,7 +50,7 @@ namespace Nepomuk2 {
         QWidget* createWidget(const QUrl& prop, const Variant& value, QWidget* parent);
 
     signals:
-        void urlActivated(const QUrl& url);
+        void urlActivated(const KUrl& url);
         void dataChangeStarted();
         void dataChangeFinished();
 
