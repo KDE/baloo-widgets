@@ -23,7 +23,9 @@ set(NEPOMUK_WIDGETS_INCLUDE_DIR "@INCLUDE_INSTALL_DIR@")
 set(NEPOMUK_WIDGETS_LIB_DIR "@LIB_INSTALL_DIR@")
 
 # Import the exported targets
+if(NOT TARGET nepomukwidgets)
 include(${_currentDir}/NepomukWidgetsTargetsWithPrefix.cmake)
+endif()
 
 # Set the libraries names
 set(NEPOMUK_WIDGETS_LIBRARY nepomukwidgets)
