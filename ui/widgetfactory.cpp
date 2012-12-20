@@ -30,6 +30,7 @@
 
 #include <KJob>
 #include <KDebug>
+#include <Nepomuk2/ResourceManager>
 
 #include <Nepomuk2/Variant>
 #include <Nepomuk2/Resource>
@@ -105,8 +106,12 @@ QWidget* WidgetFactory::createWidget(const QUrl& prop, const Variant& value, QWi
             resources << uri;
 
         QString string = value.toString();
-        if( !prop.toString().startsWith("kfileitem#") )
-            string = Utils::formatPropertyValue( prop, value, resources, Utils::WithKioLinks );
+        if( !prop.toString().startsWith("kfileitem#") ) {
+            if( ResourceManager::instance()->initialized() )
+                string = Utils::formatPropertyValue( prop, value, resources, Utils::WithKioLinks );
+            else
+                string = Utils::formatPropertyValue( prop, value, resources, Utils::NoPropertyFormatFlags );
+        }
         widget = createValueWidget( string, parent );
     }
 
