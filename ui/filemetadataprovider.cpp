@@ -245,6 +245,10 @@ QString FileMetaDataProvider::label(const KUrl& metaDataUri) const
         { "kfileitem#tags", I18N_NOOP2_NOSTRIP("@label", "Tags") },
         { "kfileitem#totalSize", I18N_NOOP2_NOSTRIP("@label", "Total Size") },
         { "kfileitem#type", I18N_NOOP2_NOSTRIP("@label", "Type") },
+        // Tags, ratings and comments are stored by their normal property as well
+        { "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#hasTag", I18N_NOOP2_NOSTRIP("@label", "Tags") },
+        { "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#numericRating", I18N_NOOP2_NOSTRIP("@label", "Rating") },
+        { "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#description", I18N_NOOP2_NOSTRIP("@label", "Comment") },
         { 0, 0, 0} // Mandatory last entry
     };
 
