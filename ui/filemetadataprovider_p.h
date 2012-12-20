@@ -119,6 +119,7 @@ private:
     Private* const d;
 
     Q_PRIVATE_SLOT(d, void slotLoadingFinished(ResourceLoader* loader))
+    Q_PRIVATE_SLOT(d, void slotLoadingFinished(KJob* job))
 };
 
 }

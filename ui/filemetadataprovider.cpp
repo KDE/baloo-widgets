@@ -23,6 +23,7 @@
 #include "resourceloader.h"
 #include "kcommentwidget_p.h"
 #include "knfotranslator_p.h"
+#include "indexeddataretriever.h"
 
 #include <kfileitem.h>
 #include <klocale.h>
@@ -65,6 +66,9 @@ public:
     ~Private();
 
     void slotLoadingFinished(ResourceLoader* loader);
+    void slotLoadingFinished(KJob* job);
+
+    void insertBasicData();
 
     /*
      * @return The number of subdirectories for the directory \a path.
@@ -109,6 +113,23 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
         }
     }
 
+    insertBasicData();
+
+    emit q->loadingFinished();
+}
+
+void FileMetaDataProvider::Private::slotLoadingFinished(KJob* job)
+{
+    IndexedDataRetriever* ret = dynamic_cast<IndexedDataRetriever*>( job );
+    m_data = ret->data();
+
+    insertBasicData();
+
+    emit q->loadingFinished();
+}
+
+void FileMetaDataProvider::Private::insertBasicData()
+{
     if (m_fileItems.count() == 1) {
         // TODO: Handle case if remote URLs are used properly. isDir() does
         // not work, the modification date needs also to be adjusted...
@@ -129,7 +150,8 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
         m_data.insert(KUrl("kfileitem#modified"), KGlobal::locale()->formatDateTime(item.time(KFileItem::ModificationTime), KLocale::FancyLongDate));
         m_data.insert(KUrl("kfileitem#owner"), item.user());
         m_data.insert(KUrl("kfileitem#permissions"), item.permissionsString());
-    } else if (m_fileItems.count() > 1) {
+    }
+    else if (m_fileItems.count() > 1) {
         // Calculate the size of all items
         quint64 totalSize = 0;
         foreach (const KFileItem& item, m_fileItems) {
@@ -139,8 +161,6 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
         }
         m_data.insert(KUrl("kfileitem#totalSize"), KIO::convertSize(totalSize));
     }
-
-    emit q->loadingFinished();
 }
 
 
@@ -163,8 +183,25 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
     if (items.isEmpty()) {
         return;
     }
-    //Q_PRIVATE_SLOT(d, void slotDataChangeStarted())
-    //Q_PRIVATE_SLOT(d, void slotDataChangeFinished())
+
+    if( items.size() == 1 ) {
+        const KFileItem item = items.first();
+        const QUrl url = item.targetUrl();
+        const QUrl uri = item.nepomukUri();
+
+        Resource res;
+        if( uri.isValid() )
+            res = Resource(uri);
+        else
+            res = Resource(url);
+
+        if( !res.exists() ) {
+            IndexedDataRetriever *ret = new IndexedDataRetriever( url.toLocalFile(), this );
+            connect( ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)) );
+            ret->start();
+            return;
+        }
+    }
 
     QList<QUrl> urls;
     foreach (const KFileItem& item, items) {

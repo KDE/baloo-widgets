@@ -56,6 +56,7 @@ set(nepomuk_ui_SRCS
   ui/filemetadatawidget.cpp
   ui/filemetadataprovider.cpp
   ui/resourceloader.cpp
+  ui/indexeddataretriever.cpp
   ui/kcommentwidget.cpp
   ui/knfotranslator.cpp
   ui/metadatafilter.cpp
