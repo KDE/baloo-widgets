@@ -23,12 +23,15 @@
 #include <Nepomuk2/SimpleResource>
 #include <Nepomuk2/SimpleResourceGraph>
 #include <Nepomuk2/Vocabulary/NIE>
+#include <Nepomuk2/Vocabulary/NCO>
+#include <Soprano/Vocabulary/NAO>
 
 #include <QtCore/QProcess>
 
 #include <KStandardDirs>
 #include <KDebug>
 
+using namespace Soprano::Vocabulary;
 using namespace Nepomuk2::Vocabulary;
 
 namespace Nepomuk2 {
@@ -79,9 +82,24 @@ void IndexedDataRetriever::slotIndexedFile(int)
                 variant.append( Variant(var) );
             }
 
-            // TODO: Extract the content from those blank nodes as well
-            if( !variant.toString().startsWith("_:") )
+            // In this case we want to extract the data from the blank node
+            if( variant.toString().startsWith("_:") ) {
+                SimpleResource tempRes = graph[ variant.toUrl() ];
+                if( tempRes.isValid() ) {
+                    PropertyHash ph = tempRes.properties();
+                    QString value = ph.value( NCO::fullname() ).toString();
+                    if( value.isEmpty() )
+                        value = ph.value( NIE::title() ).toString();
+                    if( value.isEmpty() )
+                        value = ph.value( NAO::identifier() ).toString();
+
+                    if( !value.isEmpty() )
+                        m_data.insert( prop, value );
+                }
+            }
+            else {
                 m_data.insert( prop, variant );
+            }
         }
     }
 
