@@ -76,15 +76,7 @@ void IndexedDataRetriever::slotIndexedFile(int)
 
             Nepomuk2::Variant variant;
             foreach( const QVariant& var, varList ) {
-                if( var.canConvert( QVariant::Url ) )
-                    variant.append( var.toUrl() );
-                else if( var.canConvert( QVariant::String ) )
-                    variant.append( var.toString() );
-                else if( var.canConvert( QVariant::Int ) )
-                    variant.append( var.toInt() );
-                else if( var.canConvert( QVariant::DateTime ) )
-                    variant.append( var.toDateTime() );
-                // TODO: Handle more cases?
+                variant.append( Variant(var) );
             }
 
             // TODO: Extract the content from those blank nodes as well
