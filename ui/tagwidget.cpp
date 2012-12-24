@@ -28,7 +28,6 @@
 #include <Nepomuk2/ResourceManager>
 #include <Nepomuk2/DataManagement>
 
-#include <karrowbutton.h>
 #include <kinputdialog.h>
 #include <kmessagebox.h>
 #include <klocale.h>
