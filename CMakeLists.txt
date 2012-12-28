@@ -12,10 +12,12 @@ find_package(KDE4 4.7.00 REQUIRED)
 include(KDE4Defaults)
 
 find_package(Soprano)
-find_package(NepomukCore REQUIRED)
+set_package_properties(Soprano PROPERTIES DESCRIPTION "Qt-based RDF storage and parsing solution" URL "http://soprano.sourceforge.net" TYPE REQUIRED)
 
-macro_log_feature(NepomukCore_FOUND "NepomukCore" "NepomukCore contains the core Nepomuk libraries" "http://nepomuk.kde.org" TRUE "Required for running Nepomuk")
-macro_display_feature_log()
+find_package(NepomukCore)
+set_package_properties(NepomukCore PROPERTIES DESCRIPTION "The core Nepomuk libraries" URL "http://nepomuk.kde.org" TYPE REQUIRED PURPOSE "Required for running Nepomuk")
+
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 # Some definitions
 # ================
