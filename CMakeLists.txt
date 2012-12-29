@@ -1,4 +1,7 @@
 project(nepomuk-widgets)
+# set_package_properties appeared in cmake 2.8.6
+# TODO: Remove when kdelibs >= 4.10 will be required
+cmake_minimum_required(VERSION 2.8.6 FATAL_ERROR)
 
 set(CMAKE_NEPOMUK_WIDGETS_VERSION_MAJOR 0)
 set(CMAKE_NEPOMUK_WIDGETS_VERSION_MINOR 1)
