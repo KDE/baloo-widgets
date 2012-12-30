@@ -167,6 +167,27 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
         allProperties.remove( NAO::lastModified() );
         allProperties.remove( NIE::lastModified() );
 
+        // Special handling for nfo:duration
+        // Take the sum
+        if( allProperties.contains( NFO::duration() ) ) {
+            int total = 0;
+            foreach(const Resource& res, resources) {
+                QHash<QUrl, Variant> hash = res.properties();
+                QHash< QUrl, Variant >::iterator it = hash.find( NFO::duration() );
+                if( it == hash.end() ) {
+                    total = 0;
+                    break;
+                }
+                else {
+                    total += it.value().toInt();
+                }
+            }
+
+            if( total )
+                m_data.insert( NFO::duration(), Variant(total) );
+            allProperties.remove( NFO::duration() );
+        }
+
         foreach( const QUrl& propUri, allProperties ) {
             foreach(const Resource& res, resources) {
                 QHash<QUrl, Variant> hash = res.properties();
