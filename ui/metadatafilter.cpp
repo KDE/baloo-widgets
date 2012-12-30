@@ -49,7 +49,7 @@ MetadataFilter::~MetadataFilter()
 
 void MetadataFilter::initMetaInformationSettings()
 {
-    const int currentVersion = 4; // increase version, if the blacklist of disabled
+    const int currentVersion = 5; // increase version, if the blacklist of disabled
     // properties should be updated
 
     KConfig config("kmetainformationrc", KConfig::NoGlobals);
@@ -72,6 +72,7 @@ void MetadataFilter::initMetaInformationSettings()
             "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#mimeType",
             "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#plainTextContent",
             "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url",
+            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart",
             "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#averageBitrate",
             "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#channels",
             "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName",
@@ -92,9 +93,11 @@ void MetadataFilter::initMetaInformationSettings()
             "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#lastModified",
             "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#created",
             "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#annotation",
+            "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#hasSubResource",
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
             "kfileitem#owner",
             "kfileitem#permissions",
+            "kfileitem#modified",
             0 // mandatory last entry
         };
 
