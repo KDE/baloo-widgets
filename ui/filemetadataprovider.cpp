@@ -354,20 +354,39 @@ QString FileMetaDataProvider::label(const KUrl& metaDataUri) const
 
 QString FileMetaDataProvider::group(const KUrl& metaDataUri) const
 {
-    QString group; // return value
+    static QHash<QUrl, QString> uriGrouper;
+    if( uriGrouper.isEmpty() ) {
+        // KFileItem Data
+        uriGrouper.insert( QUrl("kfileitem#type"), QLatin1String("0FileItemA") );
+        uriGrouper.insert( QUrl("kfileitem#size"), QLatin1String("0FileItemB") );
+        uriGrouper.insert( QUrl("kfileitem#totalSize"), QLatin1String("0FileItemB") );
+        uriGrouper.insert( QUrl("kfileitem#modified"), QLatin1String("0FileItemC") );
+        uriGrouper.insert( QUrl("kfileitem#owner"), QLatin1String("0FileItemD") );
+        uriGrouper.insert( QUrl("kfileitem#permissions"), QLatin1String("0FileItemE") );
 
-    const QString uri = metaDataUri.url();
-    if (uri == QLatin1String("kfileitem#type")) {
-        group = QLatin1String("0FileItemA");
-    } else if (uri == QLatin1String("kfileitem#size")) {
-        group = QLatin1String("0FileItemB");
-    } else if (uri == QLatin1String("http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#width")) {
-        group = QLatin1String("0SizeA");
-    } else if (uri == QLatin1String("http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#height")) {
-        group = QLatin1String("0SizeB");
+        // Editable Data
+        uriGrouper.insert( NAO::hasTag(), QLatin1String("1EditableDataA") );
+        uriGrouper.insert( NAO::numericRating(), QLatin1String("1EditableDataB") );
+        uriGrouper.insert( NAO::description(), QLatin1String("1EditableDataC") );
+
+        // Image Data
+        uriGrouper.insert( NFO::width(), QLatin1String("2SizA") );
+        uriGrouper.insert( NFO::height(), QLatin1String("2SizeB") );
+
+        // Music Data
+        uriGrouper.insert( NIE::title(), QLatin1String("3MusicA") );
+        uriGrouper.insert( NMM::performer(), QLatin1String("3MusicB") );
+        uriGrouper.insert( NMM::musicAlbum(), QLatin1String("3MusicC") );
+        uriGrouper.insert( NMM::genre(), QLatin1String("3MusicD") );
+        uriGrouper.insert( NMM::trackNumber(), QLatin1String("3MusicE") );
+
+        // Audio Data
+        uriGrouper.insert( NFO::duration(), QLatin1String("4AudioA") );
+        uriGrouper.insert( NFO::sampleRate(), QLatin1String("4AudioB") );
+        uriGrouper.insert( NFO::sampleCount(), QLatin1String("4AudioC") );
     }
 
-    return group;
+    return uriGrouper.value( metaDataUri );
 }
 
 KFileItemList FileMetaDataProvider::items() const
