@@ -74,6 +74,13 @@ public:
 
     void insertBasicData();
 
+    /**
+     * Checks for the existance of \p uri in \p allProperties, and accordingly
+     * inserts the total integer value of that property in m_data. On completion
+     * it removes \p uri from \p allProperties
+     */
+    void totalPropertyAndInsert( const QUrl& uri, const QList<Resource>& resources, QSet<QUrl>& allProperties );
+
     /*
      * @return The number of subdirectories for the directory \a path.
      */
@@ -142,6 +149,30 @@ namespace {
     }
 }
 
+void FileMetaDataProvider::Private::totalPropertyAndInsert(const QUrl& uri, const QList<Resource>& resources,
+                                                           QSet<QUrl>& allProperties)
+{
+    if( allProperties.contains( uri ) ) {
+        int total = 0;
+        foreach(const Resource& res, resources) {
+            QHash<QUrl, Variant> hash = res.properties();
+            QHash< QUrl, Variant >::iterator it = hash.find( uri );
+            if( it == hash.end() ) {
+                total = 0;
+                break;
+            }
+            else {
+                total += it.value().toInt();
+            }
+        }
+
+        if( total )
+            m_data.insert( uri, Variant(total) );
+        allProperties.remove( uri );
+    }
+}
+
+
 void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
 {
     QList<Resource> resources = loader->resources();
@@ -167,26 +198,11 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
         allProperties.remove( NAO::lastModified() );
         allProperties.remove( NIE::lastModified() );
 
-        // Special handling for nfo:duration
-        // Take the sum
-        if( allProperties.contains( NFO::duration() ) ) {
-            int total = 0;
-            foreach(const Resource& res, resources) {
-                QHash<QUrl, Variant> hash = res.properties();
-                QHash< QUrl, Variant >::iterator it = hash.find( NFO::duration() );
-                if( it == hash.end() ) {
-                    total = 0;
-                    break;
-                }
-                else {
-                    total += it.value().toInt();
-                }
-            }
-
-            if( total )
-                m_data.insert( NFO::duration(), Variant(total) );
-            allProperties.remove( NFO::duration() );
-        }
+        // Special handling for certain properties
+        totalPropertyAndInsert( NFO::duration(), resources, allProperties );
+        totalPropertyAndInsert( NFO::characterCount(), resources, allProperties );
+        totalPropertyAndInsert( NFO::wordCount(), resources, allProperties );
+        totalPropertyAndInsert( NFO::lineCount(), resources, allProperties );
 
         foreach( const QUrl& propUri, allProperties ) {
             foreach(const Resource& res, resources) {
