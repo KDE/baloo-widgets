@@ -40,6 +40,10 @@
 #include <Nepomuk2/Types/Property>
 
 #include <Soprano/Vocabulary/NAO>
+#include <Soprano/Vocabulary/RDF>
+#include <Nepomuk2/Vocabulary/NFO>
+#include <Nepomuk2/Vocabulary/NMM>
+#include <Nepomuk2/Vocabulary/NIE>
 
 #include <QEvent>
 #include <QLabel>
@@ -53,7 +57,7 @@
 #endif
 
 using namespace Soprano::Vocabulary;
-
+using namespace Nepomuk2::Vocabulary;
 
 
 namespace Nepomuk2 {
@@ -98,18 +102,97 @@ FileMetaDataProvider::Private::~Private()
 {
 }
 
+namespace {
+    Nepomuk2::Variant intersect( const Nepomuk2::Variant& v1, const Nepomuk2::Variant& v2 ) {
+        if( !v1.isValid() || !v2.isValid() )
+            return Nepomuk2::Variant();
+
+        // Single value
+        if( !v1.isList() && !v2.isList() ) {
+            if( v1 == v2 )
+                return v1;
+            else
+                return Variant();
+        }
+        // List and single
+        if( v1.isResourceList() && v2.isResource() ) {
+            QList<Resource> v1List = v1.toResourceList();
+            Resource v2Res = v2.toResource();
+            if( v1List.contains(v2Res) ) {
+                return Variant( v2Res );
+            }
+        }
+        if( v2.isResourceList() && v1.isResource() ) {
+            QList<Resource> v2List = v2.toResourceList();
+            Resource v1Res = v1.toResource();
+            if( v2List.contains(v1Res) ) {
+                return Variant( v1Res );
+            }
+        }
+        else if( v1.isResourceList() && v2.isResourceList() ) {
+            QSet<Resource> v1Set = v1.toResourceList().toSet();
+            QSet<Resource> v2Set = v2.toResourceList().toSet();
+
+            QSet<Resource> inter = v1Set.intersect( v2Set );
+            return Variant( inter.toList() );
+        }
+        // TODO: Target more list types?
+
+        return Variant();
+    }
+}
+
 void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
 {
     QList<Resource> resources = loader->resources();
     loader->deleteLater();
     loader = 0;
 
-    // FIXME: Is this really the best way?
-    foreach(const Resource& res, resources) {
-        QHash<QUrl, Variant> hash = res.properties();
-        QHash< QUrl, Variant >::const_iterator it = hash.constBegin();
-        for( ; it != hash.constEnd(); it++ ) {
-            m_data.insert( it.key(), it.value() );
+    if( resources.size() == 1 ) {
+        m_data = resources.first().properties();
+    }
+    else {
+        //
+        // Only report the stuff that is common to all the resources
+        //
+
+        QSet<QUrl> allProperties;
+        foreach(const Resource& res, resources) {
+            allProperties.unite( res.properties().uniqueKeys().toSet() );
+        }
+
+        // Remove properties which cannot be the same
+        allProperties.remove( NIE::url() );
+        allProperties.remove( RDF::type() );
+        allProperties.remove( NAO::lastModified() );
+        allProperties.remove( NIE::lastModified() );
+
+        foreach( const QUrl& propUri, allProperties ) {
+            foreach(const Resource& res, resources) {
+                QHash<QUrl, Variant> hash = res.properties();
+                QHash< QUrl, Variant >::iterator it = hash.find( propUri );
+                if( it == hash.end() ) {
+                    m_data.remove( propUri );
+                    goto nextProperty;
+                }
+                else {
+                    QHash< QUrl, Variant >::iterator dit = m_data.find( it.key() );
+                    if( dit == m_data.end() ) {
+                        m_data.insert( propUri, it.value() );
+                    }
+                    else {
+                        Variant finalValue = intersect( it.value(), dit.value() );
+                        if( finalValue.isValid() )
+                            m_data[propUri] = finalValue;
+                        else {
+                            m_data.remove( propUri );
+                            goto nextProperty;
+                        }
+                    }
+                }
+            }
+            nextProperty:
+            ;
         }
     }
 
@@ -271,20 +354,39 @@ QString FileMetaDataProvider::label(const KUrl& metaDataUri) const
 
 QString FileMetaDataProvider::group(const KUrl& metaDataUri) const
 {
-    QString group; // return value
+    static QHash<QUrl, QString> uriGrouper;
+    if( uriGrouper.isEmpty() ) {
+        // KFileItem Data
+        uriGrouper.insert( QUrl("kfileitem#type"), QLatin1String("0FileItemA") );
+        uriGrouper.insert( QUrl("kfileitem#size"), QLatin1String("0FileItemB") );
+        uriGrouper.insert( QUrl("kfileitem#totalSize"), QLatin1String("0FileItemB") );
+        uriGrouper.insert( QUrl("kfileitem#modified"), QLatin1String("0FileItemC") );
+        uriGrouper.insert( QUrl("kfileitem#owner"), QLatin1String("0FileItemD") );
+        uriGrouper.insert( QUrl("kfileitem#permissions"), QLatin1String("0FileItemE") );
 
-    const QString uri = metaDataUri.url();
-    if (uri == QLatin1String("kfileitem#type")) {
-        group = QLatin1String("0FileItemA");
-    } else if (uri == QLatin1String("kfileitem#size")) {
-        group = QLatin1String("0FileItemB");
-    } else if (uri == QLatin1String("http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#width")) {
-        group = QLatin1String("0SizeA");
-    } else if (uri == QLatin1String("http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#height")) {
-        group = QLatin1String("0SizeB");
+        // Editable Data
+        uriGrouper.insert( NAO::hasTag(), QLatin1String("1EditableDataA") );
+        uriGrouper.insert( NAO::numericRating(), QLatin1String("1EditableDataB") );
+        uriGrouper.insert( NAO::description(), QLatin1String("1EditableDataC") );
+
+        // Image Data
+        uriGrouper.insert( NFO::width(), QLatin1String("2SizA") );
+        uriGrouper.insert( NFO::height(), QLatin1String("2SizeB") );
+
+        // Music Data
+        uriGrouper.insert( NIE::title(), QLatin1String("3MusicA") );
+        uriGrouper.insert( NMM::performer(), QLatin1String("3MusicB") );
+        uriGrouper.insert( NMM::musicAlbum(), QLatin1String("3MusicC") );
+        uriGrouper.insert( NMM::genre(), QLatin1String("3MusicD") );
+        uriGrouper.insert( NMM::trackNumber(), QLatin1String("3MusicE") );
+
+        // Audio Data
+        uriGrouper.insert( NFO::duration(), QLatin1String("4AudioA") );
+        uriGrouper.insert( NFO::sampleRate(), QLatin1String("4AudioB") );
+        uriGrouper.insert( NFO::sampleCount(), QLatin1String("4AudioC") );
     }
 
-    return group;
+    return uriGrouper.value( metaDataUri );
 }
 
 KFileItemList FileMetaDataProvider::items() const
