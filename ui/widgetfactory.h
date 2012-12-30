@@ -75,6 +75,7 @@ namespace Nepomuk2 {
         KCommentWidget* m_commentWidget;
 
         QList<QUrl> m_uris;
+        QList<Tag> m_prevTags;
         bool m_readOnly;
     };
 }
