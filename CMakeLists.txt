@@ -10,8 +10,7 @@ set(CMAKE_NEPOMUK_WIDGETS_VERSION_STRING "${CMAKE_NEPOMUK_WIDGETS_VERSION_MAJOR}
 
 # Search for the required packages
 # ================================
-set(KDE_MIN_VERSION "4.7.00")
-find_package(KDE4 4.7.00 REQUIRED)
+find_package(KDE4 4.9.4 REQUIRED)
 include(KDE4Defaults)
 
 find_package(Soprano)
