@@ -135,6 +135,7 @@ QWidget* WidgetFactory::createTagWidget(const QList<Tag>& tags, QWidget* parent)
             this, SLOT(slotTagClicked(Nepomuk2::Tag)));
 
     m_tagWidget = tagWidget;
+    m_prevTags = tags;
 
     return tagWidget;
 }
@@ -230,13 +231,30 @@ void WidgetFactory::slotRatingChanged(uint rating)
 void WidgetFactory::slotTagsChanged(const QList<Nepomuk2::Tag>& tags)
 {
     if( m_tagWidget ) {
-        m_tagWidget->setSelectedTags( tags );
-
         QVariantList tagUris;
         foreach( const Tag& tag, tags )
             tagUris << tag.uri();
 
-        KJob* job = Nepomuk2::setProperty( m_uris, NAO::hasTag(), tagUris );
+        KJob* job;
+        if( m_uris.size() == 1 )
+            job = Nepomuk2::setProperty( m_uris, NAO::hasTag(), tagUris );
+        else {
+            // When multiple tags are selected one doesn't want to loose the old tags
+            // of any of the resources. Unless specifically removed.
+            QSet<Tag> removedTags = m_prevTags.toSet().subtract( tags.toSet() );
+            QVariantList removedTagsUris;
+            foreach( const Tag& tag, removedTags )
+                removedTagsUris << tag.uri();
+
+            if( !removedTagsUris.isEmpty() ) {
+                // FIXME: This may cause an error. Multiple jobs accessing the same
+                // resource, we don't have a concept of transactions
+                Nepomuk2::removeProperty( m_uris, NAO::hasTag(), removedTagsUris );
+            }
+            job = Nepomuk2::addProperty( m_uris, NAO::hasTag(), tagUris );
+        }
+
+        m_prevTags = tags;
         startChangeDataJob(job);
     }
 }
