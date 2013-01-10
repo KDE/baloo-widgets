@@ -164,7 +164,7 @@ Nepomuk2::TagCheckBox* Nepomuk2::TagWidgetPrivate::getTagCheckBox( const Tag& ta
 {
     QMap<Tag, TagCheckBox*>::iterator it = m_checkBoxHash.find(tag);
     if( it == m_checkBoxHash.end() ) {
-        kDebug() << "Creating checkbox for" << tag.genericLabel();
+        //kDebug() << "Creating checkbox for" << tag.genericLabel();
         TagCheckBox* checkBox = new TagCheckBox( tag, this, q );
         q->connect( checkBox, SIGNAL(tagClicked(Nepomuk2::Tag)), SIGNAL(tagClicked(Nepomuk2::Tag)) );
         q->connect( checkBox, SIGNAL(tagStateChanged(Nepomuk2::Tag,int)), SLOT(slotTagStateChanged(Nepomuk2::Tag,int)) );

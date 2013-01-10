@@ -26,14 +26,18 @@
 
 #include <KConfig>
 #include <KConfigGroup>
+#include <KDebug>
 
 #include <Nepomuk2/Types/Property>
 #include <Nepomuk2/Variant>
 
 #include <Soprano/Vocabulary/RDF>
 #include <Soprano/Vocabulary/NAO>
+#include <Nepomuk2/Vocabulary/NCO>
+#include <Nepomuk2/Vocabulary/NMM>
 
 using namespace Soprano::Vocabulary;
+using namespace Nepomuk2::Vocabulary;
 
 namespace Nepomuk2 {
 
@@ -133,6 +137,13 @@ QHash<QUrl, Variant> MetadataFilter::filter(const QHash<QUrl, Nepomuk2::Variant>
     }
 
     QHash<QUrl, Variant> finalData( data );
+
+    // Remove editable stuff for contacts and albums
+    if( types.contains( NCO::Contact() ) || types.contains( NMM::MusicAlbum() ) ) {
+        finalData.remove( NAO::hasTag() );
+        finalData.remove( NAO::numericRating() );
+        finalData.remove( NAO::description() );
+    }
 
     //
     // Remove all the meta-properties

@@ -87,7 +87,6 @@ public:
     static int subDirectoriesCount(const QString &path);
 
     bool m_readOnly;
-    bool m_nepomukActivated;
     QList<KFileItem> m_fileItems;
 
     QHash<QUrl, Variant> m_data;
@@ -97,12 +96,10 @@ private:
 
 FileMetaDataProvider::Private::Private(FileMetaDataProvider* parent) :
     m_readOnly(false),
-    m_nepomukActivated(false),
     m_fileItems(),
     m_data(),
     q(parent)
 {
-    m_nepomukActivated = ResourceManager::instance()->initialized();
 }
 
 FileMetaDataProvider::Private::~Private()
@@ -283,7 +280,8 @@ void FileMetaDataProvider::Private::insertBasicData()
     }
 
     // Insert tags, ratings and comments, if Nepomuk activated
-    if( m_nepomukActivated && !m_readOnly ) {
+    bool nepomukActivated = ResourceManager::instance()->initialized();
+    if( nepomukActivated && !m_readOnly ) {
         if( !m_data.contains(NAO::hasTag()) )
             m_data.insert( NAO::hasTag(), Variant() );
         if( !m_data.contains(NAO::numericRating()) )
