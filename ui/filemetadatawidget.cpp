@@ -120,6 +120,7 @@ void FileMetaDataWidget::Private::deleteRows()
         delete row.label;
         delete row.value;
     }
+
     m_rows.clear();
 }
 
