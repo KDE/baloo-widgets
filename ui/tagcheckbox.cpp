@@ -60,6 +60,7 @@ Nepomuk2::TagCheckBox::TagCheckBox( const Tag& tag, TagWidgetPrivate* tagWidget,
     if( tagWidget->m_flags & TagWidget::MiniMode ) {
         m_label = new QLabel( tag.genericLabel(), this );
         m_label->setMouseTracking(true);
+        m_label->setTextFormat(Qt::PlainText);
         m_child = m_label;
     }
     else {
