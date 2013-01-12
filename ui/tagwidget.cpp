@@ -266,6 +266,7 @@ Nepomuk2::TagWidget::TagWidget( const Resource& resource, QWidget* parent )
     : QWidget( parent ),
       d( new TagWidgetPrivate() )
 {
+    setForegroundRole(parent->foregroundRole());
     d->init( this );
     setTaggedResource( resource );
 }
@@ -275,6 +276,7 @@ Nepomuk2::TagWidget::TagWidget( QWidget* parent )
     : QWidget( parent ),
       d( new TagWidgetPrivate() )
 {
+    setForegroundRole(parent->foregroundRole());
     d->init( this );
 }
 
