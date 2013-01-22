@@ -31,6 +31,7 @@
 #include <kurl.h>
 #include <kratingwidget.h>
 #include <KDebug>
+#include <KProcess>
 
 #include <Nepomuk2/Tag>
 #include <Nepomuk2/Resource>
@@ -38,6 +39,9 @@
 #include <nepomuk2/utils.h>
 #include <Nepomuk2/DataManagement>
 #include <Nepomuk2/Types/Property>
+
+#include <Soprano/Model>
+#include <Soprano/QueryResultIterator>
 
 #include <Soprano/Vocabulary/NAO>
 #include <Soprano/Vocabulary/RDF>
@@ -85,6 +89,11 @@ public:
      * @return The number of subdirectories for the directory \a path.
      */
     static int subDirectoriesCount(const QString &path);
+
+    /**
+     * Calls the file indexer on the file
+     */
+    void indexFile( const QUrl& url );
 
     bool m_readOnly;
     QList<KFileItem> m_fileItems;
@@ -291,6 +300,17 @@ void FileMetaDataProvider::Private::insertBasicData()
     }
 }
 
+void FileMetaDataProvider::Private::indexFile(const QUrl& url)
+{
+    const QString exe = KStandardDirs::findExe(QLatin1String("nepomukindexer"));
+
+    KProcess* process = new KProcess( q );
+    process->setProgram( exe, QStringList() << url.toLocalFile() );
+    process->start();
+
+    connect( process, SIGNAL(finished(int)), process, SLOT(deleteLater()) );
+}
+
 
 FileMetaDataProvider::FileMetaDataProvider(QObject* parent) :
     QObject(parent),
@@ -328,6 +348,20 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
             connect( ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)) );
             ret->start();
             return;
+        }
+        else {
+            // In the case when the file has not been fully indexed, but it still exists
+            // there wouldn't be much information to show. In those cases it would be better
+            // to call the indexer manually so that more info can eventually be fetched.
+            //
+            QString query = QString::fromLatin1("ask where { %1 kext:indexingLevel %2. }")
+                            .arg( Soprano::Node::resourceToN3( res.uri() ),
+                                  Soprano::Node::literalToN3( 1 ) );
+
+            Soprano::Model* model = ResourceManager::instance()->mainModel();
+            bool notIndexed = model->executeQuery( query, Soprano::Query::QueryLanguageSparqlNoInference ).boolValue();
+            if( notIndexed )
+                d->indexFile( url );
         }
     }
 
