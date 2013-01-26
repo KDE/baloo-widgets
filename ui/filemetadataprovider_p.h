@@ -106,13 +106,10 @@ Q_SIGNALS:
     /**
      * Is emitted after the loading triggered by KFileMetaDataProvider::setItems()
      * has been finished.
+     *
+     * Can be emitted multiple times to indicate data changes
      */
     void loadingFinished();
-
-    void urlActivated(const KUrl& url);
-
-    void dataChangeStarted();
-    void dataChangeFinished();
 
 private:
     class Private;
@@ -120,6 +117,7 @@ private:
 
     Q_PRIVATE_SLOT(d, void slotLoadingFinished(ResourceLoader* loader))
     Q_PRIVATE_SLOT(d, void slotLoadingFinished(KJob* job))
+    Q_PRIVATE_SLOT(d, void insertBasicData());
 };
 
 }

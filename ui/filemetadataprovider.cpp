@@ -51,6 +51,7 @@
 
 #include <QEvent>
 #include <QLabel>
+#include <QTimer>
 
 // Required includes for subDirectoriesCount():
 #ifdef Q_WS_WIN
@@ -77,6 +78,7 @@ public:
     void slotLoadingFinished(KJob* job);
 
     void insertBasicData();
+    void insertNepomukEditableData();
 
     /**
      * Checks for the existance of \p uri in \p allProperties, and accordingly
@@ -187,6 +189,7 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
 
     if( resources.size() == 1 ) {
         m_data = resources.first().properties();
+        insertBasicData();
     }
     else {
         //
@@ -239,7 +242,7 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
         }
     }
 
-    insertBasicData();
+    insertNepomukEditableData();
 
     emit q->loadingFinished();
 }
@@ -250,6 +253,7 @@ void FileMetaDataProvider::Private::slotLoadingFinished(KJob* job)
     m_data = ret->data();
 
     insertBasicData();
+    insertNepomukEditableData();
 
     emit q->loadingFinished();
 }
@@ -286,8 +290,15 @@ void FileMetaDataProvider::Private::insertBasicData()
             }
         }
         m_data.insert(KUrl("kfileitem#totalSize"), KIO::convertSize(totalSize));
-    }
 
+        // When we have more than 1 item, the basic data should be emitted before
+        // the Resource data, cause the ResourceData might take considerable time
+        emit q->loadingFinished();
+    }
+}
+
+void FileMetaDataProvider::Private::insertNepomukEditableData()
+{
     // Insert tags, ratings and comments, if Nepomuk activated
     bool nepomukActivated = ResourceManager::instance()->initialized();
     if( nepomukActivated && !m_readOnly ) {
@@ -298,7 +309,9 @@ void FileMetaDataProvider::Private::insertBasicData()
         if( !m_data.contains(NAO::description()) )
             m_data.insert( NAO::description(), Variant() );
     }
+
 }
+
 
 void FileMetaDataProvider::Private::indexFile(const QUrl& url)
 {
@@ -377,6 +390,12 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
     connect( loader, SIGNAL(finished(ResourceLoader*)),
              this, SLOT(slotLoadingFinished(ResourceLoader*)) );
     loader->start();
+
+    // When multiple urls are being shown, we load the basic data first cause loading
+    // all the ResourceData will take some time
+    if( urls.size() > 1 ) {
+        QTimer::singleShot( 0, this, SLOT(insertBasicData()) );
+    }
 }
 
 QString FileMetaDataProvider::label(const KUrl& metaDataUri) const
