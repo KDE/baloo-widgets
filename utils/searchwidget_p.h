@@ -30,7 +30,7 @@
 class QListView;
 namespace Nepomuk2 {
     namespace Utils {
-        class SimpleResourceModel;
+        class ResourceModel;
         class FacetWidget;
         class SearchLineEdit;
     }
@@ -64,7 +64,7 @@ public:
     SearchLineEdit *m_queryEdit;
     KPushButton *m_queryButton;
     QListView *m_itemWidget;
-    Utils::SimpleResourceModel* m_resourceModel;
+    Utils::ResourceModel* m_resourceModel;
     Nepomuk2::Utils::FacetWidget *m_facetWidget;
 
     Nepomuk2::Query::QueryServiceClient m_queryClient;

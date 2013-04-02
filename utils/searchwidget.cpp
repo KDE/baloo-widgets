@@ -24,7 +24,7 @@
 
 #include "searchlineedit.h"
 #include "facetwidget.h"
-#include "simpleresourcemodel.h"
+#include "resourcemodel.h"
 #include "proxyfacet.h"
 #include "simplefacet.h"
 
@@ -146,7 +146,7 @@ Nepomuk2::Utils::SearchWidget::SearchWidget(QWidget *parent)
 
     //item widget
     d->m_itemWidget = new QListView(this);
-    d->m_resourceModel = new Utils::SimpleResourceModel(this);
+    d->m_resourceModel = new Utils::ResourceModel(this);
     d->m_itemWidget->setModel(d->m_resourceModel);
     connect(d->m_itemWidget->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SIGNAL(selectionChanged()));
     connect(d->m_itemWidget->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)),

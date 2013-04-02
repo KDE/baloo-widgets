@@ -22,6 +22,9 @@
 #ifndef _NEPOMUK_RESOUCE_MODEL_H_
 #define _NEPOMUK_RESOUCE_MODEL_H_
 
+#include <Nepomuk2/Resource>
+#include <Nepomuk2/Query/Result>
+
 #include <QtCore/QAbstractItemModel>
 
 #include "nepomukwidgets_export.h"
@@ -111,7 +114,7 @@ namespace Nepomuk2 {
              * \return The Resource which corresponds to \p index or an invalid Resource
              * if \p index is invalid.
              */
-            virtual Resource resourceForIndex( const QModelIndex& index ) const = 0;
+            virtual Resource resourceForIndex( const QModelIndex& index ) const;
 
             /**
              * Get the index for a resource.
@@ -119,7 +122,22 @@ namespace Nepomuk2 {
              * \return The index which corresponds to \p res of an invalid QModelIndex
              * if \p res is not part of this model.
              */
-            virtual QModelIndex indexForResource( const Resource& res ) const = 0;
+            virtual QModelIndex indexForResource( const Resource& res );
+
+            /**
+             * \return The number of resources added to the model for an invalid parent index.
+             */
+            virtual int rowCount( const QModelIndex& parent = QModelIndex() ) const;
+
+            /**
+             * Creates an index for the cell at \p row and \p column.
+             */
+            QModelIndex index( int row, int column, const QModelIndex& parent = QModelIndex() ) const;
+
+            /**
+             * Removes those resources from the model.
+             */
+            bool removeRows(int row, int count, const QModelIndex& parent = QModelIndex());
 
             /**
              * The default implementation returns an invalid QModelIndex, thus providing
@@ -166,6 +184,50 @@ namespace Nepomuk2 {
              * Provided for future extensions.
              */
             virtual bool setData( const QModelIndex& index, const QVariant& value, int role );
+
+        public Q_SLOTS:
+            /**
+             * Set the resources to be provided by the model to \p resources.
+             */
+            void setResources( const QList<Nepomuk2::Resource>& resources );
+
+            /**
+             * Add \p resources to the list of resources being provided by the
+             * model.
+             */
+            void addResources( const QList<Nepomuk2::Resource>& resources );
+
+            /**
+             * Add \p resource to the list of resources being provided by the
+             * model.
+             */
+            void addResource( const Nepomuk2::Resource& resource );
+
+            /**
+             * This method is similar to setResources(). It is provided for
+             * allowing convenient connections from signals that provide
+             * Query::Result objects.
+             */
+            void setResults( const QList<Nepomuk2::Query::Result>& results );
+
+            /**
+             * This method is similar to addResources(). It is provided for
+             * allowing convenient connections from signals that provide
+             * Query::Result objects like Query::QueryServiceClient::newResults().
+             */
+            void addResults( const QList<Nepomuk2::Query::Result>& results );
+
+            /**
+             * This method is similar to addResource(). It is provided for
+             * allowing convenient connections from signals that provide
+             * Query::Result objects.
+             */
+            void addResult( const Nepomuk2::Query::Result result );
+
+            /**
+             * Clear the model by removing all resources added via setResources() and friends.
+             */
+            void clear();
 
         private:
             class Private;

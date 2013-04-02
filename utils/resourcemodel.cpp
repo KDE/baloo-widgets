@@ -32,8 +32,9 @@
 #include <KLocale>
 
 #include <Nepomuk2/Resource>
-#include <Nepomuk2/Variant>
+#include <Nepomuk2/Query/Result>
 #include <Nepomuk2/Types/Class>
+#include <Nepomuk2/Variant>
 
 #include <Soprano/Vocabulary/RDFS>
 #include <Soprano/Vocabulary/NAO>
@@ -45,6 +46,7 @@ Q_DECLARE_METATYPE(Nepomuk2::Types::Class)
 class Nepomuk2::Utils::ResourceModel::Private
 {
 public:
+    QList<Nepomuk2::Resource> resources;
 };
 
 
@@ -58,6 +60,74 @@ Nepomuk2::Utils::ResourceModel::ResourceModel( QObject* parent )
 Nepomuk2::Utils::ResourceModel::~ResourceModel()
 {
     delete d;
+}
+
+
+Nepomuk2::Resource Nepomuk2::Utils::ResourceModel::resourceForIndex(const QModelIndex& index) const
+{
+    if ( index.isValid() && index.row() < d->resources.count() ) {
+        return d->resources[index.row()];
+    }
+    else {
+        return Resource();
+    }
+}
+
+
+QModelIndex Nepomuk2::Utils::ResourceModel::indexForResource(const Nepomuk2::Resource& res)
+{
+    Q_ASSERT( res.isValid() );
+    // FIXME: performance
+    int i = 0;
+    QList<Nepomuk2::Resource>::const_iterator end = d->resources.constEnd();
+    for ( QList<Nepomuk2::Resource>::const_iterator it = d->resources.constBegin(); it != end; ++it ) {
+        if ( *it == res ) {
+            return index( i, 0 );
+        }
+        ++i;
+    }
+
+    return QModelIndex();
+}
+
+
+int Nepomuk2::Utils::ResourceModel::rowCount( const QModelIndex& parent ) const
+{
+    if ( parent.isValid() ) {
+        return 0;
+    }
+    else {
+        return d->resources.count();
+    }
+}
+
+
+QModelIndex Nepomuk2::Utils::ResourceModel::index( int row, int column, const QModelIndex& parent ) const
+{
+    if ( !parent.isValid() && row < d->resources.count() ) {
+        return createIndex( row, column, 0 );
+    }
+    else {
+        return QModelIndex();
+    }
+}
+
+
+bool Nepomuk2::Utils::ResourceModel::removeRows(int row, int count, const QModelIndex& parent)
+{
+    if( count < 1 || row < 0 || (row + count) > d->resources.size() || parent.isValid() )
+        return false;
+
+    beginRemoveRows( parent, row, row + count -1 );
+
+    QList<Resource>::iterator begin, end;
+    begin = end = d->resources.begin();
+    begin += row;
+    end += row + count;
+    d->resources.erase( begin, end );
+
+    endRemoveRows();
+    return true;
 }
 
 
@@ -225,6 +295,57 @@ QStringList Nepomuk2::Utils::ResourceModel::mimeTypes() const
 bool Nepomuk2::Utils::ResourceModel::setData( const QModelIndex& index, const QVariant& value, int role )
 {
     return QAbstractItemModel::setData(index, value, role);
+}
+
+
+void Nepomuk2::Utils::ResourceModel::setResources( const QList<Nepomuk2::Resource>& resources )
+{
+    d->resources = resources;
+    reset();
+}
+
+
+void Nepomuk2::Utils::ResourceModel::addResources( const QList<Nepomuk2::Resource>& resources )
+{
+    if(!resources.isEmpty()) {
+        beginInsertRows( QModelIndex(), d->resources.count(), d->resources.count() + resources.count() - 1 );
+        d->resources << resources;
+        endInsertRows();
+    }
+}
+
+
+void Nepomuk2::Utils::ResourceModel::addResource( const Nepomuk2::Resource& resource )
+{
+    addResources( QList<Resource>() << resource );
+}
+
+
+void Nepomuk2::Utils::ResourceModel::setResults( const QList<Nepomuk2::Query::Result>& results)
+{
+    clear();
+    addResults( results );
+}
+
+
+void Nepomuk2::Utils::ResourceModel::addResults( const QList<Nepomuk2::Query::Result>& results )
+{
+    Q_FOREACH( const Query::Result& result, results ) {
+        addResource( result.resource() );
+    }
+}
+
+
+void Nepomuk2::Utils::ResourceModel::addResult( const Nepomuk2::Query::Result result )
+{
+    addResource( result.resource() );
+}
+
+
+void Nepomuk2::Utils::ResourceModel::clear()
+{
+    d->resources.clear();
+    reset();
 }
 
 #include "resourcemodel.moc"

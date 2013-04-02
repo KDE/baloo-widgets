@@ -84,7 +84,6 @@ set(nepomukutils_SRCS
   utils/daterangeselectionwidget.cpp
 
   utils/resourcemodel.cpp
-  utils/simpleresourcemodel.cpp
   utils/searchlineedit.cpp
   utils/searchwidget.cpp
 )
@@ -124,6 +123,7 @@ install(FILES
   nepomukwidgets_export.h
   ui/tagwidget.h
   ui/filemetadatawidget.h
+  utils/resourcemodel.h
 
 #  utils/facet.h
 #  utils/simplefacet.h
@@ -131,8 +131,6 @@ install(FILES
 #  utils/proxyfacet.h
 #  utils/facetwidget.h
 #  utils/searchwidget.h
-#  utils/resourcemodel.h
-#  utils/simpleresourcemodel.h
 
   DESTINATION ${INCLUDE_INSTALL_DIR}/nepomuk2 COMPONENT Devel
 )
