@@ -68,27 +68,8 @@ set(nepomuk_ui_SRCS
 )
 
 set(nepomukutils_SRCS
-  utils/typefacet.cpp
-
-  utils/facetdelegate.cpp
-  utils/facetwidget.cpp
-  utils/facetmodel.cpp
-  utils/facetfiltermodel.cpp
-  utils/facet.cpp
-  utils/simplefacet.cpp
-  utils/dynamicresourcefacet.cpp
-  utils/datefacet.cpp
-  utils/proxyfacet.cpp
-
-  utils/daterange.cpp
-  utils/daterangeselectionwidget.cpp
-
   utils/resourcemodel.cpp
-  utils/searchlineedit.cpp
-  utils/searchwidget.cpp
 )
-
-kde4_add_ui_files(nepomukutils_SRCS utils/daterangeselectionwidget.ui)
 
 set(nepomukwidgets_SRCS ${nepomuk_ui_SRCS} ${nepomukutils_SRCS})
 
@@ -124,13 +105,6 @@ install(FILES
   ui/tagwidget.h
   ui/filemetadatawidget.h
   utils/resourcemodel.h
-
-#  utils/facet.h
-#  utils/simplefacet.h
-#  utils/dynamicresourcefacet.h
-#  utils/proxyfacet.h
-#  utils/facetwidget.h
-#  utils/searchwidget.h
 
   DESTINATION ${INCLUDE_INSTALL_DIR}/nepomuk2 COMPONENT Devel
 )
