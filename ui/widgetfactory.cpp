@@ -72,6 +72,7 @@ namespace Nepomuk2 {
 WidgetFactory::WidgetFactory(QObject* parent)
     : QObject(parent)
     , m_readOnly( false )
+    , m_noLinks( false )
 {
 }
 
@@ -107,10 +108,11 @@ QWidget* WidgetFactory::createWidget(const QUrl& prop, const Variant& value, QWi
 
         QString string = value.toString();
         if( !prop.toString().startsWith("kfileitem#") ) {
-            if( ResourceManager::instance()->initialized() )
-                string = Utils::formatPropertyValue( prop, value, resources, Utils::WithKioLinks );
-            else
+            bool initialized = ResourceManager::instance()->initialized();
+            if( m_noLinks || !initialized )
                 string = Utils::formatPropertyValue( prop, value, resources, Utils::NoPropertyFormatFlags );
+            else
+                string = Utils::formatPropertyValue( prop, value, resources, Utils::WithKioLinks );
         }
         widget = createValueWidget( string, parent );
     }
@@ -289,6 +291,11 @@ void WidgetFactory::slotTagClicked(const Nepomuk2::Tag& tag)
 void WidgetFactory::setReadOnly(bool value)
 {
     m_readOnly = value;
+}
+
+void WidgetFactory::setNoLinks(bool value)
+{
+    m_noLinks = value;
 }
 
 void WidgetFactory::setUris(const QList< QUrl >& uris)

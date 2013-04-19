@@ -98,6 +98,9 @@ public:
     void indexFile( const QUrl& url );
 
     bool m_readOnly;
+
+    /// Set to true when the file has been specially indexed and does not exist in the db
+    bool m_realTimeIndexing;
     QList<KFileItem> m_fileItems;
 
     QHash<QUrl, Variant> m_data;
@@ -108,6 +111,7 @@ private:
 FileMetaDataProvider::Private::Private(FileMetaDataProvider* parent) :
     m_readOnly(false),
     m_fileItems(),
+    m_realTimeIndexing(false),
     m_data(),
     q(parent)
 {
@@ -340,6 +344,7 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
 {
     d->m_fileItems = items;
     d->m_data.clear();
+    d->m_realTimeIndexing = false;
 
     if (items.isEmpty()) {
         return;
@@ -360,6 +365,7 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
             IndexedDataRetriever *ret = new IndexedDataRetriever( url.toLocalFile(), this );
             connect( ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)) );
             ret->start();
+            d->m_realTimeIndexing = true;
             return;
         }
         else {
@@ -529,6 +535,11 @@ int FileMetaDataProvider::Private::subDirectoriesCount(const QString& path)
     }
     return count;
 #endif
+}
+
+bool FileMetaDataProvider::realTimeIndexing()
+{
+    return d->m_realTimeIndexing;
 }
 
 }
