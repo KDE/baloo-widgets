@@ -192,7 +192,7 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
     loader = 0;
 
     if( resources.size() == 1 ) {
-        m_data = resources.first().properties();
+        m_data.unite( resources.first().properties() );
         insertBasicData();
     }
     else {
@@ -254,7 +254,7 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
 void FileMetaDataProvider::Private::slotLoadingFinished(KJob* job)
 {
     IndexedDataRetriever* ret = dynamic_cast<IndexedDataRetriever*>( job );
-    m_data = ret->data();
+    m_data.unite( ret->data() );
 
     insertBasicData();
     insertNepomukEditableData();
@@ -373,14 +373,24 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
             // there wouldn't be much information to show. In those cases it would be better
             // to call the indexer manually so that more info can eventually be fetched.
             //
-            QString query = QString::fromLatin1("ask where { %1 kext:indexingLevel %2. }")
-                            .arg( Soprano::Node::resourceToN3( res.uri() ),
-                                  Soprano::Node::literalToN3( 1 ) );
+            QString query = QString::fromLatin1("select ?l where { %1 kext:indexingLevel ?l. }")
+                            .arg( Soprano::Node::resourceToN3( res.uri() ) );
 
             Soprano::Model* model = ResourceManager::instance()->mainModel();
-            bool notIndexed = model->executeQuery( query, Soprano::Query::QueryLanguageSparqlNoInference ).boolValue();
-            if( notIndexed )
+            Soprano::QueryResultIterator iter = model->executeQuery( query, Soprano::Query::QueryLanguageSparqlNoInference );
+
+            int level = -1;
+            if( iter.next() )
+                level = iter[0].literal().toInt();
+
+            if( level == 1 ) { // Not fully indexed
                 d->indexFile( url );
+            } else if( level == -1 ) {
+                IndexedDataRetriever *ret = new IndexedDataRetriever( url.toLocalFile(), this );
+                connect( ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)) );
+                ret->start();
+                d->m_realTimeIndexing = true;
+            }
         }
     }
 
