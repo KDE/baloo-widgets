@@ -142,6 +142,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
 
     // Filter the data
     QHash<QUrl, Variant> data = m_filter->filter( m_provider->data() );
+    m_widgetFactory->setNoLinks( m_provider->realTimeIndexing() );
 
     // Iterate through all remaining items embed the label
     // and the value as new row in the widget

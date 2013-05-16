@@ -46,6 +46,7 @@ namespace Nepomuk2 {
         QList<QUrl> uris();
 
         void setReadOnly(bool value);
+        void setNoLinks(bool value);
 
         QWidget* createWidget(const QUrl& prop, const Variant& value, QWidget* parent);
 
@@ -77,6 +78,7 @@ namespace Nepomuk2 {
         QList<QUrl> m_uris;
         QList<Tag> m_prevTags;
         bool m_readOnly;
+        bool m_noLinks;
     };
 }
 

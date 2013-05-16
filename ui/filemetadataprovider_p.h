@@ -101,6 +101,13 @@ public:
      */
     QHash<QUrl, Variant> data() const;
 
+    /**
+     * Returns true if the items do not exist in the database and
+     * have just been indexed. This means, that we should not allow
+     * others to search through these items cause they do not exist
+     * in the database.
+     */
+    bool realTimeIndexing();
 
 Q_SIGNALS:
     /**
