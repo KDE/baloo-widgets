@@ -110,8 +110,8 @@ private:
 
 FileMetaDataProvider::Private::Private(FileMetaDataProvider* parent) :
     m_readOnly(false),
-    m_fileItems(),
     m_realTimeIndexing(false),
+    m_fileItems(),
     m_data(),
     q(parent)
 {

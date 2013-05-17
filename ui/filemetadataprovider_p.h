@@ -124,7 +124,7 @@ private:
 
     Q_PRIVATE_SLOT(d, void slotLoadingFinished(ResourceLoader* loader))
     Q_PRIVATE_SLOT(d, void slotLoadingFinished(KJob* job))
-    Q_PRIVATE_SLOT(d, void insertBasicData());
+    Q_PRIVATE_SLOT(d, void insertBasicData())
 };
 
 }
