@@ -23,6 +23,7 @@
 
 #include <QtCore/QThread>
 #include <Nepomuk2/Variant>
+#include <Nepomuk2/ResourceManager>
 
 using namespace Nepomuk2;
 
@@ -35,6 +36,9 @@ public:
 
     virtual void run() {
         m_shouldExit = false;
+
+        if( !Nepomuk2::ResourceManager::instance()->initialized() )
+            return;
 
         m_resourceList.reserve( m_uriList.size() );
         foreach(const QUrl& uri, m_uriList) {

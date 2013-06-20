@@ -35,6 +35,7 @@
 #include <Soprano/Vocabulary/NAO>
 #include <Nepomuk2/Vocabulary/NCO>
 #include <Nepomuk2/Vocabulary/NMM>
+#include <Nepomuk2/ResourceManager>
 
 using namespace Soprano::Vocabulary;
 using namespace Nepomuk2::Vocabulary;
@@ -154,6 +155,8 @@ QHash<QUrl, Variant> MetadataFilter::filter(const QHash<QUrl, Nepomuk2::Variant>
     finalData.remove( NAO::created() );
     finalData.remove( NAO::userVisible() );
 
+    bool connected = ResourceManager::instance()->initialized();
+
     //
     // Remove all items, that are marked as hidden in kmetainformationrc
     KConfig config("kmetainformationrc", KConfig::NoGlobals);
@@ -161,7 +164,7 @@ QHash<QUrl, Variant> MetadataFilter::filter(const QHash<QUrl, Nepomuk2::Variant>
     QHash<QUrl, Variant>::iterator it = finalData.begin();
     while (it != finalData.end()) {
         const QString uriString = it.key().toString();
-        if (!settings.readEntry(uriString, true) || !Types::Property(it.key()).userVisible()) {
+        if (!settings.readEntry(uriString, true) || (connected && !Types::Property(it.key()).userVisible())) {
             it = finalData.erase(it);
         } else {
             ++it;

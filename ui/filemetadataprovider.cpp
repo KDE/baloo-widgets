@@ -361,7 +361,7 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
         else
             res = Resource(url);
 
-        if( !res.exists() ) {
+        if( !ResourceManager::instance()->initialized() || !res.exists() ) {
             IndexedDataRetriever *ret = new IndexedDataRetriever( url.toLocalFile(), this );
             connect( ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)) );
             ret->start();
