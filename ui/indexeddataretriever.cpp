@@ -27,6 +27,7 @@
 #include <Soprano/Vocabulary/NAO>
 
 #include <QtCore/QProcess>
+#include <QFileInfo>
 
 #include <KStandardDirs>
 #include <KDebug>
@@ -39,6 +40,11 @@ namespace Nepomuk2 {
 IndexedDataRetriever::IndexedDataRetriever(const QString& fileUrl, QObject* parent): KJob(parent)
 {
     m_url = fileUrl;
+
+    // Point to the actual file in the case of a system link
+    QFileInfo fileInfo(m_url);
+    if( fileInfo.isSymLink() )
+        m_url = fileInfo.canonicalFilePath();
 }
 
 IndexedDataRetriever::~IndexedDataRetriever()

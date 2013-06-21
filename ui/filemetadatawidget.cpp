@@ -37,6 +37,7 @@
 #include <QSet>
 #include <QString>
 #include <QTimer>
+#include <QFileInfo>
 
 #include <Nepomuk2/Types/Property>
 #include <Nepomuk2/Tag>
@@ -259,9 +260,17 @@ void FileMetaDataWidget::setItems(const KFileItemList& items)
 
     QList<QUrl> uriList;
     foreach(const KFileItem& item, items) {
-        const QUrl uri = item.nepomukUri();
-        if( uri.isValid() )
+        // If the nepomukUri exists, it is returned, otherwise the file url
+        QUrl uri = item.nepomukUri();
+        if( uri.isValid() ) {
+            if( uri.isLocalFile() ) {
+                // Point to the actual file in the case of a system link
+                QFileInfo fileInfo(uri.toLocalFile());
+                if( fileInfo.isSymLink() )
+                    uri = QUrl::fromLocalFile( fileInfo.canonicalFilePath() );
+            }
             uriList << uri;
+        }
     }
     d->m_widgetFactory->setUris( uriList );
 }
