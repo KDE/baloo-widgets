@@ -58,6 +58,7 @@ set(nepomuk_ui_SRCS
   ui/kedittagsdialog.cpp
   ui/tagcheckbox.cpp
   ui/filemetadatawidget.cpp
+  ui/filemetadataconfigwidget.cpp
   ui/filemetadataprovider.cpp
   ui/resourceloader.cpp
   ui/indexeddataretriever.cpp
@@ -104,6 +105,7 @@ install(FILES
   nepomukwidgets_export.h
   ui/tagwidget.h
   ui/filemetadatawidget.h
+  ui/filemetadataconfigwidget.h
   utils/resourcemodel.h
 
   DESTINATION ${INCLUDE_INSTALL_DIR}/nepomuk2 COMPONENT Devel

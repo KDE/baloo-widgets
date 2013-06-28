@@ -24,3 +24,10 @@ target_link_libraries(metadatawidgetapp
   nepomukwidgets
   )
 
+kde4_add_executable(metadataconfigwidgetapp TEST metadataconfigwidgetapp.cpp )
+target_link_libraries(metadataconfigwidgetapp
+  ${KDE4_KIO_LIBS}
+  ${NEPOMUK_CORE_LIBRARY}
+  nepomukwidgets
+  )
+
