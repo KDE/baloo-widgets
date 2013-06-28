@@ -19,7 +19,7 @@ set_package_properties(Soprano PROPERTIES DESCRIPTION "Qt-based RDF storage and 
 find_package(NepomukCore)
 set_package_properties(NepomukCore PROPERTIES DESCRIPTION "The core Nepomuk libraries" URL "http://nepomuk.kde.org" TYPE REQUIRED PURPOSE "Required for running Nepomuk")
 
-feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 # Some definitions
 # ================
