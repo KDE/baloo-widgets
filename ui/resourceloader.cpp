@@ -24,6 +24,7 @@
 #include <QtCore/QThread>
 #include <Nepomuk2/Variant>
 #include <Nepomuk2/ResourceManager>
+#include <Nepomuk2/Types/Property>
 
 using namespace Nepomuk2;
 
@@ -46,7 +47,13 @@ public:
                 return;
 
             Resource res( uri );
-            res.properties();
+            const QHash<QUrl, Variant> data = res.properties();
+
+            // Load all the associated properties as well so that we do not block in the main thread
+            QHash< QUrl, Variant >::const_iterator it = data.constBegin();
+            for(; it != data.constEnd(); it++) {
+                Types::Property( it.key() ).userVisible();
+            }
 
             m_resourceList.append( res );
         }
