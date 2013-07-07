@@ -130,6 +130,11 @@ void FileMetaDataConfigWidget::Private::addItem(const KUrl& uri)
         ++i;
     }
 
+    // Only user visible properties should be shown
+    if (!Types::Property(uri).userVisible()) {
+        return;
+    }
+
     // the item is not hidden, add it to the list
     KConfig config("kmetainformationrc", KConfig::NoGlobals);
     KConfigGroup settings = config.group("Show");
