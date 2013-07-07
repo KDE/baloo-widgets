@@ -31,6 +31,7 @@
 #include <Nepomuk2/Resource>
 #include <Nepomuk2/ResourceManager>
 #include <Nepomuk2/Types/Property>
+#include <Soprano/Vocabulary/NAO>
 #include <KDebug>
 
 #include "filemetadataprovider_p.h"
@@ -39,6 +40,8 @@
 #include <QEvent>
 #include <QListWidget>
 #include <QVBoxLayout>
+
+using namespace Soprano::Vocabulary;
 
 namespace Nepomuk2 {
 
@@ -155,12 +158,21 @@ void FileMetaDataConfigWidget::Private::slotLoadingFinished()
     // the currently shown file item and add them to the list.
     Q_ASSERT(m_provider != 0);
 
-    const QHash<QUrl, Nepomuk2::Variant> data = m_provider->data();
+    QHash<QUrl, Nepomuk2::Variant> data = m_provider->data();
+    // Always show these 3
+    data.remove( NAO::numericRating() );
+    data.remove( NAO::hasTag() );
+    data.remove( NAO::description() );
+
     QHash<QUrl, Nepomuk2::Variant>::const_iterator it = data.constBegin();
     while (it != data.constEnd()) {
         addItem(it.key());
         ++it;
     }
+
+    addItem( NAO::numericRating() );
+    addItem( NAO::hasTag() );
+    addItem( NAO::description() );
 }
 
 FileMetaDataConfigWidget::FileMetaDataConfigWidget(QWidget* parent) :
