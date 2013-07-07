@@ -101,7 +101,6 @@ void FileMetaDataConfigWidget::Private::loadMetaData()
 
 void FileMetaDataConfigWidget::Private::addItem(const KUrl& uri)
 {
-    kDebug() << "GAAAA" << uri;
     // Meta information provided by Nepomuk that is already
     // available from KFileItem as "fixed item" (see above)
     // should not be shown as second entry.
@@ -113,6 +112,11 @@ void FileMetaDataConfigWidget::Private::addItem(const KUrl& uri)
         "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#mimeType",        // = fixed item kfileitem#type
         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName",        // hide this property always
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",                          // = fixed item kfileitem#type
+
+        // Nepomuk internal properties
+        "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#lastModified",
+        "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#created",
+
         0 // mandatory last entry
     };
 
