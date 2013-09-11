@@ -119,7 +119,7 @@ void FileMetaDataWidget::Private::deleteRows()
 {
     foreach (const Row& row, m_rows) {
         delete row.label;
-        delete row.value;
+        row.value->deleteLater();
     }
 
     m_rows.clear();
