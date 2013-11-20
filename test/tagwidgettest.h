@@ -38,7 +38,6 @@ public slots:
 
 private slots:
     void alignRight( bool enable );
-    void disableClicking( bool enable );
     void setReadOnly( bool enable );
 
 private:

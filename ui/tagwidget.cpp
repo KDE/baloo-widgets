@@ -45,7 +45,7 @@ using namespace Baloo;
 void TagWidgetPrivate::init( TagWidget* parent )
 {
     q = parent;
-    m_flags = 0;
+    m_readOnly = false;
     m_showAllLinkLabel = 0;
     m_editTagsDialog = 0;
 
@@ -75,13 +75,13 @@ void TagWidgetPrivate::buildTagHash(const QList<Tag>& tags)
     delete m_showAllLinkLabel;
     m_showAllLinkLabel = 0;
 
-    if ( (m_flags&TagWidget::ReadOnly) && !tags.isEmpty() ) {
+    if (m_readOnly && !tags.isEmpty()) {
         return;
     }
 
     m_showAllLinkLabel = new QLabel( q );
     m_flowLayout->addWidget( m_showAllLinkLabel );
-    if( m_flags&TagWidget::ReadOnly ) {
+    if (m_readOnly) {
         m_showAllLinkLabel->setText("-");
     }
     else {
@@ -101,7 +101,7 @@ TagCheckBox* TagWidgetPrivate::getTagCheckBox( const Tag& tag )
     QMap<Tag, TagCheckBox*>::iterator it = m_checkBoxHash.find(tag);
     if( it == m_checkBoxHash.end() ) {
         //kDebug() << "Creating checkbox for" << tag.genericLabel();
-        TagCheckBox* checkBox = new TagCheckBox( tag, this, q );
+        TagCheckBox* checkBox = new TagCheckBox(tag, q);
         q->connect( checkBox, SIGNAL(tagClicked(Baloo::Tag)), SIGNAL(tagClicked(Baloo::Tag)) );
         m_checkBoxHash.insert( tag, checkBox );
         m_flowLayout->addWidget( checkBox );
@@ -156,10 +156,9 @@ Qt::Alignment TagWidget::alignment() const
     return d->m_flowLayout->alignment();
 }
 
-
-TagWidget::ModeFlags TagWidget::modeFlags() const
+bool TagWidget::readOnly() const
 {
-    return d->m_flags;
+    return d->m_readOnly;
 }
 
 void TagWidget::setSelectedTags( const QList< Tag >& tags )
@@ -172,10 +171,9 @@ void TagWidget::setAlignment( Qt::Alignment alignment )
     d->m_flowLayout->setAlignment( alignment );
 }
 
-
-void TagWidget::setModeFlags( ModeFlags flags )
+void TagWidget::setReadyOnly(bool readOnly)
 {
-    d->m_flags = flags;
+    d->m_readOnly = readOnly;
     d->rebuild();
 }
 
@@ -184,7 +182,6 @@ void TagWidget::slotTagUpdateDone()
 {
     setEnabled( true );
 }
-
 
 void TagWidget::slotShowAll()
 {

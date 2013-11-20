@@ -36,7 +36,7 @@ class TagCheckBox : public QWidget
     Q_OBJECT
 
 public:
-    TagCheckBox(const Tag& tag, TagWidgetPrivate* tagWidget, QWidget* parent = 0);
+    TagCheckBox(const Tag& tag, QWidget* parent = 0);
     ~TagCheckBox();
 
     Tag tag() const { return m_tag; }
@@ -58,7 +58,6 @@ private:
 
     Tag m_tag;
     bool m_urlHover;
-    TagWidgetPrivate* m_tagWidget;
 };
 }
 

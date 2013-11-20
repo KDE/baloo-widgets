@@ -49,7 +49,7 @@ public:
     /// add missing checkboxes
     void selectTags( const QList<Tag>& tags );
 
-    TagWidget::ModeFlags m_flags;
+    bool m_readOnly;
 
     QMap<Tag, TagCheckBox*> m_checkBoxHash;
     QLabel* m_showAllLinkLabel;

@@ -34,12 +34,11 @@
 
 using namespace Baloo;
 
-TagCheckBox::TagCheckBox(const Tag& tag, TagWidgetPrivate* tagWidget, QWidget* parent)
+TagCheckBox::TagCheckBox(const Tag& tag, QWidget* parent)
     : QWidget( parent ),
       m_label(0),
       m_tag(tag),
-      m_urlHover(false),
-      m_tagWidget(tagWidget)
+      m_urlHover(false)
 {
     QHBoxLayout* layout = new QHBoxLayout(this);
     layout->setMargin(0);
@@ -72,15 +71,12 @@ bool TagCheckBox::eventFilter( QObject* watched, QEvent* event )
         switch( event->type() ) {
         case QEvent::MouseMove: {
             QMouseEvent* me = static_cast<QMouseEvent*>(event);
-            if( !(m_tagWidget->m_flags & TagWidget::DisableTagClicking) )
-                enableUrlHover( tagRect().contains(me->pos()) );
+            enableUrlHover( tagRect().contains(me->pos()) );
         }
 
         case QEvent::MouseButtonRelease: {
             QMouseEvent* me = static_cast<QMouseEvent*>(event);
-            if( !(m_tagWidget->m_flags & TagWidget::DisableTagClicking) &&
-                me->button() == Qt::LeftButton &&
-                tagRect().contains(me->pos()) ) {
+            if (me->button() == Qt::LeftButton && tagRect().contains(me->pos())) {
                 emit tagClicked( m_tag );
                 return true;
             }

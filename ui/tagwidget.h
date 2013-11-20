@@ -81,34 +81,9 @@ namespace Baloo {
         Qt::Alignment alignment() const;
 
         /**
-         * Flags to configure the widget.
-         *
-         * \since 4.5
+         * If the widget is read only
          */
-        enum ModeFlag {
-            /**
-             * Read only mode which prevents the changing
-             * of tags by the user.
-             */
-            ReadOnly = 0x1,
-
-            /**
-             * Disable the clicking of the tags. This will
-             * also disable the emitting of the tagClicked()
-             * signal.
-             */
-            DisableTagClicking = 0x2
-        };
-        Q_DECLARE_FLAGS(ModeFlags, ModeFlag)
-
-        /**
-         * Flags the widget is configured with.
-         *
-         * \sa setModeFlags()
-         *
-         * \since 4.5
-         */
-        ModeFlags modeFlags() const;
+        bool readOnly() const;
 
     Q_SIGNALS:
         /**
@@ -142,11 +117,9 @@ namespace Baloo {
         void setAlignment( Qt::Alignment alignment );
 
         /**
-         * Set flags to change the behaviour and look of the tag widget.
-         *
-         * \since 4.5
+         * Set the TagWidget as read only
          */
-        void setModeFlags( ModeFlags flags );
+        void setReadyOnly(bool readOnly = true);
 
     private Q_SLOTS:
         void slotShowAll();
@@ -157,7 +130,5 @@ namespace Baloo {
         TagWidgetPrivate* const d;
     };
 }
-
-Q_DECLARE_OPERATORS_FOR_FLAGS( Baloo::TagWidget::ModeFlags )
 
 #endif

@@ -41,10 +41,6 @@ TagWidgetTest::TagWidgetTest()
     connect(box, SIGNAL(toggled(bool)), this, SLOT(alignRight(bool)));
     lay->addWidget(box);
 
-    box = new QCheckBox( "Disable clicking", this );
-    connect(box, SIGNAL(toggled(bool)), this, SLOT(disableClicking(bool)));
-    lay->addWidget(box);
-
     box = new QCheckBox( "Read only", this );
     connect(box, SIGNAL(toggled(bool)), this, SLOT(setReadOnly(bool)));
     lay->addWidget(box);
@@ -79,17 +75,9 @@ void TagWidgetTest::alignRight( bool enable )
 }
 
 
-void TagWidgetTest::disableClicking( bool enable )
-{
-    Baloo::TagWidget::ModeFlags flags = m_tagWidget->modeFlags();
-    m_tagWidget->setModeFlags( enable ? flags | Baloo::TagWidget::DisableTagClicking : flags & ~Baloo::TagWidget::DisableTagClicking );
-}
-
-
 void TagWidgetTest::setReadOnly( bool enable )
 {
-    Baloo::TagWidget::ModeFlags flags = m_tagWidget->modeFlags();
-    m_tagWidget->setModeFlags( enable ? flags | Baloo::TagWidget::ReadOnly : flags & ~Baloo::TagWidget::ReadOnly );
+    m_tagWidget->setReadyOnly(enable);
 }
 
 #include "tagwidgettest.moc"
