@@ -26,24 +26,12 @@
 #include "kcommentwidget_p.h"
 #include "kratingwidget.h"
 
+#include <baloo/tagrelation.h>
 #include <QtGui/QLabel>
 
+#include <QUrl>
 #include <KJob>
 #include <KDebug>
-#include <Nepomuk2/ResourceManager>
-
-#include <Nepomuk2/Variant>
-#include <Nepomuk2/Resource>
-#include <Nepomuk2/Tag>
-#include <Nepomuk2/DataManagement>
-#include <nepomuk2/utils.h>
-#include <Nepomuk2/Types/Property>
-
-#include <Nepomuk2/Vocabulary/NIE>
-#include <Soprano/Vocabulary/NAO>
-
-using namespace Soprano::Vocabulary;
-using namespace Baloo::Vocabulary;
 
 namespace {
     static QString plainText(const QString& richText)
@@ -67,7 +55,7 @@ namespace {
     }
 }
 
-namespace Baloo {
+using namespace Baloo;
 
 WidgetFactory::WidgetFactory(QObject* parent)
     : QObject(parent)
@@ -84,37 +72,31 @@ WidgetFactory::~WidgetFactory()
 // Widget Creation
 //
 
-QWidget* WidgetFactory::createWidget(const QUrl& prop, const Variant& value, QWidget* parent)
+QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value, QWidget* parent)
 {
     QWidget* widget = 0;
 
-    if( prop == NAO::numericRating() ) {
+    if (prop == QLatin1String("rating")) {
         widget = createRatingWidget( value.toInt(), parent );
     }
-    else if( prop == NAO::description() ) {
+    else if (prop == QLatin1String("comment")) {
         widget = createCommentWidget( value.toString(), parent );
     }
-    else if( prop == NAO::hasTag() ) {
+    else if (prop == QLatin1String("tag")) {
         QList<Tag> tags;
+        /*
         foreach(const Resource& res, value.toResourceList())
             tags << Tag(res);
+        */
 
+        // vHanda FIXME: These tags must be fetched first!!
         widget = createTagWidget( tags, parent );
     }
     else {
-        QList<Resource> resources;
-        foreach(const QUrl& uri, m_uris)
-            resources << uri;
+        // vHanda: FIXME: Add links! Take m_noLinks into consideration
+        //         FIXME: Format the value based on the type
 
-        QString string = value.toString();
-        if( !prop.toString().startsWith("kfileitem#") ) {
-            bool initialized = ResourceManager::instance()->initialized();
-            if( m_noLinks || !initialized )
-                string = Utils::formatPropertyValue( prop, value, resources, Utils::NoPropertyFormatFlags );
-            else
-                string = Utils::formatPropertyValue( prop, value, resources, Utils::WithKioLinks );
-        }
-        widget = createValueWidget( string, parent );
+        widget = createValueWidget(value.toString(), parent);
     }
 
     widget->setForegroundRole(parent->foregroundRole());
@@ -126,15 +108,13 @@ QWidget* WidgetFactory::createWidget(const QUrl& prop, const Variant& value, QWi
 QWidget* WidgetFactory::createTagWidget(const QList<Tag>& tags, QWidget* parent)
 {
     TagWidget* tagWidget = new TagWidget(parent);
-    tagWidget->setModeFlags(m_readOnly
-                            ? TagWidget::MiniMode | TagWidget::ReadOnly
-                            : TagWidget::MiniMode);
+    tagWidget->setReadyOnly(m_readOnly);
     tagWidget->setSelectedTags(tags);
 
-    connect(tagWidget, SIGNAL(selectionChanged(QList<Nepomuk2::Tag>)),
-            this, SLOT(slotTagsChanged(QList<Nepomuk2::Tag>)));
-    connect(tagWidget, SIGNAL(tagClicked(Nepomuk2::Tag)),
-            this, SLOT(slotTagClicked(Nepomuk2::Tag)));
+    connect(tagWidget, SIGNAL(selectionChanged(QList<Baloo::Tag>)),
+            this, SLOT(slotTagsChanged(QList<Baloo::Tag>)));
+    connect(tagWidget, SIGNAL(tagClicked(Baloo::Tag)),
+            this, SLOT(slotTagClicked(Baloo::Tag)));
 
     m_tagWidget = tagWidget;
     m_prevTags = tags;
@@ -220,41 +200,28 @@ QWidget* WidgetFactory::createValueWidget(const QString& value, QWidget* parent)
 
 void WidgetFactory::slotCommentChanged(const QString& comment)
 {
-    KJob* job = Nepomuk2::setProperty( m_uris, NAO::description(), QVariantList() << comment );
-    startChangeDataJob(job);
+    // FIXME: Save the comments!!
+    //KJob* job = Nepomuk2::setProperty( m_uris, NAO::description(), QVariantList() << comment );
+    //startChangeDataJob(job);
 }
 
 void WidgetFactory::slotRatingChanged(uint rating)
 {
-    KJob* job = Nepomuk2::setProperty( m_uris, NAO::numericRating(), QVariantList() << rating );
-    startChangeDataJob(job);
+    // FIXME: Save the ratings!
+    //KJob* job = Nepomuk2::setProperty( m_uris, NAO::numericRating(), QVariantList() << rating );
+    //startChangeDataJob(job);
 }
 
-void WidgetFactory::slotTagsChanged(const QList<Nepomuk2::Tag>& tags)
+void WidgetFactory::slotTagsChanged(const QList<Baloo::Tag>& tags)
 {
-    if( m_tagWidget ) {
-        QVariantList tagUris;
-        foreach( const Tag& tag, tags )
-            tagUris << tag.uri();
+    if (m_tagWidget) {
+        TagRelationCreateJob* job = new TagRelationCreateJob(m_items, tags);
 
-        KJob* job;
-        if( m_uris.size() == 1 )
-            job = Nepomuk2::setProperty( m_uris, NAO::hasTag(), tagUris );
-        else {
-            // When multiple tags are selected one doesn't want to loose the old tags
-            // of any of the resources. Unless specifically removed.
-            QSet<Tag> removedTags = m_prevTags.toSet().subtract( tags.toSet() );
-            QVariantList removedTagsUris;
-            foreach( const Tag& tag, removedTags )
-                removedTagsUris << tag.uri();
-
-            if( !removedTagsUris.isEmpty() ) {
-                // FIXME: This may cause an error. Multiple jobs accessing the same
-                // resource, we don't have a concept of transactions
-                Nepomuk2::removeProperty( m_uris, NAO::hasTag(), removedTagsUris );
-            }
-            job = Nepomuk2::addProperty( m_uris, NAO::hasTag(), tagUris );
-        }
+        // FIXME: vHanda : Remove the tags that are no longer applicable
+        // When multiple tags are selected one doesn't want to loose the old tags
+        // of any of the resources. Unless specifically removed.
+        // QSet<Tag> removedTags = m_prevTags.toSet().subtract( tags.toSet() );
+        // Remove these tags!
 
         m_prevTags = tags;
         startChangeDataJob(job);
@@ -276,12 +243,13 @@ void WidgetFactory::startChangeDataJob(KJob* job)
 
 void WidgetFactory::slotLinkActivated(const QString& url)
 {
-    emit urlActivated( url );
+    emit urlActivated(QUrl(url));
 }
 
-void WidgetFactory::slotTagClicked(const Nepomuk2::Tag& tag)
+void WidgetFactory::slotTagClicked(const Baloo::Tag& tag)
 {
-    emit urlActivated( tag.uri() );
+    // vHanda: FIXME: Create a link for this tag!!
+    // emit urlActivated( tag.uri() );
 }
 
 
@@ -298,18 +266,8 @@ void WidgetFactory::setNoLinks(bool value)
     m_noLinks = value;
 }
 
-void WidgetFactory::setUris(const QList< QUrl >& uris)
+void WidgetFactory::setItems(const QList<Item>& items)
 {
-    m_uris = uris;
-    // Maybe we should invalidate some of the widgets?
-}
-
-QList< QUrl > WidgetFactory::uris()
-{
-    return m_uris;
-}
-
-
-
+    m_items = items;
 }
 

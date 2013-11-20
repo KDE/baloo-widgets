@@ -55,10 +55,10 @@ set(ui_SRCS
 #  ui/filemetadataprovider.cpp
 #  ui/resourceloader.cpp
 #  ui/indexeddataretriever.cpp
-#  ui/kcommentwidget.cpp
+  ui/kcommentwidget.cpp
 #  ui/knfotranslator.cpp
 #  ui/metadatafilter.cpp
-#  ui/widgetfactory.cpp
+  ui/widgetfactory.cpp
 )
 
 set(widgets_SRCS ${ui_SRCS})

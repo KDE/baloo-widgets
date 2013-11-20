@@ -21,8 +21,8 @@
 #ifndef WIDGETFACTORY_H
 #define WIDGETFACTORY_H
 
-#include <QtCore/QObject>
-#include <KUrl>
+#include <QObject>
+#include <baloo/tag.h>
 
 class KJob;
 class KCommentWidget;
@@ -40,25 +40,24 @@ namespace Baloo {
         explicit WidgetFactory(QObject* parent = 0);
         virtual ~WidgetFactory();
 
-        void setUris(const QList<QUrl>& uris);
-        QList<QUrl> uris();
+        void setItems(const QList<Item>& items);
 
         void setReadOnly(bool value);
         void setNoLinks(bool value);
 
-        QWidget* createWidget(const QUrl& prop, const Variant& value, QWidget* parent);
+        QWidget* createWidget(const QString& prop, const QVariant& value, QWidget* parent);
 
     signals:
-        void urlActivated(const KUrl& url);
+        void urlActivated(const QUrl& url);
         void dataChangeStarted();
         void dataChangeFinished();
 
     private slots:
-        void slotTagsChanged(const QList<Nepomuk2::Tag>& tags);
+        void slotTagsChanged(const QList<Baloo::Tag>& tags);
         void slotCommentChanged(const QString& comment);
         void slotRatingChanged(uint rating);
 
-        void slotTagClicked(const Nepomuk2::Tag& tag);
+        void slotTagClicked(const Baloo::Tag& tag);
         void slotLinkActivated(const QString& url);
 
     private:
@@ -73,7 +72,7 @@ namespace Baloo {
         KRatingWidget* m_ratingWidget;
         KCommentWidget* m_commentWidget;
 
-        QList<QUrl> m_uris;
+        QList<Item> m_items;
         QList<Tag> m_prevTags;
         bool m_readOnly;
         bool m_noLinks;
