@@ -43,7 +43,7 @@
 #include <Soprano/Vocabulary/NAO>
 
 using namespace Soprano::Vocabulary;
-using namespace Nepomuk2::Vocabulary;
+using namespace Baloo::Vocabulary;
 
 namespace {
     static QString plainText(const QString& richText)
@@ -67,7 +67,7 @@ namespace {
     }
 }
 
-namespace Nepomuk2 {
+namespace Baloo {
 
 WidgetFactory::WidgetFactory(QObject* parent)
     : QObject(parent)

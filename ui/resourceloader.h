@@ -24,7 +24,7 @@
 #include <QObject>
 #include <Nepomuk2/Resource>
 
-namespace Nepomuk2 {
+namespace Baloo {
 
 class ResourceLoader : public QObject
 {

@@ -18,13 +18,13 @@
 */
 
 
-#ifndef _NEPOMUK2_METADATAFILTER_H
-#define _NEPOMUK2_METADATAFILTER_H
+#ifndef _BALOO_METADATAFILTER_H
+#define _BALOO_METADATAFILTER_H
 
 #include <QtCore/QUrl>
 #include <QtCore/QHash>
 
-namespace Nepomuk2 {
+namespace Baloo {
 
     class Variant;
 
@@ -49,4 +49,4 @@ namespace Nepomuk2 {
     };
 }
 
-#endif // _NEPOMUK2_METADATAFILTER_H
+#endif // _BALOO_METADATAFILTER_H

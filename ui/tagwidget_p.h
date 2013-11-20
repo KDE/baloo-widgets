@@ -18,8 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef _NEPOMUK_TAG_WIDGET_P_H_
-#define _NEPOMUK_TAG_WIDGET_P_H_
+#ifndef _BALOO_TAG_WIDGET_P_H_
+#define _BALOO_TAG_WIDGET_P_H_
 
 #include "tagwidget.h"
 #include <Nepomuk2/Tag>
@@ -32,7 +32,7 @@ class QLabel;
 class KBlockLayout;
 class KEditTagsDialog;
 
-namespace Nepomuk2 {
+namespace Baloo {
 
 class TagCheckBox;
 

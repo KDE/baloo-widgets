@@ -39,15 +39,12 @@
 #include <QTimer>
 #include <QFileInfo>
 
-#include <Nepomuk2/Types/Property>
-#include <Nepomuk2/Tag>
-
 #include <QSpacerItem>
 
 #include "filemetadataprovider_p.h"
 #include <KDebug>
 
-namespace Nepomuk2 {
+using namespace Baloo;
 
 class FileMetaDataWidget::Private
 {
@@ -75,7 +72,7 @@ public:
     void slotDataChangeStarted();
     void slotDataChangeFinished();
 
-    QList<QUrl> sortedKeys(const QHash<QUrl, Nepomuk2::Variant>& data) const;
+    //QList<QUrl> sortedKeys(const QHash<QUrl, Nepomuk2::Variant>& data) const;
 
     /**
      * @return True, if at least one of the file items \a m_fileItems has
@@ -129,6 +126,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
 {
     deleteRows();
 
+    /*
     if (!hasNepomukUris()) {
         q->updateGeometry();
         emit q->metaDataRequestFinished(m_provider->items());
@@ -181,6 +179,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
         ++rowIndex;
     }
 
+    */
     q->updateGeometry();
     emit q->metaDataRequestFinished(m_provider->items());
 }
@@ -203,6 +202,7 @@ void FileMetaDataWidget::Private::slotDataChangeFinished()
     q->setEnabled(true);
 }
 
+/*
 QList<QUrl> FileMetaDataWidget::Private::sortedKeys(const QHash<QUrl, Variant>& data) const
 {
     // Create a map, where the translated label prefixed with the
@@ -232,6 +232,7 @@ QList<QUrl> FileMetaDataWidget::Private::sortedKeys(const QHash<QUrl, Variant>& 
 
     return list;
 }
+*/
 
 bool FileMetaDataWidget::Private::hasNepomukUris() const
 {
@@ -339,7 +340,3 @@ QSize FileMetaDataWidget::sizeHint() const
 
     return QSize(width, height);
 }
-
-}
-
-#include "filemetadatawidget.moc"

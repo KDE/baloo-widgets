@@ -24,9 +24,7 @@
 #include <KJob>
 #include <KProcess>
 
-#include <Nepomuk2/Variant>
-
-namespace Nepomuk2 {
+namespace Baloo {
 
 class IndexedDataRetriever : public KJob
 {
@@ -37,7 +35,7 @@ public:
 
     virtual void start();
 
-    QHash<QUrl, Variant> data();
+    //QHash<QUrl, Variant> data();
 
 private slots:
     void slotIndexedFile(int error);
@@ -45,7 +43,7 @@ private slots:
 private:
     QString m_url;
     QProcess* m_process;
-    QHash<QUrl, Variant> m_data;
+    //QHash<QUrl, Variant> m_data;
 };
 
 }

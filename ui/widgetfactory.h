@@ -28,11 +28,9 @@ class KJob;
 class KCommentWidget;
 class KRatingWidget;
 
-namespace Nepomuk2 {
+namespace Baloo {
 
     class Tag;
-    class Resource;
-    class Variant;
     class TagWidget;
 
     class WidgetFactory : public QObject

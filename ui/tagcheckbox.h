@@ -19,8 +19,8 @@
    License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _NEPOMUK_TAG_CHECKBOX_H_
-#define _NEPOMUK_TAG_CHECKBOX_H_
+#ifndef _BALOO_TAG_CHECKBOX_H_
+#define _BALOO_TAG_CHECKBOX_H_
 
 #include <QtGui/QWidget>
 
@@ -30,7 +30,7 @@
 class QMouseEvent;
 class QLabel;
 
-namespace Nepomuk2 {
+namespace Baloo {
 class TagCheckBox : public QWidget
 {
     Q_OBJECT

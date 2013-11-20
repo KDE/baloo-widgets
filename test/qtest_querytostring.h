@@ -19,8 +19,8 @@
    License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _NEPOMUK_QTEST_QUERY_TO_STRING_H_
-#define _NEPOMUK_QTEST_QUERY_TO_STRING_H_
+#ifndef _BALOO_QTEST_QUERY_TO_STRING_H_
+#define _BALOO_QTEST_QUERY_TO_STRING_H_
 
 #include <Nepomuk2/Query/Query>
 #include <Nepomuk2/Query/Term>

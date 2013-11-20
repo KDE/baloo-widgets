@@ -33,22 +33,6 @@
 #include <KDebug>
 #include <KProcess>
 
-#include <Nepomuk2/Tag>
-#include <Nepomuk2/Resource>
-#include <Nepomuk2/ResourceManager>
-#include <nepomuk2/utils.h>
-#include <Nepomuk2/DataManagement>
-#include <Nepomuk2/Types/Property>
-
-#include <Soprano/Model>
-#include <Soprano/QueryResultIterator>
-
-#include <Soprano/Vocabulary/NAO>
-#include <Soprano/Vocabulary/RDF>
-#include <Nepomuk2/Vocabulary/NFO>
-#include <Nepomuk2/Vocabulary/NMM>
-#include <Nepomuk2/Vocabulary/NIE>
-
 #include <QEvent>
 #include <QLabel>
 #include <QTimer>
@@ -61,11 +45,9 @@
     #include <QFile>
 #endif
 
-using namespace Soprano::Vocabulary;
-using namespace Nepomuk2::Vocabulary;
+using namespace Baloo;
 
-
-namespace Nepomuk2 {
+namespace Baloo {
 
 class FileMetaDataProvider::Private
 {
@@ -303,6 +285,7 @@ void FileMetaDataProvider::Private::insertBasicData()
 
 void FileMetaDataProvider::Private::insertNepomukEditableData()
 {
+    /* FIXME : vHanda
     // Insert tags, ratings and comments, if Nepomuk activated
     bool nepomukActivated = ResourceManager::instance()->initialized();
     if( nepomukActivated && !m_readOnly ) {
@@ -313,7 +296,7 @@ void FileMetaDataProvider::Private::insertNepomukEditableData()
         if( !m_data.contains(NAO::description()) )
             m_data.insert( NAO::description(), Variant() );
     }
-
+    */
 }
 
 
@@ -342,6 +325,7 @@ FileMetaDataProvider::~FileMetaDataProvider()
 
 void FileMetaDataProvider::setItems(const KFileItemList& items)
 {
+    /*
     d->m_fileItems = items;
     d->m_data.clear();
     d->m_realTimeIndexing = false;
@@ -412,6 +396,7 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
     if( urls.size() > 1 ) {
         QTimer::singleShot( 0, this, SLOT(insertBasicData()) );
     }
+    */
 }
 
 QString FileMetaDataProvider::label(const KUrl& metaDataUri) const
@@ -458,6 +443,7 @@ QString FileMetaDataProvider::label(const KUrl& metaDataUri) const
 
 QString FileMetaDataProvider::group(const KUrl& metaDataUri) const
 {
+    /*
     static QHash<QUrl, QString> uriGrouper;
     if( uriGrouper.isEmpty() ) {
         // KFileItem Data
@@ -491,6 +477,8 @@ QString FileMetaDataProvider::group(const KUrl& metaDataUri) const
     }
 
     return uriGrouper.value( metaDataUri );
+    */
+    return QString();
 }
 
 KFileItemList FileMetaDataProvider::items() const
@@ -508,7 +496,7 @@ bool FileMetaDataProvider::isReadOnly() const
     return d->m_readOnly;
 }
 
-QHash<QUrl, Variant> FileMetaDataProvider::data() const
+QHash< QUrl, QVariant > FileMetaDataProvider::data() const
 {
     return d->m_data;
 }

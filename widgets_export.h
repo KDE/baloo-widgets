@@ -17,22 +17,22 @@
     Boston, MA 02110-1301, USA.
 */
 
-#ifndef NEPOMUKWIDGETS_EXPORT_H
-#define NEPOMUKWIDGETS_EXPORT_H
+#ifndef BALOO_WIDGETS_EXPORT_H
+#define BALOO_WIDGETS_EXPORT_H
 
 /* needed for KDE_EXPORT and KDE_IMPORT macros */
 #include <kdemacros.h>
 
-#ifndef NEPOMUKWIDGETS_EXPORT
+#ifndef BALOO_WIDGETS_EXPORT
 # if defined(KDELIBS_STATIC_LIBS)
    /* No export/import for static libraries */
-#  define NEPOMUKWIDGETS_EXPORT
-# elif defined(MAKE_NEPOMUKWIDGETS_LIB)
+#  define BALOO_WIDGETS_EXPORT
+# elif defined(MAKE_BALOO_WIDGETS_LIB)
    /* We are building this library */
-#  define NEPOMUKWIDGETS_EXPORT KDE_EXPORT
+#  define BALOO_WIDGETS_EXPORT KDE_EXPORT
 # else
    /* We are using this library */
-#  define NEPOMUKWIDGETS_EXPORT KDE_IMPORT
+#  define BALOO_WIDGETS_EXPORT KDE_IMPORT
 # endif
 #endif
 

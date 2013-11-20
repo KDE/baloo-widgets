@@ -18,22 +18,22 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef NEPOMUK2_FILEMETADATACONFIGWIDGET_H
-#define NEPOMUK2_FILEMETADATACONFIGWIDGET_H
+#ifndef BALOO_FILEMETADATACONFIGWIDGET_H
+#define BALOO_FILEMETADATACONFIGWIDGET_H
 
-#include "nepomukwidgets_export.h"
+#include "widgets_export.h"
 #include <KFileItem>
 
 #include <QWidget>
 
 
-namespace Nepomuk2 {
+namespace Baloo {
 
 /**
  * @brief Widget which allows to configure which meta data should be shown
  *        in the FileMetadataWidget
  */
-class NEPOMUKWIDGETS_EXPORT FileMetaDataConfigWidget : public QWidget
+class BALOO_WIDGETS_EXPORT FileMetaDataConfigWidget : public QWidget
 {
     Q_OBJECT
 

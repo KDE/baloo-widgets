@@ -23,8 +23,6 @@
 
 #include <kurl.h>
 
-#include <Nepomuk2/Types/Property>
-
 struct TranslationItem {
     const char* const key;
     const char* const context;
@@ -126,7 +124,8 @@ QString KNfoTranslator::translation(const KUrl& uri) const
         return m_hash.value(key);
     }
 
-    const QString label = Nepomuk2::Types::Property(uri).label();
+    // vHanda: FIXME
+    const QString label;// = Nepomuk2::Types::Property(uri).label();
 
     QString tunedLabel;
     const int labelLength = label.length();

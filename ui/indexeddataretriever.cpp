@@ -20,22 +20,13 @@
 
 #include "indexeddataretriever.h"
 
-#include <Nepomuk2/SimpleResource>
-#include <Nepomuk2/SimpleResourceGraph>
-#include <Nepomuk2/Vocabulary/NIE>
-#include <Nepomuk2/Vocabulary/NCO>
-#include <Soprano/Vocabulary/NAO>
-
 #include <QtCore/QProcess>
 #include <QFileInfo>
 
 #include <KStandardDirs>
 #include <KDebug>
 
-using namespace Soprano::Vocabulary;
-using namespace Nepomuk2::Vocabulary;
-
-namespace Nepomuk2 {
+using namespace Baloo;
 
 IndexedDataRetriever::IndexedDataRetriever(const QString& fileUrl, QObject* parent): KJob(parent)
 {
@@ -70,6 +61,7 @@ void IndexedDataRetriever::slotIndexedFile(int)
     QByteArray data = QByteArray::fromBase64(m_process->readAllStandardOutput());
     QDataStream in( &data, QIODevice::ReadOnly );
 
+    /* vHanda: FIXME
     Nepomuk2::SimpleResourceGraph graph;
     in >> graph;
 
@@ -108,13 +100,14 @@ void IndexedDataRetriever::slotIndexedFile(int)
             }
         }
     }
+    */
 
     emitResult();
 }
 
+/* vHanda: FIXME
 QHash< QUrl, Variant > IndexedDataRetriever::data()
 {
     return m_data;
 }
-
-}
+*/

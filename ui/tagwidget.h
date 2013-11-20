@@ -18,14 +18,14 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef _NEPOMUK_TAG_WIDGET_H_
-#define _NEPOMUK_TAG_WIDGET_H_
+#ifndef _BALOO_TAG_WIDGET_H_
+#define _BALOO_TAG_WIDGET_H_
 
-#include "nepomukwidgets_export.h"
+#include "widgets_export.h"
 
 #include <QtGui/QWidget>
 
-namespace Nepomuk2 {
+namespace Baloo {
     class Resource;
     class Tag;
     class TagWidgetPrivate;
@@ -45,7 +45,7 @@ namespace Nepomuk2 {
      *
      * \author Sebastian Trueg <trueg@kde.org>
      */
-    class NEPOMUKWIDGETS_EXPORT TagWidget : public QWidget
+    class BALOO_WIDGETS_EXPORT TagWidget : public QWidget
     {
         Q_OBJECT
 

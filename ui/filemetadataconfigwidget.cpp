@@ -27,11 +27,6 @@
 #include "knfotranslator_p.h"
 #include <klocale.h>
 
-#include <Nepomuk2/Variant>
-#include <Nepomuk2/Resource>
-#include <Nepomuk2/ResourceManager>
-#include <Nepomuk2/Types/Property>
-#include <Soprano/Vocabulary/NAO>
 #include <KDebug>
 
 #include "filemetadataprovider_p.h"
@@ -41,11 +36,9 @@
 #include <QListWidget>
 #include <QVBoxLayout>
 
-using namespace Soprano::Vocabulary;
+using namespace Baloo;
 
-namespace Nepomuk2 {
-
-class Nepomuk2::FileMetaDataConfigWidget ::Private
+class FileMetaDataConfigWidget ::Private
 {
 public:
     Private(FileMetaDataConfigWidget* parent);
@@ -133,10 +126,13 @@ void FileMetaDataConfigWidget::Private::addItem(const KUrl& uri)
         ++i;
     }
 
+    /*
+     * vHanda: FIXME
     // Only user visible properties should be shown
     if (!Types::Property(uri).userVisible()) {
         return;
     }
+    */
 
     // the item is not hidden, add it to the list
     KConfig config("kmetainformationrc", KConfig::NoGlobals);
@@ -154,6 +150,7 @@ void FileMetaDataConfigWidget::Private::addItem(const KUrl& uri)
 
 void FileMetaDataConfigWidget::Private::slotLoadingFinished()
 {
+    /* vHanda: FIXME
     // Get all meta information labels that are available for
     // the currently shown file item and add them to the list.
     Q_ASSERT(m_provider != 0);
@@ -173,6 +170,7 @@ void FileMetaDataConfigWidget::Private::slotLoadingFinished()
     addItem( NAO::numericRating() );
     addItem( NAO::hasTag() );
     addItem( NAO::description() );
+    */
 }
 
 FileMetaDataConfigWidget::FileMetaDataConfigWidget(QWidget* parent) :
@@ -229,6 +227,3 @@ QSize FileMetaDataConfigWidget::sizeHint() const
     return d->m_metaDataList->sizeHint();
 }
 
-}
-
-#include "filemetadataconfigwidget.moc"

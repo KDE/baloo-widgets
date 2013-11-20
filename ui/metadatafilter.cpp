@@ -38,9 +38,9 @@
 #include <Nepomuk2/ResourceManager>
 
 using namespace Soprano::Vocabulary;
-using namespace Nepomuk2::Vocabulary;
+using namespace Baloo::Vocabulary;
 
-namespace Nepomuk2 {
+namespace Baloo {
 
 MetadataFilter::MetadataFilter(QObject* parent): QObject(parent)
 {

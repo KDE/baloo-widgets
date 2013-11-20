@@ -178,7 +178,7 @@ Nepomuk2::TagCheckBox* Nepomuk2::TagWidgetPrivate::getTagCheckBox( const Tag& ta
     }
 }
 
-namespace Nepomuk2 {
+namespace Baloo {
 /// operator necessary for QMap::erase
 bool operator<(const Tag& t1, const Tag& t2) {
     return t1.uri() < t2.uri();

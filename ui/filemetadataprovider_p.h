@@ -17,22 +17,21 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef _NEPOMUK_FILEMETADATAMODEL_H
-#define _NEPOMUK_FILEMETADATAMODEL_H
+#ifndef _BALOO_FILEMETADATAMODEL_H
+#define _BALOO_FILEMETADATAMODEL_H
 
 #include <KUrl>
 
 #include <QtCore/QHash>
 #include <QtCore/QObject>
 #include <QtCore/QString>
-
-#include <Nepomuk2/Variant>
+#include <QVariant>
 
 class KFileItemList;
 class KProcess;
 class QWidget;
 
-namespace Nepomuk2 {
+namespace Baloo {
 
 class ResourceLoader;
 /**
@@ -99,7 +98,7 @@ public:
      *         be invoked after the signal loadingFinished() has
      *         been received (otherwise no data will be returned).
      */
-    QHash<QUrl, Variant> data() const;
+    QHash<QUrl, QVariant> data() const;
 
     /**
      * Returns true if the items do not exist in the database and

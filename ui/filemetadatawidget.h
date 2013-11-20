@@ -22,19 +22,19 @@
 */
 
 
-#ifndef _NEPOMUK2_FILE_METADATAWIDGET_H
-#define _NEPOMUK2_FILE_METADATAWIDGET_H
+#ifndef _BALOO_FILE_METADATAWIDGET_H
+#define _BALOO_FILE_METADATAWIDGET_H
 
 #include <QWidget>
 
 #include <KFileItem>
 #include <KUrl>
 
-#include "nepomukwidgets_export.h"
+#include "widgets_export.h"
 
-namespace Nepomuk2 {
+namespace Baloo {
 
-class NEPOMUKWIDGETS_EXPORT FileMetaDataWidget : public QWidget
+class BALOO_WIDGETS_EXPORT FileMetaDataWidget : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(bool readOnly READ isReadOnly WRITE setReadOnly)
@@ -86,4 +86,4 @@ private:
 };
 
 }
-#endif // _NEPOMUK2_FILE_METADATAWIDGET_H
+#endif // _BALOO_FILE_METADATAWIDGET_H

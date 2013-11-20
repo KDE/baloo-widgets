@@ -26,7 +26,7 @@
 #include <Nepomuk2/ResourceManager>
 #include <Nepomuk2/Types/Property>
 
-using namespace Nepomuk2;
+using namespace Baloo;
 
 class ResourceLoader::LoadingThread : public QThread {
 public:
