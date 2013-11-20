@@ -24,14 +24,14 @@
 #include "widgets_export.h"
 
 #include <QtGui/QWidget>
+#include <baloo/tag.h>
 
 namespace Baloo {
-    class Resource;
     class Tag;
     class TagWidgetPrivate;
 
     /**
-     * \class TagWidget tagwidget.h Nepomuk/TagWidget
+     * \class TagWidget tagwidget.h
      *
      * \brief Allows to change a selection of tags.
      *
@@ -51,33 +51,14 @@ namespace Baloo {
 
     public:
         /**
-         * Creates a new TagWidget for resource. The assigned tags are loaded
-         * instantly.
-         */
-        explicit TagWidget( const Resource& resource, QWidget* parent = 0 );
-
-        /**
          * Constructor
          */
-        TagWidget( QWidget* parent = 0 );
+        explicit TagWidget(QWidget* parent = 0);
 
         /**
          * Destructor
          */
         ~TagWidget();
-
-        /**
-         * \return The resources that are supposed to be tagged or an empty
-         * list if none have been set.
-         */
-        QList<Resource> taggedResources() const;
-
-        /**
-         * \deprecated use selectedTags() instead
-         */
-#ifndef KDE_NO_DEPRECATED
-        KDE_DEPRECATED QList<Tag> assignedTags() const;
-#endif
 
         /**
          * The list of selected tags.
@@ -90,19 +71,7 @@ namespace Baloo {
          *
          * \since 4.5
          */
-        QList<Nepomuk2::Tag> selectedTags() const;
-
-        /**
-         * By default the TagWidget shows the most often used tags in the
-         * main window and allows access to all tags via an additional button.
-         * This is the maximum number of tags that should be shown unless they
-         * are selected.
-         *
-         * \sa setMaxTagsShown()
-         *
-         * \since 4.5
-         */
-        int maxTagsShown() const;
+        QList<Tag> selectedTags() const;
 
         /**
          * The alignment of the tags in the widget.
@@ -118,33 +87,19 @@ namespace Baloo {
          */
         enum ModeFlag {
             /**
-             * The mini mode which tries to
-             * display the tags on the least
-             * space possible.
-             */
-            MiniMode = 0x1,
-
-            /**
-             * The standard mode which is used by default
-             * provides a set of check boxes for the most
-             * frequently used tags.
-             */
-            StandardMode = 0x2,
-
-            /**
              * Read only mode which prevents the changing
              * of tags by the user.
              */
-            ReadOnly = 0x4,
+            ReadOnly = 0x1,
 
             /**
              * Disable the clicking of the tags. This will
              * also disable the emitting of the tagClicked()
              * signal.
              */
-            DisableTagClicking = 0x8
+            DisableTagClicking = 0x2
         };
-        Q_DECLARE_FLAGS( ModeFlags, ModeFlag )
+        Q_DECLARE_FLAGS(ModeFlags, ModeFlag)
 
         /**
          * Flags the widget is configured with.
@@ -159,35 +114,16 @@ namespace Baloo {
         /**
          * This signal is emitted whenever a tag is clicked.
          */
-        void tagClicked( Nepomuk2::Tag );
+        void tagClicked(const Baloo::Tag&);
 
         /**
          * Emitted whenever the selection of tags changes.
          *
          * \since 4.5
          */
-        void selectionChanged( const QList<Nepomuk2::Tag>& tags );
+        void selectionChanged(const QList<Baloo::Tag>& tags);
 
     public Q_SLOTS:
-        /**
-         * Set the Resource to be tagged. The assigned tags will be loaded
-         * instantly.
-         */
-        void setTaggedResource( const Resource& resource );
-
-        /**
-         * Set the resources to be tagged. If the list of resources is
-         * empty TagWidget will only emit the selectionChanged() signal.
-         */
-        void setTaggedResources( const QList<Resource>& resources );
-
-        /**
-         * \deprecated use setSelectedTags() instead
-         */
-#ifndef KDE_NO_DEPRECATED
-        KDE_DEPRECATED void setAssignedTags( const QList<Nepomuk2::Tag>& tags );
-#endif
-
         /**
          * Set the list of selected tags. In case resources have been
          * set via setTaggedResource() or setTaggedResources() their
@@ -195,21 +131,7 @@ namespace Baloo {
          *
          * \since 4.5
          */
-        void setSelectedTags( const QList<Nepomuk2::Tag>& tags );
-
-        /**
-         * By default the TagWidget shows the most often used tags in the
-         * main window and allows access to all tags via an additional button.
-         *
-         * The number of tags that are shown by default can be changed.
-         *
-         * \param max The maximum number of tags that should be shown in the
-         * main window. Set to 0 for no limit. Be aware that more tags might be
-         * shown since selected tags are always shown.
-         *
-         * \since 4.5
-         */
-        void setMaxTagsShown( int max );
+        void setSelectedTags( const QList<Tag>& tags );
 
         /**
          * Set the alignment to use. Only horizontal alignment flags make a
@@ -229,7 +151,6 @@ namespace Baloo {
     private Q_SLOTS:
         void slotShowAll();
         void slotTagUpdateDone();
-        void slotTagStateChanged( const Nepomuk2::Tag&, int );
         void slotKEditTagDialogFinished( int result );
 
     private:
@@ -237,6 +158,6 @@ namespace Baloo {
     };
 }
 
-Q_DECLARE_OPERATORS_FOR_FLAGS( Nepomuk2::TagWidget::ModeFlags )
+Q_DECLARE_OPERATORS_FOR_FLAGS( Baloo::TagWidget::ModeFlags )
 
 #endif

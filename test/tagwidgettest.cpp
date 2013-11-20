@@ -29,20 +29,15 @@
 TagWidgetTest::TagWidgetTest()
     : QWidget()
 {
-    m_tagWidget = new Nepomuk2::TagWidget(this);
-    m_tagWidget->setMaxTagsShown(8);
+    m_tagWidget = new Baloo::TagWidget(this);
     QVBoxLayout* lay = new QVBoxLayout(this);
     lay->addWidget(m_tagWidget);
-    connect(m_tagWidget, SIGNAL(tagClicked(Nepomuk2::Tag)),
-            this, SLOT(slotTagClicked(Nepomuk2::Tag)));
-    connect(m_tagWidget, SIGNAL(selectionChanged(QList<Nepomuk2::Tag>)),
-            this, SLOT(slotSelectionChanged(QList<Nepomuk2::Tag>)));
+    connect(m_tagWidget, SIGNAL(tagClicked(Baloo::Tag)),
+            this, SLOT(slotTagClicked(Baloo::Tag)));
+    connect(m_tagWidget, SIGNAL(selectionChanged(QList<Baloo::Tag>)),
+            this, SLOT(slotSelectionChanged(QList<Baloo::Tag>)));
 
-    QCheckBox* box = new QCheckBox( "Minimode", this );
-    connect(box, SIGNAL(toggled(bool)), this, SLOT(enableMinimode(bool)));
-    lay->addWidget(box);
-
-    box = new QCheckBox( "Align Right", this );
+    QCheckBox* box = new QCheckBox( "Align Right", this );
     connect(box, SIGNAL(toggled(bool)), this, SLOT(alignRight(bool)));
     lay->addWidget(box);
 
@@ -60,33 +55,18 @@ TagWidgetTest::~TagWidgetTest()
 }
 
 
-void TagWidgetTest::slotTagClicked(const Nepomuk2::Tag& tag)
+void TagWidgetTest::slotTagClicked(const Baloo::Tag& tag)
 {
-    kDebug() << "Tag clicked:" << tag.uri() << tag.genericLabel();
+    kDebug() << "Tag clicked:" << tag.id() << tag.name();
 }
 
 
-void TagWidgetTest::slotSelectionChanged( const QList<Nepomuk2::Tag>& tags )
+void TagWidgetTest::slotSelectionChanged( const QList<Baloo::Tag>& tags )
 {
     QStringList ts;
-    foreach(const Nepomuk2::Tag& tag, tags)
-        ts << tag.genericLabel();
+    foreach(const Baloo::Tag& tag, tags)
+        ts << tag.name();
     kDebug() << "Selection changed:" << ts;
-}
-
-
-void TagWidgetTest::enableMinimode( bool enable )
-{
-    Nepomuk2::TagWidget::ModeFlags flags = m_tagWidget->modeFlags();
-    if( enable ) {
-        flags |= Nepomuk2::TagWidget::MiniMode;
-        flags &= ~Nepomuk2::TagWidget::StandardMode;
-    }
-    else {
-        flags |= Nepomuk2::TagWidget::StandardMode;
-        flags &= ~Nepomuk2::TagWidget::MiniMode;
-    }
-    m_tagWidget->setModeFlags( flags );
 }
 
 
@@ -101,15 +81,15 @@ void TagWidgetTest::alignRight( bool enable )
 
 void TagWidgetTest::disableClicking( bool enable )
 {
-    Nepomuk2::TagWidget::ModeFlags flags = m_tagWidget->modeFlags();
-    m_tagWidget->setModeFlags( enable ? flags | Nepomuk2::TagWidget::DisableTagClicking : flags & ~Nepomuk2::TagWidget::DisableTagClicking );
+    Baloo::TagWidget::ModeFlags flags = m_tagWidget->modeFlags();
+    m_tagWidget->setModeFlags( enable ? flags | Baloo::TagWidget::DisableTagClicking : flags & ~Baloo::TagWidget::DisableTagClicking );
 }
 
 
 void TagWidgetTest::setReadOnly( bool enable )
 {
-    Nepomuk2::TagWidget::ModeFlags flags = m_tagWidget->modeFlags();
-    m_tagWidget->setModeFlags( enable ? flags | Nepomuk2::TagWidget::ReadOnly : flags & ~Nepomuk2::TagWidget::ReadOnly );
+    Baloo::TagWidget::ModeFlags flags = m_tagWidget->modeFlags();
+    m_tagWidget->setModeFlags( enable ? flags | Baloo::TagWidget::ReadOnly : flags & ~Baloo::TagWidget::ReadOnly );
 }
 
 #include "tagwidgettest.moc"

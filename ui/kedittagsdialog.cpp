@@ -32,7 +32,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
-KEditTagsDialog::KEditTagsDialog(const QList<Nepomuk2::Tag>& tags,
+KEditTagsDialog::KEditTagsDialog(const QList<Baloo::Tag>& tags,
                                  QWidget* parent,
                                  Qt::WFlags flags) :
     KDialog(parent, flags),
@@ -103,7 +103,7 @@ KEditTagsDialog::~KEditTagsDialog()
 {
 }
 
-QList<Nepomuk2::Tag> KEditTagsDialog::tags() const
+QList<Baloo::Tag> KEditTagsDialog::tags() const
 {
     return m_tags;
 }
@@ -129,14 +129,25 @@ void KEditTagsDialog::slotButtonClicked(int button)
         for (int i = 0; i < count; ++i) {
             QListWidgetItem* item = m_tagsList->item(i);
             if (item->checkState() == Qt::Checked) {
-                const QUrl uri = item->data(Qt::UserRole).toUrl();
-                if( uri.isEmpty() ) {
-                    Nepomuk2::Tag tag( item->text() );
-                    tag.setLabel( item->text() );
-                    m_tags.append( tag );
+                const QByteArray tagId = item->data(Qt::UserRole).toByteArray();
+
+                bool newTag = true;
+                foreach (const Baloo::Tag& tag, m_allTags) {
+                    if (tag.id() == tagId) {
+                        m_tags << tag;
+                        newTag = false;
+                        break;
+                    }
                 }
-                else {
-                    m_tags.append( Nepomuk2::Tag(uri) );
+
+                if (newTag) {
+                    Baloo::Tag tag(item->text());
+                    m_tags.append(tag);
+
+                    Baloo::TagCreateJob* job = new Baloo::TagCreateJob(tag, this);
+                    connect(job, SIGNAL(tagCreated(Baloo::Tag)),
+                            this, SLOT(slotNewTagCreated(Baloo::Tag)));
+                    job->start();
                 }
             }
         }
@@ -145,6 +156,11 @@ void KEditTagsDialog::slotButtonClicked(int button)
     } else {
         KDialog::slotButtonClicked(button);
     }
+}
+
+void KEditTagsDialog::slotNewTagCreated(const Baloo::Tag& tag)
+{
+    m_allTags << tag;
 }
 
 void KEditTagsDialog::slotTextEdited(const QString& text)
@@ -226,9 +242,9 @@ void KEditTagsDialog::deleteTag()
     if (KMessageBox::warningYesNo(this, text, caption, deleteItem, cancelItem) == KMessageBox::Yes) {
         int row = m_tagsList->row( m_deleteCandidate );
 
-        const QUrl uri = m_deleteCandidate->data(Qt::UserRole).toUrl();
-        Nepomuk2::Tag tag(uri);
-        tag.remove();
+        const QByteArray id = m_deleteCandidate->data(Qt::UserRole).toByteArray();
+        Baloo::TagRemoveJob* job = new Baloo::TagRemoveJob(Baloo::Tag::fromId(id), this);
+        job->start();
 
         delete m_deleteCandidate;
         m_deleteCandidate = 0;
@@ -244,28 +260,40 @@ void KEditTagsDialog::deleteTag()
     }
 }
 
-static bool tagLabelLessThan( const Nepomuk2::Tag& t1, const Nepomuk2::Tag& t2 )
+static bool tagLabelLessThan(const Baloo::Tag& t1, const Baloo::Tag& t2)
 {
-    return t1.genericLabel() < t2.genericLabel();
+    return t1.name() < t2.name();
 }
 
 void KEditTagsDialog::loadTags()
 {
-    // load all available tags and mark those tags as checked
-    // that have been passed to the KEditTagsDialog
-    QList<Nepomuk2::Tag> tags = Nepomuk2::Tag::allTags();
-    qSort( tags.begin(), tags.end(), tagLabelLessThan );
+    Baloo::TagFetchJob* job = new Baloo::TagFetchJob(this);
+    connect(job, SIGNAL(tagReceived(Baloo::Tag)),
+            this, SLOT(slotTagLoaded(Baloo::Tag)));
+    connect(job, SIGNAL(finished(KJob*)),
+            this, SLOT(slotAllTagsLoaded()));
 
-    foreach (const Nepomuk2::Tag& tag, tags) {
-        const QString label = tag.genericLabel();
+    job->start();
+}
 
-        QListWidgetItem* item = new QListWidgetItem(label, m_tagsList);
-        item->setData(Qt::UserRole, tag.uri());
+void KEditTagsDialog::slotTagLoaded(const Baloo::Tag& tag)
+{
+    m_allTags << tag;
+}
+
+void KEditTagsDialog::slotAllTagsLoaded()
+{
+    qSort(m_allTags.begin(), m_allTags.end(), tagLabelLessThan);
+
+    foreach (const Baloo::Tag& tag, m_allTags) {
+        QListWidgetItem* item = new QListWidgetItem(tag.name(), m_tagsList);
+        item->setData(Qt::UserRole, tag.id());
 
         const bool check = m_tags.contains( tag );
         item->setCheckState(check ? Qt::Checked : Qt::Unchecked);
     }
 }
+
 
 void KEditTagsDialog::removeNewTagItem()
 {

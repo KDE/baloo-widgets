@@ -1,5 +1,6 @@
 /*
    This file is part of the Nepomuk KDE project.
+   Copyright (C) 2013 Vishesh Handa <me@vhanda.in>
    Copyright (C) 2010 Sebastian Trueg <trueg@kde.org>
 
    This library is free software; you can redistribute it and/or
@@ -28,82 +29,44 @@
 #include <kglobalsettings.h>
 
 #include <QtGui/QMouseEvent>
-#include <QtGui/QStyleOptionButton>
 #include <QtGui/QHBoxLayout>
-#include <QtGui/QCheckBox>
 #include <QtGui/QLabel>
 
+using namespace Baloo;
 
-class Nepomuk2::TagCheckBox::CheckBoxWithPublicInitStyleOption : public QCheckBox
-{
-public:
-    CheckBoxWithPublicInitStyleOption( const QString& text, QWidget* parent )
-        : QCheckBox( text, parent ) {
-    }
-
-    void initStyleOption( QStyleOptionButton* so ) {
-        QCheckBox::initStyleOption( so );
-    }
-};
-
-
-Nepomuk2::TagCheckBox::TagCheckBox( const Tag& tag, TagWidgetPrivate* tagWidget, QWidget* parent )
+TagCheckBox::TagCheckBox(const Tag& tag, TagWidgetPrivate* tagWidget, QWidget* parent)
     : QWidget( parent ),
       m_label(0),
-      m_checkBox(0),
       m_tag(tag),
       m_urlHover(false),
       m_tagWidget(tagWidget)
 {
     QHBoxLayout* layout = new QHBoxLayout(this);
     layout->setMargin(0);
-    if( tagWidget->m_flags & TagWidget::MiniMode ) {
-        m_label = new QLabel( tag.genericLabel(), this );
-        m_label->setMouseTracking(true);
-        m_label->setTextFormat(Qt::PlainText);
-        m_label->setForegroundRole(parent->foregroundRole());
-        m_child = m_label;
-    }
-    else {
-        m_checkBox = new CheckBoxWithPublicInitStyleOption( tag.genericLabel(), this );
-        m_child = m_checkBox;
-        connect(m_checkBox, SIGNAL(stateChanged(int)), this, SLOT(slotStateChanged(int)));
-    }
+
+    m_label = new QLabel(tag.name(), this);
+    m_label->setMouseTracking(true);
+    m_label->setTextFormat(Qt::PlainText);
+    m_label->setForegroundRole(parent->foregroundRole());
+    m_child = m_label;
+
     m_child->installEventFilter( this );
     m_child->setMouseTracking(true);
     layout->addWidget( m_child );
 }
 
-
-Nepomuk2::TagCheckBox::~TagCheckBox()
+TagCheckBox::~TagCheckBox()
 {
 }
 
-
-bool Nepomuk2::TagCheckBox::isChecked() const
-{
-    if( m_checkBox )
-        return m_checkBox->isChecked();
-    else
-        return true;
-}
-
-
-void Nepomuk2::TagCheckBox::setChecked( bool checked )
-{
-    if( m_checkBox )
-        m_checkBox->setChecked( checked );
-}
-
-
-void Nepomuk2::TagCheckBox::leaveEvent( QEvent* event )
+void TagCheckBox::leaveEvent( QEvent* event )
 {
     QWidget::leaveEvent( event );
     enableUrlHover( false );
 }
 
 
-bool Nepomuk2::TagCheckBox::eventFilter( QObject* watched, QEvent* event )
+bool TagCheckBox::eventFilter( QObject* watched, QEvent* event )
 {
     if( watched == m_child ) {
         switch( event->type() ) {
@@ -133,28 +96,13 @@ bool Nepomuk2::TagCheckBox::eventFilter( QObject* watched, QEvent* event )
 }
 
 
-void Nepomuk2::TagCheckBox::slotStateChanged( int state )
+QRect TagCheckBox::tagRect() const
 {
-    emit tagStateChanged( m_tag, state );
+    return QRect(QPoint(0, 0), m_label->size());
 }
 
 
-QRect Nepomuk2::TagCheckBox::tagRect() const
-{
-    if( m_checkBox ) {
-        QStyleOptionButton opt;
-        m_checkBox->initStyleOption(&opt);
-        return style()->subElementRect(QStyle::SE_CheckBoxContents,
-                                       &opt,
-                                       m_checkBox);
-    }
-    else {
-        return QRect(QPoint(0, 0), m_label->size());
-    }
-}
-
-
-void Nepomuk2::TagCheckBox::enableUrlHover( bool enable )
+void TagCheckBox::enableUrlHover( bool enable )
 {
     if( m_urlHover != enable ) {
         m_urlHover = enable;

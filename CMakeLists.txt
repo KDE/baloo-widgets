@@ -47,9 +47,9 @@ install(FILES
 
 set(ui_SRCS
   ui/kblocklayout.cpp
-#  ui/tagwidget.cpp
-#  ui/kedittagsdialog.cpp
-#  ui/tagcheckbox.cpp
+  ui/tagwidget.cpp
+  ui/kedittagsdialog.cpp
+  ui/tagcheckbox.cpp
 #  ui/filemetadatawidget.cpp
 #  ui/filemetadataconfigwidget.cpp
 #  ui/filemetadataprovider.cpp
@@ -98,7 +98,7 @@ install(FILES
   DESTINATION ${INCLUDE_INSTALL_DIR}/baloo COMPONENT Devel
 )
 
-#add_subdirectory(test)
+add_subdirectory(test)
 
 # install the file with the exported targets
 install(EXPORT BalooWidgetsLibraryTargets

@@ -20,7 +20,7 @@
 #define KEDIT_TAGS_DIALOG_H
 
 #include <kdialog.h>
-#include <Nepomuk2/Tag>
+#include <baloo/tag.h>
 
 class KLineEdit;
 class QListWidget;
@@ -41,13 +41,13 @@ class KEditTagsDialog : public KDialog
     Q_OBJECT
 
 public:
-    KEditTagsDialog(const QList<Nepomuk2::Tag>& tags,
+    KEditTagsDialog(const QList<Baloo::Tag>& tags,
                     QWidget* parent = 0,
                     Qt::WFlags flags = 0);
 
     virtual ~KEditTagsDialog();
 
-    QList<Nepomuk2::Tag> tags() const;
+    QList<Baloo::Tag> tags() const;
 
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
@@ -60,12 +60,18 @@ private slots:
     void showDeleteButton();
     void deleteTag();
 
+    void slotNewTagCreated(const Baloo::Tag& tag);
+    void slotTagLoaded(const Baloo::Tag& tag);
+    void slotAllTagsLoaded();
+
 private:
     void loadTags();
     void removeNewTagItem();
 
 private:
-    QList<Nepomuk2::Tag> m_tags;
+    QList<Baloo::Tag> m_tags;
+    QList<Baloo::Tag> m_allTags;
+
     QListWidget* m_tagsList;
     QListWidgetItem* m_newTagItem;
     QListWidgetItem* m_autoCheckedItem;

@@ -22,12 +22,10 @@
 #define _BALOO_TAG_WIDGET_P_H_
 
 #include "tagwidget.h"
-#include <Nepomuk2/Tag>
 
 #include <QtCore/QList>
 #include <QtCore/QMap>
 
-class QPushButton;
 class QLabel;
 class KBlockLayout;
 class KEditTagsDialog;
@@ -42,7 +40,6 @@ public:
     void init( TagWidget* parent );
     void rebuild();
     void buildTagHash( const QList<Tag>& tags );
-    QList<Tag> loadTags( int max );
     QList<Tag> intersectResourceTags();
 
     /// lookup (and if necessary create) checkbox for tag
@@ -52,16 +49,9 @@ public:
     /// add missing checkboxes
     void selectTags( const QList<Tag>& tags );
 
-    /// start a massupdate job to set the selected tags on the resources
-    void updateResources();
-
-    QList<Resource> m_resources;
-    int m_maxTags;
     TagWidget::ModeFlags m_flags;
-    bool m_blockSelectionChangedSignal;
 
     QMap<Tag, TagCheckBox*> m_checkBoxHash;
-    QPushButton* m_showAllButton;
     QLabel* m_showAllLinkLabel;
     KBlockLayout* m_flowLayout;
     TagWidget* q;

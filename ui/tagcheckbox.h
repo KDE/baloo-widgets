@@ -24,38 +24,29 @@
 
 #include <QtGui/QWidget>
 
-#include <Nepomuk2/Tag>
 #include "tagwidget_p.h"
 
 class QMouseEvent;
 class QLabel;
 
 namespace Baloo {
+
 class TagCheckBox : public QWidget
 {
     Q_OBJECT
 
 public:
-    TagCheckBox( const Tag& tag, TagWidgetPrivate* tagWidget, QWidget* parent = 0 );
+    TagCheckBox(const Tag& tag, TagWidgetPrivate* tagWidget, QWidget* parent = 0);
     ~TagCheckBox();
 
     Tag tag() const { return m_tag; }
 
-    bool isChecked() const;
-
-public Q_SLOTS:
-    void setChecked( bool checked );
-
 Q_SIGNALS:
-    void tagClicked( const Nepomuk2::Tag& tag );
-    void tagStateChanged( const Nepomuk2::Tag& tag, int state );
+    void tagClicked(const Baloo::Tag& tag);
 
 protected:
-    void leaveEvent( QEvent* event );
-    bool eventFilter( QObject* watched, QEvent* event );
-
-private Q_SLOTS:
-    void slotStateChanged( int state );
+    void leaveEvent(QEvent* event );
+    bool eventFilter(QObject* watched, QEvent* event);
 
 private:
     QRect tagRect() const;
@@ -63,8 +54,6 @@ private:
 
     // two modes: checkbox and simple label
     QLabel* m_label;
-    class CheckBoxWithPublicInitStyleOption;
-    CheckBoxWithPublicInitStyleOption* m_checkBox;
     QWidget* m_child;
 
     Tag m_tag;
