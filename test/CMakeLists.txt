@@ -17,12 +17,12 @@ target_link_libraries(tagwidgetapp
   baloowidgets
 )
 
-#kde4_add_executable(metadatawidgetapp TEST metadatawidgetapp.cpp metadatawidgettest.cpp)
-#target_link_libraries(metadatawidgetapp
-#  ${KDE4_KIO_LIBS}
-#  ${NEPOMUK_CORE_LIBRARY}
-#  nepomukwidgets
-#  )
+kde4_add_executable(metadatawidgetapp TEST metadatawidgetapp.cpp metadatawidgettest.cpp)
+target_link_libraries(metadatawidgetapp
+  ${KDE4_KIO_LIBS}
+  ${BALOO_LIBRARIES}
+  baloowidgets
+)
 
 #kde4_add_executable(metadataconfigwidgetapp TEST metadataconfigwidgetapp.cpp )
 #target_link_libraries(metadataconfigwidgetapp

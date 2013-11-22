@@ -23,6 +23,7 @@
 
 #include <KJob>
 #include <KProcess>
+#include <QVariant>
 
 namespace Baloo {
 
@@ -35,7 +36,7 @@ public:
 
     virtual void start();
 
-    //QHash<QUrl, Variant> data();
+    QVariantMap data() const;
 
 private slots:
     void slotIndexedFile(int error);
@@ -43,7 +44,7 @@ private slots:
 private:
     QString m_url;
     QProcess* m_process;
-    //QHash<QUrl, Variant> m_data;
+    QVariantMap m_data;
 };
 
 }

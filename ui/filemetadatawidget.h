@@ -1,6 +1,6 @@
 /*
     <one line to give the library's name and an idea of what it does.>
-    Copyright (C) 2012 Vishesh Handa <me@vhanda.in>
+    Copyright (C) 2012-2013 Vishesh Handa <me@vhanda.in>
 
     Adapated from KFileMetadataWidget
     Copyright (C) 2008 by Sebastian Trueg <trueg@kde.org>

@@ -44,70 +44,28 @@ IndexedDataRetriever::~IndexedDataRetriever()
 
 void IndexedDataRetriever::start()
 {
-    const QString exe = KStandardDirs::findExe(QLatin1String("nepomukindexer"));
+    const QString exe = KStandardDirs::findExe(QLatin1String("baloo_file_extractor"));
 
-    m_process = new QProcess( this );
-    m_process->setReadChannel( QProcess::StandardOutput );
+    m_process = new QProcess(this);
+    m_process->setReadChannel(QProcess::StandardOutput);
 
     QStringList args;
-    args << "--data" << m_url;
+    args << "--bdata" << m_url;
 
     connect( m_process, SIGNAL(finished(int)), this, SLOT(slotIndexedFile(int)) );
-    m_process->start( exe, args );
+    m_process->start(exe, args);
 }
 
 void IndexedDataRetriever::slotIndexedFile(int)
 {
     QByteArray data = QByteArray::fromBase64(m_process->readAllStandardOutput());
-    QDataStream in( &data, QIODevice::ReadOnly );
-
-    /* vHanda: FIXME
-    Nepomuk2::SimpleResourceGraph graph;
-    in >> graph;
-
-    QList< SimpleResource > list = graph.toList();
-    foreach( const SimpleResource& res, list ) {
-        if( !res.contains(NIE::url()) ) {
-            continue;
-        }
-
-        QMultiHash<QUrl, QVariant> hash = res.properties();
-        foreach(const QUrl& prop, hash.uniqueKeys()) {
-            QVariantList varList = hash.values( prop );
-
-            Nepomuk2::Variant variant;
-            foreach( const QVariant& var, varList ) {
-                variant.append( Variant(var) );
-            }
-
-            // In this case we want to extract the data from the blank node
-            if( variant.toString().startsWith("_:") ) {
-                SimpleResource tempRes = graph[ variant.toUrl() ];
-                if( tempRes.isValid() ) {
-                    PropertyHash ph = tempRes.properties();
-                    QString value = ph.value( NCO::fullname() ).toString();
-                    if( value.isEmpty() )
-                        value = ph.value( NIE::title() ).toString();
-                    if( value.isEmpty() )
-                        value = ph.value( NAO::identifier() ).toString();
-
-                    if( !value.isEmpty() )
-                        m_data.insert( prop, value );
-                }
-            }
-            else {
-                m_data.insert( prop, variant );
-            }
-        }
-    }
-    */
+    QDataStream in(&data, QIODevice::ReadOnly);
+    in >> m_data;
 
     emitResult();
 }
 
-/* vHanda: FIXME
-QHash< QUrl, Variant > IndexedDataRetriever::data()
+QVariantMap IndexedDataRetriever::data() const
 {
     return m_data;
 }
-*/

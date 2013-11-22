@@ -21,8 +21,7 @@
 #ifndef _BALOO_METADATAFILTER_H
 #define _BALOO_METADATAFILTER_H
 
-#include <QtCore/QUrl>
-#include <QtCore/QHash>
+#include <QVariant>
 
 namespace Baloo {
 
@@ -38,7 +37,7 @@ namespace Baloo {
          * Takes all the data by the provider and filters the data.
          * This acts as a filter and a data aggregator
          */
-        QHash<QUrl, Variant> filter(const QHash<QUrl, Variant>& data );
+        QVariantMap filter(const QVariantMap& data);
     private:
         /**
          * Initializes the configuration file "kmetainformationrc"

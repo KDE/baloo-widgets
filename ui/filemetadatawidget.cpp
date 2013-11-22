@@ -1,6 +1,6 @@
 /*
     <one line to give the library's name and an idea of what it does.>
-    Copyright (C) 2012  Vishesh Handa <me@vhanda.in>
+    Copyright (C) 2012-2013  Vishesh Handa <me@vhanda.in>
 
     Adapated from KFileMetadataWidget
     Copyright (C) 2008 by Sebastian Trueg <trueg@kde.org>
@@ -46,7 +46,7 @@
 
 using namespace Baloo;
 
-class FileMetaDataWidget::Private
+class Baloo::FileMetaDataWidget::Private
 {
 public:
     struct Row
@@ -72,13 +72,7 @@ public:
     void slotDataChangeStarted();
     void slotDataChangeFinished();
 
-    //QList<QUrl> sortedKeys(const QHash<QUrl, Nepomuk2::Variant>& data) const;
-
-    /**
-     * @return True, if at least one of the file items \a m_fileItems has
-     *         a valid Nepomuk URI.
-     */
-    bool hasNepomukUris() const;
+    QStringList sortedKeys(const QVariantMap& data) const;
 
     QList<Row> m_rows;
     FileMetaDataProvider* m_provider;
@@ -126,13 +120,6 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
 {
     deleteRows();
 
-    /*
-    if (!hasNepomukUris()) {
-        q->updateGeometry();
-        emit q->metaDataRequestFinished(m_provider->items());
-        return;
-    }
-
     if (m_gridLayout == 0) {
         m_gridLayout = new QGridLayout(q);
         m_gridLayout->setMargin(0);
@@ -140,20 +127,20 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
     }
 
     // Filter the data
-    QHash<QUrl, Variant> data = m_filter->filter( m_provider->data() );
+    QVariantMap data = m_filter->filter( m_provider->data() );
     m_widgetFactory->setNoLinks( m_provider->realTimeIndexing() );
 
     // Iterate through all remaining items embed the label
     // and the value as new row in the widget
     int rowIndex = 0;
-    //FIXME: Sorting of keys?
-    const QList<QUrl> keys = sortedKeys(data);
-    foreach (const QUrl& key, keys) {
-        const Variant value = data[key];
+    const QStringList keys = sortedKeys(data);
+    foreach (const QString& key, keys) {
+        const QVariant value = data[key];
         QString itemLabel = m_provider->label(key);
         itemLabel.append(QLatin1Char(':'));
 
         // Create label
+        kDebug() << itemLabel;
         QLabel* label = new QLabel(itemLabel, q);
         label->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
         label->setForegroundRole(q->foregroundRole());
@@ -179,7 +166,6 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
         ++rowIndex;
     }
 
-    */
     q->updateGeometry();
     emit q->metaDataRequestFinished(m_provider->items());
 }
@@ -202,46 +188,36 @@ void FileMetaDataWidget::Private::slotDataChangeFinished()
     q->setEnabled(true);
 }
 
-/*
-QList<QUrl> FileMetaDataWidget::Private::sortedKeys(const QHash<QUrl, Variant>& data) const
+QStringList FileMetaDataWidget::Private::sortedKeys(const QVariantMap& data) const
 {
+    kDebug() << data.uniqueKeys();
     // Create a map, where the translated label prefixed with the
     // sort priority acts as key. The data of each entry is the URI
     // of the data. By this the all URIs are sorted by the sort priority
     // and sub sorted by the translated labels.
-    QMap<QString, QUrl> map;
-    QHash<QUrl, Variant>::const_iterator hashIt = data.constBegin();
+    QMap<QString, QString> map;
+    QVariantMap::const_iterator hashIt = data.constBegin();
     while (hashIt != data.constEnd()) {
-        const QUrl uri = hashIt.key();
+        const QString propName = hashIt.key();
 
-        QString key = m_provider->group(uri);
-        key += m_provider->label(uri);
+        QString key = m_provider->group(propName);
+        key += m_provider->label(propName);
 
-        map.insert(key, uri);
+        map.insertMulti(key, propName);
         ++hashIt;
     }
 
     // Apply the URIs from the map to the list that will get returned.
     // The list will then be alphabetically ordered by the translated labels of the URIs.
-    QList<QUrl> list;
-    QMap<QString, QUrl>::const_iterator mapIt = map.constBegin();
+    QStringList list;
+    QMap<QString, QString>::const_iterator mapIt = map.constBegin();
     while (mapIt != map.constEnd()) {
         list.append(mapIt.value());
         ++mapIt;
     }
 
+    kDebug() << list;
     return list;
-}
-*/
-
-bool FileMetaDataWidget::Private::hasNepomukUris() const
-{
-    foreach (const KFileItem& fileItem, m_provider->items()) {
-        if (fileItem.nepomukUri().isValid()) {
-            return true;
-        }
-    }
-    return false;
 }
 
 FileMetaDataWidget::FileMetaDataWidget(QWidget* parent)
@@ -259,7 +235,9 @@ void FileMetaDataWidget::setItems(const KFileItemList& items)
 {
     d->m_provider->setItems(items);
 
-    QList<QUrl> uriList;
+    /*
+     * FIXME: vhanda!!
+    QList<Item> list;
     foreach(const KFileItem& item, items) {
         // If the nepomukUri exists, it is returned, otherwise the file url
         QUrl uri = item.nepomukUri();
@@ -273,7 +251,8 @@ void FileMetaDataWidget::setItems(const KFileItemList& items)
             uriList << uri;
         }
     }
-    d->m_widgetFactory->setUris( uriList );
+    d->m_widgetFactory->setItems( uriList );
+    */
 }
 
 KFileItemList FileMetaDataWidget::items() const
@@ -340,3 +319,5 @@ QSize FileMetaDataWidget::sizeHint() const
 
     return QSize(width, height);
 }
+
+#include "filemetadatawidget.moc"

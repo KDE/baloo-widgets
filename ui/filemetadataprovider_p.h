@@ -77,7 +77,7 @@ public:
      *         by \p metaDataUri. If no custom translation is provided, the
      *         base implementation must be invoked.
      */
-    virtual QString label(const KUrl& metaDataUri) const;
+    virtual QString label(const QString& metaDataLabel) const;
 
     /**
      * Meta data items are sorted alphabetically by their translated
@@ -87,10 +87,10 @@ public:
      * of an image are shown below each other. By adding a common prefix,
      * a grouping is done.
      * @return Returns the name of the group the meta data indicated
-     *         by \p metaDataUri belongs to. Per default an empty string
+     *         by \p label belongs to. Per default an empty string
      *         is returned.
      */
-    virtual QString group(const KUrl& metaDataUri) const;
+    virtual QString group(const QString& label) const;
 
     /**
      * @return Meta data for the items that have been set by
@@ -98,7 +98,7 @@ public:
      *         be invoked after the signal loadingFinished() has
      *         been received (otherwise no data will be returned).
      */
-    QHash<QUrl, QVariant> data() const;
+    QVariantMap data() const;
 
     /**
      * Returns true if the items do not exist in the database and
@@ -121,7 +121,7 @@ private:
     class Private;
     Private* const d;
 
-    Q_PRIVATE_SLOT(d, void slotLoadingFinished(ResourceLoader* loader))
+    Q_PRIVATE_SLOT(d, void slotFileFetchFinished(KJob* job))
     Q_PRIVATE_SLOT(d, void slotLoadingFinished(KJob* job))
     Q_PRIVATE_SLOT(d, void insertBasicData())
 };

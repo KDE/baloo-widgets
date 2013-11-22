@@ -27,7 +27,7 @@
 FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags f)
     : QWidget(parent, f)
 {
-    m_metadataWidget = new Nepomuk2::FileMetaDataWidget( this );
+    m_metadataWidget = new Baloo::FileMetaDataWidget( this );
 
     m_button = new KPushButton( QLatin1String("Select files"), this );
     connect( m_button, SIGNAL(clicked(bool)), this, SLOT(slotChooseFiles()) );

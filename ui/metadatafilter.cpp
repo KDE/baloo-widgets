@@ -28,19 +28,7 @@
 #include <KConfigGroup>
 #include <KDebug>
 
-#include <Nepomuk2/Types/Property>
-#include <Nepomuk2/Variant>
-
-#include <Soprano/Vocabulary/RDF>
-#include <Soprano/Vocabulary/NAO>
-#include <Nepomuk2/Vocabulary/NCO>
-#include <Nepomuk2/Vocabulary/NMM>
-#include <Nepomuk2/ResourceManager>
-
-using namespace Soprano::Vocabulary;
-using namespace Baloo::Vocabulary;
-
-namespace Baloo {
+using namespace Baloo;
 
 MetadataFilter::MetadataFilter(QObject* parent): QObject(parent)
 {
@@ -115,8 +103,10 @@ void MetadataFilter::initMetaInformationSettings()
     }
 }
 
-QHash<QUrl, Variant> MetadataFilter::filter(const QHash<QUrl, Nepomuk2::Variant>& data)
+QVariantMap MetadataFilter::filter(const QVariantMap& data)
 {
+    return data;
+    /*
     if( data.isEmpty() )
         return data;
 
@@ -172,6 +162,5 @@ QHash<QUrl, Variant> MetadataFilter::filter(const QHash<QUrl, Nepomuk2::Variant>
     }
 
     return finalData;
-}
-
+    */
 }

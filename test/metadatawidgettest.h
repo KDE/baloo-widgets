@@ -34,7 +34,7 @@ private slots:
     void slotChooseFiles();
 
 private:
-    Nepomuk2::FileMetaDataWidget* m_metadataWidget;
+    Baloo::FileMetaDataWidget* m_metadataWidget;
     KPushButton* m_button;
 };
 

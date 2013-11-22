@@ -20,10 +20,12 @@
 
 #include "filemetadataprovider_p.h"
 #include "tagwidget.h"
-#include "resourceloader.h"
+//#include "resourceloader.h"
 #include "kcommentwidget_p.h"
 #include "knfotranslator_p.h"
 #include "indexeddataretriever.h"
+
+#include <baloo/filefetchjob.h>
 
 #include <kfileitem.h>
 #include <klocale.h>
@@ -47,8 +49,6 @@
 
 using namespace Baloo;
 
-namespace Baloo {
-
 class FileMetaDataProvider::Private
 {
 
@@ -56,28 +56,24 @@ public:
     Private(FileMetaDataProvider* parent);
     ~Private();
 
-    void slotLoadingFinished(ResourceLoader* loader);
     void slotLoadingFinished(KJob* job);
+    void slotFileFetchFinished(KJob* job);
 
     void insertBasicData();
-    void insertNepomukEditableData();
+    void insertEditableData();
 
     /**
      * Checks for the existance of \p uri in \p allProperties, and accordingly
      * inserts the total integer value of that property in m_data. On completion
      * it removes \p uri from \p allProperties
      */
-    void totalPropertyAndInsert( const QUrl& uri, const QList<Resource>& resources, QSet<QUrl>& allProperties );
+    void totalPropertyAndInsert(const QString& prop, const QList<QVariantMap>& resources,
+                                QSet<QString>& allProperties);
 
     /*
      * @return The number of subdirectories for the directory \a path.
      */
     static int subDirectoriesCount(const QString &path);
-
-    /**
-     * Calls the file indexer on the file
-     */
-    void indexFile( const QUrl& url );
 
     bool m_readOnly;
 
@@ -85,7 +81,7 @@ public:
     bool m_realTimeIndexing;
     QList<KFileItem> m_fileItems;
 
-    QHash<QUrl, Variant> m_data;
+    QVariantMap m_data;
 private:
     FileMetaDataProvider* const q;
 };
@@ -104,54 +100,54 @@ FileMetaDataProvider::Private::~Private()
 }
 
 namespace {
-    Nepomuk2::Variant intersect( const Nepomuk2::Variant& v1, const Nepomuk2::Variant& v2 ) {
+    QVariant intersect(const QVariant& v1, const QVariant& v2) {
         if( !v1.isValid() || !v2.isValid() )
-            return Nepomuk2::Variant();
+            return QVariant();
 
-        // Single value
-        if( !v1.isList() && !v2.isList() ) {
-            if( v1 == v2 )
-                return v1;
-            else
-                return Variant();
-        }
         // List and single
-        if( v1.isResourceList() && v2.isResource() ) {
-            QList<Resource> v1List = v1.toResourceList();
-            Resource v2Res = v2.toResource();
-            if( v1List.contains(v2Res) ) {
-                return Variant( v2Res );
-            }
-        }
-        if( v2.isResourceList() && v1.isResource() ) {
-            QList<Resource> v2List = v2.toResourceList();
-            Resource v1Res = v1.toResource();
-            if( v2List.contains(v1Res) ) {
-                return Variant( v1Res );
-            }
-        }
-        else if( v1.isResourceList() && v2.isResourceList() ) {
-            QSet<Resource> v1Set = v1.toResourceList().toSet();
-            QSet<Resource> v2Set = v2.toResourceList().toSet();
+        if (v1.type() == QVariant::StringList && v2.type() == QVariant::String) {
+            QStringList list = v1.toStringList();
+            QString str = v2.toString();
 
-            QSet<Resource> inter = v1Set.intersect( v2Set );
-            return Variant( inter.toList() );
-        }
-        // TODO: Target more list types?
+            if (!list.contains(str))
+                list << str;
 
-        return Variant();
+            return QVariant(list);
+        }
+
+        if (v1.type() == QVariant::String && v2.type() == QVariant::StringList) {
+            QStringList list = v2.toStringList();
+            QString str = v1.toString();
+
+            if (!list.contains(str))
+                list << str;
+
+            return QVariant(list);
+        }
+
+        if (v1.type() == QVariant::StringList && v2.type() == QVariant::StringList) {
+            QSet<QString> s1 = v1.toStringList().toSet();
+            QSet<QString> s2 = v2.toStringList().toSet();
+
+            return QVariant(s1.intersect(s2).toList());
+        }
+
+        if (v1 == v2)
+            return v1;
+
+        return QVariant();
     }
 }
 
-void FileMetaDataProvider::Private::totalPropertyAndInsert(const QUrl& uri, const QList<Resource>& resources,
-                                                           QSet<QUrl>& allProperties)
+void FileMetaDataProvider::Private::totalPropertyAndInsert(const QString& prop,
+                                                           const QList<QVariantMap>& resources,
+                                                           QSet<QString>& allProperties)
 {
-    if( allProperties.contains( uri ) ) {
+    if( allProperties.contains( prop ) ) {
         int total = 0;
-        foreach(const Resource& res, resources) {
-            QHash<QUrl, Variant> hash = res.properties();
-            QHash< QUrl, Variant >::iterator it = hash.find( uri );
-            if( it == hash.end() ) {
+        foreach (const QVariantMap& map, resources) {
+            QVariantMap::const_iterator it = map.constFind( prop );
+            if( it == map.constEnd() ) {
                 total = 0;
                 break;
             }
@@ -161,28 +157,26 @@ void FileMetaDataProvider::Private::totalPropertyAndInsert(const QUrl& uri, cons
         }
 
         if( total )
-            m_data.insert( uri, Variant(total) );
-        allProperties.remove( uri );
+            m_data.insert( prop, QVariant(total) );
+        allProperties.remove( prop );
     }
 }
 
 
-void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
+void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
 {
-    QList<Resource> resources = loader->resources();
-    loader->deleteLater();
-    loader = 0;
+    Baloo::FileFetchJob* fetchJob = static_cast<Baloo::FileFetchJob*>(job);
+    m_data = fetchJob->data();
+    insertBasicData();
 
-    if( resources.size() == 1 ) {
-        m_data.unite( resources.first().properties() );
-        insertBasicData();
-    }
+    kDebug() << m_data;
+    /*
     else {
         //
         // Only report the stuff that is common to all the resources
         //
 
-        QSet<QUrl> allProperties;
+        QSet<QString> allProperties;
         foreach(const Resource& res, resources) {
             allProperties.unite( res.properties().uniqueKeys().toSet() );
         }
@@ -194,10 +188,10 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
         allProperties.remove( NIE::lastModified() );
 
         // Special handling for certain properties
-        totalPropertyAndInsert( NFO::duration(), resources, allProperties );
-        totalPropertyAndInsert( NFO::characterCount(), resources, allProperties );
-        totalPropertyAndInsert( NFO::wordCount(), resources, allProperties );
-        totalPropertyAndInsert( NFO::lineCount(), resources, allProperties );
+        totalPropertyAndInsert("duration", resources, allProperties );
+        totalPropertyAndInsert("characterCount", resources, allProperties );
+        totalPropertyAndInsert("wordCount", resources, allProperties );
+        totalPropertyAndInsert("lineCount", resources, allProperties );
 
         foreach( const QUrl& propUri, allProperties ) {
             foreach(const Resource& res, resources) {
@@ -227,19 +221,20 @@ void FileMetaDataProvider::Private::slotLoadingFinished(ResourceLoader* loader)
             ;
         }
     }
+    */
 
-    insertNepomukEditableData();
+    insertEditableData();
 
     emit q->loadingFinished();
 }
 
 void FileMetaDataProvider::Private::slotLoadingFinished(KJob* job)
 {
-    IndexedDataRetriever* ret = dynamic_cast<IndexedDataRetriever*>( job );
-    m_data.unite( ret->data() );
+    IndexedDataRetriever* ret = dynamic_cast<IndexedDataRetriever*>(job);
+    m_data.unite(ret->data());
 
     insertBasicData();
-    insertNepomukEditableData();
+    insertEditableData();
 
     emit q->loadingFinished();
 }
@@ -254,18 +249,18 @@ void FileMetaDataProvider::Private::insertBasicData()
         if (item.isDir()) {
             const int count = subDirectoriesCount(item.url().pathOrUrl());
             if (count == -1) {
-                m_data.insert(KUrl("kfileitem#size"), QString("Unknown"));
+                m_data.insert("kfileitem#size", QString("Unknown"));
             } else {
                 const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
-                m_data.insert(KUrl("kfileitem#size"), itemCountString);
+                m_data.insert("kfileitem#size", itemCountString);
             }
         } else {
-            m_data.insert(KUrl("kfileitem#size"), KIO::convertSize(item.size()));
+            m_data.insert("kfileitem#size", KIO::convertSize(item.size()));
         }
-        m_data.insert(KUrl("kfileitem#type"), item.mimeComment());
-        m_data.insert(KUrl("kfileitem#modified"), KGlobal::locale()->formatDateTime(item.time(KFileItem::ModificationTime), KLocale::FancyLongDate));
-        m_data.insert(KUrl("kfileitem#owner"), item.user());
-        m_data.insert(KUrl("kfileitem#permissions"), item.permissionsString());
+        m_data.insert("kfileitem#type", item.mimeComment());
+        m_data.insert("kfileitem#modified", KGlobal::locale()->formatDateTime(item.time(KFileItem::ModificationTime), KLocale::FancyLongDate));
+        m_data.insert("kfileitem#owner", item.user());
+        m_data.insert("kfileitem#permissions", item.permissionsString());
     }
     else if (m_fileItems.count() > 1) {
         // Calculate the size of all items
@@ -275,7 +270,7 @@ void FileMetaDataProvider::Private::insertBasicData()
                 totalSize += item.size();
             }
         }
-        m_data.insert(KUrl("kfileitem#totalSize"), KIO::convertSize(totalSize));
+        m_data.insert("kfileitem#totalSize", KIO::convertSize(totalSize));
 
         // When we have more than 1 item, the basic data should be emitted before
         // the Resource data, cause the ResourceData might take considerable time
@@ -283,32 +278,17 @@ void FileMetaDataProvider::Private::insertBasicData()
     }
 }
 
-void FileMetaDataProvider::Private::insertNepomukEditableData()
+void FileMetaDataProvider::Private::insertEditableData()
 {
-    /* FIXME : vHanda
     // Insert tags, ratings and comments, if Nepomuk activated
-    bool nepomukActivated = ResourceManager::instance()->initialized();
-    if( nepomukActivated && !m_readOnly ) {
-        if( !m_data.contains(NAO::hasTag()) )
-            m_data.insert( NAO::hasTag(), Variant() );
-        if( !m_data.contains(NAO::numericRating()) )
-            m_data.insert( NAO::numericRating(), Variant() );
-        if( !m_data.contains(NAO::description()) )
-            m_data.insert( NAO::description(), Variant() );
+    if (!m_readOnly) {
+        if (!m_data.contains("tags"))
+            m_data.insert("tags", QVariant());
+        if (!m_data.contains("rating"))
+            m_data.insert("rating", 0);
+        if (!m_data.contains("comment") )
+            m_data.insert("comment", QVariant());
     }
-    */
-}
-
-
-void FileMetaDataProvider::Private::indexFile(const QUrl& url)
-{
-    const QString exe = KStandardDirs::findExe(QLatin1String("nepomukindexer"));
-
-    KProcess* process = new KProcess( q );
-    process->setProgram( exe, QStringList() << url.toLocalFile() );
-    process->start();
-
-    connect( process, SIGNAL(finished(int)), process, SLOT(deleteLater()) );
 }
 
 
@@ -325,7 +305,6 @@ FileMetaDataProvider::~FileMetaDataProvider()
 
 void FileMetaDataProvider::setItems(const KFileItemList& items)
 {
-    /*
     d->m_fileItems = items;
     d->m_data.clear();
     d->m_realTimeIndexing = false;
@@ -334,72 +313,49 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
         return;
     }
 
+    /*
     if( items.size() == 1 ) {
         const KFileItem item = items.first();
         const QUrl url = item.targetUrl();
-        const QUrl uri = item.nepomukUri();
 
-        Resource res;
-        if( uri.isValid() )
-            res = Resource(uri);
-        else
-            res = Resource(url);
-
-        if( !ResourceManager::instance()->initialized() || !res.exists() ) {
+        if (!res.exists() ) {
             IndexedDataRetriever *ret = new IndexedDataRetriever( url.toLocalFile(), this );
             connect( ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)) );
             ret->start();
             d->m_realTimeIndexing = true;
             return;
         }
-        else {
-            // In the case when the file has not been fully indexed, but it still exists
-            // there wouldn't be much information to show. In those cases it would be better
-            // to call the indexer manually so that more info can eventually be fetched.
-            //
-            QString query = QString::fromLatin1("select ?l where { %1 kext:indexingLevel ?l. }")
-                            .arg( Soprano::Node::resourceToN3( res.uri() ) );
+    }
+    */
 
-            Soprano::Model* model = ResourceManager::instance()->mainModel();
-            Soprano::QueryResultIterator iter = model->executeQuery( query, Soprano::Query::QueryLanguageSparqlNoInference );
-
-            int level = -1;
-            if( iter.next() )
-                level = iter[0].literal().toInt();
-
-            if( level == 1 ) { // Not fully indexed
-                d->indexFile( url );
-            } else if( level == -1 ) {
-                IndexedDataRetriever *ret = new IndexedDataRetriever( url.toLocalFile(), this );
-                connect( ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)) );
-                ret->start();
-                d->m_realTimeIndexing = true;
-            }
-        }
+    QStringList urls;
+    Q_FOREACH (const KFileItem& item, items) {
+        const QUrl url = item.targetUrl();
+        if (url.isLocalFile())
+            urls << url.toLocalFile();
     }
 
-    QList<QUrl> urls;
-    foreach (const KFileItem& item, items) {
-        const QUrl url = item.nepomukUri();
-        if (url.isValid()) {
-            urls.append(url);
-        }
+    if (urls.size() == 1) {
+        FileFetchJob* job = new FileFetchJob(urls.first(), this);
+        connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
+        job->start();
     }
 
+    /*
     ResourceLoader* loader = new ResourceLoader( urls, this );
     connect( loader, SIGNAL(finished(ResourceLoader*)),
              this, SLOT(slotLoadingFinished(ResourceLoader*)) );
     loader->start();
+    */
 
     // When multiple urls are being shown, we load the basic data first cause loading
     // all the ResourceData will take some time
     if( urls.size() > 1 ) {
         QTimer::singleShot( 0, this, SLOT(insertBasicData()) );
     }
-    */
 }
 
-QString FileMetaDataProvider::label(const KUrl& metaDataUri) const
+QString FileMetaDataProvider::label(const QString& metaDataLabel) const
 {
     struct TranslationItem {
         const char* const key;
@@ -417,10 +373,9 @@ QString FileMetaDataProvider::label(const KUrl& metaDataUri) const
         { "kfileitem#tags", I18N_NOOP2_NOSTRIP("@label", "Tags") },
         { "kfileitem#totalSize", I18N_NOOP2_NOSTRIP("@label", "Total Size") },
         { "kfileitem#type", I18N_NOOP2_NOSTRIP("@label", "Type") },
-        // Tags, ratings and comments are stored by their normal property as well
-        { "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#hasTag", I18N_NOOP2_NOSTRIP("@label", "Tags") },
-        { "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#numericRating", I18N_NOOP2_NOSTRIP("@label", "Rating") },
-        { "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#description", I18N_NOOP2_NOSTRIP("@label", "Comment") },
+        { "tags", I18N_NOOP2_NOSTRIP("@label", "Tags") },
+        { "rating", I18N_NOOP2_NOSTRIP("@label", "Rating") },
+        { "comment", I18N_NOOP2_NOSTRIP("@label", "Comment") },
         { 0, 0, 0} // Mandatory last entry
     };
 
@@ -433,36 +388,39 @@ QString FileMetaDataProvider::label(const KUrl& metaDataUri) const
         }
     }
 
-    QString value = hash.value(metaDataUri.url());
-    if (value.isEmpty()) {
-        value = KNfoTranslator::instance().translation(metaDataUri);
-    }
+    QString value = hash.value(metaDataLabel);
+    if (value.isEmpty())
+        value = metaDataLabel;
+    // FIXME: Integrate KNfoTranslator
+    //if (value.isEmpty()) {
+    //    value = KNfoTranslator::instance().translation(metaDataLabel);
+    //}
 
     return value;
 }
 
-QString FileMetaDataProvider::group(const KUrl& metaDataUri) const
+QString FileMetaDataProvider::group(const QString& label) const
 {
-    /*
-    static QHash<QUrl, QString> uriGrouper;
+    static QHash<QString, QString> uriGrouper;
     if( uriGrouper.isEmpty() ) {
         // KFileItem Data
-        uriGrouper.insert( QUrl("kfileitem#type"), QLatin1String("0FileItemA") );
-        uriGrouper.insert( QUrl("kfileitem#size"), QLatin1String("0FileItemB") );
-        uriGrouper.insert( QUrl("kfileitem#totalSize"), QLatin1String("0FileItemB") );
-        uriGrouper.insert( QUrl("kfileitem#modified"), QLatin1String("0FileItemC") );
-        uriGrouper.insert( QUrl("kfileitem#owner"), QLatin1String("0FileItemD") );
-        uriGrouper.insert( QUrl("kfileitem#permissions"), QLatin1String("0FileItemE") );
+        uriGrouper.insert(QLatin1String("kfileitem#type"), QLatin1String("0FileItemA"));
+        uriGrouper.insert(QLatin1String("kfileitem#size"), QLatin1String("0FileItemB"));
+        uriGrouper.insert(QLatin1String("kfileitem#totalSize"), QLatin1String("0FileItemB"));
+        uriGrouper.insert(QLatin1String("kfileitem#modified"), QLatin1String("0FileItemC"));
+        uriGrouper.insert(QLatin1String("kfileitem#owner"), QLatin1String("0FileItemD"));
+        uriGrouper.insert(QLatin1String("kfileitem#permissions"), QLatin1String("0FileItemE"));
 
         // Editable Data
-        uriGrouper.insert( NAO::hasTag(), QLatin1String("1EditableDataA") );
-        uriGrouper.insert( NAO::numericRating(), QLatin1String("1EditableDataB") );
-        uriGrouper.insert( NAO::description(), QLatin1String("1EditableDataC") );
+        uriGrouper.insert(QLatin1String("tags"), QLatin1String("1EditableDataA"));
+        uriGrouper.insert(QLatin1String("rating"), QLatin1String("1EditableDataB"));
+        uriGrouper.insert(QLatin1String("comment"), QLatin1String("1EditableDataC"));
 
         // Image Data
-        uriGrouper.insert( NFO::width(), QLatin1String("2SizA") );
-        uriGrouper.insert( NFO::height(), QLatin1String("2SizeB") );
+        uriGrouper.insert(QLatin1String("width"), QLatin1String("2SizA"));
+        uriGrouper.insert(QLatin1String("height"), QLatin1String("2SizeB"));
 
+        /*
         // Music Data
         uriGrouper.insert( NIE::title(), QLatin1String("3MusicA") );
         uriGrouper.insert( NMM::performer(), QLatin1String("3MusicB") );
@@ -474,11 +432,13 @@ QString FileMetaDataProvider::group(const KUrl& metaDataUri) const
         uriGrouper.insert( NFO::duration(), QLatin1String("4AudioA") );
         uriGrouper.insert( NFO::sampleRate(), QLatin1String("4AudioB") );
         uriGrouper.insert( NFO::sampleCount(), QLatin1String("4AudioC") );
+        */
     }
 
-    return uriGrouper.value( metaDataUri );
-    */
-    return QString();
+    const QString val = uriGrouper.value(label);
+    if (val.isEmpty())
+        return "lastGroup";
+    return val;
 }
 
 KFileItemList FileMetaDataProvider::items() const
@@ -496,7 +456,7 @@ bool FileMetaDataProvider::isReadOnly() const
     return d->m_readOnly;
 }
 
-QHash< QUrl, QVariant > FileMetaDataProvider::data() const
+QVariantMap FileMetaDataProvider::data() const
 {
     return d->m_data;
 }
@@ -538,8 +498,6 @@ int FileMetaDataProvider::Private::subDirectoriesCount(const QString& path)
 bool FileMetaDataProvider::realTimeIndexing()
 {
     return d->m_realTimeIndexing;
-}
-
 }
 
 #include "filemetadataprovider_p.moc"

@@ -50,14 +50,14 @@ set(ui_SRCS
   ui/tagwidget.cpp
   ui/kedittagsdialog.cpp
   ui/tagcheckbox.cpp
-#  ui/filemetadatawidget.cpp
+  ui/filemetadatawidget.cpp
 #  ui/filemetadataconfigwidget.cpp
-#  ui/filemetadataprovider.cpp
+  ui/filemetadataprovider.cpp
 #  ui/resourceloader.cpp
-#  ui/indexeddataretriever.cpp
+  ui/indexeddataretriever.cpp
   ui/kcommentwidget.cpp
 #  ui/knfotranslator.cpp
-#  ui/metadatafilter.cpp
+  ui/metadatafilter.cpp
   ui/widgetfactory.cpp
 )
 
