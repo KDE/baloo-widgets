@@ -1,5 +1,6 @@
 /*****************************************************************************
  * Copyright (C) 2010 by Peter Penz <peter.penz@gmx.at>                      *
+ * Copyright (C) 2013 by Vishesh Handa <me@vhanda.in>                        *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -23,18 +24,15 @@
 #include <QHash>
 #include <QString>
 
-class KUrl;
-
 /**
- * @brief Returns translations for Nepomuk File Ontology URIs.
+ * @brief Returns translations for Baloo Properties
  *
- * See http://www.semanticdesktop.org/ontologies/nfo/.
  */
 class KNfoTranslator
 {
 public:
     static KNfoTranslator& instance();
-    QString translation(const KUrl& uri) const;
+    QString translation(const QString& propName) const;
 
 protected:
     KNfoTranslator();

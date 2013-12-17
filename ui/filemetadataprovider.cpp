@@ -390,12 +390,9 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
     }
 
     QString value = hash.value(metaDataLabel);
-    if (value.isEmpty())
-        value = metaDataLabel;
-    // FIXME: Integrate KNfoTranslator
-    //if (value.isEmpty()) {
-    //    value = KNfoTranslator::instance().translation(metaDataLabel);
-    //}
+    if (value.isEmpty()) {
+        value = KNfoTranslator::instance().translation(metaDataLabel);
+    }
 
     return value;
 }

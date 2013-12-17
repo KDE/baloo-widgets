@@ -56,7 +56,7 @@ set(ui_SRCS
 #  ui/resourceloader.cpp
   ui/indexeddataretriever.cpp
   ui/kcommentwidget.cpp
-#  ui/knfotranslator.cpp
+  ui/knfotranslator.cpp
   ui/metadatafilter.cpp
   ui/widgetfactory.cpp
 )
