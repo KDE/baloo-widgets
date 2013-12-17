@@ -26,6 +26,7 @@
 #include "indexeddataretriever.h"
 
 #include <baloo/filefetchjob.h>
+#include <baloo/file.h>
 
 #include <kfileitem.h>
 #include <klocale.h>
@@ -166,7 +167,7 @@ void FileMetaDataProvider::Private::totalPropertyAndInsert(const QString& prop,
 void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
 {
     Baloo::FileFetchJob* fetchJob = static_cast<Baloo::FileFetchJob*>(job);
-    m_data = fetchJob->data();
+    m_data = fetchJob->file().properties();
     insertBasicData();
 
     kDebug() << m_data;
