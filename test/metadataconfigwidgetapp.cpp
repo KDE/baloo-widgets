@@ -37,14 +37,14 @@ private slots:
     void slotChooseFiles();
 
 private:
-    Nepomuk2::FileMetaDataConfigWidget* m_metadataWidget;
+    Baloo::FileMetaDataConfigWidget* m_metadataWidget;
     KPushButton* m_button;
 };
 
 FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags f)
     : QWidget(parent, f)
 {
-    m_metadataWidget = new Nepomuk2::FileMetaDataConfigWidget( this );
+    m_metadataWidget = new Baloo::FileMetaDataConfigWidget( this );
 
     m_button = new KPushButton( QLatin1String("Select files"), this );
     connect( m_button, SIGNAL(clicked(bool)), this, SLOT(slotChooseFiles()) );

@@ -51,7 +51,7 @@ set(ui_SRCS
   ui/kedittagsdialog.cpp
   ui/tagcheckbox.cpp
   ui/filemetadatawidget.cpp
-#  ui/filemetadataconfigwidget.cpp
+  ui/filemetadataconfigwidget.cpp
   ui/filemetadataprovider.cpp
 #  ui/resourceloader.cpp
   ui/indexeddataretriever.cpp

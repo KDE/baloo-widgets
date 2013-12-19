@@ -38,7 +38,7 @@
 
 using namespace Baloo;
 
-class FileMetaDataConfigWidget ::Private
+class FileMetaDataConfigWidget::Private
 {
 public:
     Private(FileMetaDataConfigWidget* parent);
@@ -46,7 +46,7 @@ public:
 
     void init();
     void loadMetaData();
-    void addItem(const KUrl& uri);
+    void addItem(const QString& property);
 
     /**
      * Is invoked after the meta data model has finished the loading of
@@ -95,29 +95,19 @@ void FileMetaDataConfigWidget::Private::loadMetaData()
     m_provider->setItems(m_fileItems);
 }
 
-void FileMetaDataConfigWidget::Private::addItem(const KUrl& uri)
+void FileMetaDataConfigWidget::Private::addItem(const QString& key)
 {
     // Meta information provided by Nepomuk that is already
     // available from KFileItem as "fixed item" (see above)
     // should not be shown as second entry.
     static const char* const hiddenProperties[] = {
-        "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#comment",         // = fixed item kfileitem#comment
-        "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#contentSize",     // = fixed item kfileitem#size
-        "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#lastModified",    // = fixed item kfileitem#modified
-        "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#plainTextContent" // hide this property always
-        "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#mimeType",        // = fixed item kfileitem#type
-        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName",        // hide this property always
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",                          // = fixed item kfileitem#type
-
-        // Nepomuk internal properties
-        "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#lastModified",
-        "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#created",
+        "comment",         // = fixed item kfileitem#comment
+        "contentSize",     // = fixed item kfileitem#size
 
         0 // mandatory last entry
     };
 
     int i = 0;
-    const QString key = uri.url();
     while (hiddenProperties[i] != 0) {
         if (key == QLatin1String(hiddenProperties[i])) {
             // the item is hidden
@@ -126,21 +116,13 @@ void FileMetaDataConfigWidget::Private::addItem(const KUrl& uri)
         ++i;
     }
 
-    /*
-     * vHanda: FIXME
-    // Only user visible properties should be shown
-    if (!Types::Property(uri).userVisible()) {
-        return;
-    }
-    */
-
     // the item is not hidden, add it to the list
     KConfig config("kmetainformationrc", KConfig::NoGlobals);
     KConfigGroup settings = config.group("Show");
 
     const QString label = (m_provider == 0)
-                          ? KNfoTranslator::instance().translation(uri)
-                          : m_provider->label(uri);
+                          ? KNfoTranslator::instance().translation(key)
+                          : m_provider->label(key);
 
     QListWidgetItem* item = new QListWidgetItem(label, m_metaDataList);
     item->setData(Qt::UserRole, key);
@@ -150,27 +132,25 @@ void FileMetaDataConfigWidget::Private::addItem(const KUrl& uri)
 
 void FileMetaDataConfigWidget::Private::slotLoadingFinished()
 {
-    /* vHanda: FIXME
     // Get all meta information labels that are available for
     // the currently shown file item and add them to the list.
     Q_ASSERT(m_provider != 0);
 
-    QHash<QUrl, Nepomuk2::Variant> data = m_provider->data();
+    QVariantMap data = m_provider->data();
     // Always show these 3
-    data.remove( NAO::numericRating() );
-    data.remove( NAO::hasTag() );
-    data.remove( NAO::description() );
+    data.remove("rating");
+    data.remove("tags");
+    data.remove("comment");
 
-    QHash<QUrl, Nepomuk2::Variant>::const_iterator it = data.constBegin();
+    QVariantMap::const_iterator it = data.constBegin();
     while (it != data.constEnd()) {
         addItem(it.key());
         ++it;
     }
 
-    addItem( NAO::numericRating() );
-    addItem( NAO::hasTag() );
-    addItem( NAO::description() );
-    */
+    addItem("rating");
+    addItem("tags");
+    addItem("comment");
 }
 
 FileMetaDataConfigWidget::FileMetaDataConfigWidget(QWidget* parent) :
@@ -187,7 +167,7 @@ FileMetaDataConfigWidget::~FileMetaDataConfigWidget()
 void FileMetaDataConfigWidget::setItems(const KFileItemList& items)
 {
     d->m_fileItems = items;
-    //d->loadMetaData();
+    d->loadMetaData();
 }
 
 KFileItemList FileMetaDataConfigWidget::items() const
@@ -227,3 +207,4 @@ QSize FileMetaDataConfigWidget::sizeHint() const
     return d->m_metaDataList->sizeHint();
 }
 
+#include "filemetadataconfigwidget.moc"
