@@ -25,6 +25,7 @@
 #include <baloo/tag.h>
 
 class KJob;
+class KUrl;
 class KCommentWidget;
 class KRatingWidget;
 
@@ -48,7 +49,7 @@ namespace Baloo {
         QWidget* createWidget(const QString& prop, const QVariant& value, QWidget* parent);
 
     signals:
-        void urlActivated(const QUrl& url);
+        void urlActivated(const KUrl& url);
         void dataChangeStarted();
         void dataChangeFinished();
 

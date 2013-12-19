@@ -29,7 +29,7 @@
 #include <baloo/tagrelation.h>
 #include <QtGui/QLabel>
 
-#include <QUrl>
+#include <KUrl>
 #include <KJob>
 #include <KDebug>
 
@@ -243,7 +243,7 @@ void WidgetFactory::startChangeDataJob(KJob* job)
 
 void WidgetFactory::slotLinkActivated(const QString& url)
 {
-    emit urlActivated(QUrl(url));
+    emit urlActivated(KUrl(url));
 }
 
 void WidgetFactory::slotTagClicked(const Baloo::Tag& tag)
