@@ -140,7 +140,6 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
         itemLabel.append(QLatin1Char(':'));
 
         // Create label
-        kDebug() << itemLabel;
         QLabel* label = new QLabel(itemLabel, q);
         label->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
         label->setForegroundRole(q->foregroundRole());
@@ -190,7 +189,6 @@ void FileMetaDataWidget::Private::slotDataChangeFinished()
 
 QStringList FileMetaDataWidget::Private::sortedKeys(const QVariantMap& data) const
 {
-    kDebug() << data.uniqueKeys();
     // Create a map, where the translated label prefixed with the
     // sort priority acts as key. The data of each entry is the URI
     // of the data. By this the all URIs are sorted by the sort priority
@@ -216,7 +214,6 @@ QStringList FileMetaDataWidget::Private::sortedKeys(const QVariantMap& data) con
         ++mapIt;
     }
 
-    kDebug() << list;
     return list;
 }
 
