@@ -24,10 +24,6 @@
 #include "kedittagsdialog_p.h"
 #include "tagcheckbox.h"
 
-#include <Nepomuk2/Tag>
-#include <Nepomuk2/ResourceManager>
-#include <Nepomuk2/DataManagement>
-
 #include <kinputdialog.h>
 #include <kmessagebox.h>
 #include <klocale.h>

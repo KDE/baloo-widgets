@@ -1,19 +1,19 @@
-# Config file for nepomuk-widgets. Do not modify this file. Any change will be overwritten by CMake.
+# Config file for baloo-widgets. Do not modify this file. Any change will be overwritten by CMake.
 
 # This file will define the following variables:
 #
-# BALOO_WIDGETS_LIB_DIR : The nepomuk-widgets library directory
-# BALOO_WIDGETS_INCLUDE_DIR : The nepomuk-widgets include directory
-# BALOO_WIDGETS_VERSION : The nepomuk-widgets version
-# BALOO_WIDGETS_LIBRARY : The nepomukwidgets library
+# BALOO_WIDGETS_LIB_DIR : The baloo-widgets library directory
+# BALOO_WIDGETS_INCLUDE_DIR : The baloo-widgets include directory
+# BALOO_WIDGETS_VERSION : The baloo-widgets version
+# BALOO_WIDGETS_LIBRARY : The baloowidgets library
 
 get_filename_component(_currentDir ${CMAKE_CURRENT_LIST_FILE} PATH) # The current directory
 get_filename_component(rootDir ${_currentDir}/@relInstallDir@ ABSOLUTE) # The install prefix
 
 # The baloo-widgets version
-set(BALOO_WIDGETS_VERSION_MAJOR @CMAKE_NEPOMUK_WIDGETS_VERSION_MAJOR@)
-set(BALOO_WIDGETS_VERSION_MINOR @CMAKE_NEPOMUK_WIDGETS_VERSION_MINOR@)
-set(BALOO_WIDGETS_VERSION_RELEASE @CMAKE_NEPOMUK_WIDGETS_VERSION_RELEASE@)
+set(BALOO_WIDGETS_VERSION_MAJOR @CMAKE_BALOO_WIDGETS_VERSION_MAJOR@)
+set(BALOO_WIDGETS_VERSION_MINOR @CMAKE_BALOO_WIDGETS_VERSION_MINOR@)
+set(BALOO_WIDGETS_VERSION_RELEASE @CMAKE_BALOO_WIDGETS_VERSION_RELEASE@)
 set(BALOO_WIDGETS_VERSION ${BALOO_WIDGETS_VERSION_MAJOR}.${BALOO_WIDGETS_VERSION_MINOR}.${BALOO_WIDGETS_VERSION_RELEASE})
 
 # Include directory
