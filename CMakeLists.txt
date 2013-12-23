@@ -53,7 +53,6 @@ set(ui_SRCS
   ui/filemetadatawidget.cpp
   ui/filemetadataconfigwidget.cpp
   ui/filemetadataprovider.cpp
-#  ui/resourceloader.cpp
   ui/indexeddataretriever.cpp
   ui/kcommentwidget.cpp
   ui/knfotranslator.cpp
