@@ -32,10 +32,10 @@ TagWidgetTest::TagWidgetTest()
     m_tagWidget = new Baloo::TagWidget(this);
     QVBoxLayout* lay = new QVBoxLayout(this);
     lay->addWidget(m_tagWidget);
-    connect(m_tagWidget, SIGNAL(tagClicked(Baloo::Tag)),
-            this, SLOT(slotTagClicked(Baloo::Tag)));
-    connect(m_tagWidget, SIGNAL(selectionChanged(QList<Baloo::Tag>)),
-            this, SLOT(slotSelectionChanged(QList<Baloo::Tag>)));
+    connect(m_tagWidget, SIGNAL(tagClicked(QString)),
+            this, SLOT(slotTagClicked(QString)));
+    connect(m_tagWidget, SIGNAL(selectionChanged(QStringList)),
+            this, SLOT(slotSelectionChanged(QStringList)));
 
     QCheckBox* box = new QCheckBox( "Align Right", this );
     connect(box, SIGNAL(toggled(bool)), this, SLOT(alignRight(bool)));
@@ -51,18 +51,15 @@ TagWidgetTest::~TagWidgetTest()
 }
 
 
-void TagWidgetTest::slotTagClicked(const Baloo::Tag& tag)
+void TagWidgetTest::slotTagClicked(const QString& tag)
 {
-    kDebug() << "Tag clicked:" << tag.id() << tag.name();
+    kDebug() << "Tag clicked:" << tag;
 }
 
 
-void TagWidgetTest::slotSelectionChanged( const QList<Baloo::Tag>& tags )
+void TagWidgetTest::slotSelectionChanged( const QStringList& tags )
 {
-    QStringList ts;
-    foreach(const Baloo::Tag& tag, tags)
-        ts << tag.name();
-    kDebug() << "Selection changed:" << ts;
+    kDebug() << "Selection changed:" << tags;
 }
 
 

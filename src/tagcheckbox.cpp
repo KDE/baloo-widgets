@@ -34,7 +34,7 @@
 
 using namespace Baloo;
 
-TagCheckBox::TagCheckBox(const Tag& tag, QWidget* parent)
+TagCheckBox::TagCheckBox(const QString& tag, QWidget* parent)
     : QWidget( parent ),
       m_label(0),
       m_tag(tag),
@@ -43,7 +43,7 @@ TagCheckBox::TagCheckBox(const Tag& tag, QWidget* parent)
     QHBoxLayout* layout = new QHBoxLayout(this);
     layout->setMargin(0);
 
-    m_label = new QLabel(tag.name(), this);
+    m_label = new QLabel(tag, this);
     m_label->setMouseTracking(true);
     m_label->setTextFormat(Qt::PlainText);
     m_label->setForegroundRole(parent->foregroundRole());

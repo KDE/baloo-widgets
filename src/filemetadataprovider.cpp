@@ -167,9 +167,18 @@ void FileMetaDataProvider::Private::totalPropertyAndInsert(const QString& prop,
 void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
 {
     Baloo::FileFetchJob* fetchJob = static_cast<Baloo::FileFetchJob*>(job);
-    m_data = fetchJob->file().properties();
+    Baloo::File file = fetchJob->file();
+
+    m_data = file.properties();
     insertBasicData();
 
+    if (file.rating()) {
+        m_data.insert("rating", file.rating());
+    }
+
+    if (!file.tags().isEmpty()) {
+        m_data.insert("tag", file.tags());
+    }
     kDebug() << m_data;
     /*
     else {

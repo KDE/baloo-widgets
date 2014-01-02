@@ -33,8 +33,8 @@ public:
     ~TagWidgetTest();
 
 public slots:
-    void slotTagClicked(const Baloo::Tag&);
-    void slotSelectionChanged( const QList<Baloo::Tag>& tags );
+    void slotTagClicked(const QString&);
+    void slotSelectionChanged( const QStringList& tags );
 
 private slots:
     void alignRight( bool enable );

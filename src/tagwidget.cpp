@@ -1,6 +1,7 @@
 /*
  * This file is part of the Nepomuk KDE project.
  * Copyright (C) 2006-2010 Sebastian Trueg <trueg@kde.org>
+ * Copyright (C) 2011-2013 Vishesh Handa <me@vhanda.in>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -59,12 +60,12 @@ void TagWidgetPrivate::rebuild()
 }
 
 
-void TagWidgetPrivate::buildTagHash(const QList<Tag>& tags)
+void TagWidgetPrivate::buildTagHash(const QStringList& tags)
 {
     qDeleteAll(m_checkBoxHash);
     m_checkBoxHash.clear();
 
-    foreach (const Tag& tag, tags) {
+    foreach (const QString& tag, tags) {
         getTagCheckBox(tag);
     }
 
@@ -92,13 +93,13 @@ void TagWidgetPrivate::buildTagHash(const QList<Tag>& tags)
 }
 
 
-TagCheckBox* TagWidgetPrivate::getTagCheckBox( const Tag& tag )
+TagCheckBox* TagWidgetPrivate::getTagCheckBox(const QString& tag)
 {
-    QMap<Tag, TagCheckBox*>::iterator it = m_checkBoxHash.find(tag);
+    QMap<QString, TagCheckBox*>::iterator it = m_checkBoxHash.find(tag);
     if( it == m_checkBoxHash.end() ) {
         //kDebug() << "Creating checkbox for" << tag.genericLabel();
         TagCheckBox* checkBox = new TagCheckBox(tag, q);
-        q->connect( checkBox, SIGNAL(tagClicked(Baloo::Tag)), SIGNAL(tagClicked(Baloo::Tag)) );
+        q->connect( checkBox, SIGNAL(tagClicked(QString)), SIGNAL(tagClicked(QString)) );
         m_checkBoxHash.insert( tag, checkBox );
         m_flowLayout->addWidget( checkBox );
         return checkBox;
@@ -108,14 +109,7 @@ TagCheckBox* TagWidgetPrivate::getTagCheckBox( const Tag& tag )
     }
 }
 
-namespace Baloo {
-    /// operator necessary for QMap::erase
-    bool operator<(const Tag& t1, const Tag& t2) {
-        return t1.name() < t2.name();
-    }
-}
-
-void TagWidgetPrivate::selectTags( const QList<Tag>& tags )
+void TagWidgetPrivate::selectTags(const QStringList& tags)
 {
     buildTagHash( tags );
 }
@@ -136,10 +130,10 @@ TagWidget::~TagWidget()
 }
 
 
-QList<Tag> TagWidget::selectedTags() const
+QStringList TagWidget::selectedTags() const
 {
-    QList<Tag> tags;
-    QMapIterator<Tag, TagCheckBox*> it( d->m_checkBoxHash );
+    QStringList tags;
+    QMapIterator<QString, TagCheckBox*> it(d->m_checkBoxHash);
     while( it.hasNext() ) {
         tags << it.next().key();
     }
@@ -157,7 +151,7 @@ bool TagWidget::readOnly() const
     return d->m_readOnly;
 }
 
-void TagWidget::setSelectedTags( const QList< Tag >& tags )
+void TagWidget::setSelectedTags(const QStringList& tags)
 {
     d->selectTags(tags);
 }

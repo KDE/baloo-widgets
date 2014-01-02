@@ -1,6 +1,7 @@
 /*
  * This file is part of the Nepomuk KDE project.
  * Copyright (C) 2006-2010 Sebastian Trueg <trueg@kde.org>
+ * Copyright (C) 2013      Vishesh Handa <me@vhanda.in>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -23,11 +24,9 @@
 
 #include "widgets_export.h"
 
-#include <QtGui/QWidget>
-#include <baloo/tag.h>
+#include <QWidget>
 
 namespace Baloo {
-    class Tag;
     class TagWidgetPrivate;
 
     /**
@@ -36,12 +35,6 @@ namespace Baloo {
      * \brief Allows to change a selection of tags.
      *
      * TagWidget provides a simple GUI interface to assign tags.
-     * It has two basic modes:
-     * \li If resources are set via setTaggedResource() or setTaggedResources()
-     * the changes in the tag selection are automatically assigned to the
-     * selected resources.
-     * \li If no resources have been set the widget simply emits the selectionChanged()
-     * signal.
      *
      * \author Sebastian Trueg <trueg@kde.org>
      */
@@ -67,11 +60,9 @@ namespace Baloo {
          * resources to be tagged have been selected this list matches the
          * tags assigned to the resources.
          *
-         * \sa setTaggedResource, taggedResource, Resource::getTags
-         *
          * \since 4.5
          */
-        QList<Tag> selectedTags() const;
+        QStringList selectedTags() const;
 
         /**
          * The alignment of the tags in the widget.
@@ -89,14 +80,14 @@ namespace Baloo {
         /**
          * This signal is emitted whenever a tag is clicked.
          */
-        void tagClicked(const Baloo::Tag&);
+        void tagClicked(const QString&);
 
         /**
          * Emitted whenever the selection of tags changes.
          *
          * \since 4.5
          */
-        void selectionChanged(const QList<Baloo::Tag>& tags);
+        void selectionChanged(const QStringList& tags);
 
     public Q_SLOTS:
         /**
@@ -106,7 +97,7 @@ namespace Baloo {
          *
          * \since 4.5
          */
-        void setSelectedTags( const QList<Tag>& tags );
+        void setSelectedTags(const QStringList& tags);
 
         /**
          * Set the alignment to use. Only horizontal alignment flags make a

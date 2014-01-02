@@ -83,13 +83,7 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         widget = createCommentWidget( value.toString(), parent );
     }
     else if (prop == QLatin1String("tag")) {
-        QList<Tag> tags;
-        /*
-        foreach(const Resource& res, value.toResourceList())
-            tags << Tag(res);
-        */
-
-        // vHanda FIXME: These tags must be fetched first!!
+        QStringList tags = value.toStringList();
         widget = createTagWidget( tags, parent );
     }
     else {
@@ -105,16 +99,16 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
     return widget;
 }
 
-QWidget* WidgetFactory::createTagWidget(const QList<Tag>& tags, QWidget* parent)
+QWidget* WidgetFactory::createTagWidget(const QStringList& tags, QWidget* parent)
 {
     TagWidget* tagWidget = new TagWidget(parent);
     tagWidget->setReadyOnly(m_readOnly);
     tagWidget->setSelectedTags(tags);
 
-    connect(tagWidget, SIGNAL(selectionChanged(QList<Baloo::Tag>)),
-            this, SLOT(slotTagsChanged(QList<Baloo::Tag>)));
-    connect(tagWidget, SIGNAL(tagClicked(Baloo::Tag)),
-            this, SLOT(slotTagClicked(Baloo::Tag)));
+    connect(tagWidget, SIGNAL(selectionChanged(QStringList)),
+            this, SLOT(slotTagsChanged(QStringList)));
+    connect(tagWidget, SIGNAL(tagClicked(QString)),
+            this, SLOT(slotTagClicked(QString)));
 
     m_tagWidget = tagWidget;
     m_prevTags = tags;
@@ -212,9 +206,11 @@ void WidgetFactory::slotRatingChanged(uint rating)
     //startChangeDataJob(job);
 }
 
-void WidgetFactory::slotTagsChanged(const QList<Baloo::Tag>& tags)
+void WidgetFactory::slotTagsChanged(const QStringList& tags)
 {
     if (m_tagWidget) {
+        // FIXME: vHanda: SAVE THE TAGS!!
+        /*
         TagRelationCreateJob* job = new TagRelationCreateJob(m_items, tags);
 
         // FIXME: vHanda : Remove the tags that are no longer applicable
@@ -225,6 +221,7 @@ void WidgetFactory::slotTagsChanged(const QList<Baloo::Tag>& tags)
 
         m_prevTags = tags;
         startChangeDataJob(job);
+        */
     }
 }
 
@@ -246,7 +243,7 @@ void WidgetFactory::slotLinkActivated(const QString& url)
     emit urlActivated(KUrl(url));
 }
 
-void WidgetFactory::slotTagClicked(const Baloo::Tag& tag)
+void WidgetFactory::slotTagClicked(const QString& tag)
 {
     // vHanda: FIXME: Create a link for this tag!!
     // emit urlActivated( tag.uri() );
@@ -266,7 +263,7 @@ void WidgetFactory::setNoLinks(bool value)
     m_noLinks = value;
 }
 
-void WidgetFactory::setItems(const QList<Item>& items)
+void WidgetFactory::setItems(const QStringList& items)
 {
     m_items = items;
 }

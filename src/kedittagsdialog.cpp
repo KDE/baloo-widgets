@@ -32,7 +32,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
-KEditTagsDialog::KEditTagsDialog(const QList<Baloo::Tag>& tags,
+KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
                                  QWidget* parent,
                                  Qt::WFlags flags) :
     KDialog(parent, flags),
@@ -103,7 +103,7 @@ KEditTagsDialog::~KEditTagsDialog()
 {
 }
 
-QList<Baloo::Tag> KEditTagsDialog::tags() const
+QStringList KEditTagsDialog::tags() const
 {
     return m_tags;
 }
@@ -132,14 +132,16 @@ void KEditTagsDialog::slotButtonClicked(int button)
                 const QByteArray tagId = item->data(Qt::UserRole).toByteArray();
 
                 bool newTag = true;
-                foreach (const Baloo::Tag& tag, m_allTags) {
-                    if (tag.id() == tagId) {
+                foreach (const QString& tag, m_allTags) {
+                    if (tag == tagId) {
                         m_tags << tag;
                         newTag = false;
                         break;
                     }
                 }
 
+                /*
+                 * FIXME: We can no longer create new tags either!
                 if (newTag) {
                     Baloo::Tag tag(item->text());
                     m_tags.append(tag);
@@ -149,6 +151,7 @@ void KEditTagsDialog::slotButtonClicked(int button)
                             this, SLOT(slotNewTagCreated(Baloo::Tag)));
                     job->start();
                 }
+                */
             }
         }
 
@@ -158,10 +161,12 @@ void KEditTagsDialog::slotButtonClicked(int button)
     }
 }
 
+/*
 void KEditTagsDialog::slotNewTagCreated(const Baloo::Tag& tag)
 {
     m_allTags << tag;
 }
+*/
 
 void KEditTagsDialog::slotTextEdited(const QString& text)
 {
@@ -172,8 +177,8 @@ void KEditTagsDialog::slotTextEdited(const QString& text)
     if (tagText.isEmpty()) {
         removeNewTagItem();
         return;
-    }   
-    
+    }
+
     // Check whether the new tag already exists. If this
     // is the case, remove the new tag item.
     const int count = m_tagsList->count();
@@ -240,8 +245,10 @@ void KEditTagsDialog::deleteTag()
     const KGuiItem deleteItem(i18nc("@action:button", "Delete"), KIcon("edit-delete"));
     const KGuiItem cancelItem(i18nc("@action:button", "Cancel"), KIcon("dialog-cancel"));
     if (KMessageBox::warningYesNo(this, text, caption, deleteItem, cancelItem) == KMessageBox::Yes) {
+        /*
         int row = m_tagsList->row( m_deleteCandidate );
 
+        // FIXME: We can no longer delete tags!
         const QByteArray id = m_deleteCandidate->data(Qt::UserRole).toByteArray();
         Baloo::TagRemoveJob* job = new Baloo::TagRemoveJob(Baloo::Tag::fromId(id), this);
         job->start();
@@ -257,16 +264,14 @@ void KEditTagsDialog::deleteTag()
 
         // The deleteCandidate is now the next item in the row
         m_deleteCandidate = m_tagsList->item( row );
+        */
     }
-}
-
-static bool tagLabelLessThan(const Baloo::Tag& t1, const Baloo::Tag& t2)
-{
-    return t1.name() < t2.name();
 }
 
 void KEditTagsDialog::loadTags()
 {
+    // vHanda: FIXME - Load all the tags!
+    /*
     Baloo::TagFetchJob* job = new Baloo::TagFetchJob(this);
     connect(job, SIGNAL(tagReceived(Baloo::Tag)),
             this, SLOT(slotTagLoaded(Baloo::Tag)));
@@ -274,20 +279,20 @@ void KEditTagsDialog::loadTags()
             this, SLOT(slotAllTagsLoaded()));
 
     job->start();
+    */
 }
 
-void KEditTagsDialog::slotTagLoaded(const Baloo::Tag& tag)
+void KEditTagsDialog::slotTagLoaded(const QString& tag)
 {
     m_allTags << tag;
 }
 
 void KEditTagsDialog::slotAllTagsLoaded()
 {
-    qSort(m_allTags.begin(), m_allTags.end(), tagLabelLessThan);
+    qSort(m_allTags.begin(), m_allTags.end());
 
-    foreach (const Baloo::Tag& tag, m_allTags) {
-        QListWidgetItem* item = new QListWidgetItem(tag.name(), m_tagsList);
-        item->setData(Qt::UserRole, tag.id());
+    foreach (const QString& tag, m_allTags) {
+        QListWidgetItem* item = new QListWidgetItem(tag, m_tagsList);
 
         const bool check = m_tags.contains( tag );
         item->setCheckState(check ? Qt::Checked : Qt::Unchecked);

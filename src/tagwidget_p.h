@@ -39,19 +39,18 @@ class TagWidgetPrivate
 public:
     void init( TagWidget* parent );
     void rebuild();
-    void buildTagHash( const QList<Tag>& tags );
-    QList<Tag> intersectResourceTags();
+    void buildTagHash(const QStringList& tags);
 
     /// lookup (and if necessary create) checkbox for tag
-    TagCheckBox* getTagCheckBox( const Tag& tag );
+    TagCheckBox* getTagCheckBox(const QString& tag);
 
     /// check the corresponding checkboxes and even
     /// add missing checkboxes
-    void selectTags( const QList<Tag>& tags );
+    void selectTags(const QStringList& tags);
 
     bool m_readOnly;
 
-    QMap<Tag, TagCheckBox*> m_checkBoxHash;
+    QMap<QString, TagCheckBox*> m_checkBoxHash;
     QLabel* m_showAllLinkLabel;
     KBlockLayout* m_flowLayout;
     TagWidget* q;

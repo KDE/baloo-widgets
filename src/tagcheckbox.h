@@ -36,13 +36,13 @@ class TagCheckBox : public QWidget
     Q_OBJECT
 
 public:
-    TagCheckBox(const Tag& tag, QWidget* parent = 0);
+    TagCheckBox(const QString& tag, QWidget* parent = 0);
     ~TagCheckBox();
 
-    Tag tag() const { return m_tag; }
+    QString tag() const { return m_tag; }
 
 Q_SIGNALS:
-    void tagClicked(const Baloo::Tag& tag);
+    void tagClicked(const QString& tag);
 
 protected:
     void leaveEvent(QEvent* event );
@@ -56,7 +56,7 @@ private:
     QLabel* m_label;
     QWidget* m_child;
 
-    Tag m_tag;
+    QString m_tag;
     bool m_urlHover;
 };
 }

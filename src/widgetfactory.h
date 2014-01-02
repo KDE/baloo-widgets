@@ -22,7 +22,7 @@
 #define WIDGETFACTORY_H
 
 #include <QObject>
-#include <baloo/tag.h>
+#include <QStringList>
 
 class KJob;
 class KUrl;
@@ -41,7 +41,7 @@ namespace Baloo {
         explicit WidgetFactory(QObject* parent = 0);
         virtual ~WidgetFactory();
 
-        void setItems(const QList<Item>& items);
+        void setItems(const QStringList& items);
 
         void setReadOnly(bool value);
         void setNoLinks(bool value);
@@ -54,16 +54,16 @@ namespace Baloo {
         void dataChangeFinished();
 
     private slots:
-        void slotTagsChanged(const QList<Baloo::Tag>& tags);
+        void slotTagsChanged(const QStringList& tags);
         void slotCommentChanged(const QString& comment);
         void slotRatingChanged(uint rating);
 
-        void slotTagClicked(const Baloo::Tag& tag);
+        void slotTagClicked(const QString& tag);
         void slotLinkActivated(const QString& url);
 
     private:
         QWidget* createRatingWidget(int rating, QWidget* parent);
-        QWidget* createTagWidget(const QList<Tag>& tags, QWidget* parent);
+        QWidget* createTagWidget(const QStringList& tags, QWidget* parent);
         QWidget* createCommentWidget(const QString& comment, QWidget* parent);
         QWidget* createValueWidget(const QString& value, QWidget* parent);
 
@@ -73,8 +73,8 @@ namespace Baloo {
         KRatingWidget* m_ratingWidget;
         KCommentWidget* m_commentWidget;
 
-        QList<Item> m_items;
-        QList<Tag> m_prevTags;
+        QStringList m_items;
+        QStringList m_prevTags;
         bool m_readOnly;
         bool m_noLinks;
     };
