@@ -26,7 +26,7 @@ include_directories(
   ${KDE4_INCLUDES}
   ${BALOO_INCLUDE_DIR}
   ${CMAKE_SOURCE_DIR}
-  ${CMAKE_SOURCE_DIR}/ui
+  ${CMAKE_SOURCE_DIR}/src
 )
 
 
@@ -45,58 +45,7 @@ install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/BalooWidgetsConfigVersion.cmake
     DESTINATION ${LIB_INSTALL_DIR}/cmake/BalooWidgets)
 
-set(ui_SRCS
-  ui/kblocklayout.cpp
-  ui/tagwidget.cpp
-  ui/kedittagsdialog.cpp
-  ui/tagcheckbox.cpp
-  ui/filemetadatawidget.cpp
-  ui/filemetadataconfigwidget.cpp
-  ui/filemetadataprovider.cpp
-  ui/indexeddataretriever.cpp
-  ui/kcommentwidget.cpp
-  ui/knfotranslator.cpp
-  ui/metadatafilter.cpp
-  ui/widgetfactory.cpp
-)
-
-set(widgets_SRCS ${ui_SRCS})
-
-kde4_add_library(baloowidgets SHARED ${LIBRARY_TYPE} ${widgets_SRCS})
-
-target_link_libraries(baloowidgets
-  ${QT_QTCORE_LIBRARY}
-  ${QT_QTGUI_LIBRARY}
-  ${QT_QTDBUS_LIBRARY}
-  ${KDE4_KDECORE_LIBS}
-  ${KDE4_KDEUI_LIBS}
-  ${KDE4_KIO_LIBS}
-  ${BALOO_LIBRARIES}
-)
-
-target_link_libraries(baloowidgets
-  LINK_INTERFACE_LIBRARIES
-  ${KDE4_KDECORE_LIBS}
-  ${KDE4_KDEUI_LIBS}
-  ${BALOO_LIBRARIES}
-)
-
-set_target_properties(baloowidgets PROPERTIES
-   VERSION ${GENERIC_LIB_VERSION}
-   SOVERSION ${GENERIC_LIB_SOVERSION}
-)
-
-install(TARGETS baloowidgets EXPORT BalooWidgetsLibraryTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
-
-install(FILES
-  widgets_export.h
-  ui/tagwidget.h
-  ui/filemetadatawidget.h
-  ui/filemetadataconfigwidget.h
-
-  DESTINATION ${INCLUDE_INSTALL_DIR}/baloo COMPONENT Devel
-)
-
+add_subdirectory(src)
 add_subdirectory(test)
 
 # install the file with the exported targets
