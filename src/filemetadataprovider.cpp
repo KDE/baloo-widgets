@@ -179,7 +179,11 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
     if (!file.tags().isEmpty()) {
         m_data.insert("tags", file.tags());
     }
-    kDebug() << m_data;
+
+    if (!file.userComment().isEmpty()) {
+        m_data.insert("userComment", file.userComment());
+    }
+
     /*
     else {
         //
@@ -296,8 +300,8 @@ void FileMetaDataProvider::Private::insertEditableData()
             m_data.insert("tags", QVariant());
         if (!m_data.contains("rating"))
             m_data.insert("rating", 0);
-        if (!m_data.contains("comment") )
-            m_data.insert("comment", QVariant());
+        if (!m_data.contains("userComment") )
+            m_data.insert("userComment", QVariant());
     }
 }
 
@@ -385,7 +389,7 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
         { "kfileitem#type", I18N_NOOP2_NOSTRIP("@label", "Type") },
         { "tags", I18N_NOOP2_NOSTRIP("@label", "Tags") },
         { "rating", I18N_NOOP2_NOSTRIP("@label", "Rating") },
-        { "comment", I18N_NOOP2_NOSTRIP("@label", "Comment") },
+        { "userComment", I18N_NOOP2_NOSTRIP("@label", "Comment") },
         { 0, 0, 0} // Mandatory last entry
     };
 
@@ -421,7 +425,7 @@ QString FileMetaDataProvider::group(const QString& label) const
         // Editable Data
         uriGrouper.insert(QLatin1String("tags"), QLatin1String("1EditableDataA"));
         uriGrouper.insert(QLatin1String("rating"), QLatin1String("1EditableDataB"));
-        uriGrouper.insert(QLatin1String("comment"), QLatin1String("1EditableDataC"));
+        uriGrouper.insert(QLatin1String("userComment"), QLatin1String("1EditableDataC"));
 
         // Image Data
         uriGrouper.insert(QLatin1String("width"), QLatin1String("2SizA"));

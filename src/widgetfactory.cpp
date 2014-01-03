@@ -79,7 +79,7 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
     if (prop == QLatin1String("rating")) {
         widget = createRatingWidget( value.toInt(), parent );
     }
-    else if (prop == QLatin1String("comment")) {
+    else if (prop == QLatin1String("userComment")) {
         widget = createCommentWidget( value.toString(), parent );
     }
     else if (prop == QLatin1String("tags")) {
