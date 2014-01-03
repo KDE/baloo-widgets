@@ -82,7 +82,7 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
     else if (prop == QLatin1String("comment")) {
         widget = createCommentWidget( value.toString(), parent );
     }
-    else if (prop == QLatin1String("tag")) {
+    else if (prop == QLatin1String("tags")) {
         QStringList tags = value.toStringList();
         widget = createTagWidget( tags, parent );
     }

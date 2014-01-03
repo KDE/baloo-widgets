@@ -177,7 +177,7 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
     }
 
     if (!file.tags().isEmpty()) {
-        m_data.insert("tag", file.tags());
+        m_data.insert("tags", file.tags());
     }
     kDebug() << m_data;
     /*
