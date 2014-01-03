@@ -26,12 +26,14 @@
 #include "kcommentwidget_p.h"
 #include "kratingwidget.h"
 
-#include <baloo/tagrelation.h>
-#include <QtGui/QLabel>
+#include <QLabel>
+#include <QTime>
 
 #include <KUrl>
 #include <KJob>
 #include <KDebug>
+#include <KGlobal>
+#include <KLocale>
 
 namespace {
     static QString plainText(const QString& richText)
@@ -91,9 +93,37 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
     }
     else {
         // vHanda: FIXME: Add links! Take m_noLinks into consideration
-        //         FIXME: Format the value based on the type
+        QString valueString;
 
-        widget = createValueWidget(value.toString(), parent);
+        if (prop == "duration") {
+            QTime time = QTime().addSecs(value.toInt());
+            valueString = KGlobal::locale()->formatTime(time, true, true);
+        }
+        else {
+            // Check if Date/DateTime
+            QDateTime dt = QDateTime::fromString(value.toString(), Qt::ISODate);
+            if (dt.isValid()) {
+                QTime time = dt.time();
+                if (!time.hour() && !time.minute() && !time.second())
+                    valueString = KGlobal::locale()->formatDate(dt.date(), KLocale::FancyLongDate);
+                else
+                    valueString = KGlobal::locale()->formatDateTime(dt, KLocale::FancyLongDate);
+            }
+            else {
+                switch (value.type()) {
+                case QVariant::Int:
+                    valueString = KGlobal::locale()->formatLong(value.toInt());
+                    break;
+                case QVariant::Double:
+                    valueString = KGlobal::locale()->formatNumber(value.toDouble());
+                    break;
+                default:
+                    valueString = value.toString();
+                    break;
+                }
+            }
+        }
+        widget = createValueWidget(valueString, parent);
     }
 
     widget->setForegroundRole(parent->foregroundRole());
