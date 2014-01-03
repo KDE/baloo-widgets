@@ -45,7 +45,7 @@ void MetadataFilter::initMetaInformationSettings()
     const int currentVersion = 5; // increase version, if the blacklist of disabled
     // properties should be updated
 
-    KConfig config("kmetainformationrc", KConfig::NoGlobals);
+    KConfig config("baloofileinformationrc", KConfig::NoGlobals);
     if (config.group("Misc").readEntry("version", 0) < currentVersion) {
         // The resource file is read the first time. Assure
         // that some meta information is disabled per default.
@@ -55,39 +55,35 @@ void MetadataFilter::initMetaInformationSettings()
         KConfigGroup settings = config.group("Show");
 
         static const char* const disabledProperties[] = {
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#comment",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#contentSize",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#depends",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#isPartOf",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#lastModified",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#created",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#contentCreated",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#mimeType",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#plainTextContent",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url",
-            "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart",
-            "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#averageBitrate",
-            "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#channels",
-            "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName",
-            "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileSize",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#apertureValue",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#exposureBiasValue",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#exposureTime",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#flash",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#focalLength",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#focalLengthIn35mmFilm",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#isoSpeedRatings",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#make",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#meteringMode",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#model",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#orientation",
-            "http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#whiteBalance",
-            "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#modified",
-            "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#lastModified",
-            "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#created",
-            "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#annotation",
-            "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#hasSubResource",
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "comment",
+            "contentSize",
+            "depends",
+            "isPartOf",
+            "lastModified",
+            "created",
+            "contentCreated",
+            "mimeType",
+            "plainTextContent",
+            "url",
+            "hasPart",
+            "averageBitrate",
+            "channels",
+            "fileName",
+            "fileSize",
+            "Exif.Photo.ApertureValue",
+            "Exif.Photo.ExposureBiasValue",
+            "Exif.Photo.ExposureTime",
+            "Exif.Photo.Flash",
+            "Exif.Photo.FocalLength",
+            "Exif.Photo.FocalLengthIn35mmFilm",
+            "Exif.Photo.IsoSpeedRatings",
+            "Exif.Photo.MeteringMode",
+            "Exif.Photo.Orientation",
+            "Exif.Photo.WhiteBalance",
+            "Exif.Image.Make",
+            "Exif.Image.Model",
+            "Exif.Image.DateTime",
+            "Exif.Image.Orientation",
             "kfileitem#owner",
             "kfileitem#permissions",
             "kfileitem#modified",
@@ -105,56 +101,19 @@ void MetadataFilter::initMetaInformationSettings()
 
 QVariantMap MetadataFilter::filter(const QVariantMap& data)
 {
-    return data;
-    /*
     if( data.isEmpty() )
         return data;
 
-    QList<QUrl> types = data.value( RDF::type() ).toUrlList();
-
-    //
-    // Special filtering for certain types
-    //
-
-    if( types.contains( NAO::Tag() ) ) {
-        QHash<QUrl, Variant> finalData;
-
-        if( data.contains(NAO::identifier()) )
-            finalData.insert( NAO::identifier(), data.value(NAO::identifier()) );
-        if( data.contains(NAO::prefLabel()) )
-            finalData.insert( NAO::prefLabel(), data.value(NAO::prefLabel()) );
-
-        return finalData;
-    }
-
-    QHash<QUrl, Variant> finalData( data );
-
-    // Remove editable stuff for contacts and albums
-    if( types.contains( NCO::Contact() ) || types.contains( NMM::MusicAlbum() ) ) {
-        finalData.remove( NAO::hasTag() );
-        finalData.remove( NAO::numericRating() );
-        finalData.remove( NAO::description() );
-    }
-
-    //
-    // Remove all the meta-properties
-    //
-    finalData.remove( RDF::type() );
-
-    finalData.remove( NAO::lastModified() );
-    finalData.remove( NAO::created() );
-    finalData.remove( NAO::userVisible() );
-
-    bool connected = ResourceManager::instance()->initialized();
+    QVariantMap finalData(data);
 
     //
     // Remove all items, that are marked as hidden in kmetainformationrc
-    KConfig config("kmetainformationrc", KConfig::NoGlobals);
+    KConfig config("baloofileinformationrc", KConfig::NoGlobals);
     KConfigGroup settings = config.group("Show");
-    QHash<QUrl, Variant>::iterator it = finalData.begin();
+    QVariantMap::iterator it = finalData.begin();
     while (it != finalData.end()) {
-        const QString uriString = it.key().toString();
-        if (!settings.readEntry(uriString, true) || (connected && !Types::Property(it.key()).userVisible())) {
+        const QString uriString = it.key();
+        if (!settings.readEntry(uriString, true)) {
             it = finalData.erase(it);
         } else {
             ++it;
@@ -162,5 +121,4 @@ QVariantMap MetadataFilter::filter(const QVariantMap& data)
     }
 
     return finalData;
-    */
 }
