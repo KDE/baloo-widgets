@@ -80,6 +80,8 @@ static const TranslationItem g_translations[] = {
     { "genre",  I18N_NOOP2_NOSTRIP("@label music genre", "Genre") },
     { "album", I18N_NOOP2_NOSTRIP("@label music album", "Album") },
     { "artist", I18N_NOOP2_NOSTRIP("@label", "Artist") },
+    { "aspectRatio", I18N_NOOP2_NOSTRIP("@label", "Aspect Ratio") },
+    { "frameRate", I18N_NOOP2_NOSTRIP("@label", "Frame Rate") },
     { "releaseDate", I18N_NOOP2_NOSTRIP("@label", "Release Date") },
     { "trackNumber", I18N_NOOP2_NOSTRIP("@label music track number", "Track") },
     { "created", I18N_NOOP2_NOSTRIP("@label resource created time", "Resource Created")},
