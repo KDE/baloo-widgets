@@ -431,19 +431,17 @@ QString FileMetaDataProvider::group(const QString& label) const
         uriGrouper.insert(QLatin1String("width"), QLatin1String("2SizA"));
         uriGrouper.insert(QLatin1String("height"), QLatin1String("2SizeB"));
 
-        /*
         // Music Data
-        uriGrouper.insert( NIE::title(), QLatin1String("3MusicA") );
-        uriGrouper.insert( NMM::performer(), QLatin1String("3MusicB") );
-        uriGrouper.insert( NMM::musicAlbum(), QLatin1String("3MusicC") );
-        uriGrouper.insert( NMM::genre(), QLatin1String("3MusicD") );
-        uriGrouper.insert( NMM::trackNumber(), QLatin1String("3MusicE") );
+        uriGrouper.insert( "title", QLatin1String("3MusicA") );
+        uriGrouper.insert( "artist", QLatin1String("3MusicB") );
+        uriGrouper.insert( "album", QLatin1String("3MusicC") );
+        uriGrouper.insert( "genre", QLatin1String("3MusicD") );
+        uriGrouper.insert( "trackNumber", QLatin1String("3MusicE") );
 
         // Audio Data
-        uriGrouper.insert( NFO::duration(), QLatin1String("4AudioA") );
-        uriGrouper.insert( NFO::sampleRate(), QLatin1String("4AudioB") );
-        uriGrouper.insert( NFO::sampleCount(), QLatin1String("4AudioC") );
-        */
+        uriGrouper.insert( "duration", QLatin1String("4AudioA") );
+        uriGrouper.insert( "sampleRate", QLatin1String("4AudioB") );
+        uriGrouper.insert( "sampleCount", QLatin1String("4AudioC") );
     }
 
     const QString val = uriGrouper.value(label);
