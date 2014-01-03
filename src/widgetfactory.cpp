@@ -63,9 +63,6 @@ WidgetFactory::WidgetFactory(QObject* parent)
     : QObject(parent)
     , m_readOnly( false )
     , m_noLinks( false )
-    , m_tagWidget(0)
-    , m_ratingWidget(0)
-    , m_commentWidget(0)
 {
 }
 
@@ -143,9 +140,6 @@ QWidget* WidgetFactory::createTagWidget(const QStringList& tags, QWidget* parent
     connect(tagWidget, SIGNAL(tagClicked(QString)),
             this, SLOT(slotTagClicked(QString)));
 
-    if (m_tagWidget) {
-        delete m_tagWidget;
-    }
     m_tagWidget = tagWidget;
     m_prevTags = tags;
 
@@ -161,9 +155,6 @@ QWidget* WidgetFactory::createCommentWidget(const QString& comment, QWidget* par
     connect(commentWidget, SIGNAL(commentChanged(QString)),
             this, SLOT(slotCommentChanged(QString)));
 
-    if (m_commentWidget) {
-        delete m_commentWidget;
-    }
     m_commentWidget = commentWidget;
 
     return commentWidget;
@@ -181,10 +172,6 @@ QWidget* WidgetFactory::createRatingWidget(int rating, QWidget* parent)
 
     connect(ratingWidget, SIGNAL(ratingChanged(uint)),
             this, SLOT(slotRatingChanged(uint)));
-
-    if (m_ratingWidget) {
-        delete m_ratingWidget;
-    }
 
     m_ratingWidget = ratingWidget;
 
