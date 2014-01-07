@@ -32,6 +32,8 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
+#include <baloo/taglistjob.h>
+
 KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
                                  QWidget* parent,
                                  Qt::WFlags flags) :
@@ -129,29 +131,7 @@ void KEditTagsDialog::slotButtonClicked(int button)
         for (int i = 0; i < count; ++i) {
             QListWidgetItem* item = m_tagsList->item(i);
             if (item->checkState() == Qt::Checked) {
-                const QByteArray tagId = item->data(Qt::UserRole).toByteArray();
-
-                bool newTag = true;
-                foreach (const QString& tag, m_allTags) {
-                    if (tag == tagId) {
-                        m_tags << tag;
-                        newTag = false;
-                        break;
-                    }
-                }
-
-                /*
-                 * FIXME: We can no longer create new tags either!
-                if (newTag) {
-                    Baloo::Tag tag(item->text());
-                    m_tags.append(tag);
-
-                    Baloo::TagCreateJob* job = new Baloo::TagCreateJob(tag, this);
-                    connect(job, SIGNAL(tagCreated(Baloo::Tag)),
-                            this, SLOT(slotNewTagCreated(Baloo::Tag)));
-                    job->start();
-                }
-                */
+                m_tags << item->text();
             }
         }
 
@@ -270,25 +250,17 @@ void KEditTagsDialog::deleteTag()
 
 void KEditTagsDialog::loadTags()
 {
-    // vHanda: FIXME - Load all the tags!
-    /*
-    Baloo::TagFetchJob* job = new Baloo::TagFetchJob(this);
-    connect(job, SIGNAL(tagReceived(Baloo::Tag)),
-            this, SLOT(slotTagLoaded(Baloo::Tag)));
-    connect(job, SIGNAL(finished(KJob*)),
-            this, SLOT(slotAllTagsLoaded()));
+    Baloo::TagListJob* job = new Baloo::TagListJob();
+    connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotTagsLoaded(KJob*)));
 
     job->start();
-    */
 }
 
-void KEditTagsDialog::slotTagLoaded(const QString& tag)
+void KEditTagsDialog::slotTagsLoaded(KJob* job)
 {
-    m_allTags << tag;
-}
+    Baloo::TagListJob* tjob = static_cast<Baloo::TagListJob*>(job);
 
-void KEditTagsDialog::slotAllTagsLoaded()
-{
+    m_allTags = tjob->tags();
     qSort(m_allTags.begin(), m_allTags.end());
 
     foreach (const QString& tag, m_allTags) {

@@ -22,6 +22,7 @@
 #include <kdialog.h>
 
 class KLineEdit;
+class KJob;
 class QListWidget;
 class QListWidgetItem;
 class QPushButton;
@@ -59,9 +60,7 @@ private slots:
     void showDeleteButton();
     void deleteTag();
 
-    //void slotNewTagCreated(const QString& tag);
-    void slotTagLoaded(const QString& tag);
-    void slotAllTagsLoaded();
+    void slotTagsLoaded(KJob* job);
 
 private:
     void loadTags();
