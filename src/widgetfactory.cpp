@@ -26,6 +26,8 @@
 #include "kcommentwidget_p.h"
 #include "kratingwidget.h"
 
+#include <baloo/filemodifyjob.h>
+
 #include <QLabel>
 #include <QTime>
 
@@ -224,24 +226,20 @@ QWidget* WidgetFactory::createValueWidget(const QString& value, QWidget* parent)
 
 void WidgetFactory::slotCommentChanged(const QString& comment)
 {
-    // FIXME: Save the comments!!
-    //KJob* job = Nepomuk2::setProperty( m_uris, NAO::description(), QVariantList() << comment );
-    //startChangeDataJob(job);
+    KJob* job = Baloo::FileModifyJob::modifyUserComment(m_items, comment);
+    startChangeDataJob(job);
 }
 
 void WidgetFactory::slotRatingChanged(uint rating)
 {
-    // FIXME: Save the ratings!
-    //KJob* job = Nepomuk2::setProperty( m_uris, NAO::numericRating(), QVariantList() << rating );
-    //startChangeDataJob(job);
+    KJob* job = Baloo::FileModifyJob::modifyRating(m_items, rating);
+    startChangeDataJob(job);
 }
 
 void WidgetFactory::slotTagsChanged(const QStringList& tags)
 {
     if (m_tagWidget) {
-        // FIXME: vHanda: SAVE THE TAGS!!
-        /*
-        TagRelationCreateJob* job = new TagRelationCreateJob(m_items, tags);
+        KJob* job = Baloo::FileModifyJob::modifyTags(m_items, tags);
 
         // FIXME: vHanda : Remove the tags that are no longer applicable
         // When multiple tags are selected one doesn't want to loose the old tags
@@ -251,7 +249,6 @@ void WidgetFactory::slotTagsChanged(const QStringList& tags)
 
         m_prevTags = tags;
         startChangeDataJob(job);
-        */
     }
 }
 

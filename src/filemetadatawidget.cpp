@@ -232,24 +232,15 @@ void FileMetaDataWidget::setItems(const KFileItemList& items)
 {
     d->m_provider->setItems(items);
 
-    /*
-     * FIXME: vhanda!!
-    QList<Item> list;
+    QStringList list;
     foreach(const KFileItem& item, items) {
-        // If the nepomukUri exists, it is returned, otherwise the file url
-        QUrl uri = item.nepomukUri();
-        if( uri.isValid() ) {
-            if( uri.isLocalFile() ) {
-                // Point to the actual file in the case of a system link
-                QFileInfo fileInfo(uri.toLocalFile());
-                if( fileInfo.isSymLink() )
-                    uri = QUrl::fromLocalFile( fileInfo.canonicalFilePath() );
-            }
-            uriList << uri;
+        QUrl url = item.url();
+        if (url.isLocalFile()) {
+            list << url.toLocalFile();
         }
     }
-    d->m_widgetFactory->setItems( uriList );
-    */
+
+    d->m_widgetFactory->setItems(list);
 }
 
 KFileItemList FileMetaDataWidget::items() const
