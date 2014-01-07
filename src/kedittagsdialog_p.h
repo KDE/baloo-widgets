@@ -49,16 +49,11 @@ public:
 
     QStringList tags() const;
 
-    virtual bool eventFilter(QObject* watched, QEvent* event);
-
 protected slots:
     virtual void slotButtonClicked(int button);
 
 private slots:
     void slotTextEdited(const QString& text);
-    void slotItemEntered(QListWidgetItem* item);
-    void showDeleteButton();
-    void deleteTag();
 
     void slotTagsLoaded(KJob* job);
 
@@ -73,11 +68,7 @@ private:
     QListWidget* m_tagsList;
     QListWidgetItem* m_newTagItem;
     QListWidgetItem* m_autoCheckedItem;
-    QListWidgetItem* m_deleteCandidate;
     KLineEdit* m_newTagEdit;
-
-    QPushButton* m_deleteButton;
-    QTimer* m_deleteButtonTimer;
 };
 
 #endif
