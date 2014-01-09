@@ -44,6 +44,8 @@
 #include "filemetadataprovider_p.h"
 #include <KDebug>
 
+static const KCatalogLoader loader("baloowidgets");
+
 using namespace Baloo;
 
 class Baloo::FileMetaDataWidget::Private
