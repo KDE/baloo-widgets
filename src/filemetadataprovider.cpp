@@ -209,7 +209,7 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
                 QVariantMap::const_iterator it = map.find( propUri );
                 if( it == map.constEnd() ) {
                     m_data.remove( propUri );
-                    goto nextProperty;
+                    break;
                 }
                 else {
                     QVariantMap::iterator dit = m_data.find( it.key() );
@@ -222,13 +222,11 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
                             m_data[propUri] = finalValue;
                         else {
                             m_data.remove( propUri );
-                            goto nextProperty;
+                            break;
                         }
                     }
                 }
             }
-            nextProperty:
-            ;
         }
     }
 
