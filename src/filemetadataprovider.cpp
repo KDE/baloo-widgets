@@ -20,7 +20,6 @@
 
 #include "filemetadataprovider_p.h"
 #include "tagwidget.h"
-//#include "resourceloader.h"
 #include "kcommentwidget_p.h"
 #include "knfotranslator_p.h"
 #include "indexeddataretriever.h"
@@ -105,7 +104,7 @@ namespace {
         if( !v1.isValid() || !v2.isValid() )
             return QVariant();
 
-        // List and single
+        // List and String
         if (v1.type() == QVariant::StringList && v2.type() == QVariant::String) {
             QStringList list = v1.toStringList();
             QString str = v2.toString();
@@ -116,6 +115,7 @@ namespace {
             return QVariant(list);
         }
 
+        // String and List
         if (v1.type() == QVariant::String && v2.type() == QVariant::StringList) {
             QStringList list = v2.toStringList();
             QString str = v1.toString();
@@ -126,6 +126,7 @@ namespace {
             return QVariant(list);
         }
 
+        // List and List
         if (v1.type() == QVariant::StringList && v2.type() == QVariant::StringList) {
             QSet<QString> s1 = v1.toStringList().toSet();
             QSet<QString> s2 = v2.toStringList().toSet();
@@ -167,61 +168,56 @@ void FileMetaDataProvider::Private::totalPropertyAndInsert(const QString& prop,
 void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
 {
     Baloo::FileFetchJob* fetchJob = static_cast<Baloo::FileFetchJob*>(job);
-    Baloo::File file = fetchJob->file();
+    QList<Baloo::File> files = fetchJob->files();
 
-    m_data = file.properties();
-    insertBasicData();
+    if (files.size() == 1) {
+        Baloo::File file = files.first();
+        m_data = file.properties();
+        insertBasicData();
 
-    if (file.rating()) {
-        m_data.insert("rating", file.rating());
-    }
-
-    if (!file.tags().isEmpty()) {
-        m_data.insert("tags", file.tags());
-    }
-
-    if (!file.userComment().isEmpty()) {
-        m_data.insert("userComment", file.userComment());
-    }
-
-    /*
-    else {
-        //
-        // Only report the stuff that is common to all the resources
-        //
-
-        QSet<QString> allProperties;
-        foreach(const Resource& res, resources) {
-            allProperties.unite( res.properties().uniqueKeys().toSet() );
+        if (file.rating()) {
+            m_data.insert("rating", file.rating());
         }
 
-        // Remove properties which cannot be the same
-        allProperties.remove( NIE::url() );
-        allProperties.remove( RDF::type() );
-        allProperties.remove( NAO::lastModified() );
-        allProperties.remove( NIE::lastModified() );
+        if (!file.tags().isEmpty()) {
+            m_data.insert("tags", file.tags());
+        }
+
+        if (!file.userComment().isEmpty()) {
+            m_data.insert("userComment", file.userComment());
+        }
+    }
+    else {
+        //
+        // Only report the stuff that is common to all the files
+        //
+        QSet<QString> allProperties;
+        QList<QVariantMap> properties;
+        foreach (const Baloo::File& file, files) {
+            properties << file.properties();
+            allProperties.unite(file.properties().uniqueKeys().toSet());
+        }
 
         // Special handling for certain properties
-        totalPropertyAndInsert("duration", resources, allProperties );
-        totalPropertyAndInsert("characterCount", resources, allProperties );
-        totalPropertyAndInsert("wordCount", resources, allProperties );
-        totalPropertyAndInsert("lineCount", resources, allProperties );
+        totalPropertyAndInsert("duration", properties, allProperties );
+        totalPropertyAndInsert("characterCount", properties, allProperties );
+        totalPropertyAndInsert("wordCount", properties, allProperties );
+        totalPropertyAndInsert("lineCount", properties, allProperties );
 
-        foreach( const QUrl& propUri, allProperties ) {
-            foreach(const Resource& res, resources) {
-                QHash<QUrl, Variant> hash = res.properties();
-                QHash< QUrl, Variant >::iterator it = hash.find( propUri );
-                if( it == hash.end() ) {
+        foreach (const QString& propUri, allProperties) {
+            foreach (const QVariantMap& map, properties) {
+                QVariantMap::const_iterator it = map.find( propUri );
+                if( it == map.constEnd() ) {
                     m_data.remove( propUri );
                     goto nextProperty;
                 }
                 else {
-                    QHash< QUrl, Variant >::iterator dit = m_data.find( it.key() );
+                    QVariantMap::iterator dit = m_data.find( it.key() );
                     if( dit == m_data.end() ) {
                         m_data.insert( propUri, it.value() );
                     }
                     else {
-                        Variant finalValue = intersect( it.value(), dit.value() );
+                        QVariant finalValue = intersect( it.value(), dit.value() );
                         if( finalValue.isValid() )
                             m_data[propUri] = finalValue;
                         else {
@@ -235,7 +231,6 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
             ;
         }
     }
-    */
 
     insertEditableData();
 
@@ -349,22 +344,13 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
             urls << url.toLocalFile();
     }
 
-    if (urls.size() == 1) {
-        FileFetchJob* job = new FileFetchJob(urls.first(), this);
-        connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
-        job->start();
-    }
-
-    /*
-    ResourceLoader* loader = new ResourceLoader( urls, this );
-    connect( loader, SIGNAL(finished(ResourceLoader*)),
-             this, SLOT(slotLoadingFinished(ResourceLoader*)) );
-    loader->start();
-    */
+    FileFetchJob* job = new FileFetchJob(urls, this);
+    connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
+    job->start();
 
     // When multiple urls are being shown, we load the basic data first cause loading
     // all the ResourceData will take some time
-    if( urls.size() > 1 ) {
+    if (urls.size() > 1) {
         QTimer::singleShot( 0, this, SLOT(insertBasicData()) );
     }
 }
