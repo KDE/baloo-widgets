@@ -192,20 +192,32 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
         // Only report the stuff that is common to all the files
         //
         QSet<QString> allProperties;
-        QList<QVariantMap> properties;
+        QList<QVariantMap> propertyList;
         foreach (const Baloo::File& file, files) {
-            properties << file.properties();
-            allProperties.unite(file.properties().uniqueKeys().toSet());
+            QVariantMap properties = file.properties();
+            if (file.rating()) {
+                properties.insert("rating", file.rating());
+            }
+
+            if (!file.tags().isEmpty()) {
+                properties.insert("tags", file.tags());
+            }
+
+            if (!file.userComment().isEmpty()) {
+                properties.insert("userComment", file.userComment());
+            }
+            propertyList << properties;
+            allProperties.unite(properties.uniqueKeys().toSet());
         }
 
         // Special handling for certain properties
-        totalPropertyAndInsert("duration", properties, allProperties );
-        totalPropertyAndInsert("characterCount", properties, allProperties );
-        totalPropertyAndInsert("wordCount", properties, allProperties );
-        totalPropertyAndInsert("lineCount", properties, allProperties );
+        totalPropertyAndInsert("duration", propertyList, allProperties );
+        totalPropertyAndInsert("characterCount", propertyList, allProperties );
+        totalPropertyAndInsert("wordCount", propertyList, allProperties );
+        totalPropertyAndInsert("lineCount", propertyList, allProperties );
 
         foreach (const QString& propUri, allProperties) {
-            foreach (const QVariantMap& map, properties) {
+            foreach (const QVariantMap& map, propertyList) {
                 QVariantMap::const_iterator it = map.find( propUri );
                 if( it == map.constEnd() ) {
                     m_data.remove( propUri );
