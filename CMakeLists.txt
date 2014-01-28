@@ -14,6 +14,13 @@ find_package(Baloo)
 set_package_properties(Baloo PROPERTIES DESCRIPTION "The Baloo libraries" URL "http://kde.org"
                        TYPE REQUIRED PURPOSE "Required for compiling Baloo")
 
+find_package(KFileMetaData CONFIG)
+set_package_properties(KFileMetaData PROPERTIES
+    DESCRIPTION "A library for extracting file metadata"
+    URL "https://projects.kde.org/kfilemetadata"
+    TYPE REQUIRED
+)
+
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 # Some definitions
@@ -25,6 +32,7 @@ include_directories(
   ${QT_INCLUDES}
   ${KDE4_INCLUDES}
   ${BALOO_INCLUDE_DIR}
+  ${KFILEMETADATA_INCLUDE_DIR}
   ${CMAKE_SOURCE_DIR}
   ${CMAKE_SOURCE_DIR}/src
 )

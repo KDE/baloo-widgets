@@ -26,6 +26,7 @@
 
 #include <baloo/filefetchjob.h>
 #include <baloo/file.h>
+#include <kfilemetadata/propertyinfo.h>
 
 #include <kfileitem.h>
 #include <klocale.h>
@@ -164,6 +165,19 @@ void FileMetaDataProvider::Private::totalPropertyAndInsert(const QString& prop,
     }
 }
 
+namespace {
+    QVariantMap convertPropertyMap(const KFileMetaData::PropertyMap& propMap)
+    {
+        QVariantMap map;
+        KFileMetaData::PropertyMap::const_iterator it = propMap.constBegin();
+        for (; it != propMap.constEnd(); it++) {
+            KFileMetaData::PropertyInfo pi(it.key());
+            map.insertMulti(pi.name(), it.value());
+        }
+
+        return map;
+    }
+}
 
 void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
 {
@@ -172,7 +186,7 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
 
     if (files.size() == 1) {
         Baloo::File file = files.first();
-        m_data = file.properties();
+        m_data = convertPropertyMap(file.properties());
         insertBasicData();
 
         if (file.rating()) {
@@ -194,7 +208,7 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
         QSet<QString> allProperties;
         QList<QVariantMap> propertyList;
         foreach (const Baloo::File& file, files) {
-            QVariantMap properties = file.properties();
+            QVariantMap properties = convertPropertyMap(file.properties());
             if (file.rating()) {
                 properties.insert("rating", file.rating());
             }

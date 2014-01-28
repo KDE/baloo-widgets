@@ -25,6 +25,7 @@ target_link_libraries(baloowidgets
   ${KDE4_KDEUI_LIBS}
   ${KDE4_KIO_LIBS}
   ${BALOO_LIBRARIES}
+  ${KFILEMETADATA_LIBRARY}
 )
 
 target_link_libraries(baloowidgets
