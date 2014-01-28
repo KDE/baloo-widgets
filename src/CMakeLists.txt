@@ -8,7 +8,6 @@ set(ui_SRCS
   filemetadataprovider.cpp
   indexeddataretriever.cpp
   kcommentwidget.cpp
-  knfotranslator.cpp
   metadatafilter.cpp
   widgetfactory.cpp
 )

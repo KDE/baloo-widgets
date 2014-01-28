@@ -21,7 +21,6 @@
 #include "filemetadataprovider_p.h"
 #include "tagwidget.h"
 #include "kcommentwidget_p.h"
-#include "knfotranslator_p.h"
 #include "indexeddataretriever.h"
 
 #include <baloo/filefetchjob.h>
@@ -414,7 +413,7 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
 
     QString value = hash.value(metaDataLabel);
     if (value.isEmpty()) {
-        value = KNfoTranslator::instance().translation(metaDataLabel);
+        value = KFileMetaData::PropertyInfo::fromName(metaDataLabel).displayName();
     }
 
     return value;

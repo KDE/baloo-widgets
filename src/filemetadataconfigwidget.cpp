@@ -24,13 +24,12 @@
 #include <kconfiggroup.h>
 #include <kfilemetainfo.h>
 #include <kfilemetainfoitem.h>
-#include "knfotranslator_p.h"
 #include <klocale.h>
 
 #include <KDebug>
 
 #include "filemetadataprovider_p.h"
-#include "knfotranslator_p.h"
+#include <kfilemetadata/propertyinfo.h>
 
 #include <QEvent>
 #include <QListWidget>
@@ -120,9 +119,7 @@ void FileMetaDataConfigWidget::Private::addItem(const QString& key)
     KConfig config("kmetainformationrc", KConfig::NoGlobals);
     KConfigGroup settings = config.group("Show");
 
-    const QString label = (m_provider == 0)
-                          ? KNfoTranslator::instance().translation(key)
-                          : m_provider->label(key);
+    const QString label = m_provider->label(key);
 
     QListWidgetItem* item = new QListWidgetItem(label, m_metaDataList);
     item->setData(Qt::UserRole, key);
