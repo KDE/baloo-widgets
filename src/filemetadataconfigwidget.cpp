@@ -133,6 +133,8 @@ void FileMetaDataConfigWidget::Private::slotLoadingFinished()
     // the currently shown file item and add them to the list.
     Q_ASSERT(m_provider != 0);
 
+    m_metaDataList->clear();
+
     QVariantMap data = m_provider->data();
     // Always show these 3
     data.remove("rating");
