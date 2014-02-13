@@ -25,6 +25,7 @@
 
 #include <baloo/filefetchjob.h>
 #include <baloo/file.h>
+#include <baloo/indexerconfig.h>
 #include <kfilemetadata/propertyinfo.h>
 
 #include <kfileitem.h>
@@ -82,6 +83,7 @@ public:
     QList<KFileItem> m_fileItems;
 
     QVariantMap m_data;
+    Baloo::IndexerConfig m_config;
 private:
     FileMetaDataProvider* const q;
 };
@@ -345,20 +347,18 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
         return;
     }
 
-    /*
     if( items.size() == 1 ) {
         const KFileItem item = items.first();
-        const QUrl url = item.targetUrl();
+        const QString url = item.localPath();
 
-        if (!res.exists() ) {
-            IndexedDataRetriever *ret = new IndexedDataRetriever( url.toLocalFile(), this );
-            connect( ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)) );
+        if (!d->m_config.shouldBeIndexed(url)) {
+            IndexedDataRetriever *ret = new IndexedDataRetriever(url, this);
+            connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
             ret->start();
             d->m_realTimeIndexing = true;
             return;
         }
     }
-    */
 
     QStringList urls;
     Q_FOREACH (const KFileItem& item, items) {
