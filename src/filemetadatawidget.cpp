@@ -232,16 +232,18 @@ FileMetaDataWidget::~FileMetaDataWidget()
 
 void FileMetaDataWidget::setItems(const KFileItemList& items)
 {
-    d->m_provider->setItems(items);
-
+    KFileItemList localItemsList;
     QStringList list;
+
     foreach(const KFileItem& item, items) {
-        QUrl url = item.url();
+        QUrl url = item.targetUrl();
         if (url.isLocalFile()) {
+            localItemsList << item;
             list << url.toLocalFile();
         }
     }
 
+    d->m_provider->setItems(localItemsList);
     d->m_widgetFactory->setItems(list);
 }
 

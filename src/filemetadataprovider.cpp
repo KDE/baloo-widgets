@@ -344,6 +344,7 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
     d->m_realTimeIndexing = false;
 
     if (items.isEmpty()) {
+        emit loadingFinished();
         return;
     }
 
