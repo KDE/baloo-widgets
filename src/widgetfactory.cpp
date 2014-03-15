@@ -272,8 +272,11 @@ void WidgetFactory::slotLinkActivated(const QString& url)
 
 void WidgetFactory::slotTagClicked(const QString& tag)
 {
-    // vHanda: FIXME: Create a link for this tag!!
-    // emit urlActivated( tag.uri() );
+    KUrl url;
+    url.setScheme("tags");
+    url.setPath(tag);
+
+    emit urlActivated(url);
 }
 
 
