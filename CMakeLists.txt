@@ -21,6 +21,13 @@ set_package_properties(KFileMetaData PROPERTIES
     TYPE REQUIRED
 )
 
+find_package(BalooQueryParser)
+set_package_properties(BalooQueryParser PROPERTIES
+    DESCRIPTION "Parser for natural language queries"
+    URL "https://projects.kde.org/baloo-queryparser"
+    TYPE OPTIONAL
+)
+
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 # Some definitions
@@ -33,6 +40,7 @@ include_directories(
   ${KDE4_INCLUDES}
   ${BALOO_INCLUDE_DIR}
   ${KFILEMETADATA_INCLUDE_DIR}
+  ${BALOO_QUERYPARSER_INCLUDE_DIR}
   ${CMAKE_SOURCE_DIR}
   ${CMAKE_SOURCE_DIR}/src
 )

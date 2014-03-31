@@ -31,3 +31,12 @@ target_link_libraries(metadataconfigwidgetapp
   baloowidgets
 )
 
+if (${BalooQueryParser_FOUND})
+    kde4_add_executable(querybuilderapp TEST querybuilderapp.cpp )
+    target_link_libraries(querybuilderapp
+    ${KDE4_KIO_LIBS}
+    ${BALOO_LIBRARIES}
+    ${BALOO_QUERYPARSER_LIBRARY}
+    baloowidgets
+    )
+endif(${BalooQueryParser_FOUND})
