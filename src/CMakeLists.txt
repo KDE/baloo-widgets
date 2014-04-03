@@ -10,17 +10,12 @@ set(ui_SRCS
   kcommentwidget.cpp
   metadatafilter.cpp
   widgetfactory.cpp
+  groupedlineedit.cpp
+  querybuilder.cpp
+  querybuildercompleter.cpp
 )
 
-if (${BalooQueryParser_FOUND})
-  set(querybuilder_SRCS
-    groupedlineedit.cpp
-    querybuilder.cpp
-    querybuildercompleter.cpp
-  )
-endif(${BalooQueryParser_FOUND})
-
-set(widgets_SRCS ${ui_SRCS} ${querybuilder_SRCS})
+set(widgets_SRCS ${ui_SRCS})
 
 kde4_add_library(baloowidgets SHARED ${LIBRARY_TYPE} ${widgets_SRCS})
 
@@ -33,7 +28,6 @@ target_link_libraries(baloowidgets
   ${KDE4_KIO_LIBS}
   ${BALOO_LIBRARIES}
   ${KFILEMETADATA_LIBRARY}
-  ${BALOO_QUERYPARSER_LIBRARY}
 )
 
 target_link_libraries(baloowidgets

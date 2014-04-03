@@ -21,8 +21,8 @@
 #include "groupedlineedit.h"
 #include "querybuildercompleter_p.h"
 
-#include <balooqueryparser/completionproposal.h>
-#include <balooqueryparser/queryparser.h>
+#include <baloo/completionproposal.h>
+#include <baloo/queryparser.h>
 #include <baloo/term.h>
 
 using namespace Baloo;
