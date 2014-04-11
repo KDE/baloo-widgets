@@ -28,9 +28,9 @@
 #include <kcolorscheme.h>
 #include <kglobalsettings.h>
 
-#include <QtGui/QMouseEvent>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
+#include <QMouseEvent>
+#include <QHBoxLayout>
+#include <QLabel>
 
 using namespace Baloo;
 

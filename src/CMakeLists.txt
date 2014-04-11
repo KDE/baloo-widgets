@@ -14,38 +14,31 @@ set(ui_SRCS
 
 set(widgets_SRCS ${ui_SRCS})
 
-kde4_add_library(baloowidgets SHARED ${LIBRARY_TYPE} ${widgets_SRCS})
+add_library(baloowidgets SHARED ${widgets_SRCS})
 
 target_link_libraries(baloowidgets
-  ${QT_QTCORE_LIBRARY}
-  ${QT_QTGUI_LIBRARY}
-  ${QT_QTDBUS_LIBRARY}
-  ${KDE4_KDECORE_LIBS}
-  ${KDE4_KDEUI_LIBS}
-  ${KDE4_KIO_LIBS}
+  Qt5::Widgets
+  Qt5::DBus
+  KF5::KDE4Support
   ${BALOO_LIBRARIES}
   ${KFILEMETADATA_LIBRARY}
 )
 
-target_link_libraries(baloowidgets
-  LINK_INTERFACE_LIBRARIES
-  ${KDE4_KDECORE_LIBS}
-  ${KDE4_KDEUI_LIBS}
-  ${BALOO_LIBRARIES}
+set_target_properties(baloowidgets PROPERTIES
+   VERSION ${BALOOWIDGETS_VERSION_STRING}
+   SOVERSION ${BALOOWIDGETS_SOVERSION}
 )
 
-set_target_properties(baloowidgets PROPERTIES
-   VERSION ${GENERIC_LIB_VERSION}
-   SOVERSION ${GENERIC_LIB_SOVERSION}
-)
+generate_export_header(baloowidgets BASE_NAME BALOO_WIDGETS EXPORT_FILE_NAME widgets_export.h)
 
 install(TARGETS baloowidgets EXPORT BalooWidgetsLibraryTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
-  widgets_export.h
   tagwidget.h
   filemetadatawidget.h
   filemetadataconfigwidget.h
+
+  ${CMAKE_CURRENT_BINARY_DIR}/widgets_export.h
 
   DESTINATION ${INCLUDE_INSTALL_DIR}/baloo COMPONENT Devel
 )

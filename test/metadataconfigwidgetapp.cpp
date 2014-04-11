@@ -22,7 +22,9 @@
 #include <QApplication>
 #include <kcomponentdata.h>
 #include <kfiledialog.h>
+#include <KFileItem>
 #include <KPushButton>
+#include <KUrl>
 
 #include <QVBoxLayout>
 #include <QCheckBox>
@@ -58,8 +60,8 @@ void FileMetadataWidgetTest::slotChooseFiles()
 {
     KUrl::List urlList = KFileDialog::getOpenUrls();
     KFileItemList list;
-    foreach(const KUrl& url, urlList)
-        list << KFileItem( url, QString(), mode_t() );
+    foreach(const KFileItem& item, urlList)
+        list << KFileItem( item.url(), QString(), mode_t() );
 
     m_metadataWidget->setItems( list );
 }

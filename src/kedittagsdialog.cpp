@@ -31,6 +31,7 @@
 #include <QTimer>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <QUrl>
 
 #include <baloo/taglistjob.h>
 
@@ -194,5 +195,3 @@ void KEditTagsDialog::removeNewTagItem()
         m_newTagItem = 0;
     }
 }
-
-#include "kedittagsdialog_p.moc"

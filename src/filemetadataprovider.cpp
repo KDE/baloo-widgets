@@ -35,6 +35,7 @@
 #include <kratingwidget.h>
 #include <KDebug>
 #include <KProcess>
+#include <KGlobal>
 
 #include <QEvent>
 #include <QLabel>
@@ -281,7 +282,7 @@ void FileMetaDataProvider::Private::insertBasicData()
         const KFileItem& item = m_fileItems.first();
 
         if (item.isDir()) {
-            const int count = subDirectoriesCount(item.url().pathOrUrl());
+            const int count = subDirectoriesCount(item.url().path());
             if (count == -1) {
                 m_data.insert("kfileitem#size", QString("Unknown"));
             } else {
@@ -519,4 +520,4 @@ bool FileMetaDataProvider::realTimeIndexing()
     return d->m_realTimeIndexing;
 }
 
-#include "filemetadataprovider_p.moc"
+#include "moc_filemetadataprovider_p.cpp"

@@ -206,4 +206,4 @@ QSize FileMetaDataConfigWidget::sizeHint() const
     return d->m_metaDataList->sizeHint();
 }
 
-#include "filemetadataconfigwidget.moc"
+#include "moc_filemetadataconfigwidget.cpp"

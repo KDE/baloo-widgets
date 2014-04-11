@@ -22,6 +22,7 @@
 
 #include <kdialog.h>
 #include <klocale.h>
+#include <KGlobal>
 
 #include <QEvent>
 #include <QLabel>
@@ -146,5 +147,3 @@ void KCommentWidget::slotLinkActivated(const QString& link)
         dialog = 0;
     }
 }
-
-#include "kcommentwidget_p.moc"

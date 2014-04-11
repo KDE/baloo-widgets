@@ -32,9 +32,9 @@
 #include <kdebug.h>
 #include <KJob>
 
-#include <QtGui/QPushButton>
-#include <QtGui/QBoxLayout>
-#include <QtGui/QLabel>
+#include <QPushButton>
+#include <QBoxLayout>
+#include <QLabel>
 #include <QtCore/QSet>
 
 using namespace Baloo;

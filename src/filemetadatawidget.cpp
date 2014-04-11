@@ -44,7 +44,8 @@
 #include "filemetadataprovider_p.h"
 #include <KDebug>
 
-static const KCatalogLoader loader("baloowidgets");
+// FIXME: Load the catalog properly!!
+//static const KCatalogLoader loader("baloowidgets");
 
 using namespace Baloo;
 
@@ -312,4 +313,4 @@ QSize FileMetaDataWidget::sizeHint() const
     return QSize(width, height);
 }
 
-#include "filemetadatawidget.moc"
+#include "moc_filemetadatawidget.cpp"
