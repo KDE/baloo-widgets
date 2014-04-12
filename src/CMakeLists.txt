@@ -25,8 +25,8 @@ target_link_libraries(baloowidgets
 )
 
 set_target_properties(baloowidgets PROPERTIES
-   VERSION ${BALOOWIDGETS_VERSION_STRING}
-   SOVERSION ${BALOOWIDGETS_SOVERSION}
+   VERSION ${BALOO_WIDGETS_VERSION_STRING}
+   SOVERSION ${BALOO_WIDGETS_SOVERSION}
 )
 
 generate_export_header(baloowidgets BASE_NAME BALOO_WIDGETS EXPORT_FILE_NAME widgets_export.h)
