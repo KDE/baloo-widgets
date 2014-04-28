@@ -19,9 +19,9 @@ add_library(baloowidgets SHARED ${widgets_SRCS})
 target_link_libraries(baloowidgets
   Qt5::Widgets
   Qt5::DBus
-  KF5::KDE4Support
-  ${BALOO_LIBRARIES}
-  ${KFILEMETADATA_LIBRARY}
+  KF5::KDELibs4Support
+  KF5::FileMetaData
+  ${BALOO_FILE_LIBRARY}
 )
 
 set_target_properties(baloowidgets PROPERTIES
