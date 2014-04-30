@@ -16,10 +16,14 @@ set(widgets_SRCS ${ui_SRCS})
 
 add_library(baloowidgets SHARED ${widgets_SRCS})
 
-target_link_libraries(baloowidgets
+target_link_libraries(baloowidgets PUBLIC
   Qt5::Widgets
+  KF5::KIOCore # KFileItem
+  KF5::CoreAddons # KProcess, KJob
+  KF5::KDELibs4Support # KUrl
+)
+target_link_libraries(baloowidgets PRIVATE
   Qt5::DBus
-  KF5::KDELibs4Support
   KF5::FileMetaData
   ${BALOO_FILE_LIBRARY}
 )
