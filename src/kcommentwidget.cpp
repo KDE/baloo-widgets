@@ -20,9 +20,10 @@
 
 #include "kcommentwidget_p.h"
 
-#include <kdialog.h>
-#include <klocale.h>
-#include <KGlobal>
+#include <KLocalizedString>
+#include <KWindowConfig>
+#include <KSharedConfig>
+#include <KDialog>
 
 #include <QEvent>
 #include <QLabel>
@@ -128,8 +129,8 @@ void KCommentWidget::slotLinkActivated(const QString& link)
     dialog->setButtons(KDialog::Ok | KDialog::Cancel);
     dialog->setDefaultButton(KDialog::Ok);
 
-    KConfigGroup dialogConfig(KGlobal::config(), "Nepomuk KEditCommentDialog");
-    dialog->restoreDialogSize(dialogConfig);
+    KConfigGroup dialogConfig(KSharedConfig::openConfig(), "Nepomuk KEditCommentDialog");
+    KWindowConfig::restoreWindowSize(dialog->windowHandle(), dialogConfig);
 
     if (dialog->exec() == QDialog::Accepted) {
         const QString oldText = m_comment;
@@ -142,7 +143,7 @@ void KCommentWidget::slotLinkActivated(const QString& link)
     }
 
     if (dialog != 0) {
-        dialog->saveDialogSize(dialogConfig);
+        KWindowConfig::saveWindowSize(dialog->windowHandle(), dialogConfig);
         delete dialog;
         dialog = 0;
     }

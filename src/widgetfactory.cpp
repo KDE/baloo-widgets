@@ -96,7 +96,7 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
 
         if (prop == "duration") {
             QTime time = QTime().addSecs(value.toInt());
-            valueString = KGlobal::locale()->formatTime(time, true, true);
+            valueString = KLocale::global()->formatTime(time, true, true);
         }
         else {
             // Check if Date/DateTime
@@ -104,17 +104,17 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
             if (dt.isValid()) {
                 QTime time = dt.time();
                 if (!time.hour() && !time.minute() && !time.second())
-                    valueString = KGlobal::locale()->formatDate(dt.date(), KLocale::FancyLongDate);
+                    valueString = KLocale::global()->formatDate(dt.date(), KLocale::FancyLongDate);
                 else
-                    valueString = KGlobal::locale()->formatDateTime(dt, KLocale::FancyLongDate);
+                    valueString = KLocale::global()->formatDateTime(dt, KLocale::FancyLongDate);
             }
             else {
                 switch (value.type()) {
                 case QVariant::Int:
-                    valueString = KGlobal::locale()->formatLong(value.toInt());
+                    valueString = KLocale::global()->formatLong(value.toInt());
                     break;
                 case QVariant::Double:
-                    valueString = KGlobal::locale()->formatNumber(value.toDouble());
+                    valueString = KLocale::global()->formatNumber(value.toDouble());
                     break;
                 default:
                     valueString = value.toString();

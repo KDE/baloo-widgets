@@ -23,8 +23,8 @@
 #include <kcomponentdata.h>
 #include <kfiledialog.h>
 #include <KFileItem>
-#include <KPushButton>
 
+#include <QPushButton>
 #include <QVBoxLayout>
 #include <QCheckBox>
 
@@ -39,7 +39,7 @@ private slots:
 
 private:
     Baloo::FileMetaDataConfigWidget* m_metadataWidget;
-    KPushButton* m_button;
+    QPushButton* m_button;
 };
 
 FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags f)
@@ -47,7 +47,7 @@ FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags 
 {
     m_metadataWidget = new Baloo::FileMetaDataConfigWidget( this );
 
-    m_button = new KPushButton( QLatin1String("Select files"), this );
+    m_button = new QPushButton( QLatin1String("Select files"), this );
     connect( m_button, SIGNAL(clicked(bool)), this, SLOT(slotChooseFiles()) );
 
     QVBoxLayout* layout = new QVBoxLayout( this );
@@ -68,7 +68,7 @@ void FileMetadataWidgetTest::slotChooseFiles()
 int main( int argc, char** argv )
 {
     QApplication app( argc, argv );
-    KComponentData data( "FileMetaDataConfigWidgetApp" );
+    app.setApplicationName( "FileMetaDataConfigWidgetApp" );
     FileMetadataWidgetTest test;
     test.show();
     return app.exec();

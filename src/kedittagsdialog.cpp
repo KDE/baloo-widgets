@@ -19,10 +19,9 @@
 
 #include "kedittagsdialog_p.h"
 
-#include <kicon.h>
-#include <klineedit.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <KLineEdit>
+#include <KLocalizedString>
+#include <KMessageBox>
 
 #include <QHBoxLayout>
 #include <QLabel>
@@ -32,6 +31,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 #include <QUrl>
+#include <QIcon>
 
 #include <baloo/taglistjob.h>
 

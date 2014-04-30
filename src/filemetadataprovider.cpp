@@ -34,7 +34,6 @@
 #include <kratingwidget.h>
 #include <KDebug>
 #include <KProcess>
-#include <KGlobal>
 
 #include <QEvent>
 #include <QLabel>
@@ -292,7 +291,7 @@ void FileMetaDataProvider::Private::insertBasicData()
             m_data.insert("kfileitem#size", KIO::convertSize(item.size()));
         }
         m_data.insert("kfileitem#type", item.mimeComment());
-        m_data.insert("kfileitem#modified", KGlobal::locale()->formatDateTime(item.time(KFileItem::ModificationTime), KLocale::FancyLongDate));
+        m_data.insert("kfileitem#modified", KLocale::global()->formatDateTime(item.time(KFileItem::ModificationTime), KLocale::FancyLongDate));
         m_data.insert("kfileitem#owner", item.user());
         m_data.insert("kfileitem#permissions", item.permissionsString());
     }

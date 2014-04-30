@@ -21,7 +21,7 @@
 #define _FILE_METADATA_WIDGET_TEST_
 
 #include <QWidget>
-#include <kpushbutton.h>
+#include <QPushButton>
 #include "filemetadatawidget.h"
 
 class FileMetadataWidgetTest : public QWidget
@@ -35,7 +35,7 @@ private slots:
 
 private:
     Baloo::FileMetaDataWidget* m_metadataWidget;
-    KPushButton* m_button;
+    QPushButton* m_button;
 };
 
 #endif

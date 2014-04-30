@@ -23,8 +23,11 @@ target_link_libraries(baloowidgets PUBLIC
 )
 target_link_libraries(baloowidgets PRIVATE
   Qt5::DBus
-  KF5::KDELibs4Support
+  KF5::I18n
+  KF5::Completion
   KF5::FileMetaData
+  KF5::WidgetsAddons
+  KF5::KDELibs4Support
   ${BALOO_FILE_LIBRARY}
 )
 

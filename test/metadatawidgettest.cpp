@@ -29,7 +29,7 @@ FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags 
 {
     m_metadataWidget = new Baloo::FileMetaDataWidget( this );
 
-    m_button = new KPushButton( QLatin1String("Select files"), this );
+    m_button = new QPushButton( QLatin1String("Select files"), this );
     connect( m_button, SIGNAL(clicked(bool)), this, SLOT(slotChooseFiles()) );
 
     QVBoxLayout* layout = new QVBoxLayout( this );
