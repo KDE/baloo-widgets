@@ -31,7 +31,6 @@
 #include <kfileitem.h>
 #include <klocale.h>
 #include <kstandarddirs.h>
-#include <kurl.h>
 #include <kratingwidget.h>
 #include <KDebug>
 #include <KProcess>

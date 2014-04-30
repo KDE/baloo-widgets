@@ -30,8 +30,8 @@
 
 #include <QLabel>
 #include <QTime>
+#include <QUrl>
 
-#include <KUrl>
 #include <KJob>
 #include <KDebug>
 #include <KGlobal>
@@ -267,12 +267,12 @@ void WidgetFactory::startChangeDataJob(KJob* job)
 
 void WidgetFactory::slotLinkActivated(const QString& url)
 {
-    emit urlActivated(KUrl(url));
+    emit urlActivated(QUrl::fromUserInput(url));
 }
 
 void WidgetFactory::slotTagClicked(const QString& tag)
 {
-    KUrl url;
+    QUrl url;
     url.setScheme("tags");
     url.setPath(tag);
 

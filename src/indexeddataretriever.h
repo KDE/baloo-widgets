@@ -22,7 +22,7 @@
 #define INDEXEDDATARETRIEVER_H
 
 #include <KJob>
-#include <KProcess>
+#include <QProcess>
 #include <QVariant>
 
 namespace Baloo {

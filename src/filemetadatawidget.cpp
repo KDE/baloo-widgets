@@ -97,7 +97,7 @@ FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
     m_filter = new MetadataFilter(q);
 
     m_widgetFactory = new WidgetFactory(q);
-    connect(m_widgetFactory, SIGNAL(urlActivated(KUrl)), q, SIGNAL(urlActivated(KUrl)));
+    connect(m_widgetFactory, &WidgetFactory::urlActivated, q, &FileMetaDataWidget::urlActivated);
 
     // TODO: If KFileMetaDataProvider might get a public class in future KDE releases,
     // the following code should be moved into KFileMetaDataWidget::setModel():
@@ -174,7 +174,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
 
 void FileMetaDataWidget::Private::slotLinkActivated(const QString& link)
 {
-    const KUrl url(link);
+    const QUrl url = QUrl::fromUserInput(link);
     if (url.isValid()) {
         emit q->urlActivated(url);
     }

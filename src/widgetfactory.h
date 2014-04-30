@@ -25,7 +25,7 @@
 #include <QStringList>
 
 class KJob;
-class KUrl;
+class QUrl;
 class KCommentWidget;
 class KRatingWidget;
 
@@ -49,7 +49,7 @@ namespace Baloo {
         QWidget* createWidget(const QString& prop, const QVariant& value, QWidget* parent);
 
     signals:
-        void urlActivated(const KUrl& url);
+        void urlActivated(const QUrl& url);
         void dataChangeStarted();
         void dataChangeFinished();
 

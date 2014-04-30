@@ -26,9 +26,9 @@
 #define _BALOO_FILE_METADATAWIDGET_H
 
 #include <QWidget>
+#include <QUrl>
 
 #include <KFileItem>
-#include <KUrl>
 
 #include "widgets_export.h"
 
@@ -66,7 +66,7 @@ Q_SIGNALS:
      * Is emitted, if a meta data represents an URL that has
      * been clicked by the user.
      */
-    void urlActivated(const KUrl& url);
+    void urlActivated(const QUrl& url);
 
     /**
      * Is emitted after the meta data has been received for the items

@@ -24,7 +24,6 @@
 #include <kfiledialog.h>
 #include <KFileItem>
 #include <KPushButton>
-#include <KUrl>
 
 #include <QVBoxLayout>
 #include <QCheckBox>
@@ -58,10 +57,10 @@ FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags 
 
 void FileMetadataWidgetTest::slotChooseFiles()
 {
-    KUrl::List urlList = KFileDialog::getOpenUrls();
+    QList<QUrl> urlList = KFileDialog::getOpenUrls();
     KFileItemList list;
-    foreach(const KFileItem& item, urlList)
-        list << KFileItem( item.url(), QString(), mode_t() );
+    foreach(const QUrl& url, urlList)
+        list << KFileItem( url, QString(), mode_t() );
 
     m_metadataWidget->setItems( list );
 }
