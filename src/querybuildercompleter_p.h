@@ -27,14 +27,13 @@ class QListWidgetItem;
 namespace Baloo {
 
 class CompletionProposal;
-class QueryParser;
 
 class QueryBuilderCompleter : public QListWidget
 {
     Q_OBJECT
 
     public:
-        explicit QueryBuilderCompleter(QueryParser *parser, QWidget *parent);
+        explicit QueryBuilderCompleter(QWidget *parent);
 
         void addProposal(CompletionProposal *proposal, const QString &prefix);
 
@@ -56,9 +55,6 @@ class QueryBuilderCompleter : public QListWidget
                                   const QString &prefix) const;
         QWidget *widgetForProposal(CompletionProposal *proposal,
                                    const QString &value);
-
-    private:
-        QueryParser *parser;
 };
 
 }

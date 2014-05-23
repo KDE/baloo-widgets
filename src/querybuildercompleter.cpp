@@ -19,8 +19,7 @@
 
 #include "querybuildercompleter_p.h"
 
-#include <balooqueryparser/completionproposal.h>
-#include <balooqueryparser/queryparser.h>
+#include <baloo/completionproposal.h>
 #include <klocalizedstring.h>
 
 #include <QtGui/QListWidget>
@@ -34,9 +33,8 @@
 
 using namespace Baloo;
 
-QueryBuilderCompleter::QueryBuilderCompleter(QueryParser *parser, QWidget *parent)
-: QListWidget(parent),
-  parser(parser)
+QueryBuilderCompleter::QueryBuilderCompleter(QWidget *parent)
+: QListWidget(parent)
 {
     // Display the completer in its own non-decorated popup
     setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);

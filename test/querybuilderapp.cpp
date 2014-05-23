@@ -21,7 +21,7 @@
 
 #include <QApplication>
 
-#include <balooqueryparser/queryparser.h>
+#include <baloo/queryparser.h>
 #include <kcomponentdata.h>
 
 int main(int argc, char **argv)

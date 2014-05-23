@@ -50,7 +50,7 @@ QueryBuilder::QueryBuilder(QueryParser *parser, QWidget *parent)
   d(new Private)
 {
     d->parser = parser;
-    d->completer = new QueryBuilderCompleter(parser, this);
+    d->completer = new QueryBuilderCompleter(this);
     d->parsing_enabled = true;
 
     connect(this, SIGNAL(textChanged()),
