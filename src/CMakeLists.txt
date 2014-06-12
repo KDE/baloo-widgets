@@ -28,7 +28,7 @@ target_link_libraries(baloowidgets PRIVATE
   KF5::FileMetaData
   KF5::WidgetsAddons
   KF5::KDELibs4Support
-  ${BALOO_FILE_LIBRARY}
+  KF5::BalooFiles
 )
 
 set_target_properties(baloowidgets PROPERTIES
