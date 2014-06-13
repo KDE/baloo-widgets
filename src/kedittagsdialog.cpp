@@ -33,7 +33,7 @@
 #include <QUrl>
 #include <QIcon>
 
-#include <baloo/taglistjob.h>
+#include <Baloo/TagListJob>
 
 KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
                                  QWidget* parent,

@@ -26,7 +26,7 @@
 #include "kcommentwidget_p.h"
 #include "kratingwidget.h"
 
-#include <baloo/filemodifyjob.h>
+#include <Baloo/FileModifyjob>
 
 #include <QLabel>
 #include <QTime>

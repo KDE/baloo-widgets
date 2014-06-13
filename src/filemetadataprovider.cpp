@@ -23,9 +23,10 @@
 #include "kcommentwidget_p.h"
 #include "indexeddataretriever.h"
 
-#include <baloo/filefetchjob.h>
-#include <baloo/file.h>
-#include <baloo/indexerconfig.h>
+#include <Baloo/FileFetchJob>
+#include <Baloo/File>
+#include <Baloo/IndexerConfig>
+
 #include <kfilemetadata/propertyinfo.h>
 
 #include <kfileitem.h>
