@@ -39,7 +39,7 @@ set_target_properties(baloowidgets PROPERTIES
 
 generate_export_header(baloowidgets BASE_NAME BALOO_WIDGETS EXPORT_FILE_NAME widgets_export.h)
 
-install(TARGETS baloowidgets EXPORT BalooWidgetsLibraryTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS baloowidgets EXPORT KF5BalooWidgetsTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
   tagwidget.h

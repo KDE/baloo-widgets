@@ -23,23 +23,20 @@ add_definitions(${KDE4_ENABLE_EXCEPTIONS})
 set(KF5_VERSION "5.0.0")
 ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX BALOO_WIDGETS
                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/baloowidgets_version.h"
-                  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/BalooWidgetsConfigVersion.cmake")
-
-include_directories(
-  ${CMAKE_SOURCE_DIR}/src
-)
+                  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake")
 
 add_subdirectory(src)
 add_subdirectory(test)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/BalooWidgetsConfig.cmake.in
-               ${CMAKE_CURRENT_BINARY_DIR}/BalooWidgetsConfig.cmake @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/KF5BalooWidgetsConfig.cmake.in
+               ${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake @ONLY)
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/BalooWidgetsConfig.cmake ${CMAKE_CURRENT_BINARY_DIR}/BalooWidgetsConfigVersion.cmake
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake ${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake
         DESTINATION ${LIB_INSTALL_DIR}/cmake/BalooWidgets)
-install(EXPORT BalooWidgetsLibraryTargets
+
+install(EXPORT KF5BalooWidgetsTargets
         DESTINATION ${LIB_INSTALL_DIR}/cmake/BalooWidgets
-        FILE BalooWidgetsTargetsWithPrefix.cmake)
+        FILE KF5BalooWidgetsTargets.cmake)
 
 
 feature_summary(WHAT ALL
