@@ -1,7 +1,7 @@
 project(baloo-widgets)
 cmake_minimum_required(VERSION 2.8.12)
 
-find_package(ECM 0.0.9 REQUIRED NO_MODULE)
+find_package(ECM 0.0.14 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_PATH})
 
 find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Widgets Xml Test Sql)
@@ -18,7 +18,6 @@ include(KDECMakeSettings)
 include(KDECompilerSettings)
 
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-add_definitions(${KDE4_ENABLE_EXCEPTIONS})
 
 set(KF5_VERSION "5.0.0")
 ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX BALOO_WIDGETS
@@ -28,15 +27,29 @@ ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX BALOO_WIDGETS
 add_subdirectory(src)
 add_subdirectory(test)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/KF5BalooWidgetsConfig.cmake.in
-               ${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake @ONLY)
+# Config files
+set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5BalooWidgets")
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake ${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake
-        DESTINATION ${LIB_INSTALL_DIR}/cmake/BalooWidgets)
+include(ECMPackageConfigHelpers)
+
+ecm_configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/KF5BalooWidgetsConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake"
+    INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
+)
+
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake"
+    DESTINATION ${CMAKECONFIG_INSTALL_DIR}
+    COMPONENT devel
+)
 
 install(EXPORT KF5BalooWidgetsTargets
-        DESTINATION ${LIB_INSTALL_DIR}/cmake/BalooWidgets
-        FILE KF5BalooWidgetsTargets.cmake)
+        NAMESPACE KF5::
+        DESTINATION ${CMAKECONFIG_INSTALL_DIR}
+        FILE KF5BalooWidgetsTargets.cmake
+)
 
 
 feature_summary(WHAT ALL
