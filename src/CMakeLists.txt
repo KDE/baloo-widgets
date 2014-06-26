@@ -35,6 +35,7 @@ target_link_libraries(KF5BalooWidgets
 set_target_properties(KF5BalooWidgets PROPERTIES
    VERSION ${BALOO_WIDGETS_VERSION_STRING}
    SOVERSION ${BALOO_WIDGETS_SOVERSION}
+   EXPORT_NAME BalooWidgets
 )
 
 generate_export_header(KF5BalooWidgets BASE_NAME BALOO_WIDGETS EXPORT_FILE_NAME widgets_export.h)
