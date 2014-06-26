@@ -1,0 +1,33 @@
+# Config file for baloo-widgets. Do not modify this file. Any change will be overwritten by CMake.
+
+# This file will define the following variables:
+#
+# BALOO_WIDGETS_LIB_DIR : The baloo-widgets library directory
+# BALOO_WIDGETS_INCLUDE_DIR : The baloo-widgets include directory
+# BALOO_WIDGETS_VERSION : The baloo-widgets version
+# BALOO_WIDGETS_LIBRARY : The baloowidgets library
+
+get_filename_component(_currentDir ${CMAKE_CURRENT_LIST_FILE} PATH) # The current directory
+get_filename_component(rootDir ${_currentDir}/@relInstallDir@ ABSOLUTE) # The install prefix
+
+# The baloo-widgets version
+set(BALOO_WIDGETS_VERSION_MAJOR @CMAKE_BALOO_WIDGETS_VERSION_MAJOR@)
+set(BALOO_WIDGETS_VERSION_MINOR @CMAKE_BALOO_WIDGETS_VERSION_MINOR@)
+set(BALOO_WIDGETS_VERSION_RELEASE @CMAKE_BALOO_WIDGETS_VERSION_RELEASE@)
+set(BALOO_WIDGETS_VERSION ${BALOO_WIDGETS_VERSION_MAJOR}.${BALOO_WIDGETS_VERSION_MINOR}.${BALOO_WIDGETS_VERSION_RELEASE})
+
+# Include directory
+set(BALOO_WIDGETS_INSTALL_PREFIX "${rootDir}")
+set(BALOO_WIDGETS_INCLUDE_DIR "@INCLUDE_INSTALL_DIR@")
+set(BalooWidgets_FOUND true)
+
+# Library directory
+set(BALOO_WIDGETS_LIB_DIR "@LIB_INSTALL_DIR@")
+
+# Import the exported targets
+if(NOT TARGET baloowidgets)
+include(${_currentDir}/KF5BalooWidgetsTargets.cmake)
+endif()
+
+# Set the libraries names
+set(BALOO_WIDGETS_LIBRARY baloowidgets)
