@@ -27,7 +27,7 @@
 #include <Baloo/File>
 #include <Baloo/IndexerConfig>
 
-#include <kfilemetadata/propertyinfo.h>
+#include <KFileMetaData/propertyinfo.h>
 
 #include <kfileitem.h>
 #include <klocale.h>

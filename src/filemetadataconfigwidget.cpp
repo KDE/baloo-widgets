@@ -29,7 +29,7 @@
 #include <KDebug>
 
 #include "filemetadataprovider_p.h"
-#include <kfilemetadata/propertyinfo.h>
+#include <KFileMetaData/propertyinfo.h>
 
 #include <QEvent>
 #include <QListWidget>

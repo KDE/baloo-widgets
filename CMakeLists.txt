@@ -5,8 +5,7 @@ find_package(ECM 0.0.9 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_PATH})
 
 find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Widgets Xml Test Sql)
-find_package(KF5 REQUIRED COMPONENTS KDELibs4Support I18n Service Baloo)
-find_package(KFileMetaData 4.97 REQUIRED)
+find_package(KF5 REQUIRED COMPONENTS KDELibs4Support I18n Service FileMetaData Baloo)
 
 include(ECMSetupVersion)
 include(ECMAddTests)
