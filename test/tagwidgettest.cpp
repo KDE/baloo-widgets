@@ -77,4 +77,3 @@ void TagWidgetTest::setReadOnly( bool enable )
     m_tagWidget->setReadyOnly(enable);
 }
 
-#include "tagwidgettest.moc"

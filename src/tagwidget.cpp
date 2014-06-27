@@ -192,5 +192,3 @@ void TagWidget::slotKEditTagDialogFinished(int result)
     d->m_editTagsDialog = 0;
 }
 
-
-#include "tagwidget.moc"
