@@ -42,7 +42,7 @@ target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KF5_
 
 generate_export_header(KF5BalooWidgets BASE_NAME BALOO_WIDGETS EXPORT_FILE_NAME widgets_export.h)
 
-install(TARGETS KF5BalooWidgets EXPORT KF5BalooWidgetsTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF5BalooWidgets EXPORT KF5BalooWidgetsTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 
 ecm_generate_headers(KF5BalooWidgets_CamelCase_HEADERS
     HEADER_NAMES
