@@ -38,16 +38,31 @@ set_target_properties(KF5BalooWidgets PROPERTIES
    EXPORT_NAME BalooWidgets
 )
 
+target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets>")
+
 generate_export_header(KF5BalooWidgets BASE_NAME BALOO_WIDGETS EXPORT_FILE_NAME widgets_export.h)
 
 install(TARGETS KF5BalooWidgets EXPORT KF5BalooWidgetsTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
-install(FILES
-  tagwidget.h
-  filemetadatawidget.h
-  filemetadataconfigwidget.h
-  ${CMAKE_CURRENT_BINARY_DIR}/widgets_export.h
+ecm_generate_headers(KF5BalooWidgets_CamelCase_HEADERS
+    HEADER_NAMES
+    TagWidget
+    FileMetaDataWidget
+    FileMetaDataConfigWidget
 
-  DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/baloo
+    PREFIX baloo
+    REQUIRED_HEADERS KF5BalooWidgets_HEADERS
+)
+
+install(FILES
+  ${KF5BalooWidgets_HEADERS}
+  DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets/Baloo
+  COMPONENT Devel
+)
+
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/widgets_export.h
+  ${KF5BalooWidgets_HEADERS}
+  DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets/baloo
   COMPONENT Devel
 )
