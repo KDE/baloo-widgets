@@ -55,7 +55,7 @@ ecm_generate_headers(KF5BalooWidgets_CamelCase_HEADERS
 )
 
 install(FILES
-  ${KF5BalooWidgets_HEADERS}
+  ${KF5BalooWidgets_CamelCase_HEADERS}
   DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets/Baloo
   COMPONENT Devel
 )
