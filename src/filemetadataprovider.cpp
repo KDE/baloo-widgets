@@ -352,7 +352,7 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
         const KFileItem item = items.first();
         const QString url = item.localPath();
 
-        if (!d->m_config.shouldBeIndexed(url)) {
+        if (!d->m_config.fileIndexingEnabled() || !d->m_config.shouldBeIndexed(url)) {
             IndexedDataRetriever *ret = new IndexedDataRetriever(url, this);
             connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
             ret->start();
