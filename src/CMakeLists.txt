@@ -1,3 +1,5 @@
+add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets\")
+
 set(widgets_SRCS
   kblocklayout.cpp
   tagwidget.cpp
