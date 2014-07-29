@@ -10,6 +10,7 @@ set(widgets_SRCS
   filemetadataprovider.cpp
   indexeddataretriever.cpp
   kcommentwidget.cpp
+  keditcommentdialog.cpp
   metadatafilter.cpp
   widgetfactory.cpp
 )
