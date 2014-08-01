@@ -23,8 +23,7 @@
 
 #include <QVBoxLayout>
 #include <QCheckBox>
-#include <kdebug.h>
-
+#include <QDebug>
 
 TagWidgetTest::TagWidgetTest()
     : QWidget()
@@ -53,13 +52,13 @@ TagWidgetTest::~TagWidgetTest()
 
 void TagWidgetTest::slotTagClicked(const QString& tag)
 {
-    kDebug() << "Tag clicked:" << tag;
+    qDebug() << "Tag clicked:" << tag;
 }
 
 
 void TagWidgetTest::slotSelectionChanged( const QStringList& tags )
 {
-    kDebug() << "Selection changed:" << tags;
+    qDebug() << "Selection changed:" << tags;
 }
 
 

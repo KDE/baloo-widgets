@@ -23,13 +23,12 @@
 #include <kconfig.h>
 #include <kconfiggroup.h>
 
-#include <KDebug>
-
 #include "filemetadataprovider_p.h"
 
 #include <QEvent>
 #include <QListWidget>
 #include <QVBoxLayout>
+#include <QDebug>
 
 using namespace Baloo;
 
@@ -189,7 +188,7 @@ void FileMetaDataConfigWidget::save()
 bool FileMetaDataConfigWidget::event(QEvent* event)
 {
     if (event->type() == QEvent::Polish) {
-        kDebug() << "GOT POLISH EVENT!!!";
+        qDebug() << "GOT POLISH EVENT!!!";
         // loadMetaData() must be invoked asynchronously, as the list
         // must finish it's initialization first
         QMetaObject::invokeMethod(this, "loadMetaData", Qt::QueuedConnection);
