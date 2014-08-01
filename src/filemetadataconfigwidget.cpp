@@ -22,14 +22,10 @@
 
 #include <kconfig.h>
 #include <kconfiggroup.h>
-#include <kfilemetainfo.h>
-#include <kfilemetainfoitem.h>
-#include <klocale.h>
 
 #include <KDebug>
 
 #include "filemetadataprovider_p.h"
-#include <kfilemetadata/propertyinfo.h>
 
 #include <QEvent>
 #include <QListWidget>

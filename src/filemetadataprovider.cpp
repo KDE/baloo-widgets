@@ -33,10 +33,7 @@
 #include <klocale.h>
 #include <kstandarddirs.h>
 #include <kratingwidget.h>
-#include <KDebug>
-#include <KProcess>
 
-#include <QEvent>
 #include <QLabel>
 #include <QTimer>
 

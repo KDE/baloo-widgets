@@ -20,7 +20,6 @@
 #ifndef _BALOO_FILEMETADATAMODEL_H
 #define _BALOO_FILEMETADATAMODEL_H
 
-#include <QtCore/QHash>
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QVariant>

@@ -24,7 +24,6 @@
 #include <QFileInfo>
 
 #include <KStandardDirs>
-#include <KDebug>
 
 using namespace Baloo;
 

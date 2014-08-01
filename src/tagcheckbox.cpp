@@ -24,10 +24,6 @@
 #include "tagwidget.h"
 #include "tagwidget_p.h"
 
-#include <kcursor.h>
-#include <kcolorscheme.h>
-#include <kglobalsettings.h>
-
 #include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QLabel>

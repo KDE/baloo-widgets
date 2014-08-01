@@ -25,17 +25,12 @@
 #include "kedittagsdialog_p.h"
 #include "tagcheckbox.h"
 
-#include <kinputdialog.h>
-#include <kmessagebox.h>
 #include <klocale.h>
-#include <kglobalsettings.h>
-#include <kdebug.h>
 #include <KJob>
 
 #include <QPushButton>
 #include <QBoxLayout>
 #include <QLabel>
-#include <QtCore/QSet>
 
 using namespace Baloo;
 

@@ -33,7 +33,6 @@
 #include <QUrl>
 
 #include <KJob>
-#include <KDebug>
 #include <KGlobal>
 #include <KLocale>
 

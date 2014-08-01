@@ -21,7 +21,6 @@
 
 #include <KLineEdit>
 #include <KLocalizedString>
-#include <KMessageBox>
 
 #include <QHBoxLayout>
 #include <QLabel>

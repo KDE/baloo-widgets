@@ -24,7 +24,6 @@
 #include <KLocalizedString>
 #include <KWindowConfig>
 #include <KSharedConfig>
-#include <KDialog>
 
 #include <QEvent>
 #include <QLabel>

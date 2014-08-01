@@ -21,15 +21,11 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
 #include "filemetadatawidget.h"
 #include "metadatafilter.h"
 #include "widgetfactory.h"
 
-#include <kconfig.h>
-#include <kconfiggroup.h>
 #include <kfileitem.h>
-#include <klocale.h>
 
 #include <QGridLayout>
 #include <QLabel>
@@ -42,7 +38,6 @@
 #include <QSpacerItem>
 
 #include "filemetadataprovider_p.h"
-#include <KDebug>
 
 // FIXME: Load the catalog properly!!
 //static const KCatalogLoader loader("baloowidgets");
