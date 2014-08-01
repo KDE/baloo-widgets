@@ -18,7 +18,7 @@
 #ifndef KEDIT_TAGS_DIALOG_H
 #define KEDIT_TAGS_DIALOG_H
 
-#include <kdialog.h>
+#include <QDialog>
 
 class KLineEdit;
 class KJob;
@@ -35,24 +35,22 @@ class QTimer;
  *
  * @see KMetaDataConfigurationDialog
  */
-class KEditTagsDialog : public KDialog
+class KEditTagsDialog : public QDialog
 {
     Q_OBJECT
 
 public:
     KEditTagsDialog(const QStringList& tags,
-                    QWidget* parent = 0,
-                    Qt::WFlags flags = 0);
+                    QWidget* parent = 0);
 
     virtual ~KEditTagsDialog();
 
     QStringList tags() const;
 
-protected slots:
-    virtual void slotButtonClicked(int button);
-
 private slots:
     void slotTextEdited(const QString& text);
+    void slotAcceptedButtonClicked();
+
 
     void slotTagsLoaded(KJob* job);
 
