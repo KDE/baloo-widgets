@@ -20,7 +20,7 @@
 
 #include <QDialog>
 
-class KLineEdit;
+class QLineEdit;
 class KJob;
 class QListWidget;
 class QListWidgetItem;
@@ -65,7 +65,7 @@ private:
     QListWidget* m_tagsList;
     QListWidgetItem* m_newTagItem;
     QListWidgetItem* m_autoCheckedItem;
-    KLineEdit* m_newTagEdit;
+    QLineEdit* m_newTagEdit;
 };
 
 #endif

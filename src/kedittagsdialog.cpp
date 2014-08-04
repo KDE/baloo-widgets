@@ -19,7 +19,7 @@
 
 #include "kedittagsdialog_p.h"
 
-#include <KLineEdit>
+#include <QLineEdit>
 #include <KLocalizedString>
 
 #include <QHBoxLayout>
@@ -67,8 +67,8 @@ KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
     m_tagsList->setSelectionMode(QAbstractItemView::NoSelection);
 
     QLabel* newTagLabel = new QLabel(i18nc("@label", "Create new tag:"));
-    m_newTagEdit = new KLineEdit(this);
-    m_newTagEdit->setClearButtonShown(true);
+    m_newTagEdit = new QLineEdit(this);
+    m_newTagEdit->setClearButtonEnabled(true);
     connect(m_newTagEdit, SIGNAL(textEdited(QString)),
             this, SLOT(slotTextEdited(QString)));
 
