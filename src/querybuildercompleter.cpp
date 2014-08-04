@@ -66,7 +66,7 @@ QWidget *QueryBuilderCompleter::widgetForProposal(CompletionProposal *proposal,
             proposal_text += QLatin1Char(' ');
         }
 
-        if (part.at(0) == QLatin1Char('%')) {
+        if (part.at(0) == QLatin1Char('$')) {
             proposal_text += QLatin1String("<em>");
 
             if (!value.isEmpty()) {
@@ -142,7 +142,7 @@ void QueryBuilderCompleter::addProposal(CompletionProposal *proposal,
     // If the term the user is entering is a placeholder, pre-fill it
     if (!prefix.isEmpty() &&
         proposal->lastMatchedPart() < pattern.size() &&
-        pattern.at(proposal->lastMatchedPart()).at(0) == QLatin1Char('%'))
+        pattern.at(proposal->lastMatchedPart()).at(0) == QLatin1Char('$'))
     {
         switch (proposal->type()) {
 #if 0

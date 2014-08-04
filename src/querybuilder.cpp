@@ -156,7 +156,7 @@ void QueryBuilder::proposalSelected(CompletionProposal *proposal,
             replacement += QLatin1Char(' ');
         }
 
-        if (part.at(0) == QLatin1Char('%')) {
+        if (part.at(0) == QLatin1Char('$')) {
             cursor_offset = replacement.length() + value.length();
             replacement += value;
         } else {
