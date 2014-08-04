@@ -31,10 +31,10 @@
 #include <QLabel>
 #include <QTime>
 #include <QUrl>
+#include <QLocale>
 
 #include <KJob>
-#include <KGlobal>
-#include <KLocale>
+#include <kformat.h>
 
 namespace {
     static QString plainText(const QString& richText)
@@ -90,30 +90,33 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         widget = createTagWidget( tags, parent );
     }
     else {
+        KFormat form;
         // vHanda: FIXME: Add links! Take m_noLinks into consideration
         QString valueString;
 
-        if (prop == "duration") {
-            QTime time = QTime().addSecs(value.toInt());
-            valueString = KLocale::global()->formatTime(time, true, true);
+        if (prop == "duration"){
+            valueString = form.formatDuration(value.toInt());
         }
         else {
             // Check if Date/DateTime
+
             QDateTime dt = QDateTime::fromString(value.toString(), Qt::ISODate);
             if (dt.isValid()) {
                 QTime time = dt.time();
-                if (!time.hour() && !time.minute() && !time.second())
-                    valueString = KLocale::global()->formatDate(dt.date(), KLocale::FancyLongDate);
-                else
-                    valueString = KLocale::global()->formatDateTime(dt, KLocale::FancyLongDate);
+                if (!time.hour() && !time.minute() && !time.second()){
+		    valueString = form.formatRelativeDate(dt.date(), QLocale::LongFormat);
+		}
+                else{
+		   valueString = form.formatRelativeDateTime(dt, QLocale::LongFormat);
+		}
             }
             else {
                 switch (value.type()) {
                 case QVariant::Int:
-                    valueString = KLocale::global()->formatLong(value.toInt());
+                    valueString =  QLocale().toString(value.toInt());
                     break;
                 case QVariant::Double:
-                    valueString = KLocale::global()->formatNumber(value.toDouble());
+                    valueString =  QLocale().toString(value.toDouble());
                     break;
                 default:
                     valueString = value.toString();

@@ -25,7 +25,7 @@
 #include "kedittagsdialog_p.h"
 #include "tagcheckbox.h"
 
-#include <klocale.h>
+#include <KLocalizedString>
 #include <KJob>
 
 #include <QPushButton>

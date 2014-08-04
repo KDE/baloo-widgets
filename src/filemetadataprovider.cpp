@@ -30,9 +30,10 @@
 #include <kfilemetadata/propertyinfo.h>
 
 #include <kfileitem.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kstandarddirs.h>
 #include <kratingwidget.h>
+#include <kformat.h>
 
 #include <QLabel>
 #include <QTimer>
@@ -288,8 +289,10 @@ void FileMetaDataProvider::Private::insertBasicData()
         } else {
             m_data.insert("kfileitem#size", KIO::convertSize(item.size()));
         }
+        KFormat format;
+	
         m_data.insert("kfileitem#type", item.mimeComment());
-        m_data.insert("kfileitem#modified", KLocale::global()->formatDateTime(item.time(KFileItem::ModificationTime), KLocale::FancyLongDate));
+        m_data.insert("kfileitem#modified", format.formatRelativeDateTime(item.time(KFileItem::ModificationTime), QLocale::LongFormat) );
         m_data.insert("kfileitem#owner", item.user());
         m_data.insert("kfileitem#permissions", item.permissionsString());
     }
