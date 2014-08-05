@@ -271,6 +271,7 @@ void FileMetaDataProvider::Private::slotLoadingFinished(KJob* job)
 
 void FileMetaDataProvider::Private::insertBasicData()
 {
+    KFormat format;
     if (m_fileItems.count() == 1) {
         // TODO: Handle case if remote URLs are used properly. isDir() does
         // not work, the modification date needs also to be adjusted...
@@ -279,15 +280,14 @@ void FileMetaDataProvider::Private::insertBasicData()
         if (item.isDir()) {
             const int count = subDirectoriesCount(item.url().path());
             if (count == -1) {
-                m_data.insert("kfileitem#size", QString("Unknown"));
+                m_data.insert("kfileitem#size", i18nc("unknown file size", "Unknown"));
             } else {
                 const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
                 m_data.insert("kfileitem#size", itemCountString);
             }
         } else {
-            m_data.insert("kfileitem#size", KIO::convertSize(item.size()));
+            m_data.insert("kfileitem#size", format.formatByteSize(item.size()));
         }
-        KFormat format;
 	
         m_data.insert("kfileitem#type", item.mimeComment());
         m_data.insert("kfileitem#modified", format.formatRelativeDateTime(item.time(KFileItem::ModificationTime), QLocale::LongFormat) );
@@ -302,7 +302,7 @@ void FileMetaDataProvider::Private::insertBasicData()
                 totalSize += item.size();
             }
         }
-        m_data.insert("kfileitem#totalSize", KIO::convertSize(totalSize));
+        m_data.insert("kfileitem#totalSize", format.formatByteSize(totalSize));
 
         // When we have more than 1 item, the basic data should be emitted before
         // the Resource data, cause the ResourceData might take considerable time
