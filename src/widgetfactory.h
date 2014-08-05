@@ -48,12 +48,12 @@ namespace Baloo {
 
         QWidget* createWidget(const QString& prop, const QVariant& value, QWidget* parent);
 
-    signals:
+    Q_SIGNALS:
         void urlActivated(const QUrl& url);
         void dataChangeStarted();
         void dataChangeFinished();
 
-    private slots:
+    private Q_SLOTS:
         void slotTagsChanged(const QStringList& tags);
         void slotCommentChanged(const QString& comment);
         void slotRatingChanged(uint rating);

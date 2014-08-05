@@ -38,7 +38,7 @@ public:
 
     QVariantMap data() const;
 
-private slots:
+private Q_SLOTS:
     void slotIndexedFile(int error);
 
 private:

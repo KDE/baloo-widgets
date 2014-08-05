@@ -47,7 +47,7 @@ public:
 
     QStringList tags() const;
 
-private slots:
+private Q_SLOTS:
     void slotTextEdited(const QString& text);
     void slotAcceptedButtonClicked();
 

@@ -32,11 +32,11 @@ public:
     TagWidgetTest();
     ~TagWidgetTest();
 
-public slots:
+public Q_SLOTS:
     void slotTagClicked(const QString&);
     void slotSelectionChanged( const QStringList& tags );
 
-private slots:
+private Q_SLOTS:
     void alignRight( bool enable );
     void setReadOnly( bool enable );
 

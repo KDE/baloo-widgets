@@ -30,7 +30,7 @@ class FileMetadataWidgetTest : public QWidget
 public:
     explicit FileMetadataWidgetTest(QWidget* parent = 0, Qt::WindowFlags f = 0);
 
-private slots:
+private Q_SLOTS:
     void slotChooseFiles();
 
 private:
