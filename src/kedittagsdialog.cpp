@@ -19,18 +19,18 @@
 
 #include "kedittagsdialog_p.h"
 
-#include <QLineEdit>
 #include <KLocalizedString>
 
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QListWidget>
-#include <QPushButton>
-#include <QTimer>
-#include <QVBoxLayout>
-#include <QWidget>
-#include <QUrl>
-#include <QDialogButtonBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QPushButton>
+#include <QtCore/QTimer>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
+#include <QtCore/QUrl>
+#include <QtWidgets/QDialogButtonBox>
 
 #include <Baloo/TagListJob>
 

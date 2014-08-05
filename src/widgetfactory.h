@@ -21,8 +21,8 @@
 #ifndef WIDGETFACTORY_H
 #define WIDGETFACTORY_H
 
-#include <QObject>
-#include <QStringList>
+#include <QtCore/QObject>
+#include <QtCore/QStringList>
 
 class KJob;
 class QUrl;

@@ -22,11 +22,11 @@ add_library(KF5::BalooWidgets ALIAS KF5BalooWidgets)
 target_link_libraries(KF5BalooWidgets
   PUBLIC
   Qt5::Widgets
+  Qt5::Core
   KF5::KIOCore # KFileItem
   KF5::CoreAddons # KProcess, KJob
 
   PRIVATE
-  Qt5::DBus
   KF5::I18n
   KF5::Completion
   KF5::FileMetaData

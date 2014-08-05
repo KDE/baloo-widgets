@@ -21,7 +21,7 @@
 #ifndef TAGWIDGETTEST_H
 #define TAGWIDGETTEST_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "tagwidget.h"
 
 class TagWidgetTest : public QWidget

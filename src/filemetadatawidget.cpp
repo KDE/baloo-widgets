@@ -24,20 +24,20 @@
 #include "filemetadatawidget.h"
 #include "metadatafilter.h"
 #include "widgetfactory.h"
-
-#include <kfileitem.h>
-
-#include <QGridLayout>
-#include <QLabel>
-#include <QList>
-#include <QSet>
-#include <QString>
-#include <QTimer>
-#include <QFileInfo>
-
-#include <QSpacerItem>
-
 #include "filemetadataprovider_p.h"
+
+#include <KFileItem>
+
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QSpacerItem>
+#include <QtCore/QList>
+#include <QtCore/QSet>
+#include <QtCore/QString>
+#include <QtCore/QTimer>
+#include <QtCore/QFileInfo>
+
+
 
 // FIXME: Load the catalog properly!!
 //static const KCatalogLoader loader("baloowidgets");

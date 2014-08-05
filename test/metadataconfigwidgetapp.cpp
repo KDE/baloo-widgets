@@ -19,12 +19,10 @@
 
 #include "filemetadataconfigwidget.h"
 
-#include <QApplication>
-#include <KFileItem>
-
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QCheckBox>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QFileDialog>
 
 class FileMetadataWidgetTest : public QWidget

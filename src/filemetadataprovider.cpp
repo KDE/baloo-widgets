@@ -27,22 +27,21 @@
 #include <Baloo/File>
 #include <Baloo/IndexerConfig>
 
-#include <kfilemetadata/propertyinfo.h>
-
-#include <kfileitem.h>
+#include <KFileMetaData/PropertyInfo>
+#include <KFileItem>
 #include <KLocalizedString>
-#include <kratingwidget.h>
-#include <kformat.h>
+#include <KRatingWidget>
+#include <KFormat>
 
-#include <QLabel>
-#include <QTimer>
+#include <QtWidgets/QLabel>
+#include <QtCore/QTimer>
 
 // Required includes for subDirectoriesCount():
 #ifdef Q_WS_WIN
-    #include <QDir>
+    #include <QtCore/QDir>
 #else
     #include <dirent.h>
-    #include <QFile>
+    #include <QtCore/QFile>
 #endif
 
 using namespace Baloo;

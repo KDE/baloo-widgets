@@ -21,8 +21,8 @@
 #include "indexeddataretriever.h"
 
 #include <QtCore/QProcess>
-#include <QFileInfo>
-#include <QStandardPaths>
+#include <QtCore/QFileInfo>
+#include <QtCore/QStandardPaths>
 
 using namespace Baloo;
 

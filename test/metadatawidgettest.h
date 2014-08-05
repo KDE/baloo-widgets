@@ -20,8 +20,8 @@
 #ifndef _FILE_METADATA_WIDGET_TEST_
 #define _FILE_METADATA_WIDGET_TEST_
 
-#include <QWidget>
-#include <QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QPushButton>
 #include "filemetadatawidget.h"
 
 class FileMetadataWidgetTest : public QWidget

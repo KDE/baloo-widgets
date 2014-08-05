@@ -17,14 +17,14 @@
 */
 #include "keditcommentdialog.h"
 
-#include <QDialogButtonBox>
-#include <QPushButton>
-#include <QWidget>
-#include <QLayout>
-#include <QLabel>
-#include <QTextEdit>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextEdit>
 
-#include <klocalizedstring.h>
+#include <KLocalizedString>
 
 KEditCommentDialog::KEditCommentDialog(QWidget* parent, const QString& commentText, const QString& captionText)
     : QDialog(parent)

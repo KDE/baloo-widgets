@@ -19,16 +19,15 @@
  *****************************************************************************/
 
 #include "filemetadataconfigwidget.h"
-
-#include <kconfig.h>
-#include <kconfiggroup.h>
-
 #include "filemetadataprovider_p.h"
 
-#include <QEvent>
-#include <QListWidget>
-#include <QVBoxLayout>
-#include <QDebug>
+#include <KConfig>
+#include <KConfigGroup>
+
+#include <QtCore/QEvent>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QVBoxLayout>
+#include <QtCore/QDebug>
 
 using namespace Baloo;
 

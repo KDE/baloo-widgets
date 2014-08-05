@@ -24,17 +24,17 @@
 #include "widgetfactory.h"
 #include "tagwidget.h"
 #include "kcommentwidget_p.h"
-#include "kratingwidget.h"
+#include "KRatingWidget"
 
 #include <Baloo/FileModifyjob>
 
-#include <QLabel>
-#include <QTime>
-#include <QUrl>
-#include <QLocale>
+#include <QtWidgets/QLabel>
+#include <QtCore/QTime>
+#include <QtCore/QUrl>
+#include <QtCore/QLocale>
 
 #include <KJob>
-#include <kformat.h>
+#include <KFormat>
 
 namespace {
     static QString plainText(const QString& richText)

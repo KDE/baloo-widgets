@@ -19,8 +19,8 @@
 
 #include "metadatawidgettest.h"
 
-#include <QVBoxLayout>
-#include <QCheckBox>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QFileDialog>
 
 FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags f)

@@ -22,7 +22,7 @@
 
 #include <QtCore/QObject>
 #include <QtCore/QString>
-#include <QVariant>
+#include <QtCore/QVariant>
 
 class KFileItemList;
 class KProcess;

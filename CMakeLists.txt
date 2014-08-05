@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.8.12)
 find_package(ECM 0.0.14 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_PATH})
 
-find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Widgets Xml Test Sql)
+find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Core Widgets)
 find_package(KF5 REQUIRED COMPONENTS Config KIO I18n Service FileMetaData Baloo)
 
 include(ECMSetupVersion)

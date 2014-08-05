@@ -22,14 +22,14 @@
 #include "keditcommentdialog.h"
 
 #include <KLocalizedString>
-#include <KWindowConfig>
+#include <KConfigGui/KWindowConfig>
 #include <KSharedConfig>
 
-#include <QEvent>
-#include <QLabel>
-#include <QPointer>
-#include <QTextEdit>
-#include <QVBoxLayout>
+#include <QtCore/QEvent>
+#include <QtCore/QPointer>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QVBoxLayout>
 
 KCommentWidget::KCommentWidget(QWidget* parent) :
     QWidget(parent),
