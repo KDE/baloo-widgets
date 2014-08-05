@@ -21,8 +21,7 @@
 
 #include <QVBoxLayout>
 #include <QCheckBox>
-
-#include <kfiledialog.h>
+#include <QtWidgets/QFileDialog>
 
 FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags f)
     : QWidget(parent, f)
@@ -39,7 +38,7 @@ FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags 
 
 void FileMetadataWidgetTest::slotChooseFiles()
 {
-    QList<QUrl> urlList = KFileDialog::getOpenUrls();
+    QList<QUrl> urlList = QFileDialog::getOpenFileUrls();
     KFileItemList list;
     foreach(const QUrl& url, urlList)
         list << KFileItem( url, QString(), mode_t() );
