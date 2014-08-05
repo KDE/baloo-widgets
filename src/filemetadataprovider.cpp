@@ -31,7 +31,6 @@
 
 #include <kfileitem.h>
 #include <KLocalizedString>
-#include <kstandarddirs.h>
 #include <kratingwidget.h>
 #include <kformat.h>
 

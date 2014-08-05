@@ -20,7 +20,6 @@
 #include "filemetadataconfigwidget.h"
 
 #include <QApplication>
-#include <kcomponentdata.h>
 #include <KFileItem>
 
 #include <QPushButton>

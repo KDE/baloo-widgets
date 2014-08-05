@@ -31,9 +31,9 @@ target_link_libraries(KF5BalooWidgets
   KF5::Completion
   KF5::FileMetaData
   KF5::WidgetsAddons
-  KF5::KDELibs4Support
   KF5::BalooFiles
   KF5::CoreAddons
+  KF5::ConfigGui
 )
 
 set_target_properties(KF5BalooWidgets PROPERTIES

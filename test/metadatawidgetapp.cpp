@@ -20,7 +20,6 @@
 #include "metadatawidgettest.h"
 
 #include <QApplication>
-#include <kcomponentdata.h>
 
 
 int main( int argc, char** argv )

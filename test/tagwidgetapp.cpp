@@ -21,13 +21,12 @@
 #include "tagwidgettest.h"
 
 #include <QApplication>
-#include <kcomponentdata.h>
-
+#include <QCoreApplication>
 
 int main( int argc, char** argv )
 {
     QApplication app( argc, argv );
-    KComponentData data( "TagWidgetApp" );
+    QCoreApplication::setApplicationName("TagWidgetApp");
     TagWidgetTest tw;
     tw.show();
     return app.exec();
