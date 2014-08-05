@@ -68,9 +68,9 @@ void KCommentWidget::setText(const QString& comment)
         }
     } else {
         if (m_readOnly) {
-            text = Qt::escape(comment);
+            text = QString(comment).toHtmlEscaped();
         } else {
-            text = "<p>" + Qt::escape(comment) + " <a href=\"changeComment\">" + i18nc("@label", "Change...") + "</a></p>";
+            text = "<p>" + QString(comment).toHtmlEscaped() + " <a href=\"changeComment\">" + i18nc("@label", "Change...") + "</a></p>";
         }
     }
 
