@@ -39,6 +39,18 @@
 
 
 
+// For XAttr
+#if defined(Q_OS_LINUX) || defined(__GLIBC__)
+#include <sys/types.h>
+#include <sys/xattr.h>
+#elif defined(Q_OS_MAC)
+#include <sys/types.h>
+#include <sys/xattr.h>
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#include <sys/types.h>
+#include <sys/extattr.h>
+#endif
+
 // FIXME: Load the catalog properly!!
 //static const KCatalogLoader loader("baloowidgets");
 
@@ -226,21 +238,53 @@ FileMetaDataWidget::~FileMetaDataWidget()
     delete d;
 }
 
+namespace {
+    bool areXAttrSupported(const QString& path) {
+        const QByteArray p = QFile::encodeName(path);
+        const char* encodedPath = p.constData();
+
+        const QByteArray n("user.xdg.tags");
+        const char* attributeName = n.constData();
+
+        // First get the size of the data we are going to get to reserve the right amount of space.
+        #if defined(Q_OS_LINUX) || (defined(__GLIBC__) && !defined(__stub_getxattr))
+            const ssize_t size = getxattr(encodedPath, attributeName, NULL, 0);
+        #elif defined(Q_OS_MAC)
+            const ssize_t size = getxattr(encodedPath, attributeName, NULL, 0, 0, 0);
+        #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+            const ssize_t size = extattr_get_file(encodedPath, EXTATTR_NAMESPACE_USER, attributeName, NULL, 0);
+        #else
+            const ssize_t size = 0;
+        #endif
+
+        if (size == -1) {
+            return errno != ENOTSUP;
+        }
+        return true;
+    }
+}
 void FileMetaDataWidget::setItems(const KFileItemList& items)
 {
     KFileItemList localItemsList;
     QStringList list;
 
+    bool xAttrSuppored = true;
+
     foreach(const KFileItem& item, items) {
         QUrl url = item.targetUrl();
         if (url.isLocalFile()) {
             localItemsList << item;
-            list << url.toLocalFile();
+            QString path = url.toLocalFile();
+            list << path;
+
+            xAttrSuppored &= areXAttrSupported(path);
         }
     }
 
     d->m_provider->setItems(localItemsList);
     d->m_widgetFactory->setItems(list);
+
+    setReadOnly(!xAttrSuppored);
 }
 
 KFileItemList FileMetaDataWidget::items() const
