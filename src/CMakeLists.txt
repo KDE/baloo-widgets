@@ -13,6 +13,9 @@ set(widgets_SRCS
   keditcommentdialog.cpp
   metadatafilter.cpp
   widgetfactory.cpp
+  groupedlineedit.cpp
+  querybuilder.cpp
+  querybuildercompleter.cpp
 )
 
 add_library(KF5BalooWidgets ${widgets_SRCS})
@@ -32,6 +35,7 @@ target_link_libraries(KF5BalooWidgets
   KF5::FileMetaData
   KF5::WidgetsAddons
   KF5::BalooFiles
+  KF5::BalooNaturalQueryParser
   KF5::CoreAddons
   KF5::ConfigGui
 )
