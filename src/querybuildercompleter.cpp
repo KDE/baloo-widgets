@@ -71,6 +71,7 @@ QWidget *QueryBuilderCompleter::widgetForProposal(CompletionProposal *proposal,
     // Create a label representing the pattern of the proposal
     QString proposal_text = QLatin1String("&nbsp; &nbsp; ");
     QStringList pattern = proposal->pattern();
+    bool valueHasBeenUsed = false;
 
     for (int i=0; i<pattern.count(); ++i) {
         const QString &part = pattern.at(i);
@@ -82,8 +83,9 @@ QWidget *QueryBuilderCompleter::widgetForProposal(CompletionProposal *proposal,
         if (part.at(0) == QLatin1Char('$')) {
             proposal_text += QLatin1String("<em>");
 
-            if (!value.isEmpty()) {
+            if (!valueHasBeenUsed && !value.isEmpty()) {
                 proposal_text += value;
+                valueHasBeenUsed = true;
             } else {
                 switch (proposal->type()) {
                 case CompletionProposal::NoType:
