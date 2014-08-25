@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo widgets collection
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -199,10 +199,9 @@ void GroupedLineEdit::paintEvent(QPaintEvent *e)
         painter.setBrush(color.lighter(180));
         painter.drawPath(path);
 
-        color_index = (color_index + 1) & 0x7;
+        color_index = (color_index + 1) & 0x7; // Increment color_index, modulo 8 so that it does not overflow colors
     }
 
     QPlainTextEdit::paintEvent(e);
 }
 
-#include "groupedlineedit.moc"
