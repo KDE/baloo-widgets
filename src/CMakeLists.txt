@@ -57,6 +57,8 @@ ecm_generate_headers(KF5BalooWidgets_CamelCase_HEADERS
     TagWidget
     FileMetaDataWidget
     FileMetaDataConfigWidget
+    QueryBuilder
+    GroupedLineEdit
 
     PREFIX baloo
     REQUIRED_HEADERS KF5BalooWidgets_HEADERS

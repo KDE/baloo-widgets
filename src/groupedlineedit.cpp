@@ -110,7 +110,7 @@ void GroupedLineEdit::setText(const QString &text)
 
 void GroupedLineEdit::clear()
 {
-    clear();
+    QPlainTextEdit::clear();
     removeAllBlocks();
 }
 
