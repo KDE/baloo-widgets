@@ -269,6 +269,8 @@ bool QueryBuilderCompleter::eventFilter(QObject *, QEvent *event)
         default:
             break;
         }
+    } else if (event->type() == QEvent::FocusOut) {
+        hide();
     }
 
     return rs;
