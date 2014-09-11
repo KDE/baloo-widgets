@@ -22,8 +22,8 @@
 #define INDEXEDDATARETRIEVER_H
 
 #include <KJob>
-#include <KProcess>
-#include <QVariant>
+#include <QtCore/QProcess>
+#include <QtCore/QVariant>
 
 namespace Baloo {
 
@@ -38,7 +38,7 @@ public:
 
     QVariantMap data() const;
 
-private slots:
+private Q_SLOTS:
     void slotIndexedFile(int error);
 
 private:

@@ -1,10 +1,9 @@
-/* This file is part of the Nepomuk widgets collection
-   Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
+/* This file is part of the KDE libraries
+   Copyright (C) 2014 Felix Eisele
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
-   License version 2.1 as published by the Free Software Foundation,
-   or any later version.
+   License version 2 as published by the Free Software Foundation.
 
    This library is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -17,22 +16,28 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "querybuilder.h"
+#ifndef KEDITCOMMENTDIALOG_H
+#define KEDITCOMMENTDIALOG_H
 
-#include <QApplication>
-#include <Baloo/NaturalFileQueryParser>
+#include <QtWidgets/QDialog>
 
-#include <kcomponentdata.h>
+class QWidget;
+class QTextEdit;
 
-int main(int argc, char **argv)
+class KEditCommentDialog : public QDialog
 {
-    QApplication app(argc, argv);
-    KComponentData data("QueryBuilderApp");
+    Q_OBJECT
+public:
+    KEditCommentDialog(QWidget *parent, const QString &commentText, const QString &captionText);
+    ~KEditCommentDialog();
 
-    Baloo::NaturalFileQueryParser parser;
-    Baloo::QueryBuilder builder(&parser, 0);
+    QString getCommentText() const;
 
-    builder.show();
+private:
+    QTextEdit *m_editor;
+};
 
-    return app.exec();
-}
+#endif
+
+
+

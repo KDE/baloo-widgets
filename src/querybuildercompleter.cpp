@@ -22,14 +22,14 @@
 #include <baloo/completionproposal.h>
 #include <klocalizedstring.h>
 
-#include <QtGui/QListWidget>
-#include <QtGui/QListWidgetItem>
-#include <QtGui/QCalendarWidget>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QKeyEvent>
-#include <QtGui/QTextDocument> // for Qt::escape
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QCalendarWidget>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QKeyEvent>
+#include <KFileMetaData/PropertyInfo>
 
 using namespace Baloo;
 
@@ -50,6 +50,19 @@ QueryBuilderCompleter::QueryBuilderCompleter(QWidget *parent)
 
     connect(this, SIGNAL(itemActivated(QListWidgetItem*)),
             this, SLOT(proposalActivated(QListWidgetItem*)));
+
+    // Load the list of all the valid property names
+    int lastProperty = KFileMetaData::Property::LastProperty;
+
+    for (int i=0; i<lastProperty; ++i) {
+        KFileMetaData::PropertyInfo info((KFileMetaData::Property::Property)i);
+
+        if (!info.name().isEmpty()) {
+            validPropertyNames.append(info.name());
+        }
+    }
+
+    std::sort(validPropertyNames.begin(), validPropertyNames.end());
 }
 
 QWidget *QueryBuilderCompleter::widgetForProposal(CompletionProposal *proposal,
@@ -58,6 +71,7 @@ QWidget *QueryBuilderCompleter::widgetForProposal(CompletionProposal *proposal,
     // Create a label representing the pattern of the proposal
     QString proposal_text = QLatin1String("&nbsp; &nbsp; ");
     QStringList pattern = proposal->pattern();
+    bool valueHasBeenUsed = false;
 
     for (int i=0; i<pattern.count(); ++i) {
         const QString &part = pattern.at(i);
@@ -66,11 +80,12 @@ QWidget *QueryBuilderCompleter::widgetForProposal(CompletionProposal *proposal,
             proposal_text += QLatin1Char(' ');
         }
 
-        if (part.at(0) == QLatin1Char('%')) {
+        if (part.at(0) == QLatin1Char('$')) {
             proposal_text += QLatin1String("<em>");
 
-            if (!value.isEmpty()) {
+            if (!valueHasBeenUsed && !value.isEmpty()) {
                 proposal_text += value;
+                valueHasBeenUsed = true;
             } else {
                 switch (proposal->type()) {
                 case CompletionProposal::NoType:
@@ -91,14 +106,19 @@ QWidget *QueryBuilderCompleter::widgetForProposal(CompletionProposal *proposal,
 
                 case CompletionProposal::Email:
                     proposal_text += i18nc("Pattern placeholder for an e-mail address", "[email address]");
+                    break;
+
+                case CompletionProposal::PropertyName:
+                    proposal_text += i18nc("Pattern placeholder for a standard property name", "[property]");
+                    break;
                 }
             }
 
             proposal_text += QLatin1String("</em>");
         } else if (i <= proposal->lastMatchedPart()) {
-            proposal_text += QLatin1String("<strong>") + Qt::escape(part) + QLatin1String("</strong>");
+            proposal_text += QLatin1String("<strong>") + part.toHtmlEscaped() + QLatin1String("</strong>");
         } else {
-            proposal_text += Qt::escape(part);
+            proposal_text += part.toHtmlEscaped();
         }
     }
 
@@ -142,7 +162,7 @@ void QueryBuilderCompleter::addProposal(CompletionProposal *proposal,
     // If the term the user is entering is a placeholder, pre-fill it
     if (!prefix.isEmpty() &&
         proposal->lastMatchedPart() < pattern.size() &&
-        pattern.at(proposal->lastMatchedPart()).at(0) == QLatin1Char('%'))
+        pattern.at(proposal->lastMatchedPart()).at(0) == QLatin1Char('$'))
     {
         switch (proposal->type()) {
 #if 0
@@ -156,6 +176,9 @@ void QueryBuilderCompleter::addProposal(CompletionProposal *proposal,
             value = valueStartingWith(parser->allEmailAddresses(), prefix);
             break;
 #endif
+        case CompletionProposal::PropertyName:
+            value = valueStartingWith(validPropertyNames, prefix);
+            break;
         case CompletionProposal::DateTime:
             value = QDate::currentDate().toString(Qt::DefaultLocaleShortDate);
             break;
@@ -251,4 +274,4 @@ bool QueryBuilderCompleter::eventFilter(QObject *, QEvent *event)
     return rs;
 }
 
-#include "querybuildercompleter_p.moc"
+#include "querybuildercompleter.moc"

@@ -23,29 +23,25 @@
 #include "kcommentwidget_p.h"
 #include "indexeddataretriever.h"
 
-#include <baloo/filefetchjob.h>
-#include <baloo/file.h>
-#include <baloo/indexerconfig.h>
-#include <kfilemetadata/propertyinfo.h>
+#include <Baloo/FileFetchJob>
+#include <Baloo/File>
+#include <Baloo/IndexerConfig>
 
-#include <kfileitem.h>
-#include <klocale.h>
-#include <kstandarddirs.h>
-#include <kurl.h>
-#include <kratingwidget.h>
-#include <KDebug>
-#include <KProcess>
+#include <KFileMetaData/PropertyInfo>
+#include <KFileItem>
+#include <KLocalizedString>
+#include <KRatingWidget>
+#include <KFormat>
 
-#include <QEvent>
-#include <QLabel>
-#include <QTimer>
+#include <QtWidgets/QLabel>
+#include <QtCore/QTimer>
 
 // Required includes for subDirectoriesCount():
 #ifdef Q_WS_WIN
-    #include <QDir>
+    #include <QtCore/QDir>
 #else
     #include <dirent.h>
-    #include <QFile>
+    #include <QtCore/QFile>
 #endif
 
 using namespace Baloo;
@@ -275,24 +271,26 @@ void FileMetaDataProvider::Private::slotLoadingFinished(KJob* job)
 
 void FileMetaDataProvider::Private::insertBasicData()
 {
+    KFormat format;
     if (m_fileItems.count() == 1) {
         // TODO: Handle case if remote URLs are used properly. isDir() does
         // not work, the modification date needs also to be adjusted...
         const KFileItem& item = m_fileItems.first();
 
         if (item.isDir()) {
-            const int count = subDirectoriesCount(item.url().pathOrUrl());
+            const int count = subDirectoriesCount(item.url().path());
             if (count == -1) {
-                m_data.insert("kfileitem#size", QString("Unknown"));
+                m_data.insert("kfileitem#size", i18nc("unknown file size", "Unknown"));
             } else {
                 const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
                 m_data.insert("kfileitem#size", itemCountString);
             }
         } else {
-            m_data.insert("kfileitem#size", KIO::convertSize(item.size()));
+            m_data.insert("kfileitem#size", format.formatByteSize(item.size()));
         }
+	
         m_data.insert("kfileitem#type", item.mimeComment());
-        m_data.insert("kfileitem#modified", KGlobal::locale()->formatDateTime(item.time(KFileItem::ModificationTime), KLocale::FancyLongDate));
+        m_data.insert("kfileitem#modified", format.formatRelativeDateTime(item.time(KFileItem::ModificationTime), QLocale::LongFormat) );
         m_data.insert("kfileitem#owner", item.user());
         m_data.insert("kfileitem#permissions", item.permissionsString());
     }
@@ -304,7 +302,7 @@ void FileMetaDataProvider::Private::insertBasicData()
                 totalSize += item.size();
             }
         }
-        m_data.insert("kfileitem#totalSize", KIO::convertSize(totalSize));
+        m_data.insert("kfileitem#totalSize", format.formatByteSize(totalSize));
 
         // When we have more than 1 item, the basic data should be emitted before
         // the Resource data, cause the ResourceData might take considerable time
@@ -519,4 +517,4 @@ bool FileMetaDataProvider::realTimeIndexing()
     return d->m_realTimeIndexing;
 }
 
-#include "filemetadataprovider_p.moc"
+#include "moc_filemetadataprovider_p.cpp"

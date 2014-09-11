@@ -21,10 +21,9 @@
 #include "tagwidgettest.h"
 #include "tagwidget.h"
 
-#include <QVBoxLayout>
-#include <QCheckBox>
-#include <kdebug.h>
-
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QDebug>
 
 TagWidgetTest::TagWidgetTest()
     : QWidget()
@@ -53,13 +52,13 @@ TagWidgetTest::~TagWidgetTest()
 
 void TagWidgetTest::slotTagClicked(const QString& tag)
 {
-    kDebug() << "Tag clicked:" << tag;
+    qDebug() << "Tag clicked:" << tag;
 }
 
 
 void TagWidgetTest::slotSelectionChanged( const QStringList& tags )
 {
-    kDebug() << "Selection changed:" << tags;
+    qDebug() << "Selection changed:" << tags;
 }
 
 
@@ -77,4 +76,3 @@ void TagWidgetTest::setReadOnly( bool enable )
     m_tagWidget->setReadyOnly(enable);
 }
 
-#include "tagwidgettest.moc"

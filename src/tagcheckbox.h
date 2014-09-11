@@ -22,7 +22,7 @@
 #ifndef _BALOO_TAG_CHECKBOX_H_
 #define _BALOO_TAG_CHECKBOX_H_
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 #include "tagwidget_p.h"
 

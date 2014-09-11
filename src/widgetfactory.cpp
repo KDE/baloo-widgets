@@ -24,18 +24,17 @@
 #include "widgetfactory.h"
 #include "tagwidget.h"
 #include "kcommentwidget_p.h"
-#include "kratingwidget.h"
+#include "KRatingWidget"
 
-#include <baloo/filemodifyjob.h>
+#include <Baloo/FileModifyjob>
 
-#include <QLabel>
-#include <QTime>
+#include <QtWidgets/QLabel>
+#include <QtCore/QTime>
+#include <QtCore/QUrl>
+#include <QtCore/QLocale>
 
-#include <KUrl>
 #include <KJob>
-#include <KDebug>
-#include <KGlobal>
-#include <KLocale>
+#include <KFormat>
 
 namespace {
     static QString plainText(const QString& richText)
@@ -91,30 +90,33 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         widget = createTagWidget( tags, parent );
     }
     else {
+        KFormat form;
         // vHanda: FIXME: Add links! Take m_noLinks into consideration
         QString valueString;
 
-        if (prop == "duration") {
-            QTime time = QTime().addSecs(value.toInt());
-            valueString = KGlobal::locale()->formatTime(time, true, true);
+        if (prop == "duration"){
+            valueString = form.formatDuration(value.toInt());
         }
         else {
             // Check if Date/DateTime
+
             QDateTime dt = QDateTime::fromString(value.toString(), Qt::ISODate);
             if (dt.isValid()) {
                 QTime time = dt.time();
-                if (!time.hour() && !time.minute() && !time.second())
-                    valueString = KGlobal::locale()->formatDate(dt.date(), KLocale::FancyLongDate);
-                else
-                    valueString = KGlobal::locale()->formatDateTime(dt, KLocale::FancyLongDate);
+                if (!time.hour() && !time.minute() && !time.second()){
+		    valueString = form.formatRelativeDate(dt.date(), QLocale::LongFormat);
+		}
+                else{
+		   valueString = form.formatRelativeDateTime(dt, QLocale::LongFormat);
+		}
             }
             else {
                 switch (value.type()) {
                 case QVariant::Int:
-                    valueString = KGlobal::locale()->formatLong(value.toInt());
+                    valueString =  QLocale().toString(value.toInt());
                     break;
                 case QVariant::Double:
-                    valueString = KGlobal::locale()->formatNumber(value.toDouble());
+                    valueString =  QLocale().toString(value.toDouble());
                     break;
                 default:
                     valueString = value.toString();
@@ -267,12 +269,12 @@ void WidgetFactory::startChangeDataJob(KJob* job)
 
 void WidgetFactory::slotLinkActivated(const QString& url)
 {
-    emit urlActivated(KUrl(url));
+    emit urlActivated(QUrl::fromUserInput(url));
 }
 
 void WidgetFactory::slotTagClicked(const QString& tag)
 {
-    KUrl url;
+    QUrl url;
     url.setScheme("tags");
     url.setPath(tag);
 

@@ -19,17 +19,16 @@
 
 #include "metadatawidgettest.h"
 
-#include <QVBoxLayout>
-#include <QCheckBox>
-
-#include <kfiledialog.h>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QFileDialog>
 
 FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags f)
     : QWidget(parent, f)
 {
     m_metadataWidget = new Baloo::FileMetaDataWidget( this );
 
-    m_button = new KPushButton( QLatin1String("Select files"), this );
+    m_button = new QPushButton( QLatin1String("Select files"), this );
     connect( m_button, SIGNAL(clicked(bool)), this, SLOT(slotChooseFiles()) );
 
     QVBoxLayout* layout = new QVBoxLayout( this );
@@ -39,9 +38,9 @@ FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags 
 
 void FileMetadataWidgetTest::slotChooseFiles()
 {
-    KUrl::List urlList = KFileDialog::getOpenUrls();
+    QList<QUrl> urlList = QFileDialog::getOpenFileUrls();
     KFileItemList list;
-    foreach(const KUrl& url, urlList)
+    foreach(const QUrl& url, urlList)
         list << KFileItem( url, QString(), mode_t() );
 
     m_metadataWidget->setItems( list );

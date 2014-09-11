@@ -1,4 +1,6 @@
-set(ui_SRCS
+add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets\")
+
+set(widgets_SRCS
   kblocklayout.cpp
   tagwidget.cpp
   kedittagsdialog.cpp
@@ -8,6 +10,7 @@ set(ui_SRCS
   filemetadataprovider.cpp
   indexeddataretriever.cpp
   kcommentwidget.cpp
+  keditcommentdialog.cpp
   metadatafilter.cpp
   widgetfactory.cpp
   groupedlineedit.cpp
@@ -15,41 +18,61 @@ set(ui_SRCS
   querybuildercompleter.cpp
 )
 
-set(widgets_SRCS ${ui_SRCS})
+add_library(KF5BalooWidgets ${widgets_SRCS})
 
-kde4_add_library(baloowidgets SHARED ${LIBRARY_TYPE} ${widgets_SRCS})
+add_library(KF5::BalooWidgets ALIAS KF5BalooWidgets)
 
-target_link_libraries(baloowidgets
-  ${QT_QTCORE_LIBRARY}
-  ${QT_QTGUI_LIBRARY}
-  ${QT_QTDBUS_LIBRARY}
-  ${KDE4_KDECORE_LIBS}
-  ${KDE4_KDEUI_LIBS}
-  ${KDE4_KIO_LIBS}
-  ${BALOO_LIBRARIES}
-  ${KFILEMETADATA_LIBRARY}
+target_link_libraries(KF5BalooWidgets
+  PUBLIC
+  Qt5::Widgets
+  Qt5::Core
+  KF5::KIOCore # KFileItem
+  KF5::CoreAddons # KProcess, KJob
+
+  PRIVATE
+  KF5::I18n
+  KF5::Completion
+  KF5::FileMetaData
+  KF5::WidgetsAddons
+  KF5::BalooFiles
+  KF5::BalooNaturalQueryParser
+  KF5::CoreAddons
+  KF5::ConfigGui
 )
 
-target_link_libraries(baloowidgets
-  LINK_INTERFACE_LIBRARIES
-  ${KDE4_KDECORE_LIBS}
-  ${KDE4_KDEUI_LIBS}
-  ${BALOO_LIBRARIES}
+set_target_properties(KF5BalooWidgets PROPERTIES
+   VERSION ${BALOO_WIDGETS_VERSION_STRING}
+   SOVERSION ${BALOO_WIDGETS_SOVERSION}
+   EXPORT_NAME BalooWidgets
 )
 
-set_target_properties(baloowidgets PROPERTIES
-   VERSION ${GENERIC_LIB_VERSION}
-   SOVERSION ${GENERIC_LIB_SOVERSION}
-)
+target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets>")
 
-install(TARGETS baloowidgets EXPORT BalooWidgetsLibraryTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+generate_export_header(KF5BalooWidgets BASE_NAME BALOO_WIDGETS EXPORT_FILE_NAME widgets_export.h)
+
+install(TARGETS KF5BalooWidgets EXPORT KF5BalooWidgetsTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+
+ecm_generate_headers(KF5BalooWidgets_CamelCase_HEADERS
+    HEADER_NAMES
+    TagWidget
+    FileMetaDataWidget
+    FileMetaDataConfigWidget
+    QueryBuilder
+    GroupedLineEdit
+
+    PREFIX baloo
+    REQUIRED_HEADERS KF5BalooWidgets_HEADERS
+)
 
 install(FILES
-  widgets_export.h
-  tagwidget.h
-  filemetadatawidget.h
-  filemetadataconfigwidget.h
-
-  DESTINATION ${INCLUDE_INSTALL_DIR}/baloo COMPONENT Devel
+  ${KF5BalooWidgets_CamelCase_HEADERS}
+  DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets/Baloo
+  COMPONENT Devel
 )
 
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/widgets_export.h
+  ${KF5BalooWidgets_HEADERS}
+  DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets/baloo
+  COMPONENT Devel
+)

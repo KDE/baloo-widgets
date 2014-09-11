@@ -24,13 +24,9 @@
 #include "tagwidget.h"
 #include "tagwidget_p.h"
 
-#include <kcursor.h>
-#include <kcolorscheme.h>
-#include <kglobalsettings.h>
-
 #include <QtGui/QMouseEvent>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
 
 using namespace Baloo;
 
@@ -110,4 +106,3 @@ void TagCheckBox::enableUrlHover( bool enable )
     }
 }
 
-#include "tagcheckbox.moc"

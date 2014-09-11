@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo widgets collection
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -19,19 +19,19 @@
 
 #include "groupedlineedit.h"
 
-#include <QtGui/QStyleOptionFrameV3>
-#include <QtGui/QFontMetrics>
-#include <QtGui/QApplication>
-#include <QtGui/QScrollBar>
-#include <QtGui/QTextDocument>
-#include <QtGui/QTextBlock>
-#include <QtGui/QTextLayout>
-#include <QtGui/QTextLine>
-#include <QtGui/QPainter>
-#include <QtGui/QPainterPath>
-#include <QtGui/QBrush>
-#include <QtGui/QColor>
-#include <QtGui/QPalette>
+#include <QStyleOptionFrameV3>
+#include <QFontMetrics>
+#include <QApplication>
+#include <QScrollBar>
+#include <QTextDocument>
+#include <QTextBlock>
+#include <QTextLayout>
+#include <QTextLine>
+#include <QPainter>
+#include <QPainterPath>
+#include <QBrush>
+#include <QColor>
+#include <QPalette>
 
 using namespace Baloo;
 
@@ -110,7 +110,7 @@ void GroupedLineEdit::setText(const QString &text)
 
 void GroupedLineEdit::clear()
 {
-    clear();
+    QPlainTextEdit::clear();
     removeAllBlocks();
 }
 
@@ -181,7 +181,7 @@ void GroupedLineEdit::paintEvent(QPaintEvent *e)
     painter.fillRect(0, 0, viewport()->width(), viewport()->height(), d->base);
 
     Q_FOREACH(const Private::Block &block, d->blocks) {
-        qreal start_x = line.cursorToX(block.start, QTextLine::Trailing);
+        qreal start_x = line.cursorToX(block.start, QTextLine::Leading);
         qreal end_x = line.cursorToX(block.end + 1, QTextLine::Leading);
         QPainterPath path;
         QRectF rectangle(
@@ -199,10 +199,9 @@ void GroupedLineEdit::paintEvent(QPaintEvent *e)
         painter.setBrush(color.lighter(180));
         painter.drawPath(path);
 
-        color_index = (color_index + 1) & 0xf;
+        color_index = (color_index + 1) & 0x7; // Increment color_index, modulo 8 so that it does not overflow colors
     }
 
     QPlainTextEdit::paintEvent(e);
 }
 
-#include "groupedlineedit.moc"

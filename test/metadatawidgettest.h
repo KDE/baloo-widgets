@@ -20,8 +20,8 @@
 #ifndef _FILE_METADATA_WIDGET_TEST_
 #define _FILE_METADATA_WIDGET_TEST_
 
-#include <QWidget>
-#include <kpushbutton.h>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QPushButton>
 #include "filemetadatawidget.h"
 
 class FileMetadataWidgetTest : public QWidget
@@ -30,12 +30,12 @@ class FileMetadataWidgetTest : public QWidget
 public:
     explicit FileMetadataWidgetTest(QWidget* parent = 0, Qt::WindowFlags f = 0);
 
-private slots:
+private Q_SLOTS:
     void slotChooseFiles();
 
 private:
     Baloo::FileMetaDataWidget* m_metadataWidget;
-    KPushButton* m_button;
+    QPushButton* m_button;
 };
 
 #endif

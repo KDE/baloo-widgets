@@ -29,8 +29,8 @@
 #include "kblocklayout.h"
 
 #include <QtCore/QList>
-#include <QtGui/QStyle>
-#include <QtGui/QWidget>
+#include <QtWidgets/QStyle>
+#include <QtWidgets/QWidget>
 
 class KBlockLayout::Private
 {

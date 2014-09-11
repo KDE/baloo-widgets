@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo widgets collection
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -26,43 +26,43 @@
 namespace Baloo {
 
 class CompletionProposal;
-class QueryParser;
+class NaturalQueryParser;
 class Term;
 
 class BALOO_WIDGETS_EXPORT QueryBuilder : public GroupedLineEdit
 {
-    Q_OBJECT
+Q_OBJECT
 
-    public:
-        explicit QueryBuilder(QueryParser *parser, QWidget *parent = 0);
+public:
+    explicit QueryBuilder(NaturalQueryParser *parser, QWidget *parent = 0);
 
-        /**
-         * @brief Parse the user query and provide syntax-highlighting and auto-completion
-         *
-         * If parsing is disabled, the query builder acts like a simple
-         * QLineEdit without any fancy coloring. If parsing is enabled, all the
-         * features are exposed to the user.
-         *
-         * By default, parsing is enabled.
-         */
-        void setParsingEnabled(bool enable);
+    /**
+     * @brief Parse the user query and provide syntax-highlighting and auto-completion
+     *
+     * If parsing is disabled, the query builder acts like a simple
+     * QLineEdit without any fancy coloring. If parsing is enabled, all the
+     * features are exposed to the user.
+     *
+     * By default, parsing is enabled.
+     */
+    void setParsingEnabled(bool enable);
 
-        /**
-         * @return whether parsing is enabled
-         */
-        bool parsingEnabled() const;
+    /**
+     * @return whether parsing is enabled
+     */
+    bool parsingEnabled() const;
 
-    private:
-        void handleTerm(const Term &term);
+private:
+    void handleTerm(const Term &term);
 
-    private slots:
-        void reparse();
-        void proposalSelected(CompletionProposal *proposal,
-                              const QString &value);
+private Q_SLOTS:
+    void reparse();
+    void proposalSelected(CompletionProposal *proposal,
+                          const QString &value);
 
-    private:
-        struct Private;
-        Private *d;
+private:
+    struct Private;
+    Private *d;
 };
 
 }

@@ -19,53 +19,56 @@
 
 #include "kedittagsdialog_p.h"
 
-#include <kicon.h>
-#include <klineedit.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <KLocalizedString>
 
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QListWidget>
-#include <QPushButton>
-#include <QTimer>
-#include <QVBoxLayout>
-#include <QWidget>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QPushButton>
+#include <QtCore/QTimer>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
+#include <QtCore/QUrl>
+#include <QtWidgets/QDialogButtonBox>
 
-#include <baloo/taglistjob.h>
+#include <Baloo/TagListJob>
 
 KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
-                                 QWidget* parent,
-                                 Qt::WFlags flags) :
-    KDialog(parent, flags),
+                                 QWidget *parent) :
+    QDialog(parent),
     m_tags(tags),
     m_tagsList(0),
     m_newTagItem(0),
     m_autoCheckedItem(0),
     m_newTagEdit(0)
 {
+    const QString captionText = (tags.count() > 0) ?
+                                i18nc("@title:window", "Change Tags") :
+                                i18nc("@title:window", "Add Tags");
+    setWindowTitle(captionText);
+    QDialogButtonBox* buttonBox = new QDialogButtonBox(this);
 
-    const QString caption = (tags.count() > 0) ?
-                            i18nc("@title:window", "Change Tags") :
-                            i18nc("@title:window", "Add Tags");
-    setCaption(caption);
-    setButtons(KDialog::Ok | KDialog::Cancel);
-    setDefaultButton(KDialog::Ok);
+    buttonBox->addButton(i18n("Save"), QDialogButtonBox::AcceptRole);
+    buttonBox->addButton(QDialogButtonBox::Cancel);
 
-    QWidget* mainWidget = new QWidget(this);
-    QVBoxLayout* topLayout = new QVBoxLayout(mainWidget);
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &KEditTagsDialog::slotAcceptedButtonClicked);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
+
+    QVBoxLayout* topLayout = new QVBoxLayout;
+    setLayout(topLayout);
 
     QLabel* label = new QLabel(i18nc("@label:textbox",
                                      "Configure which tags should "
                                      "be applied."), this);
 
-    m_tagsList = new QListWidget(mainWidget);
+    m_tagsList = new QListWidget();
     m_tagsList->setSortingEnabled(true);
     m_tagsList->setSelectionMode(QAbstractItemView::NoSelection);
 
     QLabel* newTagLabel = new QLabel(i18nc("@label", "Create new tag:"));
-    m_newTagEdit = new KLineEdit(this);
-    m_newTagEdit->setClearButtonShown(true);
+    m_newTagEdit = new QLineEdit(this);
+    m_newTagEdit->setClearButtonEnabled(true);
     connect(m_newTagEdit, SIGNAL(textEdited(QString)),
             this, SLOT(slotTextEdited(QString)));
 
@@ -76,8 +79,9 @@ KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
     topLayout->addWidget(label);
     topLayout->addWidget(m_tagsList);
     topLayout->addLayout(newTagLayout);
+    topLayout->addWidget(buttonBox);
 
-    setMainWidget(mainWidget);
+    resize(sizeHint());
 
     loadTags();
 }
@@ -91,26 +95,19 @@ QStringList KEditTagsDialog::tags() const
     return m_tags;
 }
 
-void KEditTagsDialog::slotButtonClicked(int button)
+void KEditTagsDialog::slotAcceptedButtonClicked()
 {
-    if (button == KDialog::Ok) {
-        // update m_tags with the checked values, so
-        // that the caller of the KEditTagsDialog can
-        // receive the tags by KEditTagsDialog::tags()
-        m_tags.clear();
+    m_tags.clear();
 
-        const int count = m_tagsList->count();
-        for (int i = 0; i < count; ++i) {
-            QListWidgetItem* item = m_tagsList->item(i);
-            if (item->checkState() == Qt::Checked) {
-                m_tags << item->text();
-            }
+    const int count = m_tagsList->count();
+    for (int i = 0; i < count; ++i) {
+        QListWidgetItem* item = m_tagsList->item(i);
+        if (item->checkState() == Qt::Checked) {
+            m_tags << item->text();
         }
-
-        accept();
-    } else {
-        KDialog::slotButtonClicked(button);
     }
+
+    accept();
 }
 
 void KEditTagsDialog::slotTextEdited(const QString& text)
@@ -148,7 +145,7 @@ void KEditTagsDialog::slotTextEdited(const QString& text)
     if (m_newTagItem == 0) {
         m_newTagItem = new QListWidgetItem(tagText, m_tagsList);
     } else {
-        m_newTagItem->setText(tagText);    
+        m_newTagItem->setText(tagText);
     }
 
     if (m_autoCheckedItem != 0) {
@@ -176,14 +173,13 @@ void KEditTagsDialog::slotTagsLoaded(KJob* job)
     m_allTags = tjob->tags();
     qSort(m_allTags.begin(), m_allTags.end());
 
-    foreach (const QString& tag, m_allTags) {
+    foreach (const QString &tag, m_allTags) {
         QListWidgetItem* item = new QListWidgetItem(tag, m_tagsList);
 
-        const bool check = m_tags.contains( tag );
+        const bool check = m_tags.contains(tag);
         item->setCheckState(check ? Qt::Checked : Qt::Unchecked);
     }
 }
-
 
 void KEditTagsDialog::removeNewTagItem()
 {
@@ -194,5 +190,3 @@ void KEditTagsDialog::removeNewTagItem()
         m_newTagItem = 0;
     }
 }
-
-#include "kedittagsdialog_p.moc"

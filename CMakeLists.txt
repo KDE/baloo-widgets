@@ -1,63 +1,62 @@
 project(baloo-widgets)
+cmake_minimum_required(VERSION 2.8.12)
 
-set(CMAKE_BALOO_WIDGETS_VERSION_MAJOR 0)
-set(CMAKE_BALOO_WIDGETS_VERSION_MINOR 1)
-set(CMAKE_BALOO_WIDGETS_VERSION_RELEASE 0)
-set(CMAKE_BALOO_WIDGETS_VERSION_STRING "${CMAKE_BALOO_WIDGETS_VERSION_MAJOR}.${CMAKE_BALOO_WIDGETS_VERSION_MINOR}.${CMAKE_BALOO_WIDGETS_VERSION_RELEASE}")
+find_package(ECM 0.0.14 REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_PATH})
 
-# Search for the required packages
-# ================================
-find_package(KDE4 4.10 REQUIRED)
-include(KDE4Defaults)
+find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Core Widgets)
+find_package(KF5 REQUIRED COMPONENTS Config KIO I18n Service FileMetaData Baloo KDELibs4Support)
 
-find_package(Baloo)
-set_package_properties(Baloo PROPERTIES DESCRIPTION "The Baloo libraries" URL "http://kde.org"
-                       TYPE REQUIRED PURPOSE "Required for compiling Baloo")
+include(ECMSetupVersion)
+include(ECMAddTests)
+include(ECMInstallIcons)
 
-find_package(KFileMetaData CONFIG)
-set_package_properties(KFileMetaData PROPERTIES
-    DESCRIPTION "A library for extracting file metadata"
-    URL "https://projects.kde.org/kfilemetadata"
-    TYPE REQUIRED
-)
+include(GenerateExportHeader)
+include(FeatureSummary)
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDEFrameworkCompilerSettings)
+include(ECMGenerateHeaders)
 
-feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
-
-# Some definitions
-# ================
-add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+#TODO remove these
+remove_definitions(-DQT_NO_CAST_FROM_ASCII)
+remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 
-include_directories(
-  ${QT_INCLUDES}
-  ${KDE4_INCLUDES}
-  ${BALOO_INCLUDE_DIR}
-  ${KFILEMETADATA_INCLUDE_DIR}
-  ${CMAKE_SOURCE_DIR}
-  ${CMAKE_SOURCE_DIR}/src
-)
-
-
-# generate BalooWidgetsConfig.cmake for easy utilisation of the package by other cmake build systems
-# ===============================================================================================
-configure_file(BalooWidgetsConfig.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/BalooWidgetsConfig.cmake @ONLY)
-
-# Generate BalooWidgetsConfigVersion.cmake
-macro_write_basic_cmake_version_file(${CMAKE_CURRENT_BINARY_DIR}/BalooWidgetsConfigVersion.cmake
-                                     ${CMAKE_BALOO_WIDGETS_VERSION_MAJOR}
-                                     ${CMAKE_BALOO_WIDGETS_VERSION_MINOR}
-                                     ${CMAKE_BALOO_WIDGETS_VERSION_RELEASE}
-                                     )
-install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/BalooWidgetsConfig.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/BalooWidgetsConfigVersion.cmake
-    DESTINATION ${LIB_INSTALL_DIR}/cmake/BalooWidgets)
+set(KF5_VERSION "5.0.0")
+ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX BALOO_WIDGETS
+                  VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/baloowidgets_version.h"
+                  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake")
 
 add_subdirectory(src)
 add_subdirectory(test)
 
-# install the file with the exported targets
-install(EXPORT BalooWidgetsLibraryTargets
-        DESTINATION ${LIB_INSTALL_DIR}/cmake/BalooWidgets
-        FILE BalooWidgetsTargetsWithPrefix.cmake
+# Config files
+set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5BalooWidgets")
+
+include(ECMPackageConfigHelpers)
+
+ecm_configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/KF5BalooWidgetsConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake"
+    INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
+)
+
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake"
+    DESTINATION ${CMAKECONFIG_INSTALL_DIR}
+    COMPONENT devel
+)
+
+install(EXPORT KF5BalooWidgetsTargets
+        NAMESPACE KF5::
+        DESTINATION ${CMAKECONFIG_INSTALL_DIR}
+        FILE KF5BalooWidgetsTargets.cmake
+)
+
+
+feature_summary(WHAT ALL
+    INCLUDE_QUIET_PACKAGES
+    FATAL_ON_MISSING_REQUIRED_PACKAGES
 )

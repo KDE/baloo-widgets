@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo widgets collection
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -22,14 +22,15 @@
 #include "querybuildercompleter_p.h"
 
 #include <baloo/completionproposal.h>
-#include <baloo/queryparser.h>
+#include <baloo/naturalqueryparser.h>
 #include <baloo/term.h>
+#include <klocalizedstring.h>
 
 using namespace Baloo;
 
 struct QueryBuilder::Private
 {
-    QueryParser *parser;
+    NaturalQueryParser *parser;
     QueryBuilderCompleter *completer;
 
     bool parsing_enabled;
@@ -45,7 +46,7 @@ static int termEnd(const Baloo::Term &term)
     return term.userData(QLatin1String("end_position")).toInt();
 }
 
-QueryBuilder::QueryBuilder(QueryParser *parser, QWidget *parent)
+QueryBuilder::QueryBuilder(NaturalQueryParser *parser, QWidget *parent)
 : GroupedLineEdit(parent),
   d(new Private)
 {
@@ -90,7 +91,7 @@ void QueryBuilder::reparse()
     int position = cursorPosition();
     QString t = text();
 
-    Query query = d->parser->parse(t, QueryParser::DetectFilenamePattern, position);
+    Query query = d->parser->parse(t, NaturalQueryParser::DetectFilenamePattern, position);
     Term term(query.term());
 
     // Extract the term just before the cursor
@@ -141,7 +142,7 @@ void QueryBuilder::proposalSelected(CompletionProposal *proposal,
     QStringList pattern = proposal->pattern();
     QString replacement;
     int first_unmatched_part = proposal->lastMatchedPart() + 1;
-    int cursor_offset = -1;
+    bool valueHasBeenUsed = false;
 
     if (!term_before_cursor.isEmpty()) {
         // The last matched part will be replaced by value, so count it
@@ -156,9 +157,13 @@ void QueryBuilder::proposalSelected(CompletionProposal *proposal,
             replacement += QLatin1Char(' ');
         }
 
-        if (part.at(0) == QLatin1Char('%')) {
-            cursor_offset = replacement.length() + value.length();
-            replacement += value;
+        if (part.at(0) == QLatin1Char('$')) {
+            if (!valueHasBeenUsed) {
+                replacement += value;
+                valueHasBeenUsed = true;
+            } else {
+                replacement += i18nc("This is added to the query builder widget when a proposal containing a placeholder is selected", "[something]");
+            }
         } else {
             // FIXME: This arbitrarily selects a term even if it does not fit
             //        gramatically.
@@ -167,8 +172,7 @@ void QueryBuilder::proposalSelected(CompletionProposal *proposal,
     }
 
     // setText() will cause a reparse(), that will invalidate proposal
-    int put_cursor_at = term_before_cursor_pos +
-        (cursor_offset >= 0 ? cursor_offset : replacement.length());
+    int put_cursor_at = term_before_cursor_pos + replacement.length();
 
     // Auto-complete, setText() triggers a reparse
     t.replace(term_before_cursor_pos, term_before_cursor.length(), replacement);

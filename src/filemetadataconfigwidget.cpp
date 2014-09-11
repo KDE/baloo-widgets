@@ -19,21 +19,15 @@
  *****************************************************************************/
 
 #include "filemetadataconfigwidget.h"
-
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <kfilemetainfo.h>
-#include <kfilemetainfoitem.h>
-#include <klocale.h>
-
-#include <KDebug>
-
 #include "filemetadataprovider_p.h"
-#include <kfilemetadata/propertyinfo.h>
 
-#include <QEvent>
-#include <QListWidget>
-#include <QVBoxLayout>
+#include <KConfig>
+#include <KConfigGroup>
+
+#include <QtCore/QEvent>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QVBoxLayout>
+#include <QtCore/QDebug>
 
 using namespace Baloo;
 
@@ -193,7 +187,7 @@ void FileMetaDataConfigWidget::save()
 bool FileMetaDataConfigWidget::event(QEvent* event)
 {
     if (event->type() == QEvent::Polish) {
-        kDebug() << "GOT POLISH EVENT!!!";
+        qDebug() << "GOT POLISH EVENT!!!";
         // loadMetaData() must be invoked asynchronously, as the list
         // must finish it's initialization first
         QMetaObject::invokeMethod(this, "loadMetaData", Qt::QueuedConnection);
@@ -206,4 +200,4 @@ QSize FileMetaDataConfigWidget::sizeHint() const
     return d->m_metaDataList->sizeHint();
 }
 
-#include "filemetadataconfigwidget.moc"
+#include "moc_filemetadataconfigwidget.cpp"

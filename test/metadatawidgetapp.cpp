@@ -19,14 +19,13 @@
 
 #include "metadatawidgettest.h"
 
-#include <QApplication>
-#include <kcomponentdata.h>
+#include <QtWidgets/QApplication>
 
 
 int main( int argc, char** argv )
 {
     QApplication app( argc, argv );
-    KComponentData data( "FileMetadataWidgetApp" );
+    app.setApplicationName( "FileMetadataWidgetApp" );
     FileMetadataWidgetTest test;
     test.show();
     return app.exec();

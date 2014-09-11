@@ -20,12 +20,9 @@
 #ifndef _BALOO_FILEMETADATAMODEL_H
 #define _BALOO_FILEMETADATAMODEL_H
 
-#include <KUrl>
-
-#include <QtCore/QHash>
 #include <QtCore/QObject>
 #include <QtCore/QString>
-#include <QVariant>
+#include <QtCore/QVariant>
 
 class KFileItemList;
 class KProcess;

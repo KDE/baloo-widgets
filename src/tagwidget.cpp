@@ -25,17 +25,12 @@
 #include "kedittagsdialog_p.h"
 #include "tagcheckbox.h"
 
-#include <kinputdialog.h>
-#include <kmessagebox.h>
-#include <klocale.h>
-#include <kglobalsettings.h>
-#include <kdebug.h>
+#include <KLocalizedString>
 #include <KJob>
 
-#include <QtGui/QPushButton>
-#include <QtGui/QBoxLayout>
-#include <QtGui/QLabel>
-#include <QtCore/QSet>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QBoxLayout>
+#include <QtWidgets/QLabel>
 
 using namespace Baloo;
 
@@ -48,7 +43,8 @@ void TagWidgetPrivate::init( TagWidget* parent )
 
     QGridLayout* mainLayout = new QGridLayout( q );
     mainLayout->setMargin(0);
-    m_flowLayout = new KBlockLayout( 0, KDialog::spacingHint()*3 );
+    //TODO spacingHint should be declared. Old code  m_flowLayout = new KBlockLayout( 0, KDialog::spacingHint()*3 );
+    m_flowLayout = new KBlockLayout( 0 );
     mainLayout->addLayout( m_flowLayout, 0, 0, 1, 2 );
     mainLayout->setColumnStretch( 0, 1 );
 }
@@ -192,5 +188,3 @@ void TagWidget::slotKEditTagDialogFinished(int result)
     d->m_editTagsDialog = 0;
 }
 
-
-#include "tagwidget.moc"

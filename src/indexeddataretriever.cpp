@@ -21,10 +21,8 @@
 #include "indexeddataretriever.h"
 
 #include <QtCore/QProcess>
-#include <QFileInfo>
-
-#include <KStandardDirs>
-#include <KDebug>
+#include <QtCore/QFileInfo>
+#include <QtCore/QStandardPaths>
 
 using namespace Baloo;
 
@@ -44,7 +42,7 @@ IndexedDataRetriever::~IndexedDataRetriever()
 
 void IndexedDataRetriever::start()
 {
-    const QString exe = KStandardDirs::findExe(QLatin1String("baloo_file_extractor"));
+    const QString exe = QStandardPaths::findExecutable(QLatin1String("baloo_file_extractor"));
 
     m_process = new QProcess(this);
     m_process->setReadChannel(QProcess::StandardOutput);

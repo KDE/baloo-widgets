@@ -21,11 +21,11 @@
 #ifndef WIDGETFACTORY_H
 #define WIDGETFACTORY_H
 
-#include <QObject>
-#include <QStringList>
+#include <QtCore/QObject>
+#include <QtCore/QStringList>
 
 class KJob;
-class KUrl;
+class QUrl;
 class KCommentWidget;
 class KRatingWidget;
 
@@ -48,12 +48,12 @@ namespace Baloo {
 
         QWidget* createWidget(const QString& prop, const QVariant& value, QWidget* parent);
 
-    signals:
-        void urlActivated(const KUrl& url);
+    Q_SIGNALS:
+        void urlActivated(const QUrl& url);
         void dataChangeStarted();
         void dataChangeFinished();
 
-    private slots:
+    private Q_SLOTS:
         void slotTagsChanged(const QStringList& tags);
         void slotCommentChanged(const QString& comment);
         void slotRatingChanged(uint rating);

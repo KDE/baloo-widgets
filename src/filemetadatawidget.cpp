@@ -21,30 +21,38 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
 #include "filemetadatawidget.h"
 #include "metadatafilter.h"
 #include "widgetfactory.h"
-
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <kfileitem.h>
-#include <klocale.h>
-
-#include <QGridLayout>
-#include <QLabel>
-#include <QList>
-#include <QSet>
-#include <QString>
-#include <QTimer>
-#include <QFileInfo>
-
-#include <QSpacerItem>
-
 #include "filemetadataprovider_p.h"
-#include <KDebug>
 
-static const KCatalogLoader loader("baloowidgets");
+#include <KFileItem>
+
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QSpacerItem>
+#include <QtCore/QList>
+#include <QtCore/QSet>
+#include <QtCore/QString>
+#include <QtCore/QTimer>
+#include <QtCore/QFileInfo>
+
+
+
+// For XAttr
+#if defined(Q_OS_LINUX) || defined(__GLIBC__)
+#include <sys/types.h>
+#include <sys/xattr.h>
+#elif defined(Q_OS_MAC)
+#include <sys/types.h>
+#include <sys/xattr.h>
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#include <sys/types.h>
+#include <sys/extattr.h>
+#endif
+
+// FIXME: Load the catalog properly!!
+//static const KCatalogLoader loader("baloowidgets");
 
 using namespace Baloo;
 
@@ -96,7 +104,7 @@ FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
     m_filter = new MetadataFilter(q);
 
     m_widgetFactory = new WidgetFactory(q);
-    connect(m_widgetFactory, SIGNAL(urlActivated(KUrl)), q, SIGNAL(urlActivated(KUrl)));
+    connect(m_widgetFactory, &WidgetFactory::urlActivated, q, &FileMetaDataWidget::urlActivated);
 
     // TODO: If KFileMetaDataProvider might get a public class in future KDE releases,
     // the following code should be moved into KFileMetaDataWidget::setModel():
@@ -173,7 +181,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
 
 void FileMetaDataWidget::Private::slotLinkActivated(const QString& link)
 {
-    const KUrl url(link);
+    const QUrl url = QUrl::fromUserInput(link);
     if (url.isValid()) {
         emit q->urlActivated(url);
     }
@@ -230,21 +238,53 @@ FileMetaDataWidget::~FileMetaDataWidget()
     delete d;
 }
 
+namespace {
+    bool areXAttrSupported(const QString& path) {
+        const QByteArray p = QFile::encodeName(path);
+        const char* encodedPath = p.constData();
+
+        const QByteArray n("user.xdg.tags");
+        const char* attributeName = n.constData();
+
+        // First get the size of the data we are going to get to reserve the right amount of space.
+        #if defined(Q_OS_LINUX) || (defined(__GLIBC__) && !defined(__stub_getxattr))
+            const ssize_t size = getxattr(encodedPath, attributeName, NULL, 0);
+        #elif defined(Q_OS_MAC)
+            const ssize_t size = getxattr(encodedPath, attributeName, NULL, 0, 0, 0);
+        #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+            const ssize_t size = extattr_get_file(encodedPath, EXTATTR_NAMESPACE_USER, attributeName, NULL, 0);
+        #else
+            const ssize_t size = 0;
+        #endif
+
+        if (size == -1) {
+            return errno != ENOTSUP;
+        }
+        return true;
+    }
+}
 void FileMetaDataWidget::setItems(const KFileItemList& items)
 {
     KFileItemList localItemsList;
     QStringList list;
 
+    bool xAttrSuppored = true;
+
     foreach(const KFileItem& item, items) {
         QUrl url = item.targetUrl();
         if (url.isLocalFile()) {
             localItemsList << item;
-            list << url.toLocalFile();
+            QString path = url.toLocalFile();
+            list << path;
+
+            xAttrSuppored &= areXAttrSupported(path);
         }
     }
 
     d->m_provider->setItems(localItemsList);
     d->m_widgetFactory->setItems(list);
+
+    setReadOnly(!xAttrSuppored);
 }
 
 KFileItemList FileMetaDataWidget::items() const
@@ -312,4 +352,4 @@ QSize FileMetaDataWidget::sizeHint() const
     return QSize(width, height);
 }
 
-#include "filemetadatawidget.moc"
+#include "moc_filemetadatawidget.cpp"

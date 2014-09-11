@@ -26,7 +26,6 @@
 
 #include <KConfig>
 #include <KConfigGroup>
-#include <KDebug>
 
 using namespace Baloo;
 

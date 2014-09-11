@@ -19,15 +19,17 @@
  *****************************************************************************/
 
 #include "kcommentwidget_p.h"
+#include "keditcommentdialog.h"
 
-#include <kdialog.h>
-#include <klocale.h>
+#include <KLocalizedString>
+#include <KConfigGui/KWindowConfig>
+#include <KSharedConfig>
 
-#include <QEvent>
-#include <QLabel>
-#include <QPointer>
-#include <QTextEdit>
-#include <QVBoxLayout>
+#include <QtCore/QEvent>
+#include <QtCore/QPointer>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QVBoxLayout>
 
 KCommentWidget::KCommentWidget(QWidget* parent) :
     QWidget(parent),
@@ -40,7 +42,7 @@ KCommentWidget::KCommentWidget(QWidget* parent) :
     m_label->setWordWrap(true);
     m_label->setAlignment(Qt::AlignTop);
     connect(m_label, SIGNAL(linkActivated(QString)), this, SLOT(slotLinkActivated(QString)));
-    
+
     m_sizeHintHelper = new QLabel(this);
     m_sizeHintHelper->hide();
 
@@ -66,9 +68,9 @@ void KCommentWidget::setText(const QString& comment)
         }
     } else {
         if (m_readOnly) {
-            text = Qt::escape(comment);
+            text = QString(comment).toHtmlEscaped();
         } else {
-            text = "<p>" + Qt::escape(comment) + " <a href=\"changeComment\">" + i18nc("@label", "Change...") + "</a></p>";
+            text = "<p>" + QString(comment).toHtmlEscaped() + " <a href=\"changeComment\">" + i18nc("@label", "Change...") + "</a></p>";
         }
     }
 
@@ -113,27 +115,19 @@ bool KCommentWidget::event(QEvent* event)
 
 void KCommentWidget::slotLinkActivated(const QString& link)
 {
-    QPointer<KDialog> dialog = new KDialog(this);
-
-    QTextEdit* editor = new QTextEdit(dialog);
-    editor->setText(m_comment);
-
-    dialog->setMainWidget(editor);
-
     const QString caption = (link == "changeComment") ?
                             i18nc("@title:window", "Change Comment") :
                             i18nc("@title:window", "Add Comment");
-    dialog->setCaption(caption);
-    dialog->setButtons(KDialog::Ok | KDialog::Cancel);
-    dialog->setDefaultButton(KDialog::Ok);
 
-    KConfigGroup dialogConfig(KGlobal::config(), "Nepomuk KEditCommentDialog");
-    dialog->restoreDialogSize(dialogConfig);
+    QPointer<KEditCommentDialog> dialog = new KEditCommentDialog(this, m_comment, caption);
+
+    KConfigGroup dialogConfig(KSharedConfig::openConfig(), "Baloo KEditCommentDialog");
+    KWindowConfig::restoreWindowSize(dialog->windowHandle(), dialogConfig);
 
     if (dialog->exec() == QDialog::Accepted) {
         const QString oldText = m_comment;
         if (dialog != 0) {
-            setText(editor->toPlainText());
+            setText(dialog->getCommentText());
         }
         if (oldText != m_comment) {
             emit commentChanged(m_comment);
@@ -141,10 +135,8 @@ void KCommentWidget::slotLinkActivated(const QString& link)
     }
 
     if (dialog != 0) {
-        dialog->saveDialogSize(dialogConfig);
+        KWindowConfig::saveWindowSize(dialog->windowHandle(), dialogConfig);
         delete dialog;
         dialog = 0;
     }
 }
-
-#include "kcommentwidget_p.moc"
