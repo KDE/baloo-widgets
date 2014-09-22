@@ -42,16 +42,13 @@ IndexedDataRetriever::~IndexedDataRetriever()
 
 void IndexedDataRetriever::start()
 {
-    const QString exe = QStandardPaths::findExecutable(QLatin1String("baloo_file_extractor"));
+    const QString exe = QStandardPaths::findExecutable(QLatin1String("baloo_filemetadata_temp_extractor"));
 
     m_process = new QProcess(this);
     m_process->setReadChannel(QProcess::StandardOutput);
 
-    QStringList args;
-    args << "--bdata" << m_url;
-
     connect( m_process, SIGNAL(finished(int)), this, SLOT(slotIndexedFile(int)) );
-    m_process->start(exe, args);
+    m_process->start(exe, QStringList() << m_url);
 }
 
 void IndexedDataRetriever::slotIndexedFile(int)

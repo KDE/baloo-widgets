@@ -76,3 +76,15 @@ install(FILES
   DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets/baloo
   COMPONENT Devel
 )
+
+#
+# Extractor Process
+#
+add_executable(baloo_filemetadata_temp_extractor extractor.cpp)
+target_link_libraries(baloo_filemetadata_temp_extractor
+  Qt5::Core
+  KF5::I18n
+  KF5::FileMetaData
+)
+
+install(TARGETS baloo_filemetadata_temp_extractor DESTINATION ${BIN_INSTALL_DIR})
