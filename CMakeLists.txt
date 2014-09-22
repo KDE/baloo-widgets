@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.8.12)
 find_package(ECM 0.0.14 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_PATH})
 
-find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Core Widgets)
+find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Core Widgets Test)
 find_package(KF5 REQUIRED COMPONENTS Config KIO I18n Service FileMetaData Baloo KDELibs4Support)
 
 include(ECMSetupVersion)
@@ -30,6 +30,7 @@ ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX BALOO_WIDGETS
 
 add_subdirectory(src)
 add_subdirectory(test)
+add_subdirectory(autotests)
 
 # Config files
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5BalooWidgets")
