@@ -160,7 +160,7 @@ void GroupedLineEdit::keyPressEvent(QKeyEvent *e)
 
 void GroupedLineEdit::paintEvent(QPaintEvent *e)
 {
-    static unsigned char colors[] = {
+    static const unsigned char colors[] = {
         0  , 87 , 174,
         243, 195, 0  ,
         0  , 179, 119,
@@ -191,7 +191,7 @@ void GroupedLineEdit::paintEvent(QPaintEvent *e)
             double(viewport()->height() - 2)
         );
 
-        unsigned char *c = colors + (color_index * 3);
+        const unsigned char *c = colors + (color_index * 3);
         QColor color(c[0], c[1], c[2]);
 
         path.addRoundedRect(rectangle, 5.0, 5.0);
