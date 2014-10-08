@@ -47,7 +47,7 @@ void IndexedDataRetriever::start()
     m_process = new QProcess(this);
     m_process->setReadChannel(QProcess::StandardOutput);
 
-    connect( m_process, SIGNAL(finished(int)), this, SLOT(slotIndexedFile(int)) );
+    connect(m_process, static_cast<void (QProcess::*)(int)>(&QProcess::finished), this, &IndexedDataRetriever::slotIndexedFile);
     m_process->start(exe, QStringList() << m_url);
 }
 

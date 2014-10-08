@@ -74,8 +74,7 @@ FileMetaDataConfigWidget::Private::Private(FileMetaDataConfigWidget* parent) :
 
     m_provider = new FileMetaDataProvider(q);
     m_provider->setReadOnly(true);
-    connect(m_provider, SIGNAL(loadingFinished()),
-            q, SLOT(slotLoadingFinished()));
+    connect(m_provider, SIGNAL(loadingFinished()), q, SLOT(slotLoadingFinished()));
 }
 
 FileMetaDataConfigWidget::Private::~Private()

@@ -139,10 +139,8 @@ QWidget* WidgetFactory::createTagWidget(const QStringList& tags, QWidget* parent
     tagWidget->setReadyOnly(m_readOnly);
     tagWidget->setSelectedTags(tags);
 
-    connect(tagWidget, SIGNAL(selectionChanged(QStringList)),
-            this, SLOT(slotTagsChanged(QStringList)));
-    connect(tagWidget, SIGNAL(tagClicked(QString)),
-            this, SLOT(slotTagClicked(QString)));
+    connect(tagWidget, &TagWidget::selectionChanged, this, &WidgetFactory::slotTagsChanged);
+    connect(tagWidget, &TagWidget::tagClicked, this, &WidgetFactory::slotTagClicked);
 
     m_tagWidget = tagWidget;
     m_prevTags = tags;
@@ -156,8 +154,7 @@ QWidget* WidgetFactory::createCommentWidget(const QString& comment, QWidget* par
     commentWidget->setText(comment);
     commentWidget->setReadOnly(m_readOnly);
 
-    connect(commentWidget, SIGNAL(commentChanged(QString)),
-            this, SLOT(slotCommentChanged(QString)));
+    connect(commentWidget, &KCommentWidget::commentChanged, this, &WidgetFactory::slotCommentChanged);
 
     m_commentWidget = commentWidget;
 
@@ -174,8 +171,7 @@ QWidget* WidgetFactory::createRatingWidget(int rating, QWidget* parent)
     const QFontMetrics metrics(parent->font());
     ratingWidget->setPixmapSize(metrics.height());
 
-    connect(ratingWidget, SIGNAL(ratingChanged(uint)),
-            this, SLOT(slotRatingChanged(uint)));
+    connect(ratingWidget, static_cast<void (KRatingWidget::*)(uint)>(&KRatingWidget::ratingChanged), this, &WidgetFactory::slotRatingChanged);
 
     m_ratingWidget = ratingWidget;
 
@@ -217,7 +213,7 @@ QWidget* WidgetFactory::createValueWidget(const QString& value, QWidget* parent)
     valueWidget->setWordWrap(true);
     valueWidget->setAlignment(Qt::AlignTop | Qt::AlignLeft);
     valueWidget->setText(m_readOnly ? plainText(value) : value);
-    connect(valueWidget, SIGNAL(linkActivated(QString)), this, SLOT(slotLinkActivated(QString)));
+    connect(valueWidget, &ValueWidget::linkActivated, this, &WidgetFactory::slotLinkActivated);
 
     return valueWidget;
 }
@@ -256,8 +252,7 @@ void WidgetFactory::slotTagsChanged(const QStringList& tags)
 
 void WidgetFactory::startChangeDataJob(KJob* job)
 {
-    connect(job, SIGNAL(result(KJob*)),
-            this, SIGNAL(dataChangeFinished()));
+    connect(job, &KJob::result, this, &WidgetFactory::dataChangeFinished);
 
     emit dataChangeStarted();
     job->start();

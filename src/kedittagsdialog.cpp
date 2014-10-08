@@ -69,8 +69,7 @@ KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
     QLabel* newTagLabel = new QLabel(i18nc("@label", "Create new tag:"));
     m_newTagEdit = new QLineEdit(this);
     m_newTagEdit->setClearButtonEnabled(true);
-    connect(m_newTagEdit, SIGNAL(textEdited(QString)),
-            this, SLOT(slotTextEdited(QString)));
+    connect(m_newTagEdit, &QLineEdit::textEdited, this, &KEditTagsDialog::slotTextEdited);
 
     QHBoxLayout* newTagLayout = new QHBoxLayout();
     newTagLayout->addWidget(newTagLabel);
@@ -161,7 +160,7 @@ void KEditTagsDialog::slotTextEdited(const QString& text)
 void KEditTagsDialog::loadTags()
 {
     Baloo::TagListJob* job = new Baloo::TagListJob();
-    connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotTagsLoaded(KJob*)));
+    connect(job, &Baloo::TagListJob::finished, this, &KEditTagsDialog::slotTagsLoaded);
 
     job->start();
 }

@@ -48,8 +48,7 @@ QueryBuilderCompleter::QueryBuilderCompleter(QWidget *parent)
 
     parent->installEventFilter(this);
 
-    connect(this, SIGNAL(itemActivated(QListWidgetItem*)),
-            this, SLOT(proposalActivated(QListWidgetItem*)));
+    connect(this, &QueryBuilderCompleter::itemActivated, this, &QueryBuilderCompleter::proposalActivated);
 
     // Load the list of all the valid property names
     int lastProperty = KFileMetaData::Property::LastProperty;
@@ -276,4 +275,3 @@ bool QueryBuilderCompleter::eventFilter(QObject *, QEvent *event)
     return rs;
 }
 
-#include "querybuildercompleter.moc"

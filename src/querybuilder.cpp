@@ -54,10 +54,8 @@ QueryBuilder::QueryBuilder(NaturalQueryParser *parser, QWidget *parent)
     d->completer = new QueryBuilderCompleter(this);
     d->parsing_enabled = true;
 
-    connect(this, SIGNAL(textChanged()),
-            this, SLOT(reparse()));
-    connect(d->completer, SIGNAL(proposalSelected(CompletionProposal*,QString)),
-            this, SLOT(proposalSelected(CompletionProposal*,QString)));
+    connect(this, &QueryBuilder::textChanged, this, &QueryBuilder::reparse);
+    connect(d->completer, &QueryBuilderCompleter::proposalSelected, this, &QueryBuilder::proposalSelected);
 }
 
 void QueryBuilder::setParsingEnabled(bool enable)
@@ -181,4 +179,3 @@ void QueryBuilder::proposalSelected(CompletionProposal *proposal,
     setCursorPosition(put_cursor_at);
 }
 
-#include "querybuilder.moc"
