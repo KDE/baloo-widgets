@@ -1,6 +1,5 @@
 /*
-    <one line to give the library's name and an idea of what it does.>
-    Copyright (C) 2012  Vishesh Handa <me@vhanda.in>
+    Copyright (C) 2012-2014  Vishesh Handa <vhanda@kde.org>
 
     Code largely copied/adapted from KFileMetadataProvider
     Copyright (C) 2010 by Peter Penz <peter.penz@gmx.at>
@@ -26,7 +25,7 @@
 #include "kcommentwidget_p.h"
 #include "KRatingWidget"
 
-#include <Baloo/FileModifyjob>
+#include <KFileMetaData/UserMetaData>
 
 #include <QtWidgets/QLabel>
 #include <QtCore/QTime>
@@ -104,11 +103,10 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
             if (dt.isValid()) {
                 QTime time = dt.time();
                 if (!time.hour() && !time.minute() && !time.second()){
-		    valueString = form.formatRelativeDate(dt.date(), QLocale::LongFormat);
-		}
-                else{
-		   valueString = form.formatRelativeDateTime(dt, QLocale::LongFormat);
-		}
+                    valueString = form.formatRelativeDate(dt.date(), QLocale::LongFormat);
+                } else {
+                    valueString = form.formatRelativeDateTime(dt, QLocale::LongFormat);
+                }
             }
             else {
                 switch (value.type()) {
@@ -224,38 +222,41 @@ QWidget* WidgetFactory::createValueWidget(const QString& value, QWidget* parent)
 
 void WidgetFactory::slotCommentChanged(const QString& comment)
 {
-    KJob* job = Baloo::FileModifyJob::modifyUserComment(m_items, comment);
-    startChangeDataJob(job);
+    for (const QString& filePath : m_items) {
+        KFileMetaData::UserMetaData md(filePath);
+        md.setUserComment(comment);
+    }
+    emit dataChangeStarted();
+    emit dataChangeFinished();
 }
 
 void WidgetFactory::slotRatingChanged(uint rating)
 {
-    KJob* job = Baloo::FileModifyJob::modifyRating(m_items, rating);
-    startChangeDataJob(job);
+    for (const QString& filePath : m_items) {
+        KFileMetaData::UserMetaData md(filePath);
+        md.setRating(rating);
+    }
+    emit dataChangeStarted();
+    emit dataChangeFinished();
 }
 
 void WidgetFactory::slotTagsChanged(const QStringList& tags)
 {
     if (m_tagWidget) {
-        KJob* job = Baloo::FileModifyJob::modifyTags(m_items, tags);
+        for (const QString& filePath : m_items) {
+            KFileMetaData::UserMetaData md(filePath);
+            md.setTags(tags);
+        }
 
         // FIXME: vHanda : Remove the tags that are no longer applicable
         // When multiple tags are selected one doesn't want to loose the old tags
         // of any of the resources. Unless specifically removed.
         // QSet<Tag> removedTags = m_prevTags.toSet().subtract( tags.toSet() );
         // Remove these tags!
-
-        m_prevTags = tags;
-        startChangeDataJob(job);
+        // m_prevTags = tags;
+        emit dataChangeStarted();
+        emit dataChangeFinished();
     }
-}
-
-void WidgetFactory::startChangeDataJob(KJob* job)
-{
-    connect(job, &KJob::result, this, &WidgetFactory::dataChangeFinished);
-
-    emit dataChangeStarted();
-    job->start();
 }
 
 //

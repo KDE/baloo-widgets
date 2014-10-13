@@ -67,8 +67,6 @@ namespace Baloo {
         QWidget* createCommentWidget(const QString& comment, QWidget* parent);
         QWidget* createValueWidget(const QString& value, QWidget* parent);
 
-        void startChangeDataJob(KJob* job);
-
         TagWidget* m_tagWidget;
         KRatingWidget* m_ratingWidget;
         KCommentWidget* m_commentWidget;
