@@ -16,6 +16,7 @@ set(widgets_SRCS
   groupedlineedit.cpp
   querybuilder.cpp
   querybuildercompleter.cpp
+  filefetchjob.cpp
 )
 
 add_library(KF5BalooWidgets ${widgets_SRCS})
@@ -34,7 +35,7 @@ target_link_libraries(KF5BalooWidgets
   KF5::Completion
   KF5::FileMetaData
   KF5::WidgetsAddons
-  KF5::BalooFiles
+  KF5::Baloo
   KF5::BalooNaturalQueryParser
   KF5::CoreAddons
   KF5::ConfigGui

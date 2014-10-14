@@ -22,9 +22,8 @@
 #include "tagwidget.h"
 #include "kcommentwidget_p.h"
 #include "indexeddataretriever.h"
+#include "filefetchjob.h"
 
-#include <Baloo/FileFetchJob>
-#include <Baloo/File>
 #include <Baloo/IndexerConfig>
 
 #include <KFileMetaData/PropertyInfo>
@@ -163,40 +162,16 @@ void FileMetaDataProvider::Private::totalPropertyAndInsert(const QString& prop,
 }
 
 namespace {
-    QVariantMap convertPropertyMap(const KFileMetaData::PropertyMap& propMap)
-    {
-        QVariantMap map;
-        KFileMetaData::PropertyMap::const_iterator it = propMap.constBegin();
-        for (; it != propMap.constEnd(); it++) {
-            KFileMetaData::PropertyInfo pi(it.key());
-            map.insertMulti(pi.name(), it.value());
-        }
-
-        return map;
-    }
 }
 
 void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
 {
-    Baloo::FileFetchJob* fetchJob = static_cast<Baloo::FileFetchJob*>(job);
-    QList<Baloo::File> files = fetchJob->files();
+    FileFetchJob* fetchJob = static_cast<FileFetchJob*>(job);
+    QList<QVariantMap> files = fetchJob->data();
 
     if (files.size() == 1) {
-        Baloo::File file = files.first();
-        m_data = convertPropertyMap(file.properties());
+        m_data = files.first();
         insertBasicData();
-
-        if (file.rating()) {
-            m_data.insert("rating", file.rating());
-        }
-
-        if (!file.tags().isEmpty()) {
-            m_data.insert("tags", file.tags());
-        }
-
-        if (!file.userComment().isEmpty()) {
-            m_data.insert("userComment", file.userComment());
-        }
     }
     else {
         //
@@ -204,28 +179,16 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
         //
         QSet<QString> allProperties;
         QList<QVariantMap> propertyList;
-        foreach (const Baloo::File& file, files) {
-            QVariantMap properties = convertPropertyMap(file.properties());
-            if (file.rating()) {
-                properties.insert("rating", file.rating());
-            }
-
-            if (!file.tags().isEmpty()) {
-                properties.insert("tags", file.tags());
-            }
-
-            if (!file.userComment().isEmpty()) {
-                properties.insert("userComment", file.userComment());
-            }
-            propertyList << properties;
-            allProperties.unite(properties.uniqueKeys().toSet());
+        foreach (const QVariantMap& fileData, files) {
+            propertyList << fileData;
+            allProperties.unite(fileData.uniqueKeys().toSet());
         }
 
         // Special handling for certain properties
-        totalPropertyAndInsert("duration", propertyList, allProperties );
-        totalPropertyAndInsert("characterCount", propertyList, allProperties );
-        totalPropertyAndInsert("wordCount", propertyList, allProperties );
-        totalPropertyAndInsert("lineCount", propertyList, allProperties );
+        totalPropertyAndInsert("duration", propertyList, allProperties);
+        totalPropertyAndInsert("characterCount", propertyList, allProperties);
+        totalPropertyAndInsert("wordCount", propertyList, allProperties);
+        totalPropertyAndInsert("lineCount", propertyList, allProperties);
 
         foreach (const QString& propUri, allProperties) {
             foreach (const QVariantMap& map, propertyList) {
@@ -288,7 +251,7 @@ void FileMetaDataProvider::Private::insertBasicData()
         } else {
             m_data.insert("kfileitem#size", format.formatByteSize(item.size()));
         }
-	
+
         m_data.insert("kfileitem#type", item.mimeComment());
         m_data.insert("kfileitem#modified", format.formatRelativeDateTime(item.time(KFileItem::ModificationTime), QLocale::LongFormat) );
         m_data.insert("kfileitem#owner", item.user());
