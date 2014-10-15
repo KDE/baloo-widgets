@@ -22,7 +22,7 @@
 #define KCOMMENT_WIDGET
 
 #include <QtCore/QString>
-#include <QtWidgets//QWidget>
+#include <QtWidgets/QWidget>
 
 class QLabel;
 
