@@ -275,7 +275,6 @@ void FileMetaDataProvider::Private::insertBasicData()
 
 void FileMetaDataProvider::Private::insertEditableData()
 {
-    // Insert tags, ratings and comments, if Nepomuk activated
     if (!m_readOnly) {
         if (!m_data.contains("tags"))
             m_data.insert("tags", QVariant());

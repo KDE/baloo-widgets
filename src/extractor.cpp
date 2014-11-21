@@ -29,6 +29,7 @@
 #include <KFileMetaData/ExtractorCollection>
 #include <KFileMetaData/Extractor>
 #include <KFileMetaData/PropertyInfo>
+#include <KFileMetaData/UserMetaData>
 
 #include <iostream>
 
@@ -60,12 +61,27 @@ int main(int argc, char **argv)
     QDataStream stream(&arr, QIODevice::WriteOnly);
 
     QVariantMap map;
-
     QMapIterator<KFileMetaData::Property::Property, QVariant> it(result.properties());
     while (it.hasNext()) {
         it.next();
         KFileMetaData::PropertyInfo pi(it.key());
-        map.insert(pi.name(), it.value());
+        map.insertMulti(pi.name(), it.value());
+    }
+
+    KFileMetaData::UserMetaData md(url);
+    QStringList tags = md.tags();
+    if (!tags.isEmpty()) {
+        map.insert("tags", tags);
+    }
+
+    int rating = md.rating();
+    if (rating) {
+        map.insert("rating", rating);
+    }
+
+    QString comment = md.userComment();
+    if (!comment.isEmpty()) {
+        map.insert("userComment", comment);
     }
     stream << map;
 
