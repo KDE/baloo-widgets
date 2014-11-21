@@ -20,20 +20,16 @@
 
 #include "indexeddataretriever.h"
 
-#include <QtCore/QProcess>
-#include <QtCore/QFileInfo>
-#include <QtCore/QStandardPaths>
+#include <QProcess>
+#include <QFileInfo>
+#include <QStandardPaths>
+#include <QDebug>
 
 using namespace Baloo;
 
 IndexedDataRetriever::IndexedDataRetriever(const QString& fileUrl, QObject* parent): KJob(parent)
 {
-    m_url = fileUrl;
-
-    // Point to the actual file in the case of a system link
-    QFileInfo fileInfo(m_url);
-    if( fileInfo.isSymLink() )
-        m_url = fileInfo.canonicalFilePath();
+    m_url = QFileInfo(fileUrl).canonicalFilePath();
 }
 
 IndexedDataRetriever::~IndexedDataRetriever()
