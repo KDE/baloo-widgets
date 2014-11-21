@@ -27,7 +27,6 @@
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
-    KComponentData data("QueryBuilderApp");
 
     Baloo::NaturalFileQueryParser parser;
     Baloo::QueryBuilder builder(&parser, 0);
