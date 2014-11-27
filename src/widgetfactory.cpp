@@ -73,6 +73,27 @@ WidgetFactory::~WidgetFactory()
 //
 // Widget Creation
 //
+static QString toString(const QVariant& value)
+{
+    switch (value.type()) {
+        case QVariant::Int:
+            return QLocale().toString(value.toInt());
+        case QVariant::Double:
+            return QLocale().toString(value.toDouble());
+
+        case QVariant::List: {
+            QStringList list;
+            for (const QVariant& var : value.toList()) {
+                list << toString(var);
+            }
+
+            return list.join(", ");
+        }
+
+        default:
+            return value.toString();
+    }
+}
 
 QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value, QWidget* parent)
 {
@@ -109,17 +130,7 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
                 }
             }
             else {
-                switch (value.type()) {
-                case QVariant::Int:
-                    valueString =  QLocale().toString(value.toInt());
-                    break;
-                case QVariant::Double:
-                    valueString =  QLocale().toString(value.toDouble());
-                    break;
-                default:
-                    valueString = value.toString();
-                    break;
-                }
+                valueString = toString(value);
             }
         }
         widget = createValueWidget(valueString, parent);
