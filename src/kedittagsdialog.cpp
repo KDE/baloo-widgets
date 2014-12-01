@@ -69,6 +69,7 @@ KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
     QLabel* newTagLabel = new QLabel(i18nc("@label", "Create new tag:"));
     m_newTagEdit = new QLineEdit(this);
     m_newTagEdit->setClearButtonEnabled(true);
+    m_newTagEdit->setFocus();
     connect(m_newTagEdit, &QLineEdit::textEdited, this, &KEditTagsDialog::slotTextEdited);
 
     QHBoxLayout* newTagLayout = new QHBoxLayout();
