@@ -68,6 +68,7 @@ bool TagCheckBox::eventFilter( QObject* watched, QEvent* event )
         case QEvent::MouseMove: {
             QMouseEvent* me = static_cast<QMouseEvent*>(event);
             enableUrlHover( tagRect().contains(me->pos()) );
+            break;
         }
 
         case QEvent::MouseButtonRelease: {
@@ -76,6 +77,7 @@ bool TagCheckBox::eventFilter( QObject* watched, QEvent* event )
                 emit tagClicked( m_tag );
                 return true;
             }
+            break;
         }
 
         default:
