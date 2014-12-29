@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo query parser
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -17,21 +17,24 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "querybuilder.h"
+#include "pass_subqueries.h"
+#include "utils.h"
 
-#include <QApplication>
-#include "natural_query_parser.h"
+#include <Baloo/Term>
 
-#include <kcomponentdata.h>
-
-int main(int argc, char **argv)
+void PassSubqueries::setProperty(const QString &property)
 {
-    QApplication app(argc, argv);
+    this->property = property;
+}
 
-    Baloo::NaturalFileQueryParser parser;
-    Baloo::QueryBuilder builder(&parser, 0);
+QList<Baloo::Term> PassSubqueries::run(const QList<Baloo::Term> &match) const
+{
+    // Fuse the matched terms (... in "related to ... ,") into a subquery
+    int end_index;
+    Baloo::Term fused_term = fuseTerms(match, 0, end_index);
 
-    builder.show();
+    fused_term.setProperty(property);               // FIXME: Do backends understand terms having a property and subterms and no value? (for instance "related = AND(term, term, term)")
+    fused_term.setComparator(Baloo::Term::Equal);
 
-    return app.exec();
+    return QList<Baloo::Term>() << fused_term;
 }

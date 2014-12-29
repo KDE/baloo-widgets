@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo query parser
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -17,21 +17,38 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "querybuilder.h"
+#ifndef __PASS_PROPERTIES_H__
+#define __PASS_PROPERTIES_H__
 
-#include <QApplication>
-#include "natural_query_parser.h"
+#include <QtCore/QString>
 
-#include <kcomponentdata.h>
+#include <Baloo/Term>
 
-int main(int argc, char **argv)
+class PassProperties
 {
-    QApplication app(argc, argv);
+    public:
+        enum Types {
+            Integer,
+            IntegerOrDouble,
+            String,
+            DateTime,
+            Tag,
+            Contact,
+            EmailAddress
+        };
 
-    Baloo::NaturalFileQueryParser parser;
-    Baloo::QueryBuilder builder(&parser, 0);
+        PassProperties();
 
-    builder.show();
+        void setProperty(const QString &property, Types range);
 
-    return app.exec();
-}
+        QList<Baloo::Term> run(const QList<Baloo::Term> &match) const;
+
+    private:
+        QVariant convertToRange(const QVariant &value) const;
+
+    private:
+        QString property;
+        Types range;
+};
+
+#endif

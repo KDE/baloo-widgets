@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo query parser
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -17,21 +17,24 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "querybuilder.h"
+#ifndef __PASS_COMPARATORS_H__
+#define __PASS_COMPARATORS_H__
 
-#include <QApplication>
-#include "natural_query_parser.h"
+#include <QtCore/QList>
 
-#include <kcomponentdata.h>
+#include <Baloo/Term>
 
-int main(int argc, char **argv)
+class PassComparators
 {
-    QApplication app(argc, argv);
+    public:
+        PassComparators();
 
-    Baloo::NaturalFileQueryParser parser;
-    Baloo::QueryBuilder builder(&parser, 0);
+        void setComparator(Baloo::Term::Comparator comparator);
 
-    builder.show();
+        QList<Baloo::Term> run(const QList<Baloo::Term> &match) const;
 
-    return app.exec();
-}
+    private:
+        Baloo::Term::Comparator comparator;
+};
+
+#endif

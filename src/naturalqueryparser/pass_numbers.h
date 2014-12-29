@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo query parser
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -17,21 +17,26 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "querybuilder.h"
+#ifndef __PASS_NUMBERS_H__
+#define __PASS_NUMBERS_H__
 
-#include <QApplication>
-#include "natural_query_parser.h"
+#include <QtCore/QList>
+#include <QtCore/QHash>
 
-#include <kcomponentdata.h>
+namespace Baloo { class Term; }
 
-int main(int argc, char **argv)
+class PassNumbers
 {
-    QApplication app(argc, argv);
+    public:
+        PassNumbers();
 
-    Baloo::NaturalFileQueryParser parser;
-    Baloo::QueryBuilder builder(&parser, 0);
+        QList<Baloo::Term> run(const QList<Baloo::Term> &match) const;
 
-    builder.show();
+    private:
+        void registerNames(long long int number, const QString &names);
 
-    return app.exec();
-}
+    private:
+        QHash<QString, long long int> number_names;
+};
+
+#endif

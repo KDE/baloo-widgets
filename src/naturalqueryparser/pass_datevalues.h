@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo query parser
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -17,21 +17,24 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "querybuilder.h"
+#ifndef __PASS_DATEVALUES_H__
+#define __PASS_DATEVALUES_H__
 
-#include <QApplication>
-#include "natural_query_parser.h"
+#include <QtCore/QList>
 
-#include <kcomponentdata.h>
+namespace Baloo { class Term; }
 
-int main(int argc, char **argv)
+class PassDateValues
 {
-    QApplication app(argc, argv);
+    public:
+        PassDateValues();
 
-    Baloo::NaturalFileQueryParser parser;
-    Baloo::QueryBuilder builder(&parser, 0);
+        void setPm(bool pm);
 
-    builder.show();
+        QList<Baloo::Term> run(const QList<Baloo::Term> &match) const;
 
-    return app.exec();
-}
+    private:
+        bool pm;
+};
+
+#endif

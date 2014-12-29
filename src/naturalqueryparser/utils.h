@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo query parser
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -17,21 +17,26 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "querybuilder.h"
+#ifndef __UTILS_H__
+#define __UTILS_H__
 
-#include <QApplication>
-#include "natural_query_parser.h"
+#include <Baloo/Term>
 
-#include <kcomponentdata.h>
+#include <QtCore/QString>
+#include <QtCore/QList>
 
-int main(int argc, char **argv)
-{
-    QApplication app(argc, argv);
+bool localeWordsSeparatedBySpaces();
 
-    Baloo::NaturalFileQueryParser parser;
-    Baloo::QueryBuilder builder(&parser, 0);
+int termStart(const Baloo::Term &term);
+int termEnd(const Baloo::Term &term);
+void setTermRange(Baloo::Term &term, int start, int end);
 
-    builder.show();
+QString stringValueIfLiteral(const Baloo::Term &term);
+long long longValueIfLiteral(const Baloo::Term &term, bool *ok);
+void copyTermRange(Baloo::Term &target, const Baloo::Term &source);
 
-    return app.exec();
-}
+Baloo::Term fuseTerms(const QList<Baloo::Term> &terms,
+                      int first_term_index,
+                      int &end_term_index);
+
+#endif

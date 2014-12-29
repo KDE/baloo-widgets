@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo query parser
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -17,21 +17,28 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "querybuilder.h"
+#ifndef __PASS_TYPEHINTS_H__
+#define __PASS_TYPEHINTS_H__
 
-#include <QApplication>
-#include "natural_query_parser.h"
+#include <QtCore/QString>
+#include <QtCore/QList>
+#include <QtCore/QHash>
+#include <QtCore/QUrl>
 
-#include <kcomponentdata.h>
+namespace Baloo { class Term; }
 
-int main(int argc, char **argv)
+class PassTypeHints
 {
-    QApplication app(argc, argv);
+    public:
+        PassTypeHints();
 
-    Baloo::NaturalFileQueryParser parser;
-    Baloo::QueryBuilder builder(&parser, 0);
+        QList<Baloo::Term> run(const QList<Baloo::Term> &match) const;
 
-    builder.show();
+    private:
+        void registerHints(const QString &type, const QString &hints);
 
-    return app.exec();
-}
+    private:
+        QHash<QString, QString> type_hints;
+};
+
+#endif

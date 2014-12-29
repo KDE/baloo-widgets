@@ -1,5 +1,5 @@
-/* This file is part of the Nepomuk widgets collection
-   Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
+/* This file is part of the Baloo query parser
+   Copyright (c) 2014 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
@@ -17,21 +17,22 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "querybuilder.h"
+#ifndef __PASS_PROPERTYINFO_H__
+#define __PASS_PROPERTYINFO_H__
 
-#include <QApplication>
-#include "natural_query_parser.h"
+#include <QtCore/QSet>
 
-#include <kcomponentdata.h>
+#include <Baloo/Term>
 
-int main(int argc, char **argv)
+class PassPropertyInfo
 {
-    QApplication app(argc, argv);
+    public:
+        PassPropertyInfo();
 
-    Baloo::NaturalFileQueryParser parser;
-    Baloo::QueryBuilder builder(&parser, 0);
+        QList<Baloo::Term> run(const QList<Baloo::Term> &match) const;
 
-    builder.show();
+    private:
+        QSet<QString> validPropertyNames;
+};
 
-    return app.exec();
-}
+#endif

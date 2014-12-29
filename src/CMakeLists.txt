@@ -1,4 +1,5 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets\")
+add_subdirectory(naturalqueryparser)
 
 set(widgets_SRCS
   kblocklayout.cpp

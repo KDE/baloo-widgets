@@ -28,8 +28,16 @@ ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX BALOO_WIDGETS
                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/baloowidgets_version.h"
                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake")
 
+include_directories(
+   ${CMAKE_SOURCE_DIR}/src
+   ${CMAKE_BINARY_DIR}/src
+   ${CMAKE_SOURCE_DIR}/src/naturalqueryparser
+   ${CMAKE_BINARY_DIR}/src/naturalqueryparser
+   ${CMAKE_BINARY_DIR}/src/naturalqueryparser/baloo
+)
+
 add_subdirectory(src)
-add_subdirectory(test)
+#add_subdirectory(test)
 add_subdirectory(autotests)
 
 # Config files

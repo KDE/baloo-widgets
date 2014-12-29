@@ -1,4 +1,4 @@
-/* This file is part of the Nepomuk widgets collection
+/* This file is part of the Baloo query parser
    Copyright (c) 2013 Denis Steckelmacher <steckdenis@yahoo.fr>
 
    This library is free software; you can redistribute it and/or
@@ -17,21 +17,27 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "querybuilder.h"
+#ifndef __PASS_PERIODNAMES_H__
+#define __PASS_PERIODNAMES_H__
 
-#include <QApplication>
-#include "natural_query_parser.h"
+#include <QtCore/QString>
+#include <QtCore/QList>
+#include <QtCore/QHash>
 
-#include <kcomponentdata.h>
+namespace Baloo { class Term; }
 
-int main(int argc, char **argv)
+class PassPeriodNames
 {
-    QApplication app(argc, argv);
+    public:
+        PassPeriodNames();
 
-    Baloo::NaturalFileQueryParser parser;
-    Baloo::QueryBuilder builder(&parser, 0);
+        QList<Baloo::Term> run(const QList<Baloo::Term> &match) const;
 
-    builder.show();
+    private:
+        bool insertName(QHash<QString, int> &hash, int value, const QString &shortName, const QString &longName);
 
-    return app.exec();
-}
+        QHash<QString, int> day_names;
+        QHash<QString, int> month_names;
+};
+
+#endif

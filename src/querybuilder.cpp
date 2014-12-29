@@ -21,8 +21,9 @@
 #include "groupedlineedit.h"
 #include "querybuildercompleter_p.h"
 
-#include <baloo/completionproposal.h>
-#include <baloo/naturalqueryparser.h>
+#include "completionproposal.h"
+#include "naturalqueryparser.h"
+
 #include <baloo/term.h>
 #include <klocalizedstring.h>
 

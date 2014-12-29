@@ -19,7 +19,7 @@
 
 #include "querybuildercompleter_p.h"
 
-#include <baloo/completionproposal.h>
+#include "completionproposal.h"
 #include <klocalizedstring.h>
 
 #include <QListWidget>
