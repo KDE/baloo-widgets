@@ -50,6 +50,7 @@
 #include <sys/types.h>
 #include <sys/extattr.h>
 #endif
+#include <errno.h>
 
 // FIXME: Load the catalog properly!!
 //static const KCatalogLoader loader("baloowidgets");
