@@ -27,6 +27,7 @@
 #include "filemetadataprovider_p.h"
 
 #include <KFileItem>
+#include <KFileMetaData/UserMetaData>
 
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
@@ -36,24 +37,7 @@
 #include <QtCore/QString>
 #include <QtCore/QTimer>
 #include <QtCore/QFileInfo>
-
-
-
-// For XAttr
-#if defined(Q_OS_LINUX) || defined(__GLIBC__)
-#include <sys/types.h>
-#include <sys/xattr.h>
-#elif defined(Q_OS_MAC)
-#include <sys/types.h>
-#include <sys/xattr.h>
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-#include <sys/types.h>
-#include <sys/extattr.h>
-#endif
-#include <errno.h>
-
-// FIXME: Load the catalog properly!!
-//static const KCatalogLoader loader("baloowidgets");
+#include <QtCore/QDebug>
 
 using namespace Baloo;
 
@@ -239,31 +223,6 @@ FileMetaDataWidget::~FileMetaDataWidget()
     delete d;
 }
 
-namespace {
-    bool areXAttrSupported(const QString& path) {
-        const QByteArray p = QFile::encodeName(path);
-        const char* encodedPath = p.constData();
-
-        const QByteArray n("user.xdg.tags");
-        const char* attributeName = n.constData();
-
-        // First get the size of the data we are going to get to reserve the right amount of space.
-        #if defined(Q_OS_LINUX) || (defined(__GLIBC__) && !defined(__stub_getxattr))
-            const ssize_t size = getxattr(encodedPath, attributeName, NULL, 0);
-        #elif defined(Q_OS_MAC)
-            const ssize_t size = getxattr(encodedPath, attributeName, NULL, 0, 0, 0);
-        #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-            const ssize_t size = extattr_get_file(encodedPath, EXTATTR_NAMESPACE_USER, attributeName, NULL, 0);
-        #else
-            const ssize_t size = 0;
-        #endif
-
-        if (size == -1) {
-            return errno != ENOTSUP;
-        }
-        return true;
-    }
-}
 void FileMetaDataWidget::setItems(const KFileItemList& items)
 {
     KFileItemList localItemsList;
@@ -278,7 +237,8 @@ void FileMetaDataWidget::setItems(const KFileItemList& items)
             QString path = url.toLocalFile();
             list << path;
 
-            xAttrSuppored &= areXAttrSupported(path);
+            KFileMetaData::UserMetaData md(path);
+            xAttrSuppored &= md.isSupported();
         }
     }
 
