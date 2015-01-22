@@ -20,7 +20,7 @@
 #include "querybuilder.h"
 
 #include <QApplication>
-#include "natural_query_parser.h"
+#include "naturalfilequeryparser.h"
 
 #include <kcomponentdata.h>
 
