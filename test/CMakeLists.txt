@@ -6,7 +6,7 @@ target_link_libraries(tagwidgetapp
   Qt5::Core
 )
 
-add_executable(metadatawidgetapp metadatawidgetapp.cpp metadatawidgettest.cpp)
+add_executable(metadatawidgetapp metadatawidgetapp.cpp)
 target_link_libraries(metadatawidgetapp
   KF5::Baloo
   KF5::BalooWidgets

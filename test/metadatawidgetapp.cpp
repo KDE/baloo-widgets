@@ -1,6 +1,5 @@
 /*
-    <one line to give the library's name and an idea of what it does.>
-    Copyright (C) 2012  Vishesh Handa <me@vhanda.in>
+    Copyright (C) 2012-2015  Vishesh Handa <vhanda@kde.org>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -17,16 +16,32 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "metadatawidgettest.h"
+#include "filemetadatawidget.h"
 
-#include <QtWidgets/QApplication>
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QFileInfo>
+#include <kfileitem.h>
 
-
-int main( int argc, char** argv )
+int main(int argc, char** argv)
 {
-    QApplication app( argc, argv );
-    app.setApplicationName( "FileMetadataWidgetApp" );
-    FileMetadataWidgetTest test;
-    test.show();
+    QApplication app(argc, argv);
+    app.setApplicationName("FileMetadataWidgetApp");
+
+    QCommandLineParser parser;
+    parser.addPositionalArgument("filename", "files");
+    parser.process(app);
+
+    Baloo::FileMetaDataWidget* widget = new Baloo::FileMetaDataWidget();
+
+    KFileItemList list;
+    for (const QString& path : parser.positionalArguments()) {
+        QFileInfo fi(path);
+        list << KFileItem(QUrl::fromLocalFile(fi.absoluteFilePath()), QString(), mode_t());
+    }
+
+    widget->show();
+    widget->setItems(list);
+
     return app.exec();
 }
