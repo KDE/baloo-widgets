@@ -37,6 +37,8 @@ set_target_properties(KF5BalooNaturalQueryParser PROPERTIES
     EXPORT_NAME BalooNaturalQueryParser
 )
 
+target_include_directories(KF5BalooNaturalQueryParser INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets>")
+
 generate_export_header(KF5BalooNaturalQueryParser BASE_NAME BALOO_NATURALQUERYPARSER EXPORT_FILE_NAME naturalqueryparser_export.h)
 ecm_generate_headers(KF5BalooNaturalQueryParser_CamelCase_HEADERS
     HEADER_NAMES
@@ -53,13 +55,13 @@ install(TARGETS KF5BalooNaturalQueryParser EXPORT KF5BalooWidgetsTargets ${KF5_I
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/naturalqueryparser_export.h
     ${KF5BalooNaturalQueryParser_HEADERS}
-    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Baloo/baloo
+    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets/baloo
     COMPONENT Devel
 )
 
 install(FILES
     ${KF5BalooNaturalQueryParser_CamelCase_HEADERS}
-    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Baloo/Baloo
+    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets/Baloo
     COMPONENT Devel
 )
 
