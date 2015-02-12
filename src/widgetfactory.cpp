@@ -256,15 +256,21 @@ void WidgetFactory::slotTagsChanged(const QStringList& tags)
     if (m_tagWidget) {
         for (const QString& filePath : m_items) {
             KFileMetaData::UserMetaData md(filePath);
-            md.setTags(tags);
+
+            // When multiple tags are selected one doesn't want to loose the old tags
+            // of any of the resources. Unless specifically removed.
+            QStringList newTags = md.tags() + tags;
+            newTags.removeDuplicates();
+
+            for (const QString& tag : m_prevTags) {
+                if (!tags.contains(tag)) {
+                    newTags.removeAll(tag);
+                }
+            }
+            md.setTags(newTags);
         }
 
-        // FIXME: vHanda : Remove the tags that are no longer applicable
-        // When multiple tags are selected one doesn't want to loose the old tags
-        // of any of the resources. Unless specifically removed.
-        // QSet<Tag> removedTags = m_prevTags.toSet().subtract( tags.toSet() );
-        // Remove these tags!
-        // m_prevTags = tags;
+        m_prevTags = tags;
         emit dataChangeStarted();
         emit dataChangeFinished();
     }
