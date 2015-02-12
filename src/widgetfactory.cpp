@@ -115,7 +115,7 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         QString valueString;
 
         if (prop == "duration"){
-            valueString = form.formatDuration(value.toInt());
+            valueString = form.formatDuration(value.toInt() * 1000);
         }
         else {
             // Check if Date/DateTime
