@@ -161,9 +161,6 @@ void FileMetaDataProvider::Private::totalPropertyAndInsert(const QString& prop,
     }
 }
 
-namespace {
-}
-
 void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
 {
     FileFetchJob* fetchJob = static_cast<FileFetchJob*>(job);
@@ -258,14 +255,33 @@ void FileMetaDataProvider::Private::insertBasicData()
         m_data.insert("kfileitem#permissions", item.permissionsString());
     }
     else if (m_fileItems.count() > 1) {
-        // Calculate the size of all items
-        quint64 totalSize = 0;
-        foreach (const KFileItem& item, m_fileItems) {
-            if (!item.isDir() && !item.isLink()) {
-                totalSize += item.size();
+        // If all directories
+        bool allDirectories = true;
+        for (const KFileItem& item : m_fileItems) {
+            allDirectories &= item.isDir();
+        }
+
+        if (allDirectories) {
+            int count = 0;
+            for (const KFileItem& item : m_fileItems) {
+                count += subDirectoriesCount(item.url().path());
+            }
+
+            if (count) {
+                const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
+                m_data.insert("kfileitem#totalSize", itemCountString);
             }
         }
-        m_data.insert("kfileitem#totalSize", format.formatByteSize(totalSize));
+        else {
+            // Calculate the size of all items
+            quint64 totalSize = 0;
+            for (const KFileItem& item : m_fileItems) {
+                if (!item.isDir() && !item.isLink()) {
+                    totalSize += item.size();
+                }
+            }
+            m_data.insert("kfileitem#totalSize", format.formatByteSize(totalSize));
+        }
 
         // When we have more than 1 item, the basic data should be emitted before
         // the Resource data, cause the ResourceData might take considerable time
