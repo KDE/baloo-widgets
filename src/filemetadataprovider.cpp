@@ -18,9 +18,7 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#include "filemetadataprovider_p.h"
-#include "tagwidget.h"
-#include "kcommentwidget_p.h"
+#include "filemetadataprovider.h"
 #include "indexeddataretriever.h"
 #include "filefetchjob.h"
 

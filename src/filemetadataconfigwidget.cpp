@@ -19,7 +19,7 @@
  *****************************************************************************/
 
 #include "filemetadataconfigwidget.h"
-#include "filemetadataprovider_p.h"
+#include "filemetadataprovider.h"
 
 #include <KConfig>
 #include <KConfigGroup>

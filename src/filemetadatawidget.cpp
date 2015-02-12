@@ -24,7 +24,7 @@
 #include "filemetadatawidget.h"
 #include "metadatafilter.h"
 #include "widgetfactory.h"
-#include "filemetadataprovider_p.h"
+#include "filemetadataprovider.h"
 
 #include <KFileItem>
 #include <KFileMetaData/UserMetaData>
