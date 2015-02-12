@@ -136,6 +136,25 @@ namespace {
 
         return QVariant();
     }
+
+    /**
+     * The standard QMap::unite will contain the key multiple times if both \p v1 and \p v2
+     * contain the same key.
+     *
+     * This will only take the key from \p v2 into account
+     */
+    QVariantMap unite(const QVariantMap& v1, const QVariantMap& v2)
+    {
+        QVariantMap v(v1);
+        QMapIterator<QString, QVariant> it(v2);
+        while (it.hasNext()) {
+            it.next();
+
+            v[it.key()] = it.value();
+        }
+
+        return v;
+    }
 }
 
 void FileMetaDataProvider::Private::totalPropertyAndInsert(const QString& prop,
@@ -221,7 +240,7 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
 void FileMetaDataProvider::Private::slotLoadingFinished(KJob* job)
 {
     IndexedDataRetriever* ret = dynamic_cast<IndexedDataRetriever*>(job);
-    m_data.unite(ret->data());
+    unite(m_data, ret->data());
 
     insertBasicData();
     insertEditableData();
