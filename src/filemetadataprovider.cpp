@@ -22,15 +22,10 @@
 #include "indexeddataretriever.h"
 #include "filefetchjob.h"
 
-#include <Baloo/IndexerConfig>
-
 #include <KFileMetaData/PropertyInfo>
-#include <KFileItem>
 #include <KLocalizedString>
-#include <KRatingWidget>
 #include <KFormat>
 
-#include <QtWidgets/QLabel>
 #include <QtCore/QTimer>
 
 // Required includes for subDirectoriesCount():
@@ -42,57 +37,6 @@
 #endif
 
 using namespace Baloo;
-
-class FileMetaDataProvider::Private
-{
-
-public:
-    Private(FileMetaDataProvider* parent);
-    ~Private();
-
-    void slotLoadingFinished(KJob* job);
-    void slotFileFetchFinished(KJob* job);
-
-    void insertBasicData();
-    void insertEditableData();
-
-    /**
-     * Checks for the existance of \p uri in \p allProperties, and accordingly
-     * inserts the total integer value of that property in m_data. On completion
-     * it removes \p uri from \p allProperties
-     */
-    void totalPropertyAndInsert(const QString& prop, const QList<QVariantMap>& resources,
-                                QSet<QString>& allProperties);
-
-    /*
-     * @return The number of subdirectories for the directory \a path.
-     */
-    static int subDirectoriesCount(const QString &path);
-
-    bool m_readOnly;
-
-    /// Set to true when the file has been specially indexed and does not exist in the db
-    bool m_realTimeIndexing;
-    QList<KFileItem> m_fileItems;
-
-    QVariantMap m_data;
-    Baloo::IndexerConfig m_config;
-private:
-    FileMetaDataProvider* const q;
-};
-
-FileMetaDataProvider::Private::Private(FileMetaDataProvider* parent) :
-    m_readOnly(false),
-    m_realTimeIndexing(false),
-    m_fileItems(),
-    m_data(),
-    q(parent)
-{
-}
-
-FileMetaDataProvider::Private::~Private()
-{
-}
 
 namespace {
     QVariant intersect(const QVariant& v1, const QVariant& v2) {
@@ -155,9 +99,9 @@ namespace {
     }
 }
 
-void FileMetaDataProvider::Private::totalPropertyAndInsert(const QString& prop,
-                                                           const QList<QVariantMap>& resources,
-                                                           QSet<QString>& allProperties)
+void FileMetaDataProvider::totalPropertyAndInsert(const QString& prop,
+                                                  const QList<QVariantMap>& resources,
+                                                  QSet<QString>& allProperties)
 {
     if( allProperties.contains( prop ) ) {
         int total = 0;
@@ -178,7 +122,7 @@ void FileMetaDataProvider::Private::totalPropertyAndInsert(const QString& prop,
     }
 }
 
-void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
+void FileMetaDataProvider::slotFileFetchFinished(KJob* job)
 {
     FileFetchJob* fetchJob = static_cast<FileFetchJob*>(job);
     QList<QVariantMap> files = fetchJob->data();
@@ -232,10 +176,10 @@ void FileMetaDataProvider::Private::slotFileFetchFinished(KJob* job)
 
     insertEditableData();
 
-    emit q->loadingFinished();
+    emit loadingFinished();
 }
 
-void FileMetaDataProvider::Private::slotLoadingFinished(KJob* job)
+void FileMetaDataProvider::slotLoadingFinished(KJob* job)
 {
     IndexedDataRetriever* ret = dynamic_cast<IndexedDataRetriever*>(job);
     unite(m_data, ret->data());
@@ -243,10 +187,10 @@ void FileMetaDataProvider::Private::slotLoadingFinished(KJob* job)
     insertBasicData();
     insertEditableData();
 
-    emit q->loadingFinished();
+    emit loadingFinished();
 }
 
-void FileMetaDataProvider::Private::insertBasicData()
+void FileMetaDataProvider::insertBasicData()
 {
     KFormat format;
     if (m_fileItems.count() == 1) {
@@ -302,11 +246,11 @@ void FileMetaDataProvider::Private::insertBasicData()
 
         // When we have more than 1 item, the basic data should be emitted before
         // the Resource data, cause the ResourceData might take considerable time
-        emit q->loadingFinished();
+        emit loadingFinished();
     }
 }
 
-void FileMetaDataProvider::Private::insertEditableData()
+void FileMetaDataProvider::insertEditableData()
 {
     if (!m_readOnly) {
         if (!m_data.contains("tags"))
@@ -319,22 +263,22 @@ void FileMetaDataProvider::Private::insertEditableData()
 }
 
 
-FileMetaDataProvider::FileMetaDataProvider(QObject* parent) :
-    QObject(parent),
-    d(new Private(this))
+FileMetaDataProvider::FileMetaDataProvider(QObject* parent)
+    : QObject(parent)
+    , m_readOnly(false)
+    , m_realTimeIndexing(false)
 {
 }
 
 FileMetaDataProvider::~FileMetaDataProvider()
 {
-    delete d;
 }
 
 void FileMetaDataProvider::setItems(const KFileItemList& items)
 {
-    d->m_fileItems = items;
-    d->m_data.clear();
-    d->m_realTimeIndexing = false;
+    m_fileItems = items;
+    m_data.clear();
+    m_realTimeIndexing = false;
 
     if (items.isEmpty()) {
         emit loadingFinished();
@@ -345,11 +289,11 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
         const KFileItem item = items.first();
         const QString url = item.localPath();
 
-        if (!d->m_config.shouldBeIndexed(url)) {
+        if (!m_config.shouldBeIndexed(url)) {
             IndexedDataRetriever *ret = new IndexedDataRetriever(url, this);
             connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
             ret->start();
-            d->m_realTimeIndexing = true;
+            m_realTimeIndexing = true;
             return;
         }
     }
@@ -455,26 +399,26 @@ QString FileMetaDataProvider::group(const QString& label) const
 
 KFileItemList FileMetaDataProvider::items() const
 {
-    return d->m_fileItems;
+    return m_fileItems;
 }
 
 void FileMetaDataProvider::setReadOnly(bool readOnly)
 {
-    d->m_readOnly = readOnly;
+    m_readOnly = readOnly;
 }
 
 bool FileMetaDataProvider::isReadOnly() const
 {
-    return d->m_readOnly;
+    return m_readOnly;
 }
 
 QVariantMap FileMetaDataProvider::data() const
 {
-    return d->m_data;
+    return m_data;
 }
 
 
-int FileMetaDataProvider::Private::subDirectoriesCount(const QString& path)
+int FileMetaDataProvider::subDirectoriesCount(const QString& path)
 {
 #ifdef Q_WS_WIN
     QDir dir(path);
@@ -509,7 +453,5 @@ int FileMetaDataProvider::Private::subDirectoriesCount(const QString& path)
 
 bool FileMetaDataProvider::realTimeIndexing()
 {
-    return d->m_realTimeIndexing;
+    return m_realTimeIndexing;
 }
-
-#include "moc_filemetadataprovider_p.cpp"

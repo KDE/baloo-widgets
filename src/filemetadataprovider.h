@@ -20,17 +20,15 @@
 #ifndef _BALOO_FILEMETADATAMODEL_H
 #define _BALOO_FILEMETADATAMODEL_H
 
-#include <QtCore/QObject>
-#include <QtCore/QString>
-#include <QtCore/QVariant>
+#include <QObject>
+#include <QString>
+#include <QVariant>
 
-class KFileItemList;
-class KProcess;
-class QWidget;
+#include <KFileItem>
+#include <Baloo/IndexerConfig>
 
 namespace Baloo {
 
-class ResourceLoader;
 /**
  * @brief Provides the data for the MetaDataWidget.
  *
@@ -114,13 +112,35 @@ Q_SIGNALS:
      */
     void loadingFinished();
 
-private:
-    class Private;
-    Private* const d;
+private Q_SLOTS:
+    void slotLoadingFinished(KJob* job);
+    void slotFileFetchFinished(KJob* job);
 
-    Q_PRIVATE_SLOT(d, void slotFileFetchFinished(KJob* job))
-    Q_PRIVATE_SLOT(d, void slotLoadingFinished(KJob* job))
-    Q_PRIVATE_SLOT(d, void insertBasicData())
+    void insertBasicData();
+    void insertEditableData();
+
+private:
+    /**
+     * Checks for the existance of \p uri in \p allProperties, and accordingly
+     * inserts the total integer value of that property in m_data. On completion
+     * it removes \p uri from \p allProperties
+     */
+    void totalPropertyAndInsert(const QString& prop, const QList<QVariantMap>& resources,
+                                QSet<QString>& allProperties);
+
+    /*
+     * @return The number of subdirectories for the directory \a path.
+     */
+    static int subDirectoriesCount(const QString &path);
+
+    bool m_readOnly;
+
+    /// Set to true when the file has been specially indexed and does not exist in the db
+    bool m_realTimeIndexing;
+    QList<KFileItem> m_fileItems;
+
+    QVariantMap m_data;
+    Baloo::IndexerConfig m_config;
 };
 
 }
