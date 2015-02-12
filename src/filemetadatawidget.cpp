@@ -241,6 +241,7 @@ void FileMetaDataWidget::setItems(const KFileItemList& items)
             xAttrSuppored &= md.isSupported();
         }
     }
+    setReadOnly(!xAttrSuppored);
 
     d->m_provider->setItems(localItemsList);
     d->m_widgetFactory->setItems(list);

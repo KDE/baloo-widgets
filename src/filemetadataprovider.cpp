@@ -26,7 +26,8 @@
 #include <KLocalizedString>
 #include <KFormat>
 
-#include <QtCore/QTimer>
+#include <QTimer>
+#include <QDebug>
 
 // Required includes for subDirectoriesCount():
 #ifdef Q_WS_WIN
@@ -184,9 +185,6 @@ void FileMetaDataProvider::slotLoadingFinished(KJob* job)
     IndexedDataRetriever* ret = dynamic_cast<IndexedDataRetriever*>(job);
     unite(m_data, ret->data());
 
-    insertBasicData();
-    insertEditableData();
-
     emit loadingFinished();
 }
 
@@ -243,10 +241,6 @@ void FileMetaDataProvider::insertBasicData()
             }
             m_data.insert("kfileitem#totalSize", format.formatByteSize(totalSize));
         }
-
-        // When we have more than 1 item, the basic data should be emitted before
-        // the Resource data, cause the ResourceData might take considerable time
-        emit loadingFinished();
     }
 }
 
@@ -285,34 +279,65 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
         return;
     }
 
-    if( items.size() == 1 ) {
-        const KFileItem item = items.first();
-        const QString url = item.localPath();
-
-        if (!m_config.shouldBeIndexed(url)) {
-            IndexedDataRetriever *ret = new IndexedDataRetriever(url, this);
-            connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
-            ret->start();
-            m_realTimeIndexing = true;
+    // There are 4 code paths -
+    // Single File -
+    //   * Not Indexed
+    //   * Indexed
+    //
+    if (items.size() == 1)  {
+        const QUrl url = items.first().targetUrl();
+        if (!url.isLocalFile()) {
+            insertBasicData();
+            emit loadingFinished();
             return;
         }
+
+        // Not Indexed
+        const QString filePath = url.toLocalFile();
+        if (!m_config.shouldBeIndexed(filePath)) {
+            m_realTimeIndexing = true;
+
+            IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
+            connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
+            ret->start();
+
+            insertBasicData();
+            insertEditableData();
+            emit loadingFinished();
+        }
+        else {
+            FileFetchJob* job = new FileFetchJob(QStringList() << filePath, this);
+            connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
+            job->start();
+        }
     }
+    //
+    // Multiple Files -
+    //   * Not Indexed
+    //   * Indexed
+    // If Multiple Files are not indexed, we do not extract data from the files as it would
+    // be too expensive.
+    //
+    else {
+        QStringList urls;
+        Q_FOREACH (const KFileItem& item, items) {
+            const QUrl url = item.targetUrl();
+            if (url.isLocalFile())
+                urls << url.toLocalFile();
+        }
 
-    QStringList urls;
-    Q_FOREACH (const KFileItem& item, items) {
-        const QUrl url = item.targetUrl();
-        if (url.isLocalFile())
-            urls << url.toLocalFile();
-    }
+        if (urls.isEmpty()) {
+            insertBasicData();
+            emit loadingFinished();
+            return;
+        }
 
-    FileFetchJob* job = new FileFetchJob(urls, this);
-    connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
-    job->start();
+        FileFetchJob* job = new FileFetchJob(urls, this);
+        connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
+        job->start();
 
-    // When multiple urls are being shown, we load the basic data first cause loading
-    // all the ResourceData will take some time
-    if (urls.size() > 1) {
-        QTimer::singleShot( 0, this, SLOT(insertBasicData()) );
+        insertBasicData();
+        emit loadingFinished();
     }
 }
 
