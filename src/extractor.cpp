@@ -23,6 +23,7 @@
 #include <QCoreApplication>
 #include <QCommandLineParser>
 #include <QMimeDatabase>
+#include <QDataStream>
 #include <QDebug>
 
 #include <KFileMetaData/SimpleExtractionResult>
