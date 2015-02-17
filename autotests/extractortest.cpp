@@ -27,6 +27,7 @@
 #include <QTemporaryDir>
 #include <QTextStream>
 #include <QStandardPaths>
+#include <QDataStream>
 #include <QDebug>
 #include <QDir>
 
