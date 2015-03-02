@@ -20,6 +20,7 @@
 
 #include "indexeddataretriever.h"
 
+#include <QDataStream>
 #include <QProcess>
 #include <QFileInfo>
 #include <QStandardPaths>
