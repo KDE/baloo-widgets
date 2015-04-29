@@ -22,10 +22,10 @@ target_link_libraries(metadataconfigwidgetapp
   Qt5::Core
 )
 
-add_executable(querybuilderapp querybuilderapp.cpp )
-target_link_libraries(querybuilderapp
-  KF5::BalooNaturalQueryParser
-  KF5::BalooWidgets
-  Qt5::Widgets
-  Qt5::Core
-)
+#add_executable(querybuilderapp querybuilderapp.cpp )
+#target_link_libraries(querybuilderapp
+#  KF5::BalooNaturalQueryParser
+#  KF5::BalooWidgets
+#  Qt5::Widgets
+#  Qt5::Core
+#)
