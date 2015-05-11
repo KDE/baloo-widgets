@@ -183,7 +183,7 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob* job)
 void FileMetaDataProvider::slotLoadingFinished(KJob* job)
 {
     IndexedDataRetriever* ret = dynamic_cast<IndexedDataRetriever*>(job);
-    unite(m_data, ret->data());
+    m_data = unite(m_data, ret->data());
 
     emit loadingFinished();
 }
