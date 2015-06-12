@@ -294,7 +294,7 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
 
         // Not Indexed
         const QString filePath = url.toLocalFile();
-        if (!m_config.shouldBeIndexed(filePath)) {
+        if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath)) {
             m_realTimeIndexing = true;
 
             IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
