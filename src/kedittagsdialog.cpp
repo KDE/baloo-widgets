@@ -31,6 +31,7 @@
 #include <QtWidgets/QWidget>
 #include <QtCore/QUrl>
 #include <QtWidgets/QDialogButtonBox>
+#include <QDebug>
 
 #include <Baloo/TagListJob>
 
