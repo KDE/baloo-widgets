@@ -5,7 +5,7 @@ find_package(ECM 0.0.14 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_PATH})
 
 find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Core Widgets Test)
-find_package(KF5 REQUIRED COMPONENTS Config KIO I18n Service FileMetaData Baloo KDELibs4Support)
+find_package(KF5 REQUIRED COMPONENTS Config KIO I18n FileMetaData Baloo)
 
 include(ECMSetupVersion)
 include(ECMAddTests)

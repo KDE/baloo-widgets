@@ -33,7 +33,6 @@ target_link_libraries(KF5BalooWidgets
 
   PRIVATE
   KF5::I18n
-  KF5::Completion
   KF5::FileMetaData
   KF5::WidgetsAddons
   KF5::Baloo

@@ -22,8 +22,6 @@
 #include <QApplication>
 #include "naturalfilequeryparser.h"
 
-#include <kcomponentdata.h>
-
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
