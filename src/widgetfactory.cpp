@@ -34,6 +34,7 @@
 
 #include <KJob>
 #include <KFormat>
+#include <KLocalizedString>
 
 namespace {
     static QString plainText(const QString& richText)
@@ -114,10 +115,11 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         // vHanda: FIXME: Add links! Take m_noLinks into consideration
         QString valueString;
 
-        if (prop == "duration"){
+        if (prop == QStringLiteral("duration")) {
             valueString = form.formatDuration(value.toInt() * 1000);
-        }
-        else {
+        } else if (prop == QStringLiteral("bitRate")) {
+            valueString = i18nc("@label bitrate (per second)", "%1/s", form.formatByteSize(value.toInt(), 1, KFormat::MetricBinaryDialect));
+        } else {
             // Check if Date/DateTime
 
             QDateTime dt = QDateTime::fromString(value.toString(), Qt::ISODate);
