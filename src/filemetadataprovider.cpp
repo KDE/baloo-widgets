@@ -362,6 +362,7 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
         { "tags", I18N_NOOP2_NOSTRIP("@label", "Tags") },
         { "rating", I18N_NOOP2_NOSTRIP("@label", "Rating") },
         { "userComment", I18N_NOOP2_NOSTRIP("@label", "Comment") },
+        { "originUrl", I18N_NOOP2_NOSTRIP("@label", "Downloaded From") },
         { 0, 0, 0} // Mandatory last entry
     };
 
@@ -414,6 +415,9 @@ QString FileMetaDataProvider::group(const QString& label) const
         uriGrouper.insert( "duration", QLatin1String("4AudioA") );
         uriGrouper.insert( "sampleRate", QLatin1String("4AudioB") );
         uriGrouper.insert( "sampleCount", QLatin1String("4AudioC") );
+
+        // Miscellaneous Data
+        uriGrouper.insert( "originUrl", QLatin1String("5MiscA") );
     }
 
     const QString val = uriGrouper.value(label);

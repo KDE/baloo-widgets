@@ -75,6 +75,11 @@ void FileFetchJob::doStart()
             prop.insert("userComment", comment);
         }
 
+        const QString originUrl = md.originUrl().toDisplayString();
+        if (!originUrl.isEmpty()) {
+            prop.insert("originUrl", originUrl);
+        }
+
         m_data << prop;
     }
 

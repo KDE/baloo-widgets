@@ -41,7 +41,7 @@ MetadataFilter::~MetadataFilter()
 
 void MetadataFilter::initMetaInformationSettings()
 {
-    const int currentVersion = 5; // increase version, if the blacklist of disabled
+    const int currentVersion = 6; // increase version, if the blacklist of disabled
     // properties should be updated
 
     KConfig config("baloofileinformationrc", KConfig::NoGlobals);
@@ -86,6 +86,7 @@ void MetadataFilter::initMetaInformationSettings()
             "kfileitem#owner",
             "kfileitem#permissions",
             "kfileitem#modified",
+            "originUrl",
             0 // mandatory last entry
         };
 
