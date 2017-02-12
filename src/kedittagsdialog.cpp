@@ -1,6 +1,7 @@
 /*****************************************************************************
  * Copyright (C) 2009 by Peter Penz <peter.penz@gmx.at>                      *
  * Copyright (C) 2014 by Vishesh Handa <me@vhanda.in>                        *
+ * Copyright (C) 2017 by James Smith <smithjd15@gmail.com                    *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -24,7 +25,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
+#include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QPushButton>
 #include <QtCore/QTimer>
 #include <QtWidgets/QVBoxLayout>
@@ -39,9 +40,7 @@ KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
                                  QWidget *parent) :
     QDialog(parent),
     m_tags(tags),
-    m_tagsList(0),
-    m_newTagItem(0),
-    m_autoCheckedItem(0),
+    m_tagTree(0),
     m_newTagEdit(0)
 {
     const QString captionText = (tags.count() > 0) ?
@@ -63,28 +62,37 @@ KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
                                      "Configure which tags should "
                                      "be applied."), this);
 
-    m_tagsList = new QListWidget();
-    m_tagsList->setSortingEnabled(true);
-    m_tagsList->setSelectionMode(QAbstractItemView::NoSelection);
+    m_tagTree = new QTreeWidget();
+    m_tagTree->setSortingEnabled(true);
+    m_tagTree->setSelectionMode(QAbstractItemView::NoSelection);
+    m_tagTree->setHeaderHidden(true);
 
     QLabel* newTagLabel = new QLabel(i18nc("@label", "Create new tag:"));
     m_newTagEdit = new QLineEdit(this);
     m_newTagEdit->setClearButtonEnabled(true);
     m_newTagEdit->setFocus();
     connect(m_newTagEdit, &QLineEdit::textEdited, this, &KEditTagsDialog::slotTextEdited);
+    connect(m_tagTree, &QTreeWidget::itemActivated, this, &KEditTagsDialog::slotItemActivated);
 
     QHBoxLayout* newTagLayout = new QHBoxLayout();
     newTagLayout->addWidget(newTagLabel);
     newTagLayout->addWidget(m_newTagEdit, 1);
 
     topLayout->addWidget(label);
-    topLayout->addWidget(m_tagsList);
+    topLayout->addWidget(m_tagTree);
     topLayout->addLayout(newTagLayout);
     topLayout->addWidget(buttonBox);
 
     resize(sizeHint());
 
-    loadTags();
+    Baloo::TagListJob* job = new Baloo::TagListJob();
+    connect(job, &Baloo::TagListJob::finished, [this] (KJob* job) {
+        Baloo::TagListJob* tjob = static_cast<Baloo::TagListJob*>(job);
+        m_allTags = tjob->tags();
+        loadTagWidget();
+    });
+
+    job->start();
 }
 
 KEditTagsDialog::~KEditTagsDialog()
@@ -100,15 +108,22 @@ void KEditTagsDialog::slotAcceptedButtonClicked()
 {
     m_tags.clear();
 
-    const int count = m_tagsList->count();
-    for (int i = 0; i < count; ++i) {
-        QListWidgetItem* item = m_tagsList->item(i);
-        if (item->checkState() == Qt::Checked) {
-            m_tags << item->text();
+    for (const QTreeWidgetItem* item : m_allTagTreeItems.values()) {
+        if (item->checkState(0) == Qt::Checked) {
+            m_tags << qvariant_cast<QString>(item->data(0, Qt::UserRole));
         }
     }
 
     accept();
+}
+
+void KEditTagsDialog::slotItemActivated(const QTreeWidgetItem* item, int column)
+{
+    Q_UNUSED(column)
+
+    const QString tag = qvariant_cast<QString>(item->data(0, Qt::UserRole));
+    m_newTagEdit->setText(tag + QLatin1Char('/'));
+    m_newTagEdit->setFocus();
 }
 
 void KEditTagsDialog::slotTextEdited(const QString& text)
@@ -116,78 +131,86 @@ void KEditTagsDialog::slotTextEdited(const QString& text)
     // Remove unnecessary spaces from a new tag is
     // mandatory, as the user cannot see the difference
     // between a tag "Test" and "Test ".
-    const QString tagText = text.simplified();
-    if (tagText.isEmpty()) {
-        removeNewTagItem();
+    QString tagText = text.simplified();
+    while (tagText.endsWith("//")) {
+        tagText.chop(1);
+        m_newTagEdit->setText(tagText);
         return;
     }
 
-    // Check whether the new tag already exists. If this
-    // is the case, remove the new tag item.
-    const int count = m_tagsList->count();
-    for (int i = 0; i < count; ++i) {
-        QListWidgetItem* item = m_tagsList->item(i);
-        const bool remove = (item->text() == tagText) &&
-                            ((m_newTagItem == 0) || (m_newTagItem != item));
-        if (remove) {
-            m_tagsList->scrollToItem(item);
-            if (item->checkState() == Qt::Unchecked) {
-                item->setCheckState(Qt::Checked);
-                // Remember the checked item, so that it can be unchecked
-                // again if the user changes the tag-text.
-                m_autoCheckedItem = item;
+    // Remove all tree items related to the previous new tag
+    const QStringList splitTag = m_newTag.split(QLatin1Char('/'), QString::SkipEmptyParts);
+    for (int i = splitTag.size() - 1; i >= 0 && i < splitTag.size(); --i) {
+        QString itemTag = m_newTag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
+        QTreeWidgetItem* item = m_allTagTreeItems.value(itemTag);
+        if (!m_allTags.contains(m_newTag) && (item->childCount() == 0)) {
+            if (i != 0) {
+                QTreeWidgetItem* parentItem = item->parent();
+                parentItem->removeChild(item);
+            } else {
+                const int row = m_tagTree->indexOfTopLevelItem(item);
+                m_tagTree->takeTopLevelItem(row);
             }
-            removeNewTagItem();
-            return;
+            m_allTagTreeItems.remove(itemTag);
+        }
+        item->setExpanded(false);
+        if (!m_tags.contains(itemTag)) {
+            item->setCheckState(0, Qt::Unchecked);
         }
     }
 
-    // There is no tag in the list with the the passed text.
-    if (m_newTagItem == 0) {
-        m_newTagItem = new QListWidgetItem(tagText, m_tagsList);
+    if (!tagText.isEmpty()) {
+        m_newTag = tagText;
+        modifyTagWidget(tagText);
+        m_tagTree->sortItems(0, Qt::SortOrder::AscendingOrder);
     } else {
-        m_newTagItem->setText(tagText);
-    }
-
-    if (m_autoCheckedItem != 0) {
-        m_autoCheckedItem->setCheckState(Qt::Unchecked);
-        m_autoCheckedItem = 0;
-    }
-
-    m_newTagItem->setData(Qt::UserRole, QUrl());
-    m_newTagItem->setCheckState(Qt::Checked);
-    m_tagsList->scrollToItem(m_newTagItem);
-}
-
-void KEditTagsDialog::loadTags()
-{
-    Baloo::TagListJob* job = new Baloo::TagListJob();
-    connect(job, &Baloo::TagListJob::finished, this, &KEditTagsDialog::slotTagsLoaded);
-
-    job->start();
-}
-
-void KEditTagsDialog::slotTagsLoaded(KJob* job)
-{
-    Baloo::TagListJob* tjob = static_cast<Baloo::TagListJob*>(job);
-
-    m_allTags = tjob->tags();
-    qSort(m_allTags.begin(), m_allTags.end());
-
-    foreach (const QString &tag, m_allTags) {
-        QListWidgetItem* item = new QListWidgetItem(tag, m_tagsList);
-
-        const bool check = m_tags.contains(tag);
-        item->setCheckState(check ? Qt::Checked : Qt::Unchecked);
+        m_newTag.clear();
+        m_allTagTreeItems.clear();
+        m_tagTree->clear();
+        loadTagWidget();
     }
 }
 
-void KEditTagsDialog::removeNewTagItem()
+void KEditTagsDialog::loadTagWidget()
 {
-    if (m_newTagItem != 0) {
-        const int row = m_tagsList->row(m_newTagItem);
-        m_tagsList->takeItem(row);
-        delete m_newTagItem;
-        m_newTagItem = 0;
+    for (const QString &tag : m_allTags) {
+        modifyTagWidget(tag);
+    }
+
+    m_tagTree->sortItems(0, Qt::SortOrder::AscendingOrder);
+}
+
+void KEditTagsDialog::modifyTagWidget(const QString &tag)
+{
+    const QStringList splitTag = tag.split(QLatin1Char('/'), QString::SkipEmptyParts);
+
+    for (int i = 0; i < splitTag.size(); ++i) {
+        QTreeWidgetItem* item = new QTreeWidgetItem();
+        QString itemTag = tag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
+        if (!m_allTagTreeItems.contains(itemTag)) {
+            item->setText(0, splitTag.at(i));
+            item->setIcon(0, QIcon::fromTheme(QLatin1String("tag")));
+            item->setData(0, Qt::UserRole, itemTag);
+            m_allTagTreeItems.insert(itemTag, item);
+            QString parentTag = tag.section(QLatin1Char('/'), 0, (i - 1), QString::SectionSkipEmpty);
+            QTreeWidgetItem* parentItem = m_allTagTreeItems.value(parentTag);
+            if (i != 0) {
+                parentItem->addChild(item);
+            } else {
+                m_tagTree->addTopLevelItem(item);
+            }
+        } else {
+            item = m_allTagTreeItems.value(itemTag);
+        }
+        if (!m_allTags.contains(tag)) {
+            m_tagTree->scrollToItem(item, QAbstractItemView::PositionAtCenter);
+        }
+        if (((item->childCount() != 0) && m_tags.contains(tag)) || (m_newTag == tag)) {
+            item->setExpanded(true);
+        } else if (item->parent() && m_tags.contains(tag)) {
+            item->parent()->setExpanded(true);
+        }
+        const bool check = (m_tags.contains(itemTag) || (m_newTag == itemTag));
+        item->setCheckState(0, check ? Qt::Checked : Qt::Unchecked);
     }
 }

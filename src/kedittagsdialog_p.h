@@ -22,8 +22,8 @@
 
 class QLineEdit;
 class KJob;
-class QListWidget;
-class QListWidgetItem;
+class QTreeWidget;
+class QTreeWidgetItem;
 class QPushButton;
 class QTimer;
 
@@ -52,19 +52,19 @@ private Q_SLOTS:
     void slotAcceptedButtonClicked();
 
 
-    void slotTagsLoaded(KJob* job);
+    void slotItemActivated(const QTreeWidgetItem* item, int column);
 
 private:
-    void loadTags();
-    void removeNewTagItem();
+    void loadTagWidget();
+    void modifyTagWidget(const QString& tag);
 
 private:
+    QHash<QString, QTreeWidgetItem*> m_allTagTreeItems;
     QStringList m_tags;
     QStringList m_allTags;
+    QString m_newTag;
 
-    QListWidget* m_tagsList;
-    QListWidgetItem* m_newTagItem;
-    QListWidgetItem* m_autoCheckedItem;
+    QTreeWidget* m_tagTree;
     QLineEdit* m_newTagEdit;
 };
 
