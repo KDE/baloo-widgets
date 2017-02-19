@@ -1,7 +1,7 @@
 /*****************************************************************************
  * Copyright (C) 2009 by Peter Penz <peter.penz@gmx.at>                      *
  * Copyright (C) 2014 by Vishesh Handa <me@vhanda.in>                        *
- * Copyright (C) 2017 by James Smith <smithjd15@gmail.com                    *
+ * Copyright (C) 2017 by James D. Smith <smithjd15@gmail.com                    *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
