@@ -8,7 +8,6 @@ find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Core Widgets Test)
 find_package(KF5 5.19 REQUIRED COMPONENTS Config KIO I18n FileMetaData Baloo)
 
 include(ECMSetupVersion)
-include(ECMAddTests)
 include(ECMInstallIcons)
 
 include(GenerateExportHeader)
@@ -17,6 +16,7 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMGenerateHeaders)
+include(ECMAddTests)
 
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 #TODO remove these
