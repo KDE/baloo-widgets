@@ -28,6 +28,7 @@
 #include <KFileMetaData/UserMetaData>
 
 #include <QtWidgets/QLabel>
+#include <QtCore/QCollator>
 #include <QtCore/QTime>
 #include <QtCore/QUrl>
 #include <QtCore/QLocale>
@@ -108,6 +109,9 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
     }
     else if (prop == QLatin1String("tags")) {
         QStringList tags = value.toStringList();
+        QCollator coll;
+        coll.setNumericMode(true);
+        std::sort(tags.begin(), tags.end(), [&](const QString& s1, const QString& s2){ return coll.compare(s1, s2) < 0; });
         widget = createTagWidget( tags, parent );
     }
     else {
