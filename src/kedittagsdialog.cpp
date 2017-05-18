@@ -143,6 +143,7 @@ void KEditTagsDialog::slotTextEdited(const QString& text)
     for (int i = splitTag.size() - 1; i >= 0 && i < splitTag.size(); --i) {
         QString itemTag = m_newTag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
         QTreeWidgetItem* item = m_allTagTreeItems.value(itemTag);
+
         if (!m_allTags.contains(m_newTag) && (item->childCount() == 0)) {
             if (i != 0) {
                 QTreeWidgetItem* parentItem = item->parent();
@@ -151,12 +152,15 @@ void KEditTagsDialog::slotTextEdited(const QString& text)
                 const int row = m_tagTree->indexOfTopLevelItem(item);
                 m_tagTree->takeTopLevelItem(row);
             }
+
             m_allTagTreeItems.remove(itemTag);
         }
-        item->setExpanded(false);
+
         if (!m_tags.contains(itemTag)) {
             item->setCheckState(0, Qt::Unchecked);
         }
+
+        item->setExpanded(false);
     }
 
     if (!tagText.isEmpty()) {
@@ -173,6 +177,10 @@ void KEditTagsDialog::slotTextEdited(const QString& text)
 
 void KEditTagsDialog::loadTagWidget()
 {
+    for (const QString &tag : m_tags) {
+        modifyTagWidget(tag);
+    }
+
     for (const QString &tag : m_allTags) {
         modifyTagWidget(tag);
     }
@@ -183,10 +191,10 @@ void KEditTagsDialog::loadTagWidget()
 void KEditTagsDialog::modifyTagWidget(const QString &tag)
 {
     const QStringList splitTag = tag.split(QLatin1Char('/'), QString::SkipEmptyParts);
-
     for (int i = 0; i < splitTag.size(); ++i) {
         QTreeWidgetItem* item = new QTreeWidgetItem();
         QString itemTag = tag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
+
         if (!m_allTagTreeItems.contains(itemTag)) {
             item->setText(0, splitTag.at(i));
             item->setIcon(0, QIcon::fromTheme(QLatin1String("tag")));
@@ -194,6 +202,7 @@ void KEditTagsDialog::modifyTagWidget(const QString &tag)
             m_allTagTreeItems.insert(itemTag, item);
             QString parentTag = tag.section(QLatin1Char('/'), 0, (i - 1), QString::SectionSkipEmpty);
             QTreeWidgetItem* parentItem = m_allTagTreeItems.value(parentTag);
+
             if (i != 0) {
                 parentItem->addChild(item);
             } else {
@@ -202,14 +211,17 @@ void KEditTagsDialog::modifyTagWidget(const QString &tag)
         } else {
             item = m_allTagTreeItems.value(itemTag);
         }
+
         if (!m_allTags.contains(tag)) {
             m_tagTree->scrollToItem(item, QAbstractItemView::PositionAtCenter);
         }
+
         if (((item->childCount() != 0) && m_tags.contains(tag)) || (m_newTag == tag)) {
             item->setExpanded(true);
         } else if (item->parent() && m_tags.contains(tag)) {
             item->parent()->setExpanded(true);
         }
+
         const bool check = (m_tags.contains(itemTag) || (m_newTag == itemTag));
         item->setCheckState(0, check ? Qt::Checked : Qt::Unchecked);
     }
