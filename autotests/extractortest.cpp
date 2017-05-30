@@ -51,9 +51,13 @@ void ExtractorTest::test()
     QDataStream in(&bytearray, QIODevice::ReadOnly);
     in >> data;
 
-    QCOMPARE(data.size(), 2);
     QCOMPARE(data.value(QLatin1String("channels")).toInt(), 2);
     QCOMPARE(data.value(QLatin1String("sampleRate")).toInt(), 44100);
+    if (data.size() == 3) {
+        QCOMPARE(data.value(QLatin1String("bitRate")).toInt(), 255000);
+    } else {
+        QCOMPARE(data.size(), 2);
+    }
 }
 
 QTEST_MAIN(ExtractorTest)
