@@ -34,7 +34,7 @@ public:
     IndexedDataRetriever(const QString& fileUrl, QObject* parent = 0);
     virtual ~IndexedDataRetriever();
 
-    virtual void start();
+    virtual void start() Q_DECL_OVERRIDE;
 
     QVariantMap data() const;
 

@@ -210,7 +210,7 @@ class ValueWidget : public QLabel
 {
 public:
     explicit ValueWidget(QWidget* parent = 0);
-    virtual QSize sizeHint() const;
+    virtual QSize sizeHint() const Q_DECL_OVERRIDE;
 };
 
 ValueWidget::ValueWidget(QWidget* parent) :

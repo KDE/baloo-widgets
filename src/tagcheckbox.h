@@ -45,8 +45,8 @@ Q_SIGNALS:
     void tagClicked(const QString& tag);
 
 protected:
-    void leaveEvent(QEvent* event );
-    bool eventFilter(QObject* watched, QEvent* event);
+    void leaveEvent(QEvent* event ) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject* watched, QEvent* event) Q_DECL_OVERRIDE;
 
 private:
     QRect tagRect() const;

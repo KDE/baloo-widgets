@@ -59,7 +59,7 @@ public:
     bool isReadOnly() const;
 
     /** @see QWidget::sizeHint() */
-    virtual QSize sizeHint() const;
+    virtual QSize sizeHint() const Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     /**

@@ -34,7 +34,7 @@ public:
 
     QList<QVariantMap> data() const;
 
-    virtual void start();
+    virtual void start() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void doStart();
