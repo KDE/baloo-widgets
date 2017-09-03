@@ -64,7 +64,7 @@ void KCommentWidget::setText(const QString& comment)
         if (m_readOnly) {
             text = "-";
         } else {
-            text = "<a href=\"addComment\">" + i18nc("@label", "Add Comment...") + "</a>";
+            text = "<a href=\"addComment\">" + i18nc("@label", "Add...") + "</a>";
         }
     } else {
         if (m_readOnly) {
