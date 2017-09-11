@@ -30,7 +30,7 @@
 #include <QDebug>
 
 // Required includes for subDirectoriesCount():
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN
     #include <QtCore/QDir>
 #else
     #include <dirent.h>
@@ -449,7 +449,7 @@ QVariantMap FileMetaDataProvider::data() const
 
 int FileMetaDataProvider::subDirectoriesCount(const QString& path)
 {
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN
     QDir dir(path);
     return dir.entryList(QDir::AllEntries|QDir::NoDotAndDotDot|QDir::System).count();
 #else
