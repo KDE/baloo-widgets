@@ -301,7 +301,7 @@ void WidgetFactory::slotTagClicked(const QString& tag)
 {
     QUrl url;
     url.setScheme("tags");
-    url.setPath(tag);
+    url.setPath(tag + QLatin1Char('/'));
 
     emit urlActivated(url);
 }
