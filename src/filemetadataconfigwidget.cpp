@@ -132,7 +132,7 @@ void FileMetaDataConfigWidget::Private::slotLoadingFinished()
     // Always show these 3
     data.remove("rating");
     data.remove("tags");
-    data.remove("comment");
+    data.remove("userComment");
 
     QVariantMap::const_iterator it = data.constBegin();
     while (it != data.constEnd()) {
@@ -142,7 +142,7 @@ void FileMetaDataConfigWidget::Private::slotLoadingFinished()
 
     addItem("rating");
     addItem("tags");
-    addItem("comment");
+    addItem("userComment");
 }
 
 FileMetaDataConfigWidget::FileMetaDataConfigWidget(QWidget* parent) :
