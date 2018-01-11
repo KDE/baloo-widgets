@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Service
+Icon=baloo
+Name=File Meta Data Properties Page
+Comment=Properties page showing meta data of files, such as image dimensions, artist information, and others
+X-KDE-Library=baloofilepropertiesplugin
+X-KDE-Protocol=file
+X-KDE-ServiceTypes=KPropertiesDialog/Plugin
+MimeType=inode/directory;application/octet-stream
