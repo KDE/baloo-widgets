@@ -123,6 +123,8 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
             valueString = form.formatDuration(value.toInt() * 1000);
         } else if (prop == QStringLiteral("bitRate")) {
             valueString = i18nc("@label bitrate (per second)", "%1/s", form.formatByteSize(value.toInt(), 1, KFormat::MetricBinaryDialect));
+        } else if (prop == QLatin1String("releaseYear")) {
+            valueString = value.toString();
         } else if (prop == QLatin1String("originUrl")) {
             if (m_noLinks) {
                 valueString = value.toString();
