@@ -31,26 +31,28 @@
 
 // Required includes for subDirectoriesCount():
 #ifdef Q_OS_WIN
-    #include <QtCore/QDir>
+    #include <QDir>
 #else
     #include <dirent.h>
-    #include <QtCore/QFile>
+    #include <QFile>
 #endif
 
 using namespace Baloo;
 
 namespace {
     QVariant intersect(const QVariant& v1, const QVariant& v2) {
-        if( !v1.isValid() || !v2.isValid() )
+        if (!v1.isValid() || !v2.isValid()) {
             return QVariant();
+        }
 
         // List and String
         if (v1.type() == QVariant::StringList && v2.type() == QVariant::String) {
             QStringList list = v1.toStringList();
             QString str = v2.toString();
 
-            if (!list.contains(str))
+            if (!list.contains(str)) {
                 list << str;
+            }
 
             return QVariant(list);
         }
@@ -60,8 +62,9 @@ namespace {
             QStringList list = v2.toStringList();
             QString str = v1.toString();
 
-            if (!list.contains(str))
+            if (!list.contains(str)) {
                 list << str;
+            }
 
             return QVariant(list);
         }
@@ -74,8 +77,9 @@ namespace {
             return QVariant(s1.intersect(s2).toList());
         }
 
-        if (v1 == v2)
+        if (v1 == v2) {
             return v1;
+        }
 
         return QVariant();
     }
@@ -98,28 +102,29 @@ namespace {
 
         return v;
     }
+    
 }
 
 void FileMetaDataProvider::totalPropertyAndInsert(const QString& prop,
                                                   const QList<QVariantMap>& resources,
                                                   QSet<QString>& allProperties)
 {
-    if( allProperties.contains( prop ) ) {
+    if (allProperties.contains(prop)) {
         int total = 0;
         foreach (const QVariantMap& map, resources) {
-            QVariantMap::const_iterator it = map.constFind( prop );
-            if( it == map.constEnd() ) {
+            QVariantMap::const_iterator it = map.constFind(prop);
+            if (it == map.constEnd()) {
                 total = 0;
                 break;
-            }
-            else {
+            } else {
                 total += it.value().toInt();
             }
         }
 
-        if( total )
-            m_data.insert( prop, QVariant(total) );
-        allProperties.remove( prop );
+        if (total) {
+            m_data.insert (prop, QVariant(total));
+        }
+        allProperties.remove(prop);
     }
 }
 
@@ -176,7 +181,6 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob* job)
     }
 
     insertEditableData();
-
     emit loadingFinished();
 }
 
@@ -212,8 +216,9 @@ void FileMetaDataProvider::insertBasicData()
         m_data.insert("kfileitem#modified", format.formatRelativeDateTime(item.time(KFileItem::ModificationTime), QLocale::LongFormat) );
         m_data.insert("kfileitem#owner", item.user());
         m_data.insert("kfileitem#permissions", item.permissionsString());
-    }
-    else if (m_fileItems.count() > 1) {
+    
+        
+    } else if (m_fileItems.count() > 1) {
         // If all directories
         bool allDirectories = true;
         for (const KFileItem& item : m_fileItems) {
@@ -230,8 +235,7 @@ void FileMetaDataProvider::insertBasicData()
                 const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
                 m_data.insert("kfileitem#totalSize", itemCountString);
             }
-        }
-        else {
+        } else {
             // Calculate the size of all items
             quint64 totalSize = 0;
             for (const KFileItem& item : m_fileItems) {
@@ -247,15 +251,17 @@ void FileMetaDataProvider::insertBasicData()
 void FileMetaDataProvider::insertEditableData()
 {
     if (!m_readOnly) {
-        if (!m_data.contains("tags"))
+        if (!m_data.contains("tags")) {
             m_data.insert("tags", QVariant());
-        if (!m_data.contains("rating"))
+        }
+        if (!m_data.contains("rating")) {
             m_data.insert("rating", 0);
-        if (!m_data.contains("userComment") )
+        }
+        if (!m_data.contains("userComment")) {
             m_data.insert("userComment", QVariant());
+        }
     }
 }
-
 
 FileMetaDataProvider::FileMetaDataProvider(QObject* parent)
     : QObject(parent)
@@ -304,26 +310,24 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
             insertBasicData();
             insertEditableData();
             emit loadingFinished();
-        }
-        else {
+            
+        } else {
             FileFetchJob* job = new FileFetchJob(QStringList() << filePath, this);
             connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
             job->start();
         }
-    }
-    //
-    // Multiple Files -
-    //   * Not Indexed
-    //   * Indexed
-    // If Multiple Files are not indexed, we do not extract data from the files as it would
-    // be too expensive.
-    //
-    else {
+    } else {
+        // Multiple Files -
+        //   * Not Indexed
+        //   * Indexed
         QStringList urls;
         Q_FOREACH (const KFileItem& item, items) {
             const QUrl url = item.targetUrl();
-            if (url.isLocalFile())
+            // Only extract data from indexed files, 
+            // it would be too expensive otherwise.
+            if (url.isLocalFile()) {
                 urls << url.toLocalFile();
+            }
         }
 
         if (urls.isEmpty()) {
@@ -386,7 +390,7 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
 QString FileMetaDataProvider::group(const QString& label) const
 {
     static QHash<QString, QString> uriGrouper;
-    if( uriGrouper.isEmpty() ) {
+    if (uriGrouper.isEmpty()) {
         // KFileItem Data
         uriGrouper.insert(QLatin1String("kfileitem#type"), QLatin1String("0FileItemA"));
         uriGrouper.insert(QLatin1String("kfileitem#size"), QLatin1String("0FileItemB"));
@@ -405,24 +409,25 @@ QString FileMetaDataProvider::group(const QString& label) const
         uriGrouper.insert(QLatin1String("height"), QLatin1String("2SizeB"));
 
         // Music Data
-        uriGrouper.insert( "title", QLatin1String("3MusicA") );
-        uriGrouper.insert( "artist", QLatin1String("3MusicB") );
-        uriGrouper.insert( "album", QLatin1String("3MusicC") );
-        uriGrouper.insert( "genre", QLatin1String("3MusicD") );
-        uriGrouper.insert( "trackNumber", QLatin1String("3MusicE") );
+        uriGrouper.insert("title", QLatin1String("3MusicA"));
+        uriGrouper.insert("artist", QLatin1String("3MusicB"));
+        uriGrouper.insert("album", QLatin1String("3MusicC"));
+        uriGrouper.insert("genre", QLatin1String("3MusicD"));
+        uriGrouper.insert("trackNumber", QLatin1String("3MusicE"));
 
         // Audio Data
-        uriGrouper.insert( "duration", QLatin1String("4AudioA") );
-        uriGrouper.insert( "sampleRate", QLatin1String("4AudioB") );
-        uriGrouper.insert( "sampleCount", QLatin1String("4AudioC") );
+        uriGrouper.insert("duration", QLatin1String("4AudioA"));
+        uriGrouper.insert("sampleRate", QLatin1String("4AudioB"));
+        uriGrouper.insert("sampleCount", QLatin1String("4AudioC"));
 
         // Miscellaneous Data
-        uriGrouper.insert( "originUrl", QLatin1String("5MiscA") );
+        uriGrouper.insert("originUrl", QLatin1String("5MiscA"));
     }
 
     const QString val = uriGrouper.value(label);
-    if (val.isEmpty())
+    if (val.isEmpty()) {
         return "lastGroup";
+    }
     return val;
 }
 
