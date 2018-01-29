@@ -103,6 +103,7 @@ namespace {
         return v;
     }
     
+    
 }
 
 void FileMetaDataProvider::totalPropertyAndInsert(const QString& prop,
@@ -132,52 +133,14 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob* job)
 {
     FileFetchJob* fetchJob = static_cast<FileFetchJob*>(job);
     QList<QVariantMap> files = fetchJob->data();
-
-    if (files.size() == 1) {
+    
+    Q_ASSERT(!files.isEmpty());
+    
+    if (files.size() > 1) {
+        insertCommonData(files);
+    } else {
         m_data = files.first();
-        insertBasicData();
-    }
-    else {
-        //
-        // Only report the stuff that is common to all the files
-        //
-        QSet<QString> allProperties;
-        QList<QVariantMap> propertyList;
-        foreach (const QVariantMap& fileData, files) {
-            propertyList << fileData;
-            allProperties.unite(fileData.uniqueKeys().toSet());
-        }
-
-        // Special handling for certain properties
-        totalPropertyAndInsert("duration", propertyList, allProperties);
-        totalPropertyAndInsert("characterCount", propertyList, allProperties);
-        totalPropertyAndInsert("wordCount", propertyList, allProperties);
-        totalPropertyAndInsert("lineCount", propertyList, allProperties);
-
-        foreach (const QString& propUri, allProperties) {
-            foreach (const QVariantMap& map, propertyList) {
-                QVariantMap::const_iterator it = map.find( propUri );
-                if( it == map.constEnd() ) {
-                    m_data.remove( propUri );
-                    break;
-                }
-                else {
-                    QVariantMap::iterator dit = m_data.find( it.key() );
-                    if( dit == m_data.end() ) {
-                        m_data.insert( propUri, it.value() );
-                    }
-                    else {
-                        QVariant finalValue = intersect( it.value(), dit.value() );
-                        if( finalValue.isValid() )
-                            m_data[propUri] = finalValue;
-                        else {
-                            m_data.remove( propUri );
-                            break;
-                        }
-                    }
-                }
-            }
-        }
+        insertSingleFileBasicData();
     }
 
     insertEditableData();
@@ -192,59 +155,78 @@ void FileMetaDataProvider::slotLoadingFinished(KJob* job)
     emit loadingFinished();
 }
 
+void FileMetaDataProvider::insertSingleFileBasicData()
+{
+    // TODO: Handle case if remote URLs are used properly. isDir() does
+    // not work, the modification date needs also to be adjusted...
+    Q_ASSERT(m_fileItems.count() <= 1);
+    if (m_fileItems.count() == 1) {
+      KFormat format;
+      const KFileItem& item = m_fileItems.first();
+
+      if (item.isDir()) {
+          const int count = subDirectoriesCount(item.url().path());
+          if (count == -1) {
+              m_data.insert("kfileitem#size", i18nc("unknown file size", "Unknown"));
+          } else {
+              const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
+              m_data.insert("kfileitem#size", itemCountString);
+          }
+      } else {
+          m_data.insert("kfileitem#size", format.formatByteSize(item.size()));
+      }
+
+      m_data.insert("kfileitem#type", item.mimeComment());
+      m_data.insert("kfileitem#modified", 
+                    format.formatRelativeDateTime(item.time(KFileItem::ModificationTime), QLocale::LongFormat));
+      m_data.insert("kfileitem#owner", item.user());
+      m_data.insert("kfileitem#permissions", item.permissionsString());
+    }
+
+}     
+
+void FileMetaDataProvider::insertFilesListBasicData()
+{
+  
+    KFormat format;
+    // If all directories
+    Q_ASSERT(m_fileItems.count() > 1);
+    bool allDirectories = true;
+    for (const KFileItem& item : m_fileItems) {
+        allDirectories &= item.isDir();
+        if (!allDirectories) {
+            break;
+        }
+    }
+
+    if (allDirectories) {
+        int count = 0;
+        for (const KFileItem& item : m_fileItems) {
+            count += subDirectoriesCount(item.url().path());
+        }
+
+        if (count) {
+            const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
+            m_data.insert("kfileitem#totalSize", itemCountString);
+        }
+    } else {
+        // Calculate the size of all items
+        quint64 totalSize = 0;
+        for (const KFileItem& item : m_fileItems) {
+            if (!item.isDir() && !item.isLink()) {
+                totalSize += item.size();
+            }
+        }
+        m_data.insert("kfileitem#totalSize", format.formatByteSize(totalSize));
+    }
+}
+
 void FileMetaDataProvider::insertBasicData()
 {
-    KFormat format;
-    if (m_fileItems.count() == 1) {
-        // TODO: Handle case if remote URLs are used properly. isDir() does
-        // not work, the modification date needs also to be adjusted...
-        const KFileItem& item = m_fileItems.first();
-
-        if (item.isDir()) {
-            const int count = subDirectoriesCount(item.url().path());
-            if (count == -1) {
-                m_data.insert("kfileitem#size", i18nc("unknown file size", "Unknown"));
-            } else {
-                const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
-                m_data.insert("kfileitem#size", itemCountString);
-            }
-        } else {
-            m_data.insert("kfileitem#size", format.formatByteSize(item.size()));
-        }
-
-        m_data.insert("kfileitem#type", item.mimeComment());
-        m_data.insert("kfileitem#modified", format.formatRelativeDateTime(item.time(KFileItem::ModificationTime), QLocale::LongFormat) );
-        m_data.insert("kfileitem#owner", item.user());
-        m_data.insert("kfileitem#permissions", item.permissionsString());
-    
-        
-    } else if (m_fileItems.count() > 1) {
-        // If all directories
-        bool allDirectories = true;
-        for (const KFileItem& item : m_fileItems) {
-            allDirectories &= item.isDir();
-        }
-
-        if (allDirectories) {
-            int count = 0;
-            for (const KFileItem& item : m_fileItems) {
-                count += subDirectoriesCount(item.url().path());
-            }
-
-            if (count) {
-                const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
-                m_data.insert("kfileitem#totalSize", itemCountString);
-            }
-        } else {
-            // Calculate the size of all items
-            quint64 totalSize = 0;
-            for (const KFileItem& item : m_fileItems) {
-                if (!item.isDir() && !item.isLink()) {
-                    totalSize += item.size();
-                }
-            }
-            m_data.insert("kfileitem#totalSize", format.formatByteSize(totalSize));
-        }
+    if (m_fileItems.count() > 1) {
+      insertFilesListBasicData();
+    } else {
+      insertSingleFileBasicData();
     }
 }
 
@@ -263,6 +245,48 @@ void FileMetaDataProvider::insertEditableData()
     }
 }
 
+void FileMetaDataProvider::insertCommonData(const QList<QVariantMap>& files)
+{
+    //
+    // Only report the stuff that is common to all the files
+    //
+    QSet<QString> allProperties;
+    QList<QVariantMap> propertyList;
+    foreach (const QVariantMap& fileData, files) {
+        propertyList << fileData;
+        allProperties.unite(fileData.uniqueKeys().toSet());
+    }
+
+    // Special handling for certain properties
+    totalPropertyAndInsert("duration", propertyList, allProperties);
+    totalPropertyAndInsert("characterCount", propertyList, allProperties);
+    totalPropertyAndInsert("wordCount", propertyList, allProperties);
+    totalPropertyAndInsert("lineCount", propertyList, allProperties);
+
+    foreach (const QString& propUri, allProperties) {
+        foreach (const QVariantMap& map, propertyList) {
+            QVariantMap::const_iterator it = map.find(propUri);
+            if (it == map.constEnd()) {
+                m_data.remove(propUri);
+                break;
+            } 
+                
+            QVariantMap::iterator dit = m_data.find(it.key());
+            if (dit == m_data.end()) {
+                m_data.insert(propUri, it.value());
+            } else {
+                QVariant finalValue = intersect(it.value(), dit.value());
+                if (finalValue.isValid()) {
+                    m_data[propUri] = finalValue;
+                } else {
+                    m_data.remove(propUri);
+                    break;
+                }
+            }
+        }
+    }
+}
+
 FileMetaDataProvider::FileMetaDataProvider(QObject* parent)
     : QObject(parent)
     , m_readOnly(false)
@@ -274,6 +298,67 @@ FileMetaDataProvider::~FileMetaDataProvider()
 {
 }
 
+void FileMetaDataProvider::setFileItem()
+{
+    // There are 3 code paths -
+    // Remote file
+    // Single local file -
+    //   * Not Indexed
+    //   * Indexed
+    //
+    const QUrl url = m_fileItems.first().targetUrl();
+    if (!url.isLocalFile()) {
+        insertBasicData();
+        emit loadingFinished();
+        return;
+    }
+
+    // Not Indexed
+    const QString filePath = url.toLocalFile();
+    if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath)) {
+        m_realTimeIndexing = true;
+
+        IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
+        connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
+        ret->start();
+
+        insertBasicData();
+        insertEditableData();
+        emit loadingFinished();
+        
+    } else {
+        FileFetchJob* job = new FileFetchJob(QStringList() << filePath, this);
+        connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
+        job->start();
+    }
+}
+
+void FileMetaDataProvider::setFileItems()
+{
+    // Multiple Files -
+    //   * Not Indexed
+    //   * Indexed
+
+    QStringList urls;
+    // Only extract data from indexed files, 
+    // it would be too expensive otherwise.
+    Q_FOREACH (const KFileItem& item, m_fileItems) {
+        const QUrl url = item.targetUrl();
+        if (url.isLocalFile()) {
+            urls << url.toLocalFile();
+        }
+    }
+
+    if (!urls.isEmpty()) {
+        FileFetchJob* job = new FileFetchJob(urls, this);
+        connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
+        job->start();
+    }
+
+    insertBasicData();
+    emit loadingFinished();
+}
+
 void FileMetaDataProvider::setItems(const KFileItemList& items)
 {
     m_fileItems = items;
@@ -282,66 +367,10 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
 
     if (items.isEmpty()) {
         emit loadingFinished();
-        return;
-    }
-
-    // There are 4 code paths -
-    // Single File -
-    //   * Not Indexed
-    //   * Indexed
-    //
-    if (items.size() == 1)  {
-        const QUrl url = items.first().targetUrl();
-        if (!url.isLocalFile()) {
-            insertBasicData();
-            emit loadingFinished();
-            return;
-        }
-
-        // Not Indexed
-        const QString filePath = url.toLocalFile();
-        if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath)) {
-            m_realTimeIndexing = true;
-
-            IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
-            connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
-            ret->start();
-
-            insertBasicData();
-            insertEditableData();
-            emit loadingFinished();
-            
-        } else {
-            FileFetchJob* job = new FileFetchJob(QStringList() << filePath, this);
-            connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
-            job->start();
-        }
+    } else if (items.size() == 1)  {
+        setFileItem();
     } else {
-        // Multiple Files -
-        //   * Not Indexed
-        //   * Indexed
-        QStringList urls;
-        Q_FOREACH (const KFileItem& item, items) {
-            const QUrl url = item.targetUrl();
-            // Only extract data from indexed files, 
-            // it would be too expensive otherwise.
-            if (url.isLocalFile()) {
-                urls << url.toLocalFile();
-            }
-        }
-
-        if (urls.isEmpty()) {
-            insertBasicData();
-            emit loadingFinished();
-            return;
-        }
-
-        FileFetchJob* job = new FileFetchJob(urls, this);
-        connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
-        job->start();
-
-        insertBasicData();
-        emit loadingFinished();
+        setFileItems();
     }
 }
 

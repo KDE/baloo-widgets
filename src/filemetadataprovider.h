@@ -116,10 +116,29 @@ private Q_SLOTS:
     void slotLoadingFinished(KJob* job);
     void slotFileFetchFinished(KJob* job);
 
-    void insertBasicData();
-    void insertEditableData();
 
 private:
+    void insertBasicData();
+    void insertEditableData();
+    
+    void setFileItem();
+    void setFileItems();
+    
+    /**
+     * Insert intersection of common data of \p files
+     */
+    void insertCommonData(const QList<QVariantMap>& files);
+
+    /**
+     * Insert basic data of a single file
+     */
+    void insertSingleFileBasicData();
+    
+    /**
+     * Insert basic data of a list of files
+     */
+    void insertFilesListBasicData();
+    
     /**
      * Checks for the existance of \p uri in \p allProperties, and accordingly
      * inserts the total integer value of that property in m_data. On completion
@@ -127,7 +146,7 @@ private:
      */
     void totalPropertyAndInsert(const QString& prop, const QList<QVariantMap>& resources,
                                 QSet<QString>& allProperties);
-
+    
     /*
      * @return The number of subdirectories for the directory \a path.
      */
