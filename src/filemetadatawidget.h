@@ -80,6 +80,7 @@ private:
     Private* d;
 
     Q_PRIVATE_SLOT(d, void slotLoadingFinished())
+    Q_PRIVATE_SLOT(d, void slotDataAvailable())
     Q_PRIVATE_SLOT(d, void slotLinkActivated(QString))
     Q_PRIVATE_SLOT(d, void slotDataChangeStarted())
     Q_PRIVATE_SLOT(d, void slotDataChangeFinished())

@@ -105,17 +105,19 @@ public:
 
 Q_SIGNALS:
     /**
-     * Is emitted after the loading triggered by KFileMetaDataProvider::setItems()
-     * has been finished.
-     *
-     * Can be emitted multiple times to indicate data changes
+     * Emitted once per KFileMetaDataProvider::setItems() 
+     * after data loading is finished.
      */
     void loadingFinished();
+     /**
+     * Indicates data changes.
+     * Can be emitted zero or more times
+     */
+    void dataAvailable();
 
 private Q_SLOTS:
     void slotLoadingFinished(KJob* job);
     void slotFileFetchFinished(KJob* job);
-
 
 private:
     void insertBasicData();

@@ -103,7 +103,6 @@ namespace {
         return v;
     }
     
-    
 }
 
 void FileMetaDataProvider::totalPropertyAndInsert(const QString& prop,
@@ -318,13 +317,13 @@ void FileMetaDataProvider::setFileItem()
     if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath)) {
         m_realTimeIndexing = true;
 
+        insertBasicData();
+        insertEditableData();
+        emit dataAvailable();
+
         IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
         connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
         ret->start();
-
-        insertBasicData();
-        insertEditableData();
-        emit loadingFinished();
         
     } else {
         FileFetchJob* job = new FileFetchJob(QStringList() << filePath, this);
@@ -350,13 +349,16 @@ void FileMetaDataProvider::setFileItems()
     }
 
     if (!urls.isEmpty()) {
+        insertBasicData();
+        emit dataAvailable();
+        
         FileFetchJob* job = new FileFetchJob(urls, this);
         connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
         job->start();
+    } else {
+        insertBasicData();
+        emit loadingFinished();
     }
-
-    insertBasicData();
-    emit loadingFinished();
 }
 
 void FileMetaDataProvider::setItems(const KFileItemList& items)
@@ -479,7 +481,6 @@ QVariantMap FileMetaDataProvider::data() const
 {
     return m_data;
 }
-
 
 int FileMetaDataProvider::subDirectoriesCount(const QString& path)
 {
