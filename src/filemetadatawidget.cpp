@@ -63,7 +63,6 @@ public:
     void deleteRows();
 
     void slotLoadingFinished();
-    void slotDataAvailable();
     void slotLinkActivated(const QString& link);
     void slotDataChangeStarted();
     void slotDataChangeFinished();
@@ -95,7 +94,6 @@ FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
     // TODO: If KFileMetaDataProvider might get a public class in future KDE releases,
     // the following code should be moved into KFileMetaDataWidget::setModel():
     m_provider = new FileMetaDataProvider(q);
-    connect(m_provider, SIGNAL(dataAvailable()), q, SLOT(slotDataAvailable()));
     connect(m_provider, SIGNAL(loadingFinished()), q, SLOT(slotLoadingFinished()));
 }
 
@@ -114,12 +112,6 @@ void FileMetaDataWidget::Private::deleteRows()
 }
 
 void FileMetaDataWidget::Private::slotLoadingFinished()
-{
-    slotDataAvailable(); 
-    emit q->metaDataRequestFinished(m_provider->items());
-}
-
-void FileMetaDataWidget::Private::slotDataAvailable()
 {
     deleteRows();
 
@@ -169,6 +161,7 @@ void FileMetaDataWidget::Private::slotDataAvailable()
     }
 
     q->updateGeometry();
+    emit q->metaDataRequestFinished(m_provider->items());
    
 }
 

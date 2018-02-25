@@ -109,11 +109,6 @@ Q_SIGNALS:
      * after data loading is finished.
      */
     void loadingFinished();
-     /**
-     * Indicates data changes.
-     * Can be emitted zero or more times
-     */
-    void dataAvailable();
 
 private Q_SLOTS:
     void slotLoadingFinished(KJob* job);

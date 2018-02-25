@@ -319,7 +319,6 @@ void FileMetaDataProvider::setFileItem()
 
         insertBasicData();
         insertEditableData();
-        emit dataAvailable();
 
         IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
         connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
@@ -350,7 +349,6 @@ void FileMetaDataProvider::setFileItems()
 
     if (!urls.isEmpty()) {
         insertBasicData();
-        emit dataAvailable();
         
         FileFetchJob* job = new FileFetchJob(urls, this);
         connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
