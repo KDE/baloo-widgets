@@ -19,12 +19,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef FILEMETADATAWIDGETTEST_H
-#define FILEMETADATAWIDGETTEST_H
+#ifndef FILEMETADATAITEMCOUNTTEST_H
+#define FILEMETADATAITEMCOUNTTEST_H
 
 #include <filemetadatawidget.h>
 
-class FileMetadataWidgetTest : public QObject
+class FileMetadataItemCountTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -32,16 +32,10 @@ private Q_SLOTS:
     void init();
     void cleanup();
 
-    void shouldSignalOnceWithoutFile();
-    void shouldSignalOnceWithEmptyFile();
-    void shouldSignalOnceFile();
-    void shouldSignalOnceFiles();
-    void shouldShowProperties();
-    void shouldShowCommonProperties();
-
+    void testItemCount();
+    
 private:
-     Baloo::FileMetaDataWidget*  m_widget;
-     bool m_mayTestRating = false;
+    Baloo::FileMetaDataWidget*  m_widget;
 };
 
-#endif // FILEMETADATAWIDGETTEST_H
+#endif // FILEMETADATAITEMCOUNTTEST_H

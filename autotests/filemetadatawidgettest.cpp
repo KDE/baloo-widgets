@@ -23,16 +23,66 @@
 #include "filemetadatawidgettest.h"
 
 #include <QObject>
-#include <KFileItem>
 #include <QTest>
+#include <QMap>
+#include <QLabel>
 #include <QSignalSpy>
 #include <QMetaType>
+#include <QProcess>
+#include <QStandardPaths>
+#include <QDebug>
+
+#include <KFileItem>
+#include <KRatingWidget>
+#include <KConfig>
+#include <KConfigGroup>
 
 QTEST_MAIN(FileMetadataWidgetTest)
 
 void FileMetadataWidgetTest::initTestCase()
 {
     qRegisterMetaType<KFileItemList>("KFileItemList");
+    
+    qputenv("LC_ALL", "en_US.UTF-8");
+    
+    QStandardPaths::setTestModeEnabled(true);
+
+    KConfig balooConfig("baloofilerc", KConfig::NoGlobals);
+    KConfigGroup balooSettings = balooConfig.group("General");
+    // If we use .writePathEntry here, the test will fail.
+    balooSettings.writeEntry(QStringLiteral("folders"), QString());
+    
+    // Ensure show configuration
+    KConfig config("baloofileinformationrc", KConfig::NoGlobals);
+    KConfigGroup settings = config.group("Show");
+    const auto keys = settings.keyList();
+    for (const auto &key: keys) {
+        settings.writeEntry(key, true);
+    }
+
+    const QString exe = QStandardPaths::findExecutable(QStringLiteral("setfattr"));
+
+    if (exe.isEmpty()) {
+        return;
+    }
+    
+    const QStringList args = {QStringLiteral("--name=user.baloo.rating"),
+            QStringLiteral("--value=5") ,
+            QFINDTESTDATA("testtagged.mp3"),
+            QFINDTESTDATA("testtagged.m4a")};
+
+    QProcess process;
+    process.start(exe, args);
+    if (!process.waitForFinished(10000)) {
+        qDebug() << "setfattr timed out";
+        return;
+    }
+
+    if (process.exitStatus() == QProcess::NormalExit) {
+        m_mayTestRating = true;
+    } else {
+        qDebug() << "setfattr err:" << process.readAllStandardError();
+    }
 }
 
 void FileMetadataWidgetTest::init()
@@ -65,7 +115,7 @@ void FileMetadataWidgetTest::shouldSignalOnceFile()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
     m_widget->setItems(KFileItemList() 
-        << QUrl::fromLocalFile(QStringLiteral("%1/testtagged.m4a").arg(TESTS_SAMPLE_FILES_PATH))
+        << QUrl::fromLocalFile(QFINDTESTDATA("testtagged.m4a"))
     );
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
@@ -77,12 +127,72 @@ void FileMetadataWidgetTest::shouldSignalOnceFiles()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
     m_widget->setItems(KFileItemList() 
-        << QUrl::fromLocalFile(QStringLiteral("%1/test.mp3").arg(TESTS_SAMPLE_FILES_PATH))
-        << QUrl::fromLocalFile(QStringLiteral("%1/testtagged.mp3").arg(TESTS_SAMPLE_FILES_PATH))
-        << QUrl::fromLocalFile(QStringLiteral("%1/testtagged.m4a").arg(TESTS_SAMPLE_FILES_PATH))
+        << QUrl::fromLocalFile(QFINDTESTDATA("test.mp3"))
+        << QUrl::fromLocalFile(QFINDTESTDATA("testtagged.mp3"))
+        << QUrl::fromLocalFile(QFINDTESTDATA("testtagged.m4a"))
     );
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     QCOMPARE(m_widget->items().count(), 3);
+}
+
+void FileMetadataWidgetTest::shouldShowProperties()
+{
+    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    m_widget->setItems(KFileItemList() 
+        << QUrl::fromLocalFile(QFINDTESTDATA("testtagged.mp3"))
+    );
+    
+    QVERIFY(spy.wait());
+    QCOMPARE(spy.count(), 1);
+    
+    // simple property
+    QLabel* valueWidget = m_widget->findChild<QLabel*>("kfileitem#type");
+    QVERIFY2(valueWidget, "Type data missing");
+    QCOMPARE(valueWidget->text(), QLatin1String("MP3 audio"));
+    
+    if (m_mayTestRating) {
+        // editable property
+        KRatingWidget* ratingWidget = m_widget->findChild<KRatingWidget*>("rating");
+        QVERIFY2(ratingWidget, "Rating data missing");
+        QCOMPARE(ratingWidget->rating(), 5);
+    } else {
+        qDebug() << "Skipped 'Rating' test";
+    }
+    // async property
+    valueWidget = m_widget->findChild<QLabel*>("albumArtist");
+    QVERIFY2(valueWidget, "albumArtist data was not found");
+    QCOMPARE(valueWidget->text(), QLatin1String("Bill Laswell"));
     
 }
+
+void FileMetadataWidgetTest::shouldShowCommonProperties()
+{
+    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    m_widget->setItems(KFileItemList() 
+        << QUrl::fromLocalFile(QFINDTESTDATA("testtagged.mp3"))
+        << QUrl::fromLocalFile(QFINDTESTDATA("testtagged.m4a"))
+    );
+    QVERIFY(spy.wait());
+    QCOMPARE(spy.count(), 1);
+    
+    // simple property
+    QLabel* valueWidget = m_widget->findChild<QLabel*>("kfileitem#type");
+    QVERIFY(!valueWidget);
+    
+    valueWidget = m_widget->findChild<QLabel*>("kfileitem#totalSize");
+    // circumvent i18n formatting
+    QCOMPARE(valueWidget->text().left(3), QLatin1String("153"));
+    
+    // editable property
+    if (m_mayTestRating) {
+        KRatingWidget* ratingWidget = m_widget->findChild<KRatingWidget*>("rating");
+        QCOMPARE(ratingWidget->rating(), 5);
+    } else {
+        qDebug() << "Skipped 'Rating' test";
+    }
+    // async property
+    // FIXME: Make this pass
+    // QCOMPARE( map->value("Album Artist:"), QLatin1String("Bill Laswell"));
+}
+
