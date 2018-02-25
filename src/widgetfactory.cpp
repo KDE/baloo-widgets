@@ -152,7 +152,7 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
 
     widget->setForegroundRole(parent->foregroundRole());
     widget->setFont(parent->font());
-
+    widget->setObjectName(prop);
     return widget;
 }
 

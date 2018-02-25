@@ -34,7 +34,8 @@ namespace Baloo {
         virtual ~MetadataFilter();
 
         /**
-         * Takes all the data by the provider and filters the data.
+         * Takes all the data by the provider and filters the data
+         * according to 'baloofileinformationrc' config
          * This acts as a filter and a data aggregator
          */
         QVariantMap filter(const QVariantMap& data);

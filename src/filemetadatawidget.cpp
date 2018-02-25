@@ -29,15 +29,15 @@
 #include <KFileItem>
 #include <KFileMetaData/UserMetaData>
 
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QSpacerItem>
-#include <QtCore/QList>
-#include <QtCore/QSet>
-#include <QtCore/QString>
-#include <QtCore/QTimer>
-#include <QtCore/QFileInfo>
-#include <QtCore/QDebug>
+#include <QGridLayout>
+#include <QLabel>
+#include <QSpacerItem>
+#include <QList>
+#include <QSet>
+#include <QString>
+#include <QTimer>
+#include <QFileInfo>
+#include <QDebug>
 
 using namespace Baloo;
 
@@ -68,6 +68,7 @@ public:
     void slotDataChangeFinished();
 
     QStringList sortedKeys(const QVariantMap& data) const;
+    QLabel* createLabel(const QString &key,  const QString& itemLabel, FileMetaDataWidget* parent);
 
     QList<Row> m_rows;
     FileMetaDataProvider* m_provider;
@@ -111,58 +112,53 @@ void FileMetaDataWidget::Private::deleteRows()
     m_rows.clear();
 }
 
+QLabel* FileMetaDataWidget::Private::createLabel(const QString &key, const QString& itemLabel, FileMetaDataWidget* parent) 
+{
+    QLabel* label = new QLabel(itemLabel + QLatin1Char(':'), parent);
+    label->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
+    label->setForegroundRole(parent->foregroundRole());
+    label->setFont(parent->font());
+    label->setWordWrap(true);
+    label->setAlignment(Qt::AlignTop | Qt::AlignRight);
+    label->setObjectName(QStringLiteral("L_%1").arg(key));
+    return label;
+}
+
 void FileMetaDataWidget::Private::slotLoadingFinished()
 {
     deleteRows();
-
+    
     if (m_gridLayout == 0) {
         m_gridLayout = new QGridLayout(q);
         m_gridLayout->setMargin(0);
         m_gridLayout->setSpacing(q->fontMetrics().height() / 4);
-    }
+    } 
 
-    // Filter the data
     QVariantMap data = m_filter->filter( m_provider->data() );
     m_widgetFactory->setNoLinks( m_provider->realTimeIndexing() );
 
-    // Iterate through all remaining items embed the label
-    // and the value as new row in the widget
     int rowIndex = 0;
+    // Iterate through all remaining items.
+    // Embed the label and the value as new row in the widget
     const QStringList keys = sortedKeys(data);
-    foreach (const QString& key, keys) {
-        const QVariant value = data[key];
-        QString itemLabel = m_provider->label(key);
-        itemLabel.append(QLatin1Char(':'));
-
-        // Create label
-        QLabel* label = new QLabel(itemLabel, q);
-        label->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
-        label->setForegroundRole(q->foregroundRole());
-        label->setFont(q->font());
-        label->setWordWrap(true);
-        label->setAlignment(Qt::AlignTop | Qt::AlignRight);
-
-        // Create value-widget
-        QWidget* valueWidget = m_widgetFactory->createWidget(key, value, q);
-
-        // Add the label and value-widget to grid layout
-        m_gridLayout->addWidget(label, rowIndex, 0, Qt::AlignRight);
+    for (const auto key: keys) {
+        Row row;
         const int spacerWidth = QFontMetrics(q->font()).size(Qt::TextSingleLine, " ").width();
         m_gridLayout->addItem(new QSpacerItem(spacerWidth, 1), rowIndex, 1);
-        m_gridLayout->addWidget(valueWidget, rowIndex, 2, Qt::AlignLeft);
+
+        row.label = createLabel(key, m_provider->label(key), q);
+        m_gridLayout->addWidget(row.label, rowIndex, 0, Qt::AlignRight);
+
+        row.value = m_widgetFactory->createWidget(key, data[key], q);
+        m_gridLayout->addWidget(row.value, rowIndex, 2, Qt::AlignLeft);
 
         // Remember the label and value-widget as row
-        Row row;
-        row.label = label;
-        row.value = valueWidget;
         m_rows.append(row);
-
         ++rowIndex;
     }
 
     q->updateGeometry();
     emit q->metaDataRequestFinished(m_provider->items());
-   
 }
 
 void FileMetaDataWidget::Private::slotLinkActivated(const QString& link)
