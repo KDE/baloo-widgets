@@ -155,7 +155,7 @@ void FileMetadataWidgetTest::shouldShowProperties()
         // editable property
         KRatingWidget* ratingWidget = m_widget->findChild<KRatingWidget*>("rating");
         QVERIFY2(ratingWidget, "Rating data missing");
-        QCOMPARE(ratingWidget->rating(), 5);
+        QCOMPARE(ratingWidget->rating(), 5u);
     } else {
         qDebug() << "Skipped 'Rating' test";
     }
@@ -187,7 +187,8 @@ void FileMetadataWidgetTest::shouldShowCommonProperties()
     // editable property
     if (m_mayTestRating) {
         KRatingWidget* ratingWidget = m_widget->findChild<KRatingWidget*>("rating");
-        QCOMPARE(ratingWidget->rating(), 5);
+        QVERIFY2(ratingWidget, "Rating data missing");
+        QCOMPARE(ratingWidget->rating(), 5u);
     } else {
         qDebug() << "Skipped 'Rating' test";
     }
