@@ -20,7 +20,6 @@
  */
 
 #include "filemetadataitemcounttest.h"
-#include "config.h"
 
 #include <QObject>
 #include <QTest>
@@ -77,7 +76,7 @@ void FileMetadataItemCountTest::testItemCount()
     
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
     m_widget->setItems(KFileItemList() 
-        << QUrl::fromLocalFile(QFINDTESTDATA("testtagged.mp3"))
+        << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
     );
     
     QVERIFY(spy.wait());

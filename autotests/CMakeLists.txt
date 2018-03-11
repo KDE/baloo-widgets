@@ -1,7 +1,5 @@
 include(ECMMarkAsTest)
 
-configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
-
 ecm_add_test(extractortest.cpp
     TEST_NAME "extractortest"
     LINK_LIBRARIES Qt5::Test

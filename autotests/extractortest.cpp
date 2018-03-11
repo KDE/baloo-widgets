@@ -19,7 +19,6 @@
  */
 
 #include "extractortest.h"
-#include "config.h"
 
 #include <QTest>
 #include <QProcess>
@@ -33,7 +32,7 @@
 
 void ExtractorTest::test()
 {
-    QString fileUrl(TESTS_SAMPLE_FILES_PATH + QDir::separator() + QStringLiteral("test.mp3"));
+    QString fileUrl = QFINDTESTDATA("samplefiles/test.mp3");
 
     QString exe = QStandardPaths::findExecutable(QLatin1String("baloo_filemetadata_temp_extractor"));
 
