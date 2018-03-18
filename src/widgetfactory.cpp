@@ -119,9 +119,9 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         // vHanda: FIXME: Add links! Take m_noLinks into consideration
         QString valueString;
 
-        if (prop == QStringLiteral("duration")) {
+        if (prop == QLatin1String("duration")) {
             valueString = form.formatDuration(value.toInt() * 1000);
-        } else if (prop == QStringLiteral("bitRate")) {
+        } else if (prop == QLatin1String("bitRate")) {
             valueString = i18nc("@label bitrate (per second)", "%1/s", form.formatByteSize(value.toInt(), 1, KFormat::MetricBinaryDialect));
         } else if (prop == QLatin1String("releaseYear")) {
             valueString = value.toString();
