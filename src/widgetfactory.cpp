@@ -122,7 +122,7 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         if (prop == QLatin1String("duration")) {
             valueString = form.formatDuration(value.toInt() * 1000);
         } else if (prop == QLatin1String("bitRate")) {
-            valueString = i18nc("@label bitrate (per second)", "%1/s", form.formatByteSize(value.toInt(), 1, KFormat::MetricBinaryDialect));
+            valueString = i18nc("@label bitrate (per second)", "%1/s", form.formatByteSize(value.toInt(), 0, KFormat::MetricBinaryDialect));
         } else if (prop == QLatin1String("releaseYear")) {
             valueString = value.toString();
         } else if (prop == QLatin1String("originUrl")) {
