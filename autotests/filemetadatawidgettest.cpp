@@ -36,13 +36,17 @@
 #include <KConfig>
 #include <KConfigGroup>
 
+void initLocale()
+{
+    QLocale::setDefault(QLocale("en_US"));
+}
+Q_CONSTRUCTOR_FUNCTION(initLocale)
+
 QTEST_MAIN(FileMetadataWidgetTest)
 
 void FileMetadataWidgetTest::initTestCase()
 {
     qRegisterMetaType<KFileItemList>("KFileItemList");
-    
-    qputenv("LC_ALL", "en_US.UTF-8");
     
     QStandardPaths::setTestModeEnabled(true);
 
