@@ -33,7 +33,7 @@ namespace Baloo {
  * @brief Provides the data for the MetaDataWidget.
  *
  * The default implementation provides all meta data
- * that are available due to Nepomuk. If custom
+ * that are available due to Baloo. If custom
  * meta data should be added, the method KFileMetaDataProvider::loadData()
  * must be overwritten.
  *

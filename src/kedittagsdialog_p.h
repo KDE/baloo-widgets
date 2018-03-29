@@ -28,7 +28,7 @@ class QPushButton;
 class QTimer;
 
 /**
- * @brief Dialog to edit a list of Nepomuk tags.
+ * @brief Dialog to edit a list of Baloo tags.
  *
  * It is possible for the user to add existing tags,
  * create new tags or to remove tags.

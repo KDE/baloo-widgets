@@ -89,7 +89,7 @@ void FileMetaDataConfigWidget::Private::loadMetaData()
 
 void FileMetaDataConfigWidget::Private::addItem(const QString& key)
 {
-    // Meta information provided by Nepomuk that is already
+    // Meta information provided by Baloo that is already
     // available from KFileItem as "fixed item" (see above)
     // should not be shown as second entry.
     static const char* const hiddenProperties[] = {

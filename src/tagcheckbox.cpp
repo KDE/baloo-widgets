@@ -1,5 +1,5 @@
 /*
-   This file is part of the Nepomuk KDE project.
+   This file is part of the Baloo KDE project.
    Copyright (C) 2013 Vishesh Handa <me@vhanda.in>
    Copyright (C) 2010 Sebastian Trueg <trueg@kde.org>
 
