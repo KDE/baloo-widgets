@@ -1,4 +1,3 @@
-#add_subdirectory(naturalqueryparser)
 add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets5\")
 
 add_subdirectory(filepropertiesplugin)
@@ -16,9 +15,6 @@ set(widgets_SRCS
   keditcommentdialog.cpp
   metadatafilter.cpp
   widgetfactory.cpp
-  #groupedlineedit.cpp
-  #querybuilder.cpp
-  #querybuildercompleter.cpp
   filefetchjob.cpp
 )
 
@@ -38,7 +34,6 @@ target_link_libraries(KF5BalooWidgets
   KF5::FileMetaData
   KF5::WidgetsAddons
   KF5::Baloo
-  #KF5::BalooNaturalQueryParser
   KF5::CoreAddons
   KF5::ConfigGui
 )
@@ -60,8 +55,6 @@ ecm_generate_headers(KF5BalooWidgets_CamelCase_HEADERS
     TagWidget
     FileMetaDataWidget
     FileMetaDataConfigWidget
-    #QueryBuilder
-    #GroupedLineEdit
 
     PREFIX baloo
     REQUIRED_HEADERS KF5BalooWidgets_HEADERS
