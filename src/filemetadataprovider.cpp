@@ -179,6 +179,7 @@ void FileMetaDataProvider::insertSingleFileBasicData()
       m_data.insert("kfileitem#modified", 
                     format.formatRelativeDateTime(item.time(KFileItem::ModificationTime), QLocale::LongFormat));
       m_data.insert("kfileitem#owner", item.user());
+      m_data.insert("kfileitem#group", item.group());
       m_data.insert("kfileitem#permissions", item.permissionsString());
     }
 
@@ -386,6 +387,7 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
         { "kfileitem#comment", I18N_NOOP2_NOSTRIP("@label", "Comment") },
         { "kfileitem#modified", I18N_NOOP2_NOSTRIP("@label", "Modified") },
         { "kfileitem#owner", I18N_NOOP2_NOSTRIP("@label", "Owner") },
+        { "kfileitem#group", I18N_NOOP2_NOSTRIP("@label", "Group") },
         { "kfileitem#permissions", I18N_NOOP2_NOSTRIP("@label", "Permissions") },
         { "kfileitem#rating", I18N_NOOP2_NOSTRIP("@label", "Rating") },
         { "kfileitem#size", I18N_NOOP2_NOSTRIP("@label", "Size") },
@@ -426,7 +428,8 @@ QString FileMetaDataProvider::group(const QString& label) const
         uriGrouper.insert(QLatin1String("kfileitem#totalSize"), QLatin1String("0FileItemB"));
         uriGrouper.insert(QLatin1String("kfileitem#modified"), QLatin1String("0FileItemC"));
         uriGrouper.insert(QLatin1String("kfileitem#owner"), QLatin1String("0FileItemD"));
-        uriGrouper.insert(QLatin1String("kfileitem#permissions"), QLatin1String("0FileItemE"));
+        uriGrouper.insert(QLatin1String("kfileitem#group"), QLatin1String("0FileItemE"));
+        uriGrouper.insert(QLatin1String("kfileitem#permissions"), QLatin1String("0FileItemF"));
 
         // Editable Data
         uriGrouper.insert(QLatin1String("tags"), QLatin1String("1EditableDataA"));
