@@ -7,6 +7,7 @@ ecm_add_test(extractortest.cpp
 ecm_add_tests(
     filemetadatawidgettest.cpp
     filemetadataitemcounttest.cpp
+    filemetadatadatedisplaytest.cpp
     LINK_LIBRARIES KF5::KIOCore
     KF5::KIOWidgets
     KF5::KIOFileWidgets

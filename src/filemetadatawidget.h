@@ -29,15 +29,25 @@
 #include <QtCore/QUrl>
 
 #include <KFileItem>
+#include <QLocale>
 
 #include "widgets_export.h"
 
 namespace Baloo {
 
+/**
+ * Modify format of date display
+ */
+enum class DateFormats {
+    LongFormat = QLocale::LongFormat,  ///< @see QLocale::LongFormat
+    ShortFormat = QLocale::ShortFormat ///< @see QLocale::ShortFormat
+};
+
 class BALOO_WIDGETS_EXPORT FileMetaDataWidget : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(bool readOnly READ isReadOnly WRITE setReadOnly)
+    Q_PROPERTY(DateFormats dateFormat READ dateFormat WRITE setDateFormat)
 
 public:
     explicit FileMetaDataWidget(QWidget* parent = 0);
@@ -57,6 +67,13 @@ public:
      */
     void setReadOnly(bool readOnly);
     bool isReadOnly() const;
+
+    /**
+     * Set date display format.
+     * Per Default format is Long = @see QLocale::LongFormat
+     */
+    void setDateFormat(const DateFormats format);
+    DateFormats dateFormat() const;
 
     /** @see QWidget::sizeHint() */
     virtual QSize sizeHint() const Q_DECL_OVERRIDE;
@@ -86,4 +103,6 @@ private:
 };
 
 }
+Q_DECLARE_METATYPE(Baloo::DateFormats)
+
 #endif // _BALOO_FILE_METADATAWIDGET_H

@@ -176,8 +176,7 @@ void FileMetaDataProvider::insertSingleFileBasicData()
       }
 
       m_data.insert("kfileitem#type", item.mimeComment());
-      m_data.insert("kfileitem#modified", 
-                    format.formatRelativeDateTime(item.time(KFileItem::ModificationTime), QLocale::LongFormat));
+      m_data.insert("kfileitem#modified", item.time(KFileItem::ModificationTime));
       m_data.insert("kfileitem#owner", item.user());
       m_data.insert("kfileitem#group", item.group());
       m_data.insert("kfileitem#permissions", item.permissionsString());

@@ -65,6 +65,7 @@ WidgetFactory::WidgetFactory(QObject* parent)
     : QObject(parent)
     , m_readOnly( false )
     , m_noLinks( false )
+    , m_dateFormat(QLocale::LongFormat)
 {
 }
 
@@ -135,14 +136,13 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
             }
         } else {
             // Check if Date/DateTime
-
             QDateTime dt = QDateTime::fromString(value.toString(), Qt::ISODate);
             if (dt.isValid()) {
                 QTime time = dt.time();
                 if (!time.hour() && !time.minute() && !time.second()){
-                    valueString = form.formatRelativeDate(dt.date(), QLocale::LongFormat);
+                    valueString = form.formatRelativeDate(dt.date(), m_dateFormat);
                 } else {
-                    valueString = form.formatRelativeDateTime(dt, QLocale::LongFormat);
+                    valueString = form.formatRelativeDateTime(dt, m_dateFormat);
                 }
             }
             else {
@@ -327,5 +327,15 @@ void WidgetFactory::setNoLinks(bool value)
 void WidgetFactory::setItems(const QStringList& items)
 {
     m_items = items;
+}
+
+Baloo::DateFormats WidgetFactory::dateFormat() const
+{
+    return static_cast<Baloo::DateFormats>(m_dateFormat);
+}
+
+void Baloo::WidgetFactory::setDateFormat(const Baloo::DateFormats format)
+{
+    m_dateFormat = static_cast<QLocale::FormatType>(format);
 }
 

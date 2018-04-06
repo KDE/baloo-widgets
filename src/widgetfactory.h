@@ -21,6 +21,8 @@
 #ifndef WIDGETFACTORY_H
 #define WIDGETFACTORY_H
 
+#include "filemetadatawidget.h"
+
 #include <QtCore/QObject>
 #include <QtCore/QStringList>
 
@@ -45,6 +47,9 @@ namespace Baloo {
 
         void setReadOnly(bool value);
         void setNoLinks(bool value);
+
+        void setDateFormat(const DateFormats format);
+        DateFormats dateFormat() const;
 
         QWidget* createWidget(const QString& prop, const QVariant& value, QWidget* parent);
 
@@ -75,6 +80,7 @@ namespace Baloo {
         QStringList m_prevTags;
         bool m_readOnly;
         bool m_noLinks;
+        QLocale::FormatType m_dateFormat;
     };
 }
 

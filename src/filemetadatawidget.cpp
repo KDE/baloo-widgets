@@ -261,6 +261,15 @@ bool FileMetaDataWidget::isReadOnly() const
 {
     return d->m_provider->isReadOnly();
 }
+void FileMetaDataWidget::setDateFormat(const DateFormats format)
+{
+     d->m_widgetFactory->setDateFormat(format);
+}
+
+DateFormats FileMetaDataWidget::dateFormat() const
+{
+    return d->m_widgetFactory->dateFormat();
+}
 
 QSize FileMetaDataWidget::sizeHint() const
 {
