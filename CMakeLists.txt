@@ -1,5 +1,7 @@
-project(baloo-widgets)
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.0)
+
+set(KF5_VERSION "5.0.0")
+project(baloo-widgets VERSION ${KF5_VERSION})
 
 find_package(ECM 0.0.14 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_PATH})
@@ -23,8 +25,8 @@ add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 
-set(KF5_VERSION "5.0.0")
-ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX BALOO_WIDGETS
+ecm_setup_version(PROJECT
+                  VARIABLE_PREFIX BALOO_WIDGETS
                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/baloowidgets_version.h"
                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake")
 
