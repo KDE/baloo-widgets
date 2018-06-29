@@ -38,9 +38,6 @@ ecm_setup_version(PROJECT
 include_directories(
    ${CMAKE_SOURCE_DIR}/src
    ${CMAKE_BINARY_DIR}/src
-   ${CMAKE_SOURCE_DIR}/src/naturalqueryparser
-   ${CMAKE_BINARY_DIR}/src/naturalqueryparser
-   ${CMAKE_BINARY_DIR}/src/naturalqueryparser/baloo
 )
 
 add_subdirectory(src)
