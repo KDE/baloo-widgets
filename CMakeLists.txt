@@ -25,7 +25,6 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMGenerateHeaders)
 include(ECMAddTests)
 
-add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 #TODO remove these
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
