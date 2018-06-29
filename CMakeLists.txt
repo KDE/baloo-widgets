@@ -24,6 +24,7 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMGenerateHeaders)
 include(ECMAddTests)
+include(CMakePackageConfigHelpers)
 
 #TODO remove these
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
@@ -49,9 +50,7 @@ add_subdirectory(autotests)
 # Config files
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5BalooWidgets")
 
-include(ECMPackageConfigHelpers)
-
-ecm_configure_package_config_file(
+configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/KF5BalooWidgetsConfig.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake"
     INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
