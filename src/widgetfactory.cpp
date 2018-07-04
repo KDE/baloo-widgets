@@ -100,7 +100,7 @@ static QString toString(const QVariant& value)
 
 QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value, QWidget* parent)
 {
-    QWidget* widget = 0;
+    QWidget* widget = nullptr;
 
     if (prop == QLatin1String("rating")) {
         widget = createRatingWidget( value.toInt(), parent );
@@ -213,7 +213,7 @@ QWidget* WidgetFactory::createRatingWidget(int rating, QWidget* parent)
 class ValueWidget : public QLabel
 {
 public:
-    explicit ValueWidget(QWidget* parent = 0);
+    explicit ValueWidget(QWidget* parent = nullptr);
     virtual QSize sizeHint() const Q_DECL_OVERRIDE;
 };
 

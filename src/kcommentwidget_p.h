@@ -34,7 +34,7 @@ class KCommentWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit KCommentWidget(QWidget* parent = 0);
+    explicit KCommentWidget(QWidget* parent = nullptr);
     virtual ~KCommentWidget();
 
     void setText(const QString& comment);

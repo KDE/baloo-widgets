@@ -41,7 +41,7 @@ class KEditTagsDialog : public QDialog
 
 public:
     KEditTagsDialog(const QStringList& tags,
-                    QWidget* parent = 0);
+                    QWidget* parent = nullptr);
 
     virtual ~KEditTagsDialog();
 

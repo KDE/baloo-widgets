@@ -38,7 +38,7 @@ class BALOO_WIDGETS_EXPORT FileMetaDataConfigWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit FileMetaDataConfigWidget(QWidget* parent = 0);
+    explicit FileMetaDataConfigWidget(QWidget* parent = nullptr);
     virtual ~FileMetaDataConfigWidget();
 
     /**

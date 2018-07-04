@@ -38,8 +38,8 @@ void TagWidgetPrivate::init( TagWidget* parent )
 {
     q = parent;
     m_readOnly = false;
-    m_showAllLinkLabel = 0;
-    m_editTagsDialog = 0;
+    m_showAllLinkLabel = nullptr;
+    m_editTagsDialog = nullptr;
 
     QGridLayout* mainLayout = new QGridLayout( q );
     mainLayout->setMargin(0);
@@ -66,7 +66,7 @@ void TagWidgetPrivate::buildTagHash(const QStringList& tags)
     }
 
     delete m_showAllLinkLabel;
-    m_showAllLinkLabel = 0;
+    m_showAllLinkLabel = nullptr;
 
     if (m_readOnly && !tags.isEmpty()) {
         return;
@@ -185,6 +185,6 @@ void TagWidget::slotKEditTagDialogFinished(int result)
     }
 
     d->m_editTagsDialog->deleteLater();
-    d->m_editTagsDialog = 0;
+    d->m_editTagsDialog = nullptr;
 }
 

@@ -32,7 +32,7 @@ using namespace Baloo;
 
 TagCheckBox::TagCheckBox(const QString& tag, QWidget* parent)
     : QWidget( parent ),
-      m_label(0),
+      m_label(nullptr),
       m_tag(tag),
       m_urlHover(false)
 {

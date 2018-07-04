@@ -36,7 +36,7 @@ class TagCheckBox : public QWidget
     Q_OBJECT
 
 public:
-    TagCheckBox(const QString& tag, QWidget* parent = 0);
+    TagCheckBox(const QString& tag, QWidget* parent = nullptr);
     ~TagCheckBox();
 
     QString tag() const { return m_tag; }

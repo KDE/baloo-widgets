@@ -50,7 +50,7 @@ class BALOO_WIDGETS_EXPORT FileMetaDataWidget : public QWidget
     Q_PROPERTY(DateFormats dateFormat READ dateFormat WRITE setDateFormat)
 
 public:
-    explicit FileMetaDataWidget(QWidget* parent = 0);
+    explicit FileMetaDataWidget(QWidget* parent = nullptr);
     virtual ~FileMetaDataWidget();
 
     /**

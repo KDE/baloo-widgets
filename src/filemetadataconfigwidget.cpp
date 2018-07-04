@@ -61,8 +61,8 @@ private:
 FileMetaDataConfigWidget::Private::Private(FileMetaDataConfigWidget* parent) :
     m_visibleDataTypes(0),
     m_fileItems(),
-    m_provider(0),
-    m_metaDataList(0),
+    m_provider(nullptr),
+    m_metaDataList(nullptr),
     q(parent)
 {
     m_metaDataList = new QListWidget(q);
@@ -96,11 +96,11 @@ void FileMetaDataConfigWidget::Private::addItem(const QString& key)
         "comment",         // = fixed item kfileitem#comment
         "contentSize",     // = fixed item kfileitem#size
 
-        0 // mandatory last entry
+        nullptr // mandatory last entry
     };
 
     int i = 0;
-    while (hiddenProperties[i] != 0) {
+    while (hiddenProperties[i] != nullptr) {
         if (key == QLatin1String(hiddenProperties[i])) {
             // the item is hidden
             return;
@@ -124,7 +124,7 @@ void FileMetaDataConfigWidget::Private::slotLoadingFinished()
 {
     // Get all meta information labels that are available for
     // the currently shown file item and add them to the list.
-    Q_ASSERT(m_provider != 0);
+    Q_ASSERT(m_provider != nullptr);
 
     m_metaDataList->clear();
 

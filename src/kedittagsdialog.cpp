@@ -40,8 +40,8 @@ KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
                                  QWidget *parent) :
     QDialog(parent),
     m_tags(tags),
-    m_tagTree(0),
-    m_newTagEdit(0)
+    m_tagTree(nullptr),
+    m_newTagEdit(nullptr)
 {
     const QString captionText = (tags.count() > 0) ?
                                 i18nc("@title:window", "Change Tags") :

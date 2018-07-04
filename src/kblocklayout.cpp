@@ -46,7 +46,7 @@ public:
             return -1;
         } else if (parent->isWidgetType()) {
             QWidget *pw = static_cast<QWidget *>(parent);
-            return pw->style()->pixelMetric(pm, 0, pw);
+            return pw->style()->pixelMetric(pm, nullptr, pw);
         } else {
             return static_cast<QLayout *>(parent)->spacing();
         }
@@ -143,12 +143,12 @@ QLayoutItem *KBlockLayout::takeAt( int index )
     if (index >= 0 && index < d->itemList.size())
         return d->itemList.takeAt(index);
     else
-        return 0;
+        return nullptr;
 }
 
 Qt::Orientations KBlockLayout::expandingDirections() const
 {
-    return 0;
+    return nullptr;
 }
 
 bool KBlockLayout::hasHeightForWidth() const

@@ -30,7 +30,7 @@ namespace Baloo {
     class MetadataFilter : public QObject
     {
     public:
-        explicit MetadataFilter(QObject* parent = 0);
+        explicit MetadataFilter(QObject* parent = nullptr);
         virtual ~MetadataFilter();
 
         /**

@@ -44,7 +44,7 @@ class FileMetaDataProvider : public QObject
     Q_OBJECT
 
 public:
-    explicit FileMetaDataProvider(QObject* parent = 0);
+    explicit FileMetaDataProvider(QObject* parent = nullptr);
     virtual ~FileMetaDataProvider();
 
     /**

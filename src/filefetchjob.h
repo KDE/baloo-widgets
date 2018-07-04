@@ -30,7 +30,7 @@ class FileFetchJob : public KJob
 {
     Q_OBJECT
 public:
-    FileFetchJob(const QStringList& urls, QObject* parent = 0);
+    FileFetchJob(const QStringList& urls, QObject* parent = nullptr);
 
     QList<QVariantMap> data() const;
 

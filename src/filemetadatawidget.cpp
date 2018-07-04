@@ -83,8 +83,8 @@ private:
 
 FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
     : m_rows()
-    , m_provider(0)
-    , m_gridLayout(0)
+    , m_provider(nullptr)
+    , m_gridLayout(nullptr)
     , q(parent)
 {
     m_filter = new MetadataFilter(q);
@@ -128,7 +128,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
 {
     deleteRows();
     
-    if (m_gridLayout == 0) {
+    if (m_gridLayout == nullptr) {
         m_gridLayout = new QGridLayout(q);
         m_gridLayout->setMargin(0);
         m_gridLayout->setSpacing(q->fontMetrics().height() / 4);
@@ -273,7 +273,7 @@ DateFormats FileMetaDataWidget::dateFormat() const
 
 QSize FileMetaDataWidget::sizeHint() const
 {
-    if (d->m_gridLayout == 0) {
+    if (d->m_gridLayout == nullptr) {
         return QWidget::sizeHint();
     }
 

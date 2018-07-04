@@ -46,7 +46,7 @@ namespace Baloo {
         /**
          * Constructor
          */
-        explicit TagWidget(QWidget* parent = 0);
+        explicit TagWidget(QWidget* parent = nullptr);
 
         /**
          * Destructor

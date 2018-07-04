@@ -40,7 +40,7 @@ namespace Baloo {
     {
         Q_OBJECT
     public:
-        explicit WidgetFactory(QObject* parent = 0);
+        explicit WidgetFactory(QObject* parent = nullptr);
         virtual ~WidgetFactory();
 
         void setItems(const QStringList& items);

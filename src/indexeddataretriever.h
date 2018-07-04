@@ -31,7 +31,7 @@ class IndexedDataRetriever : public KJob
 {
     Q_OBJECT
 public:
-    IndexedDataRetriever(const QString& fileUrl, QObject* parent = 0);
+    IndexedDataRetriever(const QString& fileUrl, QObject* parent = nullptr);
     virtual ~IndexedDataRetriever();
 
     virtual void start() Q_DECL_OVERRIDE;

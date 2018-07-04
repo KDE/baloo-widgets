@@ -397,13 +397,13 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
         { "rating", I18N_NOOP2_NOSTRIP("@label", "Rating") },
         { "userComment", I18N_NOOP2_NOSTRIP("@label", "Comment") },
         { "originUrl", I18N_NOOP2_NOSTRIP("@label", "Downloaded From") },
-        { 0, 0, 0} // Mandatory last entry
+        { nullptr, nullptr, nullptr} // Mandatory last entry
     };
 
     static QHash<QString, QString> hash;
     if (hash.isEmpty()) {
         const TranslationItem* item = &translations[0];
-        while (item->key != 0) {
+        while (item->key != nullptr) {
             hash.insert(item->key, i18nc(item->context, item->value));
             ++item;
         }
@@ -495,7 +495,7 @@ int FileMetaDataProvider::subDirectoriesCount(const QString& path)
     DIR* dir = ::opendir(QFile::encodeName(path));
     if (dir) {
         count = 0;
-        struct dirent *dirEntry = 0;
+        struct dirent *dirEntry = nullptr;
         while ((dirEntry = ::readdir(dir))) { // krazy:exclude=syscalls
             if (dirEntry->d_name[0] == '.') {
                 if (dirEntry->d_name[1] == '\0') {

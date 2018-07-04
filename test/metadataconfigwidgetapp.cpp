@@ -29,7 +29,7 @@ class FileMetadataWidgetTest : public QWidget
 {
     Q_OBJECT
 public:
-    explicit FileMetadataWidgetTest(QWidget* parent = 0, Qt::WindowFlags f = 0);
+    explicit FileMetadataWidgetTest(QWidget* parent = nullptr, Qt::WindowFlags f = {});
 
 private Q_SLOTS:
     void slotChooseFiles();

@@ -86,10 +86,10 @@ void MetadataFilter::initMetaInformationSettings()
             "kfileitem#owner",
             "kfileitem#group",
             "kfileitem#permissions",
-            0 // mandatory last entry
+            nullptr // mandatory last entry
         };
 
-        for (int i = 0; disabledProperties[i] != 0; ++i) {
+        for (int i = 0; disabledProperties[i] != nullptr; ++i) {
             settings.writeEntry(disabledProperties[i], false);
         }
 
