@@ -18,7 +18,7 @@
 #ifndef KEDIT_TAGS_DIALOG_H
 #define KEDIT_TAGS_DIALOG_H
 
-#include <QtWidgets/QDialog>
+#include <QDialog>
 
 class QLineEdit;
 class KJob;

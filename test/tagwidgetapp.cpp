@@ -20,8 +20,8 @@
 */
 #include "tagwidgettest.h"
 
-#include <QtWidgets/QApplication>
-#include <QtCore/QCoreApplication>
+#include <QApplication>
+#include <QCoreApplication>
 
 int main( int argc, char** argv )
 {

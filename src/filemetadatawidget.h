@@ -25,8 +25,8 @@
 #ifndef _BALOO_FILE_METADATAWIDGET_H
 #define _BALOO_FILE_METADATAWIDGET_H
 
-#include <QtWidgets/QWidget>
-#include <QtCore/QUrl>
+#include <QWidget>
+#include <QUrl>
 
 #include <KFileItem>
 #include <QLocale>

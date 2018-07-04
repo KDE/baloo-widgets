@@ -24,7 +24,7 @@
 #include "widgets_export.h"
 #include <KFileItem>
 
-#include <QtWidgets/QWidget>
+#include <QWidget>
 
 
 namespace Baloo {

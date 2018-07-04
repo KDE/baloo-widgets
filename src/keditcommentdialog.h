@@ -19,7 +19,7 @@
 #ifndef KEDITCOMMENTDIALOG_H
 #define KEDITCOMMENTDIALOG_H
 
-#include <QtWidgets/QDialog>
+#include <QDialog>
 
 class QWidget;
 class QTextEdit;

@@ -21,7 +21,7 @@
 #ifndef _BALOO_METADATAFILTER_H
 #define _BALOO_METADATAFILTER_H
 
-#include <QtCore/QVariant>
+#include <QVariant>
 
 namespace Baloo {
 

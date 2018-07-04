@@ -23,8 +23,8 @@
 
 #include "filemetadatawidget.h"
 
-#include <QtCore/QObject>
-#include <QtCore/QStringList>
+#include <QObject>
+#include <QStringList>
 
 class KJob;
 class QUrl;

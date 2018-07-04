@@ -24,10 +24,10 @@
 #include <KConfig>
 #include <KConfigGroup>
 
-#include <QtCore/QEvent>
-#include <QtWidgets/QListWidget>
-#include <QtWidgets/QVBoxLayout>
-#include <QtCore/QDebug>
+#include <QEvent>
+#include <QListWidget>
+#include <QVBoxLayout>
+#include <QDebug>
 
 using namespace Baloo;
 

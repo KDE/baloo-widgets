@@ -22,16 +22,16 @@
 
 #include <KLocalizedString>
 
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QTreeWidget>
-#include <QtWidgets/QPushButton>
-#include <QtCore/QTimer>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
-#include <QtCore/QUrl>
-#include <QtWidgets/QDialogButtonBox>
+#include <QLineEdit>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QTreeWidget>
+#include <QPushButton>
+#include <QTimer>
+#include <QVBoxLayout>
+#include <QWidget>
+#include <QUrl>
+#include <QDialogButtonBox>
 #include <QDebug>
 
 #include <Baloo/TagListJob>

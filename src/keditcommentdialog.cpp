@@ -17,12 +17,12 @@
 */
 #include "keditcommentdialog.h"
 
-#include <QtWidgets/QDialogButtonBox>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QWidget>
-#include <QtWidgets/QLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QTextEdit>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <QWidget>
+#include <QLayout>
+#include <QLabel>
+#include <QTextEdit>
 
 #include <KLocalizedString>
 

@@ -27,11 +27,11 @@
 
 #include <KFileMetaData/UserMetaData>
 
-#include <QtWidgets/QLabel>
-#include <QtCore/QCollator>
-#include <QtCore/QTime>
-#include <QtCore/QUrl>
-#include <QtCore/QLocale>
+#include <QLabel>
+#include <QCollator>
+#include <QTime>
+#include <QUrl>
+#include <QLocale>
 
 #include <KJob>
 #include <KFormat>

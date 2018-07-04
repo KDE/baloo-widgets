@@ -25,11 +25,11 @@
 #include <KConfigGui/KWindowConfig>
 #include <KSharedConfig>
 
-#include <QtCore/QEvent>
-#include <QtCore/QPointer>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QTextEdit>
-#include <QtWidgets/QVBoxLayout>
+#include <QEvent>
+#include <QPointer>
+#include <QLabel>
+#include <QTextEdit>
+#include <QVBoxLayout>
 
 KCommentWidget::KCommentWidget(QWidget* parent) :
     QWidget(parent),

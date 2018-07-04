@@ -21,9 +21,9 @@
 #include "tagwidgettest.h"
 #include "tagwidget.h"
 
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QCheckBox>
-#include <QtCore/QDebug>
+#include <QVBoxLayout>
+#include <QCheckBox>
+#include <QDebug>
 
 TagWidgetTest::TagWidgetTest()
     : QWidget()

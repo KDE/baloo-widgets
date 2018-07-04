@@ -26,8 +26,8 @@
 #ifndef KBLOCKLAYOUT_H
 #define KBLOCKLAYOUT_H
 
-#include <QtWidgets/QLayout>
-#include <QtWidgets/QLayoutItem>
+#include <QLayout>
+#include <QLayoutItem>
 
 /**
  * The KBlockLayout arranges widget in rows and columns like a text

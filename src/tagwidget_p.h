@@ -23,8 +23,8 @@
 
 #include "tagwidget.h"
 
-#include <QtCore/QList>
-#include <QtCore/QMap>
+#include <QList>
+#include <QMap>
 
 class QLabel;
 class KBlockLayout;

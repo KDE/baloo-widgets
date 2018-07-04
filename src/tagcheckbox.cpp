@@ -24,9 +24,9 @@
 #include "tagwidget.h"
 #include "tagwidget_p.h"
 
-#include <QtGui/QMouseEvent>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QLabel>
+#include <QMouseEvent>
+#include <QHBoxLayout>
+#include <QLabel>
 
 using namespace Baloo;
 

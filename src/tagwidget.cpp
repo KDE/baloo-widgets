@@ -28,9 +28,9 @@
 #include <KLocalizedString>
 #include <KJob>
 
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QBoxLayout>
-#include <QtWidgets/QLabel>
+#include <QPushButton>
+#include <QBoxLayout>
+#include <QLabel>
 
 using namespace Baloo;
 

@@ -24,7 +24,7 @@
 
 #include "widgets_export.h"
 
-#include <QtWidgets/QWidget>
+#include <QWidget>
 
 namespace Baloo {
     class TagWidgetPrivate;

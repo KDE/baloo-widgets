@@ -21,8 +21,8 @@
 #ifndef KCOMMENT_WIDGET
 #define KCOMMENT_WIDGET
 
-#include <QtCore/QString>
-#include <QtWidgets/QWidget>
+#include <QString>
+#include <QWidget>
 
 class QLabel;
 
