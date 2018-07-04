@@ -40,8 +40,8 @@ class KEditTagsDialog : public QDialog
     Q_OBJECT
 
 public:
-    KEditTagsDialog(const QStringList& tags,
-                    QWidget* parent = nullptr);
+    explicit KEditTagsDialog(const QStringList& tags,
+                             QWidget* parent = nullptr);
 
     ~KEditTagsDialog() override;
 
