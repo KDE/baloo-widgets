@@ -51,7 +51,7 @@ namespace Baloo {
         /**
          * Destructor
          */
-        ~TagWidget();
+        ~TagWidget() override;
 
         /**
          * The list of selected tags.

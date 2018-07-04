@@ -35,7 +35,7 @@ class KCommentWidget : public QWidget
 
 public:
     explicit KCommentWidget(QWidget* parent = nullptr);
-    virtual ~KCommentWidget();
+    ~KCommentWidget() override;
 
     void setText(const QString& comment);
     QString text() const;
@@ -48,13 +48,13 @@ public:
     void setReadOnly(bool readOnly);
     bool isReadOnly() const;
     
-    virtual QSize sizeHint() const Q_DECL_OVERRIDE;
+    QSize sizeHint() const override;
 
 Q_SIGNALS:
     void commentChanged(const QString& comment);
 
 protected:
-    virtual bool event(QEvent* event) Q_DECL_OVERRIDE;
+    bool event(QEvent* event) override;
 
 private Q_SLOTS:
     void slotLinkActivated(const QString& link);

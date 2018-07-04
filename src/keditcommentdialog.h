@@ -29,7 +29,7 @@ class KEditCommentDialog : public QDialog
     Q_OBJECT
 public:
     KEditCommentDialog(QWidget *parent, const QString &commentText, const QString &captionText);
-    ~KEditCommentDialog();
+    ~KEditCommentDialog() override;
 
     QString getCommentText() const;
 

@@ -32,9 +32,9 @@ class IndexedDataRetriever : public KJob
     Q_OBJECT
 public:
     IndexedDataRetriever(const QString& fileUrl, QObject* parent = nullptr);
-    virtual ~IndexedDataRetriever();
+    ~IndexedDataRetriever() override;
 
-    virtual void start() Q_DECL_OVERRIDE;
+    void start() override;
 
     QVariantMap data() const;
 

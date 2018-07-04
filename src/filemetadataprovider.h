@@ -45,7 +45,7 @@ class FileMetaDataProvider : public QObject
 
 public:
     explicit FileMetaDataProvider(QObject* parent = nullptr);
-    virtual ~FileMetaDataProvider();
+    ~FileMetaDataProvider() override;
 
     /**
      * Sets the items, where the meta data should be

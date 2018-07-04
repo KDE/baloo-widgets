@@ -41,7 +41,7 @@ namespace Baloo {
         Q_OBJECT
     public:
         explicit WidgetFactory(QObject* parent = nullptr);
-        virtual ~WidgetFactory();
+        ~WidgetFactory() override;
 
         void setItems(const QStringList& items);
 

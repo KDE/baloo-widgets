@@ -30,7 +30,7 @@ class TagWidgetTest : public QWidget
 
 public:
     TagWidgetTest();
-    ~TagWidgetTest();
+    ~TagWidgetTest() override;
 
 public Q_SLOTS:
     void slotTagClicked(const QString&);

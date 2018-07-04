@@ -51,7 +51,7 @@ class BALOO_WIDGETS_EXPORT FileMetaDataWidget : public QWidget
 
 public:
     explicit FileMetaDataWidget(QWidget* parent = nullptr);
-    virtual ~FileMetaDataWidget();
+    ~FileMetaDataWidget() override;
 
     /**
      * Sets the items for which the meta data should be shown.
@@ -76,7 +76,7 @@ public:
     DateFormats dateFormat() const;
 
     /** @see QWidget::sizeHint() */
-    virtual QSize sizeHint() const Q_DECL_OVERRIDE;
+    QSize sizeHint() const override;
 
 Q_SIGNALS:
     /**

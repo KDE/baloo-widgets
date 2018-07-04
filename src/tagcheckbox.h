@@ -37,7 +37,7 @@ class TagCheckBox : public QWidget
 
 public:
     TagCheckBox(const QString& tag, QWidget* parent = nullptr);
-    ~TagCheckBox();
+    ~TagCheckBox() override;
 
     QString tag() const { return m_tag; }
 
@@ -45,8 +45,8 @@ Q_SIGNALS:
     void tagClicked(const QString& tag);
 
 protected:
-    void leaveEvent(QEvent* event ) Q_DECL_OVERRIDE;
-    bool eventFilter(QObject* watched, QEvent* event) Q_DECL_OVERRIDE;
+    void leaveEvent(QEvent* event ) override;
+    bool eventFilter(QObject* watched, QEvent* event) override;
 
 private:
     QRect tagRect() const;

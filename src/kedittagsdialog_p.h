@@ -43,7 +43,7 @@ public:
     KEditTagsDialog(const QStringList& tags,
                     QWidget* parent = nullptr);
 
-    virtual ~KEditTagsDialog();
+    ~KEditTagsDialog() override;
 
     QStringList tags() const;
 

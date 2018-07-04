@@ -31,7 +31,7 @@ namespace Baloo {
     {
     public:
         explicit MetadataFilter(QObject* parent = nullptr);
-        virtual ~MetadataFilter();
+        ~MetadataFilter() override;
 
         /**
          * Takes all the data by the provider and filters the data

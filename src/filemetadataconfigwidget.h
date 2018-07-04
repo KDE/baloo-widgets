@@ -39,7 +39,7 @@ class BALOO_WIDGETS_EXPORT FileMetaDataConfigWidget : public QWidget
 
 public:
     explicit FileMetaDataConfigWidget(QWidget* parent = nullptr);
-    virtual ~FileMetaDataConfigWidget();
+    ~FileMetaDataConfigWidget() override;
 
     /**
      * Sets the items, for which the visibility of the meta data should
@@ -59,10 +59,10 @@ public:
     void save();
 
     /** @see QWidget::sizeHint() */
-    virtual QSize sizeHint() const Q_DECL_OVERRIDE;
+    QSize sizeHint() const override;
 
 protected:
-    virtual bool event(QEvent* event) Q_DECL_OVERRIDE;
+    bool event(QEvent* event) override;
 
 private:
     class Private;
