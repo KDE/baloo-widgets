@@ -137,7 +137,7 @@ private:
     void insertFilesListBasicData();
     
     /**
-     * Checks for the existance of \p uri in \p allProperties, and accordingly
+     * Checks for the existence of \p uri in \p allProperties, and accordingly
      * inserts the total integer value of that property in m_data. On completion
      * it removes \p uri from \p allProperties
      */

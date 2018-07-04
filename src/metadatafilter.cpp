@@ -2,7 +2,7 @@
     <one line to give the library's name and an idea of what it does.>
     Copyright (C) 2012  Vishesh Handa <me@vhanda.in>
 
-    Adapated from KFileMetadataWidget
+    Adapted from KFileMetadataWidget
     Copyright (C) 2008 by Sebastian Trueg <trueg@kde.org>
     Copyright (C) 2009-2010 by Peter Penz <peter.penz@gmx.at>
 
