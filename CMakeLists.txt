@@ -34,6 +34,7 @@ remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 
 ecm_setup_version(PROJECT
                   VARIABLE_PREFIX BALOO_WIDGETS
+                  SOVERSION 5
                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/baloowidgets_version.h"
                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake")
 
