@@ -44,8 +44,10 @@ include_directories(
 )
 
 add_subdirectory(src)
-add_subdirectory(test)
-add_subdirectory(autotests)
+if (BUILD_TESTING)
+  add_subdirectory(test)
+  add_subdirectory(autotests)
+endif()
 
 # Config files
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5BalooWidgets")
