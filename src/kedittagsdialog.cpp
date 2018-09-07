@@ -44,7 +44,7 @@ KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
     m_newTagEdit(nullptr)
 {
     const QString captionText = (tags.count() > 0) ?
-                                i18nc("@title:window", "Change Tags") :
+                                i18nc("@title:window", "Edit Tags") :
                                 i18nc("@title:window", "Add Tags");
     setWindowTitle(captionText);
     QDialogButtonBox* buttonBox = new QDialogButtonBox(this);

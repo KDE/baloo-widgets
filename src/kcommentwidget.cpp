@@ -70,7 +70,7 @@ void KCommentWidget::setText(const QString& comment)
         if (m_readOnly) {
             text = QString(comment).toHtmlEscaped();
         } else {
-            text = "<p>" + QString(comment).toHtmlEscaped() + " <a href=\"changeComment\">" + i18nc("@label", "Change...") + "</a></p>";
+            text = "<p>" + QString(comment).toHtmlEscaped() + " <a href=\"editComment\">" + i18nc("@label", "Edit...") + "</a></p>";
         }
     }
 
@@ -115,8 +115,8 @@ bool KCommentWidget::event(QEvent* event)
 
 void KCommentWidget::slotLinkActivated(const QString& link)
 {
-    const QString caption = (link == "changeComment") ?
-                            i18nc("@title:window", "Change Comment") :
+    const QString caption = (link == "editComment") ?
+                            i18nc("@title:window", "Edit Comment") :
                             i18nc("@title:window", "Add Comment");
 
     QPointer<KEditCommentDialog> dialog = new KEditCommentDialog(this, m_comment, caption);

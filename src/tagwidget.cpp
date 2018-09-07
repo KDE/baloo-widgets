@@ -82,7 +82,7 @@ void TagWidgetPrivate::buildTagHash(const QStringList& tags)
         f.setUnderline(true);
         m_showAllLinkLabel->setFont(f);
         m_showAllLinkLabel->setText( QLatin1String("<a href=\"add_tags\">") +
-                                        ( m_checkBoxHash.isEmpty() ? i18nc("@label", "Add...") : i18nc("@label", "Change...") ) +
+                                        ( m_checkBoxHash.isEmpty() ? i18nc("@label", "Add...") : i18nc("@label", "Edit...") ) +
                                         QLatin1String("</a>") );
         q->connect( m_showAllLinkLabel, SIGNAL(linkActivated(QString)), SLOT(slotShowAll()) );
     }
