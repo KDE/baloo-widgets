@@ -39,7 +39,7 @@ TagCheckBox::TagCheckBox(const QString& tag, QWidget* parent)
     QHBoxLayout* layout = new QHBoxLayout(this);
     layout->setMargin(0);
 
-    m_label = new QLabel(tag.split("/", QString::SkipEmptyParts).last(), this);
+    m_label = new QLabel(tag.split('/', QString::SkipEmptyParts).last(), this);
     m_label->setToolTip(tag);
     m_label->setMouseTracking(true);
     m_label->setTextFormat(Qt::PlainText);

@@ -17,8 +17,8 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#ifndef _BALOO_FILEMETADATAMODEL_H
-#define _BALOO_FILEMETADATAMODEL_H
+#ifndef _BALOO_FILEMETADATAPROVIDER_H
+#define _BALOO_FILEMETADATAPROVIDER_H
 
 #include <QObject>
 #include <QString>
