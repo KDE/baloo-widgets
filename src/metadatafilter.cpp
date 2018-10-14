@@ -41,7 +41,7 @@ MetadataFilter::~MetadataFilter()
 
 void MetadataFilter::initMetaInformationSettings()
 {
-    const int currentVersion = 9; // increase version, if the blacklist of disabled
+    const int currentVersion = 10; // increase version, if the blacklist of disabled
     // properties should be updated
 
     KConfig config("baloofileinformationrc", KConfig::NoGlobals);
@@ -86,6 +86,11 @@ void MetadataFilter::initMetaInformationSettings()
             "kfileitem#owner",
             "kfileitem#group",
             "kfileitem#permissions",
+            "replayGainAlbumPeak",
+            "replayGainAlbumGain",
+            "replayGainTrackPeak",
+            "replayGainTrackGain",
+            "embeddedRating",
             nullptr // mandatory last entry
         };
 
