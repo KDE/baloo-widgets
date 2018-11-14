@@ -1,0 +1,21 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Nicolas Fella"
+            }
+        ],
+        "Category": "Utilities",
+        "Description": "Change file tags",
+        "Icon": "tag",
+        "License": "GPL",
+        "MimeTypes": [
+            "application/octet-stream",
+            "inode/directory"
+        ],
+        "Name": "Tags",
+        "ServiceTypes": [
+            "KFileItemAction/Plugin"
+        ]
+    }
+}

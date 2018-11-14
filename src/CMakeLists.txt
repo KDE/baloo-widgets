@@ -1,6 +1,7 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets5\")
 
 add_subdirectory(filepropertiesplugin)
+add_subdirectory(tagsfileitemactionplugin)
 
 set(widgets_SRCS
   kblocklayout.cpp
