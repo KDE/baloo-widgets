@@ -8,7 +8,6 @@ kcoreaddons_add_plugin(tagsfileitemaction
     INSTALL_NAMESPACE "kf5/kfileitemaction")
 
 target_link_libraries(tagsfileitemaction
-    KF5BalooWidgets
     KF5::KIOWidgets
     KF5::I18n
     KF5::FileMetaData
