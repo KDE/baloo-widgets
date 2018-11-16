@@ -2,11 +2,25 @@
     "KPlugin": {
         "Authors": [
             {
-                "Name": "Nicolas Fella"
+                "Name": "Nicolas Fella",
+                "Name[ca]": "Nicolas Fella",
+                "Name[de]": "Nicolas Fella",
+                "Name[es]": "Nicolas Fella",
+                "Name[pt]": "Nicolas Fella",
+                "Name[sv]": "Nicolas Fella",
+                "Name[uk]": "Nicolas Fella",
+                "Name[x-test]": "xxNicolas Fellaxx"
             }
         ],
         "Category": "Utilities",
         "Description": "Change file tags",
+        "Description[ca]": "Canvia les etiquetes de fitxers",
+        "Description[de]": "Stichwörter für Dateien ändern",
+        "Description[es]": "Cambiar etiquetas del archivo",
+        "Description[pt]": "Mudar as marcas do ficheiro",
+        "Description[sv]": "Ändra filetiketter",
+        "Description[uk]": "Зміна міток файлів",
+        "Description[x-test]": "xxChange file tagsxx",
         "Icon": "tag",
         "License": "GPL",
         "MimeTypes": [
@@ -14,6 +28,13 @@
             "inode/directory"
         ],
         "Name": "Tags",
+        "Name[ca]": "Etiquetes",
+        "Name[de]": "Stichwörter",
+        "Name[es]": "Etiquetas",
+        "Name[pt]": "Marcas",
+        "Name[sv]": "Etiketter",
+        "Name[uk]": "Мітки",
+        "Name[x-test]": "xxTagsxx",
         "ServiceTypes": [
             "KFileItemAction/Plugin"
         ]
