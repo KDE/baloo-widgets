@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     }
 
     const QString url = parser.positionalArguments().first();
-    const QString mimetype = QMimeDatabase().mimeTypeForFile(url).name();
+    const QString mimetype = QMimeDatabase().mimeTypeForFile(url, QMimeDatabase::MatchContent).name();
 
     KFileMetaData::SimpleExtractionResult result(url, mimetype, KFileMetaData::ExtractionResult::ExtractMetaData);
     KFileMetaData::ExtractorCollection collection;
