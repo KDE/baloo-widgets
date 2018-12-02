@@ -83,7 +83,8 @@ static QString toString(const QVariant& value)
             return QLocale().toString(value.toInt());
         case QVariant::Double:
             return QLocale().toString(value.toDouble());
-
+        case QVariant::StringList:
+            return value.toStringList().join(", ");
         case QVariant::List: {
             QStringList list;
             for (const QVariant& var : value.toList()) {
