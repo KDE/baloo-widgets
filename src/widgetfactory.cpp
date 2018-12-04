@@ -84,14 +84,14 @@ static QString toString(const QVariant& value)
         case QVariant::Double:
             return QLocale().toString(value.toDouble());
         case QVariant::StringList:
-            return value.toStringList().join(", ");
+            return value.toStringList().join(i18nc("String list separator", ", "));
         case QVariant::List: {
             QStringList list;
             for (const QVariant& var : value.toList()) {
                 list << toString(var);
             }
 
-            return list.join(", ");
+            return list.join(i18nc("String list separator", ", "));
         }
 
         default:
