@@ -1,3 +1,5 @@
+add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets5\")
+
 set(baloofilepropertiesplugin_PART_SRCS baloofilepropertiesplugin.cpp)
 
 add_library(baloofilepropertiesplugin MODULE ${baloofilepropertiesplugin_PART_SRCS})
