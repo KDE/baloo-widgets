@@ -40,7 +40,7 @@ public:
     QList<QAction*> actions(const KFileItemListProperties& fileItemInfos, QWidget* parentWidget) override;
 
 private:
-    KFileMetaData::UserMetaData* m_metaData;
+    KFileMetaData::UserMetaData* m_metaData = nullptr;
     KCoreDirLister m_tagsLister;
     QMenu* m_menu;
 };
