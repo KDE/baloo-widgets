@@ -20,7 +20,8 @@
                 "Name[sk]": "Nicolas Fella",
                 "Name[sv]": "Nicolas Fella",
                 "Name[uk]": "Nicolas Fella",
-                "Name[x-test]": "xxNicolas Fellaxx"
+                "Name[x-test]": "xxNicolas Fellaxx",
+                "Name[zh_CN]": "Nicolas Fella"
             }
         ],
         "Category": "Utilities",
@@ -42,6 +43,7 @@
         "Description[sv]": "Ändra filetiketter",
         "Description[uk]": "Зміна міток файлів",
         "Description[x-test]": "xxChange file tagsxx",
+        "Description[zh_CN]": "更改文件标签",
         "Icon": "tag",
         "License": "GPL",
         "MimeTypes": [
@@ -68,6 +70,7 @@
         "Name[sv]": "Etiketter",
         "Name[uk]": "Мітки",
         "Name[x-test]": "xxTagsxx",
+        "Name[zh_CN]": "标签",
         "ServiceTypes": [
             "KFileItemAction/Plugin"
         ]
