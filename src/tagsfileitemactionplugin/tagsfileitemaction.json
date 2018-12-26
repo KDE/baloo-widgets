@@ -3,6 +3,7 @@
         "Authors": [
             {
                 "Name": "Nicolas Fella",
+                "Name[ast]": "Nicolas Fella",
                 "Name[ca@valencia]": "Nicolas Fella",
                 "Name[ca]": "Nicolas Fella",
                 "Name[de]": "Nicolas Fella",
@@ -53,6 +54,7 @@
             "inode/directory"
         ],
         "Name": "Tags",
+        "Name[ast]": "Etiquetes",
         "Name[ca@valencia]": "Etiquetes",
         "Name[ca]": "Etiquetes",
         "Name[de]": "Stichwörter",
