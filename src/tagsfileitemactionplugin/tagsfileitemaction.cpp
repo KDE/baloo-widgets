@@ -69,7 +69,7 @@ TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
     });
 
     QAction* newAction = new QAction(i18n("Create New..."));
-    newAction->setIcon(QIcon::fromTheme(QStringLiteral("tag")));
+    newAction->setIcon(QIcon::fromTheme(QStringLiteral("tag-new")));
 
     connect(newAction, &QAction::triggered, this, [this] {
         QString newTag = QInputDialog::getText(m_menu, i18n("New tag"), i18n("New tag:"), QLineEdit::Normal);
