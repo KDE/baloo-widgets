@@ -50,7 +50,7 @@ void IndexedDataRetriever::start()
 
 void IndexedDataRetriever::slotIndexedFile(int)
 {
-    QByteArray data = QByteArray::fromBase64(m_process->readAllStandardOutput());
+    QByteArray data = m_process->readAllStandardOutput();
     QDataStream in(&data, QIODevice::ReadOnly);
     in >> m_data;
 

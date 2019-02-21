@@ -25,6 +25,7 @@
 #include <QMimeDatabase>
 #include <QDataStream>
 #include <QDebug>
+#include <QFile>
 
 #include <KFileMetaData/SimpleExtractionResult>
 #include <KFileMetaData/ExtractorCollection>
@@ -58,8 +59,9 @@ int main(int argc, char **argv)
         ex->extract(&result);
     }
 
-    QByteArray arr;
-    QDataStream stream(&arr, QIODevice::WriteOnly);
+    QFile out;
+    out.open(stdout, QIODevice::WriteOnly);
+    QDataStream stream(&out);
 
     QVariantMap map;
     QMapIterator<KFileMetaData::Property::Property, QVariant> it(result.properties());
@@ -87,7 +89,6 @@ int main(int argc, char **argv)
     stream << map;
 
     qDebug() << map;
-    std::cout << arr.toBase64().constData();
 
     return 0;
 }

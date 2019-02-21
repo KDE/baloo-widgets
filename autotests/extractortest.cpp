@@ -45,7 +45,7 @@ void ExtractorTest::test()
     QCOMPARE(process.exitStatus(), QProcess::NormalExit);
 
     qDebug() << process.readAllStandardError();
-    QByteArray bytearray = QByteArray::fromBase64(process.readAllStandardOutput());
+    QByteArray bytearray = process.readAllStandardOutput();
     QVariantMap data;
     QDataStream in(&bytearray, QIODevice::ReadOnly);
     in >> data;
