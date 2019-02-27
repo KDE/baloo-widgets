@@ -42,7 +42,7 @@ void TagWidgetPrivate::init( TagWidget* parent )
     m_editTagsDialog = nullptr;
 
     QGridLayout* mainLayout = new QGridLayout( q );
-    mainLayout->setMargin(0);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
     //TODO spacingHint should be declared. Old code  m_flowLayout = new KBlockLayout( 0, KDialog::spacingHint()*3 );
     m_flowLayout = new KBlockLayout( 0 );
     mainLayout->addLayout( m_flowLayout, 0, 0, 1, 2 );

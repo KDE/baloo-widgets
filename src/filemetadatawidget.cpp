@@ -130,7 +130,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
     
     if (m_gridLayout == nullptr) {
         m_gridLayout = new QGridLayout(q);
-        m_gridLayout->setMargin(0);
+        m_gridLayout->setContentsMargins(0, 0, 0, 0);
         m_gridLayout->setSpacing(q->fontMetrics().height() / 4);
     } 
 

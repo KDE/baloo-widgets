@@ -37,7 +37,7 @@ TagCheckBox::TagCheckBox(const QString& tag, QWidget* parent)
       m_urlHover(false)
 {
     QHBoxLayout* layout = new QHBoxLayout(this);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
 
     m_label = new QLabel(tag.split('/', QString::SkipEmptyParts).last(), this);
     m_label->setToolTip(tag);

@@ -47,7 +47,7 @@ KCommentWidget::KCommentWidget(QWidget* parent) :
     m_sizeHintHelper->hide();
 
     QVBoxLayout* layout = new QVBoxLayout(this);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(m_label);
 
     setText(m_comment);
