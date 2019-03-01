@@ -26,6 +26,7 @@
 #include "KRatingWidget"
 
 #include <KFileMetaData/UserMetaData>
+#include <KFileMetaData/PropertyInfo>
 
 #include <QLabel>
 #include <QCollator>
@@ -117,28 +118,21 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         widget = createTagWidget( tags, parent );
     }
     else {
-        KFormat form;
-        // vHanda: FIXME: Add links! Take m_noLinks into consideration
         QString valueString;
-
-        if (prop == QLatin1String("duration")) {
-            valueString = form.formatDuration(value.toInt() * 1000);
-        } else if (prop == QLatin1String("bitRate")) {
-            valueString = i18nc("@label bitrate (per second)", "%1/s", form.formatByteSize(value.toInt(), 0, KFormat::MetricBinaryDialect));
-        } else if (prop == QLatin1String("sampleRate")) {
-            valueString = i18nc("@label samplerate in kilohertz", "%1 kHz", QLocale().toString(value.toDouble() / 1000));
-        } else if (prop == QLatin1String("releaseYear")) {
-            valueString = value.toString();
-        } else if (prop == QLatin1String("originUrl")) {
+        auto pi = KFileMetaData::PropertyInfo::fromName(prop);
+        if (pi.name() == QLatin1String("originUrl")) {
             if (m_noLinks) {
                 valueString = value.toString();
             } else {
                 valueString = QStringLiteral("<a href=\"%1\">%1</a>").arg(value.toString());
             }
+        } else if (pi.name() != QLatin1String("empty")) {
+            valueString = pi.formatAsDisplayString(value);
         } else {
             // Check if Date/DateTime
             QDateTime dt = QDateTime::fromString(value.toString(), Qt::ISODate);
             if (dt.isValid()) {
+                KFormat form;
                 QTime time = dt.time();
                 if (!time.hour() && !time.minute() && !time.second()){
                     valueString = form.formatRelativeDate(dt.date(), m_dateFormat);
