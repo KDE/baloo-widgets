@@ -37,6 +37,7 @@
 #include <KJob>
 #include <KFormat>
 #include <KLocalizedString>
+#include <KStringHandler>
 
 namespace {
     static QString plainText(const QString& richText)
@@ -103,6 +104,7 @@ static QString toString(const QVariant& value)
 QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value, QWidget* parent)
 {
     QWidget* widget = nullptr;
+    const int maxUrlLength = 80;
 
     if (prop == QLatin1String("rating")) {
         widget = createRatingWidget( value.toInt(), parent );
@@ -121,10 +123,16 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         QString valueString;
         auto pi = KFileMetaData::PropertyInfo::fromName(prop);
         if (pi.name() == QLatin1String("originUrl")) {
-            if (m_noLinks) {
-                valueString = value.toString();
-            } else {
-                valueString = QStringLiteral("<a href=\"%1\">%1</a>").arg(value.toString());
+            //Won't make sense to shrink originUrl with noLinks, 
+            //since it would make original URL unobtainable
+            valueString = value.toString();
+            if (!m_noLinks) {
+                //Shrink link name. 
+                auto labelString = valueString;
+                if (labelString.size() > maxUrlLength) {
+                    labelString = KStringHandler::csqueeze(labelString, maxUrlLength);
+                }
+                valueString = QStringLiteral("<a href=\"%1\">%2</a>").arg(valueString, labelString);
             }
         } else if (pi.name() != QLatin1String("empty")) {
             valueString = pi.formatAsDisplayString(value);
