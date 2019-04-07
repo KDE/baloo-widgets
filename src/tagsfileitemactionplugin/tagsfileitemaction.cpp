@@ -81,7 +81,6 @@ TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
     m_menu->addAction(newAction);
     m_menu->addSeparator();
 
-    m_tagsLister.openUrl(QUrl("tags:/"), KCoreDirLister::OpenUrlFlag::Reload);
 }
 
 TagsFileItemAction::~TagsFileItemAction()
@@ -98,6 +97,7 @@ QList<QAction*> TagsFileItemAction::actions(const KFileItemListProperties& fileI
     }
 
     m_metaData = new KFileMetaData::UserMetaData(fileItemInfos.urlList()[0].toLocalFile());
+    m_tagsLister.openUrl(QUrl("tags:/"), KCoreDirLister::OpenUrlFlag::Reload);
 
     return {m_menu->menuAction()};
 }
