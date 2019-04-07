@@ -32,6 +32,7 @@
 #include <KFileMetaData/Extractor>
 #include <KFileMetaData/PropertyInfo>
 #include <KFileMetaData/UserMetaData>
+#include <KFileMetaData/MimeUtils>
 
 #include <iostream>
 
@@ -48,7 +49,7 @@ int main(int argc, char **argv)
     }
 
     const QString url = parser.positionalArguments().first();
-    const QString mimetype = QMimeDatabase().mimeTypeForFile(url, QMimeDatabase::MatchContent).name();
+    const QString mimetype = KFileMetaData::MimeUtils::strictMimeType(url, QMimeDatabase()).name();
 
     KFileMetaData::SimpleExtractionResult result(url, mimetype, KFileMetaData::ExtractionResult::ExtractMetaData);
     KFileMetaData::ExtractorCollection collection;
