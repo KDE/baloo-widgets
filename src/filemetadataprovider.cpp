@@ -312,9 +312,10 @@ void FileMetaDataProvider::setFileItem()
         return;
     }
 
-    // Not Indexed
+    // Not indexed or only basic file indexing (no content)
     const QString filePath = url.toLocalFile();
-    if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath)) {
+    if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath)
+            || m_config.onlyBasicIndexing()) {
         m_realTimeIndexing = true;
 
         insertBasicData();
@@ -323,7 +324,7 @@ void FileMetaDataProvider::setFileItem()
         IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
         connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
         ret->start();
-        
+    // Fully indexed by Baloo
     } else {
         FileFetchJob* job = new FileFetchJob(QStringList() << filePath, this);
         connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
