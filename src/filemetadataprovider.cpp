@@ -176,6 +176,11 @@ void FileMetaDataProvider::insertSingleFileBasicData()
 
       m_data.insert("kfileitem#type", item.mimeComment());
       m_data.insert("kfileitem#modified", item.time(KFileItem::ModificationTime));
+      QDateTime creationTime = item.time(KFileItem::CreationTime);
+      if (creationTime.isValid()) {
+          m_data.insert("kfileitem#created", creationTime);
+      }
+      m_data.insert("kfileitem#accessed", item.time(KFileItem::AccessTime));
       m_data.insert("kfileitem#owner", item.user());
       m_data.insert("kfileitem#group", item.group());
       m_data.insert("kfileitem#permissions", item.permissionsString());
@@ -373,6 +378,8 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
 
     static const TranslationItem translations[] = {
         { "kfileitem#comment", I18N_NOOP2_NOSTRIP("@label", "Comment") },
+        { "kfileitem#created", I18N_NOOP2_NOSTRIP("@label", "Created") },
+        { "kfileitem#accessed", I18N_NOOP2_NOSTRIP("@label", "Accessed") },
         { "kfileitem#modified", I18N_NOOP2_NOSTRIP("@label", "Modified") },
         { "kfileitem#owner", I18N_NOOP2_NOSTRIP("@label", "Owner") },
         { "kfileitem#group", I18N_NOOP2_NOSTRIP("@label", "Group") },
@@ -415,6 +422,8 @@ QString FileMetaDataProvider::group(const QString& label) const
         uriGrouper.insert(QLatin1String("kfileitem#size"), QLatin1String("0FileItemB"));
         uriGrouper.insert(QLatin1String("kfileitem#totalSize"), QLatin1String("0FileItemB"));
         uriGrouper.insert(QLatin1String("kfileitem#modified"), QLatin1String("0FileItemC"));
+        uriGrouper.insert(QLatin1String("kfileitem#accessed"), QLatin1String("0FileItemC"));
+        uriGrouper.insert(QLatin1String("kfileitem#created"), QLatin1String("0FileItemC"));
         uriGrouper.insert(QLatin1String("kfileitem#owner"), QLatin1String("0FileItemD"));
         uriGrouper.insert(QLatin1String("kfileitem#group"), QLatin1String("0FileItemE"));
         uriGrouper.insert(QLatin1String("kfileitem#permissions"), QLatin1String("0FileItemF"));
