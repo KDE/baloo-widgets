@@ -105,7 +105,7 @@ public:
 
 Q_SIGNALS:
     /**
-     * Emitted once per KFileMetaDataProvider::setItems() 
+     * Emitted once per KFileMetaDataProvider::setItems()
      * after data loading is finished.
      */
     void loadingFinished();
@@ -117,10 +117,10 @@ private Q_SLOTS:
 private:
     void insertBasicData();
     void insertEditableData();
-    
+
     void setFileItem();
     void setFileItems();
-    
+
     /**
      * Insert intersection of common data of \p files
      */
@@ -130,12 +130,12 @@ private:
      * Insert basic data of a single file
      */
     void insertSingleFileBasicData();
-    
+
     /**
      * Insert basic data of a list of files
      */
     void insertFilesListBasicData();
-    
+
     /**
      * Checks for the existence of \p uri in \p allProperties, and accordingly
      * inserts the total integer value of that property in m_data. On completion
@@ -143,7 +143,7 @@ private:
      */
     void totalPropertyAndInsert(const QString& prop, const QList<QVariantMap>& resources,
                                 QSet<QString>& allProperties);
-    
+
     /*
      * @return The number of subdirectories for the directory \a path.
      */

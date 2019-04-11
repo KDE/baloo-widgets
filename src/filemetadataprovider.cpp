@@ -102,8 +102,7 @@ namespace {
 
         return v;
     }
-    
-}
+} // anonymous namespace
 
 void FileMetaDataProvider::totalPropertyAndInsert(const QString& prop,
                                                   const QList<QVariantMap>& resources,
@@ -132,9 +131,9 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob* job)
 {
     FileFetchJob* fetchJob = static_cast<FileFetchJob*>(job);
     QList<QVariantMap> files = fetchJob->data();
-    
+
     Q_ASSERT(!files.isEmpty());
-    
+
     if (files.size() > 1) {
         insertCommonData(files);
     } else {
@@ -181,12 +180,10 @@ void FileMetaDataProvider::insertSingleFileBasicData()
       m_data.insert("kfileitem#group", item.group());
       m_data.insert("kfileitem#permissions", item.permissionsString());
     }
-
-}     
+}
 
 void FileMetaDataProvider::insertFilesListBasicData()
 {
-  
     KFormat format;
     // If all directories
     Q_ASSERT(m_fileItems.count() > 1);
@@ -268,8 +265,8 @@ void FileMetaDataProvider::insertCommonData(const QList<QVariantMap>& files)
             if (it == map.constEnd()) {
                 m_data.remove(propUri);
                 break;
-            } 
-                
+            }
+
             QVariantMap::iterator dit = m_data.find(it.key());
             if (dit == m_data.end()) {
                 m_data.insert(propUri, it.value());
@@ -324,6 +321,7 @@ void FileMetaDataProvider::setFileItem()
         IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
         connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
         ret->start();
+
     // Fully indexed by Baloo
     } else {
         FileFetchJob* job = new FileFetchJob(QStringList() << filePath, this);
@@ -339,7 +337,7 @@ void FileMetaDataProvider::setFileItems()
     //   * Indexed
 
     QStringList urls;
-    // Only extract data from indexed files, 
+    // Only extract data from indexed files,
     // it would be too expensive otherwise.
     Q_FOREACH (const KFileItem& item, m_fileItems) {
         const QUrl url = item.targetUrl();
@@ -350,7 +348,7 @@ void FileMetaDataProvider::setFileItems()
 
     if (!urls.isEmpty()) {
         insertBasicData();
-        
+
         FileFetchJob* job = new FileFetchJob(urls, this);
         connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
         job->start();
