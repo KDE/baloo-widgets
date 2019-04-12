@@ -217,15 +217,6 @@ void FileMetaDataProvider::insertFilesListBasicData()
     }
 }
 
-void FileMetaDataProvider::insertBasicData()
-{
-    if (m_fileItems.count() > 1) {
-      insertFilesListBasicData();
-    } else {
-      insertSingleFileBasicData();
-    }
-}
-
 void FileMetaDataProvider::insertEditableData()
 {
     if (!m_readOnly) {
@@ -304,7 +295,7 @@ void FileMetaDataProvider::setFileItem()
     //
     const QUrl url = m_fileItems.first().targetUrl();
     if (!url.isLocalFile()) {
-        insertBasicData();
+        insertSingleFileBasicData();
         emit loadingFinished();
         return;
     }
@@ -315,7 +306,7 @@ void FileMetaDataProvider::setFileItem()
             || m_config.onlyBasicIndexing()) {
         m_realTimeIndexing = true;
 
-        insertBasicData();
+        insertSingleFileBasicData();
         insertEditableData();
 
         IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
@@ -346,14 +337,13 @@ void FileMetaDataProvider::setFileItems()
         }
     }
 
+    insertFilesListBasicData();
     if (!urls.isEmpty()) {
-        insertBasicData();
 
         FileFetchJob* job = new FileFetchJob(urls, this);
         connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
         job->start();
     } else {
-        insertBasicData();
         emit loadingFinished();
     }
 }

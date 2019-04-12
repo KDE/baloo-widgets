@@ -115,7 +115,6 @@ private Q_SLOTS:
     void slotFileFetchFinished(KJob* job);
 
 private:
-    void insertBasicData();
     void insertEditableData();
 
     void setFileItem();
