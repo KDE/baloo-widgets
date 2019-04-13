@@ -112,7 +112,7 @@ void FileMetaDataWidget::Private::deleteRows()
     m_rows.clear();
 }
 
-QLabel* FileMetaDataWidget::Private::createLabel(const QString &key, const QString& itemLabel, FileMetaDataWidget* parent) 
+QLabel* FileMetaDataWidget::Private::createLabel(const QString &key, const QString& itemLabel, FileMetaDataWidget* parent)
 {
     QLabel* label = new QLabel(itemLabel + QLatin1Char(':'), parent);
     label->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
@@ -127,12 +127,12 @@ QLabel* FileMetaDataWidget::Private::createLabel(const QString &key, const QStri
 void FileMetaDataWidget::Private::slotLoadingFinished()
 {
     deleteRows();
-    
+
     if (m_gridLayout == nullptr) {
         m_gridLayout = new QGridLayout(q);
         m_gridLayout->setContentsMargins(0, 0, 0, 0);
         m_gridLayout->setSpacing(q->fontMetrics().height() / 4);
-    } 
+    }
 
     QVariantMap data = m_filter->filter( m_provider->data() );
     m_widgetFactory->setNoLinks( m_provider->realTimeIndexing() );
