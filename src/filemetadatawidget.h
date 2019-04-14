@@ -43,6 +43,16 @@ enum class DateFormats {
     ShortFormat = QLocale::ShortFormat ///< @see QLocale::ShortFormat
 };
 
+enum class ConfigurationMode {
+    ReStart = 0, /**< Switch into configuration mode. The selection is
+                   *  initialized with the current configuration.
+                   *  In case the widget is in configuration mode already,
+                   *  the changes are discarded, and the mode is kept.
+                   */
+    Accept,      /**< Save any changes, switch to regular mode */
+    Cancel       /**< Discard any changes, switch to regular mode */
+};
+
 class BALOO_WIDGETS_EXPORT FileMetaDataWidget : public QWidget
 {
     Q_OBJECT
@@ -77,6 +87,12 @@ public:
 
     /** @see QWidget::sizeHint() */
     QSize sizeHint() const override;
+
+    /**
+     * Switch between regular (view) and configuration mode.
+     * @since 19.08.00
+     */
+    void setConfigurationMode(ConfigurationMode mode);
 
 Q_SIGNALS:
     /**

@@ -26,9 +26,13 @@
 #include "widgetfactory.h"
 #include "filemetadataprovider.h"
 
+#include <KConfig>
+#include <KConfigGroup>
+
 #include <KFileItem>
 #include <KFileMetaData/UserMetaData>
 
+#include <QCheckBox>
 #include <QGridLayout>
 #include <QLabel>
 #include <QSpacerItem>
@@ -46,6 +50,7 @@ class Baloo::FileMetaDataWidget::Private
 public:
     struct Row
     {
+        QCheckBox* checkBox;
         QLabel* label;
         QWidget* value;
     };
@@ -63,12 +68,17 @@ public:
     QStringList sortedKeys(const QVariantMap& data) const;
     QLabel* createLabel(const QString &key,  const QString& itemLabel, FileMetaDataWidget* parent);
 
+    void saveConfig();
+
     QList<Row> m_rows;
     FileMetaDataProvider* m_provider;
     QGridLayout* m_gridLayout;
 
     MetadataFilter* m_filter;
     WidgetFactory* m_widgetFactory;
+
+    QMap<QString, bool> m_visibilityChanged;
+    bool m_configureVisibleProperties = false;
 
 private:
     FileMetaDataWidget* const q;
@@ -100,6 +110,9 @@ void FileMetaDataWidget::Private::deleteRows()
     foreach (const Row& row, m_rows) {
         delete row.label;
         row.value->deleteLater();
+        if (row.checkBox) {
+            row.checkBox->deleteLater();
+        }
     }
 
     m_rows.clear();
@@ -127,23 +140,63 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
         m_gridLayout->setSpacing(q->fontMetrics().height() / 4);
     }
 
-    QVariantMap data = m_filter->filter( m_provider->data() );
-    m_widgetFactory->setNoLinks( m_provider->realTimeIndexing() );
+    QVariantMap data = m_provider->data();
+    QStringList active;
+    if (m_configureVisibleProperties) {
+        active = m_filter->filter(data).keys();
+        auto changedIt = m_visibilityChanged.constBegin();
+        while (changedIt != m_visibilityChanged.constEnd()) {
+            if (changedIt.value()) {
+                active.append(changedIt.key());
+            } else {
+                active.removeAll(changedIt.key());
+            }
+            changedIt++;
+        }
+        m_widgetFactory->setNoLinks(true);
+        m_widgetFactory->setReadOnly(true);
+        m_gridLayout->setColumnStretch(0, 1);
+        m_gridLayout->setColumnStretch(1, 3);
+        m_gridLayout->setColumnStretch(2, 0);
+        m_gridLayout->setColumnStretch(3, 6);
+    } else {
+        data = m_filter->filter(data);
+        m_widgetFactory->setNoLinks( m_provider->realTimeIndexing() );
+        m_gridLayout->setColumnStretch(0, 4);
+        m_gridLayout->setColumnStretch(1, 0);
+        m_gridLayout->setColumnStretch(2, 6);
+        m_gridLayout->setColumnStretch(3, 0);
+    }
 
     int rowIndex = 0;
     // Iterate through all remaining items.
     // Embed the label and the value as new row in the widget
     const QStringList keys = sortedKeys(data);
+    const int spacerWidth = QFontMetrics(q->font()).size(Qt::TextSingleLine, " ").width();
+
+    const int labelColumn = m_configureVisibleProperties ? 1 : 0;
+
     for (const auto key: keys) {
         Row row;
-        const int spacerWidth = QFontMetrics(q->font()).size(Qt::TextSingleLine, " ").width();
-        m_gridLayout->addItem(new QSpacerItem(spacerWidth, 1), rowIndex, 1);
+        if (m_configureVisibleProperties) {
+            row.checkBox = new QCheckBox(q);
+            if (active.contains(key)) {
+                row.checkBox->setChecked(true);
+            }
+            m_gridLayout->addWidget(row.checkBox, rowIndex, 0, Qt::AlignTop | Qt::AlignRight);
+            connect(row.checkBox, &QCheckBox::stateChanged,
+                    q, [this, key](int state) { this->m_visibilityChanged[key] = (state == Qt::Checked); });
+        } else {
+            row.checkBox = nullptr;
+        }
 
         row.label = createLabel(key, m_provider->label(key), q);
-        m_gridLayout->addWidget(row.label, rowIndex, 0, Qt::AlignRight);
+        m_gridLayout->addWidget(row.label, rowIndex, labelColumn + 0, Qt::AlignRight);
+
+        m_gridLayout->addItem(new QSpacerItem(spacerWidth, 1), rowIndex, labelColumn + 1);
 
         row.value = m_widgetFactory->createWidget(key, data[key], q);
-        m_gridLayout->addWidget(row.value, rowIndex, 2, Qt::AlignLeft);
+        m_gridLayout->addWidget(row.value, rowIndex, labelColumn + 2, Qt::AlignLeft);
 
         // Remember the label and value-widget as row
         m_rows.append(row);
@@ -200,6 +253,24 @@ QStringList FileMetaDataWidget::Private::sortedKeys(const QVariantMap& data) con
     }
 
     return list;
+}
+
+void FileMetaDataWidget::Private::saveConfig()
+{
+    if (m_visibilityChanged.isEmpty()) {
+        return;
+    }
+
+    KConfig config("baloofileinformationrc", KConfig::NoGlobals);
+    KConfigGroup showGroup = config.group("Show");
+
+    auto changedIt = m_visibilityChanged.constBegin();
+    while (changedIt != m_visibilityChanged.constEnd()) {
+        showGroup.writeEntry(changedIt.key(), changedIt.value());
+        changedIt++;
+    }
+
+    showGroup.sync();
 }
 
 FileMetaDataWidget::FileMetaDataWidget(QWidget* parent)
@@ -311,6 +382,20 @@ QSize FileMetaDataWidget::sizeHint() const
     d->m_gridLayout->spacing() + rightWidthMax;
 
     return QSize(width, height);
+}
+
+void FileMetaDataWidget::setConfigurationMode(ConfigurationMode mode)
+{
+    if (mode == ConfigurationMode::ReStart) {
+        d->m_configureVisibleProperties = true;
+    } else if (mode == ConfigurationMode::Accept) {
+        d->saveConfig();
+        d->m_configureVisibleProperties = false;
+    } else if (mode == ConfigurationMode::Cancel) {
+        d->m_configureVisibleProperties = false;
+    }
+    d->m_visibilityChanged.clear();
+    d->slotLoadingFinished();
 }
 
 #include "moc_filemetadatawidget.cpp"
