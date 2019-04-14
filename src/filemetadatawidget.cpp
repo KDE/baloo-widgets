@@ -53,13 +53,6 @@ public:
     Private(FileMetaDataWidget* parent);
     ~Private();
 
-    /**
-     * Parses the configuration file "kmetainformationrc" and
-     * updates the visibility of all rows that got their data
-     * from KFileItem.
-     */
-    void updateFileItemRowsVisibility();
-
     void deleteRows();
 
     void slotLoadingFinished();
