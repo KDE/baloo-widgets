@@ -198,10 +198,18 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
         row.value = m_widgetFactory->createWidget(key, data[key], q);
         m_gridLayout->addWidget(row.value, rowIndex, labelColumn + 2, Qt::AlignLeft);
 
+        m_gridLayout->setRowStretch(rowIndex, 0);
+
         // Remember the label and value-widget as row
         m_rows.append(row);
         ++rowIndex;
     }
+
+    // Add vertical stretch - when the widget is embedded with extra vertical
+    // space, it should be added at the bottom, not distributed between the
+    // items.
+    m_gridLayout->addItem(new QSpacerItem(0, 0), rowIndex, 0, 1, -1);
+    m_gridLayout->setRowStretch(rowIndex, 1);
 
     q->updateGeometry();
     emit q->metaDataRequestFinished(m_provider->items());
