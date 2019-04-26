@@ -47,9 +47,18 @@ TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
 
         const QStringList fileTags = m_metaData->tags();
 
+        // The file may be located outside an indexed path, or is not indexed yet
+        // Show the complete tag list, i.e. the union of file and index DB tags
+        QStringList allTags;
+        allTags.reserve(fileTags.size() + items.size());
+        allTags.append(fileTags);
         for (const KFileItem &item: items) {
-            const QString name = item.name();
+            allTags.append(item.name());
+        }
+        allTags.sort(Qt::CaseInsensitive);
+        allTags.removeDuplicates();
 
+        for (const QString name : qAsConst(allTags)) {
             QAction* action = m_menu->addAction(QIcon::fromTheme(QStringLiteral("tag")), name);
             action->setCheckable(true);
             action->setChecked(fileTags.contains(name));
