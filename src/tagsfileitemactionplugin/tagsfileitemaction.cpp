@@ -52,18 +52,14 @@ TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
             action->setCheckable(true);
             action->setChecked(m_metaData->tags().contains(name));
 
-            connect(action, &QAction::triggered, this, [this, action] {
-                if (action->isChecked()) {
-                    QStringList newTags = m_metaData->tags();
-                    // HACK the first character of QAction::text is '&'
-                    newTags.append(action->text().remove(0,1));
-                    m_metaData->setTags(newTags);
+            connect(action, &QAction::triggered, this, [this, name](bool isChecked) {
+                QStringList newTags = m_metaData->tags();
+                if (isChecked) {
+                    newTags.append(name);
                 } else {
-                    QStringList newTags = m_metaData->tags();
-                    // HACK the first character of QAction::text is '&'
-                    newTags.removeAll(action->text().remove(0,1));
-                    m_metaData->setTags(newTags);
+                    newTags.removeAll(name);
                 }
+                m_metaData->setTags(newTags);
             });
         }
     });
