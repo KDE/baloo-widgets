@@ -45,12 +45,14 @@ TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
 
     connect(&m_tagsLister, &KCoreDirLister::itemsAdded, this, [this](const QUrl&, const KFileItemList& items) {
 
+        const QStringList fileTags = m_metaData->tags();
+
         for (const KFileItem &item: items) {
             const QString name = item.name();
 
             QAction* action = m_menu->addAction(QIcon::fromTheme(QStringLiteral("tag")), name);
             action->setCheckable(true);
-            action->setChecked(m_metaData->tags().contains(name));
+            action->setChecked(fileTags.contains(name));
 
             connect(action, &QAction::triggered, this, [this, name](bool isChecked) {
                 QStringList newTags = m_metaData->tags();
