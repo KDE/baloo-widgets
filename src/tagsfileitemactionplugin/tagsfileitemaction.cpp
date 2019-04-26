@@ -93,6 +93,10 @@ QList<QAction*> TagsFileItemAction::actions(const KFileItemListProperties& fileI
     }
 
     m_metaData = new KFileMetaData::UserMetaData(fileItemInfos.urlList()[0].toLocalFile());
+    if (!m_metaData->isSupported()) {
+        return {};
+    }
+
     m_tagsLister.openUrl(QUrl("tags:/"), KCoreDirLister::OpenUrlFlag::Reload);
 
     return {m_menu->menuAction()};
