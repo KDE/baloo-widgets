@@ -70,8 +70,10 @@ TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
     connect(newAction, &QAction::triggered, this, [this] {
         QString newTag = QInputDialog::getText(m_menu, i18n("New tag"), i18n("New tag:"), QLineEdit::Normal);
         QStringList tags = m_metaData->tags();
-        tags.append(newTag);
-        m_metaData->setTags(tags);
+        if (!tags.contains(newTag)) {
+            tags.append(newTag);
+            m_metaData->setTags(tags);
+        }
     });
 
     m_menu->addAction(newAction);
