@@ -422,11 +422,11 @@ QString FileMetaDataProvider::group(const QString& label) const
         uriGrouper.insert(QLatin1String("kfileitem#size"), QLatin1String("0FileItemB"));
         uriGrouper.insert(QLatin1String("kfileitem#totalSize"), QLatin1String("0FileItemB"));
         uriGrouper.insert(QLatin1String("kfileitem#modified"), QLatin1String("0FileItemC"));
-        uriGrouper.insert(QLatin1String("kfileitem#accessed"), QLatin1String("0FileItemC"));
-        uriGrouper.insert(QLatin1String("kfileitem#created"), QLatin1String("0FileItemC"));
-        uriGrouper.insert(QLatin1String("kfileitem#owner"), QLatin1String("0FileItemD"));
-        uriGrouper.insert(QLatin1String("kfileitem#group"), QLatin1String("0FileItemE"));
-        uriGrouper.insert(QLatin1String("kfileitem#permissions"), QLatin1String("0FileItemF"));
+        uriGrouper.insert(QLatin1String("kfileitem#accessed"), QLatin1String("0FileItemD"));
+        uriGrouper.insert(QLatin1String("kfileitem#created"), QLatin1String("0FileItemE"));
+        uriGrouper.insert(QLatin1String("kfileitem#owner"), QLatin1String("0FileItemF"));
+        uriGrouper.insert(QLatin1String("kfileitem#group"), QLatin1String("0FileItemG"));
+        uriGrouper.insert(QLatin1String("kfileitem#permissions"), QLatin1String("0FileItemH"));
 
         // Editable Data
         uriGrouper.insert(QLatin1String("tags"), QLatin1String("1EditableDataA"));
