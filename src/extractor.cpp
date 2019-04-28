@@ -54,9 +54,9 @@ int main(int argc, char **argv)
     KFileMetaData::SimpleExtractionResult result(url, mimetype, KFileMetaData::ExtractionResult::ExtractMetaData);
     KFileMetaData::ExtractorCollection collection;
 
-    QList<KFileMetaData::Extractor *> exList = collection.fetchExtractors(mimetype);
+    const QList<KFileMetaData::Extractor *> exList = collection.fetchExtractors(mimetype);
 
-    Q_FOREACH (KFileMetaData::Extractor *ex, exList) {
+    for (KFileMetaData::Extractor *ex : exList) {
         ex->extract(&result);
     }
 

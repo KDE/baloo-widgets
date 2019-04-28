@@ -333,9 +333,10 @@ void FileMetaDataProvider::setFileItems()
     //   * Indexed
 
     QStringList urls;
+    urls.reserve(m_fileItems.size());
     // Only extract data from indexed files,
     // it would be too expensive otherwise.
-    Q_FOREACH (const KFileItem& item, m_fileItems) {
+    for (const KFileItem& item : qAsConst(m_fileItems)) {
         const QUrl url = item.targetUrl();
         if (url.isLocalFile()) {
             urls << url.toLocalFile();
