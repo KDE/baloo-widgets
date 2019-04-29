@@ -193,7 +193,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
     // If all directories
     Q_ASSERT(m_fileItems.count() > 1);
     bool allDirectories = true;
-    for (const KFileItem& item : m_fileItems) {
+    for (const KFileItem& item : qAsConst(m_fileItems)) {
         allDirectories &= item.isDir();
         if (!allDirectories) {
             break;
@@ -202,7 +202,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
 
     if (allDirectories) {
         int count = 0;
-        for (const KFileItem& item : m_fileItems) {
+        for (const KFileItem& item : qAsConst(m_fileItems)) {
             count += subDirectoriesCount(item.url().path());
         }
 
@@ -213,7 +213,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
     } else {
         // Calculate the size of all items
         quint64 totalSize = 0;
-        for (const KFileItem& item : m_fileItems) {
+        for (const KFileItem& item : qAsConst(m_fileItems)) {
             if (!item.isDir() && !item.isLink()) {
                 totalSize += item.size();
             }
