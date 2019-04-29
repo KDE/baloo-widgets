@@ -159,7 +159,6 @@ void FileMetaDataProvider::insertSingleFileBasicData()
     // not work, the modification date needs also to be adjusted...
     Q_ASSERT(m_fileItems.count() <= 1);
     if (m_fileItems.count() == 1) {
-      KFormat format;
       const KFileItem& item = m_fileItems.first();
 
       if (item.isDir()) {
@@ -171,6 +170,7 @@ void FileMetaDataProvider::insertSingleFileBasicData()
               m_data.insert("kfileitem#size", itemCountString);
           }
       } else {
+          KFormat format;
           m_data.insert("kfileitem#size", format.formatByteSize(item.size()));
       }
 
@@ -189,7 +189,6 @@ void FileMetaDataProvider::insertSingleFileBasicData()
 
 void FileMetaDataProvider::insertFilesListBasicData()
 {
-    KFormat format;
     // If all directories
     Q_ASSERT(m_fileItems.count() > 1);
     bool allDirectories = true;
@@ -216,6 +215,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
                 totalSize += item.size();
             }
         }
+        KFormat format;
         m_data.insert("kfileitem#totalSize", format.formatByteSize(totalSize));
     }
 }
