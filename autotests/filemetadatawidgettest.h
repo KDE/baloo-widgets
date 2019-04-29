@@ -37,6 +37,7 @@ private Q_SLOTS:
     void shouldSignalOnceFiles();
     void shouldShowProperties();
     void shouldShowCommonProperties();
+    void shouldShowMultiValueProperties();
 
 private:
      Baloo::FileMetaDataWidget*  m_widget;

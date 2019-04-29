@@ -192,3 +192,18 @@ void FileMetadataWidgetTest::shouldShowCommonProperties()
     // QCOMPARE( map->value("Album Artist:"), QLatin1String("Bill Laswell"));
 }
 
+void FileMetadataWidgetTest::shouldShowMultiValueProperties()
+{
+    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    m_widget->setItems(KFileItemList()
+        << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/test_multivalue.ogg"))
+    );
+    QVERIFY(spy.wait());
+    QCOMPARE(spy.count(), 1);
+    auto artistWidget = m_widget->findChild<QLabel*>(QStringLiteral("artist"));
+    QVERIFY2(artistWidget, "artist not found");
+    QCOMPARE(artistWidget->text(), "Artist1 and Artist2");
+    auto genreWidget = m_widget->findChild<QLabel*>(QStringLiteral("genre"));
+    QVERIFY2(genreWidget, "genre not found");
+    QCOMPARE(genreWidget->text(), "Genre1, Genre2, and Genre3");
+}
