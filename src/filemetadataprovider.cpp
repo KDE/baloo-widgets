@@ -205,11 +205,9 @@ void FileMetaDataProvider::insertFilesListBasicData()
         for (const KFileItem& item : qAsConst(m_fileItems)) {
             count += subDirectoriesCount(item.url().path());
         }
+        const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
+        m_data.insert("kfileitem#totalSize", itemCountString);
 
-        if (count) {
-            const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
-            m_data.insert("kfileitem#totalSize", itemCountString);
-        }
     } else {
         // Calculate the size of all items
         quint64 totalSize = 0;
