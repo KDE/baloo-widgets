@@ -313,13 +313,13 @@ void FileMetaDataProvider::setFileItem()
         insertEditableData();
 
         IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
-        connect(ret, SIGNAL(finished(KJob*)), this, SLOT(slotLoadingFinished(KJob*)));
+        connect(ret, &IndexedDataRetriever::finished, this, &FileMetaDataProvider::slotLoadingFinished);
         ret->start();
 
     // Fully indexed by Baloo
     } else {
-        FileFetchJob* job = new FileFetchJob(QStringList() << filePath, this);
-        connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
+        FileFetchJob* job = new FileFetchJob(QStringList{filePath}, this);
+        connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
         job->start();
     }
 }
@@ -345,7 +345,7 @@ void FileMetaDataProvider::setFileItems()
     if (!urls.isEmpty()) {
 
         FileFetchJob* job = new FileFetchJob(urls, this);
-        connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotFileFetchFinished(KJob*)));
+        connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
         job->start();
     } else {
         emit loadingFinished();

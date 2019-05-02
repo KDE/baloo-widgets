@@ -98,7 +98,7 @@ FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
     // TODO: If KFileMetaDataProvider might get a public class in future KDE releases,
     // the following code should be moved into KFileMetaDataWidget::setModel():
     m_provider = new FileMetaDataProvider(q);
-    connect(m_provider, SIGNAL(loadingFinished()), q, SLOT(slotLoadingFinished()));
+    connect(m_provider, &FileMetaDataProvider::loadingFinished, q, [this](){ slotLoadingFinished(); });
 }
 
 FileMetaDataWidget::Private::~Private()
