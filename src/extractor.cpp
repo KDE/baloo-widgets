@@ -20,7 +20,7 @@
  *
  */
 
-#include "filemetadatautil_p.h"
+#include "extractorutil_p.h"
 
 #include <QCoreApplication>
 #include <QCommandLineParser>
@@ -64,11 +64,7 @@ int main(int argc, char **argv)
     out.open(stdout, QIODevice::WriteOnly);
     QDataStream stream(&out);
 
-    QVariantMap map = Baloo::Private::toNamedVariantMap(result.properties());
-
-    stream << map;
-
-    qDebug() << map;
+    stream << result.properties();
 
     return 0;
 }

@@ -20,6 +20,7 @@
 
 #include "indexeddataretriever.h"
 #include "filemetadatautil_p.h"
+#include "extractorutil_p.h"
 
 #include <QDataStream>
 #include <QProcess>
@@ -56,7 +57,11 @@ void IndexedDataRetriever::slotIndexedFile(int exitCode, QProcess::ExitStatus ex
     }
     QByteArray data = m_process->readAllStandardOutput();
     QDataStream in(&data, QIODevice::ReadOnly);
-    in >> m_data;
+
+    KFileMetaData::PropertyMap properties;
+    in >> properties;
+
+    m_data = Baloo::Private::toNamedVariantMap(properties);
 
     KFileMetaData::UserMetaData umd(m_url);
     QVariantMap attributes = Baloo::Private::convertUserMetaData(umd);

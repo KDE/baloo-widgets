@@ -19,6 +19,9 @@
  */
 
 #include "extractortest.h"
+#include <extractorutil_p.h>
+
+#include <KFileMetaData/Properties>
 
 #include <QTest>
 #include <QProcess>
@@ -32,6 +35,7 @@
 
 void ExtractorTest::test()
 {
+    using namespace KFileMetaData::Property;
     QString fileUrl = QFINDTESTDATA("samplefiles/test.mp3");
 
     QString exe = QStandardPaths::findExecutable(QLatin1String("baloo_filemetadata_temp_extractor"));
@@ -46,14 +50,15 @@ void ExtractorTest::test()
 
     qDebug() << process.readAllStandardError();
     QByteArray bytearray = process.readAllStandardOutput();
-    QVariantMap data;
     QDataStream in(&bytearray, QIODevice::ReadOnly);
+
+    KFileMetaData::PropertyMap data;
     in >> data;
 
-    QCOMPARE(data.value(QLatin1String("channels")).toInt(), 2);
-    QCOMPARE(data.value(QLatin1String("sampleRate")).toInt(), 44100);
+    QCOMPARE(data.value(Property::Channels).toInt(), 2);
+    QCOMPARE(data.value(Property::SampleRate).toInt(), 44100);
     if (data.size() == 3) {
-        QCOMPARE(data.value(QLatin1String("bitRate")).toInt(), 255000);
+        QCOMPARE(data.value(Property::BitRate).toInt(), 255000);
     } else {
         QCOMPARE(data.size(), 2);
     }

@@ -3,6 +3,7 @@ include(ECMMarkAsTest)
 ecm_add_test(extractortest.cpp
     TEST_NAME "extractortest"
     LINK_LIBRARIES Qt5::Test
+    KF5::FileMetaData
 )
 ecm_add_tests(
     filemetadatawidgettest.cpp
