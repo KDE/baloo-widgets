@@ -65,8 +65,7 @@ void IndexedDataRetriever::slotIndexedFile(int exitCode, QProcess::ExitStatus ex
 
     KFileMetaData::UserMetaData umd(m_url);
     if (umd.isSupported()) {
-        // FIXME - check writable
-        m_canEdit = true;
+        m_canEdit = QFileInfo(m_url).isWritable();
 
         QVariantMap attributes = Baloo::Private::convertUserMetaData(umd);
         m_data.unite(attributes);

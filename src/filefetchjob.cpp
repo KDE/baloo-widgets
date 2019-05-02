@@ -21,6 +21,7 @@
 #include "filefetchjob.h"
 #include "filemetadatautil_p.h"
 
+#include <QFileInfo>
 #include <QTimer>
 #include <Baloo/File>
 
@@ -56,6 +57,9 @@ void FileFetchJob::doStart()
             prop.unite(attributes);
         } else {
             m_canEditAll = false;
+        }
+        if (m_canEditAll) {
+            m_canEditAll = QFileInfo(filePath).isWritable();
         }
 
         m_data << prop;
