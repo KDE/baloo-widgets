@@ -78,7 +78,7 @@ install(FILES
 #
 # Extractor Process
 #
-add_executable(baloo_filemetadata_temp_extractor extractor.cpp)
+add_executable(baloo_filemetadata_temp_extractor extractor.cpp filemetadatautil.cpp)
 target_link_libraries(baloo_filemetadata_temp_extractor
   Qt5::Core
   KF5::I18n

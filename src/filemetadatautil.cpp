@@ -19,6 +19,7 @@
 
 #include "filemetadatautil_p.h"
 #include <KFileMetaData/UserMetaData>
+#include <KFileMetaData/PropertyInfo>
 
 namespace Baloo
 {
@@ -50,6 +51,18 @@ QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData& metaData)
     }
 
     return properties;
+}
+
+QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMap& propMap)
+{
+    QVariantMap map;
+    KFileMetaData::PropertyMap::const_iterator it = propMap.constBegin();
+    for (; it != propMap.constEnd(); it++) {
+        KFileMetaData::PropertyInfo pi(it.key());
+        map.insertMulti(pi.name(), it.value());
+    }
+
+    return map;
 }
 
 } // namespace KFMPrivate

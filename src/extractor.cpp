@@ -20,6 +20,8 @@
  *
  */
 
+#include "filemetadatautil_p.h"
+
 #include <QCoreApplication>
 #include <QCommandLineParser>
 #include <QMimeDatabase>
@@ -30,7 +32,6 @@
 #include <KFileMetaData/SimpleExtractionResult>
 #include <KFileMetaData/ExtractorCollection>
 #include <KFileMetaData/Extractor>
-#include <KFileMetaData/PropertyInfo>
 #include <KFileMetaData/MimeUtils>
 
 #include <iostream>
@@ -63,13 +64,7 @@ int main(int argc, char **argv)
     out.open(stdout, QIODevice::WriteOnly);
     QDataStream stream(&out);
 
-    QVariantMap map;
-    QMapIterator<KFileMetaData::Property::Property, QVariant> it(result.properties());
-    while (it.hasNext()) {
-        it.next();
-        KFileMetaData::PropertyInfo pi(it.key());
-        map.insertMulti(pi.name(), it.value());
-    }
+    QVariantMap map = Baloo::Private::toNamedVariantMap(result.properties());
 
     stream << map;
 

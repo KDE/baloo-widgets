@@ -18,6 +18,7 @@
  *****************************************************************************/
 
 #include <KFileMetaData/UserMetaData>
+#include <KFileMetaData/Properties>
 #include <QVariantMap>
 
 namespace Baloo
@@ -31,6 +32,12 @@ namespace Private
   * /sa: KFileMetaData::UserMetaData
   */
 QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData& metaData);
+
+/**
+ * Converts the property map into a variant map
+ * using the property name as key.
+ */
+QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMap& propMap);
 
 } // namespace Private
 } // namespace Baloo

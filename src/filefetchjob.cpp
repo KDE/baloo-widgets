@@ -25,7 +25,6 @@
 #include <Baloo/File>
 
 #include <KFileMetaData/UserMetaData>
-#include <KFileMetaData/PropertyInfo>
 
 using namespace Baloo;
 
@@ -40,25 +39,13 @@ void FileFetchJob::start()
     QTimer::singleShot(0, this, SLOT(doStart()));
 }
 
-static QVariantMap convertPropertyMap(const KFileMetaData::PropertyMap& propMap)
-{
-    QVariantMap map;
-    KFileMetaData::PropertyMap::const_iterator it = propMap.constBegin();
-    for (; it != propMap.constEnd(); it++) {
-        KFileMetaData::PropertyInfo pi(it.key());
-        map.insertMulti(pi.name(), it.value());
-    }
-
-    return map;
-}
-
 void FileFetchJob::doStart()
 {
     for (const QString& filePath : m_urls) {
         Baloo::File file(filePath);
         file.load();
 
-        QVariantMap prop = convertPropertyMap(file.properties());
+        QVariantMap prop = Baloo::Private::toNamedVariantMap(file.properties());
         KFileMetaData::UserMetaData umd(filePath);
         QVariantMap attributes = Baloo::Private::convertUserMetaData(umd);
 
