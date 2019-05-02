@@ -37,6 +37,7 @@ public:
     void start() override;
 
     QVariantMap data() const;
+    bool canEdit() const;
 
 private Q_SLOTS:
     void slotIndexedFile(int exitCode, QProcess::ExitStatus exitStatus);
@@ -45,6 +46,7 @@ private:
     QString m_url;
     QProcess* m_process;
     QVariantMap m_data;
+    bool m_canEdit = false;
 };
 
 }

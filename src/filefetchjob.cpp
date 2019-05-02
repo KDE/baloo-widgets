@@ -28,9 +28,10 @@
 
 using namespace Baloo;
 
-FileFetchJob::FileFetchJob(const QStringList& urls, QObject* parent)
+FileFetchJob::FileFetchJob(const QStringList& urls, bool canEditAll, QObject* parent)
     : KJob(parent)
     , m_urls(urls)
+    , m_canEditAll(canEditAll)
 {
 }
 
@@ -47,9 +48,15 @@ void FileFetchJob::doStart()
 
         QVariantMap prop = Baloo::Private::toNamedVariantMap(file.properties());
         KFileMetaData::UserMetaData umd(filePath);
-        QVariantMap attributes = Baloo::Private::convertUserMetaData(umd);
 
-        prop.unite(attributes);
+        if (umd.isSupported()) {
+            // FIXME - check writable
+
+            QVariantMap attributes = Baloo::Private::convertUserMetaData(umd);
+            prop.unite(attributes);
+        } else {
+            m_canEditAll = false;
+        }
 
         m_data << prop;
     }
@@ -60,4 +67,9 @@ void FileFetchJob::doStart()
 QList<QVariantMap>  Baloo::FileFetchJob::data() const
 {
     return m_data;
+}
+
+bool FileFetchJob::canEditAll() const
+{
+    return m_canEditAll;
 }

@@ -162,6 +162,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
     } else {
         data = m_filter->filter(data);
         m_widgetFactory->setNoLinks( m_provider->realTimeIndexing() );
+        m_widgetFactory->setReadOnly(m_provider->isReadOnly());
         m_gridLayout->setColumnStretch(0, 4);
         m_gridLayout->setColumnStretch(1, 0);
         m_gridLayout->setColumnStretch(2, 6);
@@ -294,25 +295,7 @@ FileMetaDataWidget::~FileMetaDataWidget()
 
 void FileMetaDataWidget::setItems(const KFileItemList& items)
 {
-    KFileItemList localItemsList;
-
-    bool xAttrSuppored = true;
-
-    foreach(const KFileItem& item, items) {
-        QUrl url = item.targetUrl();
-        if (url.isLocalFile()) {
-            localItemsList << item;
-            QString path = url.toLocalFile();
-
-            KFileMetaData::UserMetaData md(path);
-            xAttrSuppored &= md.isSupported();
-        }
-    }
-    setReadOnly(!xAttrSuppored);
-
-    d->m_provider->setItems(localItemsList);
-
-    setReadOnly(!xAttrSuppored);
+    d->m_provider->setItems(items);
     d->m_widgetFactory->setItems(items);
 }
 

@@ -140,6 +140,7 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob* job)
         m_data = files.first();
         insertSingleFileBasicData();
     }
+    m_readOnly = !fetchJob->canEditAll();
 
     insertEditableData();
     emit loadingFinished();
@@ -149,6 +150,7 @@ void FileMetaDataProvider::slotLoadingFinished(KJob* job)
 {
     IndexedDataRetriever* ret = dynamic_cast<IndexedDataRetriever*>(job);
     m_data = unite(m_data, ret->data());
+    m_readOnly = !ret->canEdit();
 
     emit loadingFinished();
 }
@@ -298,6 +300,8 @@ void FileMetaDataProvider::setFileItem()
     //
     const QUrl url = m_fileItems.first().targetUrl();
     if (!url.isLocalFile()) {
+        // FIXME - are extended attributes supported for remote files?
+        m_readOnly = true;
         insertSingleFileBasicData();
         emit loadingFinished();
         return;
@@ -318,7 +322,7 @@ void FileMetaDataProvider::setFileItem()
 
     // Fully indexed by Baloo
     } else {
-        FileFetchJob* job = new FileFetchJob(QStringList{filePath}, this);
+        FileFetchJob* job = new FileFetchJob(QStringList{filePath}, true, this);
         connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
         job->start();
     }
@@ -343,11 +347,16 @@ void FileMetaDataProvider::setFileItems()
 
     insertFilesListBasicData();
     if (!urls.isEmpty()) {
+        // Editing only if all URLs are local
+        bool canEdit = (urls.size() == m_fileItems.size());
 
-        FileFetchJob* job = new FileFetchJob(urls, this);
+        FileFetchJob* job = new FileFetchJob(urls, canEdit, this);
         connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
         job->start();
+
     } else {
+        // FIXME - are extended attributes supported for remote files?
+        m_readOnly = true;
         emit loadingFinished();
     }
 }

@@ -101,14 +101,6 @@ void FileMetadataWidgetTest::cleanup()
 void FileMetadataWidgetTest::shouldSignalOnceWithoutFile()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl());
-    QCOMPARE(spy.count(), 1);
-    QCOMPARE(m_widget->items().count(), 0);
-}
-
-void FileMetadataWidgetTest::shouldSignalOnceWithEmptyFile()
-{
-    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
     m_widget->setItems(KFileItemList());
     QCOMPARE(spy.count(), 1);
     QCOMPARE(m_widget->items().count(), 0);

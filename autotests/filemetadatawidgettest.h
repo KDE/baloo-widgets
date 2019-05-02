@@ -33,7 +33,6 @@ private Q_SLOTS:
     void cleanup();
 
     void shouldSignalOnceWithoutFile();
-    void shouldSignalOnceWithEmptyFile();
     void shouldSignalOnceFile();
     void shouldSignalOnceFiles();
     void shouldShowProperties();

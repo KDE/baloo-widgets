@@ -30,9 +30,10 @@ class FileFetchJob : public KJob
 {
     Q_OBJECT
 public:
-    explicit FileFetchJob(const QStringList& urls, QObject* parent = nullptr);
+    explicit FileFetchJob(const QStringList& urls, bool canEditAll, QObject* parent = nullptr);
 
     QList<QVariantMap> data() const;
+    bool canEditAll() const;
 
     void start() override;
 
@@ -42,6 +43,7 @@ private Q_SLOTS:
 private:
     QStringList m_urls;
     QList<QVariantMap> m_data;
+    bool m_canEditAll;
 };
 }
 

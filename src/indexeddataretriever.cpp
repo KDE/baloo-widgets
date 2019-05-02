@@ -64,10 +64,20 @@ void IndexedDataRetriever::slotIndexedFile(int exitCode, QProcess::ExitStatus ex
     m_data = Baloo::Private::toNamedVariantMap(properties);
 
     KFileMetaData::UserMetaData umd(m_url);
-    QVariantMap attributes = Baloo::Private::convertUserMetaData(umd);
-    m_data.unite(attributes);
+    if (umd.isSupported()) {
+        // FIXME - check writable
+        m_canEdit = true;
+
+        QVariantMap attributes = Baloo::Private::convertUserMetaData(umd);
+        m_data.unite(attributes);
+    }
 
     emitResult();
+}
+
+bool IndexedDataRetriever::canEdit() const
+{
+    return m_canEdit;
 }
 
 QVariantMap IndexedDataRetriever::data() const
