@@ -31,7 +31,6 @@
 #include <KFileMetaData/ExtractorCollection>
 #include <KFileMetaData/Extractor>
 #include <KFileMetaData/PropertyInfo>
-#include <KFileMetaData/UserMetaData>
 #include <KFileMetaData/MimeUtils>
 
 #include <iostream>
@@ -72,21 +71,6 @@ int main(int argc, char **argv)
         map.insertMulti(pi.name(), it.value());
     }
 
-    KFileMetaData::UserMetaData md(url);
-    QStringList tags = md.tags();
-    if (!tags.isEmpty()) {
-        map.insert("tags", tags);
-    }
-
-    int rating = md.rating();
-    if (rating) {
-        map.insert("rating", rating);
-    }
-
-    QString comment = md.userComment();
-    if (!comment.isEmpty()) {
-        map.insert("userComment", comment);
-    }
     stream << map;
 
     qDebug() << map;

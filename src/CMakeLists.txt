@@ -11,6 +11,7 @@ set(widgets_SRCS
   filemetadatawidget.cpp
   filemetadataconfigwidget.cpp
   filemetadataprovider.cpp
+  filemetadatautil.cpp
   indexeddataretriever.cpp
   kcommentwidget.cpp
   keditcommentdialog.cpp

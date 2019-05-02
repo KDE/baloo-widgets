@@ -19,6 +19,7 @@
  */
 
 #include "filefetchjob.h"
+#include "filemetadatautil_p.h"
 
 #include <QTimer>
 #include <Baloo/File>
@@ -58,27 +59,10 @@ void FileFetchJob::doStart()
         file.load();
 
         QVariantMap prop = convertPropertyMap(file.properties());
+        KFileMetaData::UserMetaData umd(filePath);
+        QVariantMap attributes = Baloo::Private::convertUserMetaData(umd);
 
-        KFileMetaData::UserMetaData md(filePath);
-        QStringList tags = md.tags();
-        if (!tags.isEmpty()) {
-            prop.insert("tags", tags);
-        }
-
-        int rating = md.rating();
-        if (rating) {
-            prop.insert("rating", rating);
-        }
-
-        QString comment = md.userComment();
-        if (!comment.isEmpty()) {
-            prop.insert("userComment", comment);
-        }
-
-        const QString originUrl = md.originUrl().toDisplayString();
-        if (!originUrl.isEmpty()) {
-            prop.insert("originUrl", originUrl);
-        }
+        prop.unite(attributes);
 
         m_data << prop;
     }
