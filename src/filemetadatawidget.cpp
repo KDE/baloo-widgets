@@ -295,7 +295,6 @@ FileMetaDataWidget::~FileMetaDataWidget()
 void FileMetaDataWidget::setItems(const KFileItemList& items)
 {
     KFileItemList localItemsList;
-    QStringList list;
 
     bool xAttrSuppored = true;
 
@@ -304,7 +303,6 @@ void FileMetaDataWidget::setItems(const KFileItemList& items)
         if (url.isLocalFile()) {
             localItemsList << item;
             QString path = url.toLocalFile();
-            list << path;
 
             KFileMetaData::UserMetaData md(path);
             xAttrSuppored &= md.isSupported();
@@ -313,9 +311,9 @@ void FileMetaDataWidget::setItems(const KFileItemList& items)
     setReadOnly(!xAttrSuppored);
 
     d->m_provider->setItems(localItemsList);
-    d->m_widgetFactory->setItems(list);
 
     setReadOnly(!xAttrSuppored);
+    d->m_widgetFactory->setItems(items);
 }
 
 KFileItemList FileMetaDataWidget::items() const

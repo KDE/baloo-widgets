@@ -252,8 +252,12 @@ QWidget* WidgetFactory::createValueWidget(const QString& value, QWidget* parent)
 
 void WidgetFactory::slotCommentChanged(const QString& comment)
 {
-    for (const QString& filePath : m_items) {
-        KFileMetaData::UserMetaData md(filePath);
+    for (const KFileItem& item : qAsConst(m_items)) {
+        QUrl url = item.targetUrl();
+        if (!url.isLocalFile()) {
+            continue;
+        }
+        KFileMetaData::UserMetaData md(url.toLocalFile());
         md.setUserComment(comment);
     }
     emit dataChangeStarted();
@@ -262,8 +266,12 @@ void WidgetFactory::slotCommentChanged(const QString& comment)
 
 void WidgetFactory::slotRatingChanged(uint rating)
 {
-    for (const QString& filePath : m_items) {
-        KFileMetaData::UserMetaData md(filePath);
+    for (const KFileItem& item : qAsConst(m_items)) {
+        QUrl url = item.targetUrl();
+        if (!url.isLocalFile()) {
+            continue;
+        }
+        KFileMetaData::UserMetaData md(url.toLocalFile());
         md.setRating(rating);
     }
     emit dataChangeStarted();
@@ -273,8 +281,12 @@ void WidgetFactory::slotRatingChanged(uint rating)
 void WidgetFactory::slotTagsChanged(const QStringList& tags)
 {
     if (m_tagWidget) {
-        for (const QString& filePath : m_items) {
-            KFileMetaData::UserMetaData md(filePath);
+        for (const KFileItem& item : qAsConst(m_items)) {
+            QUrl url = item.targetUrl();
+            if (!url.isLocalFile()) {
+                continue;
+            }
+            KFileMetaData::UserMetaData md(url.toLocalFile());
 
             // When multiple tags are selected one doesn't want to loose the old tags
             // of any of the resources. Unless specifically removed.
@@ -327,7 +339,7 @@ void WidgetFactory::setNoLinks(bool value)
     m_noLinks = value;
 }
 
-void WidgetFactory::setItems(const QStringList& items)
+void WidgetFactory::setItems(const KFileItemList& items)
 {
     m_items = items;
 }

@@ -43,7 +43,7 @@ namespace Baloo {
         explicit WidgetFactory(QObject* parent = nullptr);
         ~WidgetFactory() override;
 
-        void setItems(const QStringList& items);
+        void setItems(const KFileItemList& items);
 
         void setReadOnly(bool value);
         void setNoLinks(bool value);
@@ -76,7 +76,7 @@ namespace Baloo {
         KRatingWidget* m_ratingWidget;
         KCommentWidget* m_commentWidget;
 
-        QStringList m_items;
+        KFileItemList m_items;
         QStringList m_prevTags;
         bool m_readOnly;
         bool m_noLinks;
