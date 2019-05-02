@@ -39,7 +39,7 @@ public:
     QVariantMap data() const;
 
 private Q_SLOTS:
-    void slotIndexedFile(int error);
+    void slotIndexedFile(int exitCode, QProcess::ExitStatus exitStatus);
 
 private:
     QString m_url;

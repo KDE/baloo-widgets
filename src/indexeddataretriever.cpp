@@ -44,12 +44,15 @@ void IndexedDataRetriever::start()
     m_process = new QProcess(this);
     m_process->setReadChannel(QProcess::StandardOutput);
 
-    connect(m_process, static_cast<void (QProcess::*)(int)>(&QProcess::finished), this, &IndexedDataRetriever::slotIndexedFile);
+    connect(m_process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &IndexedDataRetriever::slotIndexedFile);
     m_process->start(exe, QStringList() << m_url);
 }
 
-void IndexedDataRetriever::slotIndexedFile(int)
+void IndexedDataRetriever::slotIndexedFile(int exitCode, QProcess::ExitStatus exitStatus)
 {
+    if (exitStatus == QProcess::CrashExit) {
+        qWarning() << "Extractor crashed when processing" << m_url;
+    }
     QByteArray data = m_process->readAllStandardOutput();
     QDataStream in(&data, QIODevice::ReadOnly);
     in >> m_data;
