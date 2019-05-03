@@ -23,6 +23,7 @@
 
 #include <QList>
 #include <QAction>
+#include <QFileInfo>
 #include <QWidget>
 #include <QVariantList>
 #include <QUrl>
@@ -94,7 +95,12 @@ QList<QAction*> TagsFileItemAction::actions(const KFileItemListProperties& fileI
         return {};
     }
 
-    m_metaData = new KFileMetaData::UserMetaData(fileItemInfos.urlList()[0].toLocalFile());
+    QString filePath = fileItemInfos.urlList()[0].toLocalFile();
+    if (!QFileInfo(filePath).isWritable()) {
+        return {};
+    }
+
+    m_metaData = new KFileMetaData::UserMetaData(filePath);
     if (!m_metaData->isSupported()) {
         return {};
     }
