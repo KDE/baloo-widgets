@@ -21,6 +21,8 @@
 #include <KFileMetaData/UserMetaData>
 #include <KFileMetaData/PropertyInfo>
 
+#include <algorithm>
+
 namespace Baloo
 {
 namespace Private
@@ -56,10 +58,30 @@ QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData& metaData)
 QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMap& propMap)
 {
     QVariantMap map;
-    KFileMetaData::PropertyMap::const_iterator it = propMap.constBegin();
-    for (; it != propMap.constEnd(); it++) {
-        KFileMetaData::PropertyInfo pi(it.key());
-        map.insertMulti(pi.name(), it.value());
+    if (propMap.isEmpty()) {
+        return map;
+    }
+
+    using entry = std::pair<const KFileMetaData::Property::Property&, const QVariant&>;
+
+    auto begin = propMap.constKeyValueBegin();
+
+    while (begin != propMap.constKeyValueEnd()) {
+        auto key = (*begin).first;
+        KFileMetaData::PropertyInfo property(key);
+        auto rangeEnd = std::find_if(begin, propMap.constKeyValueEnd(),
+            [key](const entry& e) { return e.first != key; });
+
+        auto distance = std::distance(begin, rangeEnd);
+        if (distance > 1) {
+            QVariantList list;
+            list.reserve(static_cast<int>(distance));
+            std::for_each(begin, rangeEnd, [&list](const entry& s) { list.append(s.second); });
+            map.insert(property.name(), list);
+        } else {
+            map.insert(property.name(), (*begin).second);
+        }
+        begin = rangeEnd;
     }
 
     return map;

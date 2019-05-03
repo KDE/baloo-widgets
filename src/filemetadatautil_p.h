@@ -34,8 +34,10 @@ namespace Private
 QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData& metaData);
 
 /**
- * Converts the property map into a variant map
- * using the property name as key.
+ * Converts the property map into a variant map using the
+ * property name as key. In case a key has multiple values,
+ * all its values are collected in a QVariantList that is
+ * stored as a single entry.
  */
 QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMap& propMap);
 
