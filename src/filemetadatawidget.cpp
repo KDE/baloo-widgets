@@ -176,7 +176,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
 
     const int labelColumn = m_configureVisibleProperties ? 1 : 0;
 
-    for (const auto key: keys) {
+    for (const auto& key : keys) {
         Row row;
         if (m_configureVisibleProperties) {
             row.checkBox = new QCheckBox(q);
