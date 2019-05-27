@@ -71,7 +71,10 @@ void FileMetadataItemCountTest::cleanup()
 
 void FileMetadataItemCountTest::testItemCount()
 {
-    const int expectedItems = 19;
+    // the number of items will increase in the future adding the file creation time field
+    // when the system has KIO 5.58, glibc 2.28, linux 4.11 and a filesystem storing file creation times (btrfs, ext4...)
+    // The expectedItems count will need to be updated
+    const int expectedItems = 20;
     const int widgetsPerItem = 2;
     
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
