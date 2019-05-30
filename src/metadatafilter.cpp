@@ -41,7 +41,7 @@ MetadataFilter::~MetadataFilter()
 
 void MetadataFilter::initMetaInformationSettings()
 {
-    const int currentVersion = 10; // increase version, if the blacklist of disabled
+    const int currentVersion = 11; // increase version, if the blacklist of disabled
     // properties should be updated
 
     KConfig config("baloofileinformationrc", KConfig::NoGlobals);
@@ -57,32 +57,14 @@ void MetadataFilter::initMetaInformationSettings()
             "comment",
             "contentSize",
             "depends",
-            "isPartOf",
             "lastModified",
             "created",
             "contentCreated",
             "mimeType",
-            "plainTextContent",
             "url",
-            "hasPart",
-            "averageBitrate",
             "channels",
             "fileName",
             "fileSize",
-            "Exif.Photo.ApertureValue",
-            "Exif.Photo.ExposureBiasValue",
-            "Exif.Photo.ExposureTime",
-            "Exif.Photo.Flash",
-            "Exif.Photo.FocalLength",
-            "Exif.Photo.FocalLengthIn35mmFilm",
-            "Exif.Photo.IsoSpeedRatings",
-            "Exif.Photo.MeteringMode",
-            "Exif.Photo.Orientation",
-            "Exif.Photo.WhiteBalance",
-            "Exif.Image.Make",
-            "Exif.Image.Model",
-            "Exif.Image.DateTime",
-            "Exif.Image.Orientation",
             "kfileitem#owner",
             "kfileitem#group",
             "kfileitem#permissions",
@@ -91,11 +73,14 @@ void MetadataFilter::initMetaInformationSettings()
             "replayGainTrackPeak",
             "replayGainTrackGain",
             "embeddedRating",
-            nullptr // mandatory last entry
+            "photoWhiteBalance",
+            "photoMeteringMode",
+            "photoSharpness",
         };
 
-        for (int i = 0; disabledProperties[i] != nullptr; ++i) {
-            settings.writeEntry(disabledProperties[i], false);
+
+        for (const auto property : disabledProperties) {
+            settings.writeEntry(property, false);
         }
 
         // mark the group as initialized
