@@ -76,6 +76,9 @@ void MetadataFilter::initMetaInformationSettings()
             "photoWhiteBalance",
             "photoMeteringMode",
             "photoSharpness",
+            "photoSaturation",
+            "photoPixelXDimension",
+            "photoPixelYDimension",
         };
 
 
