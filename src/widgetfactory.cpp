@@ -238,6 +238,7 @@ QSize ValueWidget::sizeHint() const
 QWidget* WidgetFactory::createValueWidget(const QString& value, QWidget* parent)
 {
     ValueWidget* valueWidget = new ValueWidget(parent);
+    valueWidget->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextSelectableByKeyboard);
     valueWidget->setWordWrap(true);
     valueWidget->setAlignment(Qt::AlignTop | Qt::AlignLeft);
     valueWidget->setText(m_readOnly ? plainText(value) : value);

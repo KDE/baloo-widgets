@@ -121,6 +121,7 @@ void FileMetaDataWidget::Private::deleteRows()
 QLabel* FileMetaDataWidget::Private::createLabel(const QString &key, const QString& itemLabel, FileMetaDataWidget* parent)
 {
     QLabel* label = new QLabel(itemLabel + QLatin1Char(':'), parent);
+    label->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextSelectableByKeyboard);
     label->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
     label->setForegroundRole(parent->foregroundRole());
     label->setFont(parent->font());
