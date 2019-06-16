@@ -73,6 +73,7 @@ void MetadataFilter::initMetaInformationSettings()
             "replayGainTrackPeak",
             "replayGainTrackGain",
             "embeddedRating",
+            "lyrics",
             "photoWhiteBalance",
             "photoMeteringMode",
             "photoSharpness",
