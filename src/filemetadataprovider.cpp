@@ -442,23 +442,37 @@ QString FileMetaDataProvider::group(const QString& label) const
         uriGrouper.insert(QLatin1String("userComment"), QLatin1String("1EditableDataC"));
 
         // Image Data
-        uriGrouper.insert(QLatin1String("width"), QLatin1String("2SizA"));
-        uriGrouper.insert(QLatin1String("height"), QLatin1String("2SizeB"));
+        uriGrouper.insert(QLatin1String("width"), QLatin1String("2ImageA"));
+        uriGrouper.insert(QLatin1String("height"), QLatin1String("2ImageB"));
+        uriGrouper.insert(QLatin1String("photoFNumber"), QLatin1String("2ImageC"));
+        uriGrouper.insert(QLatin1String("photoExposureTime"), QLatin1String("2ImageD"));
+        uriGrouper.insert(QLatin1String("photoExposureBiasValue"), QLatin1String("2ImageE"));
+        uriGrouper.insert(QLatin1String("photoISOSpeedRatings"), QLatin1String("2ImageF"));
+        uriGrouper.insert(QLatin1String("photoFocalLength"), QLatin1String("2ImageG"));
+        uriGrouper.insert(QLatin1String("photoFocalLengthIn35mmFilm"), QLatin1String("2ImageH"));
+        uriGrouper.insert(QLatin1String("photoFlash"), QLatin1String("2ImageI"));
+        uriGrouper.insert(QLatin1String("imageOrientation"), QLatin1String("2ImageJ"));
+        uriGrouper.insert(QLatin1String("photoGpsLatitude"), QLatin1String("2ImageK"));
+        uriGrouper.insert(QLatin1String("photoGpsLongitude"), QLatin1String("2ImageL"));
+        uriGrouper.insert(QLatin1String("photoGpsAltitude"), QLatin1String("2ImageM"));
+        uriGrouper.insert(QLatin1String("manufacturer"), QLatin1String("2ImageN"));
+        uriGrouper.insert(QLatin1String("model"), QLatin1String("2ImageO"));
 
-        // Music Data
-        uriGrouper.insert("title", QLatin1String("3MusicA"));
-        uriGrouper.insert("artist", QLatin1String("3MusicB"));
-        uriGrouper.insert("album", QLatin1String("3MusicC"));
-        uriGrouper.insert("genre", QLatin1String("3MusicD"));
-        uriGrouper.insert("trackNumber", QLatin1String("3MusicE"));
-
-        // Audio Data
-        uriGrouper.insert("duration", QLatin1String("4AudioA"));
-        uriGrouper.insert("sampleRate", QLatin1String("4AudioB"));
-        uriGrouper.insert("sampleCount", QLatin1String("4AudioC"));
+        // Media Data
+        uriGrouper.insert("title", QLatin1String("3MediaA"));
+        uriGrouper.insert("artist", QLatin1String("3MediaB"));
+        uriGrouper.insert("album", QLatin1String("3MediaC"));
+        uriGrouper.insert("albumArtist", QLatin1String("3MediaD"));
+        uriGrouper.insert("genre", QLatin1String("3MediaE"));
+        uriGrouper.insert("trackNumber", QLatin1String("3MediaF"));
+        uriGrouper.insert("discNumber", QLatin1String("3MediaG"));
+        uriGrouper.insert("releaseYear", QLatin1String("3MediaH"));
+        uriGrouper.insert("duration", QLatin1String("3MediaI"));
+        uriGrouper.insert("sampleRate", QLatin1String("3MediaJ"));
+        uriGrouper.insert("bitRate", QLatin1String("3MediaK"));
 
         // Miscellaneous Data
-        uriGrouper.insert("originUrl", QLatin1String("5MiscA"));
+        uriGrouper.insert("originUrl", QLatin1String("4MiscA"));
     }
 
     const QString val = uriGrouper.value(label);
