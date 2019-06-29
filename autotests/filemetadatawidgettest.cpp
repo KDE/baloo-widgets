@@ -38,7 +38,7 @@
 
 void initLocale()
 {
-    QLocale::setDefault(QLocale("en_US"));
+    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 }
 Q_CONSTRUCTOR_FUNCTION(initLocale)
 
@@ -50,13 +50,13 @@ void FileMetadataWidgetTest::initTestCase()
 
     QStandardPaths::setTestModeEnabled(true);
 
-    KConfig balooConfig("baloofilerc", KConfig::NoGlobals);
+    KConfig balooConfig(QStringLiteral("baloofilerc"), KConfig::NoGlobals);
     KConfigGroup balooSettings = balooConfig.group("General");
     // If we use .writePathEntry here, the test will fail.
     balooSettings.writeEntry(QStringLiteral("folders"), QString());
 
     // Ensure show configuration
-    KConfig config("baloofileinformationrc", KConfig::NoGlobals);
+    KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
     KConfigGroup settings = config.group("Show");
     const auto keys = settings.keyList();
     for (const auto &key: keys) {
@@ -142,20 +142,20 @@ void FileMetadataWidgetTest::shouldShowProperties()
     QCOMPARE(spy.count(), 1);
 
     // simple property
-    QLabel* valueWidget = m_widget->findChild<QLabel*>("kfileitem#type");
+    QLabel* valueWidget = m_widget->findChild<QLabel*>(QStringLiteral("kfileitem#type"));
     QVERIFY2(valueWidget, "Type data missing");
     QCOMPARE(valueWidget->text(), QLatin1String("MP3 audio"));
 
     if (m_mayTestRating) {
         // editable property
-        KRatingWidget* ratingWidget = m_widget->findChild<KRatingWidget*>("rating");
+        KRatingWidget* ratingWidget = m_widget->findChild<KRatingWidget*>(QStringLiteral("rating"));
         QVERIFY2(ratingWidget, "Rating data missing");
         QCOMPARE(ratingWidget->rating(), 5u);
     } else {
         qDebug() << "Skipped 'Rating' test";
     }
     // async property
-    valueWidget = m_widget->findChild<QLabel*>("albumArtist");
+    valueWidget = m_widget->findChild<QLabel*>(QStringLiteral("albumArtist"));
     QVERIFY2(valueWidget, "albumArtist data was not found");
     QCOMPARE(valueWidget->text(), QLatin1String("Bill Laswell"));
 
@@ -172,16 +172,16 @@ void FileMetadataWidgetTest::shouldShowCommonProperties()
     QCOMPARE(spy.count(), 1);
 
     // simple property
-    QLabel* valueWidget = m_widget->findChild<QLabel*>("kfileitem#type");
+    QLabel* valueWidget = m_widget->findChild<QLabel*>(QStringLiteral("kfileitem#type"));
     QVERIFY(!valueWidget);
 
-    valueWidget = m_widget->findChild<QLabel*>("kfileitem#totalSize");
+    valueWidget = m_widget->findChild<QLabel*>(QStringLiteral("kfileitem#totalSize"));
     // circumvent i18n formatting
     QCOMPARE(valueWidget->text().left(3), QLatin1String("153"));
 
     // editable property
     if (m_mayTestRating) {
-        KRatingWidget* ratingWidget = m_widget->findChild<KRatingWidget*>("rating");
+        KRatingWidget* ratingWidget = m_widget->findChild<KRatingWidget*>(QStringLiteral("rating"));
         QVERIFY2(ratingWidget, "Rating data missing");
         QCOMPARE(ratingWidget->rating(), 5u);
     } else {
@@ -202,8 +202,8 @@ void FileMetadataWidgetTest::shouldShowMultiValueProperties()
     QCOMPARE(spy.count(), 1);
     auto artistWidget = m_widget->findChild<QLabel*>(QStringLiteral("artist"));
     QVERIFY2(artistWidget, "artist not found");
-    QCOMPARE(artistWidget->text(), "Artist1 and Artist2");
+    QCOMPARE(artistWidget->text(), QStringLiteral("Artist1 and Artist2"));
     auto genreWidget = m_widget->findChild<QLabel*>(QStringLiteral("genre"));
     QVERIFY2(genreWidget, "genre not found");
-    QCOMPARE(genreWidget->text(), "Genre1, Genre2, and Genre3");
+    QCOMPARE(genreWidget->text(), QStringLiteral("Genre1, Genre2, and Genre3"));
 }

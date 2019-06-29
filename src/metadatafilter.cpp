@@ -44,7 +44,7 @@ void MetadataFilter::initMetaInformationSettings()
     const int currentVersion = 11; // increase version, if the blacklist of disabled
     // properties should be updated
 
-    KConfig config("baloofileinformationrc", KConfig::NoGlobals);
+    KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
     if (config.group("Misc").readEntry("version", 0) < currentVersion) {
         // The resource file is read the first time. Assure
         // that some meta information is disabled per default.
@@ -101,7 +101,7 @@ QVariantMap MetadataFilter::filter(const QVariantMap& data)
 
     //
     // Remove all items, that are marked as hidden in kmetainformationrc
-    KConfig config("baloofileinformationrc", KConfig::NoGlobals);
+    KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
     KConfigGroup settings = config.group("Show");
     QVariantMap::iterator it = finalData.begin();
     while (it != finalData.end()) {

@@ -109,7 +109,7 @@ void FileMetaDataConfigWidget::Private::addItem(const QString& key)
     }
 
     // the item is not hidden, add it to the list
-    KConfig config("baloofileinformationrc", KConfig::NoGlobals);
+    KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
     KConfigGroup settings = config.group("Show");
 
     const QString label = m_provider->label(key);
@@ -130,9 +130,9 @@ void FileMetaDataConfigWidget::Private::slotLoadingFinished()
 
     QVariantMap data = m_provider->data();
     // Always show these 3
-    data.remove("rating");
-    data.remove("tags");
-    data.remove("userComment");
+    data.remove(QStringLiteral("rating"));
+    data.remove(QStringLiteral("tags"));
+    data.remove(QStringLiteral("userComment"));
 
     QVariantMap::const_iterator it = data.constBegin();
     while (it != data.constEnd()) {
@@ -140,9 +140,9 @@ void FileMetaDataConfigWidget::Private::slotLoadingFinished()
         ++it;
     }
 
-    addItem("rating");
-    addItem("tags");
-    addItem("userComment");
+    addItem(QStringLiteral("rating"));
+    addItem(QStringLiteral("tags"));
+    addItem(QStringLiteral("userComment"));
 }
 
 FileMetaDataConfigWidget::FileMetaDataConfigWidget(QWidget* parent) :
@@ -169,7 +169,7 @@ KFileItemList FileMetaDataConfigWidget::items() const
 
 void FileMetaDataConfigWidget::save()
 {
-    KConfig config("baloofileinformationrc", KConfig::NoGlobals);
+    KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
     KConfigGroup showGroup = config.group("Show");
 
     const int count = d->m_metaDataList->count();

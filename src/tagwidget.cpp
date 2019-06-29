@@ -75,7 +75,7 @@ void TagWidgetPrivate::buildTagHash(const QStringList& tags)
     m_showAllLinkLabel = new QLabel( q );
     m_flowLayout->addWidget( m_showAllLinkLabel );
     if (m_readOnly) {
-        m_showAllLinkLabel->setText("-");
+        m_showAllLinkLabel->setText(QStringLiteral("-"));
     }
     else {
         QFont f(q->font());

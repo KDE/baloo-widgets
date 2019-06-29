@@ -36,11 +36,11 @@ TagWidgetTest::TagWidgetTest()
     connect(m_tagWidget, SIGNAL(selectionChanged(QStringList)),
             this, SLOT(slotSelectionChanged(QStringList)));
 
-    QCheckBox* box = new QCheckBox( "Align Right", this );
+    QCheckBox* box = new QCheckBox(QStringLiteral("Align Right"), this );
     connect(box, SIGNAL(toggled(bool)), this, SLOT(alignRight(bool)));
     lay->addWidget(box);
 
-    box = new QCheckBox( "Read only", this );
+    box = new QCheckBox(QStringLiteral("Read only"), this );
     connect(box, SIGNAL(toggled(bool)), this, SLOT(setReadOnly(bool)));
     lay->addWidget(box);
 }

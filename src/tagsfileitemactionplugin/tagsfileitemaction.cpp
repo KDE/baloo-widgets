@@ -116,7 +116,7 @@ QList<QAction*> TagsFileItemAction::actions(const KFileItemListProperties& fileI
         return {};
     }
 
-    m_tagsLister.openUrl(QUrl("tags:/"), KCoreDirLister::OpenUrlFlag::Reload);
+    m_tagsLister.openUrl(QUrl(QStringLiteral("tags:/")), KCoreDirLister::OpenUrlFlag::Reload);
 
     return {m_menu->menuAction()};
 }

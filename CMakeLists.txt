@@ -29,7 +29,6 @@ include(ECMAddTests)
 include(CMakePackageConfigHelpers)
 
 #TODO remove these
-remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 
 ecm_setup_version(PROJECT

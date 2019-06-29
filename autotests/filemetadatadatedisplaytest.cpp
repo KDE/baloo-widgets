@@ -41,7 +41,7 @@
 
 void initLocale()
 {
-    QLocale::setDefault(QLocale("en_US"));
+    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 }
 Q_CONSTRUCTOR_FUNCTION(initLocale)
 
@@ -94,25 +94,25 @@ void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates_data()
     QTest::addRow("Short date, long ago")
         << Baloo::DateFormats::ShortFormat
         << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
-        << QRegularExpression("(?:[1-3][0-9]|[1-9]) (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M")
+        << QRegularExpression(QStringLiteral("(?:[1-3][0-9]|[1-9]) (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"))
     ;
 
     QTest::addRow("Short date, yesterday")
         << Baloo::DateFormats::ShortFormat
         << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a"))
-        << QRegularExpression("Yesterday, (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M")
+        << QRegularExpression(QStringLiteral("Yesterday, (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"))
     ;
 
     QTest::addRow("Long date, long ago")
         << Baloo::DateFormats::LongFormat
         << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
-        << QRegularExpression("[A-Z][a-z]+, [A-Z][a-z]+ (?:[1-3][0-9]|[1-9]), 20[0-9]{2} (?:1[0-2]|[1-9]):[0-5][0-9]:[0-5][0-9] [AP]M [A-Z]{3,4}")
+        << QRegularExpression(QStringLiteral("[A-Z][a-z]+, [A-Z][a-z]+ (?:[1-3][0-9]|[1-9]), 20[0-9]{2} (?:1[0-2]|[1-9]):[0-5][0-9]:[0-5][0-9] [AP]M [A-Z]{3,4}"))
     ;
 
     QTest::addRow("Long date, yesterday")
         << Baloo::DateFormats::LongFormat
         << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a"))
-        << QRegularExpression("Yesterday, (?:1[0-2]|[1-9]):[0-5][0-9]:[0-5][0-9] [AP]M [A-Z]{3,4}")
+        << QRegularExpression(QStringLiteral("Yesterday, (?:1[0-2]|[1-9]):[0-5][0-9]:[0-5][0-9] [AP]M [A-Z]{3,4}"))
     ;
 
 }

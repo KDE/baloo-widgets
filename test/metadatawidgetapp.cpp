@@ -26,10 +26,10 @@
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
-    app.setApplicationName("FileMetadataWidgetApp");
+    app.setApplicationName(QStringLiteral("FileMetadataWidgetApp"));
 
     QCommandLineParser parser;
-    parser.addPositionalArgument("filename", "files");
+    parser.addPositionalArgument(QStringLiteral("filename"), QStringLiteral("files"));
     parser.process(app);
 
     Baloo::FileMetaDataWidget* widget = new Baloo::FileMetaDataWidget();

@@ -132,7 +132,7 @@ void KEditTagsDialog::slotTextEdited(const QString& text)
     // mandatory, as the user cannot see the difference
     // between a tag "Test" and "Test ".
     QString tagText = text.simplified();
-    while (tagText.endsWith("//")) {
+    while (tagText.endsWith(QLatin1String("//"))) {
         tagText.chop(1);
         m_newTagEdit->setText(tagText);
         return;

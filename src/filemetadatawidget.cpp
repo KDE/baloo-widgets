@@ -174,7 +174,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
     // Iterate through all remaining items.
     // Embed the label and the value as new row in the widget
     const QStringList keys = sortedKeys(data);
-    const int spacerWidth = QFontMetrics(q->font()).size(Qt::TextSingleLine, " ").width();
+    const int spacerWidth = QFontMetrics(q->font()).size(Qt::TextSingleLine, QStringLiteral(" ")).width();
 
     const int labelColumn = m_configureVisibleProperties ? 1 : 0;
 
@@ -271,7 +271,7 @@ void FileMetaDataWidget::Private::saveConfig()
         return;
     }
 
-    KConfig config("baloofileinformationrc", KConfig::NoGlobals);
+    KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
     KConfigGroup showGroup = config.group("Show");
 
     auto changedIt = m_visibilityChanged.constBegin();

@@ -65,7 +65,7 @@ void FileMetadataWidgetTest::slotChooseFiles()
 int main( int argc, char** argv )
 {
     QApplication app( argc, argv );
-    app.setApplicationName( "FileMetaDataConfigWidgetApp" );
+    app.setApplicationName(QStringLiteral("FileMetaDataConfigWidgetApp"));
     FileMetadataWidgetTest test;
     test.show();
     return app.exec();

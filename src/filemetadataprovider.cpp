@@ -166,26 +166,26 @@ void FileMetaDataProvider::insertSingleFileBasicData()
       if (item.isDir()) {
           const int count = subDirectoriesCount(item.url().path());
           if (count == -1) {
-              m_data.insert("kfileitem#size", i18nc("unknown file size", "Unknown"));
+              m_data.insert(QStringLiteral("kfileitem#size"), i18nc("unknown file size", "Unknown"));
           } else {
               const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
-              m_data.insert("kfileitem#size", itemCountString);
+              m_data.insert(QStringLiteral("kfileitem#size"), itemCountString);
           }
       } else {
           KFormat format;
-          m_data.insert("kfileitem#size", format.formatByteSize(item.size()));
+          m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
       }
 
-      m_data.insert("kfileitem#type", item.mimeComment());
-      m_data.insert("kfileitem#modified", item.time(KFileItem::ModificationTime));
+      m_data.insert(QStringLiteral("kfileitem#type"), item.mimeComment());
+      m_data.insert(QStringLiteral("kfileitem#modified"), item.time(KFileItem::ModificationTime));
       QDateTime creationTime = item.time(KFileItem::CreationTime);
       if (creationTime.isValid()) {
-          m_data.insert("kfileitem#created", creationTime);
+          m_data.insert(QStringLiteral("kfileitem#created"), creationTime);
       }
-      m_data.insert("kfileitem#accessed", item.time(KFileItem::AccessTime));
-      m_data.insert("kfileitem#owner", item.user());
-      m_data.insert("kfileitem#group", item.group());
-      m_data.insert("kfileitem#permissions", item.permissionsString());
+      m_data.insert(QStringLiteral("kfileitem#accessed"), item.time(KFileItem::AccessTime));
+      m_data.insert(QStringLiteral("kfileitem#owner"), item.user());
+      m_data.insert(QStringLiteral("kfileitem#group"), item.group());
+      m_data.insert(QStringLiteral("kfileitem#permissions"), item.permissionsString());
     }
 }
 
@@ -207,7 +207,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
             count += subDirectoriesCount(item.url().path());
         }
         const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
-        m_data.insert("kfileitem#totalSize", itemCountString);
+        m_data.insert(QStringLiteral("kfileitem#totalSize"), itemCountString);
 
     } else {
         // Calculate the size of all items
@@ -218,21 +218,21 @@ void FileMetaDataProvider::insertFilesListBasicData()
             }
         }
         KFormat format;
-        m_data.insert("kfileitem#totalSize", format.formatByteSize(totalSize));
+        m_data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(totalSize));
     }
 }
 
 void FileMetaDataProvider::insertEditableData()
 {
     if (!m_readOnly) {
-        if (!m_data.contains("tags")) {
-            m_data.insert("tags", QVariant());
+        if (!m_data.contains(QStringLiteral("tags"))) {
+            m_data.insert(QStringLiteral("tags"), QVariant());
         }
-        if (!m_data.contains("rating")) {
-            m_data.insert("rating", 0);
+        if (!m_data.contains(QStringLiteral("rating"))) {
+            m_data.insert(QStringLiteral("rating"), 0);
         }
-        if (!m_data.contains("userComment")) {
-            m_data.insert("userComment", QVariant());
+        if (!m_data.contains(QStringLiteral("userComment"))) {
+            m_data.insert(QStringLiteral("userComment"), QVariant());
         }
     }
 }
@@ -250,10 +250,10 @@ void FileMetaDataProvider::insertCommonData(const QList<QVariantMap>& files)
     }
 
     // Special handling for certain properties
-    totalPropertyAndInsert("duration", propertyList, allProperties);
-    totalPropertyAndInsert("characterCount", propertyList, allProperties);
-    totalPropertyAndInsert("wordCount", propertyList, allProperties);
-    totalPropertyAndInsert("lineCount", propertyList, allProperties);
+    totalPropertyAndInsert(QStringLiteral("duration"), propertyList, allProperties);
+    totalPropertyAndInsert(QStringLiteral("characterCount"), propertyList, allProperties);
+    totalPropertyAndInsert(QStringLiteral("wordCount"), propertyList, allProperties);
+    totalPropertyAndInsert(QStringLiteral("lineCount"), propertyList, allProperties);
 
     foreach (const QString& propUri, allProperties) {
         foreach (const QVariantMap& map, propertyList) {
@@ -378,40 +378,24 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
 
 QString FileMetaDataProvider::label(const QString& metaDataLabel) const
 {
-    struct TranslationItem {
-        const char* const key;
-        const char* const context;
-        const char* const value;
+    static QHash<QString, QString> hash = {
+        { QStringLiteral("kfileitem#comment"), i18nc("@label", "Comment") },
+        { QStringLiteral("kfileitem#created"), i18nc("@label", "Created") },
+        { QStringLiteral("kfileitem#accessed"), i18nc("@label", "Accessed") },
+        { QStringLiteral("kfileitem#modified"), i18nc("@label", "Modified") },
+        { QStringLiteral("kfileitem#owner"), i18nc("@label", "Owner") },
+        { QStringLiteral("kfileitem#group"), i18nc("@label", "Group") },
+        { QStringLiteral("kfileitem#permissions"), i18nc("@label", "Permissions") },
+        { QStringLiteral("kfileitem#rating"), i18nc("@label", "Rating") },
+        { QStringLiteral("kfileitem#size"), i18nc("@label", "Size") },
+        { QStringLiteral("kfileitem#tags"), i18nc("@label", "Tags") },
+        { QStringLiteral("kfileitem#totalSize"), i18nc("@label", "Total Size") },
+        { QStringLiteral("kfileitem#type"), i18nc("@label", "Type") },
+        { QStringLiteral("tags"), i18nc("@label", "Tags") },
+        { QStringLiteral("rating"), i18nc("@label", "Rating") },
+        { QStringLiteral("userComment"), i18nc("@label", "Comment") },
+        { QStringLiteral("originUrl"), i18nc("@label", "Downloaded From") },
     };
-
-    static const TranslationItem translations[] = {
-        { "kfileitem#comment", I18N_NOOP2_NOSTRIP("@label", "Comment") },
-        { "kfileitem#created", I18N_NOOP2_NOSTRIP("@label", "Created") },
-        { "kfileitem#accessed", I18N_NOOP2_NOSTRIP("@label", "Accessed") },
-        { "kfileitem#modified", I18N_NOOP2_NOSTRIP("@label", "Modified") },
-        { "kfileitem#owner", I18N_NOOP2_NOSTRIP("@label", "Owner") },
-        { "kfileitem#group", I18N_NOOP2_NOSTRIP("@label", "Group") },
-        { "kfileitem#permissions", I18N_NOOP2_NOSTRIP("@label", "Permissions") },
-        { "kfileitem#rating", I18N_NOOP2_NOSTRIP("@label", "Rating") },
-        { "kfileitem#size", I18N_NOOP2_NOSTRIP("@label", "Size") },
-        { "kfileitem#tags", I18N_NOOP2_NOSTRIP("@label", "Tags") },
-        { "kfileitem#totalSize", I18N_NOOP2_NOSTRIP("@label", "Total Size") },
-        { "kfileitem#type", I18N_NOOP2_NOSTRIP("@label", "Type") },
-        { "tags", I18N_NOOP2_NOSTRIP("@label", "Tags") },
-        { "rating", I18N_NOOP2_NOSTRIP("@label", "Rating") },
-        { "userComment", I18N_NOOP2_NOSTRIP("@label", "Comment") },
-        { "originUrl", I18N_NOOP2_NOSTRIP("@label", "Downloaded From") },
-        { nullptr, nullptr, nullptr} // Mandatory last entry
-    };
-
-    static QHash<QString, QString> hash;
-    if (hash.isEmpty()) {
-        const TranslationItem* item = &translations[0];
-        while (item->key != nullptr) {
-            hash.insert(item->key, i18nc(item->context, item->value));
-            ++item;
-        }
-    }
 
     QString value = hash.value(metaDataLabel);
     if (value.isEmpty()) {
@@ -423,61 +407,61 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
 
 QString FileMetaDataProvider::group(const QString& label) const
 {
-    static QHash<QString, QString> uriGrouper;
-    if (uriGrouper.isEmpty()) {
+    static QHash<QString, QString> uriGrouper = {
+
         // KFileItem Data
-        uriGrouper.insert(QLatin1String("kfileitem#type"), QLatin1String("0FileItemA"));
-        uriGrouper.insert(QLatin1String("kfileitem#size"), QLatin1String("0FileItemB"));
-        uriGrouper.insert(QLatin1String("kfileitem#totalSize"), QLatin1String("0FileItemB"));
-        uriGrouper.insert(QLatin1String("kfileitem#modified"), QLatin1String("0FileItemC"));
-        uriGrouper.insert(QLatin1String("kfileitem#accessed"), QLatin1String("0FileItemD"));
-        uriGrouper.insert(QLatin1String("kfileitem#created"), QLatin1String("0FileItemE"));
-        uriGrouper.insert(QLatin1String("kfileitem#owner"), QLatin1String("0FileItemF"));
-        uriGrouper.insert(QLatin1String("kfileitem#group"), QLatin1String("0FileItemG"));
-        uriGrouper.insert(QLatin1String("kfileitem#permissions"), QLatin1String("0FileItemH"));
+        { QStringLiteral("kfileitem#type"), QStringLiteral("0FileItemA") },
+        { QStringLiteral("kfileitem#size"), QStringLiteral("0FileItemB") },
+        { QStringLiteral("kfileitem#totalSize"), QStringLiteral("0FileItemB") },
+        { QStringLiteral("kfileitem#modified"), QStringLiteral("0FileItemC") },
+        { QStringLiteral("kfileitem#accessed"), QStringLiteral("0FileItemD") },
+        { QStringLiteral("kfileitem#created"), QStringLiteral("0FileItemE") },
+        { QStringLiteral("kfileitem#owner"), QStringLiteral("0FileItemF") },
+        { QStringLiteral("kfileitem#group"), QStringLiteral("0FileItemG") },
+        { QStringLiteral("kfileitem#permissions"), QStringLiteral("0FileItemH") },
 
         // Editable Data
-        uriGrouper.insert(QLatin1String("tags"), QLatin1String("1EditableDataA"));
-        uriGrouper.insert(QLatin1String("rating"), QLatin1String("1EditableDataB"));
-        uriGrouper.insert(QLatin1String("userComment"), QLatin1String("1EditableDataC"));
+        { QStringLiteral("tags"), QStringLiteral("1EditableDataA") },
+        { QStringLiteral("rating"), QStringLiteral("1EditableDataB") },
+        { QStringLiteral("userComment"), QStringLiteral("1EditableDataC") },
 
         // Image Data
-        uriGrouper.insert(QLatin1String("width"), QLatin1String("2ImageA"));
-        uriGrouper.insert(QLatin1String("height"), QLatin1String("2ImageB"));
-        uriGrouper.insert(QLatin1String("photoFNumber"), QLatin1String("2ImageC"));
-        uriGrouper.insert(QLatin1String("photoExposureTime"), QLatin1String("2ImageD"));
-        uriGrouper.insert(QLatin1String("photoExposureBiasValue"), QLatin1String("2ImageE"));
-        uriGrouper.insert(QLatin1String("photoISOSpeedRatings"), QLatin1String("2ImageF"));
-        uriGrouper.insert(QLatin1String("photoFocalLength"), QLatin1String("2ImageG"));
-        uriGrouper.insert(QLatin1String("photoFocalLengthIn35mmFilm"), QLatin1String("2ImageH"));
-        uriGrouper.insert(QLatin1String("photoFlash"), QLatin1String("2ImageI"));
-        uriGrouper.insert(QLatin1String("imageOrientation"), QLatin1String("2ImageJ"));
-        uriGrouper.insert(QLatin1String("photoGpsLatitude"), QLatin1String("2ImageK"));
-        uriGrouper.insert(QLatin1String("photoGpsLongitude"), QLatin1String("2ImageL"));
-        uriGrouper.insert(QLatin1String("photoGpsAltitude"), QLatin1String("2ImageM"));
-        uriGrouper.insert(QLatin1String("manufacturer"), QLatin1String("2ImageN"));
-        uriGrouper.insert(QLatin1String("model"), QLatin1String("2ImageO"));
+        { QStringLiteral("width"), QStringLiteral("2ImageA") },
+        { QStringLiteral("height"), QStringLiteral("2ImageB") },
+        { QStringLiteral("photoFNumber"), QStringLiteral("2ImageC") },
+        { QStringLiteral("photoExposureTime"), QStringLiteral("2ImageD") },
+        { QStringLiteral("photoExposureBiasValue"), QStringLiteral("2ImageE") },
+        { QStringLiteral("photoISOSpeedRatings"), QStringLiteral("2ImageF") },
+        { QStringLiteral("photoFocalLength"), QStringLiteral("2ImageG") },
+        { QStringLiteral("photoFocalLengthIn35mmFilm"), QStringLiteral("2ImageH") },
+        { QStringLiteral("photoFlash"), QStringLiteral("2ImageI") },
+        { QStringLiteral("imageOrientation"), QStringLiteral("2ImageJ") },
+        { QStringLiteral("photoGpsLatitude"), QStringLiteral("2ImageK") },
+        { QStringLiteral("photoGpsLongitude"), QStringLiteral("2ImageL") },
+        { QStringLiteral("photoGpsAltitude"), QStringLiteral("2ImageM") },
+        { QStringLiteral("manufacturer"), QStringLiteral("2ImageN") },
+        { QStringLiteral("model"), QStringLiteral("2ImageO") },
 
         // Media Data
-        uriGrouper.insert("title", QLatin1String("3MediaA"));
-        uriGrouper.insert("artist", QLatin1String("3MediaB"));
-        uriGrouper.insert("album", QLatin1String("3MediaC"));
-        uriGrouper.insert("albumArtist", QLatin1String("3MediaD"));
-        uriGrouper.insert("genre", QLatin1String("3MediaE"));
-        uriGrouper.insert("trackNumber", QLatin1String("3MediaF"));
-        uriGrouper.insert("discNumber", QLatin1String("3MediaG"));
-        uriGrouper.insert("releaseYear", QLatin1String("3MediaH"));
-        uriGrouper.insert("duration", QLatin1String("3MediaI"));
-        uriGrouper.insert("sampleRate", QLatin1String("3MediaJ"));
-        uriGrouper.insert("bitRate", QLatin1String("3MediaK"));
+        { QStringLiteral("title"), QStringLiteral("3MediaA") },
+        { QStringLiteral("artist"), QStringLiteral("3MediaB") },
+        { QStringLiteral("album"), QStringLiteral("3MediaC") },
+        { QStringLiteral("albumArtist"), QStringLiteral("3MediaD") },
+        { QStringLiteral("genre"), QStringLiteral("3MediaE") },
+        { QStringLiteral("trackNumber"), QStringLiteral("3MediaF") },
+        { QStringLiteral("discNumber"), QStringLiteral("3MediaG") },
+        { QStringLiteral("releaseYear"), QStringLiteral("3MediaH") },
+        { QStringLiteral("duration"), QStringLiteral("3MediaI") },
+        { QStringLiteral("sampleRate"), QStringLiteral("3MediaJ") },
+        { QStringLiteral("bitRate"), QStringLiteral("3MediaK") },
 
         // Miscellaneous Data
-        uriGrouper.insert("originUrl", QLatin1String("4MiscA"));
-    }
+        { QStringLiteral("originUrl"), QStringLiteral("4MiscA") },
+    };
 
     const QString val = uriGrouper.value(label);
     if (val.isEmpty()) {
-        return "lastGroup";
+        return QStringLiteral("lastGroup");
     }
     return val;
 }

@@ -62,15 +62,15 @@ void KCommentWidget::setText(const QString& comment)
     QString text;
     if (comment.isEmpty()) {
         if (m_readOnly) {
-            text = "-";
+            text = QStringLiteral("-");
         } else {
-            text = "<a href=\"addComment\">" + i18nc("@label", "Add...") + "</a>";
+            text = QStringLiteral("<a href=\"addComment\">") + i18nc("@label", "Add...") + QStringLiteral("</a>");
         }
     } else {
         if (m_readOnly) {
-            text = QString(comment).toHtmlEscaped();
+            text = comment.toHtmlEscaped();
         } else {
-            text = "<p>" + QString(comment).toHtmlEscaped() + " <a href=\"editComment\">" + i18nc("@label", "Edit...") + "</a></p>";
+            text = QStringLiteral("<p>") + comment.toHtmlEscaped() + QStringLiteral(" <a href=\"editComment\">") + i18nc("@label", "Edit...") + QStringLiteral("</a></p>");
         }
     }
 
@@ -115,7 +115,7 @@ bool KCommentWidget::event(QEvent* event)
 
 void KCommentWidget::slotLinkActivated(const QString& link)
 {
-    const QString caption = (link == "editComment") ?
+    const QString caption = (link == QLatin1String("editComment")) ?
                             i18nc("@title:window", "Edit Comment") :
                             i18nc("@title:window", "Add Comment");
 
