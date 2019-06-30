@@ -496,7 +496,7 @@ int FileMetaDataProvider::subDirectoriesCount(const QString& path)
     // Copyright (C) 2006 David Faure <faure@kde.org>
 
     int count = -1;
-    DIR* dir = ::opendir(QFile::encodeName(path));
+    DIR* dir = ::opendir(QFile::encodeName(path).constData());
     if (dir) {
         count = 0;
         struct dirent *dirEntry = nullptr;

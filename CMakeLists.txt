@@ -28,9 +28,6 @@ include(ECMGenerateHeaders)
 include(ECMAddTests)
 include(CMakePackageConfigHelpers)
 
-#TODO remove these
-remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
-
 ecm_setup_version(PROJECT
                   VARIABLE_PREFIX BALOO_WIDGETS
                   SOVERSION 5
