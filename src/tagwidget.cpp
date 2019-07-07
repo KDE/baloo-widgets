@@ -61,7 +61,7 @@ void TagWidgetPrivate::buildTagHash(const QStringList& tags)
     qDeleteAll(m_checkBoxHash);
     m_checkBoxHash.clear();
 
-    foreach (const QString& tag, tags) {
+    for (const QString& tag : tags) {
         getTagCheckBox(tag);
     }
 

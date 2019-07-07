@@ -172,8 +172,7 @@ QSize KBlockLayout::sizeHint() const
 {
     // TODO: try to get the items into a square
     QSize size;
-    QLayoutItem *item;
-    foreach (item, d->itemList) {
+    for (QLayoutItem* item : qAsConst(d->itemList)) {
         const QSize itemSize = item->minimumSize();
         size.rwidth() += itemSize.width();
         if (itemSize.height() > size.height()) {
@@ -189,8 +188,7 @@ QSize KBlockLayout::sizeHint() const
 QSize KBlockLayout::minimumSize() const
 {
     QSize size;
-    QLayoutItem *item;
-    foreach (item, d->itemList) {
+    for (QLayoutItem* item : qAsConst(d->itemList)) {
         size = size.expandedTo(item->minimumSize());
     }
 
@@ -244,14 +242,14 @@ int KBlockLayout::doLayout( const QRect& rect, bool testOnly ) const
 
     // 2. place the items
     y = rect.y();
-    foreach( const Row &row, rows ) {
+    for (const Row& row : qAsConst(rows)) {
         x = rect.x();
         if( alignment() & Qt::AlignRight )
             x += (rect.width() - row.width);
         else if( alignment() & Qt::AlignHCenter )
             x += (rect.width() - row.width)/2;
 
-        foreach( QLayoutItem* item, row.items ) {
+        for (QLayoutItem* item : qAsConst(row.items)) {
             int yy = y;
             if( alignment() & Qt::AlignBottom )
                 yy += (row.height - item->sizeHint().height());

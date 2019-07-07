@@ -110,7 +110,7 @@ void FileMetaDataProvider::totalPropertyAndInsert(const QString& prop,
 {
     if (allProperties.contains(prop)) {
         int total = 0;
-        foreach (const QVariantMap& map, resources) {
+        for (const QVariantMap& map : resources) {
             QVariantMap::const_iterator it = map.constFind(prop);
             if (it == map.constEnd()) {
                 total = 0;
@@ -244,7 +244,7 @@ void FileMetaDataProvider::insertCommonData(const QList<QVariantMap>& files)
     //
     QSet<QString> allProperties;
     QList<QVariantMap> propertyList;
-    foreach (const QVariantMap& fileData, files) {
+    for (const QVariantMap& fileData : files) {
         propertyList << fileData;
         allProperties.unite(fileData.uniqueKeys().toSet());
     }
@@ -255,8 +255,8 @@ void FileMetaDataProvider::insertCommonData(const QList<QVariantMap>& files)
     totalPropertyAndInsert(QStringLiteral("wordCount"), propertyList, allProperties);
     totalPropertyAndInsert(QStringLiteral("lineCount"), propertyList, allProperties);
 
-    foreach (const QString& propUri, allProperties) {
-        foreach (const QVariantMap& map, propertyList) {
+    for (const QString& propUri : qAsConst(allProperties)) {
+        for (const QVariantMap& map : qAsConst(propertyList)) {
             QVariantMap::const_iterator it = map.find(propUri);
             if (it == map.constEnd()) {
                 m_data.remove(propUri);

@@ -28,6 +28,8 @@ include(ECMGenerateHeaders)
 include(ECMAddTests)
 include(CMakePackageConfigHelpers)
 
+add_definitions(-DQT_NO_FOREACH)
+
 ecm_setup_version(PROJECT
                   VARIABLE_PREFIX BALOO_WIDGETS
                   SOVERSION 5

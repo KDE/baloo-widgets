@@ -54,9 +54,9 @@ FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget* parent, Qt::WindowFlags 
 
 void FileMetadataWidgetTest::slotChooseFiles()
 {
-    QList<QUrl> urlList = QFileDialog::getOpenFileUrls();
+    const QList<QUrl> urlList = QFileDialog::getOpenFileUrls();
     KFileItemList list;
-    foreach(const QUrl& url, urlList)
+    for (const QUrl& url : urlList)
         list << KFileItem( url, QString(), mode_t() );
 
     m_metadataWidget->setItems( list );
