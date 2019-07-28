@@ -164,12 +164,17 @@ void FileMetaDataProvider::insertSingleFileBasicData()
       const KFileItem& item = m_fileItems.first();
 
       if (item.isDir()) {
-          const int count = subDirectoriesCount(item.url().path());
-          if (count == -1) {
+          bool isSizeUnknown = !item.isLocalFile();
+          if (!isSizeUnknown) {
+              const int count = subDirectoriesCount(item.url().path());
+              isSizeUnknown = count == -1;
+              if (!isSizeUnknown) {
+                  const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
+                  m_data.insert(QStringLiteral("kfileitem#size"), itemCountString);
+              }
+          }
+          if (isSizeUnknown) {
               m_data.insert(QStringLiteral("kfileitem#size"), i18nc("unknown file size", "Unknown"));
-          } else {
-              const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
-              m_data.insert(QStringLiteral("kfileitem#size"), itemCountString);
           }
       } else {
           KFormat format;
