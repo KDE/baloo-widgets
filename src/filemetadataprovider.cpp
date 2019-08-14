@@ -137,8 +137,7 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob* job)
     if (files.size() > 1) {
         insertCommonData(files);
     } else {
-        m_data = files.first();
-        insertSingleFileBasicData();
+        m_data = unite(m_data, files.first());
     }
     m_readOnly = !fetchJob->canEditAll();
 
@@ -152,6 +151,7 @@ void FileMetaDataProvider::slotLoadingFinished(KJob* job)
     m_data = unite(m_data, ret->data());
     m_readOnly = !ret->canEdit();
 
+    insertEditableData();
     emit loadingFinished();
 }
 
@@ -303,11 +303,11 @@ void FileMetaDataProvider::setFileItem()
     //   * Not Indexed
     //   * Indexed
     //
+    insertSingleFileBasicData();
     const QUrl url = m_fileItems.first().targetUrl();
     if (!url.isLocalFile()) {
         // FIXME - are extended attributes supported for remote files?
         m_readOnly = true;
-        insertSingleFileBasicData();
         emit loadingFinished();
         return;
     }
@@ -317,9 +317,6 @@ void FileMetaDataProvider::setFileItem()
     if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath)
             || m_config.onlyBasicIndexing()) {
         m_realTimeIndexing = true;
-
-        insertSingleFileBasicData();
-        insertEditableData();
 
         IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
         connect(ret, &IndexedDataRetriever::finished, this, &FileMetaDataProvider::slotLoadingFinished);
