@@ -19,6 +19,7 @@
 #define KEDIT_TAGS_DIALOG_H
 
 #include <QDialog>
+#include <QHash>
 
 class QLineEdit;
 class KJob;
