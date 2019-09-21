@@ -68,7 +68,7 @@ KBlockLayout::KBlockLayout( QWidget* parent, int margin, int hSpacing, int vSpac
       d( new Private() )
 {
     d->q = this;
-    setMargin(margin);
+    setContentsMargins(margin, margin, margin, margin);
     setSpacing(hSpacing, vSpacing);
 }
 
@@ -76,7 +76,7 @@ KBlockLayout::KBlockLayout( int margin, int hSpacing, int vSpacing )
     : d( new Private() )
 {
     d->q = this;
-    setMargin(margin);
+    setContentsMargins(margin, margin, margin, margin);
     setSpacing(hSpacing, vSpacing);
 }
 
