@@ -143,10 +143,10 @@ private:
     void totalPropertyAndInsert(const QString& prop, const QList<QVariantMap>& resources,
                                 QSet<QString>& allProperties);
 
-    /*
-     * @return The number of subdirectories for the directory \a path.
+    /**
+     * @return The number of files and hidden files for the directory path.
      */
-    static int subDirectoriesCount(const QString &path);
+    static QPair<int, int> subDirectoriesCount(const QString &path);
 
     bool m_readOnly;
 

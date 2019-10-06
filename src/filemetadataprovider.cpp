@@ -166,11 +166,19 @@ void FileMetaDataProvider::insertSingleFileBasicData()
       if (item.isDir()) {
           bool isSizeUnknown = !item.isLocalFile();
           if (!isSizeUnknown) {
-              const int count = subDirectoriesCount(item.url().path());
+              const QPair<int, int> counts = subDirectoriesCount(item.url().path());
+              const int count = counts.first;
               isSizeUnknown = count == -1;
               if (!isSizeUnknown) {
-                  const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
+                  QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
                   m_data.insert(QStringLiteral("kfileitem#size"), itemCountString);
+
+                  const int hiddenCount = counts.second;
+                  if (hiddenCount > 0) {
+                      // add hidden items count
+                      QString hiddenCountString = i18ncp("@item:intable", "%1 item", "%1 items", hiddenCount);
+                      m_data.insert(QStringLiteral("kfileitem#hiddenItems"), hiddenCountString);
+                  }
               }
           }
           if (isSizeUnknown) {
@@ -208,10 +216,28 @@ void FileMetaDataProvider::insertFilesListBasicData()
 
     if (allDirectories) {
         int count = 0;
+        int hiddenCount = 0;
+        bool isSizeKnown = true;
         for (const KFileItem& item : qAsConst(m_fileItems)) {
-            count += subDirectoriesCount(item.url().path());
+            isSizeKnown = item.isLocalFile();
+            if (!isSizeKnown) {
+                return;
+            }
+            const QPair<int, int> counts = subDirectoriesCount(item.url().path());
+            const int subcount = counts.first;
+            isSizeKnown = subcount != -1;
+            if (!isSizeKnown) {
+                return;
+            }
+            count += subcount;
+            hiddenCount += counts.second;
         }
-        const QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
+        QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
+        if (hiddenCount > 0) {
+            // add hidden items count
+            QString hiddenCountString = i18ncp("@item:intable", "%1 item", "%1 items", hiddenCount);
+            m_data.insert(QStringLiteral("kfileitem#hiddenItems"), hiddenCountString);
+        }
         m_data.insert(QStringLiteral("kfileitem#totalSize"), itemCountString);
 
     } else {
@@ -392,6 +418,7 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
         { QStringLiteral("kfileitem#size"), i18nc("@label", "Size") },
         { QStringLiteral("kfileitem#tags"), i18nc("@label", "Tags") },
         { QStringLiteral("kfileitem#totalSize"), i18nc("@label", "Total Size") },
+        { QStringLiteral("kfileitem#hiddenItems"), i18nc("@label", "Hidden items") },
         { QStringLiteral("kfileitem#type"), i18nc("@label", "Type") },
         { QStringLiteral("tags"), i18nc("@label", "Tags") },
         { QStringLiteral("rating"), i18nc("@label", "Rating") },
@@ -415,12 +442,13 @@ QString FileMetaDataProvider::group(const QString& label) const
         { QStringLiteral("kfileitem#type"), QStringLiteral("0FileItemA") },
         { QStringLiteral("kfileitem#size"), QStringLiteral("0FileItemB") },
         { QStringLiteral("kfileitem#totalSize"), QStringLiteral("0FileItemB") },
-        { QStringLiteral("kfileitem#modified"), QStringLiteral("0FileItemC") },
-        { QStringLiteral("kfileitem#accessed"), QStringLiteral("0FileItemD") },
-        { QStringLiteral("kfileitem#created"), QStringLiteral("0FileItemE") },
-        { QStringLiteral("kfileitem#owner"), QStringLiteral("0FileItemF") },
-        { QStringLiteral("kfileitem#group"), QStringLiteral("0FileItemG") },
-        { QStringLiteral("kfileitem#permissions"), QStringLiteral("0FileItemH") },
+        { QStringLiteral("kfileitem#hiddenItems"), QStringLiteral("0FileItemC") },
+        { QStringLiteral("kfileitem#modified"), QStringLiteral("0FileItemD") },
+        { QStringLiteral("kfileitem#accessed"), QStringLiteral("0FileItemE") },
+        { QStringLiteral("kfileitem#created"), QStringLiteral("0FileItemF") },
+        { QStringLiteral("kfileitem#owner"), QStringLiteral("0FileItemG") },
+        { QStringLiteral("kfileitem#group"), QStringLiteral("0FileItemH") },
+        { QStringLiteral("kfileitem#permissions"), QStringLiteral("0FileItemI") },
 
         // Editable Data
         { QStringLiteral("tags"), QStringLiteral("1EditableDataA") },
@@ -488,7 +516,7 @@ QVariantMap FileMetaDataProvider::data() const
     return m_data;
 }
 
-int FileMetaDataProvider::subDirectoriesCount(const QString& path)
+QPair<int, int> FileMetaDataProvider::subDirectoriesCount(const QString& path)
 {
 #ifdef Q_OS_WIN
     QDir dir(path);
@@ -498,9 +526,11 @@ int FileMetaDataProvider::subDirectoriesCount(const QString& path)
     // Copyright (C) 2006 David Faure <faure@kde.org>
 
     int count = -1;
+    int hiddenCount = -1;
     DIR* dir = ::opendir(QFile::encodeName(path).constData());
     if (dir) {
         count = 0;
+        hiddenCount = 0;
         struct dirent *dirEntry = nullptr;
         while ((dirEntry = ::readdir(dir))) { // krazy:exclude=syscalls
             if (dirEntry->d_name[0] == '.') {
@@ -512,12 +542,15 @@ int FileMetaDataProvider::subDirectoriesCount(const QString& path)
                     // Skip ".."
                     continue;
                 }
+                // hidden files
+                hiddenCount++;
+            } else {
+                ++count;
             }
-            ++count;
         }
         ::closedir(dir);
     }
-    return count;
+    return QPair<int, int>(count, hiddenCount);
 #endif
 }
 
