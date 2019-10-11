@@ -34,7 +34,6 @@
 #include "filemetadatawidget.h"
 
 K_PLUGIN_FACTORY(BalooFilePropertiesPluginFactory, registerPlugin<BalooFilePropertiesPlugin>();)
-K_EXPORT_PLUGIN(BalooFilePropertiesPlugin("fileshare_propsdlgplugin"))
 
 BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QList<QVariant> &args)
     : KPropertiesDialogPlugin(qobject_cast<KPropertiesDialog *>(parent))
