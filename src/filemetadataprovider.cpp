@@ -520,7 +520,9 @@ QPair<int, int> FileMetaDataProvider::subDirectoriesCount(const QString& path)
 {
 #ifdef Q_OS_WIN
     QDir dir(path);
-    return dir.entryList(QDir::AllEntries|QDir::NoDotAndDotDot|QDir::System).count();
+    int count = dir.entryList(QDir::AllEntries|QDir::NoDotAndDotDot|QDir::System).count();
+    int hiddenCount = dir.entryList(QDir::AllEntries|QDir::NoDotAndDotDot|QDir::System|QDir::Hidden).count();
+    return QPair<int, int> (count, hiddenCount);
 #else
     // Taken from kdelibs/kio/kio/kdirmodel.cpp
     // Copyright (C) 2006 David Faure <faure@kde.org>
