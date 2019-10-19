@@ -181,6 +181,11 @@ void FileMetaDataProvider::insertSingleFileBasicData()
                   }
               }
           }
+          else if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
+              isSizeUnknown = false;
+              KFormat format;
+              m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
+          }
           if (isSizeUnknown) {
               m_data.insert(QStringLiteral("kfileitem#size"), i18nc("unknown file size", "Unknown"));
           }
