@@ -78,7 +78,26 @@ WidgetFactory::~WidgetFactory()
 //
 // Widget Creation
 //
-static QString toString(const QVariant& value)
+static QString formatDateTime(const QVariant& value, QLocale::FormatType dateFormat)
+{
+    const QString valueString = value.toString();
+    QDateTime dt = QDateTime::fromString(valueString, Qt::ISODate);
+
+    if (dt.isValid()) {
+        KFormat form;
+        QTime time = dt.time();
+        // Check if Date/DateTime
+        if (!time.hour() && !time.minute() && !time.second()){
+            return form.formatRelativeDate(dt.date(), dateFormat);
+        } else {
+            return form.formatRelativeDateTime(dt, dateFormat);
+        }
+    }
+
+    return valueString;
+}
+
+static QString toString(const QVariant& value, QLocale::FormatType dateFormat)
 {
     switch (value.type()) {
         case QVariant::Int:
@@ -87,12 +106,15 @@ static QString toString(const QVariant& value)
             return QLocale().toString(value.toDouble());
         case QVariant::StringList:
             return value.toStringList().join(i18nc("String list separator", ", "));
+        case QVariant::Date:
+        case QVariant::DateTime: {
+            return formatDateTime(value, dateFormat);
+        }
         case QVariant::List: {
             QStringList list;
             for (const QVariant& var : value.toList()) {
-                list << toString(var);
+                list << toString(var, dateFormat);
             }
-
             return list.join(i18nc("String list separator", ", "));
         }
 
@@ -123,11 +145,11 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         QString valueString;
         auto pi = KFileMetaData::PropertyInfo::fromName(prop);
         if (pi.name() == QLatin1String("originUrl")) {
-            //Won't make sense to shrink originUrl with noLinks, 
+            //Won't make sense to shrink originUrl with noLinks,
             //since it would make original URL unobtainable
             valueString = value.toString();
             if (!m_noLinks) {
-                //Shrink link name. 
+                //Shrink link name.
                 auto labelString = valueString;
                 if (labelString.size() > maxUrlLength) {
                     labelString = KStringHandler::csqueeze(labelString, maxUrlLength);
@@ -135,23 +157,15 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
                 valueString = QStringLiteral("<a href=\"%1\">%2</a>").arg(valueString, labelString);
             }
         } else if (pi.name() != QLatin1String("empty")) {
-            valueString = pi.formatAsDisplayString(value);
+            if (pi.valueType() == QVariant::DateTime || pi.valueType() == QVariant::Date) {
+                valueString = formatDateTime(value, m_dateFormat);
+            } else {
+                valueString = pi.formatAsDisplayString(value);
+            }
         } else {
-            // Check if Date/DateTime
-            QDateTime dt = QDateTime::fromString(value.toString(), Qt::ISODate);
-            if (dt.isValid()) {
-                KFormat form;
-                QTime time = dt.time();
-                if (!time.hour() && !time.minute() && !time.second()){
-                    valueString = form.formatRelativeDate(dt.date(), m_dateFormat);
-                } else {
-                    valueString = form.formatRelativeDateTime(dt, m_dateFormat);
-                }
-            }
-            else {
-                valueString = toString(value);
-            }
+            valueString = toString(value, m_dateFormat);
         }
+
         widget = createValueWidget(valueString, parent);
     }
 
