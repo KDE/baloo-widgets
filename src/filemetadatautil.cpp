@@ -30,26 +30,38 @@ namespace Private
 
 QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData& metaData)
 {
+    using Attribute = KFileMetaData::UserMetaData::Attribute;
     QVariantMap properties;
 
-    const QStringList tags = metaData.tags();
-    if (!tags.isEmpty()) {
-        properties.insert(QStringLiteral("tags"), tags);
+    QFlags<Attribute> attributes = metaData.queryAttributes(Attribute::Tags | Attribute::Rating |
+                                                            Attribute::Comment | Attribute::OriginUrl);
+
+    if (attributes & Attribute::Tags) {
+        QStringList tags = metaData.tags();
+        if (!tags.isEmpty()) {
+            properties.insert(QStringLiteral("tags"), tags);
+        }
     }
 
-    int rating = metaData.rating();
-    if (rating) {
-        properties.insert(QStringLiteral("rating"), rating);
+    if (attributes & Attribute::Rating) {
+        int rating = metaData.rating();
+        if (rating) {
+            properties.insert(QStringLiteral("rating"), rating);
+        }
     }
 
-    const QString comment = metaData.userComment();
-    if (!comment.isEmpty()) {
-        properties.insert(QStringLiteral("userComment"), comment);
+    if (attributes & Attribute::Comment) {
+        QString comment = metaData.userComment();
+        if (!comment.isEmpty()) {
+            properties.insert(QStringLiteral("userComment"), comment);
+        }
     }
 
-    const QString originUrl = metaData.originUrl().toDisplayString();
-    if (!originUrl.isEmpty()) {
-        properties.insert(QStringLiteral("originUrl"), originUrl);
+    if (attributes & Attribute::OriginUrl) {
+        const QString originUrl = metaData.originUrl().toDisplayString();
+        if (!originUrl.isEmpty()) {
+            properties.insert(QStringLiteral("originUrl"), originUrl);
+        }
     }
 
     return properties;
