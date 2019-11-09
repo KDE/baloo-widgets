@@ -39,28 +39,6 @@
 #include <KLocalizedString>
 #include <KStringHandler>
 
-namespace {
-    static QString plainText(const QString& richText)
-    {
-        QString plainText;
-        plainText.reserve(richText.length());
-
-        bool skip = false;
-        for (int i = 0; i < richText.length(); ++i) {
-            const QChar c = richText.at(i);
-            if (c == QLatin1Char('<')) {
-                skip = true;
-            } else if (c == QLatin1Char('>')) {
-                skip = false;
-            } else if (!skip) {
-                plainText.append(c);
-            }
-        }
-
-        return plainText;
-    }
-}
-
 using namespace Baloo;
 
 WidgetFactory::WidgetFactory(QObject* parent)
@@ -236,10 +214,8 @@ QSize ValueWidget::sizeHint() const
 {
     QFontMetrics metrics(font());
     // TODO: QLabel internally provides already a method sizeForWidth(),
-    // that would be sufficient. However this method is not accessible, so
-    // as workaround the tags from a richtext are removed manually here to
-    // have a proper size hint.
-    return metrics.size(Qt::TextSingleLine, plainText(text()));
+    // that would be sufficient. However this method is not accessible.
+    return metrics.size(Qt::TextSingleLine, text());
 }
 
 QWidget* WidgetFactory::createValueWidget(const QString& value, QWidget* parent)
@@ -248,7 +224,7 @@ QWidget* WidgetFactory::createValueWidget(const QString& value, QWidget* parent)
     valueWidget->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextSelectableByKeyboard);
     valueWidget->setWordWrap(true);
     valueWidget->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-    valueWidget->setText(m_readOnly ? plainText(value) : value);
+    valueWidget->setText(value);
     connect(valueWidget, &ValueWidget::linkActivated, this, &WidgetFactory::slotLinkActivated);
 
     return valueWidget;
