@@ -66,7 +66,6 @@ using namespace Baloo;
 WidgetFactory::WidgetFactory(QObject* parent)
     : QObject(parent)
     , m_readOnly( false )
-    , m_noLinks( false )
     , m_dateFormat(QLocale::LongFormat)
 {
 }
@@ -145,17 +144,11 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
         QString valueString;
         auto pi = KFileMetaData::PropertyInfo::fromName(prop);
         if (pi.name() == QLatin1String("originUrl")) {
-            //Won't make sense to shrink originUrl with noLinks,
-            //since it would make original URL unobtainable
             valueString = value.toString();
-            if (!m_noLinks) {
-                //Shrink link name.
-                auto labelString = valueString;
-                if (labelString.size() > maxUrlLength) {
-                    labelString = KStringHandler::csqueeze(labelString, maxUrlLength);
-                }
-                valueString = QStringLiteral("<a href=\"%1\">%2</a>").arg(valueString, labelString);
-            }
+            //Shrink link label
+            auto labelString = KStringHandler::csqueeze(valueString, maxUrlLength);
+            valueString = QStringLiteral("<a href=\"%1\">%2</a>").arg(valueString, labelString);
+
         } else if (pi.name() != QLatin1String("empty")) {
             if (pi.valueType() == QVariant::DateTime || pi.valueType() == QVariant::Date) {
                 valueString = formatDateTime(value, m_dateFormat);
@@ -347,11 +340,6 @@ void WidgetFactory::slotTagClicked(const QString& tag)
 void WidgetFactory::setReadOnly(bool value)
 {
     m_readOnly = value;
-}
-
-void WidgetFactory::setNoLinks(bool value)
-{
-    m_noLinks = value;
 }
 
 void WidgetFactory::setItems(const KFileItemList& items)

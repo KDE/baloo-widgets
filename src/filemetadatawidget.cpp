@@ -154,7 +154,6 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
             }
             changedIt++;
         }
-        m_widgetFactory->setNoLinks(true);
         m_widgetFactory->setReadOnly(true);
         m_gridLayout->setColumnStretch(0, 1);
         m_gridLayout->setColumnStretch(1, 3);
@@ -162,7 +161,6 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
         m_gridLayout->setColumnStretch(3, 6);
     } else {
         data = m_filter->filter(data);
-        m_widgetFactory->setNoLinks( m_provider->realTimeIndexing() );
         m_widgetFactory->setReadOnly(m_provider->isReadOnly());
         m_gridLayout->setColumnStretch(0, 4);
         m_gridLayout->setColumnStretch(1, 0);

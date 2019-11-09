@@ -46,7 +46,6 @@ namespace Baloo {
         void setItems(const KFileItemList& items);
 
         void setReadOnly(bool value);
-        void setNoLinks(bool value);
 
         void setDateFormat(const DateFormats format);
         DateFormats dateFormat() const;
@@ -79,7 +78,6 @@ namespace Baloo {
         KFileItemList m_items;
         QStringList m_prevTags;
         bool m_readOnly;
-        bool m_noLinks;
         QLocale::FormatType m_dateFormat;
     };
 }
