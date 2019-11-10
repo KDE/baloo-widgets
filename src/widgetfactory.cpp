@@ -130,6 +130,7 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
             auto labelString = KStringHandler::csqueeze(valueString, maxUrlLength);
             valueString = QStringLiteral("<a href=\"%1\">%2</a>").arg(valueString, labelString);
             valueWidget->setTextFormat(Qt::RichText);
+            valueWidget->setTextInteractionFlags(Qt::TextBrowserInteraction);
 
         } else if (pi.name() != QLatin1String("empty")) {
             if (pi.valueType() == QVariant::DateTime || pi.valueType() == QVariant::Date) {
@@ -226,7 +227,7 @@ QSize ValueWidget::sizeHint() const
 QLabel* WidgetFactory::createValueWidget(QWidget* parent)
 {
     ValueWidget* valueWidget = new ValueWidget(parent);
-    valueWidget->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextSelectableByKeyboard);
+    valueWidget->setTextInteractionFlags(Qt::TextSelectableByMouse);
     valueWidget->setTextFormat(Qt::PlainText);
     valueWidget->setWordWrap(true);
     valueWidget->setAlignment(Qt::AlignTop | Qt::AlignLeft);
