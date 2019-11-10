@@ -27,6 +27,7 @@
 #include <QStringList>
 
 class KJob;
+class QLabel;
 class QUrl;
 class KCommentWidget;
 class KRatingWidget;
@@ -69,7 +70,7 @@ namespace Baloo {
         QWidget* createRatingWidget(int rating, QWidget* parent);
         QWidget* createTagWidget(const QStringList& tags, QWidget* parent);
         QWidget* createCommentWidget(const QString& comment, QWidget* parent);
-        QWidget* createValueWidget(const QString& value, QWidget* parent);
+        QLabel* createValueWidget(QWidget* parent);
 
         TagWidget* m_tagWidget;
         KRatingWidget* m_ratingWidget;

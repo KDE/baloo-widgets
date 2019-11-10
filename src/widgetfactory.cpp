@@ -120,12 +120,16 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
     }
     else {
         QString valueString;
+        QLabel* valueWidget = createValueWidget(parent);
+
         auto pi = KFileMetaData::PropertyInfo::fromName(prop);
         if (pi.name() == QLatin1String("originUrl")) {
-            valueString = value.toString();
-            //Shrink link label
+            auto url = value.toUrl();
+            valueString = url.toString();
+            // Shrink link label
             auto labelString = KStringHandler::csqueeze(valueString, maxUrlLength);
             valueString = QStringLiteral("<a href=\"%1\">%2</a>").arg(valueString, labelString);
+            valueWidget->setTextFormat(Qt::RichText);
 
         } else if (pi.name() != QLatin1String("empty")) {
             if (pi.valueType() == QVariant::DateTime || pi.valueType() == QVariant::Date) {
@@ -137,7 +141,8 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
             valueString = toString(value, m_dateFormat);
         }
 
-        widget = createValueWidget(valueString, parent);
+        valueWidget->setText(valueString);
+        widget = valueWidget;
     }
 
     widget->setForegroundRole(parent->foregroundRole());
@@ -218,13 +223,13 @@ QSize ValueWidget::sizeHint() const
     return metrics.size(Qt::TextSingleLine, text());
 }
 
-QWidget* WidgetFactory::createValueWidget(const QString& value, QWidget* parent)
+QLabel* WidgetFactory::createValueWidget(QWidget* parent)
 {
     ValueWidget* valueWidget = new ValueWidget(parent);
     valueWidget->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextSelectableByKeyboard);
+    valueWidget->setTextFormat(Qt::PlainText);
     valueWidget->setWordWrap(true);
     valueWidget->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-    valueWidget->setText(value);
     connect(valueWidget, &ValueWidget::linkActivated, this, &WidgetFactory::slotLinkActivated);
 
     return valueWidget;
