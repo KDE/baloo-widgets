@@ -20,6 +20,14 @@ set(widgets_SRCS
   filefetchjob.cpp
 )
 
+ecm_qt_declare_logging_category(
+    widgets_SRCS
+    HEADER "widgetsdebug.h"
+    IDENTIFIER "Baloo::WIDGETS"
+    DEFAULT_SEVERITY Warning
+    CATEGORY_NAME "org.kde.baloo.widgets"
+)
+
 add_library(KF5BalooWidgets ${widgets_SRCS})
 
 add_library(KF5::BalooWidgets ALIAS KF5BalooWidgets)

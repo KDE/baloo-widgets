@@ -20,13 +20,13 @@
 
 #include "indexeddataretriever.h"
 #include "filemetadatautil_p.h"
+#include "widgetsdebug.h"
 #include "extractorutil_p.h"
 
 #include <QDataStream>
 #include <QProcess>
 #include <QFileInfo>
 #include <QStandardPaths>
-#include <QDebug>
 
 using namespace Baloo;
 
@@ -53,7 +53,7 @@ void IndexedDataRetriever::start()
 void IndexedDataRetriever::slotIndexedFile(int exitCode, QProcess::ExitStatus exitStatus)
 {
     if (exitStatus == QProcess::CrashExit) {
-        qWarning() << "Extractor crashed when processing" << m_url;
+        qCWarning(WIDGETS) << "Extractor crashed when processing" << m_url;
     }
     QByteArray data = m_process->readAllStandardOutput();
     QDataStream in(&data, QIODevice::ReadOnly);
