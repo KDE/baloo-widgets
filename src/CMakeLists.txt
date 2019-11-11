@@ -16,6 +16,7 @@ set(widgets_SRCS
   kcommentwidget.cpp
   keditcommentdialog.cpp
   metadatafilter.cpp
+  ondemandextractor.cpp
   widgetfactory.cpp
   filefetchjob.cpp
 )

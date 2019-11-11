@@ -1,6 +1,6 @@
 /*
  * <one line to give the library's name and an idea of what it does.>
- * Copyright (C) 2012  Vishesh Handa <me@vhanda.in>
+ * Copyright (C) 2019  Stefan Brüns <stefan.bruens@rwth-aachen.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,37 +18,39 @@
  *
  */
 
-#ifndef INDEXEDDATARETRIEVER_H
-#define INDEXEDDATARETRIEVER_H
+#ifndef ONDEMANDEXTRACTOR_H
+#define ONDEMANDEXTRACTOR_H
 
-#include <KJob>
-#include "ondemandextractor.h"
-#include <QVariant>
+#include <QProcess>
+#include <KFileMetaData/Properties>
 
 namespace Baloo {
+namespace Private {
 
-class IndexedDataRetriever : public KJob
+class OnDemandExtractor : public QObject
 {
     Q_OBJECT
+
 public:
-    explicit IndexedDataRetriever(const QString& fileUrl, QObject* parent = nullptr);
-    ~IndexedDataRetriever() override;
+    explicit OnDemandExtractor(QObject* parent = nullptr);
+    ~OnDemandExtractor();
 
-    void start() override;
+    void process(const QString& filePath);
 
-    QVariantMap data() const;
-    bool canEdit() const;
+    KFileMetaData::PropertyMap properties() const;
+
+Q_SIGNALS:
+    void fileFinished(QProcess::ExitStatus exitStatus);
 
 private Q_SLOTS:
-    void slotIndexedFile(QProcess::ExitStatus exitStatus);
+    void slotIndexedFile(int exitCode, QProcess::ExitStatus exitStatus);
 
 private:
-    QString m_url;
-    Private::OnDemandExtractor m_extractor;
-    QVariantMap m_data;
-    bool m_canEdit = false;
+    QProcess m_process;
+    KFileMetaData::PropertyMap m_properties;
 };
 
-}
+} // namespace Private
+} // namespace Baloo
 
-#endif // INDEXEDDATARETRIEVER_H
+#endif // ONDEMANDEXTRACTOR_H

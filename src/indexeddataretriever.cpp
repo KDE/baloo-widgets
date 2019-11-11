@@ -20,19 +20,18 @@
 
 #include "indexeddataretriever.h"
 #include "filemetadatautil_p.h"
-#include "widgetsdebug.h"
-#include "extractorutil_p.h"
 
-#include <QDataStream>
-#include <QProcess>
 #include <QFileInfo>
-#include <QStandardPaths>
 
 using namespace Baloo;
 
 IndexedDataRetriever::IndexedDataRetriever(const QString& fileUrl, QObject* parent): KJob(parent)
 {
-    m_url = QFileInfo(fileUrl).canonicalFilePath();
+    QFileInfo fileInfo(fileUrl);
+    m_url = fileInfo.canonicalFilePath();
+    m_canEdit = fileInfo.isWritable();
+
+    connect(&m_extractor, &Private::OnDemandExtractor::fileFinished, this, &IndexedDataRetriever::slotIndexedFile);
 }
 
 IndexedDataRetriever::~IndexedDataRetriever()
@@ -41,34 +40,23 @@ IndexedDataRetriever::~IndexedDataRetriever()
 
 void IndexedDataRetriever::start()
 {
-    const QString exe = QStandardPaths::findExecutable(QLatin1String("baloo_filemetadata_temp_extractor"));
-
-    m_process = new QProcess(this);
-    m_process->setReadChannel(QProcess::StandardOutput);
-
-    connect(m_process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &IndexedDataRetriever::slotIndexedFile);
-    m_process->start(exe, QStringList() << m_url);
-}
-
-void IndexedDataRetriever::slotIndexedFile(int exitCode, QProcess::ExitStatus exitStatus)
-{
-    if (exitStatus == QProcess::CrashExit) {
-        qCWarning(WIDGETS) << "Extractor crashed when processing" << m_url;
-    }
-    QByteArray data = m_process->readAllStandardOutput();
-    QDataStream in(&data, QIODevice::ReadOnly);
-
-    KFileMetaData::PropertyMap properties;
-    in >> properties;
-
-    m_data = Baloo::Private::toNamedVariantMap(properties);
+    m_extractor.process(m_url);
 
     KFileMetaData::UserMetaData umd(m_url);
     if (umd.isSupported()) {
-        m_canEdit = QFileInfo(m_url).isWritable();
+        m_data = Baloo::Private::convertUserMetaData(umd);
+        m_canEdit &= true;
+    } else {
+        m_data.clear();
+        m_canEdit &= false;
+    }
+}
 
-        QVariantMap attributes = Baloo::Private::convertUserMetaData(umd);
-        m_data.unite(attributes);
+void IndexedDataRetriever::slotIndexedFile(QProcess::ExitStatus status)
+{
+    if (status == QProcess::NormalExit) {
+        QVariantMap properties = Baloo::Private::toNamedVariantMap(m_extractor.properties());
+        m_data.unite(properties);
     }
 
     emitResult();
