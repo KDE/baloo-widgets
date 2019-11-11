@@ -62,6 +62,11 @@ void OnDemandExtractor::slotIndexedFile(int, QProcess::ExitStatus exitStatus)
     emit fileFinished(QProcess::NormalExit);
 }
 
+bool OnDemandExtractor::waitFinished()
+{
+    return m_process.waitForFinished();
+}
+
 KFileMetaData::PropertyMap OnDemandExtractor::properties() const
 {
     return m_properties;

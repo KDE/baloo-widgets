@@ -20,6 +20,7 @@
 
 #include "filefetchjob.h"
 #include "filemetadatautil_p.h"
+#include "widgetsdebug.h"
 
 #include <QFileInfo>
 #include <QTimer>
@@ -29,10 +30,12 @@
 
 using namespace Baloo;
 
-FileFetchJob::FileFetchJob(const QStringList& urls, bool canEditAll, QObject* parent)
+FileFetchJob::FileFetchJob(const QStringList& urls, bool canEditAll,
+    FileFetchJob::UseRealtimeIndexing useRealtime, QObject* parent)
     : KJob(parent)
     , m_urls(urls)
     , m_canEditAll(canEditAll)
+    , m_useRealtime(useRealtime)
 {
 }
 
@@ -44,23 +47,42 @@ void FileFetchJob::start()
 void FileFetchJob::doStart()
 {
     for (const QString& filePath : m_urls) {
-        Baloo::File file(filePath);
-        file.load();
 
-        QVariantMap prop = Baloo::Private::toNamedVariantMap(file.properties());
+        bool extractorRunning = false;
+        KFileMetaData::PropertyMap fileProperties;
+
+        // UseRealtimeIndexing::Fallback: try DB first, then filesystem
+        // UseRealtimeIndexing::Disabled: DB contents only
+        // UseRealtimeIndexing::Only:     DB disabled, use filesystem
+        if (m_useRealtime != UseRealtimeIndexing::Only) {
+            Baloo::File file(filePath);
+            file.load();
+            fileProperties = file.properties();
+            qCDebug(WIDGETS) << filePath << "DB properties:" << fileProperties;
+        }
+        if (fileProperties.empty() && m_useRealtime != UseRealtimeIndexing::Disabled) {
+            extractorRunning = true;
+            m_extractor.process(filePath);
+        }
+
+        QVariantMap prop;
         KFileMetaData::UserMetaData umd(filePath);
 
         if (umd.isSupported()) {
-            // FIXME - check writable
-
-            QVariantMap attributes = Baloo::Private::convertUserMetaData(umd);
-            prop.unite(attributes);
+            prop = Baloo::Private::convertUserMetaData(umd);
         } else {
             m_canEditAll = false;
         }
         if (m_canEditAll) {
             m_canEditAll = QFileInfo(filePath).isWritable();
         }
+
+        if (extractorRunning) {
+            m_extractor.waitFinished();
+            fileProperties = m_extractor.properties();
+            qCDebug(WIDGETS) << filePath << "  properties:" << fileProperties;
+        }
+        prop.unite(Baloo::Private::toNamedVariantMap(fileProperties));
 
         m_data << prop;
     }

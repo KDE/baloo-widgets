@@ -23,6 +23,7 @@
 
 #include <KJob>
 #include <QVariantMap>
+#include "ondemandextractor.h"
 
 namespace Baloo {
 
@@ -30,7 +31,13 @@ class FileFetchJob : public KJob
 {
     Q_OBJECT
 public:
-    explicit FileFetchJob(const QStringList& urls, bool canEditAll, QObject* parent = nullptr);
+    enum class UseRealtimeIndexing : char {
+        Disabled = 0,
+        Only,
+        Fallback
+    };
+    explicit FileFetchJob(const QStringList& urls, bool canEditAll,
+        UseRealtimeIndexing useRealtime, QObject* parent = nullptr);
 
     QList<QVariantMap> data() const;
     bool canEditAll() const;
@@ -44,6 +51,8 @@ private:
     QStringList m_urls;
     QList<QVariantMap> m_data;
     bool m_canEditAll;
+    UseRealtimeIndexing m_useRealtime;
+    Private::OnDemandExtractor m_extractor;
 };
 }
 

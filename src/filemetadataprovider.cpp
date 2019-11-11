@@ -343,22 +343,24 @@ void FileMetaDataProvider::setFileItem()
         return;
     }
 
-    // Not indexed or only basic file indexing (no content)
     const QString filePath = url.toLocalFile();
+    FileFetchJob* job;
+
+    // Not indexed or only basic file indexing (no content)
     if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath)
             || m_config.onlyBasicIndexing()) {
         m_realTimeIndexing = true;
 
-        IndexedDataRetriever *ret = new IndexedDataRetriever(filePath, this);
-        connect(ret, &IndexedDataRetriever::finished, this, &FileMetaDataProvider::slotLoadingFinished);
-        ret->start();
+        job = new FileFetchJob(QStringList{filePath}, true,
+            FileFetchJob::UseRealtimeIndexing::Only, this);
 
     // Fully indexed by Baloo
     } else {
-        FileFetchJob* job = new FileFetchJob(QStringList{filePath}, true, this);
-        connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
-        job->start();
+        job = new FileFetchJob(QStringList{filePath}, true,
+            FileFetchJob::UseRealtimeIndexing::Fallback, this);
     }
+    connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
+    job->start();
 }
 
 void FileMetaDataProvider::setFileItems()
@@ -383,7 +385,8 @@ void FileMetaDataProvider::setFileItems()
         // Editing only if all URLs are local
         bool canEdit = (urls.size() == m_fileItems.size());
 
-        FileFetchJob* job = new FileFetchJob(urls, canEdit, this);
+        FileFetchJob* job = new FileFetchJob(urls, canEdit,
+            FileFetchJob::UseRealtimeIndexing::Disabled, this);
         connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
         job->start();
 

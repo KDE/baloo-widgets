@@ -37,6 +37,7 @@ public:
 
     void process(const QString& filePath);
 
+    bool waitFinished();
     KFileMetaData::PropertyMap properties() const;
 
 Q_SIGNALS:
