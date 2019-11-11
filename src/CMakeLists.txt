@@ -8,17 +8,16 @@ set(widgets_SRCS
   tagwidget.cpp
   kedittagsdialog.cpp
   tagcheckbox.cpp
+  filefetchjob.cpp
   filemetadatawidget.cpp
   filemetadataconfigwidget.cpp
   filemetadataprovider.cpp
   filemetadatautil.cpp
-  indexeddataretriever.cpp
   kcommentwidget.cpp
   keditcommentdialog.cpp
   metadatafilter.cpp
   ondemandextractor.cpp
   widgetfactory.cpp
-  filefetchjob.cpp
 )
 
 ecm_qt_declare_logging_category(

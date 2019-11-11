@@ -111,7 +111,6 @@ Q_SIGNALS:
     void loadingFinished();
 
 private Q_SLOTS:
-    void slotLoadingFinished(KJob* job);
     void slotFileFetchFinished(KJob* job);
 
 private:

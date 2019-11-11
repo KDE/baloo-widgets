@@ -19,7 +19,6 @@
  *****************************************************************************/
 
 #include "filemetadataprovider.h"
-#include "indexeddataretriever.h"
 #include "filefetchjob.h"
 
 #include <KFileMetaData/PropertyInfo>
@@ -140,16 +139,6 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob* job)
         m_data = unite(m_data, files.first());
     }
     m_readOnly = !fetchJob->canEditAll();
-
-    insertEditableData();
-    emit loadingFinished();
-}
-
-void FileMetaDataProvider::slotLoadingFinished(KJob* job)
-{
-    IndexedDataRetriever* ret = dynamic_cast<IndexedDataRetriever*>(job);
-    m_data = unite(m_data, ret->data());
-    m_readOnly = !ret->canEdit();
 
     insertEditableData();
     emit loadingFinished();
