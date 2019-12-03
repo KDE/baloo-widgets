@@ -148,7 +148,7 @@ QLayoutItem *KBlockLayout::takeAt( int index )
 
 Qt::Orientations KBlockLayout::expandingDirections() const
 {
-    return nullptr;
+    return {};
 }
 
 bool KBlockLayout::hasHeightForWidth() const
