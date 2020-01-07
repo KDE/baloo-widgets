@@ -73,7 +73,7 @@ namespace {
             QSet<QString> s1 = v1.toStringList().toSet();
             QSet<QString> s2 = v2.toStringList().toSet();
 
-            return QVariant(s1.intersect(s2).toList());
+            return QVariant(s1.intersect(s2).values());
         }
 
         if (v1 == v2) {
