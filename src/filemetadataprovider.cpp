@@ -184,6 +184,9 @@ void FileMetaDataProvider::insertSingleFileBasicData()
       }
 
       m_data.insert(QStringLiteral("kfileitem#type"), item.mimeComment());
+      if (item.isLink()) {
+          m_data.insert(QStringLiteral("kfileitem#linkDest"), item.linkDest());
+      }
       m_data.insert(QStringLiteral("kfileitem#modified"), item.time(KFileItem::ModificationTime));
       QDateTime creationTime = item.time(KFileItem::CreationTime);
       if (creationTime.isValid()) {
@@ -417,6 +420,7 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
         { QStringLiteral("kfileitem#totalSize"), i18nc("@label", "Total Size") },
         { QStringLiteral("kfileitem#hiddenItems"), i18nc("@label", "Hidden items") },
         { QStringLiteral("kfileitem#type"), i18nc("@label", "Type") },
+        { QStringLiteral("kfileitem#linkDest"), i18nc("@label", "Link to") },
         { QStringLiteral("tags"), i18nc("@label", "Tags") },
         { QStringLiteral("rating"), i18nc("@label", "Rating") },
         { QStringLiteral("userComment"), i18nc("@label", "Comment") },
@@ -437,15 +441,16 @@ QString FileMetaDataProvider::group(const QString& label) const
 
         // KFileItem Data
         { QStringLiteral("kfileitem#type"), QStringLiteral("0FileItemA") },
-        { QStringLiteral("kfileitem#size"), QStringLiteral("0FileItemB") },
-        { QStringLiteral("kfileitem#totalSize"), QStringLiteral("0FileItemB") },
-        { QStringLiteral("kfileitem#hiddenItems"), QStringLiteral("0FileItemC") },
-        { QStringLiteral("kfileitem#modified"), QStringLiteral("0FileItemD") },
-        { QStringLiteral("kfileitem#accessed"), QStringLiteral("0FileItemE") },
-        { QStringLiteral("kfileitem#created"), QStringLiteral("0FileItemF") },
-        { QStringLiteral("kfileitem#owner"), QStringLiteral("0FileItemG") },
-        { QStringLiteral("kfileitem#group"), QStringLiteral("0FileItemH") },
-        { QStringLiteral("kfileitem#permissions"), QStringLiteral("0FileItemI") },
+        { QStringLiteral("kfileitem#linkDest"), QStringLiteral("0FileItemB") },
+        { QStringLiteral("kfileitem#size"), QStringLiteral("0FileItemC") },
+        { QStringLiteral("kfileitem#totalSize"), QStringLiteral("0FileItemC") },
+        { QStringLiteral("kfileitem#hiddenItems"), QStringLiteral("0FileItemD") },
+        { QStringLiteral("kfileitem#modified"), QStringLiteral("0FileItemE") },
+        { QStringLiteral("kfileitem#accessed"), QStringLiteral("0FileItemF") },
+        { QStringLiteral("kfileitem#created"), QStringLiteral("0FileItemG") },
+        { QStringLiteral("kfileitem#owner"), QStringLiteral("0FileItemH") },
+        { QStringLiteral("kfileitem#group"), QStringLiteral("0FileItemI") },
+        { QStringLiteral("kfileitem#permissions"), QStringLiteral("0FileItemJ") },
 
         // Editable Data
         { QStringLiteral("tags"), QStringLiteral("1EditableDataA") },
