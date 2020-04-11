@@ -152,6 +152,7 @@ void FileMetaDataProvider::insertSingleFileBasicData()
     if (m_fileItems.count() == 1) {
       const KFileItem& item = m_fileItems.first();
 
+      KFormat format;
       if (item.isDir()) {
           bool isSizeUnknown = !item.isLocalFile();
           if (!isSizeUnknown) {
@@ -172,14 +173,16 @@ void FileMetaDataProvider::insertSingleFileBasicData()
           }
           else if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
               isSizeUnknown = false;
-              KFormat format;
               m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
+          }
+          if (item.entry().contains(KIO::UDSEntry::UDS_RECURSIVE_SIZE)) {
+              isSizeUnknown = false;
+              m_data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(item.recursiveSize()));
           }
           if (isSizeUnknown) {
               m_data.insert(QStringLiteral("kfileitem#size"), i18nc("unknown file size", "Unknown"));
           }
       } else {
-          KFormat format;
           m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
       }
 
