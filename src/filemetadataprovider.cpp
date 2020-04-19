@@ -172,30 +172,34 @@ void FileMetaDataProvider::insertSingleFileBasicData()
               }
           }
           else if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
-              isSizeUnknown = false;
               m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
           }
           if (item.entry().contains(KIO::UDSEntry::UDS_RECURSIVE_SIZE)) {
-              isSizeUnknown = false;
               m_data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(item.recursiveSize()));
           }
-          if (isSizeUnknown) {
-              m_data.insert(QStringLiteral("kfileitem#size"), i18nc("unknown file size", "Unknown"));
-          }
       } else {
-          m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
+          if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
+              m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
+          }
       }
 
       m_data.insert(QStringLiteral("kfileitem#type"), item.mimeComment());
       if (item.isLink()) {
           m_data.insert(QStringLiteral("kfileitem#linkDest"), item.linkDest());
       }
-      m_data.insert(QStringLiteral("kfileitem#modified"), item.time(KFileItem::ModificationTime));
+      QDateTime modificationTime = item.time(KFileItem::ModificationTime);
+      if (modificationTime.isValid()) {
+          m_data.insert(QStringLiteral("kfileitem#modified"), modificationTime);
+      }
       QDateTime creationTime = item.time(KFileItem::CreationTime);
       if (creationTime.isValid()) {
           m_data.insert(QStringLiteral("kfileitem#created"), creationTime);
       }
-      m_data.insert(QStringLiteral("kfileitem#accessed"), item.time(KFileItem::AccessTime));
+      QDateTime accessTime = item.time(KFileItem::AccessTime);
+      if (accessTime.isValid()) {
+          m_data.insert(QStringLiteral("kfileitem#accessed"), accessTime);
+      }
+
       m_data.insert(QStringLiteral("kfileitem#owner"), item.user());
       m_data.insert(QStringLiteral("kfileitem#group"), item.group());
       m_data.insert(QStringLiteral("kfileitem#permissions"), item.permissionsString());
