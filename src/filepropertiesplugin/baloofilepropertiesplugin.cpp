@@ -29,7 +29,8 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KPluginLoader>
-#include <KRun>
+#include <KIO/JobUiDelegate>
+#include <KIO/OpenUrlJob>
 
 #include "filemetadatawidget.h"
 
@@ -49,7 +50,9 @@ BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QLis
     auto *metaDataWidget = new Baloo::FileMetaDataWidget();
     metaDataWidget->setItems(properties->items());
     connect(metaDataWidget, &Baloo::FileMetaDataWidget::urlActivated, this, [this](const QUrl &url) {
-        new KRun(url, properties);
+        KIO::OpenUrlJob *job = new KIO::OpenUrlJob(url);
+        job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, properties));
+        job->start();
     });
 
     containerLayout->addWidget(metaDataWidget);
