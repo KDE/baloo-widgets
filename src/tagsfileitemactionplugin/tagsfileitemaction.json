@@ -33,6 +33,7 @@
                 "Name[sl]": "Nicolas Fella",
                 "Name[sv]": "Nicolas Fella",
                 "Name[uk]": "Nicolas Fella",
+                "Name[x-test]": "xxNicolas Fellaxx",
                 "Name[zh_CN]": "Nicolas Fella",
                 "Name[zh_TW]": "Nicolas Fella"
             }
@@ -68,6 +69,7 @@
         "Description[sl]": "Zamenjaj oznake v datoteki",
         "Description[sv]": "Ändra filetiketter",
         "Description[uk]": "Зміна міток файлів",
+        "Description[x-test]": "xxChange file tagsxx",
         "Description[zh_CN]": "更改文件标签",
         "Description[zh_TW]": "變更檔案標籤",
         "Icon": "tag",
@@ -107,6 +109,7 @@
         "Name[sl]": "Oznake",
         "Name[sv]": "Etiketter",
         "Name[uk]": "Мітки",
+        "Name[x-test]": "xxTagsxx",
         "Name[zh_CN]": "标签",
         "Name[zh_TW]": "標籤",
         "ServiceTypes": [
