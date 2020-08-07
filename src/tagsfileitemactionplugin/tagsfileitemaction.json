@@ -4,6 +4,7 @@
             {
                 "Name": "Nicolas Fella",
                 "Name[ast]": "Nicolas Fella",
+                "Name[az]": "Nicolas Fella",
                 "Name[ca@valencia]": "Nicolas Fella",
                 "Name[ca]": "Nicolas Fella",
                 "Name[cs]": "Nicolas Fella",
@@ -40,6 +41,7 @@
         ],
         "Category": "Utilities",
         "Description": "Change file tags",
+        "Description[az]": "Faylın yarlıqlarını dəyişmək",
         "Description[ca@valencia]": "Canvia les etiquetes dels fitxers",
         "Description[ca]": "Canvia les etiquetes dels fitxers",
         "Description[cs]": "Změnit značky souboru",
@@ -80,6 +82,7 @@
         ],
         "Name": "Tags",
         "Name[ast]": "Etiquetes",
+        "Name[az]": "Yarlıqlar",
         "Name[ca@valencia]": "Etiquetes",
         "Name[ca]": "Etiquetes",
         "Name[cs]": "Značky",
