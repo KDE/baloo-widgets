@@ -22,7 +22,6 @@
 
 #include "tagcheckbox.h"
 #include "tagwidget.h"
-#include "tagwidget_p.h"
 
 #include <QMouseEvent>
 #include <QHBoxLayout>

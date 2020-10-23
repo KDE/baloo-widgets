@@ -20,7 +20,6 @@
  */
 
 #include "filemetadatadatedisplaytest.h"
-#include <filemetadatawidget.h>
 
 
 #include <QObject>

@@ -29,7 +29,6 @@
 #include <KConfig>
 #include <KConfigGroup>
 
-#include <KFileItem>
 #include <KFileMetaData/UserMetaData>
 
 #include <QCheckBox>
