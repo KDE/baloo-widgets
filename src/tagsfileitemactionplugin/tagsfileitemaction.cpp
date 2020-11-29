@@ -32,7 +32,6 @@
 #include <QInputDialog>
 
 #include <KPluginFactory>
-#include <KPluginLoader>
 #include <KLocalizedString>
 
 K_PLUGIN_FACTORY_WITH_JSON(TagsFileItemActionFactory, "tagsfileitemaction.json", registerPlugin<TagsFileItemAction>();)

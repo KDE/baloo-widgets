@@ -28,7 +28,6 @@
 
 #include <KLocalizedString>
 #include <KPluginFactory>
-#include <KPluginLoader>
 #include <KIO/JobUiDelegate>
 #include <KIO/OpenUrlJob>
 
