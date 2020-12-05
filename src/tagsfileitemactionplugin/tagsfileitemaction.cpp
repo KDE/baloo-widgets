@@ -99,7 +99,6 @@ TagsFileItemAction::~TagsFileItemAction()
 
 QList<QAction*> TagsFileItemAction::actions(const KFileItemListProperties& fileItemInfos, QWidget* parentWidget)
 {
-    Q_UNUSED(parentWidget);
 
     if (fileItemInfos.urlList().size() > 1) {
         return {};
@@ -116,6 +115,8 @@ QList<QAction*> TagsFileItemAction::actions(const KFileItemListProperties& fileI
     }
 
     m_tagsLister.openUrl(QUrl(QStringLiteral("tags:/")), KCoreDirLister::OpenUrlFlag::Reload);
+
+    m_menu->setParent(parentWidget);
 
     return {m_menu->menuAction()};
 }
