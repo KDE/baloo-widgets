@@ -116,7 +116,7 @@ QList<QAction*> TagsFileItemAction::actions(const KFileItemListProperties& fileI
 
     m_tagsLister.openUrl(QUrl(QStringLiteral("tags:/")), KCoreDirLister::OpenUrlFlag::Reload);
 
-    m_menu->setParent(parentWidget);
+    m_menu->setParent(parentWidget, Qt::Popup);
 
     return {m_menu->menuAction()};
 }
