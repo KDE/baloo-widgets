@@ -33,7 +33,7 @@
 
 #include "filemetadatawidget.h"
 
-K_PLUGIN_FACTORY(BalooFilePropertiesPluginFactory, registerPlugin<BalooFilePropertiesPlugin>();)
+K_PLUGIN_CLASS_WITH_JSON(BalooFilePropertiesPlugin, "baloofilepropertiesplugin.json")
 
 BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QList<QVariant> &args)
     : KPropertiesDialogPlugin(qobject_cast<KPropertiesDialog *>(parent))
