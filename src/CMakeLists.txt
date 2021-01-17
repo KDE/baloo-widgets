@@ -54,7 +54,7 @@ set_target_properties(KF5BalooWidgets PROPERTIES
    EXPORT_NAME BalooWidgets
 )
 
-target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets>")
+target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/BalooWidgets>")
 
 generate_export_header(KF5BalooWidgets BASE_NAME BALOO_WIDGETS EXPORT_FILE_NAME widgets_export.h)
 
@@ -72,14 +72,14 @@ ecm_generate_headers(KF5BalooWidgets_CamelCase_HEADERS
 
 install(FILES
   ${KF5BalooWidgets_CamelCase_HEADERS}
-  DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets/Baloo
+  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/BalooWidgets/Baloo
   COMPONENT Devel
 )
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/widgets_export.h
   ${KF5BalooWidgets_HEADERS}
-  DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/BalooWidgets/baloo
+  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/BalooWidgets/baloo
   COMPONENT Devel
 )
 
@@ -93,4 +93,4 @@ target_link_libraries(baloo_filemetadata_temp_extractor
   KF5::FileMetaData
 )
 
-install(TARGETS baloo_filemetadata_temp_extractor DESTINATION ${BIN_INSTALL_DIR})
+install(TARGETS baloo_filemetadata_temp_extractor DESTINATION ${KDE_INSTALL_BINDIR})

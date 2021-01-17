@@ -10,5 +10,5 @@ target_link_libraries(baloofilepropertiesplugin
     KF5::BalooWidgets
 )
 
-install(TARGETS baloofilepropertiesplugin DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES baloofilepropertiesplugin.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+install(TARGETS baloofilepropertiesplugin DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(FILES baloofilepropertiesplugin.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
