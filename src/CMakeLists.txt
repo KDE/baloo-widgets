@@ -26,6 +26,8 @@ ecm_qt_declare_logging_category(
     IDENTIFIER "Baloo::WIDGETS"
     DEFAULT_SEVERITY Warning
     CATEGORY_NAME "org.kde.baloo.widgets"
+    DESCRIPTION "Baloo Widgets"
+    EXPORT BALOO_WIDGETS
 )
 
 add_library(KF5BalooWidgets ${widgets_SRCS})
@@ -94,3 +96,9 @@ target_link_libraries(baloo_filemetadata_temp_extractor
 )
 
 install(TARGETS baloo_filemetadata_temp_extractor DESTINATION ${KDE_INSTALL_BINDIR})
+
+ecm_qt_install_logging_categories(
+    EXPORT BALOO_WIDGETS
+    FILE baloo-widgets.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)

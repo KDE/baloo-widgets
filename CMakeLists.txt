@@ -69,8 +69,6 @@ install(EXPORT KF5BalooWidgetsTargets
         FILE KF5BalooWidgetsTargets.cmake
 )
 
-install(FILES baloo-widgets.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
-
 feature_summary(WHAT ALL
     INCLUDE_QUIET_PACKAGES
     FATAL_ON_MISSING_REQUIRED_PACKAGES
