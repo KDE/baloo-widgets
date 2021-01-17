@@ -32,12 +32,6 @@
 #include <QDateTime>
 #include <QScopedPointer>
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
-#include <time.h>
-#include <utime.h>
-#include <sys/stat.h>
-#endif
-
 void initLocale()
 {
     QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
@@ -49,21 +43,10 @@ QTEST_MAIN(FileMetadataDateDisplayTest)
 bool FileMetadataDateDisplayTest::setFileTime(const QString& filePath, const QDateTime& fileTime)
 {
     bool ret;
-#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
-    struct stat fileStat;
-    struct utimbuf newTimes;
-    const QByteArray file = QFile::encodeName(filePath);
-    stat(file, &fileStat);
-
-    newTimes.actime = fileStat.st_atime;
-    newTimes.modtime = fileTime.toTime_t();
-    ret = (utime(file, &newTimes) == 0);
-#else
     QScopedPointer<QFile> file{new QFile(filePath)};
     file->open(QIODevice::ReadOnly);
     ret = file->setFileTime(fileTime, QFileDevice::FileModificationTime);
     file->close();
-#endif
     return ret;
 }
 
