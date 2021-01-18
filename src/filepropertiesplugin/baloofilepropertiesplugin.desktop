@@ -74,6 +74,6 @@ Comment[x-test]=xxProperties page showing meta data of files, such as image dime
 Comment[zh_CN]=显示文件元数据的属性页，比如图像尺寸，艺术家信息和其他
 Comment[zh_TW]=顯示檔案中繼資料的屬性頁面，例如：圖片大小、作家資訊以及其他。
 X-KDE-Library=baloofilepropertiesplugin
-X-KDE-Protocol=file
+X-KDE-Protocols=file,desktop
 X-KDE-ServiceTypes=KPropertiesDialog/Plugin
 MimeType=inode/directory;application/octet-stream
