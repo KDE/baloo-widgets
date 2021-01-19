@@ -18,7 +18,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Config KIO I18n FileMeta
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
-include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+include(KDECompilerSettings NO_POLICY_SCOPE)
 
 include(ECMSetupVersion)
 include(ECMInstallIcons)
@@ -30,7 +30,17 @@ include(ECMAddTests)
 include(ECMQtDeclareLoggingCategory)
 include(CMakePackageConfigHelpers)
 
-add_definitions(-DQT_NO_FOREACH)
+add_definitions(
+    -DQT_NO_FOREACH
+    -DQT_NO_CAST_TO_ASCII
+    -DQT_NO_CAST_FROM_ASCII
+    -DQT_NO_URL_CAST_FROM_STRING
+    -DQT_NO_CAST_FROM_BYTEARRAY
+    -DQT_NO_SIGNALS_SLOTS_KEYWORDS
+    -DQT_USE_QSTRINGBUILDER
+    -DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT
+    -DQT_STRICT_ITERATORS
+)
 
 ecm_setup_version(PROJECT
                   VARIABLE_PREFIX BALOO_WIDGETS
