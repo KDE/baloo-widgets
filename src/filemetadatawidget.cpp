@@ -211,14 +211,14 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
     m_gridLayout->setRowStretch(rowIndex, 1);
 
     q->updateGeometry();
-    emit q->metaDataRequestFinished(m_provider->items());
+    Q_EMIT q->metaDataRequestFinished(m_provider->items());
 }
 
 void FileMetaDataWidget::Private::slotLinkActivated(const QString& link)
 {
     const QUrl url = QUrl::fromUserInput(link);
     if (url.isValid()) {
-        emit q->urlActivated(url);
+        Q_EMIT q->urlActivated(url);
     }
 }
 

@@ -250,8 +250,8 @@ void WidgetFactory::slotCommentChanged(const QString& comment)
         KFileMetaData::UserMetaData md(url.toLocalFile());
         md.setUserComment(comment);
     }
-    emit dataChangeStarted();
-    emit dataChangeFinished();
+    Q_EMIT dataChangeStarted();
+    Q_EMIT dataChangeFinished();
 }
 
 void WidgetFactory::slotRatingChanged(uint rating)
@@ -264,8 +264,8 @@ void WidgetFactory::slotRatingChanged(uint rating)
         KFileMetaData::UserMetaData md(url.toLocalFile());
         md.setRating(rating);
     }
-    emit dataChangeStarted();
-    emit dataChangeFinished();
+    Q_EMIT dataChangeStarted();
+    Q_EMIT dataChangeFinished();
 }
 
 void WidgetFactory::slotTagsChanged(const QStringList& tags)
@@ -292,8 +292,8 @@ void WidgetFactory::slotTagsChanged(const QStringList& tags)
         }
 
         m_prevTags = tags;
-        emit dataChangeStarted();
-        emit dataChangeFinished();
+        Q_EMIT dataChangeStarted();
+        Q_EMIT dataChangeFinished();
     }
 }
 
@@ -303,7 +303,7 @@ void WidgetFactory::slotTagsChanged(const QStringList& tags)
 
 void WidgetFactory::slotLinkActivated(const QString& url)
 {
-    emit urlActivated(QUrl::fromUserInput(url));
+    Q_EMIT urlActivated(QUrl::fromUserInput(url));
 }
 
 void WidgetFactory::slotTagClicked(const QString& tag)
@@ -312,7 +312,7 @@ void WidgetFactory::slotTagClicked(const QString& tag)
     url.setScheme(QStringLiteral("tags"));
     url.setPath(tag);
 
-    emit urlActivated(url);
+    Q_EMIT urlActivated(url);
 }
 
 

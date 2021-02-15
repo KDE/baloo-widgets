@@ -181,7 +181,7 @@ void TagWidget::slotKEditTagDialogFinished(int result)
 {
     if( result == QDialog::Accepted ) {
         setSelectedTags( d->m_editTagsDialog->tags() );
-        emit selectionChanged( selectedTags() );
+        Q_EMIT selectionChanged( selectedTags() );
     }
 
     d->m_editTagsDialog->deleteLater();

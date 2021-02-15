@@ -74,7 +74,7 @@ bool TagCheckBox::eventFilter( QObject* watched, QEvent* event )
         case QEvent::MouseButtonRelease: {
             QMouseEvent* me = static_cast<QMouseEvent*>(event);
             if (me->button() == Qt::LeftButton && tagRect().contains(me->pos())) {
-                emit tagClicked( m_tag );
+                Q_EMIT tagClicked( m_tag );
                 return true;
             }
             break;

@@ -130,7 +130,7 @@ void KCommentWidget::slotLinkActivated(const QString& link)
             setText(dialog->getCommentText());
         }
         if (oldText != m_comment) {
-            emit commentChanged(m_comment);
+            Q_EMIT commentChanged(m_comment);
         }
     }
 

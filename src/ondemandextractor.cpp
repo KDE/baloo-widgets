@@ -51,7 +51,7 @@ void OnDemandExtractor::slotIndexedFile(int, QProcess::ExitStatus exitStatus)
 {
     if (exitStatus == QProcess::CrashExit) {
         qCWarning(WIDGETS) << "Extractor crashed when processing" << m_process.arguments();
-        emit fileFinished(exitStatus);
+        Q_EMIT fileFinished(exitStatus);
         return;
     }
     QByteArray data = m_process.readAllStandardOutput();
@@ -59,7 +59,7 @@ void OnDemandExtractor::slotIndexedFile(int, QProcess::ExitStatus exitStatus)
 
     m_properties.clear();
     in >> m_properties;
-    emit fileFinished(QProcess::NormalExit);
+    Q_EMIT fileFinished(QProcess::NormalExit);
 }
 
 bool OnDemandExtractor::waitFinished()

@@ -141,7 +141,7 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob* job)
     m_readOnly = !fetchJob->canEditAll();
 
     insertEditableData();
-    emit loadingFinished();
+    Q_EMIT loadingFinished();
 }
 
 void FileMetaDataProvider::insertSingleFileBasicData()
@@ -338,7 +338,7 @@ void FileMetaDataProvider::setFileItem()
     if (!url.isLocalFile()) {
         // FIXME - are extended attributes supported for remote files?
         m_readOnly = true;
-        emit loadingFinished();
+        Q_EMIT loadingFinished();
         return;
     }
 
@@ -392,7 +392,7 @@ void FileMetaDataProvider::setFileItems()
     } else {
         // FIXME - are extended attributes supported for remote files?
         m_readOnly = true;
-        emit loadingFinished();
+        Q_EMIT loadingFinished();
     }
 }
 
@@ -403,7 +403,7 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
     m_realTimeIndexing = false;
 
     if (items.isEmpty()) {
-        emit loadingFinished();
+        Q_EMIT loadingFinished();
     } else if (items.size() == 1)  {
         setFileItem();
     } else {
