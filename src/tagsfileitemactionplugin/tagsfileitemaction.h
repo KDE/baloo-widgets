@@ -28,7 +28,6 @@
 #include <KFileMetaData/UserMetaData>
 
 class QAction;
-class KFileItemListProperties;
 class QWidget;
 
 class TagsFileItemAction : public KAbstractFileItemActionPlugin
