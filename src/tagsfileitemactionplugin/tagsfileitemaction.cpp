@@ -44,7 +44,6 @@ TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
     m_menu->setIcon(QIcon::fromTheme(QStringLiteral("tag")));
 
     connect(&m_tagsLister, &KCoreDirLister::itemsAdded, this, [this](const QUrl&, const KFileItemList& items) {
-
         const QStringList fileTags = m_metaData->tags();
 
         // The file may be located outside an indexed path, or is not indexed yet
@@ -75,7 +74,7 @@ TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
         }
     });
 
-    QAction* newAction = new QAction(i18n("Create New..."));
+    newAction = new QAction(i18n("Create New..."));
     newAction->setIcon(QIcon::fromTheme(QStringLiteral("tag-new")));
 
     connect(newAction, &QAction::triggered, this, [this] {
@@ -86,10 +85,6 @@ TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
             m_metaData->setTags(tags);
         }
     });
-
-    m_menu->addAction(newAction);
-    m_menu->addSeparator();
-
 }
 
 TagsFileItemAction::~TagsFileItemAction()
@@ -116,6 +111,9 @@ QList<QAction*> TagsFileItemAction::actions(const KFileItemListProperties& fileI
 
     m_tagsLister.openUrl(QUrl(QStringLiteral("tags:/")), KCoreDirLister::OpenUrlFlag::Reload);
 
+    m_menu->clear();
+    m_menu->addAction(newAction);
+    m_menu->addSeparator();
     m_menu->setParent(parentWidget, Qt::Popup);
 
     return {m_menu->menuAction()};
