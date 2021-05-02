@@ -51,7 +51,7 @@ target_link_libraries(KF5BalooWidgets
 )
 
 set_target_properties(KF5BalooWidgets PROPERTIES
-   VERSION ${BALOO_WIDGETS_VERSION_STRING}
+   VERSION ${BALOO_WIDGETS_VERSION}
    SOVERSION ${BALOO_WIDGETS_SOVERSION}
    EXPORT_NAME BalooWidgets
 )
