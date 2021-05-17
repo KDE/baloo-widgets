@@ -3,7 +3,15 @@ add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets5\")
 add_subdirectory(filepropertiesplugin)
 add_subdirectory(tagsfileitemactionplugin)
 
-set(widgets_SRCS
+add_library(KF5BalooWidgets)
+add_library(KF5::BalooWidgets ALIAS KF5BalooWidgets)
+set_target_properties(KF5BalooWidgets PROPERTIES
+    VERSION     ${BALOO_WIDGETS_VERSION}
+    SOVERSION   ${BALOO_WIDGETS_SOVERSION}
+    EXPORT_NAME BalooWidgets
+)
+
+target_sources(KF5BalooWidgets PRIVATE
   kblocklayout.cpp
   tagwidget.cpp
   kedittagsdialog.cpp
@@ -20,8 +28,7 @@ set(widgets_SRCS
   widgetfactory.cpp
 )
 
-ecm_qt_declare_logging_category(
-    widgets_SRCS
+ecm_qt_declare_logging_category(KF5BalooWidgets
     HEADER "widgetsdebug.h"
     IDENTIFIER "Baloo::WIDGETS"
     DEFAULT_SEVERITY Warning
@@ -29,10 +36,6 @@ ecm_qt_declare_logging_category(
     DESCRIPTION "Baloo Widgets"
     EXPORT BALOO_WIDGETS
 )
-
-add_library(KF5BalooWidgets ${widgets_SRCS})
-
-add_library(KF5::BalooWidgets ALIAS KF5BalooWidgets)
 
 target_link_libraries(KF5BalooWidgets
   PUBLIC
@@ -48,12 +51,6 @@ target_link_libraries(KF5BalooWidgets
   KF5::Baloo
   KF5::CoreAddons
   KF5::ConfigGui
-)
-
-set_target_properties(KF5BalooWidgets PROPERTIES
-   VERSION ${BALOO_WIDGETS_VERSION}
-   SOVERSION ${BALOO_WIDGETS_SOVERSION}
-   EXPORT_NAME BalooWidgets
 )
 
 target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/BalooWidgets>")
