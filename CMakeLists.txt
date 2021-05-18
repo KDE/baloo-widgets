@@ -39,10 +39,6 @@ ecm_setup_version(PROJECT
                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/baloowidgets_version.h"
                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake")
 
-include_directories(
-   ${CMAKE_SOURCE_DIR}/src
-   ${CMAKE_BINARY_DIR}/src
-)
 add_subdirectory(src)
 if (BUILD_TESTING)
   add_subdirectory(test)

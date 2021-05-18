@@ -1,7 +1,5 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets5\")
 
-include_directories(${CMAKE_SOURCE_DIR})
-
 set(tagsfileitemaction_debug_SRCS tagsfileitemaction.cpp)
 
 kcoreaddons_add_plugin(tagsfileitemaction

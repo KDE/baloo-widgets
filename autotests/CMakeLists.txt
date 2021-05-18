@@ -19,6 +19,10 @@ ecm_add_tests(
     Qt5::Widgets
 )
 
+target_include_directories(extractortest
+    PRIVATE ${CMAKE_SOURCE_DIR}/src
+)
+
 # Set PATH so baloo_filemetadata_temp_extractor from the build directory is used
 if(WIN32)
    set_property(TEST "extractortest"               PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin\\;$ENV{PATH}")
