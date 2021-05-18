@@ -20,8 +20,11 @@ set(widgets_SRCS
   widgetfactory.cpp
 )
 
-ecm_qt_declare_logging_category(
-    widgets_SRCS
+add_library(KF5BalooWidgets ${widgets_SRCS})
+
+add_library(KF5::BalooWidgets ALIAS KF5BalooWidgets)
+
+ecm_qt_declare_logging_category(KF5BalooWidgets
     HEADER "widgetsdebug.h"
     IDENTIFIER "Baloo::WIDGETS"
     DEFAULT_SEVERITY Warning
@@ -29,10 +32,6 @@ ecm_qt_declare_logging_category(
     DESCRIPTION "Baloo Widgets"
     EXPORT BALOO_WIDGETS
 )
-
-add_library(KF5BalooWidgets ${widgets_SRCS})
-
-add_library(KF5::BalooWidgets ALIAS KF5BalooWidgets)
 
 target_link_libraries(KF5BalooWidgets
   PUBLIC
