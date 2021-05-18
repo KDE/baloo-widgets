@@ -5,6 +5,8 @@ ecm_add_test(extractortest.cpp
     LINK_LIBRARIES Qt5::Test
     KF5::FileMetaData
 )
+target_include_directories(extractortest PRIVATE ${CMAKE_SOURCE_DIR}/src)
+
 ecm_add_tests(
     filemetadatawidgettest.cpp
     filemetadataitemcounttest.cpp

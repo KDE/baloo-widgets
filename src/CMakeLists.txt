@@ -3,7 +3,10 @@ add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets5\")
 add_subdirectory(filepropertiesplugin)
 add_subdirectory(tagsfileitemactionplugin)
 
-set(widgets_SRCS
+add_library(KF5BalooWidgets SHARED)
+add_library(KF5::BalooWidgets ALIAS KF5BalooWidgets)
+
+target_sources(KF5BalooWidgets PRIVATE
   kblocklayout.cpp
   tagwidget.cpp
   kedittagsdialog.cpp
@@ -19,10 +22,6 @@ set(widgets_SRCS
   ondemandextractor.cpp
   widgetfactory.cpp
 )
-
-add_library(KF5BalooWidgets ${widgets_SRCS})
-
-add_library(KF5::BalooWidgets ALIAS KF5BalooWidgets)
 
 ecm_qt_declare_logging_category(KF5BalooWidgets
     HEADER "widgetsdebug.h"

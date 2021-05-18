@@ -1,8 +1,10 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets5\")
 
-set(baloofilepropertiesplugin_PART_SRCS baloofilepropertiesplugin.cpp)
+add_library(baloofilepropertiesplugin MODULE)
 
-add_library(baloofilepropertiesplugin MODULE ${baloofilepropertiesplugin_PART_SRCS})
+target_sources(baloofilepropertiesplugin PRIVATE
+    baloofilepropertiesplugin.cpp
+)
 
 target_link_libraries(baloofilepropertiesplugin
     KF5::I18n
