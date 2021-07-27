@@ -3,6 +3,7 @@
         "Authors": [
             {
                 "Name": "Nicolas Fella",
+                "Name[ar]": "Nicolas Fella",
                 "Name[ast]": "Nicolas Fella",
                 "Name[az]": "Nicolas Fella",
                 "Name[ca@valencia]": "Nicolas Fella",
@@ -43,6 +44,7 @@
         ],
         "Category": "Utilities",
         "Description": "Change file tags",
+        "Description[ar]": "غير وسوم الملف",
         "Description[az]": "Faylın yarlıqlarını dəyişmək",
         "Description[ca@valencia]": "Canvia les etiquetes dels fitxers",
         "Description[ca]": "Canvia les etiquetes dels fitxers",
@@ -85,6 +87,7 @@
             "inode/directory"
         ],
         "Name": "Tags",
+        "Name[ar]": "الوسوم",
         "Name[ast]": "Etiquetes",
         "Name[az]": "Yarlıqlar",
         "Name[ca@valencia]": "Etiquetes",
