@@ -1,12 +1,26 @@
 {
     "KPlugin": {
         "Description": "Properties page showing meta data of files, such as image dimensions, artist information, and others",
+        "Description[ca@valencia]": "Pàgina de propietats que mostra les metadades dels fitxers, com les dimensions de les imatges, informació de l'artista i altres",
+        "Description[ca]": "Pàgina de propietats que mostra les metadades dels fitxers, com les dimensions de les imatges, informació de l'artista i altres",
+        "Description[nl]": "Eigenschappenpagina toont metagegevens van bestanden, zoals afmeting van afbeelding, informatie over artiest en andere",
+        "Description[pl]": "Strona właściwości pokazująca metadane plików, takie jak rozmiar obrazu, informacje o artyście i inne",
+        "Description[sv]": "Egenskapssida som visar filers metadata, såsom bilddimensioner, artistinformation, med mera",
+        "Description[uk]": "На сторінці властивостей буде показано метадані файла, зокрема розміри зображення, дані щодо художника тощо",
+        "Description[x-test]": "xxProperties page showing meta data of files, such as image dimensions, artist information, and othersxx",
         "Icon": "document-properties",
         "MimeTypes": [
             "inode/directory",
             "application/octet-stream"
         ],
         "Name": "File Meta Data Properties Page",
+        "Name[ca@valencia]": "Pàgina de propietats de les metadades del fitxer",
+        "Name[ca]": "Pàgina de propietats de les metadades del fitxer",
+        "Name[nl]": "Pagina metagegevenseigenschappen",
+        "Name[pl]": "Strona właściwości metadanych pliku",
+        "Name[sv]": "Egenskapssida för filmetadata",
+        "Name[uk]": "Сторінка властивостей і метаданих файла",
+        "Name[x-test]": "xxFile Meta Data Properties Pagexx",
         "ServiceTypes": [
             "KPropertiesDialog/Plugin"
         ]
