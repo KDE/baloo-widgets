@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Properties page showing meta data of files, such as image dimensions, artist information, and others",
+        "Description[az]": "Təsvir ölçüləri, müəllif haqqında məlumatı və başqa bu kimi faylların meta məlumatlarını göstərən xüsusiyyətlər səhifəsi",
         "Description[ca@valencia]": "Pàgina de propietats que mostra les metadades dels fitxers, com les dimensions de les imatges, informació de l'artista i altres",
         "Description[ca]": "Pàgina de propietats que mostra les metadades dels fitxers, com les dimensions de les imatges, informació de l'artista i altres",
         "Description[es]": "La página de propiedades mostrando metadatos de los archivos, como las dimensiones de las imágenes, información sobre el artista, etc.",
@@ -18,6 +19,7 @@
             "application/octet-stream"
         ],
         "Name": "File Meta Data Properties Page",
+        "Name[az]": "Meta Məlumatı Xüsusiyyətləri Faylı Səhifəsi",
         "Name[ca@valencia]": "Pàgina de propietats de les metadades del fitxer",
         "Name[ca]": "Pàgina de propietats de les metadades del fitxer",
         "Name[cs]": "Stránka vlastností metadat souboru",
