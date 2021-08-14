@@ -7,12 +7,14 @@
         "Description[es]": "La página de propiedades mostrando metadatos de los archivos, como las dimensiones de las imágenes, información sobre el artista, etc.",
         "Description[eu]": "Fitxategien metadatuak erakusten dituen orria, hala nola irudiaren dimentsioak, artistari buruzko informazioa, eta bestelakoak",
         "Description[fr]": "Page de propriétés affichant les métadonnées de fichiers, telles que les dimensions de l'image, les informations sur l'artiste, etc.",
+        "Description[it]": "Pagina delle proprietà che mostra i metadati dei file, come le dimensioni dell'immagine, le informazioni sull'artista e altro",
         "Description[ko]": "그림 크기, 아티스트 정보 등 파일 메타데이터를 표시하는 속성 페이지",
         "Description[nl]": "Eigenschappenpagina toont metagegevens van bestanden, zoals afmeting van afbeelding, informatie over artiest en andere",
         "Description[pl]": "Strona właściwości pokazująca metadane plików, takie jak rozmiar obrazu, informacje o artyście i inne",
         "Description[sv]": "Egenskapssida som visar filers metadata, såsom bilddimensioner, artistinformation, med mera",
         "Description[uk]": "На сторінці властивостей буде показано метадані файла, зокрема розміри зображення, дані щодо художника тощо",
         "Description[x-test]": "xxProperties page showing meta data of files, such as image dimensions, artist information, and othersxx",
+        "Description[zh_CN]": "显示文件元数据的属性页，包括图像尺寸，艺人信息和其他信息等",
         "Icon": "document-properties",
         "MimeTypes": [
             "inode/directory",
@@ -26,12 +28,14 @@
         "Name[es]": "Página de propiedades de metadatos de archivos",
         "Name[eu]": "Fitxategi-metadatuen propietateen orria",
         "Name[fr]": "Page des propriétés pour les métadonnées de fichier",
+        "Name[it]": "Pagina delle proprietà dei metadati dei file",
         "Name[ko]": "파일 메타데이터 속성 페이지",
         "Name[nl]": "Pagina metagegevenseigenschappen",
         "Name[pl]": "Strona właściwości metadanych pliku",
         "Name[sv]": "Egenskapssida för filmetadata",
         "Name[uk]": "Сторінка властивостей і метаданих файла",
         "Name[x-test]": "xxFile Meta Data Properties Pagexx",
+        "Name[zh_CN]": "文件元数据属性页",
         "ServiceTypes": [
             "KPropertiesDialog/Plugin"
         ]
