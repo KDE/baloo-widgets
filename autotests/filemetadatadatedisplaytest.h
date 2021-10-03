@@ -35,9 +35,9 @@ private Q_SLOTS:
 
     void shouldDisplayLongAndShortDates();
     void shouldDisplayLongAndShortDates_data();
-private:
-    bool setFileTime(const QString& file, const QDateTime& filetime);
 
+private:
+    bool setFileTime(const QString &file, const QDateTime &filetime);
 };
 
 #endif // FILEMETADATADATEDISPLAYTEST_H

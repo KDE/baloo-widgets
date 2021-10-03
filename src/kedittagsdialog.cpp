@@ -22,32 +22,29 @@
 
 #include <KLocalizedString>
 
-#include <QLineEdit>
+#include <QDebug>
+#include <QDialogButtonBox>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QTreeWidget>
+#include <QLineEdit>
 #include <QPushButton>
 #include <QTimer>
+#include <QTreeWidget>
+#include <QUrl>
 #include <QVBoxLayout>
 #include <QWidget>
-#include <QUrl>
-#include <QDialogButtonBox>
-#include <QDebug>
 
 #include <Baloo/TagListJob>
 
-KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
-                                 QWidget *parent) :
-    QDialog(parent),
-    m_tags(tags),
-    m_tagTree(nullptr),
-    m_newTagEdit(nullptr)
+KEditTagsDialog::KEditTagsDialog(const QStringList &tags, QWidget *parent)
+    : QDialog(parent)
+    , m_tags(tags)
+    , m_tagTree(nullptr)
+    , m_newTagEdit(nullptr)
 {
-    const QString captionText = (tags.count() > 0) ?
-                                i18nc("@title:window", "Edit Tags") :
-                                i18nc("@title:window", "Add Tags");
+    const QString captionText = (tags.count() > 0) ? i18nc("@title:window", "Edit Tags") : i18nc("@title:window", "Add Tags");
     setWindowTitle(captionText);
-    QDialogButtonBox* buttonBox = new QDialogButtonBox(this);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
 
     buttonBox->addButton(i18n("Save"), QDialogButtonBox::AcceptRole);
     buttonBox->addButton(QDialogButtonBox::Cancel);
@@ -55,26 +52,27 @@ KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
     connect(buttonBox, &QDialogButtonBox::accepted, this, &KEditTagsDialog::slotAcceptedButtonClicked);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
-    QVBoxLayout* topLayout = new QVBoxLayout;
+    QVBoxLayout *topLayout = new QVBoxLayout;
     setLayout(topLayout);
 
-    QLabel* label = new QLabel(i18nc("@label:textbox",
+    QLabel *label = new QLabel(i18nc("@label:textbox",
                                      "Configure which tags should "
-                                     "be applied."), this);
+                                     "be applied."),
+                               this);
 
     m_tagTree = new QTreeWidget();
     m_tagTree->setSortingEnabled(true);
     m_tagTree->setSelectionMode(QAbstractItemView::NoSelection);
     m_tagTree->setHeaderHidden(true);
 
-    QLabel* newTagLabel = new QLabel(i18nc("@label", "Create new tag:"));
+    QLabel *newTagLabel = new QLabel(i18nc("@label", "Create new tag:"));
     m_newTagEdit = new QLineEdit(this);
     m_newTagEdit->setClearButtonEnabled(true);
     m_newTagEdit->setFocus();
     connect(m_newTagEdit, &QLineEdit::textEdited, this, &KEditTagsDialog::slotTextEdited);
     connect(m_tagTree, &QTreeWidget::itemActivated, this, &KEditTagsDialog::slotItemActivated);
 
-    QHBoxLayout* newTagLayout = new QHBoxLayout();
+    QHBoxLayout *newTagLayout = new QHBoxLayout();
     newTagLayout->addWidget(newTagLabel);
     newTagLayout->addWidget(m_newTagEdit, 1);
 
@@ -85,9 +83,9 @@ KEditTagsDialog::KEditTagsDialog(const QStringList& tags,
 
     resize(sizeHint());
 
-    Baloo::TagListJob* job = new Baloo::TagListJob();
-    connect(job, &Baloo::TagListJob::finished, [this] (KJob* job) {
-        Baloo::TagListJob* tjob = static_cast<Baloo::TagListJob*>(job);
+    Baloo::TagListJob *job = new Baloo::TagListJob();
+    connect(job, &Baloo::TagListJob::finished, [this](KJob *job) {
+        Baloo::TagListJob *tjob = static_cast<Baloo::TagListJob *>(job);
         m_allTags = tjob->tags();
         loadTagWidget();
     });
@@ -108,7 +106,7 @@ void KEditTagsDialog::slotAcceptedButtonClicked()
 {
     m_tags.clear();
 
-    for (const QTreeWidgetItem* item : m_allTagTreeItems.values()) {
+    for (const QTreeWidgetItem *item : m_allTagTreeItems.values()) {
         if (item->checkState(0) == Qt::Checked) {
             m_tags << qvariant_cast<QString>(item->data(0, Qt::UserRole));
         }
@@ -117,7 +115,7 @@ void KEditTagsDialog::slotAcceptedButtonClicked()
     accept();
 }
 
-void KEditTagsDialog::slotItemActivated(const QTreeWidgetItem* item, int column)
+void KEditTagsDialog::slotItemActivated(const QTreeWidgetItem *item, int column)
 {
     Q_UNUSED(column)
 
@@ -126,7 +124,7 @@ void KEditTagsDialog::slotItemActivated(const QTreeWidgetItem* item, int column)
     m_newTagEdit->setFocus();
 }
 
-void KEditTagsDialog::slotTextEdited(const QString& text)
+void KEditTagsDialog::slotTextEdited(const QString &text)
 {
     // Remove unnecessary spaces from a new tag is
     // mandatory, as the user cannot see the difference
@@ -142,11 +140,11 @@ void KEditTagsDialog::slotTextEdited(const QString& text)
     const QStringList splitTag = m_newTag.split(QLatin1Char('/'), QString::SkipEmptyParts);
     for (int i = splitTag.size() - 1; i >= 0 && i < splitTag.size(); --i) {
         QString itemTag = m_newTag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
-        QTreeWidgetItem* item = m_allTagTreeItems.value(itemTag);
+        QTreeWidgetItem *item = m_allTagTreeItems.value(itemTag);
 
         if (!m_allTags.contains(m_newTag) && (item->childCount() == 0)) {
             if (i != 0) {
-                QTreeWidgetItem* parentItem = item->parent();
+                QTreeWidgetItem *parentItem = item->parent();
                 parentItem->removeChild(item);
             } else {
                 const int row = m_tagTree->indexOfTopLevelItem(item);
@@ -192,7 +190,7 @@ void KEditTagsDialog::modifyTagWidget(const QString &tag)
 {
     const QStringList splitTag = tag.split(QLatin1Char('/'), QString::SkipEmptyParts);
     for (int i = 0; i < splitTag.size(); ++i) {
-        QTreeWidgetItem* item = new QTreeWidgetItem();
+        QTreeWidgetItem *item = new QTreeWidgetItem();
         QString itemTag = tag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
 
         if (!m_allTagTreeItems.contains(itemTag)) {
@@ -201,7 +199,7 @@ void KEditTagsDialog::modifyTagWidget(const QString &tag)
             item->setData(0, Qt::UserRole, itemTag);
             m_allTagTreeItems.insert(itemTag, item);
             QString parentTag = tag.section(QLatin1Char('/'), 0, (i - 1), QString::SectionSkipEmpty);
-            QTreeWidgetItem* parentItem = m_allTagTreeItems.value(parentTag);
+            QTreeWidgetItem *parentItem = m_allTagTreeItems.value(parentTag);
 
             if (i != 0) {
                 parentItem->addChild(item);

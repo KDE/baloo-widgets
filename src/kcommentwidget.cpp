@@ -21,22 +21,22 @@
 #include "kcommentwidget_p.h"
 #include "keditcommentdialog.h"
 
-#include <KLocalizedString>
 #include <KConfigGui/KWindowConfig>
+#include <KLocalizedString>
 #include <KSharedConfig>
 
 #include <QEvent>
-#include <QPointer>
 #include <QLabel>
+#include <QPointer>
 #include <QTextEdit>
 #include <QVBoxLayout>
 
-KCommentWidget::KCommentWidget(QWidget* parent) :
-    QWidget(parent),
-    m_readOnly(false),
-    m_label(nullptr),
-    m_sizeHintHelper(nullptr),
-    m_comment()
+KCommentWidget::KCommentWidget(QWidget *parent)
+    : QWidget(parent)
+    , m_readOnly(false)
+    , m_label(nullptr)
+    , m_sizeHintHelper(nullptr)
+    , m_comment()
 {
     m_label = new QLabel(this);
     m_label->setWordWrap(true);
@@ -46,7 +46,7 @@ KCommentWidget::KCommentWidget(QWidget* parent) :
     m_sizeHintHelper = new QLabel(this);
     m_sizeHintHelper->hide();
 
-    QVBoxLayout* layout = new QVBoxLayout(this);
+    QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(m_label);
 
@@ -57,7 +57,7 @@ KCommentWidget::~KCommentWidget()
 {
 }
 
-void KCommentWidget::setText(const QString& comment)
+void KCommentWidget::setText(const QString &comment)
 {
     QString text;
     if (comment.isEmpty()) {
@@ -70,7 +70,8 @@ void KCommentWidget::setText(const QString& comment)
         if (m_readOnly) {
             text = comment.toHtmlEscaped();
         } else {
-            text = QStringLiteral("<p>") + comment.toHtmlEscaped() + QStringLiteral(" <a href=\"editComment\">") + i18nc("@label", "Edit...") + QStringLiteral("</a></p>");
+            text = QStringLiteral("<p>") + comment.toHtmlEscaped() + QStringLiteral(" <a href=\"editComment\">") + i18nc("@label", "Edit...")
+                + QStringLiteral("</a></p>");
         }
     }
 
@@ -105,7 +106,7 @@ QSize KCommentWidget::sizeHint() const
     return m_sizeHintHelper->sizeHint();
 }
 
-bool KCommentWidget::event(QEvent* event)
+bool KCommentWidget::event(QEvent *event)
 {
     if (event->type() == QEvent::Polish) {
         m_label->setForegroundRole(foregroundRole());
@@ -113,11 +114,9 @@ bool KCommentWidget::event(QEvent* event)
     return QWidget::event(event);
 }
 
-void KCommentWidget::slotLinkActivated(const QString& link)
+void KCommentWidget::slotLinkActivated(const QString &link)
 {
-    const QString caption = (link == QLatin1String("editComment")) ?
-                            i18nc("@title:window", "Edit Comment") :
-                            i18nc("@title:window", "Add Comment");
+    const QString caption = (link == QLatin1String("editComment")) ? i18nc("@title:window", "Edit Comment") : i18nc("@title:window", "Add Comment");
 
     QPointer<KEditCommentDialog> dialog = new KEditCommentDialog(this, m_comment, caption);
 

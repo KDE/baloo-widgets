@@ -26,100 +26,101 @@
 
 #include <QWidget>
 
-namespace Baloo {
-    class TagWidgetPrivate;
+namespace Baloo
+{
+class TagWidgetPrivate;
+
+/**
+ * \class TagWidget tagwidget.h
+ *
+ * \brief Allows to change a selection of tags.
+ *
+ * TagWidget provides a simple GUI interface to assign tags.
+ *
+ * \author Sebastian Trueg <trueg@kde.org>
+ */
+class BALOO_WIDGETS_EXPORT TagWidget : public QWidget
+{
+    Q_OBJECT
+
+public:
+    /**
+     * Constructor
+     */
+    explicit TagWidget(QWidget *parent = nullptr);
 
     /**
-     * \class TagWidget tagwidget.h
-     *
-     * \brief Allows to change a selection of tags.
-     *
-     * TagWidget provides a simple GUI interface to assign tags.
-     *
-     * \author Sebastian Trueg <trueg@kde.org>
+     * Destructor
      */
-    class BALOO_WIDGETS_EXPORT TagWidget : public QWidget
-    {
-        Q_OBJECT
+    ~TagWidget() override;
 
-    public:
-        /**
-         * Constructor
-         */
-        explicit TagWidget(QWidget* parent = nullptr);
+    /**
+     * The list of selected tags.
+     *
+     * \return The list of all tags that are currently selected. In case
+     * resources to be tagged have been selected this list matches the
+     * tags assigned to the resources.
+     *
+     * \since 4.5
+     */
+    QStringList selectedTags() const;
 
-        /**
-         * Destructor
-         */
-        ~TagWidget() override;
+    /**
+     * The alignment of the tags in the widget.
+     *
+     * \since 4.5
+     */
+    Qt::Alignment alignment() const;
 
-        /**
-         * The list of selected tags.
-         *
-         * \return The list of all tags that are currently selected. In case
-         * resources to be tagged have been selected this list matches the
-         * tags assigned to the resources.
-         *
-         * \since 4.5
-         */
-        QStringList selectedTags() const;
+    /**
+     * If the widget is read only
+     */
+    bool readOnly() const;
 
-        /**
-         * The alignment of the tags in the widget.
-         *
-         * \since 4.5
-         */
-        Qt::Alignment alignment() const;
+Q_SIGNALS:
+    /**
+     * This signal is emitted whenever a tag is clicked.
+     */
+    void tagClicked(const QString &);
 
-        /**
-         * If the widget is read only
-         */
-        bool readOnly() const;
+    /**
+     * Emitted whenever the selection of tags changes.
+     *
+     * \since 4.5
+     */
+    void selectionChanged(const QStringList &tags);
 
-    Q_SIGNALS:
-        /**
-         * This signal is emitted whenever a tag is clicked.
-         */
-        void tagClicked(const QString&);
+public Q_SLOTS:
+    /**
+     * Set the list of selected tags. In case resources have been
+     * set via setTaggedResource() or setTaggedResources() their
+     * list of tags is changed automatically.
+     *
+     * \since 4.5
+     */
+    void setSelectedTags(const QStringList &tags);
 
-        /**
-         * Emitted whenever the selection of tags changes.
-         *
-         * \since 4.5
-         */
-        void selectionChanged(const QStringList& tags);
+    /**
+     * Set the alignment to use. Only horizontal alignment flags make a
+     * difference.
+     *
+     * \since 4.5
+     */
+    void setAlignment(Qt::Alignment alignment);
 
-    public Q_SLOTS:
-        /**
-         * Set the list of selected tags. In case resources have been
-         * set via setTaggedResource() or setTaggedResources() their
-         * list of tags is changed automatically.
-         *
-         * \since 4.5
-         */
-        void setSelectedTags(const QStringList& tags);
+    /**
+     * Set the TagWidget as read only
+     */
+    void setReadyOnly(bool readOnly = true);
 
-        /**
-         * Set the alignment to use. Only horizontal alignment flags make a
-         * difference.
-         *
-         * \since 4.5
-         */
-        void setAlignment( Qt::Alignment alignment );
+private Q_SLOTS:
+    void slotShowAll();
+    void slotTagUpdateDone();
+    void slotKEditTagDialogFinished(int result);
 
-        /**
-         * Set the TagWidget as read only
-         */
-        void setReadyOnly(bool readOnly = true);
-
-    private Q_SLOTS:
-        void slotShowAll();
-        void slotTagUpdateDone();
-        void slotKEditTagDialogFinished( int result );
-
-    private:
-        TagWidgetPrivate* const d;
-    };
+private:
+    TagWidgetPrivate *const d;
+};
 }
 
 #endif

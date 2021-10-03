@@ -18,20 +18,20 @@
 #include "keditcommentdialog.h"
 
 #include <QDialogButtonBox>
-#include <QPushButton>
-#include <QWidget>
-#include <QLayout>
 #include <QLabel>
+#include <QLayout>
+#include <QPushButton>
 #include <QTextEdit>
+#include <QWidget>
 
 #include <KLocalizedString>
 
-KEditCommentDialog::KEditCommentDialog(QWidget* parent, const QString& commentText, const QString& captionText)
+KEditCommentDialog::KEditCommentDialog(QWidget *parent, const QString &commentText, const QString &captionText)
     : QDialog(parent)
 {
     setWindowTitle(captionText);
 
-    QVBoxLayout* layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout;
     setLayout(layout);
 
     m_editor = new QTextEdit(this);
@@ -39,7 +39,7 @@ KEditCommentDialog::KEditCommentDialog(QWidget* parent, const QString& commentTe
 
     layout->addWidget(m_editor);
 
-    QDialogButtonBox* buttonBox = new QDialogButtonBox(this);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
     layout->addWidget(buttonBox);
 
     buttonBox->addButton(i18n("Save"), QDialogButtonBox::AcceptRole);

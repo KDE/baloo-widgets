@@ -23,9 +23,9 @@
 #include <QApplication>
 #include <QCoreApplication>
 
-int main( int argc, char** argv )
+int main(int argc, char **argv)
 {
-    QApplication app( argc, argv );
+    QApplication app(argc, argv);
     QCoreApplication::setApplicationName(QStringLiteral("TagWidgetApp"));
     TagWidgetTest tw;
     tw.show();

@@ -17,21 +17,20 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#include <KFileMetaData/UserMetaData>
 #include <KFileMetaData/Properties>
+#include <KFileMetaData/UserMetaData>
 #include <QVariantMap>
 
 namespace Baloo
 {
 namespace Private
 {
-
 /**
-  * Converts the UserMetaData attributes into a variant map
-  *
-  * /sa: KFileMetaData::UserMetaData
-  */
-QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData& metaData);
+ * Converts the UserMetaData attributes into a variant map
+ *
+ * /sa: KFileMetaData::UserMetaData
+ */
+QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData);
 
 /**
  * Converts the property map into a variant map using the
@@ -39,7 +38,7 @@ QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData& metaData);
  * all its values are collected in a QVariantList that is
  * stored as a single entry.
  */
-QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMap& propMap);
+QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMap &propMap);
 
 } // namespace Private
 } // namespace Baloo

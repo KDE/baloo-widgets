@@ -18,8 +18,8 @@
  *****************************************************************************/
 
 #include "filemetadatautil_p.h"
-#include <KFileMetaData/UserMetaData>
 #include <KFileMetaData/PropertyInfo>
+#include <KFileMetaData/UserMetaData>
 
 #include <algorithm>
 
@@ -27,14 +27,12 @@ namespace Baloo
 {
 namespace Private
 {
-
-QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData& metaData)
+QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData)
 {
     using Attribute = KFileMetaData::UserMetaData::Attribute;
     QVariantMap properties;
 
-    QFlags<Attribute> attributes = metaData.queryAttributes(Attribute::Tags | Attribute::Rating |
-                                                            Attribute::Comment | Attribute::OriginUrl);
+    QFlags<Attribute> attributes = metaData.queryAttributes(Attribute::Tags | Attribute::Rating | Attribute::Comment | Attribute::OriginUrl);
 
     if (attributes & Attribute::Tags) {
         QStringList tags = metaData.tags();
@@ -67,28 +65,31 @@ QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData& metaData)
     return properties;
 }
 
-QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMap& propMap)
+QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMap &propMap)
 {
     QVariantMap map;
     if (propMap.isEmpty()) {
         return map;
     }
 
-    using entry = std::pair<const KFileMetaData::Property::Property&, const QVariant&>;
+    using entry = std::pair<const KFileMetaData::Property::Property &, const QVariant &>;
 
     auto begin = propMap.constKeyValueBegin();
 
     while (begin != propMap.constKeyValueEnd()) {
         auto key = (*begin).first;
         KFileMetaData::PropertyInfo property(key);
-        auto rangeEnd = std::find_if(begin, propMap.constKeyValueEnd(),
-            [key](const entry& e) { return e.first != key; });
+        auto rangeEnd = std::find_if(begin, propMap.constKeyValueEnd(), [key](const entry &e) {
+            return e.first != key;
+        });
 
         auto distance = std::distance(begin, rangeEnd);
         if (distance > 1) {
             QVariantList list;
             list.reserve(static_cast<int>(distance));
-            std::for_each(begin, rangeEnd, [&list](const entry& s) { list.append(s.second); });
+            std::for_each(begin, rangeEnd, [&list](const entry &s) {
+                list.append(s.second);
+            });
             map.insert(property.name(), list);
         } else {
             map.insert(property.name(), (*begin).second);

@@ -23,15 +23,15 @@
 
 #include <KFileMetaData/Properties>
 
-#include <QTest>
-#include <QProcess>
-#include <QTemporaryFile>
-#include <QTemporaryDir>
-#include <QTextStream>
-#include <QStandardPaths>
 #include <QDataStream>
 #include <QDebug>
 #include <QDir>
+#include <QProcess>
+#include <QStandardPaths>
+#include <QTemporaryDir>
+#include <QTemporaryFile>
+#include <QTest>
+#include <QTextStream>
 
 void ExtractorTest::test()
 {

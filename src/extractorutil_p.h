@@ -17,13 +17,13 @@
  * Boston, MA 02110-1301, USA.                                               *
  *****************************************************************************/
 
-#include <QDataStream>
 #include <KFileMetaData/Properties>
+#include <QDataStream>
 
 /*
  * Deserialize prop from QDataStream
  */
-static inline QDataStream &operator>>(QDataStream &stream, KFileMetaData::Property::Property& prop)
+static inline QDataStream &operator>>(QDataStream &stream, KFileMetaData::Property::Property &prop)
 {
     quint16 intProp;
     stream >> intProp;

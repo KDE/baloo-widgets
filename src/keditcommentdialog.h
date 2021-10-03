@@ -38,6 +38,3 @@ private:
 };
 
 #endif
-
-
-

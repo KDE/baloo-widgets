@@ -31,5 +31,4 @@ class BalooFilePropertiesPlugin : public KPropertiesDialogPlugin
 public:
     BalooFilePropertiesPlugin(QObject *parent, const QList<QVariant> &args);
     ~BalooFilePropertiesPlugin() override;
-
 };

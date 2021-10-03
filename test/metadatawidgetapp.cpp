@@ -23,7 +23,7 @@
 #include <QFileInfo>
 #include <kfileitem.h>
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
     app.setApplicationName(QStringLiteral("FileMetadataWidgetApp"));
@@ -32,10 +32,10 @@ int main(int argc, char** argv)
     parser.addPositionalArgument(QStringLiteral("filename"), QStringLiteral("files"));
     parser.process(app);
 
-    Baloo::FileMetaDataWidget* widget = new Baloo::FileMetaDataWidget();
+    Baloo::FileMetaDataWidget *widget = new Baloo::FileMetaDataWidget();
 
     KFileItemList list;
-    for (const QString& path : parser.positionalArguments()) {
+    for (const QString &path : parser.positionalArguments()) {
         QFileInfo fi(path);
         list << KFileItem(QUrl::fromLocalFile(fi.absoluteFilePath()), QString(), mode_t());
     }

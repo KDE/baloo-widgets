@@ -21,8 +21,8 @@
 #ifndef TAGWIDGETTEST_H
 #define TAGWIDGETTEST_H
 
-#include <QWidget>
 #include "tagwidget.h"
+#include <QWidget>
 
 class TagWidgetTest : public QWidget
 {
@@ -33,15 +33,15 @@ public:
     ~TagWidgetTest() override;
 
 public Q_SLOTS:
-    void slotTagClicked(const QString&);
-    void slotSelectionChanged( const QStringList& tags );
+    void slotTagClicked(const QString &);
+    void slotSelectionChanged(const QStringList &tags);
 
 private Q_SLOTS:
-    void alignRight( bool enable );
-    void setReadOnly( bool enable );
+    void alignRight(bool enable);
+    void setReadOnly(bool enable);
 
 private:
-    Baloo::TagWidget* m_tagWidget;
+    Baloo::TagWidget *m_tagWidget;
 };
 
 #endif

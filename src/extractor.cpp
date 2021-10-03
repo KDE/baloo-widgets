@@ -22,17 +22,17 @@
 
 #include "extractorutil_p.h"
 
-#include <QCoreApplication>
 #include <QCommandLineParser>
-#include <QMimeDatabase>
+#include <QCoreApplication>
 #include <QDataStream>
 #include <QDebug>
 #include <QFile>
+#include <QMimeDatabase>
 
-#include <KFileMetaData/SimpleExtractionResult>
-#include <KFileMetaData/ExtractorCollection>
 #include <KFileMetaData/Extractor>
+#include <KFileMetaData/ExtractorCollection>
 #include <KFileMetaData/MimeUtils>
+#include <KFileMetaData/SimpleExtractionResult>
 
 #include <iostream>
 

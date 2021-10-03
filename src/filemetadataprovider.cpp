@@ -22,94 +22,94 @@
 #include "filefetchjob.h"
 
 #include <KFileMetaData/PropertyInfo>
-#include <KLocalizedString>
 #include <KFormat>
+#include <KLocalizedString>
 
-#include <QTimer>
 #include <QDebug>
+#include <QTimer>
 
 // Required includes for subDirectoriesCount():
 #ifdef Q_OS_WIN
-    #include <QDir>
+#include <QDir>
 #else
-    #include <dirent.h>
-    #include <QFile>
+#include <QFile>
+#include <dirent.h>
 #endif
 
 using namespace Baloo;
 
-namespace {
-    QVariant intersect(const QVariant& v1, const QVariant& v2) {
-        if (!v1.isValid() || !v2.isValid()) {
-            return QVariant();
-        }
-
-        // List and String
-        if (v1.type() == QVariant::StringList && v2.type() == QVariant::String) {
-            QStringList list = v1.toStringList();
-            QString str = v2.toString();
-
-            if (!list.contains(str)) {
-                list << str;
-            }
-
-            return QVariant(list);
-        }
-
-        // String and List
-        if (v1.type() == QVariant::String && v2.type() == QVariant::StringList) {
-            QStringList list = v2.toStringList();
-            QString str = v1.toString();
-
-            if (!list.contains(str)) {
-                list << str;
-            }
-
-            return QVariant(list);
-        }
-
-        // List and List
-        if (v1.type() == QVariant::StringList && v2.type() == QVariant::StringList) {
-            QSet<QString> s1 = v1.toStringList().toSet();
-            QSet<QString> s2 = v2.toStringList().toSet();
-
-            return QVariant(s1.intersect(s2).values());
-        }
-
-        if (v1 == v2) {
-            return v1;
-        }
-
+namespace
+{
+QVariant intersect(const QVariant &v1, const QVariant &v2)
+{
+    if (!v1.isValid() || !v2.isValid()) {
         return QVariant();
     }
 
-    /**
-     * The standard QMap::unite will contain the key multiple times if both \p v1 and \p v2
-     * contain the same key.
-     *
-     * This will only take the key from \p v2 into account
-     */
-    QVariantMap unite(const QVariantMap& v1, const QVariantMap& v2)
-    {
-        QVariantMap v(v1);
-        QMapIterator<QString, QVariant> it(v2);
-        while (it.hasNext()) {
-            it.next();
+    // List and String
+    if (v1.type() == QVariant::StringList && v2.type() == QVariant::String) {
+        QStringList list = v1.toStringList();
+        QString str = v2.toString();
 
-            v[it.key()] = it.value();
+        if (!list.contains(str)) {
+            list << str;
         }
 
-        return v;
+        return QVariant(list);
     }
+
+    // String and List
+    if (v1.type() == QVariant::String && v2.type() == QVariant::StringList) {
+        QStringList list = v2.toStringList();
+        QString str = v1.toString();
+
+        if (!list.contains(str)) {
+            list << str;
+        }
+
+        return QVariant(list);
+    }
+
+    // List and List
+    if (v1.type() == QVariant::StringList && v2.type() == QVariant::StringList) {
+        QSet<QString> s1 = v1.toStringList().toSet();
+        QSet<QString> s2 = v2.toStringList().toSet();
+
+        return QVariant(s1.intersect(s2).values());
+    }
+
+    if (v1 == v2) {
+        return v1;
+    }
+
+    return QVariant();
+}
+
+/**
+ * The standard QMap::unite will contain the key multiple times if both \p v1 and \p v2
+ * contain the same key.
+ *
+ * This will only take the key from \p v2 into account
+ */
+QVariantMap unite(const QVariantMap &v1, const QVariantMap &v2)
+{
+    QVariantMap v(v1);
+    QMapIterator<QString, QVariant> it(v2);
+    while (it.hasNext()) {
+        it.next();
+
+        v[it.key()] = it.value();
+    }
+
+    return v;
+}
 } // anonymous namespace
 
-void FileMetaDataProvider::totalPropertyAndInsert(const QString& prop,
-                                                  const QList<QVariantMap>& resources,
-                                                  QSet<QString>& allProperties)
+void FileMetaDataProvider::totalPropertyAndInsert(const QString &prop, const QList<QVariantMap> &resources, QSet<QString> &allProperties)
 {
     if (allProperties.contains(prop)) {
         int total = 0;
-        for (const QVariantMap& map : resources) {
+        for (const QVariantMap &map : resources) {
             QVariantMap::const_iterator it = map.constFind(prop);
             if (it == map.constEnd()) {
                 total = 0;
@@ -120,15 +120,15 @@ void FileMetaDataProvider::totalPropertyAndInsert(const QString& prop,
         }
 
         if (total) {
-            m_data.insert (prop, QVariant(total));
+            m_data.insert(prop, QVariant(total));
         }
         allProperties.remove(prop);
     }
 }
 
-void FileMetaDataProvider::slotFileFetchFinished(KJob* job)
+void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
 {
-    FileFetchJob* fetchJob = static_cast<FileFetchJob*>(job);
+    FileFetchJob *fetchJob = static_cast<FileFetchJob *>(job);
     QList<QVariantMap> files = fetchJob->data();
 
     Q_ASSERT(!files.isEmpty());
@@ -150,59 +150,58 @@ void FileMetaDataProvider::insertSingleFileBasicData()
     // not work, the modification date needs also to be adjusted...
     Q_ASSERT(m_fileItems.count() <= 1);
     if (m_fileItems.count() == 1) {
-      const KFileItem& item = m_fileItems.first();
+        const KFileItem &item = m_fileItems.first();
 
-      KFormat format;
-      if (item.isDir()) {
-          bool isSizeUnknown = !item.isLocalFile();
-          if (!isSizeUnknown) {
-              const QPair<int, int> counts = subDirectoriesCount(item.url().path());
-              const int count = counts.first;
-              isSizeUnknown = count == -1;
-              if (!isSizeUnknown) {
-                  QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
-                  m_data.insert(QStringLiteral("kfileitem#size"), itemCountString);
+        KFormat format;
+        if (item.isDir()) {
+            bool isSizeUnknown = !item.isLocalFile();
+            if (!isSizeUnknown) {
+                const QPair<int, int> counts = subDirectoriesCount(item.url().path());
+                const int count = counts.first;
+                isSizeUnknown = count == -1;
+                if (!isSizeUnknown) {
+                    QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
+                    m_data.insert(QStringLiteral("kfileitem#size"), itemCountString);
 
-                  const int hiddenCount = counts.second;
-                  if (hiddenCount > 0) {
-                      // add hidden items count
-                      QString hiddenCountString = i18ncp("@item:intable", "%1 item", "%1 items", hiddenCount);
-                      m_data.insert(QStringLiteral("kfileitem#hiddenItems"), hiddenCountString);
-                  }
-              }
-          }
-          else if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
-              m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
-          }
-          if (item.entry().contains(KIO::UDSEntry::UDS_RECURSIVE_SIZE)) {
-              m_data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(item.recursiveSize()));
-          }
-      } else {
-          if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
-              m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
-          }
-      }
+                    const int hiddenCount = counts.second;
+                    if (hiddenCount > 0) {
+                        // add hidden items count
+                        QString hiddenCountString = i18ncp("@item:intable", "%1 item", "%1 items", hiddenCount);
+                        m_data.insert(QStringLiteral("kfileitem#hiddenItems"), hiddenCountString);
+                    }
+                }
+            } else if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
+                m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
+            }
+            if (item.entry().contains(KIO::UDSEntry::UDS_RECURSIVE_SIZE)) {
+                m_data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(item.recursiveSize()));
+            }
+        } else {
+            if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
+                m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
+            }
+        }
 
-      m_data.insert(QStringLiteral("kfileitem#type"), item.mimeComment());
-      if (item.isLink()) {
-          m_data.insert(QStringLiteral("kfileitem#linkDest"), item.linkDest());
-      }
-      QDateTime modificationTime = item.time(KFileItem::ModificationTime);
-      if (modificationTime.isValid()) {
-          m_data.insert(QStringLiteral("kfileitem#modified"), modificationTime);
-      }
-      QDateTime creationTime = item.time(KFileItem::CreationTime);
-      if (creationTime.isValid()) {
-          m_data.insert(QStringLiteral("kfileitem#created"), creationTime);
-      }
-      QDateTime accessTime = item.time(KFileItem::AccessTime);
-      if (accessTime.isValid()) {
-          m_data.insert(QStringLiteral("kfileitem#accessed"), accessTime);
-      }
+        m_data.insert(QStringLiteral("kfileitem#type"), item.mimeComment());
+        if (item.isLink()) {
+            m_data.insert(QStringLiteral("kfileitem#linkDest"), item.linkDest());
+        }
+        QDateTime modificationTime = item.time(KFileItem::ModificationTime);
+        if (modificationTime.isValid()) {
+            m_data.insert(QStringLiteral("kfileitem#modified"), modificationTime);
+        }
+        QDateTime creationTime = item.time(KFileItem::CreationTime);
+        if (creationTime.isValid()) {
+            m_data.insert(QStringLiteral("kfileitem#created"), creationTime);
+        }
+        QDateTime accessTime = item.time(KFileItem::AccessTime);
+        if (accessTime.isValid()) {
+            m_data.insert(QStringLiteral("kfileitem#accessed"), accessTime);
+        }
 
-      m_data.insert(QStringLiteral("kfileitem#owner"), item.user());
-      m_data.insert(QStringLiteral("kfileitem#group"), item.group());
-      m_data.insert(QStringLiteral("kfileitem#permissions"), item.permissionsString());
+        m_data.insert(QStringLiteral("kfileitem#owner"), item.user());
+        m_data.insert(QStringLiteral("kfileitem#group"), item.group());
+        m_data.insert(QStringLiteral("kfileitem#permissions"), item.permissionsString());
     }
 }
 
@@ -211,7 +210,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
     // If all directories
     Q_ASSERT(m_fileItems.count() > 1);
     bool allDirectories = true;
-    for (const KFileItem& item : qAsConst(m_fileItems)) {
+    for (const KFileItem &item : qAsConst(m_fileItems)) {
         allDirectories &= item.isDir();
         if (!allDirectories) {
             break;
@@ -222,7 +221,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
         int count = 0;
         int hiddenCount = 0;
         bool isSizeKnown = true;
-        for (const KFileItem& item : qAsConst(m_fileItems)) {
+        for (const KFileItem &item : qAsConst(m_fileItems)) {
             isSizeKnown = item.isLocalFile();
             if (!isSizeKnown) {
                 return;
@@ -247,7 +246,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
     } else {
         // Calculate the size of all items
         quint64 totalSize = 0;
-        for (const KFileItem& item : qAsConst(m_fileItems)) {
+        for (const KFileItem &item : qAsConst(m_fileItems)) {
             if (!item.isDir() && !item.isLink()) {
                 totalSize += item.size();
             }
@@ -272,14 +271,14 @@ void FileMetaDataProvider::insertEditableData()
     }
 }
 
-void FileMetaDataProvider::insertCommonData(const QList<QVariantMap>& files)
+void FileMetaDataProvider::insertCommonData(const QList<QVariantMap> &files)
 {
     //
     // Only report the stuff that is common to all the files
     //
     QSet<QString> allProperties;
     QList<QVariantMap> propertyList;
-    for (const QVariantMap& fileData : files) {
+    for (const QVariantMap &fileData : files) {
         propertyList << fileData;
         allProperties.unite(fileData.uniqueKeys().toSet());
     }
@@ -290,8 +289,8 @@ void FileMetaDataProvider::insertCommonData(const QList<QVariantMap>& files)
     totalPropertyAndInsert(QStringLiteral("wordCount"), propertyList, allProperties);
     totalPropertyAndInsert(QStringLiteral("lineCount"), propertyList, allProperties);
 
-    for (const QString& propUri : qAsConst(allProperties)) {
-        for (const QVariantMap& map : qAsConst(propertyList)) {
+    for (const QString &propUri : qAsConst(allProperties)) {
+        for (const QVariantMap &map : qAsConst(propertyList)) {
             QVariantMap::const_iterator it = map.find(propUri);
             if (it == map.constEnd()) {
                 m_data.remove(propUri);
@@ -314,7 +313,7 @@ void FileMetaDataProvider::insertCommonData(const QList<QVariantMap>& files)
     }
 }
 
-FileMetaDataProvider::FileMetaDataProvider(QObject* parent)
+FileMetaDataProvider::FileMetaDataProvider(QObject *parent)
     : QObject(parent)
     , m_readOnly(false)
     , m_realTimeIndexing(false)
@@ -343,20 +342,17 @@ void FileMetaDataProvider::setFileItem()
     }
 
     const QString filePath = url.toLocalFile();
-    FileFetchJob* job;
+    FileFetchJob *job;
 
     // Not indexed or only basic file indexing (no content)
-    if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath)
-            || m_config.onlyBasicIndexing()) {
+    if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath) || m_config.onlyBasicIndexing()) {
         m_realTimeIndexing = true;
 
-        job = new FileFetchJob(QStringList{filePath}, true,
-            FileFetchJob::UseRealtimeIndexing::Only, this);
+        job = new FileFetchJob(QStringList{filePath}, true, FileFetchJob::UseRealtimeIndexing::Only, this);
 
-    // Fully indexed by Baloo
+        // Fully indexed by Baloo
     } else {
-        job = new FileFetchJob(QStringList{filePath}, true,
-            FileFetchJob::UseRealtimeIndexing::Fallback, this);
+        job = new FileFetchJob(QStringList{filePath}, true, FileFetchJob::UseRealtimeIndexing::Fallback, this);
     }
     connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
     job->start();
@@ -372,7 +368,7 @@ void FileMetaDataProvider::setFileItems()
     urls.reserve(m_fileItems.size());
     // Only extract data from indexed files,
     // it would be too expensive otherwise.
-    for (const KFileItem& item : qAsConst(m_fileItems)) {
+    for (const KFileItem &item : qAsConst(m_fileItems)) {
         const QUrl url = item.targetUrl();
         if (url.isLocalFile()) {
             urls << url.toLocalFile();
@@ -384,8 +380,7 @@ void FileMetaDataProvider::setFileItems()
         // Editing only if all URLs are local
         bool canEdit = (urls.size() == m_fileItems.size());
 
-        FileFetchJob* job = new FileFetchJob(urls, canEdit,
-            FileFetchJob::UseRealtimeIndexing::Disabled, this);
+        FileFetchJob *job = new FileFetchJob(urls, canEdit, FileFetchJob::UseRealtimeIndexing::Disabled, this);
         connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
         job->start();
 
@@ -396,7 +391,7 @@ void FileMetaDataProvider::setFileItems()
     }
 }
 
-void FileMetaDataProvider::setItems(const KFileItemList& items)
+void FileMetaDataProvider::setItems(const KFileItemList &items)
 {
     m_fileItems = items;
     m_data.clear();
@@ -404,34 +399,34 @@ void FileMetaDataProvider::setItems(const KFileItemList& items)
 
     if (items.isEmpty()) {
         Q_EMIT loadingFinished();
-    } else if (items.size() == 1)  {
+    } else if (items.size() == 1) {
         setFileItem();
     } else {
         setFileItems();
     }
 }
 
-QString FileMetaDataProvider::label(const QString& metaDataLabel) const
+QString FileMetaDataProvider::label(const QString &metaDataLabel) const
 {
     static QHash<QString, QString> hash = {
-        { QStringLiteral("kfileitem#comment"), i18nc("@label", "Comment") },
-        { QStringLiteral("kfileitem#created"), i18nc("@label", "Created") },
-        { QStringLiteral("kfileitem#accessed"), i18nc("@label", "Accessed") },
-        { QStringLiteral("kfileitem#modified"), i18nc("@label", "Modified") },
-        { QStringLiteral("kfileitem#owner"), i18nc("@label", "Owner") },
-        { QStringLiteral("kfileitem#group"), i18nc("@label", "Group") },
-        { QStringLiteral("kfileitem#permissions"), i18nc("@label", "Permissions") },
-        { QStringLiteral("kfileitem#rating"), i18nc("@label", "Rating") },
-        { QStringLiteral("kfileitem#size"), i18nc("@label", "Size") },
-        { QStringLiteral("kfileitem#tags"), i18nc("@label", "Tags") },
-        { QStringLiteral("kfileitem#totalSize"), i18nc("@label", "Total Size") },
-        { QStringLiteral("kfileitem#hiddenItems"), i18nc("@label", "Hidden items") },
-        { QStringLiteral("kfileitem#type"), i18nc("@label", "Type") },
-        { QStringLiteral("kfileitem#linkDest"), i18nc("@label", "Link to") },
-        { QStringLiteral("tags"), i18nc("@label", "Tags") },
-        { QStringLiteral("rating"), i18nc("@label", "Rating") },
-        { QStringLiteral("userComment"), i18nc("@label", "Comment") },
-        { QStringLiteral("originUrl"), i18nc("@label", "Downloaded From") },
+        {QStringLiteral("kfileitem#comment"), i18nc("@label", "Comment")},
+        {QStringLiteral("kfileitem#created"), i18nc("@label", "Created")},
+        {QStringLiteral("kfileitem#accessed"), i18nc("@label", "Accessed")},
+        {QStringLiteral("kfileitem#modified"), i18nc("@label", "Modified")},
+        {QStringLiteral("kfileitem#owner"), i18nc("@label", "Owner")},
+        {QStringLiteral("kfileitem#group"), i18nc("@label", "Group")},
+        {QStringLiteral("kfileitem#permissions"), i18nc("@label", "Permissions")},
+        {QStringLiteral("kfileitem#rating"), i18nc("@label", "Rating")},
+        {QStringLiteral("kfileitem#size"), i18nc("@label", "Size")},
+        {QStringLiteral("kfileitem#tags"), i18nc("@label", "Tags")},
+        {QStringLiteral("kfileitem#totalSize"), i18nc("@label", "Total Size")},
+        {QStringLiteral("kfileitem#hiddenItems"), i18nc("@label", "Hidden items")},
+        {QStringLiteral("kfileitem#type"), i18nc("@label", "Type")},
+        {QStringLiteral("kfileitem#linkDest"), i18nc("@label", "Link to")},
+        {QStringLiteral("tags"), i18nc("@label", "Tags")},
+        {QStringLiteral("rating"), i18nc("@label", "Rating")},
+        {QStringLiteral("userComment"), i18nc("@label", "Comment")},
+        {QStringLiteral("originUrl"), i18nc("@label", "Downloaded From")},
     };
 
     QString value = hash.value(metaDataLabel);
@@ -442,60 +437,60 @@ QString FileMetaDataProvider::label(const QString& metaDataLabel) const
     return value;
 }
 
-QString FileMetaDataProvider::group(const QString& label) const
+QString FileMetaDataProvider::group(const QString &label) const
 {
     static QHash<QString, QString> uriGrouper = {
 
         // KFileItem Data
-        { QStringLiteral("kfileitem#type"), QStringLiteral("0FileItemA") },
-        { QStringLiteral("kfileitem#linkDest"), QStringLiteral("0FileItemB") },
-        { QStringLiteral("kfileitem#size"), QStringLiteral("0FileItemC") },
-        { QStringLiteral("kfileitem#totalSize"), QStringLiteral("0FileItemC") },
-        { QStringLiteral("kfileitem#hiddenItems"), QStringLiteral("0FileItemD") },
-        { QStringLiteral("kfileitem#modified"), QStringLiteral("0FileItemE") },
-        { QStringLiteral("kfileitem#accessed"), QStringLiteral("0FileItemF") },
-        { QStringLiteral("kfileitem#created"), QStringLiteral("0FileItemG") },
-        { QStringLiteral("kfileitem#owner"), QStringLiteral("0FileItemH") },
-        { QStringLiteral("kfileitem#group"), QStringLiteral("0FileItemI") },
-        { QStringLiteral("kfileitem#permissions"), QStringLiteral("0FileItemJ") },
+        {QStringLiteral("kfileitem#type"), QStringLiteral("0FileItemA")},
+        {QStringLiteral("kfileitem#linkDest"), QStringLiteral("0FileItemB")},
+        {QStringLiteral("kfileitem#size"), QStringLiteral("0FileItemC")},
+        {QStringLiteral("kfileitem#totalSize"), QStringLiteral("0FileItemC")},
+        {QStringLiteral("kfileitem#hiddenItems"), QStringLiteral("0FileItemD")},
+        {QStringLiteral("kfileitem#modified"), QStringLiteral("0FileItemE")},
+        {QStringLiteral("kfileitem#accessed"), QStringLiteral("0FileItemF")},
+        {QStringLiteral("kfileitem#created"), QStringLiteral("0FileItemG")},
+        {QStringLiteral("kfileitem#owner"), QStringLiteral("0FileItemH")},
+        {QStringLiteral("kfileitem#group"), QStringLiteral("0FileItemI")},
+        {QStringLiteral("kfileitem#permissions"), QStringLiteral("0FileItemJ")},
 
         // Editable Data
-        { QStringLiteral("tags"), QStringLiteral("1EditableDataA") },
-        { QStringLiteral("rating"), QStringLiteral("1EditableDataB") },
-        { QStringLiteral("userComment"), QStringLiteral("1EditableDataC") },
+        {QStringLiteral("tags"), QStringLiteral("1EditableDataA")},
+        {QStringLiteral("rating"), QStringLiteral("1EditableDataB")},
+        {QStringLiteral("userComment"), QStringLiteral("1EditableDataC")},
 
         // Image Data
-        { QStringLiteral("width"), QStringLiteral("2ImageA") },
-        { QStringLiteral("height"), QStringLiteral("2ImageB") },
-        { QStringLiteral("photoFNumber"), QStringLiteral("2ImageC") },
-        { QStringLiteral("photoExposureTime"), QStringLiteral("2ImageD") },
-        { QStringLiteral("photoExposureBiasValue"), QStringLiteral("2ImageE") },
-        { QStringLiteral("photoISOSpeedRatings"), QStringLiteral("2ImageF") },
-        { QStringLiteral("photoFocalLength"), QStringLiteral("2ImageG") },
-        { QStringLiteral("photoFocalLengthIn35mmFilm"), QStringLiteral("2ImageH") },
-        { QStringLiteral("photoFlash"), QStringLiteral("2ImageI") },
-        { QStringLiteral("imageOrientation"), QStringLiteral("2ImageJ") },
-        { QStringLiteral("photoGpsLatitude"), QStringLiteral("2ImageK") },
-        { QStringLiteral("photoGpsLongitude"), QStringLiteral("2ImageL") },
-        { QStringLiteral("photoGpsAltitude"), QStringLiteral("2ImageM") },
-        { QStringLiteral("manufacturer"), QStringLiteral("2ImageN") },
-        { QStringLiteral("model"), QStringLiteral("2ImageO") },
+        {QStringLiteral("width"), QStringLiteral("2ImageA")},
+        {QStringLiteral("height"), QStringLiteral("2ImageB")},
+        {QStringLiteral("photoFNumber"), QStringLiteral("2ImageC")},
+        {QStringLiteral("photoExposureTime"), QStringLiteral("2ImageD")},
+        {QStringLiteral("photoExposureBiasValue"), QStringLiteral("2ImageE")},
+        {QStringLiteral("photoISOSpeedRatings"), QStringLiteral("2ImageF")},
+        {QStringLiteral("photoFocalLength"), QStringLiteral("2ImageG")},
+        {QStringLiteral("photoFocalLengthIn35mmFilm"), QStringLiteral("2ImageH")},
+        {QStringLiteral("photoFlash"), QStringLiteral("2ImageI")},
+        {QStringLiteral("imageOrientation"), QStringLiteral("2ImageJ")},
+        {QStringLiteral("photoGpsLatitude"), QStringLiteral("2ImageK")},
+        {QStringLiteral("photoGpsLongitude"), QStringLiteral("2ImageL")},
+        {QStringLiteral("photoGpsAltitude"), QStringLiteral("2ImageM")},
+        {QStringLiteral("manufacturer"), QStringLiteral("2ImageN")},
+        {QStringLiteral("model"), QStringLiteral("2ImageO")},
 
         // Media Data
-        { QStringLiteral("title"), QStringLiteral("3MediaA") },
-        { QStringLiteral("artist"), QStringLiteral("3MediaB") },
-        { QStringLiteral("album"), QStringLiteral("3MediaC") },
-        { QStringLiteral("albumArtist"), QStringLiteral("3MediaD") },
-        { QStringLiteral("genre"), QStringLiteral("3MediaE") },
-        { QStringLiteral("trackNumber"), QStringLiteral("3MediaF") },
-        { QStringLiteral("discNumber"), QStringLiteral("3MediaG") },
-        { QStringLiteral("releaseYear"), QStringLiteral("3MediaH") },
-        { QStringLiteral("duration"), QStringLiteral("3MediaI") },
-        { QStringLiteral("sampleRate"), QStringLiteral("3MediaJ") },
-        { QStringLiteral("bitRate"), QStringLiteral("3MediaK") },
+        {QStringLiteral("title"), QStringLiteral("3MediaA")},
+        {QStringLiteral("artist"), QStringLiteral("3MediaB")},
+        {QStringLiteral("album"), QStringLiteral("3MediaC")},
+        {QStringLiteral("albumArtist"), QStringLiteral("3MediaD")},
+        {QStringLiteral("genre"), QStringLiteral("3MediaE")},
+        {QStringLiteral("trackNumber"), QStringLiteral("3MediaF")},
+        {QStringLiteral("discNumber"), QStringLiteral("3MediaG")},
+        {QStringLiteral("releaseYear"), QStringLiteral("3MediaH")},
+        {QStringLiteral("duration"), QStringLiteral("3MediaI")},
+        {QStringLiteral("sampleRate"), QStringLiteral("3MediaJ")},
+        {QStringLiteral("bitRate"), QStringLiteral("3MediaK")},
 
         // Miscellaneous Data
-        { QStringLiteral("originUrl"), QStringLiteral("4MiscA") },
+        {QStringLiteral("originUrl"), QStringLiteral("4MiscA")},
     };
 
     const QString val = uriGrouper.value(label);
@@ -525,20 +520,20 @@ QVariantMap FileMetaDataProvider::data() const
     return m_data;
 }
 
-QPair<int, int> FileMetaDataProvider::subDirectoriesCount(const QString& path)
+QPair<int, int> FileMetaDataProvider::subDirectoriesCount(const QString &path)
 {
 #ifdef Q_OS_WIN
     QDir dir(path);
-    int count = dir.entryList(QDir::AllEntries|QDir::NoDotAndDotDot|QDir::System).count();
-    int hiddenCount = dir.entryList(QDir::AllEntries|QDir::NoDotAndDotDot|QDir::System|QDir::Hidden).count();
-    return QPair<int, int> (count, hiddenCount);
+    int count = dir.entryList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::System).count();
+    int hiddenCount = dir.entryList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::System | QDir::Hidden).count();
+    return QPair<int, int>(count, hiddenCount);
 #else
     // Taken from kdelibs/kio/kio/kdirmodel.cpp
     // Copyright (C) 2006 David Faure <faure@kde.org>
 
     int count = -1;
     int hiddenCount = -1;
-    DIR* dir = ::opendir(QFile::encodeName(path).constData());
+    DIR *dir = ::opendir(QFile::encodeName(path).constData());
     if (dir) {
         count = 0;
         hiddenCount = 0;

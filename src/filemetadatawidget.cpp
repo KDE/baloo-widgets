@@ -22,9 +22,9 @@
 */
 
 #include "filemetadatawidget.h"
+#include "filemetadataprovider.h"
 #include "metadatafilter.h"
 #include "widgetfactory.h"
-#include "filemetadataprovider.h"
 
 #include <KConfig>
 #include <KConfigGroup>
@@ -32,58 +32,57 @@
 #include <KFileMetaData/UserMetaData>
 
 #include <QCheckBox>
+#include <QDebug>
+#include <QFileInfo>
 #include <QGridLayout>
 #include <QLabel>
-#include <QSpacerItem>
 #include <QList>
 #include <QSet>
+#include <QSpacerItem>
 #include <QString>
 #include <QTimer>
-#include <QFileInfo>
-#include <QDebug>
 
 using namespace Baloo;
 
 class Baloo::FileMetaDataWidget::Private
 {
 public:
-    struct Row
-    {
-        QCheckBox* checkBox;
-        QLabel* label;
-        QWidget* value;
+    struct Row {
+        QCheckBox *checkBox;
+        QLabel *label;
+        QWidget *value;
     };
 
-    Private(FileMetaDataWidget* parent);
+    Private(FileMetaDataWidget *parent);
     ~Private();
 
     void deleteRows();
 
     void slotLoadingFinished();
-    void slotLinkActivated(const QString& link);
+    void slotLinkActivated(const QString &link);
     void slotDataChangeStarted();
     void slotDataChangeFinished();
 
-    QStringList sortedKeys(const QVariantMap& data) const;
-    QLabel* createLabel(const QString &key,  const QString& itemLabel, FileMetaDataWidget* parent);
+    QStringList sortedKeys(const QVariantMap &data) const;
+    QLabel *createLabel(const QString &key, const QString &itemLabel, FileMetaDataWidget *parent);
 
     void saveConfig();
 
     QList<Row> m_rows;
-    FileMetaDataProvider* m_provider;
-    QGridLayout* m_gridLayout;
+    FileMetaDataProvider *m_provider;
+    QGridLayout *m_gridLayout;
 
-    MetadataFilter* m_filter;
-    WidgetFactory* m_widgetFactory;
+    MetadataFilter *m_filter;
+    WidgetFactory *m_widgetFactory;
 
     QMap<QString, bool> m_visibilityChanged;
     bool m_configureVisibleProperties = false;
 
 private:
-    FileMetaDataWidget* const q;
+    FileMetaDataWidget *const q;
 };
 
-FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
+FileMetaDataWidget::Private::Private(FileMetaDataWidget *parent)
     : m_rows()
     , m_provider(nullptr)
     , m_gridLayout(nullptr)
@@ -97,7 +96,9 @@ FileMetaDataWidget::Private::Private(FileMetaDataWidget* parent)
     // TODO: If KFileMetaDataProvider might get a public class in future KDE releases,
     // the following code should be moved into KFileMetaDataWidget::setModel():
     m_provider = new FileMetaDataProvider(q);
-    connect(m_provider, &FileMetaDataProvider::loadingFinished, q, [this](){ slotLoadingFinished(); });
+    connect(m_provider, &FileMetaDataProvider::loadingFinished, q, [this]() {
+        slotLoadingFinished();
+    });
 }
 
 FileMetaDataWidget::Private::~Private()
@@ -106,7 +107,7 @@ FileMetaDataWidget::Private::~Private()
 
 void FileMetaDataWidget::Private::deleteRows()
 {
-    for (const Row& row : qAsConst(m_rows)) {
+    for (const Row &row : qAsConst(m_rows)) {
         delete row.label;
         row.value->deleteLater();
         if (row.checkBox) {
@@ -117,9 +118,9 @@ void FileMetaDataWidget::Private::deleteRows()
     m_rows.clear();
 }
 
-QLabel* FileMetaDataWidget::Private::createLabel(const QString &key, const QString& itemLabel, FileMetaDataWidget* parent)
+QLabel *FileMetaDataWidget::Private::createLabel(const QString &key, const QString &itemLabel, FileMetaDataWidget *parent)
 {
-    QLabel* label = new QLabel(itemLabel + QLatin1Char(':'), parent);
+    QLabel *label = new QLabel(itemLabel + QLatin1Char(':'), parent);
     label->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextSelectableByKeyboard);
     label->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
     label->setForegroundRole(parent->foregroundRole());
@@ -175,7 +176,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
 
     const int labelColumn = m_configureVisibleProperties ? 1 : 0;
 
-    for (const auto& key : keys) {
+    for (const auto &key : keys) {
         Row row;
         if (m_configureVisibleProperties) {
             row.checkBox = new QCheckBox(q);
@@ -183,8 +184,9 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
                 row.checkBox->setChecked(true);
             }
             m_gridLayout->addWidget(row.checkBox, rowIndex, 0, Qt::AlignTop | Qt::AlignRight);
-            connect(row.checkBox, &QCheckBox::stateChanged,
-                    q, [this, key](int state) { this->m_visibilityChanged[key] = (state == Qt::Checked); });
+            connect(row.checkBox, &QCheckBox::stateChanged, q, [this, key](int state) {
+                this->m_visibilityChanged[key] = (state == Qt::Checked);
+            });
         } else {
             row.checkBox = nullptr;
         }
@@ -214,7 +216,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
     Q_EMIT q->metaDataRequestFinished(m_provider->items());
 }
 
-void FileMetaDataWidget::Private::slotLinkActivated(const QString& link)
+void FileMetaDataWidget::Private::slotLinkActivated(const QString &link)
 {
     const QUrl url = QUrl::fromUserInput(link);
     if (url.isValid()) {
@@ -232,7 +234,7 @@ void FileMetaDataWidget::Private::slotDataChangeFinished()
     q->setEnabled(true);
 }
 
-QStringList FileMetaDataWidget::Private::sortedKeys(const QVariantMap& data) const
+QStringList FileMetaDataWidget::Private::sortedKeys(const QVariantMap &data) const
 {
     // Create a map, where the translated label prefixed with the
     // sort priority acts as key. The data of each entry is the URI
@@ -280,7 +282,7 @@ void FileMetaDataWidget::Private::saveConfig()
     showGroup.sync();
 }
 
-FileMetaDataWidget::FileMetaDataWidget(QWidget* parent)
+FileMetaDataWidget::FileMetaDataWidget(QWidget *parent)
     : QWidget(parent)
     , d(new Private(this))
 {
@@ -291,7 +293,7 @@ FileMetaDataWidget::~FileMetaDataWidget()
     delete d;
 }
 
-void FileMetaDataWidget::setItems(const KFileItemList& items)
+void FileMetaDataWidget::setItems(const KFileItemList &items)
 {
     d->m_provider->setItems(items);
     d->m_widgetFactory->setItems(items);
@@ -314,7 +316,7 @@ bool FileMetaDataWidget::isReadOnly() const
 }
 void FileMetaDataWidget::setDateFormat(const DateFormats format)
 {
-     d->m_widgetFactory->setDateFormat(format);
+    d->m_widgetFactory->setDateFormat(format);
 }
 
 DateFormats FileMetaDataWidget::dateFormat() const
@@ -332,8 +334,8 @@ QSize FileMetaDataWidget::sizeHint() const
     int leftWidthMax = 0;
     int rightWidthMax = 0;
     int rightWidthAverage = 0;
-    for (const Private::Row& row : qAsConst(d->m_rows)) {
-        const QWidget* valueWidget = row.value;
+    for (const Private::Row &row : qAsConst(d->m_rows)) {
+        const QWidget *valueWidget = row.value;
         const int rightWidth = valueWidget->sizeHint().width();
         rightWidthAverage += rightWidth;
         if (rightWidth > rightWidthMax) {
@@ -358,15 +360,13 @@ QSize FileMetaDataWidget::sizeHint() const
 
     // Based on the available width calculate the required height
     int height = d->m_gridLayout->margin() * 2 + d->m_gridLayout->spacing() * (d->m_rows.count() - 1);
-    for (const Private::Row& row : qAsConst(d->m_rows)) {
-        const QWidget* valueWidget = row.value;
-        const int rowHeight = qMax(row.label->heightForWidth(leftWidthMax),
-                                   valueWidget->heightForWidth(rightWidthMax));
+    for (const Private::Row &row : qAsConst(d->m_rows)) {
+        const QWidget *valueWidget = row.value;
+        const int rowHeight = qMax(row.label->heightForWidth(leftWidthMax), valueWidget->heightForWidth(rightWidthMax));
         height += rowHeight;
     }
 
-    const int width = d->m_gridLayout->margin() * 2 + leftWidthMax +
-    d->m_gridLayout->spacing() + rightWidthMax;
+    const int width = d->m_gridLayout->margin() * 2 + leftWidthMax + d->m_gridLayout->spacing() + rightWidthMax;
 
     return QSize(width, height);
 }

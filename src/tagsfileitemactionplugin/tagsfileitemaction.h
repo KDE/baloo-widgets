@@ -22,9 +22,9 @@
 #ifndef TAGSFILEITEMACTION_H
 #define TAGSFILEITEMACTION_H
 
-#include <KFileItemListProperties>
 #include <KAbstractFileItemActionPlugin>
 #include <KCoreDirLister>
+#include <KFileItemListProperties>
 #include <KFileMetaData/UserMetaData>
 
 class QAction;
@@ -32,17 +32,17 @@ class QWidget;
 
 class TagsFileItemAction : public KAbstractFileItemActionPlugin
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    TagsFileItemAction(QObject* parent, const QVariantList& args);
+    TagsFileItemAction(QObject *parent, const QVariantList &args);
     ~TagsFileItemAction() override;
-    QList<QAction*> actions(const KFileItemListProperties& fileItemInfos, QWidget* parentWidget) override;
+    QList<QAction *> actions(const KFileItemListProperties &fileItemInfos, QWidget *parentWidget) override;
 
 private:
-    KFileMetaData::UserMetaData* m_metaData = nullptr;
+    KFileMetaData::UserMetaData *m_metaData = nullptr;
     KCoreDirLister m_tagsLister;
-    QMenu* m_menu;
-    QAction* newAction;
+    QMenu *m_menu;
+    QAction *newAction;
 };
 
 #endif // TAGSFILEITEMACTION_H

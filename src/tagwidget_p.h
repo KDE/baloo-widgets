@@ -30,32 +30,32 @@ class QLabel;
 class KBlockLayout;
 class KEditTagsDialog;
 
-namespace Baloo {
-
+namespace Baloo
+{
 class TagCheckBox;
 
 class TagWidgetPrivate
 {
 public:
-    void init( TagWidget* parent );
+    void init(TagWidget *parent);
     void rebuild();
-    void buildTagHash(const QStringList& tags);
+    void buildTagHash(const QStringList &tags);
 
     /// lookup (and if necessary create) checkbox for tag
-    TagCheckBox* getTagCheckBox(const QString& tag);
+    TagCheckBox *getTagCheckBox(const QString &tag);
 
     /// check the corresponding checkboxes and even
     /// add missing checkboxes
-    void selectTags(const QStringList& tags);
+    void selectTags(const QStringList &tags);
 
     bool m_readOnly;
 
-    QMap<QString, TagCheckBox*> m_checkBoxHash;
-    QLabel* m_showAllLinkLabel;
-    KBlockLayout* m_flowLayout;
-    TagWidget* q;
+    QMap<QString, TagCheckBox *> m_checkBoxHash;
+    QLabel *m_showAllLinkLabel;
+    KBlockLayout *m_flowLayout;
+    TagWidget *q;
 
-    KEditTagsDialog* m_editTagsDialog;
+    KEditTagsDialog *m_editTagsDialog;
 };
 }
 

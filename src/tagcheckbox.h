@@ -29,32 +29,35 @@
 class QMouseEvent;
 class QLabel;
 
-namespace Baloo {
-
+namespace Baloo
+{
 class TagCheckBox : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit TagCheckBox(const QString& tag, QWidget* parent = nullptr);
+    explicit TagCheckBox(const QString &tag, QWidget *parent = nullptr);
     ~TagCheckBox() override;
 
-    QString tag() const { return m_tag; }
+    QString tag() const
+    {
+        return m_tag;
+    }
 
 Q_SIGNALS:
-    void tagClicked(const QString& tag);
+    void tagClicked(const QString &tag);
 
 protected:
-    void leaveEvent(QEvent* event ) override;
-    bool eventFilter(QObject* watched, QEvent* event) override;
+    void leaveEvent(QEvent *event) override;
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
 private:
     QRect tagRect() const;
-    void enableUrlHover( bool enabled );
+    void enableUrlHover(bool enabled);
 
     // two modes: checkbox and simple label
-    QLabel* m_label;
-    QWidget* m_child;
+    QLabel *m_label;
+    QWidget *m_child;
 
     QString m_tag;
     bool m_urlHover;

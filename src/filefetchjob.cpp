@@ -22,16 +22,15 @@
 #include "filemetadatautil_p.h"
 #include "widgetsdebug.h"
 
+#include <Baloo/File>
 #include <QFileInfo>
 #include <QTimer>
-#include <Baloo/File>
 
 #include <KFileMetaData/UserMetaData>
 
 using namespace Baloo;
 
-FileFetchJob::FileFetchJob(const QStringList& urls, bool canEditAll,
-    FileFetchJob::UseRealtimeIndexing useRealtime, QObject* parent)
+FileFetchJob::FileFetchJob(const QStringList &urls, bool canEditAll, FileFetchJob::UseRealtimeIndexing useRealtime, QObject *parent)
     : KJob(parent)
     , m_urls(urls)
     , m_canEditAll(canEditAll)
@@ -46,8 +45,7 @@ void FileFetchJob::start()
 
 void FileFetchJob::doStart()
 {
-    for (const QString& filePath : m_urls) {
-
+    for (const QString &filePath : m_urls) {
         bool extractorRunning = false;
         KFileMetaData::PropertyMap fileProperties;
 
@@ -90,7 +88,7 @@ void FileFetchJob::doStart()
     emitResult();
 }
 
-QList<QVariantMap>  Baloo::FileFetchJob::data() const
+QList<QVariantMap> Baloo::FileFetchJob::data() const
 {
     return m_data;
 }

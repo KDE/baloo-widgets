@@ -35,9 +35,9 @@
  */
 class KBlockLayout : public QLayout
 {
- public:
-    explicit KBlockLayout( QWidget *parent, int margin = 0, int hSpacing = -1, int vSpacing = -1 );
-    explicit KBlockLayout( int margin = 0, int hSpacing = -1, int vSpacing = -1 );
+public:
+    explicit KBlockLayout(QWidget *parent, int margin = 0, int hSpacing = -1, int vSpacing = -1);
+    explicit KBlockLayout(int margin = 0, int hSpacing = -1, int vSpacing = -1);
     ~KBlockLayout() override;
 
     /**
@@ -47,30 +47,30 @@ class KBlockLayout : public QLayout
      *
      * The default alignment is Qt::AlignLeft|Qt::AlignTop
      */
-    void setAlignment( Qt::Alignment );
+    void setAlignment(Qt::Alignment);
     Qt::Alignment alignment() const;
 
     int horizontalSpacing() const;
     int verticalSpacing() const;
 
-    void setSpacing( int h,  int v );
+    void setSpacing(int h, int v);
 
-    void addItem( QLayoutItem* item ) override;
+    void addItem(QLayoutItem *item) override;
     Qt::Orientations expandingDirections() const override;
     bool hasHeightForWidth() const override;
     int heightForWidth(int) const override;
     int count() const override;
-    QLayoutItem* itemAt( int index ) const override;
+    QLayoutItem *itemAt(int index) const override;
     QSize minimumSize() const override;
-    void setGeometry( const QRect& rect ) override;
+    void setGeometry(const QRect &rect) override;
     QSize sizeHint() const override;
-    QLayoutItem* takeAt( int index ) override;
+    QLayoutItem *takeAt(int index) override;
 
- private:
-    int doLayout( const QRect& rect, bool testOnly ) const;
+private:
+    int doLayout(const QRect &rect, bool testOnly) const;
 
     class Private;
-    Private* const d;
+    Private *const d;
 };
 
 #endif

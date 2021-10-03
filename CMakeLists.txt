@@ -19,6 +19,8 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Config KIO I18n FileMeta
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
+include(KDEClangFormat)
+include(KDEGitCommitHooks)
 
 include(ECMSetupVersion)
 include(ECMInstallIcons)
@@ -84,3 +86,8 @@ feature_summary(WHAT ALL
     INCLUDE_QUIET_PACKAGES
     FATAL_ON_MISSING_REQUIRED_PACKAGES
 )
+
+file(GLOB_RECURSE CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+kde_clang_format(${CLANG_FORMAT_SOURCE_FILES})
+
+kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)

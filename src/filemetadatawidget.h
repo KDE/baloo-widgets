@@ -21,36 +21,35 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
 #ifndef _BALOO_FILE_METADATAWIDGET_H
 #define _BALOO_FILE_METADATAWIDGET_H
 
-#include <QWidget>
 #include <QUrl>
+#include <QWidget>
 
 #include <KFileItem>
 #include <QLocale>
 
 #include "widgets_export.h"
 
-namespace Baloo {
-
+namespace Baloo
+{
 /**
  * Modify format of date display
  */
 enum class DateFormats {
-    LongFormat = QLocale::LongFormat,  ///< @see QLocale::LongFormat
-    ShortFormat = QLocale::ShortFormat ///< @see QLocale::ShortFormat
+    LongFormat = QLocale::LongFormat, ///< @see QLocale::LongFormat
+    ShortFormat = QLocale::ShortFormat, ///< @see QLocale::ShortFormat
 };
 
 enum class ConfigurationMode {
     ReStart = 0, /**< Switch into configuration mode. The selection is
-                   *  initialized with the current configuration.
-                   *  In case the widget is in configuration mode already,
-                   *  the changes are discarded, and the mode is kept.
-                   */
-    Accept,      /**< Save any changes, switch to regular mode */
-    Cancel       /**< Discard any changes, switch to regular mode */
+                  *  initialized with the current configuration.
+                  *  In case the widget is in configuration mode already,
+                  *  the changes are discarded, and the mode is kept.
+                  */
+    Accept, /**< Save any changes, switch to regular mode */
+    Cancel, /**< Discard any changes, switch to regular mode */
 };
 
 class BALOO_WIDGETS_EXPORT FileMetaDataWidget : public QWidget
@@ -60,7 +59,7 @@ class BALOO_WIDGETS_EXPORT FileMetaDataWidget : public QWidget
     Q_PROPERTY(DateFormats dateFormat READ dateFormat WRITE setDateFormat)
 
 public:
-    explicit FileMetaDataWidget(QWidget* parent = nullptr);
+    explicit FileMetaDataWidget(QWidget *parent = nullptr);
     ~FileMetaDataWidget() override;
 
     /**
@@ -68,7 +67,7 @@ public:
      * The signal metaDataRequestFinished() will be emitted,
      * as soon as the meta data for the items has been received.
      */
-    void setItems(const KFileItemList& items);
+    void setItems(const KFileItemList &items);
     KFileItemList items() const;
 
     /**
@@ -99,18 +98,18 @@ Q_SIGNALS:
      * Is emitted, if a meta data represents an URL that has
      * been clicked by the user.
      */
-    void urlActivated(const QUrl& url);
+    void urlActivated(const QUrl &url);
 
     /**
      * Is emitted after the meta data has been received for the items
      * set by KFileMetaDataWidget::setItems().
      * @since 4.6
      */
-    void metaDataRequestFinished(const KFileItemList& items);
+    void metaDataRequestFinished(const KFileItemList &items);
 
 private:
     class Private;
-    Private* d;
+    Private *d;
 
     Q_PRIVATE_SLOT(d, void slotLoadingFinished())
     Q_PRIVATE_SLOT(d, void slotLinkActivated(QString))

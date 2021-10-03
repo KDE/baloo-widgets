@@ -21,29 +21,29 @@
 
 #include "tagsfileitemaction.h"
 
-#include <QList>
 #include <QAction>
 #include <QFileInfo>
-#include <QWidget>
-#include <QVariantList>
-#include <QUrl>
 #include <QIcon>
-#include <QMenu>
 #include <QInputDialog>
+#include <QList>
+#include <QMenu>
+#include <QUrl>
+#include <QVariantList>
+#include <QWidget>
 
-#include <KPluginFactory>
 #include <KLocalizedString>
+#include <KPluginFactory>
 
 K_PLUGIN_FACTORY_WITH_JSON(TagsFileItemActionFactory, "tagsfileitemaction.json", registerPlugin<TagsFileItemAction>();)
 
-TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
+TagsFileItemAction::TagsFileItemAction(QObject *parent, const QVariantList &)
     : KAbstractFileItemActionPlugin(parent)
     , m_tagsLister()
 {
     m_menu = new QMenu(i18n("Assign Tags"));
     m_menu->setIcon(QIcon::fromTheme(QStringLiteral("tag")));
 
-    connect(&m_tagsLister, &KCoreDirLister::itemsAdded, this, [this](const QUrl&, const KFileItemList& items) {
+    connect(&m_tagsLister, &KCoreDirLister::itemsAdded, this, [this](const QUrl &, const KFileItemList &items) {
         const QStringList fileTags = m_metaData->tags();
 
         // The file may be located outside an indexed path, or is not indexed yet
@@ -51,14 +51,14 @@ TagsFileItemAction::TagsFileItemAction(QObject* parent, const QVariantList&)
         QStringList allTags;
         allTags.reserve(fileTags.size() + items.size());
         allTags.append(fileTags);
-        for (const KFileItem &item: items) {
+        for (const KFileItem &item : items) {
             allTags.append(item.name());
         }
         allTags.sort(Qt::CaseInsensitive);
         allTags.removeDuplicates();
 
         for (const QString name : qAsConst(allTags)) {
-            QAction* action = m_menu->addAction(QIcon::fromTheme(QStringLiteral("tag")), name);
+            QAction *action = m_menu->addAction(QIcon::fromTheme(QStringLiteral("tag")), name);
             action->setCheckable(true);
             action->setChecked(fileTags.contains(name));
 
@@ -92,9 +92,8 @@ TagsFileItemAction::~TagsFileItemAction()
     delete m_metaData;
 }
 
-QList<QAction*> TagsFileItemAction::actions(const KFileItemListProperties& fileItemInfos, QWidget* parentWidget)
+QList<QAction *> TagsFileItemAction::actions(const KFileItemListProperties &fileItemInfos, QWidget *parentWidget)
 {
-
     if (fileItemInfos.urlList().size() > 1) {
         return {};
     }

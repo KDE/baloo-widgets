@@ -21,21 +21,22 @@
 #ifndef ONDEMANDEXTRACTOR_H
 #define ONDEMANDEXTRACTOR_H
 
-#include <QProcess>
 #include <KFileMetaData/Properties>
+#include <QProcess>
 
-namespace Baloo {
-namespace Private {
-
+namespace Baloo
+{
+namespace Private
+{
 class OnDemandExtractor : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit OnDemandExtractor(QObject* parent = nullptr);
+    explicit OnDemandExtractor(QObject *parent = nullptr);
     ~OnDemandExtractor() override;
 
-    void process(const QString& filePath);
+    void process(const QString &filePath);
 
     bool waitFinished();
     KFileMetaData::PropertyMap properties() const;

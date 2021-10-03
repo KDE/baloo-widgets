@@ -24,11 +24,11 @@
 #include <QString>
 #include <QVariant>
 
-#include <KFileItem>
 #include <Baloo/IndexerConfig>
+#include <KFileItem>
 
-namespace Baloo {
-
+namespace Baloo
+{
 /**
  * @brief Provides the data for the MetaDataWidget.
  *
@@ -44,7 +44,7 @@ class FileMetaDataProvider : public QObject
     Q_OBJECT
 
 public:
-    explicit FileMetaDataProvider(QObject* parent = nullptr);
+    explicit FileMetaDataProvider(QObject *parent = nullptr);
     ~FileMetaDataProvider() override;
 
     /**
@@ -56,7 +56,7 @@ public:
      * KFileMetaDataProvider::data() afterwards. The label for
      * each item can be retrieved by KFileMetaDataProvider::label().
      */
-    void setItems(const KFileItemList& items);
+    void setItems(const KFileItemList &items);
     KFileItemList items() const;
 
     /**
@@ -72,7 +72,7 @@ public:
      *         by \p metaDataUri. If no custom translation is provided, the
      *         base implementation must be invoked.
      */
-    virtual QString label(const QString& metaDataLabel) const;
+    virtual QString label(const QString &metaDataLabel) const;
 
     /**
      * Meta data items are sorted alphabetically by their translated
@@ -85,7 +85,7 @@ public:
      *         by \p label belongs to. Per default an empty string
      *         is returned.
      */
-    virtual QString group(const QString& label) const;
+    virtual QString group(const QString &label) const;
 
     /**
      * @return Meta data for the items that have been set by
@@ -111,7 +111,7 @@ Q_SIGNALS:
     void loadingFinished();
 
 private Q_SLOTS:
-    void slotFileFetchFinished(KJob* job);
+    void slotFileFetchFinished(KJob *job);
 
 private:
     void insertEditableData();
@@ -122,7 +122,7 @@ private:
     /**
      * Insert intersection of common data of \p files
      */
-    void insertCommonData(const QList<QVariantMap>& files);
+    void insertCommonData(const QList<QVariantMap> &files);
 
     /**
      * Insert basic data of a single file
@@ -139,8 +139,7 @@ private:
      * inserts the total integer value of that property in m_data. On completion
      * it removes \p uri from \p allProperties
      */
-    void totalPropertyAndInsert(const QString& prop, const QList<QVariantMap>& resources,
-                                QSet<QString>& allProperties);
+    void totalPropertyAndInsert(const QString &prop, const QList<QVariantMap> &resources, QSet<QString> &allProperties);
 
     /**
      * @return The number of files and hidden files for the directory path.

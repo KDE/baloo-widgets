@@ -34,10 +34,10 @@ class KCommentWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit KCommentWidget(QWidget* parent = nullptr);
+    explicit KCommentWidget(QWidget *parent = nullptr);
     ~KCommentWidget() override;
 
-    void setText(const QString& comment);
+    void setText(const QString &comment);
     QString text() const;
 
     /**
@@ -47,22 +47,22 @@ public:
     // TODO: provide common interface class for metadatawidgets
     void setReadOnly(bool readOnly);
     bool isReadOnly() const;
-    
+
     QSize sizeHint() const override;
 
 Q_SIGNALS:
-    void commentChanged(const QString& comment);
+    void commentChanged(const QString &comment);
 
 protected:
-    bool event(QEvent* event) override;
+    bool event(QEvent *event) override;
 
 private Q_SLOTS:
-    void slotLinkActivated(const QString& link);
+    void slotLinkActivated(const QString &link);
 
 private:
     bool m_readOnly;
-    QLabel* m_label;
-    QLabel* m_sizeHintHelper; // see comment in KCommentWidget::sizeHint()
+    QLabel *m_label;
+    QLabel *m_sizeHintHelper; // see comment in KCommentWidget::sizeHint()
     QString m_comment;
 };
 

@@ -24,22 +24,22 @@
 #include <KConfig>
 #include <KConfigGroup>
 
+#include <QDebug>
 #include <QEvent>
 #include <QListWidget>
 #include <QVBoxLayout>
-#include <QDebug>
 
 using namespace Baloo;
 
 class FileMetaDataConfigWidget::Private
 {
 public:
-    Private(FileMetaDataConfigWidget* parent);
+    Private(FileMetaDataConfigWidget *parent);
     ~Private();
 
     void init();
     void loadMetaData();
-    void addItem(const QString& property);
+    void addItem(const QString &property);
 
     /**
      * Is invoked after the meta data model has finished the loading of
@@ -50,26 +50,25 @@ public:
 
     int m_visibleDataTypes;
     KFileItemList m_fileItems;
-    FileMetaDataProvider* m_provider;
-    QListWidget* m_metaDataList;
+    FileMetaDataProvider *m_provider;
+    QListWidget *m_metaDataList;
 
 private:
-    FileMetaDataConfigWidget* const q;
+    FileMetaDataConfigWidget *const q;
 };
 
-
-FileMetaDataConfigWidget::Private::Private(FileMetaDataConfigWidget* parent) :
-    m_visibleDataTypes(0),
-    m_fileItems(),
-    m_provider(nullptr),
-    m_metaDataList(nullptr),
-    q(parent)
+FileMetaDataConfigWidget::Private::Private(FileMetaDataConfigWidget *parent)
+    : m_visibleDataTypes(0)
+    , m_fileItems()
+    , m_provider(nullptr)
+    , m_metaDataList(nullptr)
+    , q(parent)
 {
     m_metaDataList = new QListWidget(q);
     m_metaDataList->setSelectionMode(QAbstractItemView::NoSelection);
     m_metaDataList->setSortingEnabled(true);
 
-    QVBoxLayout* layout = new QVBoxLayout(q);
+    QVBoxLayout *layout = new QVBoxLayout(q);
     layout->addWidget(m_metaDataList);
 
     m_provider = new FileMetaDataProvider(q);
@@ -87,14 +86,14 @@ void FileMetaDataConfigWidget::Private::loadMetaData()
     m_provider->setItems(m_fileItems);
 }
 
-void FileMetaDataConfigWidget::Private::addItem(const QString& key)
+void FileMetaDataConfigWidget::Private::addItem(const QString &key)
 {
     // Meta information provided by Baloo that is already
     // available from KFileItem as "fixed item" (see above)
     // should not be shown as second entry.
-    static const char* const hiddenProperties[] = {
-        "comment",         // = fixed item kfileitem#comment
-        "contentSize",     // = fixed item kfileitem#size
+    static const char *const hiddenProperties[] = {
+        "comment", // = fixed item kfileitem#comment
+        "contentSize", // = fixed item kfileitem#size
 
         nullptr // mandatory last entry
     };
@@ -114,7 +113,7 @@ void FileMetaDataConfigWidget::Private::addItem(const QString& key)
 
     const QString label = m_provider->label(key);
 
-    QListWidgetItem* item = new QListWidgetItem(label, m_metaDataList);
+    QListWidgetItem *item = new QListWidgetItem(label, m_metaDataList);
     item->setData(Qt::UserRole, key);
     const bool show = settings.readEntry(key, true);
     item->setCheckState(show ? Qt::Checked : Qt::Unchecked);
@@ -145,9 +144,9 @@ void FileMetaDataConfigWidget::Private::slotLoadingFinished()
     addItem(QStringLiteral("userComment"));
 }
 
-FileMetaDataConfigWidget::FileMetaDataConfigWidget(QWidget* parent) :
-    QWidget(parent),
-    d(new Private(this))
+FileMetaDataConfigWidget::FileMetaDataConfigWidget(QWidget *parent)
+    : QWidget(parent)
+    , d(new Private(this))
 {
 }
 
@@ -156,7 +155,7 @@ FileMetaDataConfigWidget::~FileMetaDataConfigWidget()
     delete d;
 }
 
-void FileMetaDataConfigWidget::setItems(const KFileItemList& items)
+void FileMetaDataConfigWidget::setItems(const KFileItemList &items)
 {
     d->m_fileItems = items;
     d->loadMetaData();
@@ -174,7 +173,7 @@ void FileMetaDataConfigWidget::save()
 
     const int count = d->m_metaDataList->count();
     for (int i = 0; i < count; ++i) {
-        QListWidgetItem* item = d->m_metaDataList->item(i);
+        QListWidgetItem *item = d->m_metaDataList->item(i);
         const bool show = (item->checkState() == Qt::Checked);
         const QString key = item->data(Qt::UserRole).toString();
         showGroup.writeEntry(key, show);
@@ -183,7 +182,7 @@ void FileMetaDataConfigWidget::save()
     showGroup.sync();
 }
 
-bool FileMetaDataConfigWidget::event(QEvent* event)
+bool FileMetaDataConfigWidget::event(QEvent *event)
 {
     if (event->type() == QEvent::Polish) {
         qDebug() << "GOT POLISH EVENT!!!";
@@ -191,7 +190,8 @@ bool FileMetaDataConfigWidget::event(QEvent* event)
         // must finish it's initialization first
         QMetaObject::invokeMethod(this, "loadMetaData", Qt::QueuedConnection);
     }
-    return QWidget::event(event);;
+    return QWidget::event(event);
+    ;
 }
 
 QSize FileMetaDataConfigWidget::sizeHint() const

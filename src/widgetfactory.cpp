@@ -19,31 +19,30 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
 #include "widgetfactory.h"
-#include "tagwidget.h"
-#include "kcommentwidget_p.h"
 #include "KRatingWidget"
+#include "kcommentwidget_p.h"
+#include "tagwidget.h"
 
-#include <KFileMetaData/UserMetaData>
 #include <KFileMetaData/PropertyInfo>
+#include <KFileMetaData/UserMetaData>
 
-#include <QLabel>
 #include <QCollator>
+#include <QLabel>
+#include <QLocale>
 #include <QTime>
 #include <QUrl>
-#include <QLocale>
 
-#include <KJob>
 #include <KFormat>
+#include <KJob>
 #include <KLocalizedString>
 #include <KStringHandler>
 
 using namespace Baloo;
 
-WidgetFactory::WidgetFactory(QObject* parent)
+WidgetFactory::WidgetFactory(QObject *parent)
     : QObject(parent)
-    , m_readOnly( false )
+    , m_readOnly(false)
     , m_dateFormat(QLocale::LongFormat)
 {
 }
@@ -55,7 +54,7 @@ WidgetFactory::~WidgetFactory()
 //
 // Widget Creation
 //
-static QString formatDateTime(const QVariant& value, QLocale::FormatType dateFormat)
+static QString formatDateTime(const QVariant &value, QLocale::FormatType dateFormat)
 {
     const QString valueString = value.toString();
     QDateTime dt = QDateTime::fromString(valueString, Qt::ISODate);
@@ -64,7 +63,7 @@ static QString formatDateTime(const QVariant& value, QLocale::FormatType dateFor
         KFormat form;
         QTime time = dt.time();
         // Check if Date/DateTime
-        if (!time.hour() && !time.minute() && !time.second()){
+        if (!time.hour() && !time.minute() && !time.second()) {
             return form.formatRelativeDate(dt.date(), dateFormat);
         } else {
             return form.formatRelativeDateTime(dt, dateFormat);
@@ -74,53 +73,52 @@ static QString formatDateTime(const QVariant& value, QLocale::FormatType dateFor
     return valueString;
 }
 
-static QString toString(const QVariant& value, QLocale::FormatType dateFormat)
+static QString toString(const QVariant &value, QLocale::FormatType dateFormat)
 {
     switch (value.type()) {
-        case QVariant::Int:
-            return QLocale().toString(value.toInt());
-        case QVariant::Double:
-            return QLocale().toString(value.toDouble());
-        case QVariant::StringList:
-            return value.toStringList().join(i18nc("String list separator", ", "));
-        case QVariant::Date:
-        case QVariant::DateTime: {
-            return formatDateTime(value, dateFormat);
+    case QVariant::Int:
+        return QLocale().toString(value.toInt());
+    case QVariant::Double:
+        return QLocale().toString(value.toDouble());
+    case QVariant::StringList:
+        return value.toStringList().join(i18nc("String list separator", ", "));
+    case QVariant::Date:
+    case QVariant::DateTime: {
+        return formatDateTime(value, dateFormat);
+    }
+    case QVariant::List: {
+        QStringList list;
+        for (const QVariant &var : value.toList()) {
+            list << toString(var, dateFormat);
         }
-        case QVariant::List: {
-            QStringList list;
-            for (const QVariant& var : value.toList()) {
-                list << toString(var, dateFormat);
-            }
-            return list.join(i18nc("String list separator", ", "));
-        }
+        return list.join(i18nc("String list separator", ", "));
+    }
 
-        default:
-            return value.toString();
+    default:
+        return value.toString();
     }
 }
 
-QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value, QWidget* parent)
+QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value, QWidget *parent)
 {
-    QWidget* widget = nullptr;
+    QWidget *widget = nullptr;
     const int maxUrlLength = 80;
 
     if (prop == QLatin1String("rating")) {
-        widget = createRatingWidget( value.toInt(), parent );
-    }
-    else if (prop == QLatin1String("userComment")) {
-        widget = createCommentWidget( value.toString(), parent );
-    }
-    else if (prop == QLatin1String("tags")) {
+        widget = createRatingWidget(value.toInt(), parent);
+    } else if (prop == QLatin1String("userComment")) {
+        widget = createCommentWidget(value.toString(), parent);
+    } else if (prop == QLatin1String("tags")) {
         QStringList tags = value.toStringList();
         QCollator coll;
         coll.setNumericMode(true);
-        std::sort(tags.begin(), tags.end(), [&](const QString& s1, const QString& s2){ return coll.compare(s1, s2) < 0; });
-        widget = createTagWidget( tags, parent );
-    }
-    else {
+        std::sort(tags.begin(), tags.end(), [&](const QString &s1, const QString &s2) {
+            return coll.compare(s1, s2) < 0;
+        });
+        widget = createTagWidget(tags, parent);
+    } else {
         QString valueString;
-        QLabel* valueWidget = createValueWidget(parent);
+        QLabel *valueWidget = createValueWidget(parent);
 
         auto pi = KFileMetaData::PropertyInfo::fromName(prop);
         if (pi.name() == QLatin1String("originUrl")) {
@@ -152,9 +150,9 @@ QWidget* WidgetFactory::createWidget(const QString& prop, const QVariant& value,
     return widget;
 }
 
-QWidget* WidgetFactory::createTagWidget(const QStringList& tags, QWidget* parent)
+QWidget *WidgetFactory::createTagWidget(const QStringList &tags, QWidget *parent)
 {
-    TagWidget* tagWidget = new TagWidget(parent);
+    TagWidget *tagWidget = new TagWidget(parent);
     tagWidget->setReadyOnly(m_readOnly);
     tagWidget->setSelectedTags(tags);
 
@@ -167,9 +165,9 @@ QWidget* WidgetFactory::createTagWidget(const QStringList& tags, QWidget* parent
     return tagWidget;
 }
 
-QWidget* WidgetFactory::createCommentWidget(const QString& comment, QWidget* parent)
+QWidget *WidgetFactory::createCommentWidget(const QString &comment, QWidget *parent)
 {
-    KCommentWidget* commentWidget = new KCommentWidget(parent);
+    KCommentWidget *commentWidget = new KCommentWidget(parent);
     commentWidget->setText(comment);
     commentWidget->setReadOnly(m_readOnly);
 
@@ -180,11 +178,10 @@ QWidget* WidgetFactory::createCommentWidget(const QString& comment, QWidget* par
     return commentWidget;
 }
 
-QWidget* WidgetFactory::createRatingWidget(int rating, QWidget* parent)
+QWidget *WidgetFactory::createRatingWidget(int rating, QWidget *parent)
 {
-    KRatingWidget* ratingWidget = new KRatingWidget(parent);
-    const Qt::Alignment align = (ratingWidget->layoutDirection() == Qt::LeftToRight) ?
-                                Qt::AlignLeft : Qt::AlignRight;
+    KRatingWidget *ratingWidget = new KRatingWidget(parent);
+    const Qt::Alignment align = (ratingWidget->layoutDirection() == Qt::LeftToRight) ? Qt::AlignLeft : Qt::AlignRight;
     ratingWidget->setAlignment(align);
     ratingWidget->setRating(rating);
     const QFontMetrics metrics(parent->font());
@@ -197,7 +194,6 @@ QWidget* WidgetFactory::createRatingWidget(int rating, QWidget* parent)
     return ratingWidget;
 }
 
-
 // The default size hint of QLabel tries to return a square size.
 // This does not work well in combination with layouts that use
 // heightForWidth(): In this case it is possible that the content
@@ -207,12 +203,12 @@ QWidget* WidgetFactory::createRatingWidget(int rating, QWidget* parent)
 class ValueWidget : public QLabel
 {
 public:
-    explicit ValueWidget(QWidget* parent = nullptr);
+    explicit ValueWidget(QWidget *parent = nullptr);
     QSize sizeHint() const override;
 };
 
-ValueWidget::ValueWidget(QWidget* parent) :
-    QLabel(parent)
+ValueWidget::ValueWidget(QWidget *parent)
+    : QLabel(parent)
 {
 }
 
@@ -224,9 +220,9 @@ QSize ValueWidget::sizeHint() const
     return metrics.size(Qt::TextSingleLine, text());
 }
 
-QLabel* WidgetFactory::createValueWidget(QWidget* parent)
+QLabel *WidgetFactory::createValueWidget(QWidget *parent)
 {
-    ValueWidget* valueWidget = new ValueWidget(parent);
+    ValueWidget *valueWidget = new ValueWidget(parent);
     valueWidget->setTextInteractionFlags(Qt::TextSelectableByMouse);
     valueWidget->setTextFormat(Qt::PlainText);
     valueWidget->setWordWrap(true);
@@ -240,9 +236,9 @@ QLabel* WidgetFactory::createValueWidget(QWidget* parent)
 // Data Synchronization
 //
 
-void WidgetFactory::slotCommentChanged(const QString& comment)
+void WidgetFactory::slotCommentChanged(const QString &comment)
 {
-    for (const KFileItem& item : qAsConst(m_items)) {
+    for (const KFileItem &item : qAsConst(m_items)) {
         QUrl url = item.targetUrl();
         if (!url.isLocalFile()) {
             continue;
@@ -256,7 +252,7 @@ void WidgetFactory::slotCommentChanged(const QString& comment)
 
 void WidgetFactory::slotRatingChanged(uint rating)
 {
-    for (const KFileItem& item : qAsConst(m_items)) {
+    for (const KFileItem &item : qAsConst(m_items)) {
         QUrl url = item.targetUrl();
         if (!url.isLocalFile()) {
             continue;
@@ -268,10 +264,10 @@ void WidgetFactory::slotRatingChanged(uint rating)
     Q_EMIT dataChangeFinished();
 }
 
-void WidgetFactory::slotTagsChanged(const QStringList& tags)
+void WidgetFactory::slotTagsChanged(const QStringList &tags)
 {
     if (m_tagWidget) {
-        for (const KFileItem& item : qAsConst(m_items)) {
+        for (const KFileItem &item : qAsConst(m_items)) {
             QUrl url = item.targetUrl();
             if (!url.isLocalFile()) {
                 continue;
@@ -283,7 +279,7 @@ void WidgetFactory::slotTagsChanged(const QStringList& tags)
             QStringList newTags = md.tags() + tags;
             newTags.removeDuplicates();
 
-            for (const QString& tag : m_prevTags) {
+            for (const QString &tag : m_prevTags) {
                 if (!tags.contains(tag)) {
                     newTags.removeAll(tag);
                 }
@@ -301,12 +297,12 @@ void WidgetFactory::slotTagsChanged(const QStringList& tags)
 // Notifications
 //
 
-void WidgetFactory::slotLinkActivated(const QString& url)
+void WidgetFactory::slotLinkActivated(const QString &url)
 {
     Q_EMIT urlActivated(QUrl::fromUserInput(url));
 }
 
-void WidgetFactory::slotTagClicked(const QString& tag)
+void WidgetFactory::slotTagClicked(const QString &tag)
 {
     QUrl url;
     url.setScheme(QStringLiteral("tags"));
@@ -314,7 +310,6 @@ void WidgetFactory::slotTagClicked(const QString& tag)
 
     Q_EMIT urlActivated(url);
 }
-
 
 //
 // Accessor Methods
@@ -324,7 +319,7 @@ void WidgetFactory::setReadOnly(bool value)
     m_readOnly = value;
 }
 
-void WidgetFactory::setItems(const KFileItemList& items)
+void WidgetFactory::setItems(const KFileItemList &items)
 {
     m_items = items;
 }
@@ -338,4 +333,3 @@ void Baloo::WidgetFactory::setDateFormat(const Baloo::DateFormats format)
 {
     m_dateFormat = static_cast<QLocale::FormatType>(format);
 }
-

@@ -23,13 +23,13 @@
 #include "baloofilepropertiesplugin.h"
 
 #include <QFrame>
-#include <QVBoxLayout>
 #include <QScrollArea>
+#include <QVBoxLayout>
 
-#include <KLocalizedString>
-#include <KPluginFactory>
 #include <KIO/JobUiDelegate>
 #include <KIO/OpenUrlJob>
+#include <KLocalizedString>
+#include <KPluginFactory>
 
 #include "filemetadatawidget.h"
 

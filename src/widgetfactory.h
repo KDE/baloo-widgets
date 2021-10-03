@@ -17,7 +17,6 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
 #ifndef WIDGETFACTORY_H
 #define WIDGETFACTORY_H
 
@@ -32,55 +31,55 @@ class QUrl;
 class KCommentWidget;
 class KRatingWidget;
 
-namespace Baloo {
+namespace Baloo
+{
+class Tag;
+class TagWidget;
 
-    class Tag;
-    class TagWidget;
+class WidgetFactory : public QObject
+{
+    Q_OBJECT
+public:
+    explicit WidgetFactory(QObject *parent = nullptr);
+    ~WidgetFactory() override;
 
-    class WidgetFactory : public QObject
-    {
-        Q_OBJECT
-    public:
-        explicit WidgetFactory(QObject* parent = nullptr);
-        ~WidgetFactory() override;
+    void setItems(const KFileItemList &items);
 
-        void setItems(const KFileItemList& items);
+    void setReadOnly(bool value);
 
-        void setReadOnly(bool value);
+    void setDateFormat(const DateFormats format);
+    DateFormats dateFormat() const;
 
-        void setDateFormat(const DateFormats format);
-        DateFormats dateFormat() const;
+    QWidget *createWidget(const QString &prop, const QVariant &value, QWidget *parent);
 
-        QWidget* createWidget(const QString& prop, const QVariant& value, QWidget* parent);
+Q_SIGNALS:
+    void urlActivated(const QUrl &url);
+    void dataChangeStarted();
+    void dataChangeFinished();
 
-    Q_SIGNALS:
-        void urlActivated(const QUrl& url);
-        void dataChangeStarted();
-        void dataChangeFinished();
+private Q_SLOTS:
+    void slotTagsChanged(const QStringList &tags);
+    void slotCommentChanged(const QString &comment);
+    void slotRatingChanged(uint rating);
 
-    private Q_SLOTS:
-        void slotTagsChanged(const QStringList& tags);
-        void slotCommentChanged(const QString& comment);
-        void slotRatingChanged(uint rating);
+    void slotTagClicked(const QString &tag);
+    void slotLinkActivated(const QString &url);
 
-        void slotTagClicked(const QString& tag);
-        void slotLinkActivated(const QString& url);
+private:
+    QWidget *createRatingWidget(int rating, QWidget *parent);
+    QWidget *createTagWidget(const QStringList &tags, QWidget *parent);
+    QWidget *createCommentWidget(const QString &comment, QWidget *parent);
+    QLabel *createValueWidget(QWidget *parent);
 
-    private:
-        QWidget* createRatingWidget(int rating, QWidget* parent);
-        QWidget* createTagWidget(const QStringList& tags, QWidget* parent);
-        QWidget* createCommentWidget(const QString& comment, QWidget* parent);
-        QLabel* createValueWidget(QWidget* parent);
+    TagWidget *m_tagWidget;
+    KRatingWidget *m_ratingWidget;
+    KCommentWidget *m_commentWidget;
 
-        TagWidget* m_tagWidget;
-        KRatingWidget* m_ratingWidget;
-        KCommentWidget* m_commentWidget;
-
-        KFileItemList m_items;
-        QStringList m_prevTags;
-        bool m_readOnly;
-        QLocale::FormatType m_dateFormat;
-    };
+    KFileItemList m_items;
+    QStringList m_prevTags;
+    bool m_readOnly;
+    QLocale::FormatType m_dateFormat;
+};
 }
 
 #endif // WIDGETFACTORY_H

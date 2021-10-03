@@ -23,19 +23,19 @@
 #include "tagcheckbox.h"
 #include "tagwidget.h"
 
-#include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QMouseEvent>
 
 using namespace Baloo;
 
-TagCheckBox::TagCheckBox(const QString& tag, QWidget* parent)
-    : QWidget( parent ),
-      m_label(nullptr),
-      m_tag(tag),
-      m_urlHover(false)
+TagCheckBox::TagCheckBox(const QString &tag, QWidget *parent)
+    : QWidget(parent)
+    , m_label(nullptr)
+    , m_tag(tag)
+    , m_urlHover(false)
 {
-    QHBoxLayout* layout = new QHBoxLayout(this);
+    QHBoxLayout *layout = new QHBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
 
     m_label = new QLabel(tag.split(QLatin1Char('/'), QString::SkipEmptyParts).last(), this);
@@ -45,36 +45,35 @@ TagCheckBox::TagCheckBox(const QString& tag, QWidget* parent)
     m_label->setForegroundRole(parent->foregroundRole());
     m_child = m_label;
 
-    m_child->installEventFilter( this );
+    m_child->installEventFilter(this);
     m_child->setMouseTracking(true);
-    layout->addWidget( m_child );
+    layout->addWidget(m_child);
 }
 
 TagCheckBox::~TagCheckBox()
 {
 }
 
-void TagCheckBox::leaveEvent( QEvent* event )
+void TagCheckBox::leaveEvent(QEvent *event)
 {
-    QWidget::leaveEvent( event );
-    enableUrlHover( false );
+    QWidget::leaveEvent(event);
+    enableUrlHover(false);
 }
 
-
-bool TagCheckBox::eventFilter( QObject* watched, QEvent* event )
+bool TagCheckBox::eventFilter(QObject *watched, QEvent *event)
 {
-    if( watched == m_child ) {
-        switch( event->type() ) {
+    if (watched == m_child) {
+        switch (event->type()) {
         case QEvent::MouseMove: {
-            QMouseEvent* me = static_cast<QMouseEvent*>(event);
-            enableUrlHover( tagRect().contains(me->pos()) );
+            QMouseEvent *me = static_cast<QMouseEvent *>(event);
+            enableUrlHover(tagRect().contains(me->pos()));
             break;
         }
 
         case QEvent::MouseButtonRelease: {
-            QMouseEvent* me = static_cast<QMouseEvent*>(event);
+            QMouseEvent *me = static_cast<QMouseEvent *>(event);
             if (me->button() == Qt::LeftButton && tagRect().contains(me->pos())) {
-                Q_EMIT tagClicked( m_tag );
+                Q_EMIT tagClicked(m_tag);
                 return true;
             }
             break;
@@ -86,25 +85,22 @@ bool TagCheckBox::eventFilter( QObject* watched, QEvent* event )
         }
     }
 
-    return QWidget::eventFilter( watched, event );
+    return QWidget::eventFilter(watched, event);
 }
-
 
 QRect TagCheckBox::tagRect() const
 {
     return QRect(QPoint(0, 0), m_label->size());
 }
 
-
-void TagCheckBox::enableUrlHover( bool enable )
+void TagCheckBox::enableUrlHover(bool enable)
 {
-    if( m_urlHover != enable ) {
+    if (m_urlHover != enable) {
         m_urlHover = enable;
         QFont f = font();
-        if(enable)
+        if (enable)
             f.setUnderline(true);
         m_child->setFont(f);
-        m_child->setCursor( enable ? Qt::PointingHandCursor : Qt::ArrowCursor );
+        m_child->setCursor(enable ? Qt::PointingHandCursor : Qt::ArrowCursor);
     }
 }
-

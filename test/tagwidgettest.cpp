@@ -20,26 +20,24 @@
 */
 #include "tagwidgettest.h"
 
-#include <QVBoxLayout>
 #include <QCheckBox>
 #include <QDebug>
+#include <QVBoxLayout>
 
 TagWidgetTest::TagWidgetTest()
     : QWidget()
 {
     m_tagWidget = new Baloo::TagWidget(this);
-    QVBoxLayout* lay = new QVBoxLayout(this);
+    QVBoxLayout *lay = new QVBoxLayout(this);
     lay->addWidget(m_tagWidget);
-    connect(m_tagWidget, SIGNAL(tagClicked(QString)),
-            this, SLOT(slotTagClicked(QString)));
-    connect(m_tagWidget, SIGNAL(selectionChanged(QStringList)),
-            this, SLOT(slotSelectionChanged(QStringList)));
+    connect(m_tagWidget, SIGNAL(tagClicked(QString)), this, SLOT(slotTagClicked(QString)));
+    connect(m_tagWidget, SIGNAL(selectionChanged(QStringList)), this, SLOT(slotSelectionChanged(QStringList)));
 
-    QCheckBox* box = new QCheckBox(QStringLiteral("Align Right"), this );
+    QCheckBox *box = new QCheckBox(QStringLiteral("Align Right"), this);
     connect(box, SIGNAL(toggled(bool)), this, SLOT(alignRight(bool)));
     lay->addWidget(box);
 
-    box = new QCheckBox(QStringLiteral("Read only"), this );
+    box = new QCheckBox(QStringLiteral("Read only"), this);
     connect(box, SIGNAL(toggled(bool)), this, SLOT(setReadOnly(bool)));
     lay->addWidget(box);
 }
@@ -48,30 +46,25 @@ TagWidgetTest::~TagWidgetTest()
 {
 }
 
-
-void TagWidgetTest::slotTagClicked(const QString& tag)
+void TagWidgetTest::slotTagClicked(const QString &tag)
 {
     qDebug() << "Tag clicked:" << tag;
 }
 
-
-void TagWidgetTest::slotSelectionChanged( const QStringList& tags )
+void TagWidgetTest::slotSelectionChanged(const QStringList &tags)
 {
     qDebug() << "Selection changed:" << tags;
 }
 
-
-void TagWidgetTest::alignRight( bool enable )
+void TagWidgetTest::alignRight(bool enable)
 {
-    if( enable )
-        m_tagWidget->setAlignment( Qt::AlignRight );
+    if (enable)
+        m_tagWidget->setAlignment(Qt::AlignRight);
     else
-        m_tagWidget->setAlignment( Qt::AlignLeft );
+        m_tagWidget->setAlignment(Qt::AlignLeft);
 }
 
-
-void TagWidgetTest::setReadOnly( bool enable )
+void TagWidgetTest::setReadOnly(bool enable)
 {
     m_tagWidget->setReadyOnly(enable);
 }
-

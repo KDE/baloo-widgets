@@ -21,7 +21,6 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
 #include "metadatafilter.h"
 
 #include <KConfig>
@@ -29,14 +28,14 @@
 
 using namespace Baloo;
 
-MetadataFilter::MetadataFilter(QObject* parent): QObject(parent)
+MetadataFilter::MetadataFilter(QObject *parent)
+    : QObject(parent)
 {
     initMetaInformationSettings();
 }
 
 MetadataFilter::~MetadataFilter()
 {
-
 }
 
 void MetadataFilter::initMetaInformationSettings()
@@ -53,7 +52,7 @@ void MetadataFilter::initMetaInformationSettings()
         config.deleteGroup("Show");
         KConfigGroup settings = config.group("Show");
 
-        static const char* const disabledProperties[] = {
+        static const char *const disabledProperties[] = {
             "comment",
             "contentSize",
             "depends",
@@ -82,7 +81,6 @@ void MetadataFilter::initMetaInformationSettings()
             "photoPixelYDimension",
         };
 
-
         for (const auto property : disabledProperties) {
             settings.writeEntry(property, false);
         }
@@ -92,9 +90,9 @@ void MetadataFilter::initMetaInformationSettings()
     }
 }
 
-QVariantMap MetadataFilter::filter(const QVariantMap& data)
+QVariantMap MetadataFilter::filter(const QVariantMap &data)
 {
-    if( data.isEmpty() )
+    if (data.isEmpty())
         return data;
 
     QVariantMap finalData(data);

@@ -26,9 +26,8 @@
 
 #include <QWidget>
 
-
-namespace Baloo {
-
+namespace Baloo
+{
 /**
  * @brief Widget which allows to configure which meta data should be shown
  *        in the FileMetadataWidget
@@ -38,7 +37,7 @@ class BALOO_WIDGETS_EXPORT FileMetaDataConfigWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit FileMetaDataConfigWidget(QWidget* parent = nullptr);
+    explicit FileMetaDataConfigWidget(QWidget *parent = nullptr);
     ~FileMetaDataConfigWidget() override;
 
     /**
@@ -50,7 +49,7 @@ public:
      * shown. If an audio file is set as item, it will be configurable
      * whether the artist, album name, ... should be shown.
      */
-    void setItems(const KFileItemList& items);
+    void setItems(const KFileItemList &items);
     KFileItemList items() const;
 
     /**
@@ -62,11 +61,11 @@ public:
     QSize sizeHint() const override;
 
 protected:
-    bool event(QEvent* event) override;
+    bool event(QEvent *event) override;
 
 private:
     class Private;
-    Private* const d;
+    Private *const d;
 
     Q_PRIVATE_SLOT(d, void loadMetaData())
     Q_PRIVATE_SLOT(d, void slotLoadingFinished())
