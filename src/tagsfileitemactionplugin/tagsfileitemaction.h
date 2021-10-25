@@ -35,7 +35,7 @@ class TagsFileItemAction : public KAbstractFileItemActionPlugin
 Q_OBJECT
 public:
     TagsFileItemAction(QObject* parent, const QVariantList& args);
-    virtual ~TagsFileItemAction();
+    ~TagsFileItemAction() override;
     QList<QAction*> actions(const KFileItemListProperties& fileItemInfos, QWidget* parentWidget) override;
 
 private:

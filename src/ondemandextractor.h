@@ -33,7 +33,7 @@ class OnDemandExtractor : public QObject
 
 public:
     explicit OnDemandExtractor(QObject* parent = nullptr);
-    ~OnDemandExtractor();
+    ~OnDemandExtractor() override;
 
     void process(const QString& filePath);
 
