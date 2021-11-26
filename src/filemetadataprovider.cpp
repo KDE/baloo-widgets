@@ -1,6 +1,7 @@
 /*****************************************************************************
  * Copyright (C) 2010 by Peter Penz <peter.penz@gmx.at>                      *
  * Copyright (C) 2012 by Vishesh Handa <me@vhanda.in>                        *
+ * Copyright (C) 2021 by Kai Uwe Broulik <kde@broulik.de>                    *
  *                                                                           *
  * This library is free software; you can redistribute it and/or             *
  * modify it under the terms of the GNU Library General Public               *
@@ -24,6 +25,7 @@
 #include <KFileMetaData/PropertyInfo>
 #include <KFormat>
 #include <KLocalizedString>
+#include <KProtocolInfo>
 
 #include <QDebug>
 #include <QTimer>
@@ -202,6 +204,32 @@ void FileMetaDataProvider::insertSingleFileBasicData()
         m_data.insert(QStringLiteral("kfileitem#owner"), item.user());
         m_data.insert(QStringLiteral("kfileitem#group"), item.group());
         m_data.insert(QStringLiteral("kfileitem#permissions"), item.permissionsString());
+
+        const auto extraFields = KProtocolInfo::extraFields(item.url());
+        for (int i = 0; i < extraFields.count(); ++i) {
+            const auto &field = extraFields.at(i);
+            if (field.type == KProtocolInfo::ExtraField::Invalid) {
+                continue;
+            }
+
+            const QString text = item.entry().stringValue(KIO::UDSEntry::UDS_EXTRA + i);
+            if (text.isEmpty()) {
+                continue;
+            }
+
+            const QString key = QStringLiteral("kfileitem#extra_%1_%2").arg(item.url().scheme(), QString::number(i + 1));
+
+            if (field.type == KProtocolInfo::ExtraField::DateTime) {
+                const QDateTime date = QDateTime::fromString(text, Qt::ISODate);
+                if (!date.isValid()) {
+                    continue;
+                }
+
+                m_data.insert(key, date);
+            } else {
+                m_data.insert(key, text);
+            }
+        }
     }
 }
 
@@ -430,6 +458,26 @@ QString FileMetaDataProvider::label(const QString &metaDataLabel) const
     };
 
     QString value = hash.value(metaDataLabel);
+    if (value.isEmpty()) {
+        static const auto extraPrefix = QStringLiteral("kfileitem#extra_");
+        if (metaDataLabel.startsWith(extraPrefix)) {
+            const auto parts = metaDataLabel.splitRef(QLatin1Char('_'));
+            Q_ASSERT(parts.count() == 3);
+            const auto protocol = parts.at(1);
+            const int extraNumber = parts.at(2).toInt() - 1;
+
+            // Have to construct a dummy URL for KProtocolInfo::extraFields...
+            QUrl url;
+            url.setScheme(protocol.toString());
+
+            const auto extraFields = KProtocolInfo::extraFields(url);
+            auto field = extraFields.value(extraNumber);
+            if (field.type != KProtocolInfo::ExtraField::Invalid) {
+                value = field.name;
+            }
+        }
+    }
+
     if (value.isEmpty()) {
         value = KFileMetaData::PropertyInfo::fromName(metaDataLabel).displayName();
     }
