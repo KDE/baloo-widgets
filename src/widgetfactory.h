@@ -60,7 +60,7 @@ Q_SIGNALS:
 private Q_SLOTS:
     void slotTagsChanged(const QStringList &tags);
     void slotCommentChanged(const QString &comment);
-    void slotRatingChanged(uint rating);
+    void slotRatingChanged(int rating);
 
     void slotTagClicked(const QString &tag);
     void slotLinkActivated(const QString &url);

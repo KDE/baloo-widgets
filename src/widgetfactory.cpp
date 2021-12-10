@@ -187,7 +187,7 @@ QWidget *WidgetFactory::createRatingWidget(int rating, QWidget *parent)
     const QFontMetrics metrics(parent->font());
     ratingWidget->setPixmapSize(metrics.height());
 
-    connect(ratingWidget, static_cast<void (KRatingWidget::*)(uint)>(&KRatingWidget::ratingChanged), this, &WidgetFactory::slotRatingChanged);
+    connect(ratingWidget, static_cast<void (KRatingWidget::*)(int)>(&KRatingWidget::ratingChanged), this, &WidgetFactory::slotRatingChanged);
 
     m_ratingWidget = ratingWidget;
 
@@ -250,7 +250,7 @@ void WidgetFactory::slotCommentChanged(const QString &comment)
     Q_EMIT dataChangeFinished();
 }
 
-void WidgetFactory::slotRatingChanged(uint rating)
+void WidgetFactory::slotRatingChanged(int rating)
 {
     for (const KFileItem &item : qAsConst(m_items)) {
         QUrl url = item.targetUrl();
