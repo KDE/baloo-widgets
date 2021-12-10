@@ -31,7 +31,7 @@
 
 using namespace Baloo;
 
-class Baloo::FileMetaDataWidget::Private
+class Baloo::FileMetaDataWidgetPrivate
 {
 public:
     struct Row {
@@ -40,8 +40,8 @@ public:
         QWidget *value;
     };
 
-    Private(FileMetaDataWidget *parent);
-    ~Private();
+    FileMetaDataWidgetPrivate(FileMetaDataWidget *parent);
+    ~FileMetaDataWidgetPrivate();
 
     void deleteRows();
 
@@ -69,7 +69,7 @@ private:
     FileMetaDataWidget *const q;
 };
 
-FileMetaDataWidget::Private::Private(FileMetaDataWidget *parent)
+FileMetaDataWidgetPrivate::FileMetaDataWidgetPrivate(FileMetaDataWidget *parent)
     : m_rows()
     , m_provider(nullptr)
     , m_gridLayout(nullptr)
@@ -78,21 +78,19 @@ FileMetaDataWidget::Private::Private(FileMetaDataWidget *parent)
     m_filter = new MetadataFilter(q);
 
     m_widgetFactory = new WidgetFactory(q);
-    connect(m_widgetFactory, &WidgetFactory::urlActivated, q, &FileMetaDataWidget::urlActivated);
+    QObject::connect(m_widgetFactory, &WidgetFactory::urlActivated, q, &FileMetaDataWidget::urlActivated);
 
     // TODO: If KFileMetaDataProvider might get a public class in future KDE releases,
     // the following code should be moved into KFileMetaDataWidget::setModel():
     m_provider = new FileMetaDataProvider(q);
-    connect(m_provider, &FileMetaDataProvider::loadingFinished, q, [this]() {
+    QObject::connect(m_provider, &FileMetaDataProvider::loadingFinished, q, [this]() {
         slotLoadingFinished();
     });
 }
 
-FileMetaDataWidget::Private::~Private()
-{
-}
+FileMetaDataWidgetPrivate::~FileMetaDataWidgetPrivate() = default;
 
-void FileMetaDataWidget::Private::deleteRows()
+void FileMetaDataWidgetPrivate::deleteRows()
 {
     for (const Row &row : qAsConst(m_rows)) {
         delete row.label;
@@ -105,7 +103,7 @@ void FileMetaDataWidget::Private::deleteRows()
     m_rows.clear();
 }
 
-QLabel *FileMetaDataWidget::Private::createLabel(const QString &key, const QString &itemLabel, FileMetaDataWidget *parent)
+QLabel *FileMetaDataWidgetPrivate::createLabel(const QString &key, const QString &itemLabel, FileMetaDataWidget *parent)
 {
     QLabel *label = new QLabel(itemLabel + QLatin1Char(':'), parent);
     label->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextSelectableByKeyboard);
@@ -118,7 +116,7 @@ QLabel *FileMetaDataWidget::Private::createLabel(const QString &key, const QStri
     return label;
 }
 
-void FileMetaDataWidget::Private::slotLoadingFinished()
+void FileMetaDataWidgetPrivate::slotLoadingFinished()
 {
     deleteRows();
 
@@ -171,7 +169,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
                 row.checkBox->setChecked(true);
             }
             m_gridLayout->addWidget(row.checkBox, rowIndex, 0, Qt::AlignTop | Qt::AlignRight);
-            connect(row.checkBox, &QCheckBox::stateChanged, q, [this, key](int state) {
+            QObject::connect(row.checkBox, &QCheckBox::stateChanged, q, [this, key](int state) {
                 this->m_visibilityChanged[key] = (state == Qt::Checked);
             });
         } else {
@@ -203,7 +201,7 @@ void FileMetaDataWidget::Private::slotLoadingFinished()
     Q_EMIT q->metaDataRequestFinished(m_provider->items());
 }
 
-void FileMetaDataWidget::Private::slotLinkActivated(const QString &link)
+void FileMetaDataWidgetPrivate::slotLinkActivated(const QString &link)
 {
     const QUrl url = QUrl::fromUserInput(link);
     if (url.isValid()) {
@@ -211,17 +209,17 @@ void FileMetaDataWidget::Private::slotLinkActivated(const QString &link)
     }
 }
 
-void FileMetaDataWidget::Private::slotDataChangeStarted()
+void FileMetaDataWidgetPrivate::slotDataChangeStarted()
 {
     q->setEnabled(false);
 }
 
-void FileMetaDataWidget::Private::slotDataChangeFinished()
+void FileMetaDataWidgetPrivate::slotDataChangeFinished()
 {
     q->setEnabled(true);
 }
 
-QStringList FileMetaDataWidget::Private::sortedKeys(const QVariantMap &data) const
+QStringList FileMetaDataWidgetPrivate::sortedKeys(const QVariantMap &data) const
 {
     // Create a map, where the translated label prefixed with the
     // sort priority acts as key. The data of each entry is the URI
@@ -251,7 +249,7 @@ QStringList FileMetaDataWidget::Private::sortedKeys(const QVariantMap &data) con
     return list;
 }
 
-void FileMetaDataWidget::Private::saveConfig()
+void FileMetaDataWidgetPrivate::saveConfig()
 {
     if (m_visibilityChanged.isEmpty()) {
         return;
@@ -271,14 +269,11 @@ void FileMetaDataWidget::Private::saveConfig()
 
 FileMetaDataWidget::FileMetaDataWidget(QWidget *parent)
     : QWidget(parent)
-    , d(new Private(this))
+    , d(new FileMetaDataWidgetPrivate(this))
 {
 }
 
-FileMetaDataWidget::~FileMetaDataWidget()
-{
-    delete d;
-}
+FileMetaDataWidget::~FileMetaDataWidget() = default;
 
 void FileMetaDataWidget::setItems(const KFileItemList &items)
 {
@@ -321,7 +316,7 @@ QSize FileMetaDataWidget::sizeHint() const
     int leftWidthMax = 0;
     int rightWidthMax = 0;
     int rightWidthAverage = 0;
-    for (const Private::Row &row : qAsConst(d->m_rows)) {
+    for (const FileMetaDataWidgetPrivate::Row &row : qAsConst(d->m_rows)) {
         const QWidget *valueWidget = row.value;
         const int rightWidth = valueWidget->sizeHint().width();
         rightWidthAverage += rightWidth;
@@ -347,7 +342,7 @@ QSize FileMetaDataWidget::sizeHint() const
 
     // Based on the available width calculate the required height
     int height = d->m_gridLayout->margin() * 2 + d->m_gridLayout->spacing() * (d->m_rows.count() - 1);
-    for (const Private::Row &row : qAsConst(d->m_rows)) {
+    for (const FileMetaDataWidgetPrivate::Row &row : qAsConst(d->m_rows)) {
         const QWidget *valueWidget = row.value;
         const int rowHeight = qMax(row.label->heightForWidth(leftWidthMax), valueWidget->heightForWidth(rightWidthMax));
         height += rowHeight;

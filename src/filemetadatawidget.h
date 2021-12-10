@@ -11,16 +11,20 @@
 #ifndef _BALOO_FILE_METADATAWIDGET_H
 #define _BALOO_FILE_METADATAWIDGET_H
 
+#include "widgets_export.h"
+
+#include <KFileItem>
+
+#include <QLocale>
 #include <QUrl>
 #include <QWidget>
 
-#include <KFileItem>
-#include <QLocale>
-
-#include "widgets_export.h"
+#include <memory>
 
 namespace Baloo
 {
+class FileMetaDataWidgetPrivate;
+
 /**
  * Modify format of date display
  */
@@ -95,8 +99,8 @@ Q_SIGNALS:
     void metaDataRequestFinished(const KFileItemList &items);
 
 private:
-    class Private;
-    Private *d;
+    friend class FileMetaDataWidgetPrivate;
+    std::unique_ptr<FileMetaDataWidgetPrivate> const d;
 
     Q_PRIVATE_SLOT(d, void slotLoadingFinished())
     Q_PRIVATE_SLOT(d, void slotLinkActivated(QString))

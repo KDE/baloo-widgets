@@ -18,11 +18,11 @@
 
 using namespace Baloo;
 
-class FileMetaDataConfigWidget::Private
+class Baloo::FileMetaDataConfigWidgetPrivate
 {
 public:
-    Private(FileMetaDataConfigWidget *parent);
-    ~Private();
+    explicit FileMetaDataConfigWidgetPrivate(FileMetaDataConfigWidget *parent);
+    ~FileMetaDataConfigWidgetPrivate();
 
     void init();
     void loadMetaData();
@@ -44,7 +44,7 @@ private:
     FileMetaDataConfigWidget *const q;
 };
 
-FileMetaDataConfigWidget::Private::Private(FileMetaDataConfigWidget *parent)
+FileMetaDataConfigWidgetPrivate::FileMetaDataConfigWidgetPrivate(FileMetaDataConfigWidget *parent)
     : m_visibleDataTypes(0)
     , m_fileItems()
     , m_provider(nullptr)
@@ -60,20 +60,18 @@ FileMetaDataConfigWidget::Private::Private(FileMetaDataConfigWidget *parent)
 
     m_provider = new FileMetaDataProvider(q);
     m_provider->setReadOnly(true);
-    connect(m_provider, SIGNAL(loadingFinished()), q, SLOT(slotLoadingFinished()));
+    QObject::connect(m_provider, SIGNAL(loadingFinished()), q, SLOT(slotLoadingFinished()));
 }
 
-FileMetaDataConfigWidget::Private::~Private()
-{
-}
+FileMetaDataConfigWidgetPrivate::~FileMetaDataConfigWidgetPrivate() = default;
 
-void FileMetaDataConfigWidget::Private::loadMetaData()
+void FileMetaDataConfigWidgetPrivate::loadMetaData()
 {
     m_metaDataList->clear();
     m_provider->setItems(m_fileItems);
 }
 
-void FileMetaDataConfigWidget::Private::addItem(const QString &key)
+void FileMetaDataConfigWidgetPrivate::addItem(const QString &key)
 {
     // Meta information provided by Baloo that is already
     // available from KFileItem as "fixed item" (see above)
@@ -106,7 +104,7 @@ void FileMetaDataConfigWidget::Private::addItem(const QString &key)
     item->setCheckState(show ? Qt::Checked : Qt::Unchecked);
 }
 
-void FileMetaDataConfigWidget::Private::slotLoadingFinished()
+void FileMetaDataConfigWidgetPrivate::slotLoadingFinished()
 {
     // Get all meta information labels that are available for
     // the currently shown file item and add them to the list.
@@ -133,14 +131,11 @@ void FileMetaDataConfigWidget::Private::slotLoadingFinished()
 
 FileMetaDataConfigWidget::FileMetaDataConfigWidget(QWidget *parent)
     : QWidget(parent)
-    , d(new Private(this))
+    , d(new FileMetaDataConfigWidgetPrivate(this))
 {
 }
 
-FileMetaDataConfigWidget::~FileMetaDataConfigWidget()
-{
-    delete d;
-}
+FileMetaDataConfigWidget::~FileMetaDataConfigWidget() = default;
 
 void FileMetaDataConfigWidget::setItems(const KFileItemList &items)
 {

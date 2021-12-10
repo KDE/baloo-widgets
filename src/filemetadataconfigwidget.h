@@ -13,8 +13,12 @@
 
 #include <QWidget>
 
+#include <memory>
+
 namespace Baloo
 {
+class FileMetaDataConfigWidgetPrivate;
+
 /**
  * @brief Widget which allows to configure which meta data should be shown
  *        in the FileMetadataWidget
@@ -51,8 +55,8 @@ protected:
     bool event(QEvent *event) override;
 
 private:
-    class Private;
-    Private *const d;
+    friend class FileMetaDataConfigWidgetPrivate;
+    std::unique_ptr<FileMetaDataConfigWidgetPrivate> const d;
 
     Q_PRIVATE_SLOT(d, void loadMetaData())
     Q_PRIVATE_SLOT(d, void slotLoadingFinished())

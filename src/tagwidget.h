@@ -12,6 +12,8 @@
 
 #include <QWidget>
 
+#include <memory>
+
 namespace Baloo
 {
 class TagWidgetPrivate;
@@ -105,7 +107,7 @@ private Q_SLOTS:
     void slotKEditTagDialogFinished(int result);
 
 private:
-    TagWidgetPrivate *const d;
+    std::unique_ptr<TagWidgetPrivate> const d;
 };
 }
 

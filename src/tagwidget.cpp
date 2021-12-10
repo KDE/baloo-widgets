@@ -98,10 +98,7 @@ TagWidget::TagWidget(QWidget *parent)
     d->init(this);
 }
 
-TagWidget::~TagWidget()
-{
-    delete d;
-}
+TagWidget::~TagWidget() = default;
 
 QStringList TagWidget::selectedTags() const
 {
