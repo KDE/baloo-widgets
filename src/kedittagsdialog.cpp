@@ -1,22 +1,10 @@
-/*****************************************************************************
- * Copyright (C) 2009 by Peter Penz <peter.penz@gmx.at>                      *
- * Copyright (C) 2014 by Vishesh Handa <me@vhanda.in>                        *
- * Copyright (C) 2017 by James D. Smith <smithjd15@gmail.com                    *
- *                                                                           *
- * This library is free software; you can redistribute it and/or             *
- * modify it under the terms of the GNU Library General Public               *
- * License version 2 as published by the Free Software Foundation.           *
- *                                                                           *
- * This library is distributed in the hope that it will be useful,           *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of            *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU         *
- * Library General Public License for more details.                          *
- *                                                                           *
- * You should have received a copy of the GNU Library General Public License *
- * along with this library; see the file COPYING.LIB.  If not, write to      *
- * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,      *
- * Boston, MA 02110-1301, USA.                                               *
- *****************************************************************************/
+/*
+    SPDX-FileCopyrightText: 2009 Peter Penz <peter.penz@gmx.at>
+    SPDX-FileCopyrightText: 2014 Vishesh Handa <me@vhanda.in>
+    SPDX-FileCopyrightText: 2017 James D. Smith <smithjd15@gmail.com
+
+    SPDX-License-Identifier: LGPL-2.0-only
+*/
 
 #include "kedittagsdialog_p.h"
 
