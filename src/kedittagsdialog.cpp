@@ -137,7 +137,7 @@ void KEditTagsDialog::slotTextEdited(const QString &text)
     }
 
     // Remove all tree items related to the previous new tag
-    const QStringList splitTag = m_newTag.split(QLatin1Char('/'), QString::SkipEmptyParts);
+    const QStringList splitTag = m_newTag.split(QLatin1Char('/'), Qt::SkipEmptyParts);
     for (int i = splitTag.size() - 1; i >= 0 && i < splitTag.size(); --i) {
         QString itemTag = m_newTag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
         QTreeWidgetItem *item = m_allTagTreeItems.value(itemTag);
@@ -188,7 +188,7 @@ void KEditTagsDialog::loadTagWidget()
 
 void KEditTagsDialog::modifyTagWidget(const QString &tag)
 {
-    const QStringList splitTag = tag.split(QLatin1Char('/'), QString::SkipEmptyParts);
+    const QStringList splitTag = tag.split(QLatin1Char('/'), Qt::SkipEmptyParts);
     for (int i = 0; i < splitTag.size(); ++i) {
         QTreeWidgetItem *item = new QTreeWidgetItem();
         QString itemTag = tag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
