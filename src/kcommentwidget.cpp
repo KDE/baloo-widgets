@@ -8,9 +8,9 @@
 #include "kcommentwidget_p.h"
 #include "keditcommentdialog.h"
 
-#include <KConfigGui/KWindowConfig>
 #include <KLocalizedString>
 #include <KSharedConfig>
+#include <KWindowConfig>
 
 #include <QEvent>
 #include <QLabel>
