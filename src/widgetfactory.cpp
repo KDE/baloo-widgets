@@ -76,7 +76,8 @@ static QString toString(const QVariant &value, QLocale::FormatType dateFormat)
     }
     case QVariant::List: {
         QStringList list;
-        for (const QVariant &var : value.toList()) {
+        const auto valueList = value.toList();
+        for (const QVariant &var : valueList) {
             list << toString(var, dateFormat);
         }
         return list.join(i18nc("String list separator", ", "));
@@ -267,7 +268,7 @@ void WidgetFactory::slotTagsChanged(const QStringList &tags)
             QStringList newTags = md.tags() + tags;
             newTags.removeDuplicates();
 
-            for (const QString &tag : m_prevTags) {
+            for (const QString &tag : qAsConst(m_prevTags)) {
                 if (!tags.contains(tag)) {
                     newTags.removeAll(tag);
                 }

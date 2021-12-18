@@ -23,7 +23,8 @@ int main(int argc, char **argv)
     Baloo::FileMetaDataWidget *widget = new Baloo::FileMetaDataWidget();
 
     KFileItemList list;
-    for (const QString &path : parser.positionalArguments()) {
+    const auto args = parser.positionalArguments();
+    for (const QString &path : args) {
         QFileInfo fi(path);
         list << KFileItem(QUrl::fromLocalFile(fi.absoluteFilePath()), QString(), mode_t());
     }

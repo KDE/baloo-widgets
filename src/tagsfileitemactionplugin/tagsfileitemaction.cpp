@@ -83,7 +83,7 @@ QList<QAction *> TagsFileItemAction::actions(const KFileItemListProperties &file
         return {};
     }
 
-    QString filePath = fileItemInfos.urlList()[0].toLocalFile();
+    const QString filePath = fileItemInfos.urlList().constFirst().toLocalFile();
     if (!QFileInfo(filePath).isWritable()) {
         return {};
     }

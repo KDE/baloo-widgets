@@ -32,7 +32,7 @@ int main(int argc, char **argv)
         parser.showHelp(1);
     }
 
-    const QString url = parser.positionalArguments().first();
+    const QString url = parser.positionalArguments().constFirst();
     const QString mimetype = KFileMetaData::MimeUtils::strictMimeType(url, QMimeDatabase()).name();
 
     KFileMetaData::SimpleExtractionResult result(url, mimetype, KFileMetaData::ExtractionResult::ExtractMetaData);

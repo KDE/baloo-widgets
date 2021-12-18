@@ -58,9 +58,9 @@ private:
     QWidget *createCommentWidget(const QString &comment, QWidget *parent);
     QLabel *createValueWidget(QWidget *parent);
 
-    TagWidget *m_tagWidget;
-    KRatingWidget *m_ratingWidget;
-    KCommentWidget *m_commentWidget;
+    TagWidget *m_tagWidget = nullptr;
+    KRatingWidget *m_ratingWidget = nullptr;
+    KCommentWidget *m_commentWidget = nullptr;
 
     KFileItemList m_items;
     QStringList m_prevTags;

@@ -31,7 +31,7 @@ void FileFetchJob::start()
 
 void FileFetchJob::doStart()
 {
-    for (const QString &filePath : m_urls) {
+    for (const QString &filePath : qAsConst(m_urls)) {
         bool extractorRunning = false;
         KFileMetaData::PropertyMap fileProperties;
 
