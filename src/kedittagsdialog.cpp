@@ -178,10 +178,11 @@ void KEditTagsDialog::modifyTagWidget(const QString &tag)
 {
     const QStringList splitTag = tag.split(QLatin1Char('/'), Qt::SkipEmptyParts);
     for (int i = 0; i < splitTag.size(); ++i) {
-        QTreeWidgetItem *item = new QTreeWidgetItem();
+        QTreeWidgetItem *item;
         QString itemTag = tag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
 
         if (!m_allTagTreeItems.contains(itemTag)) {
+            item = new QTreeWidgetItem();
             item->setText(0, splitTag.at(i));
             item->setIcon(0, QIcon::fromTheme(QLatin1String("tag")));
             item->setData(0, Qt::UserRole, itemTag);
