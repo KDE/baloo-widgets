@@ -47,7 +47,9 @@ BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QLis
     metaDataArea->setWidgetResizable(true);
     metaDataArea->setFrameShape(QFrame::NoFrame);
 
-    properties->addPage(metaDataArea, i18nc("Tab page with file meta data", "&Details"));
+    connect(metaDataWidget, &Baloo::FileMetaDataWidget::metaDataRequestFinished, this, [this, metaDataArea, metaDataWidget] {
+        properties->addPage(metaDataArea, i18nc("Tab page with file meta data", "&Details"));
+    });
 }
 
 BalooFilePropertiesPlugin::~BalooFilePropertiesPlugin() = default;
