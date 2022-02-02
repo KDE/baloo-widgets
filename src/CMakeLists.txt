@@ -39,8 +39,8 @@ ecm_qt_declare_logging_category(KF5BalooWidgets
 
 target_link_libraries(KF5BalooWidgets
   PUBLIC
-  Qt5::Widgets
-  Qt5::Core
+  Qt${QT_MAJOR_VERSION}::Widgets
+  Qt${QT_MAJOR_VERSION}::Core
   KF5::KIOCore # KFileItem
   KF5::CoreAddons # KProcess, KJob
 
@@ -53,7 +53,7 @@ target_link_libraries(KF5BalooWidgets
   KF5::ConfigGui
 )
 
-target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/BalooWidgets>")
+target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets>")
 
 generate_export_header(KF5BalooWidgets BASE_NAME BALOO_WIDGETS EXPORT_FILE_NAME widgets_export.h)
 
@@ -71,14 +71,14 @@ ecm_generate_headers(KF5BalooWidgets_CamelCase_HEADERS
 
 install(FILES
   ${KF5BalooWidgets_CamelCase_HEADERS}
-  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/BalooWidgets/Baloo
+  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets/Baloo
   COMPONENT Devel
 )
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/widgets_export.h
   ${KF5BalooWidgets_HEADERS}
-  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/BalooWidgets/baloo
+  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets/baloo
   COMPONENT Devel
 )
 
@@ -87,7 +87,7 @@ install(FILES
 #
 add_executable(baloo_filemetadata_temp_extractor extractor.cpp filemetadatautil.cpp)
 target_link_libraries(baloo_filemetadata_temp_extractor
-  Qt5::Core
+  Qt${QT_MAJOR_VERSION}::Core
   KF5::I18n
   KF5::FileMetaData
 )

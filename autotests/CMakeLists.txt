@@ -2,7 +2,7 @@ include(ECMMarkAsTest)
 
 ecm_add_test(extractortest.cpp
     TEST_NAME "extractortest"
-    LINK_LIBRARIES Qt5::Test
+    LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test
     KF5::FileMetaData
 )
 ecm_add_tests(
@@ -15,8 +15,8 @@ ecm_add_tests(
     KF5::ConfigCore
     KF5::BalooWidgets
     KF5::FileMetaData
-    Qt5::Test
-    Qt5::Widgets
+    Qt${QT_MAJOR_VERSION}::Test
+    Qt${QT_MAJOR_VERSION}::Widgets
 )
 
 target_include_directories(extractortest

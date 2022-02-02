@@ -61,8 +61,8 @@ QVariant intersect(const QVariant &v1, const QVariant &v2)
 
     // List and List
     if (v1.type() == QVariant::StringList && v2.type() == QVariant::StringList) {
-        QSet<QString> s1 = v1.toStringList().toSet();
-        QSet<QString> s2 = v2.toStringList().toSet();
+        QSet<QString> s1(v1.toStringList().cbegin(), v1.toStringList().cend());
+        QSet<QString> s2(v2.toStringList().cbegin(), v2.toStringList().cend());
 
         return QVariant(s1.intersect(s2).values());
     }
@@ -448,7 +448,11 @@ QString FileMetaDataProvider::label(const QString &metaDataLabel) const
     if (value.isEmpty()) {
         static const auto extraPrefix = QStringLiteral("kfileitem#extra_");
         if (metaDataLabel.startsWith(extraPrefix)) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             const auto parts = metaDataLabel.splitRef(QLatin1Char('_'));
+#else
+            const auto parts = metaDataLabel.split(QLatin1Char('_'));
+#endif
             Q_ASSERT(parts.count() == 3);
             const auto protocol = parts.at(1);
             const int extraNumber = parts.at(2).toInt() - 1;
