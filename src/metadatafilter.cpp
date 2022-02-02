@@ -27,7 +27,7 @@ MetadataFilter::~MetadataFilter()
 
 void MetadataFilter::initMetaInformationSettings()
 {
-    const int currentVersion = 11; // increase version, if the blacklist of disabled
+    const int currentVersion = 12; // increase version, if the blacklist of disabled
     // properties should be updated
 
     KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
@@ -40,6 +40,8 @@ void MetadataFilter::initMetaInformationSettings()
         KConfigGroup settings = config.group("Show");
 
         static const char *const disabledProperties[] = {
+            "width",
+            "height", // replaced by dimensions
             "comment",
             "contentSize",
             "depends",

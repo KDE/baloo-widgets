@@ -126,6 +126,12 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
         insertCommonData(files);
     } else {
         m_data = unite(m_data, files.first());
+
+        const auto width = m_data.value(QStringLiteral("width"));
+        const auto height = m_data.value(QStringLiteral("height"));
+        if (width.type() == QVariant::Double && height.type() == QVariant::Double) {
+            m_data.insert(QStringLiteral("dimensions"), i18nc("width × height", "%1 × %2", width.toInt(), height.toInt()));
+        }
     }
     m_readOnly = !fetchJob->canEditAll();
 
@@ -442,6 +448,7 @@ QString FileMetaDataProvider::label(const QString &metaDataLabel) const
         {QStringLiteral("rating"), i18nc("@label", "Rating")},
         {QStringLiteral("userComment"), i18nc("@label", "Comment")},
         {QStringLiteral("originUrl"), i18nc("@label", "Downloaded From")},
+        {QStringLiteral("dimensions"), i18nc("@label", "Dimensions")},
     };
 
     QString value = hash.value(metaDataLabel);
@@ -514,6 +521,7 @@ QString FileMetaDataProvider::group(const QString &label) const
         {QStringLiteral("photoGpsAltitude"), QStringLiteral("2ImageM")},
         {QStringLiteral("manufacturer"), QStringLiteral("2ImageN")},
         {QStringLiteral("model"), QStringLiteral("2ImageO")},
+        {QStringLiteral("dimensions"), QStringLiteral("2ImageP")},
 
         // Media Data
         {QStringLiteral("title"), QStringLiteral("3MediaA")},
