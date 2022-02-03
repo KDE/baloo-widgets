@@ -129,7 +129,7 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
 
         const auto width = m_data.value(QStringLiteral("width"));
         const auto height = m_data.value(QStringLiteral("height"));
-        if (width.type() == QVariant::Double && height.type() == QVariant::Double) {
+        if ((width.type() == QVariant::Double || width.type() == QVariant::Int) && (height.type() == QVariant::Double || height.type() == QVariant::Int)) {
             m_data.insert(QStringLiteral("dimensions"), i18nc("width × height", "%1 × %2", width.toInt(), height.toInt()));
         }
     }
@@ -508,6 +508,7 @@ QString FileMetaDataProvider::group(const QString &label) const
         // Image Data
         {QStringLiteral("width"), QStringLiteral("2ImageA")},
         {QStringLiteral("height"), QStringLiteral("2ImageB")},
+        {QStringLiteral("dimensions"), QStringLiteral("2ImageCA")},
         {QStringLiteral("photoFNumber"), QStringLiteral("2ImageC")},
         {QStringLiteral("photoExposureTime"), QStringLiteral("2ImageD")},
         {QStringLiteral("photoExposureBiasValue"), QStringLiteral("2ImageE")},
@@ -521,7 +522,6 @@ QString FileMetaDataProvider::group(const QString &label) const
         {QStringLiteral("photoGpsAltitude"), QStringLiteral("2ImageM")},
         {QStringLiteral("manufacturer"), QStringLiteral("2ImageN")},
         {QStringLiteral("model"), QStringLiteral("2ImageO")},
-        {QStringLiteral("dimensions"), QStringLiteral("2ImageP")},
 
         // Media Data
         {QStringLiteral("title"), QStringLiteral("3MediaA")},
