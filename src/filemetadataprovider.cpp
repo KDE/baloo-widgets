@@ -149,7 +149,7 @@ void FileMetaDataProvider::insertSingleFileBasicData()
 
         KFormat format;
         if (item.isDir()) {
-            bool isSizeUnknown = !item.isLocalFile();
+            bool isSizeUnknown = !item.isLocalFile() || item.isSlow();
             if (!isSizeUnknown) {
                 const QPair<int, int> counts = subDirectoriesCount(item.url().path());
                 const int count = counts.first;
@@ -243,7 +243,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
         int hiddenCount = 0;
         bool isSizeKnown = true;
         for (const KFileItem &item : qAsConst(m_fileItems)) {
-            isSizeKnown = item.isLocalFile();
+            isSizeKnown = item.isLocalFile() && !item.isSlow();
             if (!isSizeKnown) {
                 return;
             }
@@ -355,7 +355,7 @@ void FileMetaDataProvider::setFileItem()
     //
     insertSingleFileBasicData();
     const QUrl url = m_fileItems.first().targetUrl();
-    if (!url.isLocalFile()) {
+    if (!url.isLocalFile() || m_fileItems.first().isSlow()) {
         // FIXME - are extended attributes supported for remote files?
         m_readOnly = true;
         Q_EMIT loadingFinished();
@@ -391,7 +391,7 @@ void FileMetaDataProvider::setFileItems()
     // it would be too expensive otherwise.
     for (const KFileItem &item : qAsConst(m_fileItems)) {
         const QUrl url = item.targetUrl();
-        if (url.isLocalFile()) {
+        if (url.isLocalFile() && !item.isSlow()) {
             urls << url.toLocalFile();
         }
     }
