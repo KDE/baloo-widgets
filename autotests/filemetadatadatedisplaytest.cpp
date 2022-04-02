@@ -49,12 +49,14 @@ void FileMetadataDateDisplayTest::initTestCase()
 
 static QRegularExpression yesterdayShortRegex()
 {
-    return QRegularExpression(QStringLiteral("Yesterday, (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
+    // Checking for "yesterday" and a time indication
+    return QRegularExpression(QStringLiteral("Yesterday at (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
 }
 
 static QRegularExpression longAgoShortRegex()
 {
-    return QRegularExpression(QStringLiteral("(?:[1-3][0-9]|[1-9]) (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
+    // Checking for a 1- or 2-digit day and an hour
+    return QRegularExpression(QStringLiteral("(?:[1-3][0-9]|[1-9]) at (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
 }
 
 void FileMetadataDateDisplayTest::validateDateFormats()
