@@ -92,10 +92,10 @@ void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates_data()
     QTest::addRow("Long date, long ago")
         << Baloo::DateFormats::LongFormat << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
         << QRegularExpression(
-               QStringLiteral("[A-Z][a-z]+, [A-Z][a-z]+ (?:[1-3][0-9]|[1-9]), 20[0-9]{2} (?:1[0-2]|[1-9]):[0-5][0-9]:[0-5][0-9] [AP]M [A-Z]{3,4}"));
+               QStringLiteral("[A-Z][a-z]+, [A-Z][a-z]+ (?:[1-3][0-9]|[1-9]), 20[0-9]{2} at (?:1[0-2]|[1-9]):[0-5][0-9] [AP]M"));
 
     QTest::addRow("Long date, yesterday") << Baloo::DateFormats::LongFormat << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a"))
-                                          << QRegularExpression(QStringLiteral("Yesterday, (?:1[0-2]|[1-9]):[0-5][0-9]:[0-5][0-9] [AP]M [A-Z]{3,4}"));
+                                          << QRegularExpression(QStringLiteral("Yesterday at (?:1[0-2]|[1-9]):[0-5][0-9] [AP]M"));
 }
 
 void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates()
