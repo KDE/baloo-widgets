@@ -47,22 +47,32 @@ void FileMetadataDateDisplayTest::initTestCase()
     QVERIFY(setFileTime(QFINDTESTDATA("samplefiles/testtagged.mp3"), QDateTime::currentDateTime().addYears(-10)));
 }
 
+static QRegularExpression yesterdayShortRegex()
+{
+    return QRegularExpression(QStringLiteral("Yesterday, (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
+}
+
+static QRegularExpression longAgoShortRegex()
+{
+    return QRegularExpression(QStringLiteral("(?:[1-3][0-9]|[1-9]) (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
+}
+
 void FileMetadataDateDisplayTest::validateDateFormats()
 {
     auto yesterday = QDateTime::currentDateTime().addDays(-1);
     auto long_ago = QDateTime::currentDateTime().addYears(-10);
 
     // This tests only the "short form" regular expressions also found in shouldDisplayLongAndShortDates_data()
-    auto yesterday_re = QRegularExpression(QStringLiteral("Yesterday, (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
-    auto long_ago_re = QRegularExpression(QStringLiteral("(?:[1-3][0-9]|[1-9]) (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
+    auto yesterday_re = yesterdayShortRegex();
+    auto long_ago_re = longAgoShortRegex();
 
     KFormat form;
 
     auto yesterday_s = form.formatRelativeDateTime(yesterday, QLocale::ShortFormat);
     auto long_ago_s = form.formatRelativeDateTime(long_ago, QLocale::ShortFormat);
 
-    QVERIFY(yesterday_re.match(yesterday_s).hasMatch());
-    QVERIFY(long_ago_re.match(long_ago_s).hasMatch());
+    QVERIFY2(yesterday_re.match(yesterday_s).hasMatch(), qPrintable(QStringLiteral("\"%1\" did not match %2").arg(yesterday_s, yesterday_re.pattern())));
+    QVERIFY2(long_ago_re.match(long_ago_s).hasMatch(), qPrintable(QStringLiteral("\"%1\" did not match %2").arg(long_ago_s, long_ago_re.pattern())));
 }
 
 void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates_data()
@@ -72,10 +82,10 @@ void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates_data()
     QTest::addColumn<QRegularExpression>("regex");
 
     QTest::addRow("Short date, long ago") << Baloo::DateFormats::ShortFormat << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
-                                          << QRegularExpression(QStringLiteral("(?:[1-3][0-9]|[1-9]) (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
+                                          << longAgoShortRegex();
 
     QTest::addRow("Short date, yesterday") << Baloo::DateFormats::ShortFormat << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a"))
-                                           << QRegularExpression(QStringLiteral("Yesterday, (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
+                                           << yesterdayShortRegex();
 
     QTest::addRow("Long date, long ago")
         << Baloo::DateFormats::LongFormat << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
