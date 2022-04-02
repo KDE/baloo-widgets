@@ -6,6 +6,9 @@
 
 #include "filemetadatadatedisplaytest.h"
 
+// This is an implementation detail of how dates are returned
+#include <KFormat>
+
 #include <QDateTime>
 #include <QLabel>
 #include <QMetaType>
@@ -42,6 +45,24 @@ void FileMetadataDateDisplayTest::initTestCase()
     QVERIFY(setFileTime(QFINDTESTDATA("samplefiles/testtagged.m4a"), QDateTime::currentDateTime().addDays(-1)));
 
     QVERIFY(setFileTime(QFINDTESTDATA("samplefiles/testtagged.mp3"), QDateTime::currentDateTime().addYears(-10)));
+}
+
+void FileMetadataDateDisplayTest::validateDateFormats()
+{
+    auto yesterday = QDateTime::currentDateTime().addDays(-1);
+    auto long_ago = QDateTime::currentDateTime().addYears(-10);
+
+    // This tests only the "short form" regular expressions also found in shouldDisplayLongAndShortDates_data()
+    auto yesterday_re = QRegularExpression(QStringLiteral("Yesterday, (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
+    auto long_ago_re = QRegularExpression(QStringLiteral("(?:[1-3][0-9]|[1-9]) (?:[1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
+
+    KFormat form;
+
+    auto yesterday_s = form.formatRelativeDateTime(yesterday, QLocale::ShortFormat);
+    auto long_ago_s = form.formatRelativeDateTime(long_ago, QLocale::ShortFormat);
+
+    QVERIFY(yesterday_re.match(yesterday_s).hasMatch());
+    QVERIFY(long_ago_re.match(long_ago_s).hasMatch());
 }
 
 void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates_data()
