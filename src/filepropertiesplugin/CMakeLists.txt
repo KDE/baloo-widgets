@@ -1,6 +1,6 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets5\")
 
-kcoreaddons_add_plugin(baloofilepropertiesplugin INSTALL_NAMESPACE "kf5/propertiesdialog" SOURCES baloofilepropertiesplugin.cpp)
+kcoreaddons_add_plugin(baloofilepropertiesplugin INSTALL_NAMESPACE "kf${QT_MAJOR_VERSION}/propertiesdialog" SOURCES baloofilepropertiesplugin.cpp)
 
 target_link_libraries(baloofilepropertiesplugin
     KF5::I18n
