@@ -45,6 +45,8 @@ if (BUILD_TESTING)
   add_subdirectory(autotests)
 endif()
 
+ki18n_install(po)
+
 # Config files
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5BalooWidgets")
 
