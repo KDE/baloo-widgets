@@ -13,6 +13,7 @@
 #include <KFormat>
 #include <KLocalizedString>
 #include <KProtocolInfo>
+#include <KShell>
 
 #include <QDebug>
 #include <QTimer>
@@ -180,6 +181,9 @@ void FileMetaDataProvider::insertSingleFileBasicData()
         m_data.insert(QStringLiteral("kfileitem#type"), item.mimeComment());
         if (item.isLink()) {
             m_data.insert(QStringLiteral("kfileitem#linkDest"), item.linkDest());
+        }
+        if (item.entry().contains(KIO::UDSEntry::UDS_TARGET_URL)) {
+            m_data.insert(QStringLiteral("kfileitem#targetUrl"), KShell::tildeCollapse(item.targetUrl().toDisplayString(QUrl::PreferLocalFile)));
         }
         QDateTime modificationTime = item.time(KFileItem::ModificationTime);
         if (modificationTime.isValid()) {
@@ -444,6 +448,7 @@ QString FileMetaDataProvider::label(const QString &metaDataLabel) const
         {QStringLiteral("kfileitem#hiddenItems"), i18nc("@label", "Hidden items")},
         {QStringLiteral("kfileitem#type"), i18nc("@label", "Type")},
         {QStringLiteral("kfileitem#linkDest"), i18nc("@label", "Link to")},
+        {QStringLiteral("kfileitem#targetUrl"), i18nc("@label", "Points to")},
         {QStringLiteral("tags"), i18nc("@label", "Tags")},
         {QStringLiteral("rating"), i18nc("@label", "Rating")},
         {QStringLiteral("userComment"), i18nc("@label", "Comment")},
