@@ -12,20 +12,37 @@ set_target_properties(KF5BalooWidgets PROPERTIES
 )
 
 target_sources(KF5BalooWidgets PRIVATE
-  kblocklayout.cpp
-  tagwidget.cpp
-  kedittagsdialog.cpp
-  tagcheckbox.cpp
-  filefetchjob.cpp
-  filemetadatawidget.cpp
-  filemetadataconfigwidget.cpp
-  filemetadataprovider.cpp
-  filemetadatautil.cpp
-  kcommentwidget.cpp
-  keditcommentdialog.cpp
-  metadatafilter.cpp
-  ondemandextractor.cpp
-  widgetfactory.cpp
+    extractor.cpp
+    extractorutil_p.h
+    filefetchjob.cpp
+    filefetchjob.h
+    filemetadataconfigwidget.cpp
+    filemetadataconfigwidget.h
+    filemetadataprovider.cpp
+    filemetadataprovider.h
+    filemetadatautil.cpp
+    filemetadatautil_p.h
+    filemetadatawidget.cpp
+    filemetadatawidget.h
+    kblocklayout.cpp
+    kblocklayout.h
+    kcommentwidget.cpp
+    kcommentwidget_p.h
+    keditcommentdialog.cpp
+    keditcommentdialog.h
+    kedittagsdialog.cpp
+    kedittagsdialog_p.h
+    metadatafilter.cpp
+    metadatafilter.h
+    ondemandextractor.cpp
+    ondemandextractor.h
+    tagcheckbox.cpp
+    tagcheckbox.h
+    tagwidget.cpp
+    tagwidget.h
+    tagwidget_p.h
+    widgetfactory.cpp
+    widgetfactory.h
 )
 
 ecm_qt_declare_logging_category(KF5BalooWidgets
