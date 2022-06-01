@@ -94,7 +94,7 @@ void KEditTagsDialog::slotAcceptedButtonClicked()
 {
     m_tags.clear();
 
-    for (const QTreeWidgetItem *item : qAsConst(m_allTagTreeItems)) {
+    for (const QTreeWidgetItem *item : std::as_const(m_allTagTreeItems)) {
         if (item->checkState(0) == Qt::Checked) {
             m_tags << qvariant_cast<QString>(item->data(0, Qt::UserRole));
         }
@@ -163,11 +163,11 @@ void KEditTagsDialog::slotTextEdited(const QString &text)
 
 void KEditTagsDialog::loadTagWidget()
 {
-    for (const QString &tag : qAsConst(m_tags)) {
+    for (const QString &tag : std::as_const(m_tags)) {
         modifyTagWidget(tag);
     }
 
-    for (const QString &tag : qAsConst(m_allTags)) {
+    for (const QString &tag : std::as_const(m_allTags)) {
         modifyTagWidget(tag);
     }
 

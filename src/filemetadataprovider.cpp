@@ -235,7 +235,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
     // If all directories
     Q_ASSERT(m_fileItems.count() > 1);
     bool allDirectories = true;
-    for (const KFileItem &item : qAsConst(m_fileItems)) {
+    for (const KFileItem &item : std::as_const(m_fileItems)) {
         allDirectories &= item.isDir();
         if (!allDirectories) {
             break;
@@ -246,7 +246,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
         int count = 0;
         int hiddenCount = 0;
         bool isSizeKnown = true;
-        for (const KFileItem &item : qAsConst(m_fileItems)) {
+        for (const KFileItem &item : std::as_const(m_fileItems)) {
             isSizeKnown = item.isLocalFile() && !item.isSlow();
             if (!isSizeKnown) {
                 return;
@@ -271,7 +271,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
     } else {
         // Calculate the size of all items
         quint64 totalSize = 0;
-        for (const KFileItem &item : qAsConst(m_fileItems)) {
+        for (const KFileItem &item : std::as_const(m_fileItems)) {
             if (!item.isDir() && !item.isLink()) {
                 totalSize += item.size();
             }
@@ -314,8 +314,8 @@ void FileMetaDataProvider::insertCommonData(const QList<QVariantMap> &files)
     totalPropertyAndInsert(QStringLiteral("wordCount"), propertyList, allProperties);
     totalPropertyAndInsert(QStringLiteral("lineCount"), propertyList, allProperties);
 
-    for (const QString &propUri : qAsConst(allProperties)) {
-        for (const QVariantMap &map : qAsConst(propertyList)) {
+    for (const QString &propUri : std::as_const(allProperties)) {
+        for (const QVariantMap &map : std::as_const(propertyList)) {
             QVariantMap::const_iterator it = map.find(propUri);
             if (it == map.constEnd()) {
                 m_data.remove(propUri);
@@ -393,7 +393,7 @@ void FileMetaDataProvider::setFileItems()
     urls.reserve(m_fileItems.size());
     // Only extract data from indexed files,
     // it would be too expensive otherwise.
-    for (const KFileItem &item : qAsConst(m_fileItems)) {
+    for (const KFileItem &item : std::as_const(m_fileItems)) {
         const QUrl url = item.targetUrl();
         if (url.isLocalFile() && !item.isSlow()) {
             urls << url.toLocalFile();

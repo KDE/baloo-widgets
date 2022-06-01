@@ -92,7 +92,7 @@ FileMetaDataWidgetPrivate::~FileMetaDataWidgetPrivate() = default;
 
 void FileMetaDataWidgetPrivate::deleteRows()
 {
-    for (const Row &row : qAsConst(m_rows)) {
+    for (const Row &row : std::as_const(m_rows)) {
         delete row.label;
         row.value->deleteLater();
         if (row.checkBox) {
@@ -316,7 +316,7 @@ QSize FileMetaDataWidget::sizeHint() const
     int leftWidthMax = 0;
     int rightWidthMax = 0;
     int rightWidthAverage = 0;
-    for (const FileMetaDataWidgetPrivate::Row &row : qAsConst(d->m_rows)) {
+    for (const FileMetaDataWidgetPrivate::Row &row : std::as_const(d->m_rows)) {
         const QWidget *valueWidget = row.value;
         const int rightWidth = valueWidget->sizeHint().width();
         rightWidthAverage += rightWidth;
@@ -342,7 +342,7 @@ QSize FileMetaDataWidget::sizeHint() const
 
     // Based on the available width calculate the required height
     int height = d->m_gridLayout->margin() * 2 + d->m_gridLayout->spacing() * (d->m_rows.count() - 1);
-    for (const FileMetaDataWidgetPrivate::Row &row : qAsConst(d->m_rows)) {
+    for (const FileMetaDataWidgetPrivate::Row &row : std::as_const(d->m_rows)) {
         const QWidget *valueWidget = row.value;
         const int rowHeight = qMax(row.label->heightForWidth(leftWidthMax), valueWidget->heightForWidth(rightWidthMax));
         height += rowHeight;

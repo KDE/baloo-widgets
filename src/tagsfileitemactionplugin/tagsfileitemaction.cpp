@@ -42,7 +42,7 @@ TagsFileItemAction::TagsFileItemAction(QObject *parent, const QVariantList &)
         allTags.sort(Qt::CaseInsensitive);
         allTags.removeDuplicates();
 
-        for (const QString &name : qAsConst(allTags)) {
+        for (const QString &name : std::as_const(allTags)) {
             QAction *action = m_menu->addAction(QIcon::fromTheme(QStringLiteral("tag")), name);
             action->setCheckable(true);
             action->setChecked(fileTags.contains(name));

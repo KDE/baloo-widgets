@@ -227,7 +227,7 @@ QLabel *WidgetFactory::createValueWidget(QWidget *parent)
 
 void WidgetFactory::slotCommentChanged(const QString &comment)
 {
-    for (const KFileItem &item : qAsConst(m_items)) {
+    for (const KFileItem &item : std::as_const(m_items)) {
         QUrl url = item.targetUrl();
         if (!url.isLocalFile()) {
             continue;
@@ -241,7 +241,7 @@ void WidgetFactory::slotCommentChanged(const QString &comment)
 
 void WidgetFactory::slotRatingChanged(int rating)
 {
-    for (const KFileItem &item : qAsConst(m_items)) {
+    for (const KFileItem &item : std::as_const(m_items)) {
         QUrl url = item.targetUrl();
         if (!url.isLocalFile()) {
             continue;
@@ -256,7 +256,7 @@ void WidgetFactory::slotRatingChanged(int rating)
 void WidgetFactory::slotTagsChanged(const QStringList &tags)
 {
     if (m_tagWidget) {
-        for (const KFileItem &item : qAsConst(m_items)) {
+        for (const KFileItem &item : std::as_const(m_items)) {
             QUrl url = item.targetUrl();
             if (!url.isLocalFile()) {
                 continue;
@@ -268,7 +268,7 @@ void WidgetFactory::slotTagsChanged(const QStringList &tags)
             QStringList newTags = md.tags() + tags;
             newTags.removeDuplicates();
 
-            for (const QString &tag : qAsConst(m_prevTags)) {
+            for (const QString &tag : std::as_const(m_prevTags)) {
                 if (!tags.contains(tag)) {
                     newTags.removeAll(tag);
                 }
