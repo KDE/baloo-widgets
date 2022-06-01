@@ -24,16 +24,16 @@ BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QLis
 {
     Q_UNUSED(args);
 
-    QWidget *widgetContainer = new QWidget();
+    auto widgetContainer = new QWidget();
 
-    QVBoxLayout *containerLayout = new QVBoxLayout(widgetContainer);
+    auto containerLayout = new QVBoxLayout(widgetContainer);
     containerLayout->setContentsMargins(0, 0, 0, 0);
     containerLayout->setSpacing(0);
 
-    auto *metaDataWidget = new Baloo::FileMetaDataWidget();
+    auto metaDataWidget = new Baloo::FileMetaDataWidget();
     metaDataWidget->setItems(properties->items());
     connect(metaDataWidget, &Baloo::FileMetaDataWidget::urlActivated, this, [this](const QUrl &url) {
-        KIO::OpenUrlJob *job = new KIO::OpenUrlJob(url);
+        auto job = new KIO::OpenUrlJob(url);
         job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, properties));
         job->start();
     });
@@ -41,7 +41,7 @@ BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QLis
     containerLayout->addWidget(metaDataWidget);
     containerLayout->addStretch(1);
 
-    QScrollArea *metaDataArea = new QScrollArea();
+    auto metaDataArea = new QScrollArea();
 
     metaDataArea->setWidget(widgetContainer);
     metaDataArea->setWidgetResizable(true);

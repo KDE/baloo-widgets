@@ -21,13 +21,13 @@ KEditCommentDialog::KEditCommentDialog(QWidget *parent, const QString &commentTe
 {
     setWindowTitle(captionText);
 
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    auto layout = new QVBoxLayout(this);
 
     m_editor->setText(commentText);
 
     layout->addWidget(m_editor);
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
+    auto buttonBox = new QDialogButtonBox(this);
     layout->addWidget(buttonBox);
 
     buttonBox->addButton(i18n("Save"), QDialogButtonBox::AcceptRole);
@@ -39,9 +39,7 @@ KEditCommentDialog::KEditCommentDialog(QWidget *parent, const QString &commentTe
     resize(sizeHint());
 }
 
-KEditCommentDialog::~KEditCommentDialog()
-{
-}
+KEditCommentDialog::~KEditCommentDialog() = default;
 
 QString KEditCommentDialog::getCommentText() const
 {

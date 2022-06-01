@@ -14,12 +14,12 @@ TagWidgetTest::TagWidgetTest()
     : QWidget()
 {
     m_tagWidget = new Baloo::TagWidget(this);
-    QVBoxLayout *lay = new QVBoxLayout(this);
+    auto lay = new QVBoxLayout(this);
     lay->addWidget(m_tagWidget);
     connect(m_tagWidget, SIGNAL(tagClicked(QString)), this, SLOT(slotTagClicked(QString)));
     connect(m_tagWidget, SIGNAL(selectionChanged(QStringList)), this, SLOT(slotSelectionChanged(QStringList)));
 
-    QCheckBox *box = new QCheckBox(QStringLiteral("Align Right"), this);
+    auto box = new QCheckBox(QStringLiteral("Align Right"), this);
     connect(box, SIGNAL(toggled(bool)), this, SLOT(alignRight(bool)));
     lay->addWidget(box);
 
@@ -28,9 +28,7 @@ TagWidgetTest::TagWidgetTest()
     lay->addWidget(box);
 }
 
-TagWidgetTest::~TagWidgetTest()
-{
-}
+TagWidgetTest::~TagWidgetTest() = default;
 
 void TagWidgetTest::slotTagClicked(const QString &tag)
 {

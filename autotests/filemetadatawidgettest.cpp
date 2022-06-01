@@ -120,13 +120,13 @@ void FileMetadataWidgetTest::shouldShowProperties()
     QCOMPARE(spy.count(), 1);
 
     // simple property
-    QLabel *valueWidget = m_widget->findChild<QLabel *>(QStringLiteral("kfileitem#type"));
+    auto valueWidget = m_widget->findChild<QLabel *>(QStringLiteral("kfileitem#type"));
     QVERIFY2(valueWidget, "Type data missing");
     QCOMPARE(valueWidget->text(), QLatin1String("MP3 audio"));
 
     if (m_mayTestRating) {
         // editable property
-        KRatingWidget *ratingWidget = m_widget->findChild<KRatingWidget *>(QStringLiteral("rating"));
+        auto ratingWidget = m_widget->findChild<KRatingWidget *>(QStringLiteral("rating"));
         QVERIFY2(ratingWidget, "Rating data missing");
         QCOMPARE(ratingWidget->rating(), 5u);
     } else {
@@ -147,7 +147,7 @@ void FileMetadataWidgetTest::shouldShowCommonProperties()
     QCOMPARE(spy.count(), 1);
 
     // simple property
-    QLabel *valueWidget = m_widget->findChild<QLabel *>(QStringLiteral("kfileitem#type"));
+    auto valueWidget = m_widget->findChild<QLabel *>(QStringLiteral("kfileitem#type"));
     QVERIFY(!valueWidget);
 
     valueWidget = m_widget->findChild<QLabel *>(QStringLiteral("kfileitem#totalSize"));
@@ -156,7 +156,7 @@ void FileMetadataWidgetTest::shouldShowCommonProperties()
 
     // editable property
     if (m_mayTestRating) {
-        KRatingWidget *ratingWidget = m_widget->findChild<KRatingWidget *>(QStringLiteral("rating"));
+        auto ratingWidget = m_widget->findChild<KRatingWidget *>(QStringLiteral("rating"));
         QVERIFY2(ratingWidget, "Rating data missing");
         QCOMPARE(ratingWidget->rating(), 5u);
     } else {

@@ -33,7 +33,7 @@ namespace
 QVariant intersect(const QVariant &v1, const QVariant &v2)
 {
     if (!v1.isValid() || !v2.isValid()) {
-        return QVariant();
+        return {};
     }
 
     // List and String
@@ -72,7 +72,7 @@ QVariant intersect(const QVariant &v1, const QVariant &v2)
         return v1;
     }
 
-    return QVariant();
+    return {};
 }
 
 /**
@@ -118,7 +118,7 @@ void FileMetaDataProvider::totalPropertyAndInsert(const QString &prop, const QLi
 
 void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
 {
-    FileFetchJob *fetchJob = static_cast<FileFetchJob *>(job);
+    auto fetchJob = static_cast<FileFetchJob *>(job);
     QList<QVariantMap> files = fetchJob->data();
 
     Q_ASSERT(!files.isEmpty());
@@ -345,9 +345,7 @@ FileMetaDataProvider::FileMetaDataProvider(QObject *parent)
 {
 }
 
-FileMetaDataProvider::~FileMetaDataProvider()
-{
-}
+FileMetaDataProvider::~FileMetaDataProvider() = default;
 
 void FileMetaDataProvider::setFileItem()
 {
@@ -405,7 +403,7 @@ void FileMetaDataProvider::setFileItems()
         // Editing only if all URLs are local
         bool canEdit = (urls.size() == m_fileItems.size());
 
-        FileFetchJob *job = new FileFetchJob(urls, canEdit, FileFetchJob::UseRealtimeIndexing::Disabled, this);
+        auto job = new FileFetchJob(urls, canEdit, FileFetchJob::UseRealtimeIndexing::Disabled, this);
         connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
         job->start();
 

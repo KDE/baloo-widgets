@@ -103,7 +103,7 @@ void FileMetaDataWidgetPrivate::deleteRows()
 
 QLabel *FileMetaDataWidgetPrivate::createLabel(const QString &key, const QString &itemLabel, FileMetaDataWidget *parent)
 {
-    QLabel *label = new QLabel(itemLabel + QLatin1Char(':'), parent);
+    auto label = new QLabel(itemLabel + QLatin1Char(':'), parent);
     label->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextSelectableByKeyboard);
     label->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
     label->setForegroundRole(parent->foregroundRole());
@@ -348,7 +348,7 @@ QSize FileMetaDataWidget::sizeHint() const
 
     const int width = d->m_gridLayout->margin() * 2 + leftWidthMax + d->m_gridLayout->spacing() + rightWidthMax;
 
-    return QSize(width, height);
+    return {width, height};
 }
 
 void FileMetaDataWidget::setConfigurationMode(ConfigurationMode mode)

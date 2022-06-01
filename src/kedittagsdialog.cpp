@@ -30,7 +30,7 @@ KEditTagsDialog::KEditTagsDialog(const QStringList &tags, QWidget *parent)
 {
     const QString captionText = (tags.count() > 0) ? i18nc("@title:window", "Edit Tags") : i18nc("@title:window", "Add Tags");
     setWindowTitle(captionText);
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
+    auto buttonBox = new QDialogButtonBox(this);
 
     buttonBox->addButton(i18n("Save"), QDialogButtonBox::AcceptRole);
     buttonBox->addButton(QDialogButtonBox::Cancel);
@@ -38,27 +38,27 @@ KEditTagsDialog::KEditTagsDialog(const QStringList &tags, QWidget *parent)
     connect(buttonBox, &QDialogButtonBox::accepted, this, &KEditTagsDialog::slotAcceptedButtonClicked);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
-    QVBoxLayout *topLayout = new QVBoxLayout;
+    auto topLayout = new QVBoxLayout;
     setLayout(topLayout);
 
-    QLabel *label = new QLabel(i18nc("@label:textbox",
-                                     "Configure which tags should "
-                                     "be applied."),
-                               this);
+    auto label = new QLabel(i18nc("@label:textbox",
+                                  "Configure which tags should "
+                                  "be applied."),
+                            this);
 
     m_tagTree = new QTreeWidget();
     m_tagTree->setSortingEnabled(true);
     m_tagTree->setSelectionMode(QAbstractItemView::NoSelection);
     m_tagTree->setHeaderHidden(true);
 
-    QLabel *newTagLabel = new QLabel(i18nc("@label", "Create new tag:"));
+    auto newTagLabel = new QLabel(i18nc("@label", "Create new tag:"));
     m_newTagEdit = new QLineEdit(this);
     m_newTagEdit->setClearButtonEnabled(true);
     m_newTagEdit->setFocus();
     connect(m_newTagEdit, &QLineEdit::textEdited, this, &KEditTagsDialog::slotTextEdited);
     connect(m_tagTree, &QTreeWidget::itemActivated, this, &KEditTagsDialog::slotItemActivated);
 
-    QHBoxLayout *newTagLayout = new QHBoxLayout();
+    auto newTagLayout = new QHBoxLayout();
     newTagLayout->addWidget(newTagLabel);
     newTagLayout->addWidget(m_newTagEdit, 1);
 
@@ -69,9 +69,9 @@ KEditTagsDialog::KEditTagsDialog(const QStringList &tags, QWidget *parent)
 
     resize(sizeHint());
 
-    Baloo::TagListJob *job = new Baloo::TagListJob();
+    auto job = new Baloo::TagListJob();
     connect(job, &Baloo::TagListJob::finished, [this](KJob *job) {
-        Baloo::TagListJob *tjob = static_cast<Baloo::TagListJob *>(job);
+        auto tjob = static_cast<Baloo::TagListJob *>(job);
         m_allTags = tjob->tags();
         loadTagWidget();
     });
@@ -79,9 +79,7 @@ KEditTagsDialog::KEditTagsDialog(const QStringList &tags, QWidget *parent)
     job->start();
 }
 
-KEditTagsDialog::~KEditTagsDialog()
-{
-}
+KEditTagsDialog::~KEditTagsDialog() = default;
 
 QStringList KEditTagsDialog::tags() const
 {
@@ -105,7 +103,7 @@ void KEditTagsDialog::slotItemActivated(const QTreeWidgetItem *item, int column)
 {
     Q_UNUSED(column)
 
-    const QString tag = qvariant_cast<QString>(item->data(0, Qt::UserRole));
+    const auto tag = qvariant_cast<QString>(item->data(0, Qt::UserRole));
     m_newTagEdit->setText(tag + QLatin1Char('/'));
     m_newTagEdit->setFocus();
 }

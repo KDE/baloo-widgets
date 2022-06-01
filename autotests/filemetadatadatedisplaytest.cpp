@@ -110,7 +110,7 @@ void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates()
     widget->setItems(KFileItemList() << file);
     QVERIFY(spy.wait());
 
-    QLabel *dateWidget = widget->findChild<QLabel *>(QStringLiteral("kfileitem#modified"), Qt::FindDirectChildrenOnly);
+    auto dateWidget = widget->findChild<QLabel *>(QStringLiteral("kfileitem#modified"), Qt::FindDirectChildrenOnly);
     QVERIFY2(dateWidget, "Date widget not found");
     QVERIFY2(regex.match(dateWidget->text()).hasMatch(), qPrintable(QStringLiteral("\"%1\" did not match %2").arg(dateWidget->text(), regex.pattern())));
 }

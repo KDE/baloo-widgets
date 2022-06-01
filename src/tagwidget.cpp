@@ -27,7 +27,7 @@ void TagWidgetPrivate::init(TagWidget *parent)
     m_showAllLinkLabel = nullptr;
     m_editTagsDialog = nullptr;
 
-    QGridLayout *mainLayout = new QGridLayout(q);
+    auto mainLayout = new QGridLayout(q);
     mainLayout->setContentsMargins(0, 0, 0, 0);
     // TODO spacingHint should be declared. Old code  m_flowLayout = new KBlockLayout( 0, KDialog::spacingHint()*3 );
     m_flowLayout = new KBlockLayout(0);
@@ -75,7 +75,7 @@ TagCheckBox *TagWidgetPrivate::getTagCheckBox(const QString &tag)
     QMap<QString, TagCheckBox *>::iterator it = m_checkBoxHash.find(tag);
     if (it == m_checkBoxHash.end()) {
         // kDebug() << "Creating checkbox for" << tag.genericLabel();
-        TagCheckBox *checkBox = new TagCheckBox(tag, q);
+        auto checkBox = new TagCheckBox(tag, q);
         q->connect(checkBox, SIGNAL(tagClicked(QString)), SIGNAL(tagClicked(QString)));
         m_checkBoxHash.insert(tag, checkBox);
         m_flowLayout->addWidget(checkBox);

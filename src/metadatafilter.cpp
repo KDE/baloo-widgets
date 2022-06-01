@@ -21,9 +21,7 @@ MetadataFilter::MetadataFilter(QObject *parent)
     initMetaInformationSettings();
 }
 
-MetadataFilter::~MetadataFilter()
-{
-}
+MetadataFilter::~MetadataFilter() = default;
 
 void MetadataFilter::initMetaInformationSettings()
 {

@@ -34,7 +34,7 @@ FileMetadataWidgetTest::FileMetadataWidgetTest(QWidget *parent, Qt::WindowFlags 
     m_button = new QPushButton(QLatin1String("Select files"), this);
     connect(m_button, SIGNAL(clicked(bool)), this, SLOT(slotChooseFiles()));
 
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    auto layout = new QVBoxLayout(this);
     layout->addWidget(m_button);
     layout->addWidget(m_metadataWidget);
 }

@@ -18,7 +18,7 @@ TagCheckBox::TagCheckBox(const QString &tag, QWidget *parent)
     : QWidget(parent)
     , m_tag(tag)
 {
-    QHBoxLayout *layout = new QHBoxLayout(this);
+    auto layout = new QHBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
 
     m_label = new QLabel(tag.split(QLatin1Char('/'), Qt::SkipEmptyParts).last(), this);
@@ -33,9 +33,7 @@ TagCheckBox::TagCheckBox(const QString &tag, QWidget *parent)
     layout->addWidget(m_child);
 }
 
-TagCheckBox::~TagCheckBox()
-{
-}
+TagCheckBox::~TagCheckBox() = default;
 
 void TagCheckBox::leaveEvent(QEvent *event)
 {
@@ -48,13 +46,13 @@ bool TagCheckBox::eventFilter(QObject *watched, QEvent *event)
     if (watched == m_child) {
         switch (event->type()) {
         case QEvent::MouseMove: {
-            QMouseEvent *me = static_cast<QMouseEvent *>(event);
+            auto me = static_cast<QMouseEvent *>(event);
             enableUrlHover(tagRect().contains(me->pos()));
             break;
         }
 
         case QEvent::MouseButtonRelease: {
-            QMouseEvent *me = static_cast<QMouseEvent *>(event);
+            auto me = static_cast<QMouseEvent *>(event);
             if (me->button() == Qt::LeftButton && tagRect().contains(me->pos())) {
                 Q_EMIT tagClicked(m_tag);
                 return true;

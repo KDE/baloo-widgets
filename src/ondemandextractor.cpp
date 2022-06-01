@@ -20,9 +20,7 @@ OnDemandExtractor::OnDemandExtractor(QObject *parent)
 {
 }
 
-OnDemandExtractor::~OnDemandExtractor()
-{
-}
+OnDemandExtractor::~OnDemandExtractor() = default;
 
 void OnDemandExtractor::process(const QString &filePath)
 {

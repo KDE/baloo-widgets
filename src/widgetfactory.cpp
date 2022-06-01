@@ -34,9 +34,7 @@ WidgetFactory::WidgetFactory(QObject *parent)
 {
 }
 
-WidgetFactory::~WidgetFactory()
-{
-}
+WidgetFactory::~WidgetFactory() = default;
 
 //
 // Widget Creation
@@ -140,7 +138,7 @@ QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value,
 
 QWidget *WidgetFactory::createTagWidget(const QStringList &tags, QWidget *parent)
 {
-    TagWidget *tagWidget = new TagWidget(parent);
+    auto tagWidget = new TagWidget(parent);
     tagWidget->setReadyOnly(m_readOnly);
     tagWidget->setSelectedTags(tags);
 
@@ -155,7 +153,7 @@ QWidget *WidgetFactory::createTagWidget(const QStringList &tags, QWidget *parent
 
 QWidget *WidgetFactory::createCommentWidget(const QString &comment, QWidget *parent)
 {
-    KCommentWidget *commentWidget = new KCommentWidget(parent);
+    auto commentWidget = new KCommentWidget(parent);
     commentWidget->setText(comment);
     commentWidget->setReadOnly(m_readOnly);
 
@@ -168,7 +166,7 @@ QWidget *WidgetFactory::createCommentWidget(const QString &comment, QWidget *par
 
 QWidget *WidgetFactory::createRatingWidget(int rating, QWidget *parent)
 {
-    KRatingWidget *ratingWidget = new KRatingWidget(parent);
+    auto ratingWidget = new KRatingWidget(parent);
     const Qt::Alignment align = (ratingWidget->layoutDirection() == Qt::LeftToRight) ? Qt::AlignLeft : Qt::AlignRight;
     ratingWidget->setAlignment(align);
     ratingWidget->setRating(rating);
@@ -210,7 +208,7 @@ QSize ValueWidget::sizeHint() const
 
 QLabel *WidgetFactory::createValueWidget(QWidget *parent)
 {
-    ValueWidget *valueWidget = new ValueWidget(parent);
+    auto valueWidget = new ValueWidget(parent);
     valueWidget->setTextInteractionFlags(Qt::TextSelectableByMouse);
     valueWidget->setTextFormat(Qt::PlainText);
     valueWidget->setWordWrap(true);

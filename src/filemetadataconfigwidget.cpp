@@ -55,7 +55,7 @@ FileMetaDataConfigWidgetPrivate::FileMetaDataConfigWidgetPrivate(FileMetaDataCon
     m_metaDataList->setSelectionMode(QAbstractItemView::NoSelection);
     m_metaDataList->setSortingEnabled(true);
 
-    QVBoxLayout *layout = new QVBoxLayout(q);
+    auto layout = new QVBoxLayout(q);
     layout->addWidget(m_metaDataList);
 
     m_provider = new FileMetaDataProvider(q);
@@ -98,7 +98,7 @@ void FileMetaDataConfigWidgetPrivate::addItem(const QString &key)
 
     const QString label = m_provider->label(key);
 
-    QListWidgetItem *item = new QListWidgetItem(label, m_metaDataList);
+    auto item = new QListWidgetItem(label, m_metaDataList);
     item->setData(Qt::UserRole, key);
     const bool show = settings.readEntry(key, true);
     item->setCheckState(show ? Qt::Checked : Qt::Unchecked);

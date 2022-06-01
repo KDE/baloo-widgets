@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     parser.addPositionalArgument(QStringLiteral("filename"), QStringLiteral("files"));
     parser.process(app);
 
-    Baloo::FileMetaDataWidget *widget = new Baloo::FileMetaDataWidget();
+    auto widget = new Baloo::FileMetaDataWidget();
 
     KFileItemList list;
     const auto args = parser.positionalArguments();
