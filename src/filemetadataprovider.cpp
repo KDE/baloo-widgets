@@ -471,8 +471,11 @@ QString FileMetaDataProvider::label(const QString &metaDataLabel) const
 
             // Have to construct a dummy URL for KProtocolInfo::extraFields...
             QUrl url;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             url.setScheme(protocol.toString());
-
+#else
+            url.setScheme(protocol);
+#endif
             const auto extraFields = KProtocolInfo::extraFields(url);
             auto field = extraFields.value(extraNumber);
             if (field.type != KProtocolInfo::ExtraField::Invalid) {
