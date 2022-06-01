@@ -305,7 +305,9 @@ void FileMetaDataProvider::insertCommonData(const QList<QVariantMap> &files)
     QList<QVariantMap> propertyList;
     for (const QVariantMap &fileData : files) {
         propertyList << fileData;
-        allProperties.unite(fileData.uniqueKeys().toSet());
+        auto uniqueValues = fileData.keys();
+        uniqueValues.erase(std::unique(uniqueValues.begin(), uniqueValues.end()), uniqueValues.end());
+        allProperties += QSet<QString>(uniqueValues.begin(), uniqueValues.end());
     }
 
     // Special handling for certain properties

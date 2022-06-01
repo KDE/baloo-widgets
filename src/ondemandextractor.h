@@ -25,7 +25,7 @@ public:
     void process(const QString &filePath);
 
     bool waitFinished();
-    KFileMetaData::PropertyMap properties() const;
+    KFileMetaData::PropertyMultiMap properties() const;
 
 Q_SIGNALS:
     void fileFinished(QProcess::ExitStatus exitStatus);
@@ -35,7 +35,7 @@ private Q_SLOTS:
 
 private:
     QProcess m_process;
-    KFileMetaData::PropertyMap m_properties;
+    KFileMetaData::PropertyMultiMap m_properties;
 };
 
 } // namespace Private

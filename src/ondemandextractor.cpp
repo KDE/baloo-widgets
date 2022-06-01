@@ -52,7 +52,7 @@ bool OnDemandExtractor::waitFinished()
     return m_process.waitForFinished();
 }
 
-KFileMetaData::PropertyMap OnDemandExtractor::properties() const
+KFileMetaData::PropertyMultiMap OnDemandExtractor::properties() const
 {
     return m_properties;
 }

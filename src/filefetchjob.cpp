@@ -33,7 +33,7 @@ void FileFetchJob::doStart()
 {
     for (const QString &filePath : std::as_const(m_urls)) {
         bool extractorRunning = false;
-        KFileMetaData::PropertyMap fileProperties;
+        KFileMetaData::PropertyMultiMap fileProperties;
 
         // UseRealtimeIndexing::Fallback: try DB first, then filesystem
         // UseRealtimeIndexing::Disabled: DB contents only
@@ -66,7 +66,7 @@ void FileFetchJob::doStart()
             fileProperties = m_extractor.properties();
             qCDebug(WIDGETS) << filePath << "  properties:" << fileProperties;
         }
-        prop.unite(Baloo::Private::toNamedVariantMap(fileProperties));
+        prop.insert(Baloo::Private::toNamedVariantMap(fileProperties));
 
         m_data << prop;
     }

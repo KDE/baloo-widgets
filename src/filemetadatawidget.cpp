@@ -231,7 +231,7 @@ QStringList FileMetaDataWidgetPrivate::sortedKeys(const QVariantMap &data) const
         QString key = m_provider->group(propName);
         key += m_provider->label(propName);
 
-        map.insertMulti(key, propName);
+        map.insert(key, propName);
         ++hashIt;
     }
 

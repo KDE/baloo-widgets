@@ -39,6 +39,9 @@ ecm_setup_version(PROJECT
                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/baloowidgets_version.h"
                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake")
 
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050F00)
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x060000)
+
 add_subdirectory(src)
 if (BUILD_TESTING)
   add_subdirectory(test)

@@ -25,7 +25,7 @@ QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData);
  * all its values are collected in a QVariantList that is
  * stored as a single entry.
  */
-QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMap &propMap);
+QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMultiMap &propMap);
 
 } // namespace Private
 } // namespace Baloo

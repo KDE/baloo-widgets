@@ -52,7 +52,7 @@ QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData)
     return properties;
 }
 
-QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMap &propMap)
+QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMultiMap &propMap)
 {
     QVariantMap map;
     if (propMap.isEmpty()) {
