@@ -2,3 +2,4 @@
 build*/
 .cmake/
 .clang-format
+CMakeLists.txt.user
