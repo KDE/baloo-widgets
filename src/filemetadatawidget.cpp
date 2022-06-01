@@ -56,11 +56,11 @@ public:
     void saveConfig();
 
     QList<Row> m_rows;
-    FileMetaDataProvider *m_provider;
-    QGridLayout *m_gridLayout;
+    FileMetaDataProvider *m_provider = nullptr;
+    QGridLayout *m_gridLayout = nullptr;
 
-    MetadataFilter *m_filter;
-    WidgetFactory *m_widgetFactory;
+    MetadataFilter *m_filter = nullptr;
+    WidgetFactory *m_widgetFactory = nullptr;
 
     QMap<QString, bool> m_visibilityChanged;
     bool m_configureVisibleProperties = false;
@@ -71,8 +71,6 @@ private:
 
 FileMetaDataWidgetPrivate::FileMetaDataWidgetPrivate(FileMetaDataWidget *parent)
     : m_rows()
-    , m_provider(nullptr)
-    , m_gridLayout(nullptr)
     , q(parent)
 {
     m_filter = new MetadataFilter(q);

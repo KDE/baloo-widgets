@@ -16,9 +16,7 @@ using namespace Baloo;
 
 TagCheckBox::TagCheckBox(const QString &tag, QWidget *parent)
     : QWidget(parent)
-    , m_label(nullptr)
     , m_tag(tag)
-    , m_urlHover(false)
 {
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);

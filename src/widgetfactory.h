@@ -64,7 +64,7 @@ private:
 
     KFileItemList m_items;
     QStringList m_prevTags;
-    bool m_readOnly;
+    bool m_readOnly = false;
     QLocale::FormatType m_dateFormat;
 };
 }

@@ -47,9 +47,9 @@ private Q_SLOTS:
     void slotLinkActivated(const QString &link);
 
 private:
-    bool m_readOnly;
-    QLabel *m_label;
-    QLabel *m_sizeHintHelper; // see comment in KCommentWidget::sizeHint()
+    bool m_readOnly = false;
+    QLabel *const m_label;
+    QLabel *const m_sizeHintHelper; // see comment in KCommentWidget::sizeHint()
     QString m_comment;
 };
 

@@ -52,8 +52,8 @@ private:
     QStringList m_allTags;
     QString m_newTag;
 
-    QTreeWidget *m_tagTree;
-    QLineEdit *m_newTagEdit;
+    QTreeWidget *m_tagTree = nullptr;
+    QLineEdit *m_newTagEdit = nullptr;
 };
 
 #endif

@@ -17,13 +17,12 @@
 
 KEditCommentDialog::KEditCommentDialog(QWidget *parent, const QString &commentText, const QString &captionText)
     : QDialog(parent)
+    , m_editor(new QTextEdit(this))
 {
     setWindowTitle(captionText);
 
-    QVBoxLayout *layout = new QVBoxLayout;
-    setLayout(layout);
+    QVBoxLayout *layout = new QVBoxLayout(this);
 
-    m_editor = new QTextEdit(this);
     m_editor->setText(commentText);
 
     layout->addWidget(m_editor);

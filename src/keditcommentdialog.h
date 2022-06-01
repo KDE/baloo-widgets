@@ -22,7 +22,7 @@ public:
     QString getCommentText() const;
 
 private:
-    QTextEdit *m_editor;
+    QTextEdit *const m_editor;
 };
 
 #endif

@@ -42,7 +42,7 @@ public:
 
     Qt::Alignment alignment;
 
-    KBlockLayout *q;
+    KBlockLayout *q = nullptr;
 };
 
 KBlockLayout::KBlockLayout(QWidget *parent, int margin, int hSpacing, int vSpacing)

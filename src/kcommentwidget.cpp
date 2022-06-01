@@ -20,17 +20,13 @@
 
 KCommentWidget::KCommentWidget(QWidget *parent)
     : QWidget(parent)
-    , m_readOnly(false)
-    , m_label(nullptr)
-    , m_sizeHintHelper(nullptr)
-    , m_comment()
+    , m_label(new QLabel(this))
+    , m_sizeHintHelper(new QLabel(this))
 {
-    m_label = new QLabel(this);
     m_label->setWordWrap(true);
     m_label->setAlignment(Qt::AlignTop);
     connect(m_label, &QLabel::linkActivated, this, &KCommentWidget::slotLinkActivated);
 
-    m_sizeHintHelper = new QLabel(this);
     m_sizeHintHelper->hide();
 
     QVBoxLayout *layout = new QVBoxLayout(this);

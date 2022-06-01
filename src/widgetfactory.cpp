@@ -30,7 +30,6 @@ using namespace Baloo;
 
 WidgetFactory::WidgetFactory(QObject *parent)
     : QObject(parent)
-    , m_readOnly(false)
     , m_dateFormat(QLocale::LongFormat)
 {
 }

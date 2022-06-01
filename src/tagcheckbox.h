@@ -41,11 +41,11 @@ private:
     void enableUrlHover(bool enabled);
 
     // two modes: checkbox and simple label
-    QLabel *m_label;
-    QWidget *m_child;
+    QLabel *m_label = nullptr;
+    QWidget *m_child = nullptr;
 
     QString m_tag;
-    bool m_urlHover;
+    bool m_urlHover = false;
 };
 }
 
