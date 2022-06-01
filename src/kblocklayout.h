@@ -52,6 +52,7 @@ public:
 
 private:
     int doLayout(const QRect &rect, bool testOnly) const;
+    int getMargin() const;
 
     class Private;
     Private *const d;

@@ -99,6 +99,7 @@ Q_SIGNALS:
     void metaDataRequestFinished(const KFileItemList &items);
 
 private:
+    int getMargin() const;
     friend class FileMetaDataWidgetPrivate;
     std::unique_ptr<FileMetaDataWidgetPrivate> const d;
 

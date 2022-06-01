@@ -150,6 +150,17 @@ void KBlockLayout::setGeometry(const QRect &rect)
     doLayout(rect, false);
 }
 
+int KBlockLayout::getMargin() const
+{
+    int left, top, right, bottom;
+    getContentsMargins(&left, &top, &right, &bottom);
+    if (left == top && top == right && right == bottom) {
+        return left;
+    } else {
+        return -1;
+    }
+}
+
 QSize KBlockLayout::sizeHint() const
 {
     // TODO: try to get the items into a square
@@ -163,7 +174,7 @@ QSize KBlockLayout::sizeHint() const
     }
 
     size.rwidth() += horizontalSpacing() * d->itemList.count();
-    size += QSize(2 * margin(), 2 * margin());
+    size += QSize(2 * getMargin(), 2 * getMargin());
     return size;
 }
 
@@ -174,7 +185,7 @@ QSize KBlockLayout::minimumSize() const
         size = size.expandedTo(item->minimumSize());
     }
 
-    size += QSize(2 * margin(), 2 * margin());
+    size += QSize(2 * getMargin(), 2 * getMargin());
     return size;
 }
 
