@@ -10,3 +10,6 @@ Dependencies:
     'frameworks/ki18n': '@stable'
     'frameworks/kfilemetadata': '@stable'
     'frameworks/baloo': '@stable'
+
+Options:
+    require-passing-tests-on: [ 'Linux', 'FreeBSD' ]
