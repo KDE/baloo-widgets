@@ -68,6 +68,7 @@ target_link_libraries(KF5BalooWidgets
   KF5::Baloo
   KF5::CoreAddons
   KF5::ConfigGui
+  KF5::Service
 )
 
 target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets>")

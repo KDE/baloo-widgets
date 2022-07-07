@@ -21,6 +21,7 @@
 #include <QTime>
 #include <QUrl>
 
+#include <KApplicationTrader>
 #include <KFormat>
 #include <KJob>
 #include <KLocalizedString>
@@ -102,6 +103,29 @@ QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value,
             return coll.compare(s1, s2) < 0;
         });
         widget = createTagWidget(tags, parent);
+    } else if (prop == QLatin1String("gpsLocation")) {
+        const auto pair = value.value<QPair<float, float>>();
+        const auto latitude = pair.first;
+        const auto longitude = pair.second;
+
+        const QString geoUri = QStringLiteral("geo:%1,%2").arg(latitude).arg(longitude);
+
+        const QString latitudeStr = latitude < 0 ? i18nc("Latitude (South)", "%1°S", -latitude) : i18nc("Latitude (North)", "%1°N", latitude);
+        const QString longitudeStr = longitude < 0 ? i18nc("Longitude (West)", "%1°W", -longitude) : i18nc("Longitude (East)", "%1°E", longitude);
+        const QString gpsLocationStr = latitudeStr + QLatin1Char(' ') + longitudeStr;
+
+        QLabel *valueWidget = createValueWidget(parent);
+
+        if (const auto geoService = KApplicationTrader::preferredService(QStringLiteral("x-scheme-handler/geo"))) {
+            valueWidget->setTextFormat(Qt::RichText);
+            valueWidget->setTextInteractionFlags(Qt::TextBrowserInteraction);
+            valueWidget->setText(QStringLiteral("<a href='%1'>%2</a>").arg(geoUri, gpsLocationStr));
+            valueWidget->setToolTip(i18nc("@info:tooltip Show location in map viewer", "Show location in %1", geoService->name()));
+        } else {
+            valueWidget->setText(gpsLocationStr);
+        }
+
+        widget = valueWidget;
     } else {
         QString valueString;
         QLabel *valueWidget = createValueWidget(parent);

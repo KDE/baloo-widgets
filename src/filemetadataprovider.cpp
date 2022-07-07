@@ -16,6 +16,7 @@
 #include <KShell>
 
 #include <QDebug>
+#include <QPair>
 #include <QTimer>
 
 // Required includes for subDirectoriesCount():
@@ -132,6 +133,15 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
         const auto height = m_data.value(QStringLiteral("height"));
         if ((width.type() == QVariant::Double || width.type() == QVariant::Int) && (height.type() == QVariant::Double || height.type() == QVariant::Int)) {
             m_data.insert(QStringLiteral("dimensions"), i18nc("width × height", "%1 × %2", width.toInt(), height.toInt()));
+        }
+
+        bool okLatitude;
+        const auto gpsLatitude = m_data.value(QStringLiteral("photoGpsLatitude")).toFloat(&okLatitude);
+        bool okLongitude;
+        const auto gpsLongitude = m_data.value(QStringLiteral("photoGpsLongitude")).toFloat(&okLongitude);
+
+        if (okLatitude && okLongitude) {
+            m_data.insert(QStringLiteral("gpsLocation"), QVariant::fromValue(QPair<float, float>(gpsLatitude, gpsLongitude)));
         }
     }
     m_readOnly = !fetchJob->canEditAll();
@@ -454,6 +464,7 @@ QString FileMetaDataProvider::label(const QString &metaDataLabel) const
         {QStringLiteral("userComment"), i18nc("@label", "Comment")},
         {QStringLiteral("originUrl"), i18nc("@label", "Downloaded From")},
         {QStringLiteral("dimensions"), i18nc("@label", "Dimensions")},
+        {QStringLiteral("gpsLocation"), i18nc("@label", "GPS Location")},
     };
 
     QString value = hash.value(metaDataLabel);
@@ -525,11 +536,12 @@ QString FileMetaDataProvider::group(const QString &label) const
         {QStringLiteral("photoFocalLengthIn35mmFilm"), QStringLiteral("2ImageH")},
         {QStringLiteral("photoFlash"), QStringLiteral("2ImageI")},
         {QStringLiteral("imageOrientation"), QStringLiteral("2ImageJ")},
-        {QStringLiteral("photoGpsLatitude"), QStringLiteral("2ImageK")},
-        {QStringLiteral("photoGpsLongitude"), QStringLiteral("2ImageL")},
-        {QStringLiteral("photoGpsAltitude"), QStringLiteral("2ImageM")},
-        {QStringLiteral("manufacturer"), QStringLiteral("2ImageN")},
-        {QStringLiteral("model"), QStringLiteral("2ImageO")},
+        {QStringLiteral("photoGpsLocation"), QStringLiteral("2ImageK")},
+        {QStringLiteral("photoGpsLatitude"), QStringLiteral("2ImageL")},
+        {QStringLiteral("photoGpsLongitude"), QStringLiteral("2ImageM")},
+        {QStringLiteral("photoGpsAltitude"), QStringLiteral("2ImageN")},
+        {QStringLiteral("manufacturer"), QStringLiteral("2ImageO")},
+        {QStringLiteral("model"), QStringLiteral("2ImageP")},
 
         // Media Data
         {QStringLiteral("title"), QStringLiteral("3MediaA")},

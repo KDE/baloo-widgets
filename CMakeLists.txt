@@ -31,7 +31,7 @@ include(ECMQtDeclareLoggingCategory)
 include(CMakePackageConfigHelpers)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Widgets Test)
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Config KIO I18n FileMetaData Baloo)
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Config KIO I18n FileMetaData Baloo Service)
 
 ecm_setup_version(PROJECT
                   VARIABLE_PREFIX BALOO_WIDGETS

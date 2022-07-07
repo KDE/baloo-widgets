@@ -25,7 +25,7 @@ MetadataFilter::~MetadataFilter() = default;
 
 void MetadataFilter::initMetaInformationSettings()
 {
-    const int currentVersion = 12; // increase version, if the blacklist of disabled
+    const int currentVersion = 13; // increase version, if the blacklist of disabled
     // properties should be updated
 
     KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
@@ -66,6 +66,8 @@ void MetadataFilter::initMetaInformationSettings()
             "photoSaturation",
             "photoPixelXDimension",
             "photoPixelYDimension",
+            "photoGpsLongitude",
+            "photoGpsLatitude",
         };
 
         for (const auto property : disabledProperties) {
