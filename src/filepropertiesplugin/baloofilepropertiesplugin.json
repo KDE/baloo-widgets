@@ -71,10 +71,7 @@
         "Name[tr]": "Dosya Üst Verisi Özellikleri Sayfası",
         "Name[uk]": "Сторінка властивостей і метаданих файла",
         "Name[x-test]": "xxFile Meta Data Properties Pagexx",
-        "Name[zh_CN]": "文件元数据属性页",
-        "ServiceTypes": [
-            "KPropertiesDialog/Plugin"
-        ]
+        "Name[zh_CN]": "文件元数据属性页"
     },
     "MimeType": "inode/directory;application/octet-stream",
     "X-KDE-Protocol": "file"
