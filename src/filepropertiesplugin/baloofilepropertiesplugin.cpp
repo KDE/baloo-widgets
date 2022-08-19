@@ -10,7 +10,13 @@
 #include <QScrollArea>
 #include <QVBoxLayout>
 
+#include <kio_version.h>
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 98, 0)
+#include <KIO/JobUiDelegateFactory>
+#else
 #include <KIO/JobUiDelegate>
+#endif
+
 #include <KIO/OpenUrlJob>
 #include <KLocalizedString>
 #include <KPluginFactory>
@@ -34,7 +40,11 @@ BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QLis
     metaDataWidget->setItems(properties->items());
     connect(metaDataWidget, &Baloo::FileMetaDataWidget::urlActivated, this, [this](const QUrl &url) {
         auto job = new KIO::OpenUrlJob(url);
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 98, 0)
+        job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, properties));
+#else
         job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, properties));
+#endif
         job->start();
     });
 
