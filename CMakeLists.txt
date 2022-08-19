@@ -40,8 +40,9 @@ ecm_setup_version(PROJECT
                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake")
 
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050F00)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x060000)
-
+# Bump manually after building with the latest KF released version
+# and porting all deprecated code
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x056100) # 5.97.0
 add_subdirectory(src)
 if (BUILD_TESTING)
   add_subdirectory(test)
