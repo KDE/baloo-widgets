@@ -16,18 +16,12 @@
 #include <KConfig>
 #include <KConfigGroup>
 
-#include <KFileMetaData/UserMetaData>
-
 #include <QCheckBox>
-#include <QDebug>
-#include <QFileInfo>
 #include <QGridLayout>
 #include <QLabel>
 #include <QList>
-#include <QSet>
 #include <QSpacerItem>
 #include <QString>
-#include <QTimer>
 
 using namespace Baloo;
 

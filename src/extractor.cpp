@@ -9,7 +9,6 @@
 #include <QCommandLineParser>
 #include <QCoreApplication>
 #include <QDataStream>
-#include <QDebug>
 #include <QFile>
 #include <QMimeDatabase>
 

@@ -11,10 +11,8 @@
 #include "tagcheckbox.h"
 #include "tagwidget_p.h"
 
-#include <KJob>
 #include <KLocalizedString>
 
-#include <QBoxLayout>
 #include <QLabel>
 #include <QPushButton>
 

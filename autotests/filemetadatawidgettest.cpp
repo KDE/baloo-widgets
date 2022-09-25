@@ -8,9 +8,6 @@
 
 #include <QDebug>
 #include <QLabel>
-#include <QMap>
-#include <QMetaType>
-#include <QObject>
 #include <QProcess>
 #include <QSignalSpy>
 #include <QStandardPaths>

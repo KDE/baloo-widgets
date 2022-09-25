@@ -6,12 +6,6 @@
 
 #include "filemetadataitemcounttest.h"
 
-#include <QDebug>
-#include <QLabel>
-#include <QMap>
-#include <QMetaType>
-#include <QObject>
-#include <QProcess>
 #include <QSignalSpy>
 #include <QStandardPaths>
 #include <QTest>
@@ -19,7 +13,6 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KFileItem>
-#include <KRatingWidget>
 
 QTEST_MAIN(FileMetadataItemCountTest)
 

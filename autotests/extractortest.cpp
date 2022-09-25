@@ -7,17 +7,11 @@
 #include "extractortest.h"
 #include <extractorutil_p.h>
 
-#include <KFileMetaData/Properties>
-
 #include <QDataStream>
 #include <QDebug>
-#include <QDir>
 #include <QProcess>
 #include <QStandardPaths>
-#include <QTemporaryDir>
-#include <QTemporaryFile>
 #include <QTest>
-#include <QTextStream>
 
 void ExtractorTest::test()
 {

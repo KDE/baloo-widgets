@@ -10,15 +10,12 @@
 
 #include <KLocalizedString>
 
-#include <QDebug>
 #include <QDialogButtonBox>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QTimer>
 #include <QTreeWidget>
-#include <QUrl>
 #include <QVBoxLayout>
 #include <QWidget>
 

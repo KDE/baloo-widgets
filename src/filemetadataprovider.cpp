@@ -15,9 +15,7 @@
 #include <KProtocolInfo>
 #include <KShell>
 
-#include <QDebug>
 #include <QPair>
-#include <QTimer>
 
 // Required includes for subDirectoriesCount():
 #ifdef Q_OS_WIN

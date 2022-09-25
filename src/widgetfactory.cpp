@@ -23,7 +23,6 @@
 
 #include <KApplicationTrader>
 #include <KFormat>
-#include <KJob>
 #include <KLocalizedString>
 #include <KStringHandler>
 

@@ -15,7 +15,6 @@
 #include <QEvent>
 #include <QLabel>
 #include <QPointer>
-#include <QTextEdit>
 #include <QVBoxLayout>
 
 KCommentWidget::KCommentWidget(QWidget *parent)

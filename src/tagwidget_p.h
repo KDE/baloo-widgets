@@ -9,7 +9,6 @@
 
 #include "tagwidget.h"
 
-#include <QList>
 #include <QMap>
 
 class QLabel;

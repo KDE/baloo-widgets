@@ -11,8 +11,6 @@
 
 #include <QDateTime>
 #include <QLabel>
-#include <QMetaType>
-#include <QObject>
 #include <QRegularExpression>
 #include <QScopedPointer>
 #include <QSignalSpy>
