@@ -1,0 +1,835 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Sergiu Bivol <sergiu@cip.md>, 2012, 2020, 2021, 2022.
+# Ovidiu-Florin Bogdan <ovidiu.b13@gmail.com>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2022-02-05 19:39+0000\n"
+"Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Lokalize 21.12.2\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 element"
+msgstr[1] "%1 elemente"
+msgstr[2] "%1 de elemente"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Comentariu"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "Creat"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "Accesat"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Modificat"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Proprietar"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "Grup"
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "Permisiuni"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Evaluare"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Dimensiune"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Marcaje"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Dimensiune totală"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "Elemente ascunse"
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Tip"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "Legătură la"
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "Descărcat de la"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr "Dimensiuni"
+
+#: src/filemetadataprovider.cpp:465
+#, fuzzy, kde-format
+#| msgctxt "@label file URL"
+#| msgid "Location"
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "Amplasare"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "&Detalii"
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "Adaugă..."
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "Modifică..."
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "Modifică comentariul"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Adaugă comentariu"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "Salvează"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Modifică marcajele"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Adaugă marcaje"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Configurează ce etichete ar trebui aplicate."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Creează marcaj nou:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "Atribuie marcaje"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "Creează nou..."
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "Marcaj nou"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "Marcaj nou:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", "
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr ""
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr ""
+
+#~ msgctxt "unknown file size"
+#~ msgid "Unknown"
+#~ msgstr "Necunoscut"
+
+#~ msgctxt "@label bitrate (per second)"
+#~ msgid "%1/s"
+#~ msgstr "%1/s"
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "Modificare..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "Schimbă comentariul"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "Modifică etichete"
+
+#~ msgctxt ""
+#~ "This is added to the query builder widget when a proposal containing a "
+#~ "placeholder is selected"
+#~ msgid "[something]"
+#~ msgstr "[ceva]"
+
+#~ msgctxt "Pattern placeholder having no specific type"
+#~ msgid "[something]"
+#~ msgstr "[ceva]"
+
+#~ msgctxt "Pattern placeholder of date-time type"
+#~ msgid "[date and time]"
+#~ msgstr "[dată și timp]"
+
+#~ msgctxt "Pattern placeholder for a tag name"
+#~ msgid "[tag name]"
+#~ msgstr "[numele etichetei]"
+
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "[contact]"
+
+#~ msgctxt "Pattern placeholder for an e-mail address"
+#~ msgid "[email address]"
+#~ msgstr "[adresa de email]"
+
+#~ msgctxt "Pattern placeholder for a standard property name"
+#~ msgid "[property]"
+#~ msgstr "[proprietate]"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "Adaugă comentariu..."
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Description"
+#~ msgid "Comment or description"
+#~ msgstr "Descriere"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Size"
+#~ msgid "Size"
+#~ msgstr "Dimensiune"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "Ieri"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgid "Yesterday"
+#~ msgstr "Ieri"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "Azi"
+
+#~ msgid "Today"
+#~ msgstr "Azi"
+
+#, fuzzy
+#~| msgid "Anytime"
+#~ msgid "A time"
+#~ msgstr "Oricând"
+
+#~ msgid "After"
+#~ msgstr "După"
+
+#~ msgid "Before"
+#~ msgstr "Înainte de"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Content"
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "Conținut"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "Dimensiune"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "Depinde de"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "Generator"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasPart"
+#~ msgid "Has Part"
+#~ msgstr "Are componentă"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasLogicalPart"
+#~ msgid "Has Logical Part"
+#~ msgstr "Are componentă logică"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "Parte din"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "Cuvânt-cheie"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "Modificat"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "Tip MIME"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "Legat de"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "Subiect"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "Titlu"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "Creator"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "Rată de biți medie"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "Canale"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "Caractere"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "Codec"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "Adâncime de culoare"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "Durată"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "Denumire fișier"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "Hash"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "Înălțime"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "Regim de întrețesere"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "Linii"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "Limbaj de programare"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "Rată de eșantionare"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "Lățime"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "Cuvinte"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "Diafragmă"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Bias Value"
+#~ msgstr "Valoarea coeficientului de expunere"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "Timp de expunere"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "Bliț"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "Distanță focală"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "Distanță focală 35mm"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "Viteze ISO"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "Producător"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "Regim de măsurare"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "Model"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "Orientare"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "Balanță de alb"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "Regizor"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "Gen"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "Album"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Sample Rate"
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "Rată de eșantionare"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "Data lansării"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "Pistă"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "Resursă creată"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "Sub-resursă"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "Resursă modificată"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "Evaluare numerică"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "Prima utilizare"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "Ultima utilizare"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "Număr de utilizări"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "Grup de fișier Unix"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "Regim de fișier Unix"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "Proprietar de fișier Unix"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "Tip"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "Traduceri aproximative"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "Ultimul traducător"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "Traduceri învechite"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "Data sursei traducerii"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "Traduceri totale"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "Traduse"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "Ora traducerii"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "Netraduse"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "Șterge marcajul"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr ""
+#~ "Stergeți într-adevăr marcajul <resource>%1</resource> pentru toate "
+#~ "fișierele?"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "Șterge marcajul"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Șterge"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Renunță"
+
+#~ msgctxt "@label"
+#~ msgid "Performer"
+#~ msgstr "Interpret"
+
+#~ msgctxt "@label"
+#~ msgid "Show all tags..."
+#~ msgstr "Arată toate marcajele..."
+
+#~ msgctxt ""
+#~ "@title KCategorizedSortFilterProxyModel grouping for all Nepomukj "
+#~ "resources that are of type rdfs:Resource"
+#~ msgid "Miscellaneous"
+#~ msgstr "Diverse"
+
+#~ msgctxt "@title:column The Nepomuk resource label and icon"
+#~ msgid "Resource"
+#~ msgstr "Resursă"
+
+#~ msgctxt "@title:column The Nepomuk resource's RDF type"
+#~ msgid "Resource Type"
+#~ msgstr "Tip de resursă"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Anytime"
+#~ msgstr "Oricând"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Today"
+#~ msgstr "Azi"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Week"
+#~ msgstr "Săptămâna aceasta"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Week"
+#~ msgstr "Săptămâna trecută"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Month"
+#~ msgstr "Luna aceasta"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Month"
+#~ msgstr "Luna trecută"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Year"
+#~ msgstr "În acest an"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Year"
+#~ msgstr "Anul trecut"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources that will open a dialog to choose a date range"
+#~ msgid "Custom..."
+#~ msgstr "Personalizat..."
+
+#~ msgid "This Week"
+#~ msgstr "Săptămâna aceasta"
+
+#~ msgid "This Month"
+#~ msgstr "Luna aceasta"
+
+#~ msgctxt ""
+#~ "@option:check An item in a list of resources that allows to query for "
+#~ "more resources to put in the list"
+#~ msgid "More..."
+#~ msgstr "Mai multe..."
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Documents"
+#~ msgstr "Documente"
+
+#~ msgctxt "@option:check A filter on file type - audio files"
+#~ msgid "Audio"
+#~ msgstr "Audio"
+
+#~ msgctxt "@option:check A filter on file type - media video"
+#~ msgid "Video"
+#~ msgstr "Video"
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Images"
+#~ msgstr "Imagini"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "No priority"
+#~ msgstr "Fără prioritate"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Last modified"
+#~ msgstr "Ultima modificare"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Most important"
+#~ msgstr "Cel mai important"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Never opened"
+#~ msgstr "Niciodată deschis"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Any Rating"
+#~ msgstr "Orice evaluare"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "1 or more"
+#~ msgstr "1 sau mai multe"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "2 or more"
+#~ msgstr "2 sau mai multe"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "3 or more"
+#~ msgstr "3 sau mai multe"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "4 or more"
+#~ msgstr "4 sau mai multe"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Max Rating"
+#~ msgstr "Evaluare maximă"
+
+#~ msgid "Enter Search Terms..."
+#~ msgstr "Introduceți termenii de căutat..."
+
+#~ msgid "Search"
+#~ msgstr "Caută"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Emails"
+#~ msgstr "Adrese de poștă electronică"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tasks"
+#~ msgstr "Sarcini"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tags"
+#~ msgstr "Marcaje"
+
+#~ msgctxt "@option:check Do filter on type - show only files"
+#~ msgid "Files"
+#~ msgstr "Fișiere"
+
+#~ msgctxt "@option:check Do filter on type - show everything but files"
+#~ msgid "Other"
+#~ msgstr "Altele"

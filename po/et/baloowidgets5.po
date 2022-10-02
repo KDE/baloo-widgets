@@ -1,0 +1,836 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Marek Laane <bald@smail.ee>, 2012, 2014, 2016, 2019, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2020-01-13 11:02+0200\n"
+"Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
+"Language-Team: Estonian <kde-et@lists.linux.ee>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 19.08.1\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "1 element"
+msgstr[1] "%1 elementi"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Kommentaar"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "Loodud"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "Vaadatud"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Muudetud"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Omanik"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "Grupp"
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "Õigused"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Hinnang"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Suurus"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Sildid"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Kogusuurus"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "Varjatud elemendid"
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Tüüp"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "Viit asukohale"
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "Alla laaditud asukohast"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:465
+#, fuzzy, kde-format
+#| msgctxt "@label file URL"
+#| msgid "Location"
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "Asukoht"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "Ü&ksikasjad"
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "Lisa ..."
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "Muuda ..."
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "Kommentaari muutmine"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Kommentaari lisamine"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "Salvesta"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Siltide muutmine"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Siltide lisamine"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Määramine, milliseid silte rakendada."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Uus silt:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "Omista silte"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "Loo uus ..."
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "Uus silt"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "Uus silt:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", "
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr ""
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr ""
+
+#~ msgctxt "unknown file size"
+#~ msgid "Unknown"
+#~ msgstr "Tundmatu"
+
+#~ msgctxt "@label bitrate (per second)"
+#~ msgid "%1/s"
+#~ msgstr "%1/s"
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "Muuda..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "Kommentaari muutmine"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "Siltide muutmine"
+
+#~ msgctxt ""
+#~ "This is added to the query builder widget when a proposal containing a "
+#~ "placeholder is selected"
+#~ msgid "[something]"
+#~ msgstr "[miski]"
+
+#~ msgctxt "Pattern placeholder having no specific type"
+#~ msgid "[something]"
+#~ msgstr "[miski]"
+
+#~ msgctxt "Pattern placeholder of date-time type"
+#~ msgid "[date and time]"
+#~ msgstr "[kuupäev ja kellaaeg]"
+
+#~ msgctxt "Pattern placeholder for a tag name"
+#~ msgid "[tag name]"
+#~ msgstr "[sildi nimi]"
+
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "[kontakt]"
+
+#~ msgctxt "Pattern placeholder for an e-mail address"
+#~ msgid "[email address]"
+#~ msgstr "[e-posti aadress]"
+
+#~ msgctxt "Pattern placeholder for a standard property name"
+#~ msgid "[property]"
+#~ msgstr "[omadus]"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "Lisa kommentaar..."
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Description"
+#~ msgid "Comment or description"
+#~ msgstr "Kirjeldus"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Size"
+#~ msgid "Size"
+#~ msgstr "Suurus"
+
+#, fuzzy
+#~| msgctxt "Pattern placeholder for a tag name"
+#~| msgid "[tag name]"
+#~ msgid "Tag name"
+#~ msgstr "[sildi nimi]"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "Eile"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgid "Yesterday"
+#~ msgstr "Eile"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "Täna"
+
+#~ msgid "Today"
+#~ msgstr "Täna"
+
+#, fuzzy
+#~| msgid "Anytime"
+#~ msgid "A time"
+#~ msgstr "Suvaline aeg"
+
+#~ msgid "After"
+#~ msgstr "Pärast"
+
+#~ msgid "Before"
+#~ msgstr "Enne"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Content"
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "Sisu"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "Suurus"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "Sõltub"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "Genereerija"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasPart"
+#~ msgid "Has Part"
+#~ msgstr "Osaga"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasLogicalPart"
+#~ msgid "Has Logical Part"
+#~ msgstr "Loogilise osaga"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "Kuulub kataloogi"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "Võtmesõna"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "Muudetud"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "MIME tüüp"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "Seotud"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "Teema"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "Pealkiri"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "Looja"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "Keskmine bitikiirus"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "Kanalid"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "Märgid"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "Koodek"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "Värvisügavus"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "Kestus"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "Failinimi"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "Räsi"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "Kõrgus"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "Realaotuse režiim"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "Read"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "Programmeerimiskeel"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "Diskreetimissagedus"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "Laius"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "Sõnad"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "Ava"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Bias Value"
+#~ msgstr "Särinihke väärtus"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "Säriaeg"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "Välklamp"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "Fookuskaugus"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "Fookuskaugus (35 mm)"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "ISO kiirus"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "Valmistaja:"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "Mõõterežiim"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "Mudel"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "Orientatsioon"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "Värvustasakaal"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "Režissöör"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "Žanr"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "Album"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Sample Rate"
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "Diskreetimissagedus"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "Väljalaskeaeg"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "Rada"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "Ressursi loomise aeg"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "Alamressurss"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "Ressursi muutmise aeg"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "Hinnang"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "Esmakordne kasutamine"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "Viimane kasutamine"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "Kasutamiskordade arv"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "UNIX-i failigrupp"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "UNIX-i failirežiim"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "UNIX-i failiomanik"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "Tüüp"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "Lõpetamata tõlked"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "Viimane tõlkija"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "Iganenud tõlked"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "Tõlkefaili allika kuupäev"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "Tõlkeid kokku"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "Tõlgitud"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "Tõlkimise kuupäev"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "Tõlkimata"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "Sildi kustutamine"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr "Kas tõesti kustutada kõigil failidel silt <resource>%1</resource>?"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "Sildi kustutamine"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Kustuta"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Loobu"
+
+#~ msgctxt "@label"
+#~ msgid "Performer"
+#~ msgstr "Esitaja"
+
+#~ msgctxt "@label"
+#~ msgid "Show all tags..."
+#~ msgstr "Näita kõiki silte..."
+
+#~ msgctxt ""
+#~ "@title KCategorizedSortFilterProxyModel grouping for all Nepomukj "
+#~ "resources that are of type rdfs:Resource"
+#~ msgid "Miscellaneous"
+#~ msgstr "Muu"
+
+#~ msgctxt "@title:column The Nepomuk resource label and icon"
+#~ msgid "Resource"
+#~ msgstr "Ressurss"
+
+#~ msgctxt "@title:column The Nepomuk resource's RDF type"
+#~ msgid "Resource Type"
+#~ msgstr "Ressursi tüüp"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Anytime"
+#~ msgstr "Suvaline aeg"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Today"
+#~ msgstr "Täna"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Week"
+#~ msgstr "See nädal"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Week"
+#~ msgstr "Viimane nädal"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Month"
+#~ msgstr "See kuu"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Month"
+#~ msgstr "Viimane kuu"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Year"
+#~ msgstr "See aasta"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Year"
+#~ msgstr "Viimane aasta"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources that will open a dialog to choose a date range"
+#~ msgid "Custom..."
+#~ msgstr "Kohandatud..."
+
+#~ msgid "This Week"
+#~ msgstr "See nädal"
+
+#~ msgid "This Month"
+#~ msgstr "See kuu"
+
+#~ msgctxt ""
+#~ "@option:check An item in a list of resources that allows to query for "
+#~ "more resources to put in the list"
+#~ msgid "More..."
+#~ msgstr "Rohkem..."
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Documents"
+#~ msgstr "Dokumendid"
+
+#~ msgctxt "@option:check A filter on file type - audio files"
+#~ msgid "Audio"
+#~ msgstr "Heli"
+
+#~ msgctxt "@option:check A filter on file type - media video"
+#~ msgid "Video"
+#~ msgstr "Video"
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Images"
+#~ msgstr "Pildid"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "No priority"
+#~ msgstr "Prioriteet puudub"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Last modified"
+#~ msgstr "Viimati muudetud"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Most important"
+#~ msgstr "Kõige tähtsamad"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Never opened"
+#~ msgstr "Mitte kunagi avatud"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Any Rating"
+#~ msgstr "Suvaline hinnang"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "1 or more"
+#~ msgstr "1 või rohkem"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "2 or more"
+#~ msgstr "2 või rohkem"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "3 or more"
+#~ msgstr "3 või rohkem"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "4 or more"
+#~ msgstr "4 või rohkem"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Max Rating"
+#~ msgstr "Maksimumhinnang"
+
+#~ msgid "Enter Search Terms..."
+#~ msgstr "Kirjuta siia otsingumõiste"
+
+#~ msgid "Search"
+#~ msgstr "Otsing"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Emails"
+#~ msgstr "E-kirjad"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tasks"
+#~ msgstr "Ülesanded"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tags"
+#~ msgstr "Sildid"
+
+#~ msgctxt "@option:check Do filter on type - show only files"
+#~ msgid "Files"
+#~ msgstr "Failid"
+
+#~ msgctxt "@option:check Do filter on type - show everything but files"
+#~ msgid "Other"
+#~ msgstr "Muu"

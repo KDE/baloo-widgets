@@ -1,0 +1,219 @@
+# Translation of baloowidgets5.po into Serbian.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2012, 2013, 2014, 2015, 2016, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: baloowidgets5\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-05-31 18:04+0200\n"
+"PO-Revision-Date: 2017-09-09 22:51+0200\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+
+#: src/filemetadataprovider.cpp:163 src/filemetadataprovider.cpp:169
+#: src/filemetadataprovider.cpp:239 src/filemetadataprovider.cpp:242
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/filemetadataprovider.cpp:417 src/filemetadataprovider.cpp:433
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:418
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgctxt "@label"
+msgid "Created"
+msgstr "Направи нову ознаку:"
+
+#: src/filemetadataprovider.cpp:419
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:420
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:421
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:422
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:423
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:424 src/filemetadataprovider.cpp:432
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:425
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:426 src/filemetadataprovider.cpp:431
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:427
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:428
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:429
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:430
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:434
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr ""
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:67
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr ""
+
+#: src/kcommentwidget.cpp:67 src/tagwidget.cpp:85
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr ""
+
+#: src/kcommentwidget.cpp:73 src/tagwidget.cpp:85
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr ""
+
+#: src/kcommentwidget.cpp:119
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr ""
+
+#: src/kcommentwidget.cpp:120
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr ""
+
+#: src/keditcommentdialog.cpp:45 src/kedittagsdialog.cpp:52
+#, kde-format
+msgid "Save"
+msgstr ""
+
+#: src/kedittagsdialog.cpp:47
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Додавање ознака"
+
+#: src/kedittagsdialog.cpp:48
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Додавање ознака"
+
+#: src/kedittagsdialog.cpp:62
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr ""
+
+#: src/kedittagsdialog.cpp:70
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Направи нову ознаку:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:44
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgid "Assign Tags"
+msgstr "Додавање ознака"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:79
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgid "Create New..."
+msgstr "Направи нову ознаку:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:83
+#, kde-format
+msgid "New tag"
+msgstr ""
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:83
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgid "New tag:"
+msgstr "Направи нову ознаку:"
+
+#: src/widgetfactory.cpp:85 src/widgetfactory.cpp:95
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ""

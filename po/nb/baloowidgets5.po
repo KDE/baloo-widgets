@@ -1,0 +1,258 @@
+# Translation of baloowidgets5 to Norwegian Bokmål
+#
+# Bjørn Steensrud <bjornst@skogkatt.homelinux.org>, 2012, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2014-09-19 20:28+0200\n"
+"Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
+"Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 element"
+msgstr[1] "%1 elementer"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Kommentar"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Endret"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Eier"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "Rettigheter"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Karakter"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Størrelse"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Tagger"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Total størrelse"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Type"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:465
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr ""
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr ""
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr ""
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr ""
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr ""
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Legg til kommentar"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "Lagre"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr ""
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Legg til etiketter"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Sett opp hvilke etiketter som skal brukes."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Opprett ny etikett:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr ""
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr ""
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr ""
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr ""
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr ""
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr ""

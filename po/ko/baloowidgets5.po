@@ -1,0 +1,844 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Shinjo Park <kde@peremen.name>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
+# Minori Hiraoka <minori@mnetwork.co.kr>, 2018.
+# JungHee Lee <daemul72@gmail.com>, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2022-08-09 13:40+0200\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 21.12.3\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "항목 %1개"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "설명"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "생성됨"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "접근함"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "수정됨"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "소유자"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "그룹"
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "권한"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "별점"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "크기"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "태그"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "총 크기"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "숨겨진 항목"
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "종류"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "링크 대상"
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr "가리키는 곳"
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "다운로드한 위치"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr "크기"
+
+#: src/filemetadataprovider.cpp:465
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "GPS 위치"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "자세히(&D)"
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "추가..."
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "편집..."
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "설명 편집"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "설명 추가"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "저장"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "태그 편집"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "태그 추가"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "적용할 태그를 설정합니다."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "새 태그 만들기:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "태그 할당"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "새로 만들기..."
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "새 태그"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "새 태그:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", "
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr "%1°S"
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr "%1°N"
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr "%1°W"
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr "%1°E"
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr "%1에 위치 표시"
+
+#~ msgctxt "unknown file size"
+#~ msgid "Unknown"
+#~ msgstr "알 수 없음"
+
+#~ msgctxt "@label bitrate (per second)"
+#~ msgid "%1/s"
+#~ msgstr "%1/초"
+
+#~ msgctxt "@label samplerate in kilohertz"
+#~ msgid "%1 kHz"
+#~ msgstr "%1kHz"
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "변경..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "설명 변경"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "태그 변경"
+
+#~ msgctxt ""
+#~ "This is added to the query builder widget when a proposal containing a "
+#~ "placeholder is selected"
+#~ msgid "[something]"
+#~ msgstr "[무언가]"
+
+#~ msgctxt "Pattern placeholder having no specific type"
+#~ msgid "[something]"
+#~ msgstr "[무언가]"
+
+#~ msgctxt "Pattern placeholder of date-time type"
+#~ msgid "[date and time]"
+#~ msgstr "[날짜와 시간]"
+
+#~ msgctxt "Pattern placeholder for a tag name"
+#~ msgid "[tag name]"
+#~ msgstr "[태그 이름]"
+
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "[연락처]"
+
+#~ msgctxt "Pattern placeholder for an e-mail address"
+#~ msgid "[email address]"
+#~ msgstr "[이메일 주소]"
+
+#~ msgctxt "Pattern placeholder for a standard property name"
+#~ msgid "[property]"
+#~ msgstr "[속성]"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "설명 추가..."
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Description"
+#~ msgid "Comment or description"
+#~ msgstr "설명"
+
+#~ msgid "Author"
+#~ msgstr "작성자"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Size"
+#~ msgid "Size"
+#~ msgstr "크기"
+
+#, fuzzy
+#~| msgctxt "Pattern placeholder for a tag name"
+#~| msgid "[tag name]"
+#~ msgid "Tag name"
+#~ msgstr "[태그 이름]"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "어제"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgid "Yesterday"
+#~ msgstr "어제"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "오늘"
+
+#, fuzzy
+#~ msgid "Today"
+#~ msgstr "오늘"
+
+#, fuzzy
+#~| msgid "Anytime"
+#~ msgid "A time"
+#~ msgstr "언제든지"
+
+#, fuzzy
+#~ msgid "After"
+#~ msgstr "다음"
+
+#, fuzzy
+#~ msgid "Before"
+#~ msgstr "이전"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Content"
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "내용"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "크기"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "의존성"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "생성 도구"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasPart"
+#~ msgid "Has Part"
+#~ msgstr "부분 포함"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasLogicalPart"
+#~ msgid "Has Logical Part"
+#~ msgstr "논리적 부분 포함"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "다음의 일부분"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "키워드"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "수정됨"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "MIME 형식"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "다음과 연관됨"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "주제"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "제목"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "생성자"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "평균 비트레이트"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "채널"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "글자 수"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "코덱"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "색 농도"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "시간"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "파일 이름"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "해시"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "높이"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "인터레이스 모드"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "줄 수"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "프로그래밍 언어"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "샘플 레이트"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "너비"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "단어 수"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "조리개"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Bias Value"
+#~ msgstr "노출 보정"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "노출 시간"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "플래시"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "초점 거리"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "35mm 환산 초점 거리"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "ISO 감도"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "제조사"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "측량 모드"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "모델"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "방향"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "화이트 밸런스"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "감독"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "장르"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "앨범"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Sample Rate"
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "샘플 레이트"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "발매 날짜"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "트랙"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "자원 생성됨"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "하위 자원"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "자원 수정됨"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "숫자 별점"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "첫 사용"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "마지막 사용"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "사용 횟수"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "유닉스 파일 그룹"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "유닉스 파일 모드"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "유닉스 파일 소유자"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "형식"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "불분명한 번역"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "마지막 번역자"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "오래된 번역"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "번역 원본 날짜"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "총 번역"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "번역됨"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "번역 날짜"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "번역되지 않음"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "태그 삭제"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr "모든 파일에서 태그 <resource>%1</resource>을(를) 삭제하시겠습니까?"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "태그 삭제"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "삭제"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "취소"
+
+#~ msgctxt "@label"
+#~ msgid "Performer"
+#~ msgstr "연주자"
+
+#~ msgctxt "@label"
+#~ msgid "Show all tags..."
+#~ msgstr "모든 태그 표시..."
+
+#~ msgctxt ""
+#~ "@title KCategorizedSortFilterProxyModel grouping for all Nepomukj "
+#~ "resources that are of type rdfs:Resource"
+#~ msgid "Miscellaneous"
+#~ msgstr "기타"
+
+#~ msgctxt "@title:column The Nepomuk resource label and icon"
+#~ msgid "Resource"
+#~ msgstr "자원"
+
+#~ msgctxt "@title:column The Nepomuk resource's RDF type"
+#~ msgid "Resource Type"
+#~ msgstr "자원 형식"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Anytime"
+#~ msgstr "언제든지"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Today"
+#~ msgstr "오늘"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Week"
+#~ msgstr "이번 주"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Week"
+#~ msgstr "지난 주"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Month"
+#~ msgstr "이번 달"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Month"
+#~ msgstr "지난 달"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Year"
+#~ msgstr "올해"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Year"
+#~ msgstr "작년"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources that will open a dialog to choose a date range"
+#~ msgid "Custom..."
+#~ msgstr "사용자 정의..."
+
+#~ msgid "This Week"
+#~ msgstr "이번 주"
+
+#~ msgid "This Month"
+#~ msgstr "이번 달"
+
+#~ msgctxt ""
+#~ "@option:check An item in a list of resources that allows to query for "
+#~ "more resources to put in the list"
+#~ msgid "More..."
+#~ msgstr "더..."
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Documents"
+#~ msgstr "문서"
+
+#~ msgctxt "@option:check A filter on file type - audio files"
+#~ msgid "Audio"
+#~ msgstr "음악"
+
+#~ msgctxt "@option:check A filter on file type - media video"
+#~ msgid "Video"
+#~ msgstr "동영상"
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Images"
+#~ msgstr "그림"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "No priority"
+#~ msgstr "우선 순위 없음"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Last modified"
+#~ msgstr "마지막 수정"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Most important"
+#~ msgstr "가장 중요함"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Never opened"
+#~ msgstr "열리지 않음"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Any Rating"
+#~ msgstr "임의의 별점"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "1 or more"
+#~ msgstr "1점 이상"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "2 or more"
+#~ msgstr "2점 이상"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "3 or more"
+#~ msgstr "3점 이상"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "4 or more"
+#~ msgstr "4점 이상"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Max Rating"
+#~ msgstr "최대 별점"
+
+#~ msgid "Enter Search Terms..."
+#~ msgstr "검색 항목 입력..."
+
+#~ msgid "Search"
+#~ msgstr "검색"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Emails"
+#~ msgstr "이메일"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tasks"
+#~ msgstr "작업"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tags"
+#~ msgstr "태그"
+
+#~ msgctxt "@option:check Do filter on type - show only files"
+#~ msgid "Files"
+#~ msgstr "파일"
+
+#~ msgctxt "@option:check Do filter on type - show everything but files"
+#~ msgid "Other"
+#~ msgstr "기타"

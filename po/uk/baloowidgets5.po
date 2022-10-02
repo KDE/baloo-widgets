@@ -1,0 +1,997 @@
+# Translation of baloowidgets5.po to Ukrainian
+# Copyright (C) 2018-2020 This_file_is_part_of_KDE
+# This file is distributed under the license LGPL version 2.1 or
+# version 3 or later versions approved by the membership of KDE e.V.
+#
+# Yuri Chornoivan <yurchor@ukr.net>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: baloowidgets5\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2022-07-17 08:29+0300\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 20.12.0\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 об’єкт"
+msgstr[1] "%1 об’єкти"
+msgstr[2] "%1 об’єктів"
+msgstr[3] "%1 об’єкт"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Коментар"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "Створення"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "Доступ"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Дата зміни"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Власник"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "Група"
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "Права доступу"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Оцінка"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Розмір"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Мітки"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Загальний розмір"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "Приховані пункти"
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Тип"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "Посилання на"
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr "Вказує на"
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "Джерело отримання"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr "Розміри"
+
+#: src/filemetadataprovider.cpp:465
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "Розташування за GPS"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "&Подробиці"
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "Додати…"
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "Змінити…"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "Зміна коментаря"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Додавання коментаря"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "Зберегти"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Зміна міток"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Додавання міток"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Вкажіть мітки, які має бути застосовано."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Створити нову мітку:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "Призначення міток"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "Створити…"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "Нова мітка"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "Нова мітка:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", "
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr "%1° пд.ш."
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr "%1° пн.ш."
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr "%1° зх.д."
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr "%1° сх.д."
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr "Показати місце перебування у %1"
+
+#~ msgctxt "unknown file size"
+#~ msgid "Unknown"
+#~ msgstr "Невідомий"
+
+#~ msgctxt "@label bitrate (per second)"
+#~ msgid "%1/s"
+#~ msgstr "%1/с"
+
+#~ msgctxt "@label samplerate in kilohertz"
+#~ msgid "%1 kHz"
+#~ msgstr "%1 кГц"
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "Змінити..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "Зміна коментаря"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "Зміна міток"
+
+#~ msgctxt ""
+#~ "This is added to the query builder widget when a proposal containing a "
+#~ "placeholder is selected"
+#~ msgid "[something]"
+#~ msgstr "[щось]"
+
+#~ msgctxt "Pattern placeholder having no specific type"
+#~ msgid "[something]"
+#~ msgstr "[щось]"
+
+#~ msgctxt "Pattern placeholder of date-time type"
+#~ msgid "[date and time]"
+#~ msgstr "[дата і час]"
+
+#~ msgctxt "Pattern placeholder for a tag name"
+#~ msgid "[tag name]"
+#~ msgstr "[назва мітки]"
+
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "[контактні дані]"
+
+#~ msgctxt "Pattern placeholder for an e-mail address"
+#~ msgid "[email address]"
+#~ msgstr "[адреса ел. пошти]"
+
+#~ msgctxt "Pattern placeholder for a standard property name"
+#~ msgid "[property]"
+#~ msgstr "[властивість]"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "Додати коментар…"
+
+#~ msgctxt "Numeric rating of a resource"
+#~ msgid ""
+#~ "rated as $1;rated $1;score is $1;score|scored $1;having $1 stars|star"
+#~ msgstr ""
+#~ "з оцінкою $1;оцінене $1;оцінка — $1;оцінка|оцінене у $1;має $1 зірок|зірку"
+
+#~ msgid "Rating (0 to 10)"
+#~ msgstr "Оцінка (від 0 до 10)"
+
+#~ msgctxt "Comment of a resource"
+#~ msgid ""
+#~ "described as $1;description|comment is $1;described|description|comment $1"
+#~ msgstr "описано як $1;описом|коментарем є $1;описано|опис|коментар — $1"
+
+#~ msgid "Comment or description"
+#~ msgstr "Коментар або опис"
+
+#~ msgctxt "Author of a document"
+#~ msgid "written|created|composed by $1;author is $1;by $1"
+#~ msgstr "написано|створено|записано $1;автором є $1"
+
+#~ msgid "Author"
+#~ msgstr "Автор"
+
+#~ msgctxt "Size of a file"
+#~ msgid "size is $1;size $1;being $1 large;$1 large"
+#~ msgstr "розмір дорівнює $1;розмір — $1;має розмір $1;розміром у $1"
+
+#~ msgid "Size"
+#~ msgstr "Розмір"
+
+#~ msgctxt "Name of a file or contact"
+#~ msgid "name is $1;name $1;named $1"
+#~ msgstr "має назву $1;назва — $1;називається $1;має ім’я $1;ім’я — $1"
+
+#~ msgid "Name"
+#~ msgstr "Назва"
+
+#~ msgctxt "Date of creation"
+#~ msgid ""
+#~ "created|dated at|on|in|of $1;created|dated $1;creation date|time|datetime "
+#~ "is $1"
+#~ msgstr "створено|датовано $1;дата|час створення — $1"
+
+#~ msgid "Date of creation"
+#~ msgstr "Дата створення"
+
+#~ msgctxt "Date of last modification"
+#~ msgid ""
+#~ "modified|edited at|on $1;modified|edited $1;modification|edition date|"
+#~ "time|datetime is $1"
+#~ msgstr "змінено|редаговано $1;час|дата зміни: $1"
+
+#~ msgid "Date of last modification"
+#~ msgstr "Дата останньої зміни"
+
+#~ msgctxt "A document is associated with a tag"
+#~ msgid "tagged as $1;has tag $1;tag is $1;# $1"
+#~ msgstr "має мітку $1;мічено як $1;мітка — $1;# $1"
+
+#~ msgid "Tag name"
+#~ msgstr "Назва мітки"
+
+#~ msgctxt ""
+#~ "$1 is a property name (non-translatable unfortunately) and $2 is the "
+#~ "value against which the property is matched. Note that the equal/greater/"
+#~ "smaller sign has already been folded in $2"
+#~ msgid "$1 is $2;$1 $2"
+#~ msgstr "$1 дорівнює $2;$1 має значення $2;$1 $2"
+
+#~ msgid "File property"
+#~ msgstr "Властивість файла"
+
+#~ msgctxt ""
+#~ "Characters that are kept in the query for further processing but are "
+#~ "considered word boundaries"
+#~ msgid ".,;:!?()[]{}<>=#+-"
+#~ msgstr ".,;:!?()[]{}<>=#+-«»№"
+
+#~ msgctxt "Adding an offset to a period of time ($1=period, $2=offset)"
+#~ msgid "in $2 $1"
+#~ msgstr "$2 $1"
+
+#~ msgctxt "Removing an offset from a period of time ($1=period, $2=offset)"
+#~ msgid "$2 $1 ago"
+#~ msgstr "$2 $1 тому"
+
+#~ msgctxt "In one day"
+#~ msgid "tomorrow"
+#~ msgstr "завтра"
+
+#~ msgid "Tomorrow"
+#~ msgstr "Завтра"
+
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "вчора"
+
+#~ msgid "Yesterday"
+#~ msgstr "Вчора"
+
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "сьогодні"
+
+#~ msgid "Today"
+#~ msgstr "Сьогодні"
+
+#~ msgctxt "First period (first day, month, etc)"
+#~ msgid "first $1"
+#~ msgstr "перший $1"
+
+#~ msgid "First week, month, day, ..."
+#~ msgstr "Перший тиждень, місяць, день…"
+
+#~ msgctxt "Last period (last day, month, etc)"
+#~ msgid "last $1 of"
+#~ msgstr "останній $1"
+
+#~ msgid "Last week, month, day, ..."
+#~ msgstr "Останній тиждень, місяць, день…"
+
+#~ msgctxt ""
+#~ "Setting the value of a period, as in 'third week' ($1=period, $2=value)"
+#~ msgid "$2 $1"
+#~ msgstr "$2 $1"
+
+#~ msgctxt "Adding 1 to a period of time"
+#~ msgid "next $1"
+#~ msgstr "наступний $1"
+
+#~ msgid "Next week, month, day, ..."
+#~ msgstr "Наступний тиждень, місяць, день…"
+
+#~ msgctxt "Removing 1 to a period of time"
+#~ msgid "last $1"
+#~ msgstr "останній $1"
+
+#~ msgid "Previous week, month, day, ..."
+#~ msgstr "Попередній тиждень, місяць, день…"
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), PM"
+#~ msgid "at $5 :|\\. $6 pm;at $5 h pm;at $5 pm;$5 : $6 pm;$5 h pm;$5 pm"
+#~ msgstr ""
+#~ "о $5 :|\\. $6 після обіду;о $5 годині по обіді;о $5 після обіду;$5 : $6 "
+#~ "після обіду;$5 г після обіду;$5 п.о."
+
+#~ msgid "A time after midday"
+#~ msgstr "Час після опівдня"
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), AM"
+#~ msgid ""
+#~ "at $5 :|\\. $6 am;at $5 \\. $6;at $5 h am;at $5 am;at $5;$5 :|\\. $6 am;"
+#~ "$5 : $6 : $7;$5 : $6;$5 h am;$5 h;$5 am"
+#~ msgstr ""
+#~ "о $5 :|\\. $6 до обіду;о $5 \\. $6;о $5 до опівдня;о $5 д.о.;о $5;$5 :|"
+#~ "\\. $6 д.о.;$5 : $6 : $7;$5 : $6;$5 г. д.о.;$5 г;$5 д.о."
+
+#~ msgid "A time"
+#~ msgstr "Час"
+
+#~ msgctxt ""
+#~ "A year ($1), month ($2), day ($3), day of week ($4), hour ($5), minute "
+#~ "($6), second ($7), in every combination supported by your language"
+#~ msgid ""
+#~ "$3 of $2 $1;$3 st|nd|rd|th $2 $1;$3 st|nd|rd|th of $2 $1;$3 of $2;$3 st|"
+#~ "nd|rd|th $2;$3 st|nd|rd|th of $2;$2 $3 st|nd|rd|th;$2 $3;$2 $1;$1 - $2 - "
+#~ "$3;$1 - $2;$3 / $2 / $1;$3 / $2;in $2 $1; in $1;, $1"
+#~ msgstr ""
+#~ "$3 $2 $1 р.;$3 е|є $2 $1 р.;$3 ого $2 $1 р.;$3 $2;$3 е|є $2;$2, $3 е|є;"
+#~ "$2, $3;$2 $1;$1 - $2 - $3;$1 - $2;$3 / $2 / $1;$3 / $2;$2 $1;у $1;, $1 р."
+
+#~ msgctxt "Decimal values with an integer ($1) and decimal ($2) part"
+#~ msgid "$1 \\. $2"
+#~ msgstr "$1 \\, $2"
+
+#~ msgid "A decimal value"
+#~ msgstr "Десяткове значення"
+
+#~ msgctxt "Equality"
+#~ msgid "contains|containing $1"
+#~ msgstr "містить $1"
+
+#~ msgid "Containing"
+#~ msgstr "Містить"
+
+#~ msgctxt "Strictly greater"
+#~ msgid "greater|bigger|more than $1;at least $1;> $1"
+#~ msgstr "більше|більше за $1;принаймні $1;> $1"
+
+#~ msgid "Greater than"
+#~ msgstr "Більше"
+
+#~ msgctxt "After in time"
+#~ msgid "after|since $1"
+#~ msgstr "після|з $1"
+
+#~ msgid "After"
+#~ msgstr "Після"
+
+#~ msgctxt "Strictly smaller"
+#~ msgid "smaller|less|lesser than $1;at most $1;< $1"
+#~ msgstr "менше|менше за $1;не більше за $1;< $1"
+
+#~ msgid "Smaller than"
+#~ msgstr "Менше"
+
+#~ msgctxt "Before in time"
+#~ msgid "before|until $1"
+#~ msgstr "до $1"
+
+#~ msgid "Before"
+#~ msgstr "До"
+
+#~ msgctxt "Equality"
+#~ msgid "equal|equals|= $1;equal to $1"
+#~ msgstr "дорівнює|рівне|= $1;дорівнює $1"
+
+#~ msgid "Equal to"
+#~ msgstr "Дорівнює"
+
+#~ msgctxt "Space-separated list of words representing a year"
+#~ msgid "year years"
+#~ msgstr "year years рік роки років"
+
+#~ msgctxt "Space-separated list of words representing a month"
+#~ msgid "month months"
+#~ msgstr "month months місяць місяці місяців"
+
+#~ msgctxt "Space-separated list of words representing a week"
+#~ msgid "week weeks"
+#~ msgstr "week weeks тиждень тижні тижнів"
+
+#~ msgctxt "Space-separated list of words representing a day"
+#~ msgid "day days"
+#~ msgstr "day days день дні днів"
+
+#~ msgctxt "Space-separated list of words representing an hour"
+#~ msgid "hour hours"
+#~ msgstr "hour hours година години годин"
+
+#~ msgctxt "Space-separated list of words representing a minute"
+#~ msgid "minute minutes"
+#~ msgstr "minute minutes хвилина хвилини хвилин"
+
+#~ msgctxt "Space-separated list of words representing a second"
+#~ msgid "second seconds"
+#~ msgstr "second seconds секунда секунди секунд"
+
+#~ msgctxt "Lower-case units corresponding to a kilobyte"
+#~ msgid "kb kilobyte kilobytes"
+#~ msgstr "kb kilobyte kilobytes кб кілобайт кілобайти кілобайтів"
+
+#~ msgctxt "Lower-case units corresponding to a megabyte"
+#~ msgid "mb megabyte megabytes"
+#~ msgstr "mb megabyte megabytes мб мегабайт мегабайти мегабайтів"
+
+#~ msgctxt "Lower-case units corresponding to a gigabyte"
+#~ msgid "gb gigabyte gigabytes"
+#~ msgstr "gb gigabyte gigabytes гб гігабайт гігабайти гігабайтів"
+
+#~ msgctxt "Lower-case units corresponding to a terabyte"
+#~ msgid "tb terabyte terabytes"
+#~ msgstr "tb terabyte terabytes тб терабайт терабайти терабайтів"
+
+#~ msgctxt "Lower-case units corresponding to a kibibyte"
+#~ msgid "kib k kibibyte kibibytes"
+#~ msgstr "kib k kibibyte kibibytes кіб кібібайт кібібайти кібібайтів"
+
+#~ msgctxt "Lower-case units corresponding to a mebibyte"
+#~ msgid "mib m mebibyte mebibytes"
+#~ msgstr "mib m mebibyte mebibytes міб мібібайт мібібайти мібібайтів"
+
+#~ msgctxt "Lower-case units corresponding to a gibibyte"
+#~ msgid "gib g gibibyte gibibytes"
+#~ msgstr "gib g gibibyte gibibytes гіб гібібайт гібібайти гібібайтів"
+
+#~ msgctxt "Lower-case units corresponding to a tebibyte"
+#~ msgid "tib t tebibyte tebibytes"
+#~ msgstr "tib t tebibyte tebibytes тіб тебібайт тебібайти тебібайтів"
+
+#~ msgctxt "Space-separated list of words meaning 0"
+#~ msgid "zero nought null"
+#~ msgstr "zero nought null нуль порожньо нічого"
+
+#~ msgctxt "Space-separated list of words meaning 1"
+#~ msgid "one a first"
+#~ msgstr "one a first один перший перша перше перші"
+
+#~ msgctxt "Space-separated list of words meaning 2"
+#~ msgid "two second"
+#~ msgstr "two second два другий друга друге другі"
+
+#~ msgctxt "Space-separated list of words meaning 3"
+#~ msgid "three third"
+#~ msgstr "three third три третій третя третє треті"
+
+#~ msgctxt "Space-separated list of words meaning 4"
+#~ msgid "four fourth"
+#~ msgstr "four fourth чотири четвертий четверта четверте четверті"
+
+#~ msgctxt "Space-separated list of words meaning 5"
+#~ msgid "five fifth"
+#~ msgstr "five fifth п’ять п’ятий п’ята п’яте п’яті"
+
+#~ msgctxt "Space-separated list of words meaning 6"
+#~ msgid "six sixth"
+#~ msgstr "six sixth шість шостий шоста шосте шості"
+
+#~ msgctxt "Space-separated list of words meaning 7"
+#~ msgid "seven seventh"
+#~ msgstr "seven seventh сім сьомий сьома сьоме сьомі"
+
+#~ msgctxt "Space-separated list of words meaning 8"
+#~ msgid "eight eighth"
+#~ msgstr "eight eighth вісім восьмий восьма восьме восьмі"
+
+#~ msgctxt "Space-separated list of words meaning 9"
+#~ msgid "nine ninth"
+#~ msgstr "nine ninth дев’ять дев’ятий дев’ята дев’яте дев’яті"
+
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "ten tenth десять десятий десята десяте десяті"
+
+#~ msgctxt ""
+#~ "List of lowercase prefixes or suffix that need to be split from values"
+#~ msgid "k m g b kb mb gb tb kib mib gib tib h am pm th rd nd st"
+#~ msgstr "к м г б кб мб гб тб кіб міб тіб г до по ий а е ого ої ому ій"
+
+#~ msgctxt "List of words representing a file"
+#~ msgid "file files"
+#~ msgstr "file files файл файли файлів"
+
+#~ msgctxt "List of words representing an image"
+#~ msgid "image images picture pictures photo photos"
+#~ msgstr ""
+#~ "зображення зображень картина картини картинка картинки картинок малюнок "
+#~ "малюнки малюнків фото фотографія фотографії фотографій"
+
+#~ msgctxt "List of words representing a video"
+#~ msgid "video videos movie movies film films"
+#~ msgstr "відео кіно фільм фільми кінофільм кінофільми"
+
+#~ msgctxt "List of words representing an audio file"
+#~ msgid "music musics"
+#~ msgstr "музика композиція композиції"
+
+#~ msgctxt "List of words representing a document"
+#~ msgid "document documents"
+#~ msgstr "документ документи документів"
+
+#~ msgctxt "List of words representing an email"
+#~ msgid "mail mails email emails e-mail e-mails message messages"
+#~ msgstr "пошта повідомлення повідомлень лист листи листів"
+
+#~ msgctxt "List of words representing an archive"
+#~ msgid "archive archives tarball tarballs zip"
+#~ msgstr "архів архіви архівів archive archives tarball tarballs zip"
+
+#~ msgctxt "List of words representing a folder"
+#~ msgid "folder folders directory directories"
+#~ msgstr "тека теки тек каталог каталоги каталогів"
+
+#~ msgctxt "List of words representing a contact"
+#~ msgid "contact contacts person people"
+#~ msgstr "контакт контакти особа особи профіль профілі"
+
+#~ msgctxt "List of words representing a note"
+#~ msgid "note notes"
+#~ msgstr "note notes нотатка нотатки нотаток"
+
+#~ msgctxt "Are words of your language separated by spaces (Y/N) ?"
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgid "and"
+#~ msgstr "та"
+
+#~ msgid "or"
+#~ msgstr "або"
+
+#~ msgid "not"
+#~ msgstr "не"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "Розмір"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "Залежить"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "Програма для створення"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasPart"
+#~ msgid "Has Part"
+#~ msgstr "Має частину"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasLogicalPart"
+#~ msgid "Has Logical Part"
+#~ msgstr "Має логічну частину"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "Є частиною"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "Ключове слово"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "Дата зміни"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "Тип MIME"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "Зв’язок"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "Об’єкт"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "Заголовок"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "Автор"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "Середня бітова швидкість"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "Канали"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "К-ть символів"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "Кодек"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "Глибина кольорів"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "Тривалість"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "Назва файла"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "Хеш"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "Висота"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "Режим переплетення"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "К-ть рядків"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "Мова програмування"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "Частота дискретизації"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "Ширина"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "К-ть слів"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "Апертура"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Bias Value"
+#~ msgstr "Значення ухилу експозиції"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "Час експозиції"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "Спалах"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "Фокальна відстань"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "Фокусна відстань 35 мм"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "Світлочутливість ISO"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "Виробник"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "Режим вимірювання"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "Модель"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "Орієнтація"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "Баланс білого"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "Режисер"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "Жанр"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "Альбом"
+
+#~ msgctxt "@label"
+#~ msgid "Artist"
+#~ msgstr "Виконавець"
+
+#~ msgctxt "@label"
+#~ msgid "Aspect Ratio"
+#~ msgstr "Співвідношення розмірів"
+
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "Частота кадрів"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "Дата випуску"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "Композиція"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "Створення ресурсу"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "Підресурс"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "Зміна ресурсу"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "Числова оцінка"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "Перше використання"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "Останнє використання"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "Кількість використань"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "Група файла у Unix"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "Режим доступу до файлів у Unix"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "Власник файла у Unix"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "Тип"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "Неточних перекладів"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "Останній перекладач"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "Застарілих перекладів"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "Дата зміни шаблону"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "Загалом перекладів"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "Перекладено"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "Дата перекладу"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "Не перекладено"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "Вилучити мітку"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr "Вилучити мітку <resource>%1</resource> для всіх файлів?"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "Вилучення мітки"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Вилучити"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Скасувати"

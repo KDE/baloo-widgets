@@ -1,0 +1,817 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Sairan Kikkarin <sairan@computer.org>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2012-12-30 03:45+0600\n"
+"Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
+"Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 аталым"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Түсініктеме"
+
+#: src/filemetadataprovider.cpp:446
+#, fuzzy, kde-format
+#| msgctxt "@label creation date"
+#| msgid "Created"
+msgctxt "@label"
+msgid "Created"
+msgstr "Қашан құрылған:"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Өзгертілген"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Иесі"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "Рұқсаттар"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Бағалауы"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Өлшемі"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Белгілері"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Жалпы өлшемі"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Түрі"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:463
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Copied From"
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "Мынаның көшірмесі:"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:465
+#, fuzzy, kde-format
+#| msgctxt "@label file URL"
+#| msgid "Location"
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "Орыны"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr ""
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr ""
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr ""
+
+#: src/kcommentwidget.cpp:99
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Comment"
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "Түсініктемені қосу"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Түсініктемені қосу"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr ""
+
+#: src/kedittagsdialog.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Белгілерін қосу"
+
+#: src/kedittagsdialog.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Add Tags..."
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Белгілерді қосу..."
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Қай тег белгілер қолданылатының көрсету."
+
+#: src/kedittagsdialog.cpp:51
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Жаңа белгіні құру:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgid "Assign Tags"
+msgstr "Белгілерін қосу"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgid "Create New..."
+msgstr "Жаңа белгіні құру:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr ""
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgid "New tag:"
+msgstr "Жаңа белгіні құру:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr ""
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr ""
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "Өзгерту..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "Түсініктемені өзгерту"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "Белгілерін өзгерту"
+
+#, fuzzy
+#~| msgctxt "@option:check A filter on resource type"
+#~| msgid "Contacts"
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "Контакттар"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "Түсініктемені қосу..."
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Description"
+#~ msgid "Comment or description"
+#~ msgstr "Сипаттамасы"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Size"
+#~ msgid "Size"
+#~ msgstr "Өлшемі"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "Кеше"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgid "Yesterday"
+#~ msgstr "Кеше"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "Бүгін"
+
+#~ msgid "Today"
+#~ msgstr "Бүгін"
+
+#, fuzzy
+#~| msgid "Anytime"
+#~ msgid "A time"
+#~ msgstr "Әр кезде"
+
+#~ msgid "After"
+#~ msgstr "Мынадан кейін:"
+
+#~ msgid "Before"
+#~ msgstr "Мынаның алдында:"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Content"
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "Мазмұны"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "Өлшемі"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "Неден тәуелді"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "Мамұның құрушысы"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasPart"
+#~ msgid "Has Part"
+#~ msgstr "Бөлігі бар"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasLogicalPart"
+#~ msgid "Has Logical Part"
+#~ msgstr "Логикалық бөлігі бар"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "Ненің бөлігі:"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "Қызметті сөз"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "Өзгертілген"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "MIME түрі"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "Мынаған қатысты:"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "Тақырыбы"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "Айңдары"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "Құрастырушысы"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "Орташа бит легі"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "Арналары"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "Таңбалар"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "Кодек"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "Түстер байлығы"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "Ұзақтығы"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "Файл атауы"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "Хеші"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "Биіктігі"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "Ішінаралау режімі"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "Жол саны"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "Программалау тілі"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "Дискретизациясы"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "Ені"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "Сөздер саны"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "Апертурасы"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Bias Value"
+#~ msgstr "Экспозицияның ығысуы"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "Экспозиция уақыты"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "Жарқыл"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "Тоғыс қашықтығы"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "Тоғыс қашықтығы 35 мм"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "ISO жарыққа сезімділігі"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "Жасау"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "Өлшеу режімі"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "Моделі"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "Бағдары"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "Ақтың деңгейі"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "Режисері"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "Жанры"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "Альбомы"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Sample Rate"
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "Дискретизациясы"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "Шығарылған күні"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "Жолсызығы"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "Құрылған кезі"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "Ішкі көзі"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "Өзгертілген көзі"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "Бағалауы (сан)"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "Бірінші қолданғаны"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "Соңғы қолданғаны"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "Неше рет қолданғаны"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "Unix файл тобы"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "Unix файл рұқсаттары"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "Unix файл иесі"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "Түрі"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "Дүмбілездер саны"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "Соңғы аударушысы"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "Ескіргендер саны"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "Аударатының шыққан кезі"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "Жалпы саны"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "Аударылған"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "Аударылған кезі"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "Аударылмаған"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "Белгіні өшіру"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr ""
+#~ "<resource>%1</resource> белгісін шынымен барлық файлдардан өшірмексіз бе?"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "Белгіні өшіру"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Өшіру"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Айну"
+
+#~ msgctxt "@label"
+#~ msgid "Performer"
+#~ msgstr "Орындаушысы"
+
+#~ msgctxt "@label"
+#~ msgid "Show all tags..."
+#~ msgstr "Бүкіл белгілерін көрсету..."
+
+#~ msgctxt ""
+#~ "@title KCategorizedSortFilterProxyModel grouping for all Nepomukj "
+#~ "resources that are of type rdfs:Resource"
+#~ msgid "Miscellaneous"
+#~ msgstr "Түрлі басқа"
+
+#~ msgctxt "@title:column The Nepomuk resource label and icon"
+#~ msgid "Resource"
+#~ msgstr "Көзі"
+
+#~ msgctxt "@title:column The Nepomuk resource's RDF type"
+#~ msgid "Resource Type"
+#~ msgstr "Ресурстың түрі"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Anytime"
+#~ msgstr "Әр кезде"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Today"
+#~ msgstr "Бүгін"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Week"
+#~ msgstr "Осы аптада"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Week"
+#~ msgstr "Өткен аптада"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Month"
+#~ msgstr "Осы айда"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Month"
+#~ msgstr "Өткен айда"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Year"
+#~ msgstr "Осы жылда"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Year"
+#~ msgstr "Өткен жылда"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources that will open a dialog to choose a date range"
+#~ msgid "Custom..."
+#~ msgstr "Өзге..."
+
+#~ msgid "This Week"
+#~ msgstr "Осы аптада"
+
+#~ msgid "This Month"
+#~ msgstr "Осы айда"
+
+#~ msgctxt ""
+#~ "@option:check An item in a list of resources that allows to query for "
+#~ "more resources to put in the list"
+#~ msgid "More..."
+#~ msgstr "Қосымша..."
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Documents"
+#~ msgstr "Құжаттар"
+
+#~ msgctxt "@option:check A filter on file type - audio files"
+#~ msgid "Audio"
+#~ msgstr "Аудио"
+
+#~ msgctxt "@option:check A filter on file type - media video"
+#~ msgid "Video"
+#~ msgstr "Видео"
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Images"
+#~ msgstr "Кескіндер"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "No priority"
+#~ msgstr "Артықшылықсыз"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Last modified"
+#~ msgstr "Соңғы өзгертілген"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Most important"
+#~ msgstr "Ең маңызды"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Never opened"
+#~ msgstr "Ешқашан ашылмаған"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Any Rating"
+#~ msgstr "Ұпайына қарамастан"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "1 or more"
+#~ msgstr "1 не артық"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "2 or more"
+#~ msgstr "2 не артық"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "3 or more"
+#~ msgstr "3 не артық"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "4 or more"
+#~ msgstr "4 не артық"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Max Rating"
+#~ msgstr "Ұпайы ең көбі"
+
+#~ msgid "Enter Search Terms..."
+#~ msgstr "Іздейтін шарттары..."
+
+#~ msgid "Search"
+#~ msgstr "Іздеу"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Emails"
+#~ msgstr "Эл.пошталар"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tasks"
+#~ msgstr "Тапсырмалар"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tags"
+#~ msgstr "Белгілер"
+
+#~ msgctxt "@option:check Do filter on type - show only files"
+#~ msgid "Files"
+#~ msgstr "Файлдар"
+
+#~ msgctxt "@option:check Do filter on type - show everything but files"
+#~ msgid "Other"
+#~ msgstr "Басқа"

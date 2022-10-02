@@ -1,0 +1,846 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Yuri Efremov <yur.arh@gmail.com>, 2013.
+# Alexander Potashev <aspotashev@gmail.com>, 2014, 2015, 2016, 2018, 2019.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2018, 2019, 2020, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2022-08-10 15:20+0300\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 22.04.3\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: \n"
+"X-Text-Markup: \n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 объект"
+msgstr[1] "%1 объекта"
+msgstr[2] "%1 объектов"
+msgstr[3] "%1 объект"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Комментарий"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "Дата создания"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "Дата доступа"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Дата изменения"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Владелец"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "Группа"
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "Права доступа"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Оценка"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Размер"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Метки"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Общий размер"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "Скрытые объекты"
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Тип"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "Ссылка"
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr "Адрес"
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "Источник в Интернете"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr "Размеры"
+
+#: src/filemetadataprovider.cpp:465
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "Местоположение GPS"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "&Сведения"
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "Добавить..."
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "Изменить..."
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "Изменение комментария"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Добавление комментария"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Изменение меток"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Добавление меток"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Выберите метки для объектов."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Создать метку:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "Присвоить метки"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "Добавить метку..."
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "Создание метки"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "Добавить метку:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", "
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr "%1° ю. ш."
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr "%1° с. ш."
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr "%1° з. д."
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr "%1° в. д."
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr "Показать местоположение в %1"
+
+#~ msgctxt "unknown file size"
+#~ msgid "Unknown"
+#~ msgstr "Неизвестно"
+
+#~ msgctxt "@label bitrate (per second)"
+#~ msgid "%1/s"
+#~ msgstr "%1/с"
+
+#~ msgctxt "@label samplerate in kilohertz"
+#~ msgid "%1 kHz"
+#~ msgstr "%1 кГц"
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "Изменить..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "Изменение комментария"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "Изменение меток"
+
+#~ msgctxt ""
+#~ "This is added to the query builder widget when a proposal containing a "
+#~ "placeholder is selected"
+#~ msgid "[something]"
+#~ msgstr "[что-то]"
+
+#~ msgctxt "Pattern placeholder having no specific type"
+#~ msgid "[something]"
+#~ msgstr "[что-то]"
+
+#~ msgctxt "Pattern placeholder of date-time type"
+#~ msgid "[date and time]"
+#~ msgstr "[дата и время]"
+
+#~ msgctxt "Pattern placeholder for a tag name"
+#~ msgid "[tag name]"
+#~ msgstr "[имя метки]"
+
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "[контакт]"
+
+#~ msgctxt "Pattern placeholder for an e-mail address"
+#~ msgid "[email address]"
+#~ msgstr "[адрес эл. почты]"
+
+#~ msgctxt "Pattern placeholder for a standard property name"
+#~ msgid "[property]"
+#~ msgstr "[характеристика]"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "Добавить комментарий..."
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Description"
+#~ msgid "Comment or description"
+#~ msgstr "Описание"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Size"
+#~ msgid "Size"
+#~ msgstr "Размер"
+
+#, fuzzy
+#~| msgctxt "Pattern placeholder for a tag name"
+#~| msgid "[tag name]"
+#~ msgid "Tag name"
+#~ msgstr "[имя метки]"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "Вчера"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgid "Yesterday"
+#~ msgstr "Вчера"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "Сегодня"
+
+#~ msgid "Today"
+#~ msgstr "Сегодня"
+
+#, fuzzy
+#~| msgid "Anytime"
+#~ msgid "A time"
+#~ msgstr "В любое время"
+
+#~ msgid "After"
+#~ msgstr "После"
+
+#~ msgid "Before"
+#~ msgstr "До"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Content"
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "Cодержимое"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "Размер"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "Зависимости"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "Генератор"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasPart"
+#~ msgid "Has Part"
+#~ msgstr "Является частью"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasLogicalPart"
+#~ msgid "Has Logical Part"
+#~ msgstr "Является логической частью"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "В папке"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "Ключевое слово"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "Дата изменения"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "Тип MIME"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "Относится к"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "Тема"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "Название"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "Автор"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "Средний битрейт"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "Число каналов"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "Символов"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "Кодек"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "Глубина цвета"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "Длительность"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "Имя файла"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "Хэш"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "Высота"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "Чересстрочность"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "Строк"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "Язык программирования"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "Частота дискретизации"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "Ширина"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "Слов"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "Диафрагма"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Bias Value"
+#~ msgstr "Экспокоррекция"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "Длительность выдержки"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "Вспышка"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "Фокусное расстояние"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "Фокусное расстояние в 35 мм эквиваленте"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "Чувствительность (ISO)"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "Производитель"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "Экспозамер"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "Модель"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "Ориентация"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "Баланс белого"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "Режиссёр"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "Жанр"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "Альбом"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Sample Rate"
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "Частота дискретизации"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "Дата выпуска"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "Номер дорожки"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "Создание ресурса"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "Подресурс"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "Изменение ресурса"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "Числовая оценка"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "Первое использование"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "Последнее использование"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "Количество использований"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "Группа файла в Unix"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "Режим файла Unix"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "Владелец файла в Unix"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "Тип"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "Неготовых переводов"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "Последний переводчик"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "Устаревших переводов"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "Дата оригинала"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "Всего переводов"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "Переведено"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "Дата перевода"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "Без перевода"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "Удалить метку"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr "Убрать метку <resource>%1</resource> со всех файлов?"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "Удаление метки"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Удалить"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Отмена"
+
+#~ msgctxt "@label"
+#~ msgid "Performer"
+#~ msgstr "Исполнитель"
+
+#~ msgctxt "@label"
+#~ msgid "Show all tags..."
+#~ msgstr "Показать все метки..."
+
+#~ msgctxt ""
+#~ "@title KCategorizedSortFilterProxyModel grouping for all Nepomukj "
+#~ "resources that are of type rdfs:Resource"
+#~ msgid "Miscellaneous"
+#~ msgstr "Разное"
+
+#~ msgctxt "@title:column The Nepomuk resource label and icon"
+#~ msgid "Resource"
+#~ msgstr "Источник"
+
+#~ msgctxt "@title:column The Nepomuk resource's RDF type"
+#~ msgid "Resource Type"
+#~ msgstr "Тип источника"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Anytime"
+#~ msgstr "Дата не важна"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Today"
+#~ msgstr "Сегодня"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Week"
+#~ msgstr "На этой неделе"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Week"
+#~ msgstr "На прошлой неделе"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Month"
+#~ msgstr "В этом месяце"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Month"
+#~ msgstr "В прошлом месяце"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Year"
+#~ msgstr "В этом году"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Year"
+#~ msgstr "В прошлом году"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources that will open a dialog to choose a date range"
+#~ msgid "Custom..."
+#~ msgstr "Другая дата..."
+
+#~ msgid "This Week"
+#~ msgstr "На этой неделе"
+
+#~ msgid "This Month"
+#~ msgstr "В этом месяце"
+
+#~ msgctxt ""
+#~ "@option:check An item in a list of resources that allows to query for "
+#~ "more resources to put in the list"
+#~ msgid "More..."
+#~ msgstr "Дополнительно..."
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Documents"
+#~ msgstr "Документы"
+
+#~ msgctxt "@option:check A filter on file type - audio files"
+#~ msgid "Audio"
+#~ msgstr "Аудиофайлы"
+
+#~ msgctxt "@option:check A filter on file type - media video"
+#~ msgid "Video"
+#~ msgstr "Видеофайлы"
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Images"
+#~ msgstr "Изображения"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "No priority"
+#~ msgstr "Без приоритета"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Last modified"
+#~ msgstr "Последние изменённые"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Most important"
+#~ msgstr "Наиболее важные"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Never opened"
+#~ msgstr "Ни разу не открытые"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Any Rating"
+#~ msgstr "Оценка не важна"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "1 or more"
+#~ msgstr "1 и выше"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "2 or more"
+#~ msgstr "2 и выше"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "3 or more"
+#~ msgstr "3 и выше"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "4 or more"
+#~ msgstr "4 и выше"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Max Rating"
+#~ msgstr "Максимальная оценка"
+
+#~ msgid "Enter Search Terms..."
+#~ msgstr "Введите текст для поиска..."
+
+#~ msgid "Search"
+#~ msgstr "Поиск"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Emails"
+#~ msgstr "Адреса электронной почты"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tasks"
+#~ msgstr "Задачи"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tags"
+#~ msgstr "Метки"
+
+#~ msgctxt "@option:check Do filter on type - show only files"
+#~ msgid "Files"
+#~ msgstr "Файлы"
+
+#~ msgctxt "@option:check Do filter on type - show everything but files"
+#~ msgid "Other"
+#~ msgstr "Другое"

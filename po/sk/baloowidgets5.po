@@ -1,0 +1,699 @@
+# translation of baloowidgets.po to Slovak
+# Roman Paholik <wizzardsk@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2022.
+# Mthw <jari_45@hotmail.com>, 2018, 2019.
+# Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: baloowidgets\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2022-04-07 18:01+0200\n"
+"Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
+"Language-Team: Slovak <kde-sk@linux.sk>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 21.12.3\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 položka"
+msgstr[1] "%1 položky"
+msgstr[2] "%1 položiek"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Komentár"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "Vytvorené"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "Pristupované"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Zmenené"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Vlastník"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "Skupina"
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "Práva"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Hodnotenie"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Veľkosť"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Značky"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Celková veľkosť"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "Skryté položky"
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Typ"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "Spojiť s"
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "Stiahnuté z"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr "Rozmery"
+
+#: src/filemetadataprovider.cpp:465
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr ""
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "&Detaily"
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "Pridať..."
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "Upraviť..."
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "Upraviť komentár"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Pridať komentár"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "Uložiť"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Upraviť značky"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Pridať značky"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Nastavte, ktoré značky majú byť použité."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Vytvoriť novú značku:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "Priradiť značky"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "Vytvoriť novú..."
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "Nová značka"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "Nová značka:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", "
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr ""
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr ""
+
+#~ msgctxt "unknown file size"
+#~ msgid "Unknown"
+#~ msgstr "Neznáme"
+
+#~ msgctxt "@label bitrate (per second)"
+#~ msgid "%1/s"
+#~ msgstr "%1/s"
+
+#~ msgctxt "@label samplerate in kilohertz"
+#~ msgid "%1 kHz"
+#~ msgstr "%1 kHz"
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "Zmeniť..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "Zmeniť komentár"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "Zmeniť značky"
+
+#~ msgctxt ""
+#~ "This is added to the query builder widget when a proposal containing a "
+#~ "placeholder is selected"
+#~ msgid "[something]"
+#~ msgstr "[niečo]"
+
+#~ msgctxt "Pattern placeholder having no specific type"
+#~ msgid "[something]"
+#~ msgstr "[niečo]"
+
+#~ msgctxt "Pattern placeholder of date-time type"
+#~ msgid "[date and time]"
+#~ msgstr "[dátum a čas]"
+
+#~ msgctxt "Pattern placeholder for a tag name"
+#~ msgid "[tag name]"
+#~ msgstr "[názov značky]"
+
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "[kontakt]"
+
+#~ msgctxt "Pattern placeholder for an e-mail address"
+#~ msgid "[email address]"
+#~ msgstr "[e-mailová adresa]"
+
+#~ msgctxt "Pattern placeholder for a standard property name"
+#~ msgid "[property]"
+#~ msgstr "[vlastnosť]"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "Pridať komentár..."
+
+#~ msgctxt "Numeric rating of a resource"
+#~ msgid ""
+#~ "rated as $1;rated $1;score is $1;score|scored $1;having $1 stars|star"
+#~ msgstr ""
+#~ "hodnotené ako $1;hodnotené $1;skóre je $1;skóre|bodované $1;má $1 "
+#~ "hviezdičiek|hviezdičku"
+
+#~ msgid "Rating (0 to 10)"
+#~ msgstr "Hodnotenie (0 do 10)"
+
+#~ msgctxt "Comment of a resource"
+#~ msgid ""
+#~ "described as $1;description|comment is $1;described|description|comment $1"
+#~ msgstr "opísané ako $1;opis|komentár je $1;opísané|popis|komentár $1"
+
+#~ msgid "Comment or description"
+#~ msgstr "Komentár alebo popis"
+
+#~ msgctxt "Author of a document"
+#~ msgid "written|created|composed by $1;author is $1;by $1"
+#~ msgstr "zapísané|vytvorené|napísal $1;autor je $1;od $1"
+
+#~ msgid "Author"
+#~ msgstr "Autor"
+
+#~ msgctxt "Size of a file"
+#~ msgid "size is $1;size $1;being $1 large;$1 large"
+#~ msgstr "veľkosť je $1;veľkosť $1;je $1 veľké;$1 veľké"
+
+#~ msgid "Size"
+#~ msgstr "Veľkosť"
+
+#~ msgctxt "Name of a file or contact"
+#~ msgid "name is $1;name $1;named $1"
+#~ msgstr "názov je $1;názov $1;pomenované $1"
+
+#~ msgid "Name"
+#~ msgstr "Názov"
+
+#~ msgctxt "Date of creation"
+#~ msgid ""
+#~ "created|dated at|on|in|of $1;created|dated $1;creation date|time|datetime "
+#~ "is $1"
+#~ msgstr ""
+#~ "vytvorené|datované $1;vytvorené|datované $1;dátum|čas vytvorenia je $1"
+
+#~ msgid "Date of creation"
+#~ msgstr "Dátum vytvorenia"
+
+#~ msgctxt "Date of last modification"
+#~ msgid ""
+#~ "modified|edited at|on $1;modified|edited $1;modification|edition date|"
+#~ "time|datetime is $1"
+#~ msgstr "zmenené|upravené $1;zmenené|upravené o $1;zmena|úprava je $1"
+
+#~ msgid "Date of last modification"
+#~ msgstr "Dátum poslednej zmeny"
+
+#~ msgctxt "A document is associated with a tag"
+#~ msgid "tagged as $1;has tag $1;tag is $1;# $1"
+#~ msgstr "označené ako $1;má značku $1;značka je $1;# $1"
+
+#~ msgid "Tag name"
+#~ msgstr "Názov štítku"
+
+#~ msgctxt ""
+#~ "$1 is a property name (non-translatable unfortunately) and $2 is the "
+#~ "value against which the property is matched. Note that the equal/greater/"
+#~ "smaller sign has already been folded in $2"
+#~ msgid "$1 is $2;$1 $2"
+#~ msgstr "$1 je $2;$1 $2"
+
+#~ msgid "File property"
+#~ msgstr "Vlastnosť súboru"
+
+#~ msgctxt ""
+#~ "Characters that are kept in the query for further processing but are "
+#~ "considered word boundaries"
+#~ msgid ".,;:!?()[]{}<>=#+-"
+#~ msgstr ".,;:!?()[]{}<>=#+-"
+
+#~ msgctxt "Adding an offset to a period of time ($1=period, $2=offset)"
+#~ msgid "in $2 $1"
+#~ msgstr "v $2 $1"
+
+#~ msgctxt "Removing an offset from a period of time ($1=period, $2=offset)"
+#~ msgid "$2 $1 ago"
+#~ msgstr "pred $2 $1"
+
+#~ msgctxt "In one day"
+#~ msgid "tomorrow"
+#~ msgstr "zajtra"
+
+#~ msgid "Tomorrow"
+#~ msgstr "Zajtra"
+
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "včera"
+
+#~ msgid "Yesterday"
+#~ msgstr "Včera"
+
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "dnes"
+
+#~ msgid "Today"
+#~ msgstr "Dnes"
+
+#~ msgctxt "First period (first day, month, etc)"
+#~ msgid "first $1"
+#~ msgstr "prvý $1"
+
+#~ msgid "First week, month, day, ..."
+#~ msgstr "Prvý týždeň, mesiac, deň, ..."
+
+#~ msgctxt "Last period (last day, month, etc)"
+#~ msgid "last $1 of"
+#~ msgstr "posledný $1 z"
+
+#~ msgid "Last week, month, day, ..."
+#~ msgstr "Posledný týždeň, mesiac, deň, ..."
+
+#~ msgctxt ""
+#~ "Setting the value of a period, as in 'third week' ($1=period, $2=value)"
+#~ msgid "$2 $1"
+#~ msgstr "$2 $1"
+
+#~ msgctxt "Adding 1 to a period of time"
+#~ msgid "next $1"
+#~ msgstr "ďalší $1"
+
+#~ msgid "Next week, month, day, ..."
+#~ msgstr "Ďalší týždeň, mesiac, deň, ..."
+
+#~ msgctxt "Removing 1 to a period of time"
+#~ msgid "last $1"
+#~ msgstr "posledný $1"
+
+#~ msgid "Previous week, month, day, ..."
+#~ msgstr "Predošlý týždeň, mesiac, deň, ..."
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), PM"
+#~ msgid "at $5 :|\\. $6 pm;at $5 h pm;at $5 pm;$5 : $6 pm;$5 h pm;$5 pm"
+#~ msgstr "at $5 :|\\. $6 pm;at $5 h pm;at $5 pm;$5 : $6 pm;$5 h pm;$5 pm"
+
+#~ msgid "A time after midday"
+#~ msgstr "Čas po poludní"
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), AM"
+#~ msgid ""
+#~ "at $5 :|\\. $6 am;at $5 \\. $6;at $5 h am;at $5 am;at $5;$5 :|\\. $6 am;"
+#~ "$5 : $6 : $7;$5 : $6;$5 h am;$5 h;$5 am"
+#~ msgstr ""
+#~ "at $5 :|\\. $6 am;at $5 \\. $6;at $5 h am;at $5 am;at $5;$5 :|\\. $6 am;"
+#~ "$5 : $6 : $7;$5 : $6;$5 h am;$5 h;$5 am"
+
+#~ msgid "A time"
+#~ msgstr "Čas"
+
+#~ msgctxt ""
+#~ "A year ($1), month ($2), day ($3), day of week ($4), hour ($5), minute "
+#~ "($6), second ($7), in every combination supported by your language"
+#~ msgid ""
+#~ "$3 of $2 $1;$3 st|nd|rd|th $2 $1;$3 st|nd|rd|th of $2 $1;$3 of $2;$3 st|"
+#~ "nd|rd|th $2;$3 st|nd|rd|th of $2;$2 $3 st|nd|rd|th;$2 $3;$2 $1;$1 - $2 - "
+#~ "$3;$1 - $2;$3 / $2 / $1;$3 / $2;in $2 $1; in $1;, $1"
+#~ msgstr ""
+#~ "$3 of $2 $1;$3 st|nd|rd|th $2 $1;$3 st|nd|rd|th of $2 $1;$3 of $2;$3 st|"
+#~ "nd|rd|th $2;$3 st|nd|rd|th of $2;$2 $3 st|nd|rd|th;$2 $3;$2 $1;$1 - $2 - "
+#~ "$3;$1 - $2;$3 / $2 / $1;$3 / $2;in $2 $1; in $1;, $1"
+
+#~ msgctxt "Decimal values with an integer ($1) and decimal ($2) part"
+#~ msgid "$1 \\. $2"
+#~ msgstr "$1 \\. $2"
+
+#~ msgid "A decimal value"
+#~ msgstr "Decimálna hodnota"
+
+#~ msgctxt "Equality"
+#~ msgid "contains|containing $1"
+#~ msgstr "obsahuje|obsahujúce $1"
+
+#~ msgid "Containing"
+#~ msgstr "Obsahujúce"
+
+#~ msgctxt "Strictly greater"
+#~ msgid "greater|bigger|more than $1;at least $1;> $1"
+#~ msgstr "väčšie|viac ako $1;najmenej $1;> $1"
+
+#~ msgid "Greater than"
+#~ msgstr "Väčšie ako"
+
+#~ msgctxt "After in time"
+#~ msgid "after|since $1"
+#~ msgstr "po|od $1"
+
+#~ msgid "After"
+#~ msgstr "Po"
+
+#~ msgctxt "Strictly smaller"
+#~ msgid "smaller|less|lesser than $1;at most $1;< $1"
+#~ msgstr "menšie|menej ako $1;najviac $1;< $1"
+
+#~ msgid "Smaller than"
+#~ msgstr "Menšie ako"
+
+#~ msgctxt "Before in time"
+#~ msgid "before|until $1"
+#~ msgstr "pred|do $1"
+
+#~ msgid "Before"
+#~ msgstr "Pred"
+
+#~ msgctxt "Equality"
+#~ msgid "equal|equals|= $1;equal to $1"
+#~ msgstr "rovná sa|rovné|= $1;rovné $1"
+
+#~ msgid "Equal to"
+#~ msgstr "Rovné"
+
+#~ msgctxt "Space-separated list of words representing a year"
+#~ msgid "year years"
+#~ msgstr "rok roky"
+
+#~ msgctxt "Space-separated list of words representing a month"
+#~ msgid "month months"
+#~ msgstr "mesiac mesiace"
+
+#~ msgctxt "Space-separated list of words representing a week"
+#~ msgid "week weeks"
+#~ msgstr "týždeň týždne"
+
+#~ msgctxt "Space-separated list of words representing a day"
+#~ msgid "day days"
+#~ msgstr "deň dni"
+
+#~ msgctxt "Space-separated list of words representing an hour"
+#~ msgid "hour hours"
+#~ msgstr "hodina hodiny"
+
+#~ msgctxt "Space-separated list of words representing a minute"
+#~ msgid "minute minutes"
+#~ msgstr "minúta minúty"
+
+#~ msgctxt "Space-separated list of words representing a second"
+#~ msgid "second seconds"
+#~ msgstr "sekunda sekundy"
+
+#~ msgctxt "Lower-case units corresponding to a kilobyte"
+#~ msgid "kb kilobyte kilobytes"
+#~ msgstr "kb kilobajt kilobajty"
+
+#~ msgctxt "Lower-case units corresponding to a megabyte"
+#~ msgid "mb megabyte megabytes"
+#~ msgstr "mb megabajt megabajty"
+
+#~ msgctxt "Lower-case units corresponding to a gigabyte"
+#~ msgid "gb gigabyte gigabytes"
+#~ msgstr "gb gigabajt gigabajty"
+
+#~ msgctxt "Lower-case units corresponding to a terabyte"
+#~ msgid "tb terabyte terabytes"
+#~ msgstr "tb terabajt terabajty"
+
+#~ msgctxt "Lower-case units corresponding to a kibibyte"
+#~ msgid "kib k kibibyte kibibytes"
+#~ msgstr "kib k kibibajt kibibajty"
+
+#~ msgctxt "Lower-case units corresponding to a mebibyte"
+#~ msgid "mib m mebibyte mebibytes"
+#~ msgstr "mib m mebibajt mebibajty"
+
+#~ msgctxt "Lower-case units corresponding to a gibibyte"
+#~ msgid "gib g gibibyte gibibytes"
+#~ msgstr "gib g gibibajt gibibajty"
+
+#~ msgctxt "Lower-case units corresponding to a tebibyte"
+#~ msgid "tib t tebibyte tebibytes"
+#~ msgstr "tib t tebibajt tebibajty"
+
+#~ msgctxt "Space-separated list of words meaning 0"
+#~ msgid "zero nought null"
+#~ msgstr "nula nič null"
+
+#~ msgctxt "Space-separated list of words meaning 1"
+#~ msgid "one a first"
+#~ msgstr "jeden prvý"
+
+#~ msgctxt "Space-separated list of words meaning 2"
+#~ msgid "two second"
+#~ msgstr "dva druhý"
+
+#~ msgctxt "Space-separated list of words meaning 3"
+#~ msgid "three third"
+#~ msgstr "tri tretí"
+
+#~ msgctxt "Space-separated list of words meaning 4"
+#~ msgid "four fourth"
+#~ msgstr "štyri štvrtý"
+
+#~ msgctxt "Space-separated list of words meaning 5"
+#~ msgid "five fifth"
+#~ msgstr "päť piaty"
+
+#~ msgctxt "Space-separated list of words meaning 6"
+#~ msgid "six sixth"
+#~ msgstr "šesť šiesty"
+
+#~ msgctxt "Space-separated list of words meaning 7"
+#~ msgid "seven seventh"
+#~ msgstr "sedem siedmy"
+
+#~ msgctxt "Space-separated list of words meaning 8"
+#~ msgid "eight eighth"
+#~ msgstr "osem ôsmy"
+
+#~ msgctxt "Space-separated list of words meaning 9"
+#~ msgid "nine ninth"
+#~ msgstr "deväť deviaty"
+
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "desať desiaty"
+
+#~ msgctxt ""
+#~ "List of lowercase prefixes or suffix that need to be split from values"
+#~ msgid "k m g b kb mb gb tb kib mib gib tib h am pm th rd nd st"
+#~ msgstr "k m g b kb mb gb tb kib mib gib tib h am pm th rd nd st"
+
+#~ msgctxt "List of words representing a file"
+#~ msgid "file files"
+#~ msgstr "súbor súbory"
+
+#~ msgctxt "List of words representing an image"
+#~ msgid "image images picture pictures photo photos"
+#~ msgstr "obraz obrazy obrázok obrázky fotka fotky"
+
+#~ msgctxt "List of words representing a video"
+#~ msgid "video videos movie movies film films"
+#~ msgstr "video videá film filmy"
+
+#~ msgctxt "List of words representing an audio file"
+#~ msgid "music musics"
+#~ msgstr "hudba hudby"
+
+#~ msgctxt "List of words representing a document"
+#~ msgid "document documents"
+#~ msgstr "dokument dokumenty"
+
+#~ msgctxt "List of words representing an email"
+#~ msgid "mail mails email emails e-mail e-mails message messages"
+#~ msgstr "mail maily e-mail e-maily email emaily správa správy"
+
+#~ msgctxt "List of words representing an archive"
+#~ msgid "archive archives tarball tarballs zip"
+#~ msgstr "archív archívy tarball tarbally zip"
+
+#~ msgctxt "List of words representing a folder"
+#~ msgid "folder folders directory directories"
+#~ msgstr "priečinok priečinky adresár adresáre"
+
+#~ msgctxt "List of words representing a contact"
+#~ msgid "contact contacts person people"
+#~ msgstr "kontakt kontakty osoba ľudia"
+
+#~ msgctxt "List of words representing a note"
+#~ msgid "note notes"
+#~ msgstr "poznámka poznámky"
+
+#~ msgctxt "Are words of your language separated by spaces (Y/N) ?"
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgid "and"
+#~ msgstr "a"
+
+#~ msgid "or"
+#~ msgstr "alebo"
+
+#~ msgid "not"
+#~ msgstr "nie"

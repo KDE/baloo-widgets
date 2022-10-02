@@ -1,0 +1,702 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# zeugma <sunder67@hotmail.com>, 2013.
+# Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2015.
+# Emir SARI <emir_sari@icloud.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs-kde4\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2022-07-18 09:49+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.04.2\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 öge"
+msgstr[1] "%1 öge"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Açıklama"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "Oluşturma"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "Erişim"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Değiştirildi"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Sahibi"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "Grup"
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "İzinler"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Beğeni"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Boyut"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Etiketler"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Toplam Boyut"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "Gizli ögeler"
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Tür"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "Şuraya bağla:"
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr "Puanlar:"
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "İndirme Adresi"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr "Boyutlar"
+
+#: src/filemetadataprovider.cpp:465
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "GPS Konumu"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "&Ayrıntılar"
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "Ekle..."
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "Düzenle..."
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "Yorumu Düzenle"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Yorum Ekle"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "Kaydet"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Etiketleri Düzenle"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Etiketler Ekle"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Uygulanacak etiketleri yapılandır."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Yeni etiket oluştur:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "Etiket Ata"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "Yeni Oluştur..."
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "Yeni etiket"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "Yeni etiket:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", "
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr "%1°G"
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr "%1°K"
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr "%1°B"
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr "%1°D"
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr "%1 konumunu göster"
+
+#~ msgctxt "unknown file size"
+#~ msgid "Unknown"
+#~ msgstr "Bilinmeyen"
+
+#~ msgctxt "@label bitrate (per second)"
+#~ msgid "%1/s"
+#~ msgstr "%1/sn"
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "Değiştir..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "Yorumu Değiştir"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "Etiketleri Değiştir"
+
+#~ msgctxt ""
+#~ "This is added to the query builder widget when a proposal containing a "
+#~ "placeholder is selected"
+#~ msgid "[something]"
+#~ msgstr "[bir şey]"
+
+#~ msgctxt "Pattern placeholder having no specific type"
+#~ msgid "[something]"
+#~ msgstr "[bir şey]"
+
+#~ msgctxt "Pattern placeholder of date-time type"
+#~ msgid "[date and time]"
+#~ msgstr "[tarih ve saat]"
+
+#~ msgctxt "Pattern placeholder for a tag name"
+#~ msgid "[tag name]"
+#~ msgstr "[etiket ismi]"
+
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "[bağlantı]"
+
+#~ msgctxt "Pattern placeholder for an e-mail address"
+#~ msgid "[email address]"
+#~ msgstr "[e-posta adresi]"
+
+#~ msgctxt "Pattern placeholder for a standard property name"
+#~ msgid "[property]"
+#~ msgstr "[özellik]"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "Yorum Ekle..."
+
+#~ msgctxt "Numeric rating of a resource"
+#~ msgid ""
+#~ "rated as $1;rated $1;score is $1;score|scored $1;having $1 stars|star"
+#~ msgstr ""
+#~ "$1 olarak değerlendirildi;$1 olarak değerlendirildi;sonuç $1;sonuç|"
+#~ "sonuçlandı $1;$1 yıldızlı|yıldızlı"
+
+#~ msgid "Rating (0 to 10)"
+#~ msgstr "Değerlendirme (0'dan 10'a)"
+
+#~ msgctxt "Comment of a resource"
+#~ msgid ""
+#~ "described as $1;description|comment is $1;described|description|comment $1"
+#~ msgstr ""
+#~ "$1 olarak tanımlanan;tanımlama|açıklama $1;tanımlanan|tanımlama|açıklama "
+#~ "$1"
+
+#~ msgid "Comment or description"
+#~ msgstr "Açıklama veya tanımlama"
+
+#~ msgctxt "Author of a document"
+#~ msgid "written|created|composed by $1;author is $1;by $1"
+#~ msgstr "yazan|oluşturan|oluşturan $1;yazar $1;$1"
+
+#~ msgid "Author"
+#~ msgstr "Yazar"
+
+#~ msgctxt "Size of a file"
+#~ msgid "size is $1;size $1;being $1 large;$1 large"
+#~ msgstr "boyut $1;boyut $1;büyük $1;$1 büyük"
+
+#~ msgid "Size"
+#~ msgstr "Boyut"
+
+#~ msgctxt "Name of a file or contact"
+#~ msgid "name is $1;name $1;named $1"
+#~ msgstr "$1 isimli;$1 isimli;$1 isimli"
+
+#~ msgid "Name"
+#~ msgstr "İsim"
+
+#~ msgctxt "Date of creation"
+#~ msgid ""
+#~ "created|dated at|on|in|of $1;created|dated $1;creation date|time|datetime "
+#~ "is $1"
+#~ msgstr ""
+#~ "oluşturulma|oluşturuldu |tarihi|tarihi| $1;oluşturuldu|tarihli $1;"
+#~ "oluşturulma tarihi|zamanı|günü $1"
+
+#~ msgid "Date of creation"
+#~ msgstr "Oluşturulma tarihi"
+
+#~ msgctxt "Date of last modification"
+#~ msgid ""
+#~ "modified|edited at|on $1;modified|edited $1;modification|edition date|"
+#~ "time|datetime is $1"
+#~ msgstr ""
+#~ "$1 zamanında|saatinde değiştirilmiş|düzenlenmiş;$1 tarihinde "
+#~ "değiştirilmiş|düzenlenmiş;değişiklik|düzenleme günü|zamanı|tarihi $1"
+
+#~ msgid "Date of last modification"
+#~ msgstr "Son değiştirilme tarihi"
+
+#~ msgctxt "A document is associated with a tag"
+#~ msgid "tagged as $1;has tag $1;tag is $1;# $1"
+#~ msgstr "$1 olarak etiketlendi;$1 etiketli;etiket $1;# $1"
+
+#~ msgid "Tag name"
+#~ msgstr "Etiket ismi"
+
+#~ msgctxt ""
+#~ "$1 is a property name (non-translatable unfortunately) and $2 is the "
+#~ "value against which the property is matched. Note that the equal/greater/"
+#~ "smaller sign has already been folded in $2"
+#~ msgid "$1 is $2;$1 $2"
+#~ msgstr "$1 ile $2 aynıdır;$1 $2"
+
+#~ msgid "File property"
+#~ msgstr "Dosya özelliği"
+
+#~ msgctxt ""
+#~ "Characters that are kept in the query for further processing but are "
+#~ "considered word boundaries"
+#~ msgid ".,;:!?()[]{}<>=#+-"
+#~ msgstr ".,;:!?()[]{}<>=#+-"
+
+#~ msgctxt "Adding an offset to a period of time ($1=period, $2=offset)"
+#~ msgid "in $2 $1"
+#~ msgstr "$2 $1"
+
+#~ msgctxt "Removing an offset from a period of time ($1=period, $2=offset)"
+#~ msgid "$2 $1 ago"
+#~ msgstr "$2 $1 önce"
+
+#~ msgctxt "In one day"
+#~ msgid "tomorrow"
+#~ msgstr "yarın"
+
+#~ msgid "Tomorrow"
+#~ msgstr "Yarın"
+
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "dün"
+
+#~ msgid "Yesterday"
+#~ msgstr "Dün"
+
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "bugün"
+
+#~ msgid "Today"
+#~ msgstr "Bugün"
+
+#~ msgctxt "First period (first day, month, etc)"
+#~ msgid "first $1"
+#~ msgstr "ilk $1"
+
+#~ msgid "First week, month, day, ..."
+#~ msgstr "İlk hafta, ay, gün, ..."
+
+#~ msgctxt "Last period (last day, month, etc)"
+#~ msgid "last $1 of"
+#~ msgstr "son $1"
+
+#~ msgid "Last week, month, day, ..."
+#~ msgstr "Son hafta, ay, gün, ..."
+
+#~ msgctxt ""
+#~ "Setting the value of a period, as in 'third week' ($1=period, $2=value)"
+#~ msgid "$2 $1"
+#~ msgstr "$2 $1"
+
+#~ msgctxt "Adding 1 to a period of time"
+#~ msgid "next $1"
+#~ msgstr "sonraki $1"
+
+#~ msgid "Next week, month, day, ..."
+#~ msgstr "Sonraki hafta, ay, gün, ..."
+
+#~ msgctxt "Removing 1 to a period of time"
+#~ msgid "last $1"
+#~ msgstr "son $1"
+
+#~ msgid "Previous week, month, day, ..."
+#~ msgstr "Geçen hafta, ay, gün, ..."
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), PM"
+#~ msgid "at $5 :|\\. $6 pm;at $5 h pm;at $5 pm;$5 : $6 pm;$5 h pm;$5 pm"
+#~ msgstr "$5 :|\\. $6 pm;$5 h pm;$5 pm;$5 : $6 pm;$5 h pm;$5 pm"
+
+#~ msgid "A time after midday"
+#~ msgstr "Öğleden sonra"
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), AM"
+#~ msgid ""
+#~ "at $5 :|\\. $6 am;at $5 \\. $6;at $5 h am;at $5 am;at $5;$5 :|\\. $6 am;"
+#~ "$5 : $6 : $7;$5 : $6;$5 h am;$5 h;$5 am"
+#~ msgstr ""
+#~ "$5 :|\\. $6 am;$5 \\. $6;$5 h am;$5 am;$5;$5 :|\\. $6 am;$5 : $6 : $7;"
+#~ "$5 : $6;$5 h am;$5 h;$5 am"
+
+#~ msgid "A time"
+#~ msgstr "Herhangi bir zaman"
+
+#~ msgctxt ""
+#~ "A year ($1), month ($2), day ($3), day of week ($4), hour ($5), minute "
+#~ "($6), second ($7), in every combination supported by your language"
+#~ msgid ""
+#~ "$3 of $2 $1;$3 st|nd|rd|th $2 $1;$3 st|nd|rd|th of $2 $1;$3 of $2;$3 st|"
+#~ "nd|rd|th $2;$3 st|nd|rd|th of $2;$2 $3 st|nd|rd|th;$2 $3;$2 $1;$1 - $2 - "
+#~ "$3;$1 - $2;$3 / $2 / $1;$3 / $2;in $2 $1; in $1;, $1"
+#~ msgstr ""
+#~ "$3 of $2 $1;$3 inci|nci|üncü|üncü $2 $1;$3 inci|nci|üncü|üncü $2 $1;$3 of "
+#~ "$2;$3 inci|nci|üncü|üncü $2;$3 inci|nci|üncü|üncü $2;$2 $3 inci|nci|üncü|"
+#~ "üncü;$2 $3;$2 $1;$1 - $2 - $3;$1 - $2;$3 / $2 / $1;$3 / $2;$2 $1; $1;, $1"
+
+#~ msgctxt "Decimal values with an integer ($1) and decimal ($2) part"
+#~ msgid "$1 \\. $2"
+#~ msgstr "$1 \\. $2"
+
+#~ msgid "A decimal value"
+#~ msgstr "Bir ondalık değer"
+
+#~ msgctxt "Equality"
+#~ msgid "contains|containing $1"
+#~ msgstr "içerir|içeren $1"
+
+#~ msgid "Containing"
+#~ msgstr "İçeren"
+
+#~ msgctxt "Strictly greater"
+#~ msgid "greater|bigger|more than $1;at least $1;> $1"
+#~ msgstr "büyüktür|büyük|$1 değerinden büyüktür;en az $1;> $1"
+
+#~ msgid "Greater than"
+#~ msgstr "Büyüktür"
+
+#~ msgctxt "After in time"
+#~ msgid "after|since $1"
+#~ msgstr "$1 tarihinden sonra|tarihinden beri"
+
+#~ msgid "After"
+#~ msgstr "Sonra"
+
+#~ msgctxt "Strictly smaller"
+#~ msgid "smaller|less|lesser than $1;at most $1;< $1"
+#~ msgstr "küçüktür|az|$1 değerinden daha az;en çok $1;< $1"
+
+#~ msgid "Smaller than"
+#~ msgstr "Küçüktür"
+
+#~ msgctxt "Before in time"
+#~ msgid "before|until $1"
+#~ msgstr "$1 tarihinden önce|tarihine kadar"
+
+#~ msgid "Before"
+#~ msgstr "Önce"
+
+#~ msgctxt "Equality"
+#~ msgid "equal|equals|= $1;equal to $1"
+#~ msgstr "eşit|eşittir|= $1;eşittir $1"
+
+#~ msgid "Equal to"
+#~ msgstr "Eşit"
+
+#~ msgctxt "Space-separated list of words representing a year"
+#~ msgid "year years"
+#~ msgstr "yıl yıl"
+
+#~ msgctxt "Space-separated list of words representing a month"
+#~ msgid "month months"
+#~ msgstr "ay ay"
+
+#~ msgctxt "Space-separated list of words representing a week"
+#~ msgid "week weeks"
+#~ msgstr "hafta hafta"
+
+#~ msgctxt "Space-separated list of words representing a day"
+#~ msgid "day days"
+#~ msgstr "gün gün"
+
+#~ msgctxt "Space-separated list of words representing an hour"
+#~ msgid "hour hours"
+#~ msgstr "saat saat"
+
+#~ msgctxt "Space-separated list of words representing a minute"
+#~ msgid "minute minutes"
+#~ msgstr "dakika dakika"
+
+#~ msgctxt "Space-separated list of words representing a second"
+#~ msgid "second seconds"
+#~ msgstr "saniye saniye"
+
+#~ msgctxt "Lower-case units corresponding to a kilobyte"
+#~ msgid "kb kilobyte kilobytes"
+#~ msgstr "kb kilobayt kilobayt"
+
+#~ msgctxt "Lower-case units corresponding to a megabyte"
+#~ msgid "mb megabyte megabytes"
+#~ msgstr "mb megabayt megabayt"
+
+#~ msgctxt "Lower-case units corresponding to a gigabyte"
+#~ msgid "gb gigabyte gigabytes"
+#~ msgstr "gn gigabayt gigabayt"
+
+#~ msgctxt "Lower-case units corresponding to a terabyte"
+#~ msgid "tb terabyte terabytes"
+#~ msgstr "tb terabayt terabayt"
+
+#~ msgctxt "Lower-case units corresponding to a kibibyte"
+#~ msgid "kib k kibibyte kibibytes"
+#~ msgstr "kib k kibibayt kibibayt"
+
+#~ msgctxt "Lower-case units corresponding to a mebibyte"
+#~ msgid "mib m mebibyte mebibytes"
+#~ msgstr "mib m mebibayt mebibayt"
+
+#~ msgctxt "Lower-case units corresponding to a gibibyte"
+#~ msgid "gib g gibibyte gibibytes"
+#~ msgstr "gib g gibibayt gibibayt"
+
+#~ msgctxt "Lower-case units corresponding to a tebibyte"
+#~ msgid "tib t tebibyte tebibytes"
+#~ msgstr "tib t tebibayt tebibayt"
+
+#~ msgctxt "Space-separated list of words meaning 0"
+#~ msgid "zero nought null"
+#~ msgstr "sıfır boş boş"
+
+#~ msgctxt "Space-separated list of words meaning 1"
+#~ msgid "one a first"
+#~ msgstr "bir bir birinci"
+
+#~ msgctxt "Space-separated list of words meaning 2"
+#~ msgid "two second"
+#~ msgstr "iki ikinci"
+
+#~ msgctxt "Space-separated list of words meaning 3"
+#~ msgid "three third"
+#~ msgstr "üç üçüncü"
+
+#~ msgctxt "Space-separated list of words meaning 4"
+#~ msgid "four fourth"
+#~ msgstr "dört dördüncü"
+
+#~ msgctxt "Space-separated list of words meaning 5"
+#~ msgid "five fifth"
+#~ msgstr "beş beşinci"
+
+#~ msgctxt "Space-separated list of words meaning 6"
+#~ msgid "six sixth"
+#~ msgstr "altı altıncı"
+
+#~ msgctxt "Space-separated list of words meaning 7"
+#~ msgid "seven seventh"
+#~ msgstr "yeni yedinci"
+
+#~ msgctxt "Space-separated list of words meaning 8"
+#~ msgid "eight eighth"
+#~ msgstr "sekiz sekizinci"
+
+#~ msgctxt "Space-separated list of words meaning 9"
+#~ msgid "nine ninth"
+#~ msgstr "dokuz dokuzuncu"
+
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "on onuncu"
+
+#~ msgctxt ""
+#~ "List of lowercase prefixes or suffix that need to be split from values"
+#~ msgid "k m g b kb mb gb tb kib mib gib tib h am pm th rd nd st"
+#~ msgstr "k m g b kb mb gb tb kib mib gib tib h am pm th rd nd st"
+
+#~ msgctxt "List of words representing a file"
+#~ msgid "file files"
+#~ msgstr "dosya dosya"
+
+#~ msgctxt "List of words representing an image"
+#~ msgid "image images picture pictures photo photos"
+#~ msgstr "görüntü görüntü resim resim fotoğraf fotoğraf"
+
+#~ msgctxt "List of words representing a video"
+#~ msgid "video videos movie movies film films"
+#~ msgstr "video videolar sinema sinemalar film filmler"
+
+#~ msgctxt "List of words representing an audio file"
+#~ msgid "music musics"
+#~ msgstr "müzik müzik"
+
+#~ msgctxt "List of words representing a document"
+#~ msgid "document documents"
+#~ msgstr "belge belge"
+
+#~ msgctxt "List of words representing an email"
+#~ msgid "mail mails email emails e-mail e-mails message messages"
+#~ msgstr "posta postalar eposta epostalar e-posta e-postalar ileti iletiler"
+
+#~ msgctxt "List of words representing an archive"
+#~ msgid "archive archives tarball tarballs zip"
+#~ msgstr "arşiv arşivler arşivdosyası arşivdosyaları zip"
+
+#~ msgctxt "List of words representing a folder"
+#~ msgid "folder folders directory directories"
+#~ msgstr "klasör klasörler dizin dizinler"
+
+#~ msgctxt "List of words representing a contact"
+#~ msgid "contact contacts person people"
+#~ msgstr "bağlantı bağlantılar kişi kişiler"
+
+#~ msgctxt "List of words representing a note"
+#~ msgid "note notes"
+#~ msgstr "not notlar"
+
+#~ msgctxt "Are words of your language separated by spaces (Y/N) ?"
+#~ msgid "Y"
+#~ msgstr "E"
+
+#~ msgid "and"
+#~ msgstr "ve"
+
+#~ msgid "or"
+#~ msgstr "veya"
+
+#~ msgid "not"
+#~ msgstr "değildir"

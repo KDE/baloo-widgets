@@ -1,0 +1,1168 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2022-08-02 22:06+0200\n"
+"Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
+"Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 20.08.1\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 objekt"
+msgstr[1] "%1 objekt"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Kommentar"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "Skapad"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "Använd"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Ändrad"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Ägare"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "Grupp"
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "Skydd"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Betyg"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Storlek"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Etiketter"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Total storlek"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "Dolda objekt"
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Typ"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "Länk till"
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr "Pekar på"
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "Nerladdad från"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr "Dimensioner"
+
+#: src/filemetadataprovider.cpp:465
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "GPS-plats"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "&Detaljinformation"
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "Lägg till..."
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "Redigera..."
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "Redigera kommentar"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Lägg till kommentar"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "Spara"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Redigera etiketter"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Lägg till etiketter"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Anpassa vilka etiketter som ska tillämpas."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Skapa ny etikett:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "Tilldela etiketter"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "Skapa ny..."
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "Ny etikett"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "Ny etikett:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ";"
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr "%1° S"
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr "%1° N"
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr "%1° V"
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr "%1° Ö"
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr "Visa plats i %1"
+
+#~ msgctxt "unknown file size"
+#~ msgid "Unknown"
+#~ msgstr "Okänd"
+
+#~ msgctxt "@label bitrate (per second)"
+#~ msgid "%1/s"
+#~ msgstr "%1/s"
+
+#~ msgctxt "@label samplerate in kilohertz"
+#~ msgid "%1 kHz"
+#~ msgstr "%1 kHz"
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "Ändra..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "Ändra kommentar"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "Ändra etiketter"
+
+#~ msgctxt ""
+#~ "This is added to the query builder widget when a proposal containing a "
+#~ "placeholder is selected"
+#~ msgid "[something]"
+#~ msgstr "[någonting]"
+
+#~ msgctxt "Pattern placeholder having no specific type"
+#~ msgid "[something]"
+#~ msgstr "[någonting]"
+
+#~ msgctxt "Pattern placeholder of date-time type"
+#~ msgid "[date and time]"
+#~ msgstr "[datum och tid]"
+
+#~ msgctxt "Pattern placeholder for a tag name"
+#~ msgid "[tag name]"
+#~ msgstr "[etikettnamn]"
+
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "[kontakt]"
+
+#~ msgctxt "Pattern placeholder for an e-mail address"
+#~ msgid "[email address]"
+#~ msgstr "[e-postadress"
+
+#~ msgctxt "Pattern placeholder for a standard property name"
+#~ msgid "[property]"
+#~ msgstr "[egenskap]"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "Lägg till kommentar..."
+
+#~ msgctxt "Numeric rating of a resource"
+#~ msgid ""
+#~ "rated as $1;rated $1;score is $1;score|scored $1;having $1 stars|star"
+#~ msgstr "med betyg $1;betyg är $1;har $1 stjärnor|stjärna;betyg $1"
+
+#~ msgid "Rating (0 to 10)"
+#~ msgstr "Betyg (0 till 10)"
+
+#~ msgctxt "Comment of a resource"
+#~ msgid ""
+#~ "described as $1;description|comment is $1;described|description|comment $1"
+#~ msgstr ""
+#~ "beskriven som $1;beskrivning|kommentar är $1;beskrivning|kommentar $1"
+
+#~ msgid "Comment or description"
+#~ msgstr "Kommentar eller beskrivning"
+
+#~ msgctxt "Author of a document"
+#~ msgid "written|created|composed by $1;author is $1;by $1"
+#~ msgstr ""
+#~ "skrivet|skapat av $1;författare är $1;upphovsman är $1;författare $1;"
+#~ "upphovsman $1;av $1"
+
+#~ msgid "Author"
+#~ msgstr "Upphovsman"
+
+#~ msgctxt "Size of a file"
+#~ msgid "size is $1;size $1;being $1 large;$1 large"
+#~ msgstr "storleken är $1; storlek är $1; storlek $1"
+
+#~ msgid "Size"
+#~ msgstr "Storlek"
+
+#~ msgctxt "Name of a file or contact"
+#~ msgid "name is $1;name $1;named $1"
+#~ msgstr "namnet är $1;namn $1;benämnd $1;vid namn $1;döpt till $1"
+
+#~ msgid "Name"
+#~ msgstr "Namn"
+
+#~ msgctxt "Date of creation"
+#~ msgid ""
+#~ "created|dated at|on|in|of $1;created|dated $1;creation date|time|datetime "
+#~ "is $1"
+#~ msgstr "skapat|daterat $1;skapat datum|tid $1"
+
+#~ msgid "Date of creation"
+#~ msgstr "Skapat datum"
+
+#~ msgctxt "Date of last modification"
+#~ msgid ""
+#~ "modified|edited at|on $1;modified|edited $1;modification|edition date|"
+#~ "time|datetime is $1"
+#~ msgstr ""
+#~ "ändrat|redigerat $1;ändringsdatum|redigeringsdatum|ändringstid|"
+#~ "ändringsdatum är $1;ändringsdatum|redigeringsdatum|ändringstid|"
+#~ "ändringsdatum $1"
+
+#~ msgid "Date of last modification"
+#~ msgstr "Datum för senaste ändring"
+
+#~ msgctxt "A document is associated with a tag"
+#~ msgid "tagged as $1;has tag $1;tag is $1;# $1"
+#~ msgstr "med etikett $1;har etikett $1;etikett är $1;etikett $1;# $1"
+
+#~ msgid "Tag name"
+#~ msgstr "Etikettnamn"
+
+#~ msgctxt ""
+#~ "$1 is a property name (non-translatable unfortunately) and $2 is the "
+#~ "value against which the property is matched. Note that the equal/greater/"
+#~ "smaller sign has already been folded in $2"
+#~ msgid "$1 is $2;$1 $2"
+#~ msgstr "$1 är $2;$1 $2"
+
+#~ msgid "File property"
+#~ msgstr "Filegenskap"
+
+#~ msgctxt ""
+#~ "Characters that are kept in the query for further processing but are "
+#~ "considered word boundaries"
+#~ msgid ".,;:!?()[]{}<>=#+-"
+#~ msgstr ".,;:!?()[]{}<>=#+-"
+
+#~ msgctxt "Adding an offset to a period of time ($1=period, $2=offset)"
+#~ msgid "in $2 $1"
+#~ msgstr "om $2 $1"
+
+#~ msgctxt "Removing an offset from a period of time ($1=period, $2=offset)"
+#~ msgid "$2 $1 ago"
+#~ msgstr "$2 $1 sedan"
+
+#~ msgctxt "In one day"
+#~ msgid "tomorrow"
+#~ msgstr "imorgon"
+
+#~ msgid "Tomorrow"
+#~ msgstr "Imorgon"
+
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "igår"
+
+#~ msgid "Yesterday"
+#~ msgstr "Igår"
+
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "idag"
+
+#~ msgid "Today"
+#~ msgstr "I dag"
+
+#~ msgctxt "First period (first day, month, etc)"
+#~ msgid "first $1"
+#~ msgstr "första $1"
+
+#~ msgid "First week, month, day, ..."
+#~ msgstr "Första veckan, månaden, dagen..."
+
+#~ msgctxt "Last period (last day, month, etc)"
+#~ msgid "last $1 of"
+#~ msgstr "sista $1 av"
+
+#~ msgid "Last week, month, day, ..."
+#~ msgstr "Förra veckan, månaden, dagen..."
+
+#~ msgctxt ""
+#~ "Setting the value of a period, as in 'third week' ($1=period, $2=value)"
+#~ msgid "$2 $1"
+#~ msgstr "$2 $1"
+
+#~ msgctxt "Adding 1 to a period of time"
+#~ msgid "next $1"
+#~ msgstr "nästa $1"
+
+#~ msgid "Next week, month, day, ..."
+#~ msgstr "Nästa vecka, månad, dag..."
+
+#~ msgctxt "Removing 1 to a period of time"
+#~ msgid "last $1"
+#~ msgstr "förra $1"
+
+#~ msgid "Previous week, month, day, ..."
+#~ msgstr "Förra veckan, månaden, dagen..."
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), PM"
+#~ msgid "at $5 :|\\. $6 pm;at $5 h pm;at $5 pm;$5 : $6 pm;$5 h pm;$5 pm"
+#~ msgstr "$5 :|\\. $6 em;$5 t em;$5 em;$5 : $6 em;$5 t em;$5 em"
+
+#~ msgid "A time after midday"
+#~ msgstr "En tid på eftermiddagen"
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), AM"
+#~ msgid ""
+#~ "at $5 :|\\. $6 am;at $5 \\. $6;at $5 h am;at $5 am;at $5;$5 :|\\. $6 am;"
+#~ "$5 : $6 : $7;$5 : $6;$5 h am;$5 h;$5 am"
+#~ msgstr ""
+#~ "$5 :|\\. $6 fm;$5 \\. $6;$5 t fm;$5 fm;$5;$5 :|\\. $6 fm;$5 : $6 : $7;"
+#~ "$5 : $6;$5 t fm;$5 t;$5 fm"
+
+#~ msgid "A time"
+#~ msgstr "En tid"
+
+#~ msgctxt ""
+#~ "A year ($1), month ($2), day ($3), day of week ($4), hour ($5), minute "
+#~ "($6), second ($7), in every combination supported by your language"
+#~ msgid ""
+#~ "$3 of $2 $1;$3 st|nd|rd|th $2 $1;$3 st|nd|rd|th of $2 $1;$3 of $2;$3 st|"
+#~ "nd|rd|th $2;$3 st|nd|rd|th of $2;$2 $3 st|nd|rd|th;$2 $3;$2 $1;$1 - $2 - "
+#~ "$3;$1 - $2;$3 / $2 / $1;$3 / $2;in $2 $1; in $1;, $1"
+#~ msgstr ""
+#~ "$3 $2 $1;$3 a|e $2 $1;$3 a|e $2 $1;$3 $2;$3 a|e $2;$3 a|e $2;$2 $3 a|e;$2 "
+#~ "$3;$2 $1;$1 - $2 - $3;$1 - $2;$3 / $2 / $1;$3 / $2"
+
+#~ msgctxt "Decimal values with an integer ($1) and decimal ($2) part"
+#~ msgid "$1 \\. $2"
+#~ msgstr "$1 \\. $2"
+
+#~ msgid "A decimal value"
+#~ msgstr "Ett decimalt värde"
+
+#~ msgctxt "Equality"
+#~ msgid "contains|containing $1"
+#~ msgstr "innehåller|innehåller $1"
+
+#~ msgid "Containing"
+#~ msgstr "Innehåller"
+
+#~ msgctxt "Strictly greater"
+#~ msgid "greater|bigger|more than $1;at least $1;> $1"
+#~ msgstr "större än|mer än $1;åtminstone $1;> $1"
+
+#~ msgid "Greater than"
+#~ msgstr "Större än"
+
+#~ msgctxt "After in time"
+#~ msgid "after|since $1"
+#~ msgstr "efter|sedan $1"
+
+#~ msgid "After"
+#~ msgstr "Senare"
+
+#~ msgctxt "Strictly smaller"
+#~ msgid "smaller|less|lesser than $1;at most $1;< $1"
+#~ msgstr "mindre än $1;som mest $1;< $1"
+
+#~ msgid "Smaller than"
+#~ msgstr "Mindre än"
+
+#~ msgctxt "Before in time"
+#~ msgid "before|until $1"
+#~ msgstr "före|till $1"
+
+#~ msgid "Before"
+#~ msgstr "Tidigare"
+
+#~ msgctxt "Equality"
+#~ msgid "equal|equals|= $1;equal to $1"
+#~ msgstr "lika med|= $1"
+
+#~ msgid "Equal to"
+#~ msgstr "Lika med"
+
+#~ msgctxt "Space-separated list of words representing a year"
+#~ msgid "year years"
+#~ msgstr "år år"
+
+#~ msgctxt "Space-separated list of words representing a month"
+#~ msgid "month months"
+#~ msgstr "månad månader"
+
+#~ msgctxt "Space-separated list of words representing a week"
+#~ msgid "week weeks"
+#~ msgstr "vecka veckor"
+
+#~ msgctxt "Space-separated list of words representing a day"
+#~ msgid "day days"
+#~ msgstr "dag dagar"
+
+#~ msgctxt "Space-separated list of words representing an hour"
+#~ msgid "hour hours"
+#~ msgstr "timma timmar"
+
+#~ msgctxt "Space-separated list of words representing a minute"
+#~ msgid "minute minutes"
+#~ msgstr "minut minuter"
+
+#~ msgctxt "Space-separated list of words representing a second"
+#~ msgid "second seconds"
+#~ msgstr "sekund sekunder"
+
+#~ msgctxt "Lower-case units corresponding to a kilobyte"
+#~ msgid "kb kilobyte kilobytes"
+#~ msgstr "kb kilobyte kilobyte"
+
+#~ msgctxt "Lower-case units corresponding to a megabyte"
+#~ msgid "mb megabyte megabytes"
+#~ msgstr "mb megabyte megabyte"
+
+#~ msgctxt "Lower-case units corresponding to a gigabyte"
+#~ msgid "gb gigabyte gigabytes"
+#~ msgstr "gb gigabyte gigabyte"
+
+#~ msgctxt "Lower-case units corresponding to a terabyte"
+#~ msgid "tb terabyte terabytes"
+#~ msgstr "tb terabyte terabyte"
+
+#~ msgctxt "Lower-case units corresponding to a kibibyte"
+#~ msgid "kib k kibibyte kibibytes"
+#~ msgstr "kib k kibibyte kibibyte"
+
+#~ msgctxt "Lower-case units corresponding to a mebibyte"
+#~ msgid "mib m mebibyte mebibytes"
+#~ msgstr "mib m mebibyte mebibyte"
+
+#~ msgctxt "Lower-case units corresponding to a gibibyte"
+#~ msgid "gib g gibibyte gibibytes"
+#~ msgstr "gib g gibibyte gibibyte"
+
+#~ msgctxt "Lower-case units corresponding to a tebibyte"
+#~ msgid "tib t tebibyte tebibytes"
+#~ msgstr "tib t tebibyte tebibyte"
+
+#~ msgctxt "Space-separated list of words meaning 0"
+#~ msgid "zero nought null"
+#~ msgstr "noll"
+
+#~ msgctxt "Space-separated list of words meaning 1"
+#~ msgid "one a first"
+#~ msgstr "en ett första"
+
+#~ msgctxt "Space-separated list of words meaning 2"
+#~ msgid "two second"
+#~ msgstr "två sekunder"
+
+#~ msgctxt "Space-separated list of words meaning 3"
+#~ msgid "three third"
+#~ msgstr "tre tredje"
+
+#~ msgctxt "Space-separated list of words meaning 4"
+#~ msgid "four fourth"
+#~ msgstr "fyra fjärde"
+
+#~ msgctxt "Space-separated list of words meaning 5"
+#~ msgid "five fifth"
+#~ msgstr "fem femte"
+
+#~ msgctxt "Space-separated list of words meaning 6"
+#~ msgid "six sixth"
+#~ msgstr "sex sjätte"
+
+#~ msgctxt "Space-separated list of words meaning 7"
+#~ msgid "seven seventh"
+#~ msgstr "sju sjunde"
+
+#~ msgctxt "Space-separated list of words meaning 8"
+#~ msgid "eight eighth"
+#~ msgstr "åtta åttonde"
+
+#~ msgctxt "Space-separated list of words meaning 9"
+#~ msgid "nine ninth"
+#~ msgstr "nio nionde"
+
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "tio tionde"
+
+#~ msgctxt ""
+#~ "List of lowercase prefixes or suffix that need to be split from values"
+#~ msgid "k m g b kb mb gb tb kib mib gib tib h am pm th rd nd st"
+#~ msgstr "k m g b kb mb gb tb kib mib gib tib t fm em"
+
+#~ msgctxt "List of words representing a file"
+#~ msgid "file files"
+#~ msgstr "fil filer"
+
+#~ msgctxt "List of words representing an image"
+#~ msgid "image images picture pictures photo photos"
+#~ msgstr "bild bilder foto foton"
+
+#~ msgctxt "List of words representing a video"
+#~ msgid "video videos movie movies film films"
+#~ msgstr "video videor film filmer"
+
+#~ msgctxt "List of words representing an audio file"
+#~ msgid "music musics"
+#~ msgstr "musik musik"
+
+#~ msgctxt "List of words representing a document"
+#~ msgid "document documents"
+#~ msgstr "dokument dokument"
+
+#~ msgctxt "List of words representing an email"
+#~ msgid "mail mails email emails e-mail e-mails message messages"
+#~ msgstr "brev brev e-post e-post"
+
+#~ msgctxt "List of words representing an archive"
+#~ msgid "archive archives tarball tarballs zip"
+#~ msgstr "arkiv arkiv zip"
+
+#~ msgctxt "List of words representing a folder"
+#~ msgid "folder folders directory directories"
+#~ msgstr "katalog kataloger"
+
+#~ msgctxt "List of words representing a contact"
+#~ msgid "contact contacts person people"
+#~ msgstr "kontakt kontakter person personer"
+
+#~ msgctxt "List of words representing a note"
+#~ msgid "note notes"
+#~ msgstr "anteckning anteckningar"
+
+#~ msgctxt "Are words of your language separated by spaces (Y/N) ?"
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgid "and"
+#~ msgstr "och"
+
+#~ msgid "or"
+#~ msgstr "eller"
+
+#~ msgid "not"
+#~ msgstr "inte"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "Storlek"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "Beroende"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "Generering"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasPart"
+#~ msgid "Has Part"
+#~ msgstr "Har del"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasLogicalPart"
+#~ msgid "Has Logical Part"
+#~ msgstr "Har logikdel"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "Del av"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "Nyckelord"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "Ändrad"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "Mime-typ"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "Relaterad till"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "Ämne"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "Skapare"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "Medelbithastighet"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "Kanaler"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "Tecken"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "Avkodare"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "Färgdjup"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "Varaktighet"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "Filnamn"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "Checksumma"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "Höjd"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "Inflätningsläge"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "Rader"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "Programspråk"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "Samplingsfrekvens"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "Bredd"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "Ord"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "Bländare"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Bias Value"
+#~ msgstr "Exponeringsavvikelse"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "Exponeringstid"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "Blixt"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "Brännvidd"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "Brännvidd (35 mm)"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "ISO-känsligheter"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "Märke"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "Mätarläge"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "Modell"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "Orientering"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "Vitbalans"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "Regissör"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "Genre"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "Album"
+
+#~ msgctxt "@label"
+#~ msgid "Artist"
+#~ msgstr "Artist"
+
+#~ msgctxt "@label"
+#~ msgid "Aspect Ratio"
+#~ msgstr "Proportion"
+
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "Bildfrekvens"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "Utgivningsdatum"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "Spår"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "Resurs skapad"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "Delresurs"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "Resurs ändrad"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "Numeriskt betyg"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "Första användning"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "Senaste användning"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "Antal användningar"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "Unix filgrupp"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "Unix filläge"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "Unix filägare"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "Typ"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "Inexakta översättningar"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "Senaste översättare"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "Föråldrade översättningar"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "Översättningens källdatum"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "Totalt antal översättningar"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "Översatta"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "Översättningsdatum"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "Oöversatta"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "Ta bort etikett"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr ""
+#~ "Ska etiketten <resource>%1</resource> verkligen tas bort för alla filer?"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "Ta bort etikett"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Ta bort"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#~ msgctxt "@label"
+#~ msgid "Performer"
+#~ msgstr "Artist"
+
+#~ msgctxt "@label"
+#~ msgid "Show all tags..."
+#~ msgstr "Visa alla etiketter..."
+
+#~ msgctxt ""
+#~ "@title KCategorizedSortFilterProxyModel grouping for all Nepomukj "
+#~ "resources that are of type rdfs:Resource"
+#~ msgid "Miscellaneous"
+#~ msgstr "Diverse"
+
+#~ msgctxt "@title:column The Nepomuk resource label and icon"
+#~ msgid "Resource"
+#~ msgstr "Resurs"
+
+#~ msgctxt "@title:column The Nepomuk resource's RDF type"
+#~ msgid "Resource Type"
+#~ msgstr "Resurstyp"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Anytime"
+#~ msgstr "När som helst"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Today"
+#~ msgstr "I dag"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Week"
+#~ msgstr "Denna veckan"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Week"
+#~ msgstr "Förra veckan"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Month"
+#~ msgstr "Denna månaden"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Month"
+#~ msgstr "Förra månaden"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Year"
+#~ msgstr "Detta året"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Year"
+#~ msgstr "Förra året"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources that will open a dialog to choose a date range"
+#~ msgid "Custom..."
+#~ msgstr "Egen..."
+
+#~ msgid "This Week"
+#~ msgstr "Denna veckan"
+
+#~ msgid "This Month"
+#~ msgstr "Denna månaden"
+
+#~ msgctxt ""
+#~ "@option:check An item in a list of resources that allows to query for "
+#~ "more resources to put in the list"
+#~ msgid "More..."
+#~ msgstr "Mer..."
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Documents"
+#~ msgstr "Dokument"
+
+#~ msgctxt "@option:check A filter on file type - audio files"
+#~ msgid "Audio"
+#~ msgstr "Ljud"
+
+#~ msgctxt "@option:check A filter on file type - media video"
+#~ msgid "Video"
+#~ msgstr "Video"
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Images"
+#~ msgstr "Bilder"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "No priority"
+#~ msgstr "Utan prioritet"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Last modified"
+#~ msgstr "Senast ändrad"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Most important"
+#~ msgstr "De viktigaste"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Never opened"
+#~ msgstr "Aldrig öppnade"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Any Rating"
+#~ msgstr "Alla betyg"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "1 or more"
+#~ msgstr "1 eller mer"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "2 or more"
+#~ msgstr "2 eller mer"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "3 or more"
+#~ msgstr "3 eller mer"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "4 or more"
+#~ msgstr "4 eller mer"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Max Rating"
+#~ msgstr "Högsta betyg"
+
+#~ msgid "Enter Search Terms..."
+#~ msgstr "Ange sökbegrepp..."
+
+#~ msgid "Search"
+#~ msgstr "Sök"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Emails"
+#~ msgstr "E-post"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tasks"
+#~ msgstr "Uppgifter"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tags"
+#~ msgstr "Etiketter"
+
+#~ msgctxt "@option:check Do filter on type - show only files"
+#~ msgid "Files"
+#~ msgstr "Filer"
+
+#~ msgctxt "@option:check Do filter on type - show everything but files"
+#~ msgid "Other"
+#~ msgstr "Annat"

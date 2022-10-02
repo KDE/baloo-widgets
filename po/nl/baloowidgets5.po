@@ -1,0 +1,998 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2022-07-17 15:36+0200\n"
+"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.04.3\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 item"
+msgstr[1] "%1 items"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Toelichting"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "Aangemaakt"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "Geopend"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Gewijzigd"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Eigenaar"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "Groep"
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "Toegangsrechten"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Waardering"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Grootte"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Tags"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Totale grootte"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "Verborgen items"
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Type"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "Koppeling naar"
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr "Verwijst naar"
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "Gedownload van"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr "Afmetingen"
+
+#: src/filemetadataprovider.cpp:465
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "GPS-locatie"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "&Details"
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "Toevoegen..."
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "Bewerken..."
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "Toelichting bewerken"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Toelichting toevoegen"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "Opslaan"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Tags bewerken"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Tags toevoegen"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Stel in welke tags toegepast moeten worden."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Nieuwe tag aanmaken:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "Tags toekennen"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "Nieuwe aanmaken..."
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "Nieuwe tag"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "Nieuwe tag:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", "
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr "%1°S"
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr "%1°N"
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr "%1°W"
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr "%1°E"
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr "Locatie in %1 tonen"
+
+#~ msgctxt "unknown file size"
+#~ msgid "Unknown"
+#~ msgstr "Onbekend"
+
+#~ msgctxt "@label bitrate (per second)"
+#~ msgid "%1/s"
+#~ msgstr "%1/s"
+
+#~ msgctxt "@label samplerate in kilohertz"
+#~ msgid "%1 kHz"
+#~ msgstr "%1 kHz"
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "Wijzigen..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "Toelichting wijzigen"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "Tags wijzigen"
+
+#~ msgctxt ""
+#~ "This is added to the query builder widget when a proposal containing a "
+#~ "placeholder is selected"
+#~ msgid "[something]"
+#~ msgstr "[iets]"
+
+#~ msgctxt "Pattern placeholder having no specific type"
+#~ msgid "[something]"
+#~ msgstr "[iets]"
+
+#~ msgctxt "Pattern placeholder of date-time type"
+#~ msgid "[date and time]"
+#~ msgstr "[datum en tijd]"
+
+#~ msgctxt "Pattern placeholder for a tag name"
+#~ msgid "[tag name]"
+#~ msgstr "[tagnaam]"
+
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "[contactpersoon]"
+
+#~ msgctxt "Pattern placeholder for an e-mail address"
+#~ msgid "[email address]"
+#~ msgstr "[e-mailadres]"
+
+#~ msgctxt "Pattern placeholder for a standard property name"
+#~ msgid "[property]"
+#~ msgstr "[eigenschap]"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "Toelichting toevoegen..."
+
+#~ msgctxt "Numeric rating of a resource"
+#~ msgid ""
+#~ "rated as $1;rated $1;score is $1;score|scored $1;having $1 stars|star"
+#~ msgstr ""
+#~ "gewaardeerd op $1;gewaardeerd $1;score is $1;score|scoorde $1;heeft $1 "
+#~ "sterren|ster"
+
+#~ msgid "Rating (0 to 10)"
+#~ msgstr "Waardering (0 tot 10)"
+
+#~ msgctxt "Comment of a resource"
+#~ msgid ""
+#~ "described as $1;description|comment is $1;described|description|comment $1"
+#~ msgstr ""
+#~ "beschreven als $1;beschrijving|commentaar is $1;beschreven|beschrijving|"
+#~ "commentaar $1"
+
+#~ msgid "Comment or description"
+#~ msgstr "Toelichting bij beschrijving"
+
+#~ msgctxt "Author of a document"
+#~ msgid "written|created|composed by $1;author is $1;by $1"
+#~ msgstr "geschreven|gemaakt|opgesteld door $1;auteur is $1;door $1"
+
+#~ msgid "Author"
+#~ msgstr "Auteur"
+
+#~ msgctxt "Size of a file"
+#~ msgid "size is $1;size $1;being $1 large;$1 large"
+#~ msgstr "grootte is $1;grootte $1;is $1 groot;groot $1"
+
+#~ msgid "Size"
+#~ msgstr "Grootte"
+
+#~ msgctxt "Name of a file or contact"
+#~ msgid "name is $1;name $1;named $1"
+#~ msgstr "naam is $1;naam $1;genaamd $1"
+
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgctxt "Date of creation"
+#~ msgid ""
+#~ "created|dated at|on|in|of $1;created|dated $1;creation date|time|datetime "
+#~ "is $1"
+#~ msgstr ""
+#~ "gemaakt|gedateerd op|op|op $1;gemaakt|gedateerd $1;aanmaakdatum|tijdstip|"
+#~ "datum-tijd is $1"
+
+#~ msgid "Date of creation"
+#~ msgstr "Datum van aanmaak"
+
+#~ msgctxt "Date of last modification"
+#~ msgid ""
+#~ "modified|edited at|on $1;modified|edited $1;modification|edition date|"
+#~ "time|datetime is $1"
+#~ msgstr ""
+#~ "gewijzigd|bewerkt op|op $1;gewijzigd|bewerkt $1;wijziging|bewerkingsdatum|"
+#~ "tijd|datum-tijd is $1"
+
+#~ msgid "Date of last modification"
+#~ msgstr "Datum van laatste wijziging"
+
+#~ msgctxt "A document is associated with a tag"
+#~ msgid "tagged as $1;has tag $1;tag is $1;# $1"
+#~ msgstr "van tag voorzien met $1;heeft tag $1;tag is $1;# $1"
+
+#~ msgid "Tag name"
+#~ msgstr "Tagnaam"
+
+#~ msgctxt ""
+#~ "$1 is a property name (non-translatable unfortunately) and $2 is the "
+#~ "value against which the property is matched. Note that the equal/greater/"
+#~ "smaller sign has already been folded in $2"
+#~ msgid "$1 is $2;$1 $2"
+#~ msgstr "$1 is $2;$1 $2"
+
+#~ msgid "File property"
+#~ msgstr "Bestandseigenschap"
+
+#~ msgctxt ""
+#~ "Characters that are kept in the query for further processing but are "
+#~ "considered word boundaries"
+#~ msgid ".,;:!?()[]{}<>=#+-"
+#~ msgstr ".,;:!?()[]{}<>=#+-"
+
+#~ msgctxt "Adding an offset to a period of time ($1=period, $2=offset)"
+#~ msgid "in $2 $1"
+#~ msgstr "in $2 $1"
+
+#~ msgctxt "Removing an offset from a period of time ($1=period, $2=offset)"
+#~ msgid "$2 $1 ago"
+#~ msgstr "$2 $1 geleden"
+
+#~ msgctxt "In one day"
+#~ msgid "tomorrow"
+#~ msgstr "morgen"
+
+#~ msgid "Tomorrow"
+#~ msgstr "Morgen"
+
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "gisteren"
+
+#~ msgid "Yesterday"
+#~ msgstr "Gisteren"
+
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "vandaag"
+
+#~ msgid "Today"
+#~ msgstr "Vandaag"
+
+#~ msgctxt "First period (first day, month, etc)"
+#~ msgid "first $1"
+#~ msgstr "eerste $1"
+
+#~ msgid "First week, month, day, ..."
+#~ msgstr "Eerste week, maand, dag, ..."
+
+#~ msgctxt "Last period (last day, month, etc)"
+#~ msgid "last $1 of"
+#~ msgstr "laatste $1 van"
+
+#~ msgid "Last week, month, day, ..."
+#~ msgstr "Laatste week, maand, dag, ..."
+
+#~ msgctxt ""
+#~ "Setting the value of a period, as in 'third week' ($1=period, $2=value)"
+#~ msgid "$2 $1"
+#~ msgstr "$2 $1"
+
+#~ msgctxt "Adding 1 to a period of time"
+#~ msgid "next $1"
+#~ msgstr "volgende $1"
+
+#~ msgid "Next week, month, day, ..."
+#~ msgstr "Volgonde week, maand, dag, ..."
+
+#~ msgctxt "Removing 1 to a period of time"
+#~ msgid "last $1"
+#~ msgstr "vorige $1"
+
+#~ msgid "Previous week, month, day, ..."
+#~ msgstr "Vorige week, maand, dag, ..."
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), PM"
+#~ msgid "at $5 :|\\. $6 pm;at $5 h pm;at $5 pm;$5 : $6 pm;$5 h pm;$5 pm"
+#~ msgstr "om $5 :|\\. $6 pm;om $5 h pm;om $5 pm;$5 : $6 pm;$5 u pm;$5 pm"
+
+#~ msgid "A time after midday"
+#~ msgstr "Een tijdstip na het middaguur"
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), AM"
+#~ msgid ""
+#~ "at $5 :|\\. $6 am;at $5 \\. $6;at $5 h am;at $5 am;at $5;$5 :|\\. $6 am;"
+#~ "$5 : $6 : $7;$5 : $6;$5 h am;$5 h;$5 am"
+#~ msgstr ""
+#~ "om $5 :|\\. $6 am;om $5 \\. $6;om $5 u am;om $5 am;om $5;$5 :|\\. $6 am;"
+#~ "$5 : $6 : $7;$5 : $6;$5 u am;$5 u;$5 am"
+
+#~ msgid "A time"
+#~ msgstr "Een tijdstip"
+
+#~ msgctxt ""
+#~ "A year ($1), month ($2), day ($3), day of week ($4), hour ($5), minute "
+#~ "($6), second ($7), in every combination supported by your language"
+#~ msgid ""
+#~ "$3 of $2 $1;$3 st|nd|rd|th $2 $1;$3 st|nd|rd|th of $2 $1;$3 of $2;$3 st|"
+#~ "nd|rd|th $2;$3 st|nd|rd|th of $2;$2 $3 st|nd|rd|th;$2 $3;$2 $1;$1 - $2 - "
+#~ "$3;$1 - $2;$3 / $2 / $1;$3 / $2;in $2 $1; in $1;, $1"
+#~ msgstr ""
+#~ "$3 van $2 $1;$3 ste|de $2 $1;$3 ste|de van $2 $1;$3 van $2;$3 ste|de $2;"
+#~ "$3 ste|de van $2;$2 $3 ste|de;$2 $3;$2 $1;$1 - $2 - $3;$1 - $2;$3 / $2 / "
+#~ "$1;$3 / $2;in $2 $1; in $1;, $1"
+
+#~ msgctxt "Decimal values with an integer ($1) and decimal ($2) part"
+#~ msgid "$1 \\. $2"
+#~ msgstr "$1 \\. $2"
+
+#~ msgid "A decimal value"
+#~ msgstr "Een decimale waarde"
+
+#~ msgctxt "Equality"
+#~ msgid "contains|containing $1"
+#~ msgstr "bevat|bevattende $1"
+
+#~ msgid "Containing"
+#~ msgstr "Bevattende"
+
+#~ msgctxt "Strictly greater"
+#~ msgid "greater|bigger|more than $1;at least $1;> $1"
+#~ msgstr "groter|meer dan $1;minstens $1;> $1"
+
+#~ msgid "Greater than"
+#~ msgstr "Groter dan"
+
+#~ msgctxt "After in time"
+#~ msgid "after|since $1"
+#~ msgstr "na|sinds $1"
+
+#~ msgid "After"
+#~ msgstr "Na"
+
+#~ msgctxt "Strictly smaller"
+#~ msgid "smaller|less|lesser than $1;at most $1;< $1"
+#~ msgstr "kleiner|minder dan $1;ten hoogste $1;< $1"
+
+#~ msgid "Smaller than"
+#~ msgstr "Kleiner dan"
+
+#~ msgctxt "Before in time"
+#~ msgid "before|until $1"
+#~ msgstr "voor|tot $1"
+
+#~ msgid "Before"
+#~ msgstr "Voor"
+
+#~ msgctxt "Equality"
+#~ msgid "equal|equals|= $1;equal to $1"
+#~ msgstr "gelijk|is gelijk|= $1;is gelijk aan $1"
+
+#~ msgid "Equal to"
+#~ msgstr "Gelijk aan"
+
+#~ msgctxt "Space-separated list of words representing a year"
+#~ msgid "year years"
+#~ msgstr "jaar jaren"
+
+#~ msgctxt "Space-separated list of words representing a month"
+#~ msgid "month months"
+#~ msgstr "maand maanden"
+
+#~ msgctxt "Space-separated list of words representing a week"
+#~ msgid "week weeks"
+#~ msgstr "week weken"
+
+#~ msgctxt "Space-separated list of words representing a day"
+#~ msgid "day days"
+#~ msgstr "dag dagen"
+
+#~ msgctxt "Space-separated list of words representing an hour"
+#~ msgid "hour hours"
+#~ msgstr "uur uren"
+
+#~ msgctxt "Space-separated list of words representing a minute"
+#~ msgid "minute minutes"
+#~ msgstr "minuut minuten"
+
+#~ msgctxt "Space-separated list of words representing a second"
+#~ msgid "second seconds"
+#~ msgstr "seconde seconden"
+
+#~ msgctxt "Lower-case units corresponding to a kilobyte"
+#~ msgid "kb kilobyte kilobytes"
+#~ msgstr "kb kilobyte kilobytes"
+
+#~ msgctxt "Lower-case units corresponding to a megabyte"
+#~ msgid "mb megabyte megabytes"
+#~ msgstr "mb megabyte megabytes"
+
+#~ msgctxt "Lower-case units corresponding to a gigabyte"
+#~ msgid "gb gigabyte gigabytes"
+#~ msgstr "gb gigabyte gigabytes"
+
+#~ msgctxt "Lower-case units corresponding to a terabyte"
+#~ msgid "tb terabyte terabytes"
+#~ msgstr "tb terabyte terabytes"
+
+#~ msgctxt "Lower-case units corresponding to a kibibyte"
+#~ msgid "kib k kibibyte kibibytes"
+#~ msgstr "kib k kibibyte kibibytes"
+
+#~ msgctxt "Lower-case units corresponding to a mebibyte"
+#~ msgid "mib m mebibyte mebibytes"
+#~ msgstr "mib m mebibyte mebibytes"
+
+#~ msgctxt "Lower-case units corresponding to a gibibyte"
+#~ msgid "gib g gibibyte gibibytes"
+#~ msgstr "gib g gibibyte gibibytes"
+
+#~ msgctxt "Lower-case units corresponding to a tebibyte"
+#~ msgid "tib t tebibyte tebibytes"
+#~ msgstr "tib t tebibyte tebibytes"
+
+#~ msgctxt "Space-separated list of words meaning 0"
+#~ msgid "zero nought null"
+#~ msgstr "nul"
+
+#~ msgctxt "Space-separated list of words meaning 1"
+#~ msgid "one a first"
+#~ msgstr "een eerste"
+
+#~ msgctxt "Space-separated list of words meaning 2"
+#~ msgid "two second"
+#~ msgstr "twee tweede"
+
+#~ msgctxt "Space-separated list of words meaning 3"
+#~ msgid "three third"
+#~ msgstr "drie derde"
+
+#~ msgctxt "Space-separated list of words meaning 4"
+#~ msgid "four fourth"
+#~ msgstr "vier vierde"
+
+#~ msgctxt "Space-separated list of words meaning 5"
+#~ msgid "five fifth"
+#~ msgstr "vijf vijfde"
+
+#~ msgctxt "Space-separated list of words meaning 6"
+#~ msgid "six sixth"
+#~ msgstr "zes zesde"
+
+#~ msgctxt "Space-separated list of words meaning 7"
+#~ msgid "seven seventh"
+#~ msgstr "zeven zevende"
+
+#~ msgctxt "Space-separated list of words meaning 8"
+#~ msgid "eight eighth"
+#~ msgstr "acht achtste"
+
+#~ msgctxt "Space-separated list of words meaning 9"
+#~ msgid "nine ninth"
+#~ msgstr "negen negende"
+
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "tien tiende"
+
+#~ msgctxt ""
+#~ "List of lowercase prefixes or suffix that need to be split from values"
+#~ msgid "k m g b kb mb gb tb kib mib gib tib h am pm th rd nd st"
+#~ msgstr "k m g b kb mb gb tb kib mib gib tib h am pm ste de"
+
+#~ msgctxt "List of words representing a file"
+#~ msgid "file files"
+#~ msgstr "bestand bestanden"
+
+#~ msgctxt "List of words representing an image"
+#~ msgid "image images picture pictures photo photos"
+#~ msgstr "afbeelding afbeeldingen plaatje plaatjes foto foto's"
+
+#~ msgctxt "List of words representing a video"
+#~ msgid "video videos movie movies film films"
+#~ msgstr "video video's film films"
+
+#~ msgctxt "List of words representing an audio file"
+#~ msgid "music musics"
+#~ msgstr "muziek"
+
+#~ msgctxt "List of words representing a document"
+#~ msgid "document documents"
+#~ msgstr "document documenten"
+
+#~ msgctxt "List of words representing an email"
+#~ msgid "mail mails email emails e-mail e-mails message messages"
+#~ msgstr ""
+#~ "mail mails e-mail e-mails e-mailbericht e-mailberichten bericht berichten"
+
+#~ msgctxt "List of words representing an archive"
+#~ msgid "archive archives tarball tarballs zip"
+#~ msgstr "archief archieven tarball tarballs zip"
+
+#~ msgctxt "List of words representing a folder"
+#~ msgid "folder folders directory directories"
+#~ msgstr "map mappen folder folders directory directories"
+
+#~ msgctxt "List of words representing a contact"
+#~ msgid "contact contacts person people"
+#~ msgstr "contact contacten contactpersoon contactpersonen mensen"
+
+#~ msgctxt "List of words representing a note"
+#~ msgid "note notes"
+#~ msgstr "notitie notities"
+
+#~ msgctxt "Are words of your language separated by spaces (Y/N) ?"
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgid "and"
+#~ msgstr "en"
+
+#~ msgid "or"
+#~ msgstr "of"
+
+#~ msgid "not"
+#~ msgstr "niet"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "Grootte"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "Is afhankelijk van"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "Generator"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasPart"
+#~ msgid "Has Part"
+#~ msgstr "Bevat onderdeel"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasLogicalPart"
+#~ msgid "Has Logical Part"
+#~ msgstr "Bevat logisch onderdeel"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "Deel van"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "Trefwoord"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "Gewijzigd"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "Mime-type"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "Gerelateerd aan"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "Onderwerp"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "Maker"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "Gemiddelde bitrate"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "Kanalen"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "Tekens"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "Codec"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "Kleurdiepte"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "Duur"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "Bestandsnaam"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "Hash"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "Hoogte"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "Interlace-modus"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "Regels"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "Programmeertaal"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "Samplesnelheid"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "Breedte"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "Woorden"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "Diafragma"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Bias Value"
+#~ msgstr "Waarde belichtingsinstelling"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "Belichtingstijd"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "Flits"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "Brandpuntsafstand"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "Brandpuntsafstand 35 mm"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "ISO-snelheid"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "Merk"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "Lichtmetingsmodus"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "Model"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "Oriëntatie"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "Witbalans"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "Regisseur"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "Genre"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "Album"
+
+#~ msgctxt "@label"
+#~ msgid "Artist"
+#~ msgstr "Artiest"
+
+#~ msgctxt "@label"
+#~ msgid "Aspect Ratio"
+#~ msgstr "Beeldverhouding"
+
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "Framesnelheid"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "Uitgiftedatum"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "Track"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "Hulpbron is aangemaakt"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "Subhulpbron"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "Hulpbron gewijzigd"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "Numerieke waardering"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "Eerste gebruik"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "Laatste gebruik"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "Aantal keren gebruikt"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "Bestandsgroep van Unix"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "Bestandsmodus van Unix"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "Bestandseigenaar in Unix"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "Vertalingen die niet gereed zijn"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "Laatste vertaler"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "Verouderde vertalingen"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "Brongegevens voor vertaling"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "Totaal aantal vertalingen"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "Vertaald"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "Datum van vertaling"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "Onvertaald"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "Tag verwijderen"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr ""
+#~ "Wilt u de tag <resource>%1</resource> uit alle bestanden verwijderen?"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "Tag verwijderen"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Verwijderen"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Annuleren"

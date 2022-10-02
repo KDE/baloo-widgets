@@ -1,0 +1,801 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# A S Alam <aalam@users.sf.net>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2012-12-12 08:52+0530\n"
+"Last-Translator: A S Alam <aalam@users.sf.net>\n"
+"Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
+"Language: pa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 ਆਈਟਮ"
+msgstr[1] "%1 ਆਈਟਮਾਂ"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "ਟਿੱਪਣੀ"
+
+#: src/filemetadataprovider.cpp:446
+#, fuzzy, kde-format
+#| msgctxt "@label creation date"
+#| msgid "Created"
+msgctxt "@label"
+msgid "Created"
+msgstr "ਬਣਾਇਆ"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "ਸੋਧ ਕੀਤੀ"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "ਓਨਰ"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "ਅਧਿਕਾਰ"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "ਰੇਟਿੰਗ"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "ਸਾਈਜ਼"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "ਟੈਗ"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "ਕੁੱਲ ਸਾਈਜ਼"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "ਕਿਸਮ"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:463
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Copied From"
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "ਕਾਪੀ ਕੀਤਾ ਇੱਥੋਂ"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:465
+#, fuzzy, kde-format
+#| msgctxt "@label file URL"
+#| msgid "Location"
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "ਟਿਕਾਣਾ"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr ""
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr ""
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr ""
+
+#: src/kcommentwidget.cpp:99
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Comment"
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "ਟਿੱਪਣੀ ਸ਼ਾਮਲ"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "ਟਿੱਪਣੀ ਸ਼ਾਮਲ"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr ""
+
+#: src/kedittagsdialog.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "ਟੈਗ ਸ਼ਾਮਲ"
+
+#: src/kedittagsdialog.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Add Tags..."
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "...ਟੈਗ ਸ਼ਾਮਲ"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "ਸੰਰਚਨਾ ਕਰੋ ਕਿ ਕਿਹੜੇ ਟੈਗ ਲਾਗੂ ਕਰਨੇ ਹਨ।"
+
+#: src/kedittagsdialog.cpp:51
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "ਨਵਾਂ ਟੈਗ ਬਣਾਓ:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgid "Assign Tags"
+msgstr "ਟੈਗ ਸ਼ਾਮਲ"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgid "Create New..."
+msgstr "ਨਵਾਂ ਟੈਗ ਬਣਾਓ:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr ""
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgid "New tag:"
+msgstr "ਨਵਾਂ ਟੈਗ ਬਣਾਓ:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr ""
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr ""
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "...ਬਦਲੋ"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "ਟਿੱਪਣੀ ਬਦਲੋ"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "ਟੈਗ ਬਦਲੋ"
+
+#, fuzzy
+#~| msgctxt "@option:check A filter on resource type"
+#~| msgid "Contacts"
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "ਸੰਪਰਕ"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "...ਟਿੱਪਣੀ ਸ਼ਾਮਲ"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Description"
+#~ msgid "Comment or description"
+#~ msgstr "ਵੇਰਵਾ"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Size"
+#~ msgid "Size"
+#~ msgstr "ਸਾਈਜ਼"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "ਕੱਲ੍ਹ"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "referring to a filter on the modification and usage date of files/"
+#~| "resources"
+#~| msgid "Yesterday"
+#~ msgid "Yesterday"
+#~ msgstr "ਕੱਲ੍ਹ"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "ਅੱਜ"
+
+#~ msgid "Today"
+#~ msgstr "ਅੱਜ"
+
+#, fuzzy
+#~| msgid "Anytime"
+#~ msgid "A time"
+#~ msgstr "ਕਿਸੇ ਵੀ ਸਮੇਂ"
+
+#~ msgid "After"
+#~ msgstr "ਬਾਅਦ"
+
+#~ msgid "Before"
+#~ msgstr "ਪਹਿਲਾਂ"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Content"
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "ਸਮੱਗਰੀ"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "ਆਕਾਰ"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "ਨਿਰਭਰ ਹੈ"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "ਜਰਨੇਟਰ"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "ਭਾਗ ਹੈ"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "ਸ਼ਬਦ"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "ਸੋਧ ਕੀਤੀ"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "ਮਾਈਮ ਕਿਸਮ"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "ਸਬੰਧਿਤ"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "ਵਿਸ਼ਾ"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "ਟਾਈਟਲ"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "ਨਿਰਮਾਤਾ"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "ਔਸਤ ਬਿੱਟਰੇਟ"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "ਚੈਨਲ"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "ਅੱਖਰ"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "Codec"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "ਰੰਗ ਡੂੰਘਾਈ"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "ਅੰਤਰਾਲ"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "ਫਾਇਲ ਨਾਂ"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "ਹੈਸ਼"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "ਉਚਾਈ"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "ਇੰਟਰਲੇਸ ਮੋਡ"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "ਲਾਈਨਾਂ"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "ਪਰੋਮਰਾਮਿੰਗ ਭਾਸ਼ਾ"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "ਸੈਂਪਲ ਰੇਟ"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "ਚੌੜਾਈ"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "ਸ਼ਬਦ"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "ਅਪਰਚਰ"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "ਐਕਸਪੋਜ਼ਰ ਟਾਈਮ"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "ਫਲੈਸ਼"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "ਫੋਕਲ ਲੰਬਾਈ"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "ਫੋਕਲ ਲੰਬਾਈ 35 mm"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "ISO ਸਪੀਡ ਰੇਟਿੰਗ"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "ਮੇਕ"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "ਮੀਟਰਿੰਗ ਮੋਡ"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "ਮਾਡਲ"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "ਸਥਿਤੀ"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "ਚਿੱਟਾ ਸੰਤੁਲਨ"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "ਡਾਇਰੈਕਟਰ"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "ਸ਼ੈਲੀ"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "ਐਲਬਮ"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Sample Rate"
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "ਸੈਂਪਲ ਰੇਟ"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "ਰੀਲਿਜ਼ ਮਿਤੀ"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "ਟਰੈਕ"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "ਸਰੋਤ ਬਣਾਇਆ"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "ਅਧੀਨ ਸਰੋਤ"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "ਸਰੋਤ ਸੋਧਿਆ ਗਿਆ"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "ਅੰਕੀ ਰੇਟਿੰਗ"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "ਪਹਿਲੀ ਵਰਤੋਂ"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "ਆਖਰੀ ਵਰਤੋਂ"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "ਵਰਤੋਂ ਗਿਣਤੀ"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "ਯੂਨੈਕਸ ਫਾਇਲ ਗਰੁੱਪ"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "ਯੂਨੈਕਸ ਫਾਇਲ ਮੋਡ"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "ਯੂਨੈਕਸ ਫਾਇਲ ਮਾਲਕ"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "ਕਿਸਮ"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "ਅਸਪਸ਼ਟ ਅਨੁਵਾਦ"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "ਆਖਰੀ ਅਨੁਵਾਦਕ"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "ਬਰਤਰਫ਼ ਅਨੁਵਾਦ"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "ਅਨੁਵਾਦ ਸਰੋਤ ਮਿਤੀ"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "ਕੁੱਲ ਅਨੁਵਾਦ"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "ਅਨੁਵਾਦ ਕੀਤਾ"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "ਅਨੁਵਾਦ ਮਿਤੀ"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "ਨਾ-ਅਨੁਵਾਦ"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "ਟੈਗ ਹਟਾਓ"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr "ਕੀ ਸਭ ਫਾਇਲਾਂ ਤੋਂ ਟੈਗ <resource>%1</resource> ਹਟਾਉਣੇ ਹਨ?"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "ਟੈਗ ਹਟਾਓ"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "ਹਟਾਓ"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "ਰੱਦ ਕਰੋ"
+
+#~ msgctxt "@label"
+#~ msgid "Performer"
+#~ msgstr "ਕਲਾਕਾਰ"
+
+#~ msgctxt "@label"
+#~ msgid "Show all tags..."
+#~ msgstr "...ਸਭ ਟੈਗ ਵੇਖੋ"
+
+#~ msgctxt ""
+#~ "@title KCategorizedSortFilterProxyModel grouping for all Nepomukj "
+#~ "resources that are of type rdfs:Resource"
+#~ msgid "Miscellaneous"
+#~ msgstr "ਫੁਟਕਲ"
+
+#~ msgctxt "@title:column The Nepomuk resource label and icon"
+#~ msgid "Resource"
+#~ msgstr "ਸਰੋਤ"
+
+#~ msgctxt "@title:column The Nepomuk resource's RDF type"
+#~ msgid "Resource Type"
+#~ msgstr "ਸਰੋਤ ਕਿਸਮ"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Anytime"
+#~ msgstr "ਕਿਸੇ ਵੀ ਸਮੇਂ"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Today"
+#~ msgstr "ਅੱਜ"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Week"
+#~ msgstr "ਇਹ ਹਫ਼ਤੇ"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Week"
+#~ msgstr "ਪਿਛਲੇ ਹਫ਼ਤੇ"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Month"
+#~ msgstr "ਇਹ ਮਹੀਨੇ"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Month"
+#~ msgstr "ਪਿਛਲੇ ਮਹੀਨੇ"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Year"
+#~ msgstr "ਇਹ ਸਾਲ"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Year"
+#~ msgstr "ਪਿਛਲੇ ਸਾਲ"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources that will open a dialog to choose a date range"
+#~ msgid "Custom..."
+#~ msgstr "...ਕਸਟਮ"
+
+#~ msgid "This Week"
+#~ msgstr "ਇਹ ਹਫ਼ਤੇ"
+
+#~ msgid "This Month"
+#~ msgstr "ਇਹ ਮਹੀਨੇ"
+
+#~ msgctxt ""
+#~ "@option:check An item in a list of resources that allows to query for "
+#~ "more resources to put in the list"
+#~ msgid "More..."
+#~ msgstr "...ਹੋਰ"
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Documents"
+#~ msgstr "ਡੌਕੂਮੈਂਟ"
+
+#~ msgctxt "@option:check A filter on file type - audio files"
+#~ msgid "Audio"
+#~ msgstr "ਆਡੀਓ"
+
+#~ msgctxt "@option:check A filter on file type - media video"
+#~ msgid "Video"
+#~ msgstr "ਵਿਡੀਓ"
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Images"
+#~ msgstr "ਚਿੱਤਰ"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "No priority"
+#~ msgstr "ਤਰਜੀਹ ਨਹੀਂ"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Last modified"
+#~ msgstr "ਆਖਰੀ ਸੋਧ"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Most important"
+#~ msgstr "ਸਭ ਤੋਂ ਖਾਸ"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Never opened"
+#~ msgstr "ਕਦੇ ਨਾ ਖੋਲ੍ਹੇ"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Any Rating"
+#~ msgstr "ਕੋਈ ਰੇਟਿੰਗ"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "1 or more"
+#~ msgstr "1 ਜਾਂ ਵੱਧ"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "2 or more"
+#~ msgstr "2 ਜਾਂ ਵੱਧ"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "3 or more"
+#~ msgstr "3 ਜਾਂ ਵੱਧ"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "4 or more"
+#~ msgstr "4 ਜਾਂ ਵੱਧ"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Max Rating"
+#~ msgstr "ਵੱਧੋ-ਵੱਧ ਰੇਟਿੰਗ"
+
+#~ msgid "Enter Search Terms..."
+#~ msgstr "...ਖੋਜ ਸ਼ਬਦ ਦਿਓ"
+
+#~ msgid "Search"
+#~ msgstr "ਖੋਜ"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Emails"
+#~ msgstr "ਈ-ਮੇਲ"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tasks"
+#~ msgstr "ਟਾਸਕ"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tags"
+#~ msgstr "ਟੈਗ"
+
+#~ msgctxt "@option:check Do filter on type - show only files"
+#~ msgid "Files"
+#~ msgstr "ਫਾਇਲਾਂ"
+
+#~ msgctxt "@option:check Do filter on type - show everything but files"
+#~ msgid "Other"
+#~ msgstr "ਹੋਰ"

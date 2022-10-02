@@ -1,0 +1,621 @@
+# Uyghur translation for nepomukwidgets.
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Gheyret Kenji <gheyret@gmail.com>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nepomukwidgets\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2013-09-08 07:05+0900\n"
+"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"Language-Team: \n"
+"Language: ug\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 تۈر"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "ئىزاھات"
+
+#: src/filemetadataprovider.cpp:446
+#, fuzzy, kde-format
+#| msgctxt "@label creation date"
+#| msgid "Created"
+msgctxt "@label"
+msgid "Created"
+msgstr "قۇرغان ۋاقتى"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "ئۆزگەرتىلگەن ۋاقتى"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "ئىگىسى"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "ئىمتىيازلار"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "باھالاش"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "چوڭلۇقى"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "خەتكۈشلەر"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "ئومۇمىي سىغىمى"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "تىپى"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:463
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Copied From"
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "كۆچۈرۈلگەن ئورۇن"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:465
+#, fuzzy, kde-format
+#| msgctxt "@label file URL"
+#| msgid "Location"
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "ئورنى"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr ""
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr ""
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr ""
+
+#: src/kcommentwidget.cpp:99
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Comment"
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "ئىزاھات قوش"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "ئىزاھات قوش"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr ""
+
+#: src/kedittagsdialog.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "خەتكۈش قوش"
+
+#: src/kedittagsdialog.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Add Tags..."
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "بەلگە قوش…"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "قايسى بەلگە ئىشلىتىش سەپلىنىدۇ."
+
+#: src/kedittagsdialog.cpp:51
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "يېڭى بەلگە قۇر:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgid "Assign Tags"
+msgstr "خەتكۈش قوش"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgid "Create New..."
+msgstr "يېڭى بەلگە قۇر:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr ""
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Create new tag:"
+msgid "New tag:"
+msgstr "يېڭى بەلگە قۇر:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr ""
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr ""
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr ""
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr ""
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "ئۆزگەرت…"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "ئىزاھات ئۆزگەرت"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "بەلگە ئالماشتۇر"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "ئىزاھات قوش…"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Description"
+#~ msgid "Comment or description"
+#~ msgstr "چۈشەندۈرۈش"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Size"
+#~ msgid "Size"
+#~ msgstr "چوڭلۇقى"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Content"
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "مەزمۇن"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "چوڭلۇقى"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "بېقىنىش"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "ھاسىللىغۇ"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasPart"
+#~ msgid "Has Part"
+#~ msgstr "بۆلىكى بار"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasLogicalPart"
+#~ msgid "Has Logical Part"
+#~ msgstr "لوگىكىلىق بۆلىكى بار"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "پارچىسى"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "ھالقىلىق سۆز"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "ئۆزگەرتىلگەن ۋاقتى"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "MIME تىپى"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "بۇنىڭغا باغلىنىشلىق"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "تېما"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "ماۋزۇ"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "تۈزگۈچى"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "ئوتتۇرىچە بىت تېزلىكى"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "قانال"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "ھەرپلەر"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "كود يەشكۈچ"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "رەڭ چوڭقۇرلۇقى"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "ۋاقتى"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "ھۆججەت ئاتى"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "ئالاھىدىلىك كودى"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "ئېگىزلىك"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "ئارىلاشما ھالەت"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "سىزىقلار"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "پروگرامما تىلى"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "ئەۋرىشكە نىسبىتى"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "كەڭلىك"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "سۆزلەر"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "نۇر گەردىشى"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Bias Value"
+#~ msgstr "يورۇتۇش تولۇقلاش قىممىتى"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "نۇر ئۆتۈش ۋاقتى"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "چاقماق لامپا"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "فوكۇس ئارىلىقى"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "فوكۇس ئارىلىقى 35 مىللىمېتىر"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "ISO سۈرئەت نىسبىتى"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "ياسا"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "مۆلچەر شەكلى"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "ئەندىزە"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "يۆنىلىش"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "ئاق تەڭپۇڭلۇق"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "رېژىسسور"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "ئېقىم"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "ئالبوم"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Sample Rate"
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "ئەۋرىشكە نىسبىتى"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "تارقاتقان چېسلا"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "نەغمە"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "مەنبەنىڭ قۇرۇلغان ۋاقتى"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "تارماق مەنبە"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "مەنبەنىڭ ئۆزگەرتىلگەن ۋاقتى"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "رەقەملىك باھا"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "تۇنجى ئىشلىتىلگەن ۋاقتى"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "ئەڭ ئاخىرقى قېتىم ئىشلىتىلگەن ۋاقتى"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "ئىشلىتىش قېتىم سانى"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "UNIX ھۆججەت گۇرۇپپىسى"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "UNIX ھۆججەت ھالىتى"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "UNIX ھۆججەت ئىگىسى"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "تىپى"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "مۈجمەل تەرجىمەلەر"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "ئەڭ ئاخىرقى تەرجىمان"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "تاشلىۋېتىلگەن تەرجىمەلەر"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "مەنبە سانلىق-مەلۇمات تەرجىمە"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "جەمئىي تەرجىمە"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "تەرجىمە قىلىنغان"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "تەرجىمە چېسلاسى"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "تەرجىمە قىلىنمىغان"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "بەلگە ئۆچۈر"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr "راستلا ھەممە ھۆججەتتىن <resource>%1</resource> بەلگىنى ئۆچۈرەمسىز؟"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "بەلگە ئۆچۈر"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "ئۆچۈر"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "ئەمەلدىن قالدۇر"
+
+#~ msgctxt "@label"
+#~ msgid "Performer"
+#~ msgstr "سەنئەتچى"
+
+#~ msgctxt "@label"
+#~ msgid "Show all tags..."
+#~ msgstr "ھەممە بەلگىنى كۆرسەت…"
+
+#~ msgctxt ""
+#~ "@title KCategorizedSortFilterProxyModel grouping for all Nepomukj "
+#~ "resources that are of type rdfs:Resource"
+#~ msgid "Miscellaneous"
+#~ msgstr "باشقىلار"
+
+#~ msgctxt "@title:column The Nepomuk resource label and icon"
+#~ msgid "Resource"
+#~ msgstr "مەنبە"
+
+#~ msgctxt "@title:column The Nepomuk resource's RDF type"
+#~ msgid "Resource Type"
+#~ msgstr "مەنبە تىپى"

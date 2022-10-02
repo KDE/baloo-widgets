@@ -1,0 +1,1195 @@
+# KDE Finnish translation sprint participants:
+# Author: Lliehu
+# Lasse Liehu <lasse.liehu@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2018.
+# Tommi Nieminen <translator@legisign.org>, 2018, 2019, 2020, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: nepomukwidgets\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2022-08-09 10:32+0300\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-POT-Import-Date: 2012-12-01 22:24:29+0000\n"
+"X-Generator: Lokalize 20.12.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/filemetadataprovider.cpp:133
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
+
+#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
+#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 kohde"
+msgstr[1] "%1 kohdetta"
+
+#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "Kommentti"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "Luotu"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "Avattu"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "Muutettu"
+
+#: src/filemetadataprovider.cpp:449
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "Omistaja"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "Ryhmä"
+
+#: src/filemetadataprovider.cpp:451
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "Oikeudet"
+
+#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "Arvostelu"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "Koko"
+
+#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "Tunnisteet"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "Koko yhteensä"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "Piilokohteet"
+
+#: src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "Tyyppi"
+
+#: src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "Linkki kohteeseen"
+
+#: src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr "Osoittaa kohteeseen"
+
+#: src/filemetadataprovider.cpp:463
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "Ladattu sijainnista"
+
+#: src/filemetadataprovider.cpp:464
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr "Mitat"
+
+#: src/filemetadataprovider.cpp:465
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "GPS-sijainti"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "&Yksityiskohdat"
+
+#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "Lisää…"
+
+#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "Muokkaa…"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "Muokkaa kommenttia"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "Kommentin lisääminen"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#, kde-format
+msgid "Save"
+msgstr "Tallenna"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "Muokkaa tunnisteita"
+
+#: src/kedittagsdialog.cpp:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "Tunnisteiden lisääminen"
+
+#: src/kedittagsdialog.cpp:42
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "Valitse käytettävät tunnisteet."
+
+#: src/kedittagsdialog.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "Luo uusi tunniste:"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "Liitä tunnisteita"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "Luo uusi…"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "Uusi tunniste"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "Uusi tunniste:"
+
+#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", "
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr "%1° E"
+
+#: src/widgetfactory.cpp:112
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr "%1° P"
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr "%1° L"
+
+#: src/widgetfactory.cpp:113
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr "%1° I"
+
+#: src/widgetfactory.cpp:122
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr "Näytä sijainti ohjelmassa %1"
+
+#~ msgctxt "unknown file size"
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"
+
+#~ msgctxt "@label bitrate (per second)"
+#~ msgid "%1/s"
+#~ msgstr "%1/s"
+
+#~ msgctxt "@label samplerate in kilohertz"
+#~ msgid "%1 kHz"
+#~ msgstr "%1 kHz"
+
+#~ msgctxt "@label"
+#~ msgid "Change..."
+#~ msgstr "Muuta…"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Comment"
+#~ msgstr "Kommentin muuttaminen"
+
+#~ msgctxt "@title:window"
+#~ msgid "Change Tags"
+#~ msgstr "Tunnisteiden muuttaminen"
+
+#~ msgctxt ""
+#~ "This is added to the query builder widget when a proposal containing a "
+#~ "placeholder is selected"
+#~ msgid "[something]"
+#~ msgstr "[jotain]"
+
+#~ msgctxt "Pattern placeholder having no specific type"
+#~ msgid "[something]"
+#~ msgstr "[jotain]"
+
+#~ msgctxt "Pattern placeholder of date-time type"
+#~ msgid "[date and time]"
+#~ msgstr "[päivä ja aika]"
+
+#~ msgctxt "Pattern placeholder for a tag name"
+#~ msgid "[tag name]"
+#~ msgstr "[tunnisteen nimi]"
+
+#~ msgctxt "Pattern placeholder for a contact identifier"
+#~ msgid "[contact]"
+#~ msgstr "[yhteystieto]"
+
+#~ msgctxt "Pattern placeholder for an e-mail address"
+#~ msgid "[email address]"
+#~ msgstr "[sähköpostiosoite]"
+
+#~ msgctxt "Pattern placeholder for a standard property name"
+#~ msgid "[property]"
+#~ msgstr "[ominaisuus]"
+
+#~ msgctxt "@label"
+#~ msgid "Add Comment..."
+#~ msgstr "Lisää kommentti…"
+
+#~ msgctxt "Numeric rating of a resource"
+#~ msgid ""
+#~ "rated as $1;rated $1;score is $1;score|scored $1;having $1 stars|star"
+#~ msgstr ""
+#~ "arvostelu $1;arvosteltu $1;arvio $1;arvioitu $1;pistemäärä on $1;pisteet "
+#~ "on $1;$1 tähteä|tähti"
+
+#~ msgid "Rating (0 to 10)"
+#~ msgstr "Arvio (0–10)"
+
+#~ msgctxt "Comment of a resource"
+#~ msgid ""
+#~ "described as $1;description|comment is $1;described|description|comment $1"
+#~ msgstr "kuvaus|kommentti on $1;kuvaus|kommentti $1"
+
+#~ msgid "Comment or description"
+#~ msgstr "Kommentti tai kuvaus"
+
+#~ msgctxt "Author of a document"
+#~ msgid "written|created|composed by $1;author is $1;by $1"
+#~ msgstr "kirjoittanut|luonut $1;tekijä on $1;kirjoittaja on $1"
+
+#~ msgid "Author"
+#~ msgstr "Tekijä"
+
+#~ msgctxt "Size of a file"
+#~ msgid "size is $1;size $1;being $1 large;$1 large"
+#~ msgstr "koko on $1;koko $1;kooltaan $1"
+
+#~ msgid "Size"
+#~ msgstr "Koko"
+
+#~ msgctxt "Name of a file or contact"
+#~ msgid "name is $1;name $1;named $1"
+#~ msgstr "nimi on $1;nimi $1;nimeltään $1"
+
+#~ msgid "Name"
+#~ msgstr "Nimi"
+
+#~ msgctxt "Date of creation"
+#~ msgid ""
+#~ "created|dated at|on|in|of $1;created|dated $1;creation date|time|datetime "
+#~ "is $1"
+#~ msgstr ""
+#~ "luotu|päivätty $1;luontiaika|luontipäivä|luomisaika|luomispäivä on $1"
+
+#~ msgid "Date of creation"
+#~ msgstr "Luontiaika"
+
+#~ msgctxt "Date of last modification"
+#~ msgid ""
+#~ "modified|edited at|on $1;modified|edited $1;modification|edition date|"
+#~ "time|datetime is $1"
+#~ msgstr ""
+#~ "muutettu|muokattu $1;muutosaika|muutospäivä|muutospäivämäärä|muokkausaika|"
+#~ "muokkauspäivä|muokkauspäivämäärä on $1"
+
+#~ msgid "Date of last modification"
+#~ msgstr "Viimeinen muutosaika"
+
+#~ msgctxt "A document is associated with a tag"
+#~ msgid "tagged as $1;has tag $1;tag is $1;# $1"
+#~ msgstr ""
+#~ "tunnisteella $1;avainsanalla $1;tagilla $1;tägillä $1;tunniste|avainsana|"
+#~ "tagi|tägi on $1;# $1"
+
+#~ msgid "Tag name"
+#~ msgstr "Tunnisteen nimi"
+
+#~ msgctxt ""
+#~ "$1 is a property name (non-translatable unfortunately) and $2 is the "
+#~ "value against which the property is matched. Note that the equal/greater/"
+#~ "smaller sign has already been folded in $2"
+#~ msgid "$1 is $2;$1 $2"
+#~ msgstr "$1 on $2;$1 $2"
+
+#~ msgid "File property"
+#~ msgstr "Tiedoston ominaisuus"
+
+#~ msgctxt ""
+#~ "Characters that are kept in the query for further processing but are "
+#~ "considered word boundaries"
+#~ msgid ".,;:!?()[]{}<>=#+-"
+#~ msgstr ".,;:!?()[]{}<>=#+-"
+
+#~ msgctxt "Adding an offset to a period of time ($1=period, $2=offset)"
+#~ msgid "in $2 $1"
+#~ msgstr "$2 $1 kuluttua"
+
+#~ msgctxt "Removing an offset from a period of time ($1=period, $2=offset)"
+#~ msgid "$2 $1 ago"
+#~ msgstr "$2 $1 sitten"
+
+#~ msgctxt "In one day"
+#~ msgid "tomorrow"
+#~ msgstr "huomenna"
+
+#~ msgid "Tomorrow"
+#~ msgstr "Huomenna"
+
+#~ msgctxt "One day ago"
+#~ msgid "yesterday"
+#~ msgstr "eilen"
+
+#~ msgid "Yesterday"
+#~ msgstr "Eilen"
+
+#~ msgctxt "The current day"
+#~ msgid "today"
+#~ msgstr "tänään"
+
+#~ msgid "Today"
+#~ msgstr "Tänään"
+
+#~ msgctxt "First period (first day, month, etc)"
+#~ msgid "first $1"
+#~ msgstr "ensimmäinen $1;ensimmäisenä $1;ensimmäisellä $1;ensimmäisessä $1"
+
+#~ msgid "First week, month, day, ..."
+#~ msgstr ""
+#~ "Ensimmäisellä viikolla, ensimmäisessä kuussa, ensimmäisenä päivänä, …"
+
+#~ msgctxt "Last period (last day, month, etc)"
+#~ msgid "last $1 of"
+#~ msgstr "viimeinen $1;viimeisenä $1;viimeisellä $1;viimeisessä $1"
+
+#~ msgid "Last week, month, day, ..."
+#~ msgstr "Viimeisellä viikolla, viimeisessä kuussa, viimeisenä päivänä, …"
+
+#~ msgctxt ""
+#~ "Setting the value of a period, as in 'third week' ($1=period, $2=value)"
+#~ msgid "$2 $1"
+#~ msgstr "$2 $1"
+
+#~ msgctxt "Adding 1 to a period of time"
+#~ msgid "next $1"
+#~ msgstr "ensi $1;seuraava $1;seuraavana $1;seuraavalla $1;seuraavassa $1"
+
+#~ msgid "Next week, month, day, ..."
+#~ msgstr "Ensi viikolla, kuussa, päivänä, …"
+
+#~ msgctxt "Removing 1 to a period of time"
+#~ msgid "last $1"
+#~ msgstr "viime $1;edellinen $1;edellisenä $1;edellisellä $1;edellisessä $1"
+
+#~ msgid "Previous week, month, day, ..."
+#~ msgstr "Viime viikolla, kuussa, päivänä, …"
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), PM"
+#~ msgid "at $5 :|\\. $6 pm;at $5 h pm;at $5 pm;$5 : $6 pm;$5 h pm;$5 pm"
+#~ msgstr ""
+#~ "kello $5 :|\\. $6 pm;kello $5 h pm;kello $5 pm;$5 :|\\. $6 pm;$5 h pm;$5 "
+#~ "pm;kello $5 :|\\. $6 ip;kello $5 h ip;kello $5 ip;$5 :|\\. $6 ip;$5 h pm;"
+#~ "$5 ip"
+
+#~ msgid "A time after midday"
+#~ msgstr "Puolenpäivän jälkeinen kellonaika"
+
+#~ msgctxt "An hour ($5) and an optional minute ($6), AM"
+#~ msgid ""
+#~ "at $5 :|\\. $6 am;at $5 \\. $6;at $5 h am;at $5 am;at $5;$5 :|\\. $6 am;"
+#~ "$5 : $6 : $7;$5 : $6;$5 h am;$5 h;$5 am"
+#~ msgstr ""
+#~ "kello $5 :|\\. $6 am;kello $5 \\. $6;kello $5 h am;kello $5 am;kello $5;"
+#~ "$5 :|\\. $6 am;$5 : $6 : $7;$5 : $6;$5 h am;$5 h;$5 am;kello $5 h ap;"
+#~ "kello $5 ap;$5 :|\\. $6 ap;$5 h ap;$5 ap"
+
+#~ msgid "A time"
+#~ msgstr "Kellonaika"
+
+#~ msgctxt ""
+#~ "A year ($1), month ($2), day ($3), day of week ($4), hour ($5), minute "
+#~ "($6), second ($7), in every combination supported by your language"
+#~ msgid ""
+#~ "$3 of $2 $1;$3 st|nd|rd|th $2 $1;$3 st|nd|rd|th of $2 $1;$3 of $2;$3 st|"
+#~ "nd|rd|th $2;$3 st|nd|rd|th of $2;$2 $3 st|nd|rd|th;$2 $3;$2 $1;$1 - $2 - "
+#~ "$3;$1 - $2;$3 / $2 / $1;$3 / $2;in $2 $1; in $1;, $1"
+#~ msgstr ""
+#~ "$3 \\. $2 \\. $1;$3 \\. $2 \\.;$3 \\.  $2;$3 $2;$2 $1;$1 - $2 - $3;$1 - "
+#~ "$2;$3 / $2 / $1;$3 / $2;vuonna $1;, $1"
+
+#~ msgctxt "Decimal values with an integer ($1) and decimal ($2) part"
+#~ msgid "$1 \\. $2"
+#~ msgstr "$1 \\.|, $2"
+
+#~ msgid "A decimal value"
+#~ msgstr "Desimaaliluku"
+
+#~ msgctxt "Equality"
+#~ msgid "contains|containing $1"
+#~ msgstr "sisältää|sisältäen $1"
+
+#~ msgid "Containing"
+#~ msgstr "Sisältää"
+
+#~ msgctxt "Strictly greater"
+#~ msgid "greater|bigger|more than $1;at least $1;> $1"
+#~ msgstr "suurempi|enemmän kuin $1;> $1"
+
+#~ msgid "Greater than"
+#~ msgstr "Suurempi kuin"
+
+#~ msgctxt "After in time"
+#~ msgid "after|since $1"
+#~ msgstr "$1 jälkeen|alkaen"
+
+#~ msgid "After"
+#~ msgstr "Jälkeen"
+
+#~ msgctxt "Strictly smaller"
+#~ msgid "smaller|less|lesser than $1;at most $1;< $1"
+#~ msgstr "pienempi|vähemmän kuin $1;< $1"
+
+#~ msgid "Smaller than"
+#~ msgstr "Pienempi kuin"
+
+#~ msgctxt "Before in time"
+#~ msgid "before|until $1"
+#~ msgstr "ennen $1;$1 saakka"
+
+#~ msgid "Before"
+#~ msgstr "Ennen"
+
+#~ msgctxt "Equality"
+#~ msgid "equal|equals|= $1;equal to $1"
+#~ msgstr "yhtä suuri kuin $1;on yhtä kuin $1;on $1;= $1"
+
+#~ msgid "Equal to"
+#~ msgstr "Yhtä suuri kuin"
+
+#~ msgctxt "Space-separated list of words representing a year"
+#~ msgid "year years"
+#~ msgstr "vuosi vuotta vuodet vuonna"
+
+#~ msgctxt "Space-separated list of words representing a month"
+#~ msgid "month months"
+#~ msgstr "kuukausi kuukautta kuukaudet kuussa"
+
+#~ msgctxt "Space-separated list of words representing a week"
+#~ msgid "week weeks"
+#~ msgstr "viikko viikkoa viikot viikolla"
+
+#~ msgctxt "Space-separated list of words representing a day"
+#~ msgid "day days"
+#~ msgstr "päivä päivää päivät"
+
+#~ msgctxt "Space-separated list of words representing an hour"
+#~ msgid "hour hours"
+#~ msgstr "tunti tuntia tunnit"
+
+#~ msgctxt "Space-separated list of words representing a minute"
+#~ msgid "minute minutes"
+#~ msgstr "minuutti minuuttia minuutit"
+
+#~ msgctxt "Space-separated list of words representing a second"
+#~ msgid "second seconds"
+#~ msgstr "sekunti sekuntia sekunnit"
+
+#~ msgctxt "Lower-case units corresponding to a kilobyte"
+#~ msgid "kb kilobyte kilobytes"
+#~ msgstr "kb kt kilotavu kilotavua"
+
+#~ msgctxt "Lower-case units corresponding to a megabyte"
+#~ msgid "mb megabyte megabytes"
+#~ msgstr "mb mt megatavu megatavua"
+
+#~ msgctxt "Lower-case units corresponding to a gigabyte"
+#~ msgid "gb gigabyte gigabytes"
+#~ msgstr "gb gt gigatavu gigatavua"
+
+#~ msgctxt "Lower-case units corresponding to a terabyte"
+#~ msgid "tb terabyte terabytes"
+#~ msgstr "tb teratavu teratavua"
+
+#~ msgctxt "Lower-case units corresponding to a kibibyte"
+#~ msgid "kib k kibibyte kibibytes"
+#~ msgstr "kib k kibitavu kibitavua binäärikilotavu binäärikilotavua"
+
+#~ msgctxt "Lower-case units corresponding to a mebibyte"
+#~ msgid "mib m mebibyte mebibytes"
+#~ msgstr "mib m mebitavu mebitavua binäärimegatavu binäärimegatavua"
+
+#~ msgctxt "Lower-case units corresponding to a gibibyte"
+#~ msgid "gib g gibibyte gibibytes"
+#~ msgstr "gib g gibitavu gibitavua binäärigigatavu binäärigigatavua"
+
+#~ msgctxt "Lower-case units corresponding to a tebibyte"
+#~ msgid "tib t tebibyte tebibytes"
+#~ msgstr "tib t tebitavu tebitavua binääriteratavu binääriteratavua"
+
+#~ msgctxt "Space-separated list of words meaning 0"
+#~ msgid "zero nought null"
+#~ msgstr "nolla"
+
+#~ msgctxt "Space-separated list of words meaning 1"
+#~ msgid "one a first"
+#~ msgstr "yksi yks ensimmäinen eka"
+
+#~ msgctxt "Space-separated list of words meaning 2"
+#~ msgid "two second"
+#~ msgstr "kaksi kaks toinen toka"
+
+#~ msgctxt "Space-separated list of words meaning 3"
+#~ msgid "three third"
+#~ msgstr "kolme kolmas"
+
+#~ msgctxt "Space-separated list of words meaning 4"
+#~ msgid "four fourth"
+#~ msgstr "neljä neljäs"
+
+#~ msgctxt "Space-separated list of words meaning 5"
+#~ msgid "five fifth"
+#~ msgstr "viisi viis viides"
+
+#~ msgctxt "Space-separated list of words meaning 6"
+#~ msgid "six sixth"
+#~ msgstr "kuusi kuus kuudes"
+
+#~ msgctxt "Space-separated list of words meaning 7"
+#~ msgid "seven seventh"
+#~ msgstr "seitsemän seittemän seittemä seiska seitsemäs seittemäs"
+
+#~ msgctxt "Space-separated list of words meaning 8"
+#~ msgid "eight eighth"
+#~ msgstr "kahdeksan kasi kahdeksas"
+
+#~ msgctxt "Space-separated list of words meaning 9"
+#~ msgid "nine ninth"
+#~ msgstr "yhdeksän ysi yhdeksäs"
+
+#~ msgctxt "Space-separated list of words meaning 10"
+#~ msgid "ten tenth"
+#~ msgstr "kymmenen kymmenes"
+
+#~ msgctxt ""
+#~ "List of lowercase prefixes or suffix that need to be split from values"
+#~ msgid "k m g b kb mb gb tb kib mib gib tib h am pm th rd nd st"
+#~ msgstr "k m g b t kb kt mb mt gb gt tb tt kib mib gib tib h am pm ap ip"
+
+#~ msgctxt "List of words representing a file"
+#~ msgid "file files"
+#~ msgstr "tiedosto tiedostoa tiedostot tiedostoja filu filua filut filuja"
+
+#~ msgctxt "List of words representing an image"
+#~ msgid "image images picture pictures photo photos"
+#~ msgstr "kuva kuvaa kuvat kuvia valokuva valokuvaa valokuvat valokuvia"
+
+#~ msgctxt "List of words representing a video"
+#~ msgid "video videos movie movies film films"
+#~ msgstr ""
+#~ "video videota videot videoita elokuva elokuvaa elokuvat elokuvia filmi "
+#~ "filmiä filmit filmejä leffa leffaa leffat leffoja"
+
+#~ msgctxt "List of words representing an audio file"
+#~ msgid "music musics"
+#~ msgstr ""
+#~ "musiikki äänitiedosto äänitiedostoa äänitiedostot äänitiedostoja "
+#~ "musiikkitiedosto musiikkitiedostoa musiikkitiedostot musiikkitiedostoja"
+
+#~ msgctxt "List of words representing a document"
+#~ msgid "document documents"
+#~ msgstr ""
+#~ "asiakirja asiakirjaa asiakirjat asiakirjoja dokumentti dokumenttia "
+#~ "dokumentit dokumentteja"
+
+#~ msgctxt "List of words representing an email"
+#~ msgid "mail mails email emails e-mail e-mails message messages"
+#~ msgstr ""
+#~ "posti postia postit posteja viesti viestiä viestit viestejä sähköposti "
+#~ "sähköpostia sähköpostit sähköposteja sähköpostiviesti sähköpostiviestiä "
+#~ "sähköpostiviestit sähköpostiviestejä maili mailia mailit maileja meili "
+#~ "meiliä meilit meilejä"
+
+#~ msgctxt "List of words representing an archive"
+#~ msgid "archive archives tarball tarballs zip"
+#~ msgstr ""
+#~ "arkisto arkistoa arkistot arkistoja tar-pallo tar-palloa tar-pallot tar-"
+#~ "palloja tarrapallo tarrapalloa tarrapallot tarrapalloja zip zipiä zipit "
+#~ "zipejä"
+
+#~ msgctxt "List of words representing a folder"
+#~ msgid "folder folders directory directories"
+#~ msgstr ""
+#~ "kansio kansiota kansiot kansioita hakemisto hakemistoa hakemistot "
+#~ "hakemistoja"
+
+#~ msgctxt "List of words representing a contact"
+#~ msgid "contact contacts person people"
+#~ msgstr ""
+#~ "kontakti kontaktia kontaktit kontakteja yhteystieto yhteystietoa "
+#~ "yhteystiedot yhteystietoja henkilö henkilöä henkilöt henkilöitä"
+
+#~ msgctxt "List of words representing a note"
+#~ msgid "note notes"
+#~ msgstr ""
+#~ "muistiinpano muistiinpanoa muistiinpanot muistiinpanoja muistilappu "
+#~ "muistilappua muistilaput muistilappuja"
+
+#~ msgctxt "Are words of your language separated by spaces (Y/N) ?"
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgid "and"
+#~ msgstr "ja"
+
+#~ msgid "or"
+#~ msgstr "tai"
+
+#~ msgid "not"
+#~ msgstr "ei"
+
+#~ msgctxt "@label file content size"
+#~ msgid "Size"
+#~ msgstr "Koko"
+
+#~ msgctxt "@label file depends from"
+#~ msgid "Depends"
+#~ msgstr "Riippuu"
+
+#~ msgctxt "@label Software used to generate content"
+#~ msgid "Generator"
+#~ msgstr "Generaattori"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasPart"
+#~ msgid "Has Part"
+#~ msgstr "Sisältää osan"
+
+#~ msgctxt ""
+#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
+#~ "nie#hasLogicalPart"
+#~ msgid "Has Logical Part"
+#~ msgstr "Sisältää loogisen osan"
+
+#~ msgctxt "@label parent directory"
+#~ msgid "Part of"
+#~ msgstr "Kuuluu kokonaisuuteen"
+
+#~ msgctxt "@label"
+#~ msgid "Keyword"
+#~ msgstr "Avainsana"
+
+#~ msgctxt "@label modified date of file"
+#~ msgid "Modified"
+#~ msgstr "Muokattu"
+
+#~ msgctxt "@label"
+#~ msgid "MIME Type"
+#~ msgstr "MIME-tyyppi"
+
+#~ msgctxt "@label"
+#~ msgid "Related To"
+#~ msgstr "Suhteessa kohteeseen"
+
+#~ msgctxt "@label"
+#~ msgid "Subject"
+#~ msgstr "Aihe"
+
+#~ msgctxt "@label music title"
+#~ msgid "Title"
+#~ msgstr "Nimi"
+
+#~ msgctxt "@label"
+#~ msgid "Creator"
+#~ msgstr "Tekijä"
+
+#~ msgctxt "@label"
+#~ msgid "Average Bitrate"
+#~ msgstr "Keskimääräinen bittinopeus"
+
+#~ msgctxt "@label"
+#~ msgid "Channels"
+#~ msgstr "Kanavia"
+
+#~ msgctxt "@label number of characters"
+#~ msgid "Characters"
+#~ msgstr "Merkkejä"
+
+#~ msgctxt "@label"
+#~ msgid "Codec"
+#~ msgstr "Koodekki"
+
+#~ msgctxt "@label"
+#~ msgid "Color Depth"
+#~ msgstr "Värisyvyys"
+
+#~ msgctxt "@label"
+#~ msgid "Duration"
+#~ msgstr "Kesto"
+
+#~ msgctxt "@label"
+#~ msgid "Filename"
+#~ msgstr "Tiedostonimi"
+
+#~ msgctxt "@label"
+#~ msgid "Hash"
+#~ msgstr "Tiiviste"
+
+#~ msgctxt "@label"
+#~ msgid "Height"
+#~ msgstr "Korkeus"
+
+#~ msgctxt "@label"
+#~ msgid "Interlace Mode"
+#~ msgstr "Lomitustila"
+
+#~ msgctxt "@label number of lines"
+#~ msgid "Lines"
+#~ msgstr "Rivejä"
+
+#~ msgctxt "@label"
+#~ msgid "Programming Language"
+#~ msgstr "Ohjelmointikieli"
+
+#~ msgctxt "@label"
+#~ msgid "Sample Rate"
+#~ msgstr "Näytetaajuus"
+
+#~ msgctxt "@label"
+#~ msgid "Width"
+#~ msgstr "Leveys"
+
+#~ msgctxt "@label number of words"
+#~ msgid "Words"
+#~ msgstr "Sanoja"
+
+#~ msgctxt "@label EXIF aperture value"
+#~ msgid "Aperture"
+#~ msgstr "Aukon koko"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Bias Value"
+#~ msgstr "Valotuksen vinouma-arvo"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Exposure Time"
+#~ msgstr "Valotusaika"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Flash"
+#~ msgstr "Salama"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length"
+#~ msgstr "Polttoväli"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Focal Length 35 mm"
+#~ msgstr "Polttoväli 35 mm"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "ISO Speed Ratings"
+#~ msgstr "ISO-nopeuslukemat"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Make"
+#~ msgstr "Merkki"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Metering Mode"
+#~ msgstr "Mittaustapa"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Model"
+#~ msgstr "Malli"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "Orientation"
+#~ msgstr "Suunta"
+
+#~ msgctxt "@label EXIF"
+#~ msgid "White Balance"
+#~ msgstr "Valkotasapaino"
+
+#~ msgctxt "@label video director"
+#~ msgid "Director"
+#~ msgstr "Ohjaaja"
+
+#~ msgctxt "@label music genre"
+#~ msgid "Genre"
+#~ msgstr "Tyylilaji"
+
+#~ msgctxt "@label music album"
+#~ msgid "Album"
+#~ msgstr "Albumi"
+
+#~ msgctxt "@label"
+#~ msgid "Artist"
+#~ msgstr "Artisti"
+
+#~ msgctxt "@label"
+#~ msgid "Aspect Ratio"
+#~ msgstr "Kuvasuhde"
+
+#~ msgctxt "@label"
+#~ msgid "Frame Rate"
+#~ msgstr "Kuvataajuus"
+
+#~ msgctxt "@label"
+#~ msgid "Release Date"
+#~ msgstr "Julkaisupäivä"
+
+#~ msgctxt "@label music track number"
+#~ msgid "Track"
+#~ msgstr "Kappaleen numero"
+
+#~ msgctxt "@label resource created time"
+#~ msgid "Resource Created"
+#~ msgstr "Resurssi luotu"
+
+#~ msgctxt "@label"
+#~ msgid "Sub Resource"
+#~ msgstr "Aliresurssi"
+
+#~ msgctxt "@label resource last modified"
+#~ msgid "Resource Modified"
+#~ msgstr "Resurssia muokattu"
+
+#~ msgctxt "@label"
+#~ msgid "Numeric Rating"
+#~ msgstr "Numeerinen arvostelu"
+
+#~ msgctxt "@label"
+#~ msgid "First Usage"
+#~ msgstr "Ensikäyttö"
+
+#~ msgctxt "@label"
+#~ msgid "Last Usage"
+#~ msgstr "Viimeisin käyttö"
+
+#~ msgctxt "@label"
+#~ msgid "Usage Count"
+#~ msgstr "Käyttökertoja"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Group"
+#~ msgstr "Tiedostoryhmä (UNIX)"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Mode"
+#~ msgstr "Tiedoston tila (UNIX)"
+
+#~ msgctxt "@label"
+#~ msgid "Unix File Owner"
+#~ msgstr "Tiedoston omistaja (UNIX)"
+
+#~ msgctxt "@label file type"
+#~ msgid "Type"
+#~ msgstr "Tyyppi"
+
+#~ msgctxt "@label Number of fuzzy translations"
+#~ msgid "Fuzzy Translations"
+#~ msgstr "Käännöksiä kesken"
+
+#~ msgctxt "@label Name of last translator"
+#~ msgid "Last Translator"
+#~ msgstr "Viimeisin kääntäjä"
+
+#~ msgctxt "@label Number of obsolete translations"
+#~ msgid "Obsolete Translations"
+#~ msgstr "Vanhentuneita käännöksiä"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Source Date"
+#~ msgstr "Käännöslähteen päivämäärä"
+
+#~ msgctxt "@label Number of total translations"
+#~ msgid "Total Translations"
+#~ msgstr "Käännöksiä kaikkiaan"
+
+#~ msgctxt "@label Number of translated strings"
+#~ msgid "Translated"
+#~ msgstr "Käännetty"
+
+#~ msgctxt "@label"
+#~ msgid "Translation Date"
+#~ msgstr "Käännöspäivä"
+
+#~ msgctxt "@label Number of untranslated strings"
+#~ msgid "Untranslated"
+#~ msgstr "Kääntämättä"
+
+#~ msgctxt "@info"
+#~ msgid "Delete tag"
+#~ msgstr "Poista tunniste"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
+#~ msgstr ""
+#~ "Poistetaanko tunniste <resource>%1</resource> varmasti kaikista "
+#~ "tiedostoista?"
+
+#~ msgctxt "@title"
+#~ msgid "Delete tag"
+#~ msgstr "Tunnisteen poistaminen"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete"
+#~ msgstr "Poista"
+
+#~ msgctxt "@action:button"
+#~ msgid "Cancel"
+#~ msgstr "Peru"
+
+#~ msgctxt "@label"
+#~ msgid "Performer"
+#~ msgstr "Esittäjä"
+
+#~ msgctxt "@label"
+#~ msgid "Show all tags..."
+#~ msgstr "Näytä kaikki tunnisteet..."
+
+#~ msgctxt ""
+#~ "@title KCategorizedSortFilterProxyModel grouping for all Nepomukj "
+#~ "resources that are of type rdfs:Resource"
+#~ msgid "Miscellaneous"
+#~ msgstr "Sekalaiset"
+
+#~ msgctxt "@title:column The Nepomuk resource label and icon"
+#~ msgid "Resource"
+#~ msgstr "Resurssi"
+
+#~ msgctxt "@title:column The Nepomuk resource's RDF type"
+#~ msgid "Resource Type"
+#~ msgstr "Resurssin tyyppi"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Anytime"
+#~ msgstr "Milloin tahansa"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Today"
+#~ msgstr "Tänään"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Week"
+#~ msgstr "Tällä viikolla"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Week"
+#~ msgstr "Viime viikolla"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Month"
+#~ msgstr "Tässä kuussa"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Month"
+#~ msgstr "Viime kuussa"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "This Year"
+#~ msgstr "Tänä vuonna"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Last Year"
+#~ msgstr "Viime vuonna"
+
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources that will open a dialog to choose a date range"
+#~ msgid "Custom..."
+#~ msgstr "Muulloin..."
+
+#~ msgid "This Week"
+#~ msgstr "Tällä viikolla"
+
+#~ msgid "This Month"
+#~ msgstr "Tässä kuussa"
+
+#~ msgctxt ""
+#~ "@option:check An item in a list of resources that allows to query for "
+#~ "more resources to put in the list"
+#~ msgid "More..."
+#~ msgstr "Lisää..."
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Documents"
+#~ msgstr "Asiakirjat"
+
+#~ msgctxt "@option:check A filter on file type - audio files"
+#~ msgid "Audio"
+#~ msgstr "Äänitiedostot"
+
+#~ msgctxt "@option:check A filter on file type - media video"
+#~ msgid "Video"
+#~ msgstr "Videot"
+
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Images"
+#~ msgstr "Kuvat"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "No priority"
+#~ msgstr "Ei tärkeysastetta"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Last modified"
+#~ msgstr "Viimeksi muokattu"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Most important"
+#~ msgstr "Tärkein"
+
+#~ msgctxt ""
+#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
+#~ msgid "Never opened"
+#~ msgstr "Ei koskaan avattu"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Any Rating"
+#~ msgstr "Kaikki arvosanat"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "1 or more"
+#~ msgstr "1 tai enemmän"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "2 or more"
+#~ msgstr "2 tai enemmän"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "3 or more"
+#~ msgstr "3 tai enemmän"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "4 or more"
+#~ msgstr "4 tai enemmän"
+
+#~ msgctxt "@option:radio A filter on the rating of a resource"
+#~ msgid "Max Rating"
+#~ msgstr "Enimmäisarvosana"
+
+#~ msgid "Enter Search Terms..."
+#~ msgstr "Kirjoita hakusanat..."
+
+#~ msgid "Search"
+#~ msgstr "Etsi"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Emails"
+#~ msgstr "Sähköpostit"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tasks"
+#~ msgstr "Tehtävät"
+
+#~ msgctxt "@option:check A filter on resource type"
+#~ msgid "Tags"
+#~ msgstr "Tunnisteet"
+
+#~ msgctxt "@option:check Do filter on type - show only files"
+#~ msgid "Files"
+#~ msgstr "Tiedostot"
+
+#~ msgctxt "@option:check Do filter on type - show everything but files"
+#~ msgid "Other"
+#~ msgstr "Muut"
