@@ -6,10 +6,10 @@
 
 #include "filemetadatawidget.h"
 
+#include <KFileItem>
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QFileInfo>
-#include <kfileitem.h>
 
 int main(int argc, char **argv)
 {
