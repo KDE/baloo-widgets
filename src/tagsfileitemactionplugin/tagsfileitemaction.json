@@ -4,7 +4,6 @@
             {
                 "Name": "Nicolas Fella",
                 "Name[ar]": "Nicolas Fella",
-                "Name[ast]": "Nicolas Fella",
                 "Name[az]": "Nicolas Fella",
                 "Name[bg]": "Nicolas Fella",
                 "Name[ca@valencia]": "Nicolas Fella",
@@ -96,7 +95,6 @@
         ],
         "Name": "Tags",
         "Name[ar]": "الوسوم",
-        "Name[ast]": "Etiquetes",
         "Name[az]": "Yarlıqlar",
         "Name[bg]": "Етикети",
         "Name[ca@valencia]": "Etiquetes",
