@@ -118,7 +118,7 @@ msgstr "Tipus"
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
-msgstr "Enllaç a"
+msgstr "Enllaç cap a"
 
 #: src/filemetadataprovider.cpp:459
 #, kde-format
