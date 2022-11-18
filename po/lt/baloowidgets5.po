@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-26 00:43+0000\n"
-"PO-Revision-Date: 2020-02-02 00:43+0200\n"
-"Last-Translator: Moo\n"
+"PO-Revision-Date: 2022-11-18 00:58+0200\n"
+"Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -19,13 +19,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 3.2.1\n"
 
 #: src/filemetadataprovider.cpp:133
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
-msgstr ""
+msgstr "%1 × %2"
 
 #: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
 #: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
@@ -126,7 +126,7 @@ msgstr "Nuoroda į"
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
-msgstr ""
+msgstr "Nurodo į"
 
 #: src/filemetadataprovider.cpp:463
 #, kde-format
@@ -138,13 +138,13 @@ msgstr "Atsisiųsta iš"
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
-msgstr ""
+msgstr "Matmenys"
 
 #: src/filemetadataprovider.cpp:465
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
-msgstr ""
+msgstr "GPS vieta"
 
 #: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
 #, kde-format
@@ -235,31 +235,31 @@ msgstr ", "
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
-msgstr ""
+msgstr "%1°P"
 
 #: src/widgetfactory.cpp:112
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
-msgstr ""
+msgstr "%1°Š"
 
 #: src/widgetfactory.cpp:113
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
-msgstr ""
+msgstr "%1°V"
 
 #: src/widgetfactory.cpp:113
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
-msgstr ""
+msgstr "%1°R"
 
 #: src/widgetfactory.cpp:122
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
-msgstr ""
+msgstr "Rodyti vietą %1"
 
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"
