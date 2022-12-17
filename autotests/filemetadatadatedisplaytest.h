@@ -18,6 +18,7 @@ class FileMetadataDateDisplayTest : public QObject
     Q_OBJECT
 private Q_SLOTS:
     void initTestCase();
+    void cleanupTestCase();
 
     /// Validate that KFormat produces the expected date strings
     void validateDateFormats();
@@ -26,7 +27,8 @@ private Q_SLOTS:
     void shouldDisplayLongAndShortDates_data();
 
 private:
-    bool setFileTime(const QString &file, const QDateTime &filetime);
+    QString m_m4aFilePath;
+    QString m_mp3FilePath;
 };
 
 #endif // FILEMETADATADATEDISPLAYTEST_H
