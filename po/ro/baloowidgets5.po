@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-26 00:43+0000\n"
-"PO-Revision-Date: 2022-02-05 19:39+0000\n"
+"PO-Revision-Date: 2022-12-28 13:53+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
-"Language-Team: Romanian\n"
+"Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: src/filemetadataprovider.cpp:133
 #, kde-format
@@ -123,7 +123,7 @@ msgstr "Legătură la"
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
-msgstr ""
+msgstr "Indică spre"
 
 #: src/filemetadataprovider.cpp:463
 #, kde-format
@@ -138,12 +138,10 @@ msgid "Dimensions"
 msgstr "Dimensiuni"
 
 #: src/filemetadataprovider.cpp:465
-#, fuzzy, kde-format
-#| msgctxt "@label file URL"
-#| msgid "Location"
+#, kde-format
 msgctxt "@label"
 msgid "GPS Location"
-msgstr "Amplasare"
+msgstr "Amplasare GPS"
 
 #: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
 #, kde-format
@@ -234,31 +232,31 @@ msgstr ", "
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
-msgstr ""
+msgstr "%1°S"
 
 #: src/widgetfactory.cpp:112
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
-msgstr ""
+msgstr "%1°N"
 
 #: src/widgetfactory.cpp:113
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
-msgstr ""
+msgstr "%1°V"
 
 #: src/widgetfactory.cpp:113
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
-msgstr ""
+msgstr "%1°E"
 
 #: src/widgetfactory.cpp:122
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
-msgstr ""
+msgstr "Arată amplasarea în %1"
 
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"
