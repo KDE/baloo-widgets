@@ -2,7 +2,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Stelios <sstavra@gmail.com>, 2012, 2016, 2017, 2018, 2019, 2020.
+# Stelios <sstavra@gmail.com>, 2012, 2016, 2017, 2018, 2019, 2020, 2023.
 # Petros Vidalis <pvidalis@gmail.com>, 2012.
 # Antonis Geralis <capoiosct@gmail.com>, 2014.
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: baloowidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-26 00:43+0000\n"
-"PO-Revision-Date: 2020-03-01 20:22+0200\n"
+"PO-Revision-Date: 2023-01-04 10:34+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 18.12.3\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: src/filemetadataprovider.cpp:133
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
-msgstr ""
+msgstr "%1 × %2"
 
 #: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
 #: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
@@ -123,7 +123,7 @@ msgstr "Δεσμός στο"
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
-msgstr ""
+msgstr "Δείχνει στο"
 
 #: src/filemetadataprovider.cpp:463
 #, kde-format
@@ -135,15 +135,13 @@ msgstr "Ελήφθη από"
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
-msgstr ""
+msgstr "Διαστάσεις"
 
 #: src/filemetadataprovider.cpp:465
-#, fuzzy, kde-format
-#| msgctxt "@label file URL"
-#| msgid "Location"
+#, kde-format
 msgctxt "@label"
 msgid "GPS Location"
-msgstr "Θέση"
+msgstr "Θέση GPS"
 
 #: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
 #, kde-format
@@ -234,31 +232,31 @@ msgstr ", "
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
-msgstr ""
+msgstr "%1°S"
 
 #: src/widgetfactory.cpp:112
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
-msgstr ""
+msgstr "%1°N"
 
 #: src/widgetfactory.cpp:113
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
-msgstr ""
+msgstr "%1°W"
 
 #: src/widgetfactory.cpp:113
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
-msgstr ""
+msgstr "%1°E"
 
 #: src/widgetfactory.cpp:122
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
-msgstr ""
+msgstr "Εμφάνιση θέσης στο %1"
 
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"
