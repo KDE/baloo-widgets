@@ -8,7 +8,7 @@ set (RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE
 project(baloo-widgets VERSION ${RELEASE_SERVICE_VERSION})
 
 set(QT_MIN_VERSION "5.15.2")
-set(KF5_MIN_VERSION "5.90.0")
+set(KF5_MIN_VERSION "5.92.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_PATH})
@@ -29,6 +29,7 @@ include(ECMGenerateHeaders)
 include(ECMAddTests)
 include(ECMQtDeclareLoggingCategory)
 include(CMakePackageConfigHelpers)
+include(ECMDeprecationSettings)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Widgets Test)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Config KIO I18n FileMetaData Baloo Service)
@@ -39,10 +40,9 @@ ecm_setup_version(PROJECT
                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/baloowidgets_version.h"
                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake")
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050F00)
-# Bump manually after building with the latest KF released version
-# and porting all deprecated code
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x056100) # 5.97.0
+ecm_set_disabled_deprecation_versions(QT 5.15.2
+     KF 5.102.0
+    )
 add_subdirectory(src)
 if (BUILD_TESTING)
   add_subdirectory(test)
