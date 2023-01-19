@@ -1,4 +1,4 @@
-add_executable(tagwidgetapp tagwidgetapp.cpp tagwidgettest.cpp)
+add_executable(tagwidgetapp tagwidgetapp.cpp tagwidgettest.cpp tagwidgettest.h)
 target_link_libraries(tagwidgetapp
   KF5::Baloo
   KF5::BalooWidgets
