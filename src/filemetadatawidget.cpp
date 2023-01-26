@@ -10,6 +10,7 @@
 
 #include "filemetadatawidget.h"
 #include "filemetadataprovider.h"
+#include "filemetadatawidget_p.h"
 #include "metadatafilter.h"
 #include "widgetfactory.h"
 
@@ -24,47 +25,6 @@
 #include <QString>
 
 using namespace Baloo;
-
-class Baloo::FileMetaDataWidgetPrivate
-{
-public:
-    struct Row {
-        QCheckBox *checkBox;
-        QLabel *label;
-        QWidget *value;
-    };
-
-    explicit FileMetaDataWidgetPrivate(FileMetaDataWidget *parent);
-    ~FileMetaDataWidgetPrivate();
-
-    FileMetaDataWidgetPrivate(const FileMetaDataWidgetPrivate&) = delete;
-    FileMetaDataWidget& operator=(const FileMetaDataWidgetPrivate&) = delete;
-
-    void deleteRows();
-
-    void slotLoadingFinished();
-    void slotLinkActivated(const QString &link);
-    void slotDataChangeStarted();
-    void slotDataChangeFinished();
-
-    QStringList sortedKeys(const QVariantMap &data) const;
-    QLabel *createLabel(const QString &key, const QString &itemLabel, FileMetaDataWidget *parent);
-
-    void saveConfig();
-
-    QList<Row> m_rows;
-    FileMetaDataProvider *m_provider = nullptr;
-    QGridLayout *m_gridLayout = nullptr;
-
-    MetadataFilter *m_filter = nullptr;
-    WidgetFactory *m_widgetFactory = nullptr;
-
-    QMap<QString, bool> m_visibilityChanged;
-    bool m_configureVisibleProperties = false;
-
-private:
-    FileMetaDataWidget *const q;
-};
 
 FileMetaDataWidgetPrivate::FileMetaDataWidgetPrivate(FileMetaDataWidget *parent)
     : m_rows()
