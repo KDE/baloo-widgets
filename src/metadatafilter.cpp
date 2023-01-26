@@ -15,8 +15,7 @@
 
 using namespace Baloo;
 
-MetadataFilter::MetadataFilter(QObject *parent)
-    : QObject(parent)
+MetadataFilter::MetadataFilter()
 {
     initMetaInformationSettings();
 }

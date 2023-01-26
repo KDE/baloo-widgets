@@ -66,7 +66,7 @@ public:
     FileMetaDataProvider *m_provider = nullptr;
     QGridLayout *m_gridLayout = nullptr;
 
-    MetadataFilter *m_filter = nullptr;
+    QScopedPointer<MetadataFilter> m_filter;
     WidgetFactory *m_widgetFactory = nullptr;
 
     QMap<QString, bool> m_visibilityChanged;

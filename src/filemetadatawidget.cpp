@@ -28,10 +28,9 @@ using namespace Baloo;
 
 FileMetaDataWidgetPrivate::FileMetaDataWidgetPrivate(FileMetaDataWidget *parent)
     : m_rows()
+    , m_filter(new MetadataFilter)
     , q(parent)
 {
-    m_filter = new MetadataFilter(q);
-
     m_widgetFactory = new WidgetFactory(q);
     QObject::connect(m_widgetFactory, &WidgetFactory::urlActivated, q, &FileMetaDataWidget::urlActivated);
 

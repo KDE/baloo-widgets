@@ -7,24 +7,27 @@
 #ifndef _BALOO_METADATAFILTER_H
 #define _BALOO_METADATAFILTER_H
 
+#include "widgets_export.h"
+
 #include <QVariant>
 
 namespace Baloo
 {
-class Variant;
-
-class MetadataFilter : public QObject
+/**
+ * @internal
+ **/
+class BALOO_WIDGETS_EXPORT MetadataFilter
 {
 public:
-    explicit MetadataFilter(QObject *parent = nullptr);
-    ~MetadataFilter() override;
+    MetadataFilter();
+    virtual ~MetadataFilter();
 
     /**
      * Takes all the data by the provider and filters the data
      * according to 'baloofileinformationrc' config
      * This acts as a filter and a data aggregator
      */
-    QVariantMap filter(const QVariantMap &data);
+    virtual QVariantMap filter(const QVariantMap &data);
 
 private:
     /**
