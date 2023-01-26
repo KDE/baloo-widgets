@@ -21,9 +21,39 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
+#include "filemetadataprovider.h"
 #include "filemetadatawidget.h"
+#include "filemetadatawidget_p.h"
+#include "metadatafilter.h"
 
 K_PLUGIN_CLASS_WITH_JSON(BalooFilePropertiesPlugin, "baloofilepropertiesplugin.json")
+
+// Filters out all kfileitem# properties since this information
+// is already available on the "General" tab of the properties dialog.
+class FilePropertiesMetadataFilter : public Baloo::MetadataFilter
+{
+public:
+    FilePropertiesMetadataFilter()
+        : Baloo::MetadataFilter()
+    {
+    }
+
+    QVariantMap filter(const QVariantMap &data) override
+    {
+        QVariantMap filteredData = data;
+
+        auto it = filteredData.begin();
+        while (it != filteredData.end()) {
+            if (it.key().startsWith(QLatin1String("kfileitem#"))) {
+                it = filteredData.erase(it);
+            } else {
+                ++it;
+            }
+        }
+
+        return Baloo::MetadataFilter::filter(filteredData);
+    }
+};
 
 BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QList<QVariant> &args)
     : KPropertiesDialogPlugin(qobject_cast<KPropertiesDialog *>(parent))
@@ -37,6 +67,8 @@ BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QLis
     containerLayout->setSpacing(0);
 
     auto metaDataWidget = new Baloo::FileMetaDataWidget();
+    // Shove in our own filter.
+    Baloo::FileMetaDataWidgetPrivate::get(metaDataWidget)->m_filter.reset(new FilePropertiesMetadataFilter);
     metaDataWidget->setItems(properties->items());
     connect(metaDataWidget, &Baloo::FileMetaDataWidget::urlActivated, this, [this](const QUrl &url) {
         auto job = new KIO::OpenUrlJob(url);
@@ -57,8 +89,14 @@ BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QLis
     metaDataArea->setWidgetResizable(true);
     metaDataArea->setFrameShape(QFrame::NoFrame);
 
-    connect(metaDataWidget, &Baloo::FileMetaDataWidget::metaDataRequestFinished, this, [this, metaDataArea] {
-        properties->addPage(metaDataArea, i18nc("Tab page with file meta data", "&Details"));
+    connect(metaDataWidget, &Baloo::FileMetaDataWidget::metaDataRequestFinished, this, [this, metaDataArea, metaDataWidget] {
+        auto *metaDataWidgetPrivate = Baloo::FileMetaDataWidgetPrivate::get(metaDataWidget);
+
+        // Only add "Details" page if we found any properties.
+        const auto data = metaDataWidgetPrivate->m_filter->filter(metaDataWidgetPrivate->m_provider->data());
+        if (!data.isEmpty()) {
+            properties->addPage(metaDataArea, i18nc("Tab page with file meta data", "&Details"));
+        }
     });
 }
 
