@@ -11,6 +11,8 @@
 #ifndef _BALOO_FILE_METADATAWIDGET_P_H
 #define _BALOO_FILE_METADATAWIDGET_P_H
 
+#include "widgets_export.h"
+
 #include <QGridLayout>
 #include <QList>
 #include <QMap>
@@ -28,7 +30,10 @@ class FileMetaDataWidget;
 class MetadataFilter;
 class WidgetFactory;
 
-class FileMetaDataWidgetPrivate
+/**
+ * @internal
+ */
+class BALOO_WIDGETS_EXPORT FileMetaDataWidgetPrivate
 {
 public:
     struct Row {
@@ -42,6 +47,8 @@ public:
 
     FileMetaDataWidgetPrivate(const FileMetaDataWidgetPrivate&) = delete;
     FileMetaDataWidget& operator=(const FileMetaDataWidgetPrivate&) = delete;
+
+    static FileMetaDataWidgetPrivate *get(FileMetaDataWidget *q);
 
     void deleteRows();
 

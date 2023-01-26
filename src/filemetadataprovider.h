@@ -7,6 +7,8 @@
 #ifndef _BALOO_FILEMETADATAPROVIDER_H
 #define _BALOO_FILEMETADATAPROVIDER_H
 
+#include "widgets_export.h"
+
 #include <QObject>
 #include <QString>
 #include <QVariant>
@@ -17,6 +19,7 @@
 namespace Baloo
 {
 /**
+ * @internal
  * @brief Provides the data for the MetaDataWidget.
  *
  * The default implementation provides all meta data
@@ -26,7 +29,7 @@ namespace Baloo
  *
  * @see FileMetaDataWidget
  */
-class FileMetaDataProvider : public QObject
+class BALOO_WIDGETS_EXPORT FileMetaDataProvider : public QObject
 {
     Q_OBJECT
 

@@ -45,6 +45,11 @@ FileMetaDataWidgetPrivate::FileMetaDataWidgetPrivate(FileMetaDataWidget *parent)
 
 FileMetaDataWidgetPrivate::~FileMetaDataWidgetPrivate() = default;
 
+FileMetaDataWidgetPrivate *FileMetaDataWidgetPrivate::get(FileMetaDataWidget *q)
+{
+    return q->d.get();
+}
+
 void FileMetaDataWidgetPrivate::deleteRows()
 {
     for (const Row &row : std::as_const(m_rows)) {
