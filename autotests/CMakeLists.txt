@@ -3,18 +3,18 @@ include(ECMMarkAsTest)
 ecm_add_test(extractortest.cpp
     TEST_NAME "extractortest"
     LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test
-    KF5::FileMetaData
+    KF${KF_MAJOR_VERSION}::FileMetaData
 )
 ecm_add_tests(
     filemetadatawidgettest.cpp
     filemetadataitemcounttest.cpp
     filemetadatadatedisplaytest.cpp
-    LINK_LIBRARIES KF5::KIOCore
-    KF5::KIOWidgets
-    KF5::KIOFileWidgets
-    KF5::ConfigCore
+    LINK_LIBRARIES KF${KF_MAJOR_VERSION}::KIOCore
+    KF${KF_MAJOR_VERSION}::KIOWidgets
+    KF${KF_MAJOR_VERSION}::KIOFileWidgets
+    KF${KF_MAJOR_VERSION}::ConfigCore
     KF5::BalooWidgets
-    KF5::FileMetaData
+    KF${KF_MAJOR_VERSION}::FileMetaData
     Qt${QT_MAJOR_VERSION}::Test
     Qt${QT_MAJOR_VERSION}::Widgets
 )

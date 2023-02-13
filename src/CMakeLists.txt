@@ -58,17 +58,17 @@ target_link_libraries(KF5BalooWidgets
   PUBLIC
   Qt${QT_MAJOR_VERSION}::Widgets
   Qt${QT_MAJOR_VERSION}::Core
-  KF5::KIOCore # KFileItem
-  KF5::CoreAddons # KProcess, KJob
+  KF${KF_MAJOR_VERSION}::KIOCore # KFileItem
+  KF${KF_MAJOR_VERSION}::CoreAddons # KProcess, KJob
 
   PRIVATE
-  KF5::I18n
-  KF5::FileMetaData
-  KF5::WidgetsAddons
-  KF5::Baloo
-  KF5::CoreAddons
-  KF5::ConfigGui
-  KF5::Service
+  KF${KF_MAJOR_VERSION}::I18n
+  KF${KF_MAJOR_VERSION}::FileMetaData
+  KF${KF_MAJOR_VERSION}::WidgetsAddons
+  KF${KF_MAJOR_VERSION}::Baloo
+  KF${KF_MAJOR_VERSION}::CoreAddons
+  KF${KF_MAJOR_VERSION}::ConfigGui
+  KF${KF_MAJOR_VERSION}::Service
 )
 
 target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets>")
@@ -106,8 +106,8 @@ install(FILES
 add_executable(baloo_filemetadata_temp_extractor extractor.cpp)
 target_link_libraries(baloo_filemetadata_temp_extractor
   Qt${QT_MAJOR_VERSION}::Core
-  KF5::I18n
-  KF5::FileMetaData
+  KF${KF_MAJOR_VERSION}::I18n
+  KF${KF_MAJOR_VERSION}::FileMetaData
 )
 
 install(TARGETS baloo_filemetadata_temp_extractor DESTINATION ${KDE_INSTALL_BINDIR})

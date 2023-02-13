@@ -91,7 +91,10 @@ void FileMetadataWidgetTest::shouldSignalOnceWithoutFile()
 void FileMetadataWidgetTest::shouldSignalOnceFile()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a")));
+    KFileItemList lst;
+    const KFileItem item{QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a")), QString(), KFileItem::Unknown};
+    lst.append(item);
+    m_widget->setItems(lst);
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     QCOMPARE(m_widget->items().count(), 1);
@@ -100,9 +103,16 @@ void FileMetadataWidgetTest::shouldSignalOnceFile()
 void FileMetadataWidgetTest::shouldSignalOnceFiles()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/test.mp3"))
-                                       << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
-                                       << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a")));
+    KFileItemList lst;
+    QList<QUrl> urls;
+    urls << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/test.mp3")) << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
+         << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a"));
+    for (const auto &url : std::as_const(urls)) {
+        const KFileItem item{url, QString(), KFileItem::Unknown};
+        lst.append(item);
+    }
+
+    m_widget->setItems(lst);
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     QCOMPARE(m_widget->items().count(), 3);
@@ -111,7 +121,10 @@ void FileMetadataWidgetTest::shouldSignalOnceFiles()
 void FileMetadataWidgetTest::shouldShowProperties()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3")));
+    KFileItemList lst;
+    const KFileItem item{QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3")), QString(), KFileItem::Unknown};
+    lst.append(item);
+    m_widget->setItems(lst);
 
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
@@ -138,8 +151,14 @@ void FileMetadataWidgetTest::shouldShowProperties()
 void FileMetadataWidgetTest::shouldShowCommonProperties()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
-                                       << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a")));
+    KFileItemList lst;
+    QList<QUrl> urls;
+    urls << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3")) << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a"));
+    for (const auto &url : std::as_const(urls)) {
+        const KFileItem item{url, QString(), KFileItem::Unknown};
+        lst.append(item);
+    }
+    m_widget->setItems(lst);
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
 
@@ -167,7 +186,10 @@ void FileMetadataWidgetTest::shouldShowCommonProperties()
 void FileMetadataWidgetTest::shouldShowMultiValueProperties()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/test_multivalue.ogg")));
+    KFileItemList lst;
+    const KFileItem item{QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/test_multivalue.ogg")), QString(), KFileItem::Unknown};
+    lst.append(item);
+    m_widget->setItems(lst);
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     auto artistWidget = m_widget->findChild<QLabel *>(QStringLiteral("artist"));
