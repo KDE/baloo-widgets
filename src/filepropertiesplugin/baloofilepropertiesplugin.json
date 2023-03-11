@@ -34,7 +34,6 @@
         "Description[uk]": "На сторінці властивостей буде показано метадані файла, зокрема розміри зображення, дані щодо художника тощо",
         "Description[x-test]": "xxProperties page showing meta data of files, such as image dimensions, artist information, and othersxx",
         "Description[zh_CN]": "显示文件元数据的属性页，包括图像尺寸，艺人信息和其他信息等",
-        "Description[zh_TW]": "顯示檔案中繼資料（例如影像尺寸、藝人資訊等等）的屬性頁面",
         "Icon": "document-properties",
         "MimeTypes": [
             "inode/directory",
@@ -74,8 +73,7 @@
         "Name[tr]": "Dosya Üst Verisi Özellikleri Sayfası",
         "Name[uk]": "Сторінка властивостей і метаданих файла",
         "Name[x-test]": "xxFile Meta Data Properties Pagexx",
-        "Name[zh_CN]": "文件元数据属性页",
-        "Name[zh_TW]": "檔案中繼資料屬性頁面"
+        "Name[zh_CN]": "文件元数据属性页"
     },
     "MimeType": "inode/directory;application/octet-stream",
     "X-KDE-Protocol": "file"
