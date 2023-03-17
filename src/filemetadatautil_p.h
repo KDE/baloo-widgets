@@ -17,7 +17,7 @@ namespace Private
  *
  * /sa: KFileMetaData::UserMetaData
  */
-QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData);
+QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData, const KFileMetaData::UserMetaData::Attributes &attributes);
 
 /**
  * Converts the property map into a variant map using the

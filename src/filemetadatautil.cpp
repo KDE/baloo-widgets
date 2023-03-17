@@ -84,12 +84,12 @@ namespace Baloo
 {
 namespace Private
 {
-QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData)
-{
-    using Attribute = KFileMetaData::UserMetaData::Attribute;
-    QVariantMap properties;
+using Attribute = KFileMetaData::UserMetaData::Attribute;
+using Attributes = KFileMetaData::UserMetaData::Attributes;
 
-    QFlags<Attribute> attributes = metaData.queryAttributes(Attribute::Tags | Attribute::Rating | Attribute::Comment | Attribute::OriginUrl);
+QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData, const Attributes &attributes)
+{
+    QVariantMap properties;
 
     if (attributes & Attribute::Tags) {
         QStringList tags = metaData.tags();

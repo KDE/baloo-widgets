@@ -53,7 +53,9 @@ void FileFetchJob::doStart()
         KFileMetaData::UserMetaData umd(filePath);
 
         if (umd.isSupported()) {
-            prop = Baloo::Private::convertUserMetaData(umd);
+            using Attribute = KFileMetaData::UserMetaData::Attribute;
+            auto attrs = umd.queryAttributes(Attribute::Tags | Attribute::Rating | Attribute::Comment | Attribute::OriginUrl);
+            prop = Baloo::Private::convertUserMetaData(umd, attrs);
         } else {
             m_canEditAll = false;
         }
