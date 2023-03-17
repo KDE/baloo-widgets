@@ -18,6 +18,7 @@
 #include <KShell>
 
 #include <QPair>
+#include <QSize>
 
 // Required includes for subDirectoriesCount():
 #ifdef Q_OS_WIN
@@ -101,7 +102,7 @@ void extractDerivedProperties(QVariantMap &data)
     const auto width = data.value(QStringLiteral("width"));
     const auto height = data.value(QStringLiteral("height"));
     if (!width.isNull() && !height.isNull()) {
-        data.insert(QStringLiteral("dimensions"), i18nc("width × height", "%1 × %2", width.toInt(), height.toInt()));
+        data.insert(QStringLiteral("dimensions"), QSize(width.toInt(), height.toInt()));
     }
 
     bool okLatitude;

@@ -19,6 +19,7 @@
 #include <QCollator>
 #include <QLabel>
 #include <QLocale>
+#include <QMetaType>
 #include <QTime>
 #include <QUrl>
 
@@ -132,15 +133,19 @@ QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value,
         QString valueString;
         QLabel *valueWidget = createValueWidget(parent);
 
-        auto pi = KFileMetaData::PropertyInfo::fromName(prop);
-        if (pi.property() != KFileMetaData::Property::Empty) {
-            if (pi.valueType() == QVariant::DateTime || pi.valueType() == QVariant::Date) {
-                valueString = formatDateTime(value, m_dateFormat);
-            } else {
-                valueString = pi.formatAsDisplayString(value);
-            }
+        if (prop == QLatin1String("dimensions") && value.type() == QMetaType::QSize) {
+            valueString = i18nc("width × height", "%1 × %2", value.toSize().width(), value.toSize().height());
         } else {
-            valueString = toString(value, m_dateFormat);
+            auto pi = KFileMetaData::PropertyInfo::fromName(prop);
+            if (pi.property() != KFileMetaData::Property::Empty) {
+                if (pi.valueType() == QVariant::DateTime || pi.valueType() == QVariant::Date) {
+                    valueString = formatDateTime(value, m_dateFormat);
+                } else {
+                    valueString = pi.formatAsDisplayString(value);
+                }
+            } else {
+                valueString = toString(value, m_dateFormat);
+            }
         }
 
         valueWidget->setText(valueString);
