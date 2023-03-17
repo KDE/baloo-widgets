@@ -6,6 +6,8 @@
 
 #include <KFileMetaData/Properties>
 #include <KFileMetaData/UserMetaData>
+#include <QString>
+#include <QStringList>
 #include <QVariantMap>
 
 namespace Baloo
@@ -55,6 +57,12 @@ QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMultiMap &propMap);
  * only present for some files are removed.
  */
 void mergeCommonData(QVariantMap& target, const QList<QVariantMap> &files);
+
+/*
+ * Sort tags ie. {"c", "200", "B", "3", "a"} to {"3", "200", "a", "B", "c"}
+ * It respects locale and will sort numbers correctly.
+ */
+QStringList sortTags(const QStringList &tags);
 
 } // namespace Private
 } // namespace Baloo

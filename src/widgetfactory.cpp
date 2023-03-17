@@ -9,6 +9,7 @@
 
 #include "widgetfactory.h"
 #include "KRatingWidget"
+#include "filemetadatautil_p.h"
 #include "kcommentwidget_p.h"
 #include "tagwidget.h"
 
@@ -95,13 +96,7 @@ QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value,
     } else if (prop == QLatin1String("userComment")) {
         widget = createCommentWidget(value.toString(), parent);
     } else if (prop == QLatin1String("tags")) {
-        QStringList tags = value.toStringList();
-        QCollator coll;
-        coll.setNumericMode(true);
-        std::sort(tags.begin(), tags.end(), [&](const QString &s1, const QString &s2) {
-            return coll.compare(s1, s2) < 0;
-        });
-        widget = createTagWidget(tags, parent);
+        widget = createTagWidget(Baloo::Private::sortTags(value.toStringList()), parent);
     } else if (prop == QLatin1String("gpsLocation")) {
         const auto pair = value.value<QPair<float, float>>();
         const auto latitude = pair.first;

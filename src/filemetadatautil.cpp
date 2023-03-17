@@ -9,6 +9,10 @@
 #include <KFileMetaData/UserMetaData>
 #include <QSet>
 
+#include <QCollator>
+#include <QString>
+#include <QStringList>
+
 #include <algorithm>
 
 namespace
@@ -233,6 +237,17 @@ void mergeCommonData(QVariantMap& target, const QList<QVariantMap> &files)
             }
         }
     }
+}
+
+QStringList sortTags(const QStringList &tags)
+{
+    QCollator coll;
+    coll.setNumericMode(true);
+    QStringList sortedTags = tags;
+    std::sort(sortedTags.begin(), sortedTags.end(), [&](const QString &s1, const QString &s2) {
+        return coll.compare(s1, s2) < 0;
+    });
+    return sortedTags;
 }
 
 } // namespace KFMPrivate
