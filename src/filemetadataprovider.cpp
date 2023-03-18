@@ -153,6 +153,8 @@ public:
      */
     void insertFilesListBasicData();
 
+    void finish();
+
     FileMetaDataProvider *m_parent;
 
     bool m_readOnly;
@@ -188,7 +190,7 @@ void FileMetaDataProviderPrivate::slotFileFetchFinished(KJob *job)
     // Not cancellable anymore
     m_fetchJob = nullptr;
 
-    Q_EMIT m_parent->loadingFinished();
+    finish();
 }
 
 void FileMetaDataProviderPrivate::insertSingleFileBasicData()
@@ -408,7 +410,7 @@ void FileMetaDataProviderPrivate::processFileItems()
     } else {
         // FIXME - are extended attributes supported for remote files?
         m_readOnly = true;
-        Q_EMIT m_parent->loadingFinished();
+        finish();
     }
 }
 
@@ -434,10 +436,15 @@ void FileMetaDataProvider::refresh()
     cancel();
 
     if (d->m_fileItems.isEmpty()) {
-        Q_EMIT loadingFinished();
+        d->finish();
     } else {
         d->processFileItems();
     }
+}
+
+void FileMetaDataProviderPrivate::finish()
+{
+    Q_EMIT m_parent->loadingFinished();
 }
 
 QString FileMetaDataProvider::label(const QString &metaDataLabel) const
