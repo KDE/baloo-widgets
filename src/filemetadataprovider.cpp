@@ -353,16 +353,16 @@ void FileMetaDataProviderPrivate::setFileItem()
     }
 
     const QString filePath = url.toLocalFile();
-    FileFetchJob *job;
+
+    // Fully indexed by Baloo
+    auto indexingMode = FileFetchJob::UseRealtimeIndexing::Fallback;
 
     // Not indexed or only basic file indexing (no content)
     if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath) || m_config.onlyBasicIndexing()) {
-        job = new FileFetchJob(QStringList{filePath}, true, FileFetchJob::UseRealtimeIndexing::Only, this);
-
-        // Fully indexed by Baloo
-    } else {
-        job = new FileFetchJob(QStringList{filePath}, true, FileFetchJob::UseRealtimeIndexing::Fallback, this);
+        indexingMode = FileFetchJob::UseRealtimeIndexing::Only;
     }
+
+    auto job = new FileFetchJob(QStringList{filePath}, true, indexingMode, this);
     connect(job, &FileFetchJob::finished, this, &FileMetaDataProviderPrivate::slotFileFetchFinished);
     job->start();
 }
