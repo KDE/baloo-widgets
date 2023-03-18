@@ -10,6 +10,7 @@
 #include "filemetadatautil_p.h"
 #include "filefetchjob.h"
 
+#include <Baloo/IndexerConfig>
 #include <KFileMetaData/PropertyInfo>
 #include <KFormat>
 #include <KLocalizedString>
@@ -114,7 +115,49 @@ void extractDerivedProperties(QVariantMap &data)
 }
 } // anonymous namespace
 
-void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
+class Q_DECL_HIDDEN Baloo::FileMetaDataProviderPrivate : public QObject
+{
+public:
+    FileMetaDataProviderPrivate(FileMetaDataProvider *parent)
+        : QObject(parent)
+        , m_parent(parent)
+        , m_readOnly(false)
+    {
+    }
+
+    ~FileMetaDataProviderPrivate()
+    {
+    }
+
+    void insertEditableData();
+
+    void setFileItem();
+    void setFileItems();
+
+    /**
+     * Insert basic data of a single file
+     */
+    void insertSingleFileBasicData();
+
+    /**
+     * Insert basic data of a list of files
+     */
+    void insertFilesListBasicData();
+
+    FileMetaDataProvider *m_parent;
+
+    bool m_readOnly;
+
+    QList<KFileItem> m_fileItems;
+
+    QVariantMap m_data;
+    Baloo::IndexerConfig m_config;
+
+public Q_SLOTS:
+    void slotFileFetchFinished(KJob *job);
+};
+
+void FileMetaDataProviderPrivate::slotFileFetchFinished(KJob *job)
 {
     auto fetchJob = static_cast<FileFetchJob *>(job);
     QList<QVariantMap> files = fetchJob->data();
@@ -130,10 +173,10 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
     m_readOnly = !fetchJob->canEditAll();
 
     insertEditableData();
-    Q_EMIT loadingFinished();
+    Q_EMIT m_parent->loadingFinished();
 }
 
-void FileMetaDataProvider::insertSingleFileBasicData()
+void FileMetaDataProviderPrivate::insertSingleFileBasicData()
 {
     // TODO: Handle case if remote URLs are used properly. isDir() does
     // not work, the modification date needs also to be adjusted...
@@ -221,7 +264,7 @@ void FileMetaDataProvider::insertSingleFileBasicData()
     }
 }
 
-void FileMetaDataProvider::insertFilesListBasicData()
+void FileMetaDataProviderPrivate::insertFilesListBasicData()
 {
     // If all directories
     Q_ASSERT(m_fileItems.count() > 1);
@@ -269,7 +312,7 @@ void FileMetaDataProvider::insertFilesListBasicData()
     }
 }
 
-void FileMetaDataProvider::insertEditableData()
+void FileMetaDataProviderPrivate::insertEditableData()
 {
     if (!m_readOnly) {
         if (!m_data.contains(QStringLiteral("tags"))) {
@@ -286,13 +329,13 @@ void FileMetaDataProvider::insertEditableData()
 
 FileMetaDataProvider::FileMetaDataProvider(QObject *parent)
     : QObject(parent)
-    , m_readOnly(false)
+    , d(new FileMetaDataProviderPrivate(this))
 {
 }
 
 FileMetaDataProvider::~FileMetaDataProvider() = default;
 
-void FileMetaDataProvider::setFileItem()
+void FileMetaDataProviderPrivate::setFileItem()
 {
     // There are 3 code paths -
     // Remote file
@@ -305,7 +348,7 @@ void FileMetaDataProvider::setFileItem()
     if (!url.isLocalFile() || m_fileItems.first().isSlow()) {
         // FIXME - are extended attributes supported for remote files?
         m_readOnly = true;
-        Q_EMIT loadingFinished();
+        Q_EMIT m_parent->loadingFinished();
         return;
     }
 
@@ -320,11 +363,11 @@ void FileMetaDataProvider::setFileItem()
     } else {
         job = new FileFetchJob(QStringList{filePath}, true, FileFetchJob::UseRealtimeIndexing::Fallback, this);
     }
-    connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
+    connect(job, &FileFetchJob::finished, this, &FileMetaDataProviderPrivate::slotFileFetchFinished);
     job->start();
 }
 
-void FileMetaDataProvider::setFileItems()
+void FileMetaDataProviderPrivate::setFileItems()
 {
     // Multiple Files -
     //   * Not Indexed
@@ -347,27 +390,27 @@ void FileMetaDataProvider::setFileItems()
         bool canEdit = (urls.size() == m_fileItems.size());
 
         auto job = new FileFetchJob(urls, canEdit, FileFetchJob::UseRealtimeIndexing::Disabled, this);
-        connect(job, &FileFetchJob::finished, this, &FileMetaDataProvider::slotFileFetchFinished);
+        connect(job, &FileFetchJob::finished, this, &FileMetaDataProviderPrivate::slotFileFetchFinished);
         job->start();
 
     } else {
         // FIXME - are extended attributes supported for remote files?
         m_readOnly = true;
-        Q_EMIT loadingFinished();
+        Q_EMIT m_parent->loadingFinished();
     }
 }
 
 void FileMetaDataProvider::setItems(const KFileItemList &items)
 {
-    m_fileItems = items;
-    m_data.clear();
+    d->m_fileItems = items;
+    d->m_data.clear();
 
     if (items.isEmpty()) {
         Q_EMIT loadingFinished();
     } else if (items.size() == 1) {
-        setFileItem();
+        d->setFileItem();
     } else {
-        setFileItems();
+        d->setFileItems();
     }
 }
 
@@ -499,20 +542,20 @@ QString FileMetaDataProvider::group(const QString &label) const
 
 KFileItemList FileMetaDataProvider::items() const
 {
-    return m_fileItems;
+    return d->m_fileItems;
 }
 
 void FileMetaDataProvider::setReadOnly(bool readOnly)
 {
-    m_readOnly = readOnly;
+    d->m_readOnly = readOnly;
 }
 
 bool FileMetaDataProvider::isReadOnly() const
 {
-    return m_readOnly;
+    return d->m_readOnly;
 }
 
 QVariantMap FileMetaDataProvider::data() const
 {
-    return m_data;
+    return d->m_data;
 }

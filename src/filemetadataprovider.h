@@ -11,11 +11,12 @@
 #include <QString>
 #include <QVariant>
 
-#include <Baloo/IndexerConfig>
 #include <KFileItem>
 
 namespace Baloo
 {
+class FileMetaDataProviderPrivate;
+
 /**
  * @brief Provides the data for the MetaDataWidget.
  *
@@ -89,31 +90,8 @@ Q_SIGNALS:
      */
     void loadingFinished();
 
-private Q_SLOTS:
-    void slotFileFetchFinished(KJob *job);
-
 private:
-    void insertEditableData();
-
-    void setFileItem();
-    void setFileItems();
-
-    /**
-     * Insert basic data of a single file
-     */
-    void insertSingleFileBasicData();
-
-    /**
-     * Insert basic data of a list of files
-     */
-    void insertFilesListBasicData();
-
-    bool m_readOnly;
-
-    QList<KFileItem> m_fileItems;
-
-    QVariantMap m_data;
-    Baloo::IndexerConfig m_config;
+    FileMetaDataProviderPrivate *d;
 };
 
 }
