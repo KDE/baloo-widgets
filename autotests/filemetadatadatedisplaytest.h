@@ -10,8 +10,7 @@
 
 #include <filemetadatawidget.h>
 
-class QString;
-class QDateTime;
+#include <QTemporaryDir>
 
 class FileMetadataDateDisplayTest : public QObject
 {
@@ -27,8 +26,7 @@ private Q_SLOTS:
     void shouldDisplayLongAndShortDates_data();
 
 private:
-    QString m_m4aFilePath;
-    QString m_mp3FilePath;
+    QTemporaryDir m_testDir;
 };
 
 #endif // FILEMETADATADATEDISPLAYTEST_H

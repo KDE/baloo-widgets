@@ -15,7 +15,6 @@
 #include <QScopedPointer>
 #include <QSignalSpy>
 #include <QStandardPaths>
-#include <QTemporaryFile>
 #include <QTest>
 
 void initLocale()
@@ -26,25 +25,28 @@ Q_CONSTRUCTOR_FUNCTION(initLocale)
 
 QTEST_MAIN(FileMetadataDateDisplayTest)
 
+static QString filenameYesterday()
+{
+    return QStringLiteral("file_yesterday.txt");
+}
+
+static QString filenameLongAgo()
+{
+    return QStringLiteral("file_longago.txt");
+}
+
 static void setFileTime(const QString &filePath, const QDateTime &fileTime)
 {
     QFile file(filePath);
-    QVERIFY2(file.open(QIODevice::ReadOnly), filePath.toUtf8().constData());
-    QVERIFY2(file.setFileTime(fileTime, QFileDevice::FileModificationTime), filePath.toUtf8().constData());
+    QVERIFY2(file.open(QIODevice::ReadOnly), qUtf8Printable(filePath));
+    QVERIFY2(file.setFileTime(fileTime, QFileDevice::FileModificationTime), qUtf8Printable(filePath));
 }
 
-static void copyToTemporaryAndSetFileTime(const QString &filePath, const QDateTime &fileTime, QString *tempFilePath)
+static void createFile(const QString &filePath)
 {
-    QTemporaryFile tempF;
     QFile file(filePath);
-    QVERIFY2(file.open(QIODevice::ReadOnly), filePath.toUtf8().constData());
-    QVERIFY2(tempF.open(), filePath.toUtf8().constData());
-    const QByteArray data = file.readAll();
-    QCOMPARE(tempF.write(data), data.size());
-    tempF.setAutoRemove(false);
-    *tempFilePath = tempF.fileName();
-    tempF.close();
-    setFileTime(*tempFilePath, fileTime);
+    QVERIFY2(file.open(QIODevice::ReadWrite), qUtf8Printable(filePath));
+    QVERIFY2(file.write("dummy"), qUtf8Printable(filePath));
 }
 
 void FileMetadataDateDisplayTest::initTestCase()
@@ -52,14 +54,18 @@ void FileMetadataDateDisplayTest::initTestCase()
     qRegisterMetaType<KFileItemList>("KFileItemList");
     QStandardPaths::setTestModeEnabled(true);
 
-    copyToTemporaryAndSetFileTime(QFINDTESTDATA("samplefiles/testtagged.m4a"), QDateTime::currentDateTime().addDays(-1), &m_m4aFilePath);
-    copyToTemporaryAndSetFileTime(QFINDTESTDATA("samplefiles/testtagged.mp3"), QDateTime::currentDateTime().addYears(-10), &m_mp3FilePath);
+    QVERIFY(m_testDir.isValid());
+
+    auto now = QDateTime::currentDateTime();
+    createFile(m_testDir.filePath(filenameYesterday()));
+    setFileTime(m_testDir.filePath(filenameYesterday()), now.addDays(-1));
+
+    createFile(m_testDir.filePath(filenameLongAgo()));
+    setFileTime(m_testDir.filePath(filenameLongAgo()), now.addYears(-10));
 }
 
 void FileMetadataDateDisplayTest::cleanupTestCase()
 {
-    QFile::remove(m_m4aFilePath);
-    QFile::remove(m_mp3FilePath);
 }
 
 static QRegularExpression yesterdayShortRegex()
@@ -98,15 +104,18 @@ void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates_data()
     QTest::addColumn<QUrl>("file");
     QTest::addColumn<QRegularExpression>("regex");
 
-    QTest::addRow("Short date, long ago") << Baloo::DateFormats::ShortFormat << QUrl::fromLocalFile(m_mp3FilePath) << longAgoShortRegex();
+    auto urlLongAgo = QUrl::fromLocalFile(m_testDir.filePath(filenameLongAgo()));
+    auto urlYesterday = QUrl::fromLocalFile(m_testDir.filePath(filenameYesterday()));
 
-    QTest::addRow("Short date, yesterday") << Baloo::DateFormats::ShortFormat << QUrl::fromLocalFile(m_m4aFilePath) << yesterdayShortRegex();
+    QTest::addRow("Short date, long ago") << Baloo::DateFormats::ShortFormat << urlLongAgo << longAgoShortRegex();
 
-    QTest::addRow("Long date, long ago") << Baloo::DateFormats::LongFormat << QUrl::fromLocalFile(m_mp3FilePath)
+    QTest::addRow("Short date, yesterday") << Baloo::DateFormats::ShortFormat << urlYesterday << yesterdayShortRegex();
+
+    QTest::addRow("Long date, long ago") << Baloo::DateFormats::LongFormat << urlLongAgo
                                          << QRegularExpression(QStringLiteral(
                                                 "[A-Z][a-z]+, [A-Z][a-z]+ (?:[1-3][0-9]|[1-9]), 20[0-9]{2} at (?:1[0-2]|[1-9]):[0-5][0-9] [AP]M"));
 
-    QTest::addRow("Long date, yesterday") << Baloo::DateFormats::LongFormat << QUrl::fromLocalFile(m_m4aFilePath)
+    QTest::addRow("Long date, yesterday") << Baloo::DateFormats::LongFormat << urlYesterday
                                           << QRegularExpression(QStringLiteral("Yesterday at (?:1[0-2]|[1-9]):[0-5][0-9] [AP]M"));
 }
 
