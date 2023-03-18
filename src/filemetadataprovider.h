@@ -33,10 +33,12 @@ class FileMetaDataProvider : public QObject
     Q_OBJECT
 
 public:
-    explicit FileMetaDataProvider(QObject *parent = nullptr, std::shared_ptr<Baloo::IndexerConfigData> indexerConfig = nullptr);
+    explicit FileMetaDataProvider(QObject *parent = nullptr, std::shared_ptr<Baloo::IndexerConfig> indexerConfig = nullptr, bool async = true);
     ~FileMetaDataProvider() override;
 
     /**
+     * @threadsafe
+     *
      * Sets the items, where the meta data should be
      * requested. The loading of the meta data is done
      * asynchronously. The signal loadingFinished() is
@@ -46,14 +48,22 @@ public:
      * each item can be retrieved by KFileMetaDataProvider::label().
      */
     void setItems(const KFileItemList &items);
+
+    /**
+     * @threadsafe
+     */
     KFileItemList items() const;
 
     /**
+     * @threadsafe
+     *
      * Cancel data loading if it's in progress
      */
     void cancel();
 
     /**
+     * @threadsafe
+     *
      *  Refresh data with latest info from storage
      */
     void refresh();
@@ -87,6 +97,8 @@ public:
     virtual QString group(const QString &label) const;
 
     /**
+     * @threadsafe
+     *
      * @return Meta data for the items that have been set by
      *         KFileMetaDataProvider::setItems(). The method should
      *         be invoked after the signal loadingFinished() has

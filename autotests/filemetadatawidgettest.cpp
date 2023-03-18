@@ -89,6 +89,7 @@ void FileMetadataWidgetTest::shouldSignalOnceWithoutFile()
 
     QSignalSpy spy(widget.get(), &Baloo::FileMetaDataWidget::metaDataRequestFinished);
     widget->setItems(KFileItemList());
+    QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     QCOMPARE(widget->items().count(), 0);
 }

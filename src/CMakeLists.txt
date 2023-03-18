@@ -68,6 +68,7 @@ target_link_libraries(KF6BalooWidgets
   KF6::CoreAddons
   KF6::ConfigGui
   KF6::Service
+  KF6::ThreadWeaver
 )
 
 target_include_directories(KF6BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets>")

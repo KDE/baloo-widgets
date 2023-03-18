@@ -16,6 +16,7 @@
 #include <KLocalizedString>
 #include <KProtocolInfo>
 #include <KShell>
+#include <ThreadWeaver/ThreadWeaver>
 
 #include <QPair>
 #include <QSize>
@@ -27,6 +28,12 @@
 #include <QFile>
 #include <dirent.h>
 #endif
+
+#include <atomic>
+#include <chrono>
+#include <condition_variable>
+#include <memory>
+#include <mutex>
 
 using namespace Baloo;
 
@@ -119,12 +126,18 @@ void extractDerivedProperties(QVariantMap &data)
 class Q_DECL_HIDDEN Baloo::FileMetaDataProviderPrivate : public QObject
 {
 public:
-    FileMetaDataProviderPrivate(FileMetaDataProvider *parent, std::shared_ptr<Baloo::IndexerConfigData> indexerConfig)
+    enum Status { PROCESSING, CANCELLING, CANCELED, ERRORED, FINISHED, ABORT };
+
+    FileMetaDataProviderPrivate(FileMetaDataProvider *parent, std::shared_ptr<Baloo::IndexerConfig> indexerConfig, bool async)
         : QObject(parent)
         , m_parent(parent)
         , m_readOnly(false)
         , m_fetchJob(nullptr)
         , m_config(indexerConfig)
+        , m_isAsync(async)
+        , m_status(FINISHED)
+        , m_uses(0)
+        , m_shouldAbort(false)
     {
         if (!m_config) {
             m_config = std::make_shared<Baloo::IndexerConfig>();
@@ -133,12 +146,35 @@ public:
 
     ~FileMetaDataProviderPrivate()
     {
-        m_parent->cancel();
+        m_shouldAbort = true;
+        cancelSync();
+
+        // Ensure that all threads have stopped all processing
+        // and no one is using us
+        std::lock_guard processingLock(m_processingMutex);
+        std::lock_guard dataLock(m_dataMutex);
+        std::lock_guard statusLock(m_statusMutex);
+
+        Q_ASSERT(m_status == CANCELED || m_status == ERRORED || m_status == FINISHED);
+
+        std::unique_lock lock(m_usesMutex);
+        if (m_uses > 0) {
+            // Wait all queued tasks have finished
+            m_usesChange.wait(lock, [this] {
+                return m_uses <= 0;
+            });
+        }
     }
 
     void insertEditableData(QVariantMap &data);
 
-    void processFileItems(const KFileItemList &items);
+    QVariantMap processFileItems(std::shared_ptr<Baloo::IndexerConfig> indexerConfig, const KFileItemList &items);
+
+    /**
+     * Updates `data` with loaded metadata from given FileFetchJob
+     * returns true if it's editable, otherwise false
+     */
+    bool processFetchResult(FileFetchJob *fetchJob, QVariantMap &data);
 
     void setFileItem();
     void setFileItems();
@@ -154,30 +190,39 @@ public:
     void insertFilesListBasicData(const KFileItemList &items, QVariantMap &data);
 
     void finish(const QVariantMap &data);
+    void doRefresh(const std::chrono::milliseconds &skipMs = std::chrono::milliseconds(0));
+    void cancelSync();
+    void refreshSync(std::shared_ptr<Baloo::IndexerConfig> indexerConfig, const std::chrono::milliseconds &skipMs);
+    bool updateStatus(Status newStatus);
 
     FileMetaDataProvider *m_parent;
 
-    bool m_readOnly;
+    std::atomic_bool m_readOnly;
 
     QList<KFileItem> m_fileItems;
 
     QVariantMap m_data;
-    std::shared_ptr<Baloo::IndexerConfigData> m_config;
+    std::shared_ptr<Baloo::IndexerConfig> m_config;
 
     FileFetchJob *m_fetchJob;
 
-public Q_SLOTS:
-    void slotFileFetchFinished(KJob *job);
+    bool m_isAsync;
+    mutable std::mutex m_dataMutex;
+    std::timed_mutex m_processingMutex;
+
+    Status m_status;
+    std::mutex m_statusMutex;
+    std::atomic_int m_uses;
+    std::mutex m_usesMutex;
+    std::condition_variable m_usesChange;
+    std::atomic_bool m_shouldAbort;
 };
 
-void FileMetaDataProviderPrivate::slotFileFetchFinished(KJob *job)
+bool FileMetaDataProviderPrivate::processFetchResult(FileFetchJob *fetchJob, QVariantMap &data)
 {
-    auto fetchJob = static_cast<FileFetchJob *>(job);
     QList<QVariantMap> files = fetchJob->data();
 
     Q_ASSERT(!files.isEmpty());
-
-    auto data = m_data;
 
     if (files.size() > 1) {
         Baloo::Private::mergeCommonData(data, files);
@@ -185,15 +230,13 @@ void FileMetaDataProviderPrivate::slotFileFetchFinished(KJob *job)
         data = unite(data, files.first());
     }
     extractDerivedProperties(data);
-    m_readOnly = !fetchJob->canEditAll();
-    if (!m_readOnly) {
+
+    if (fetchJob->canEditAll()) {
         insertEditableData(data);
+        return true;
     }
 
-    // Not cancellable anymore
-    m_fetchJob = nullptr;
-
-    finish(data);
+    return false;
 }
 
 void FileMetaDataProviderPrivate::insertSingleFileBasicData(const KFileItemList &items, QVariantMap &data)
@@ -345,15 +388,15 @@ void FileMetaDataProviderPrivate::insertEditableData(QVariantMap &data)
     }
 }
 
-FileMetaDataProvider::FileMetaDataProvider(QObject *parent, std::shared_ptr<Baloo::IndexerConfigData> indexerConfig)
+FileMetaDataProvider::FileMetaDataProvider(QObject *parent, std::shared_ptr<Baloo::IndexerConfig> indexerConfig, bool async)
     : QObject(parent)
-    , d(new FileMetaDataProviderPrivate(this, indexerConfig))
+    , d(new FileMetaDataProviderPrivate(this, indexerConfig, async))
 {
 }
 
 FileMetaDataProvider::~FileMetaDataProvider() = default;
 
-void FileMetaDataProviderPrivate::processFileItems(const KFileItemList &items)
+QVariantMap FileMetaDataProviderPrivate::processFileItems(std::shared_ptr<Baloo::IndexerConfig> indexerConfig, const KFileItemList &items)
 {
     // There are several code paths -
     // Remote file
@@ -366,6 +409,15 @@ void FileMetaDataProviderPrivate::processFileItems(const KFileItemList &items)
     //   * Indexed
 
     auto data = QVariantMap();
+    std::lock_guard processingLock(m_processingMutex);
+    if (!updateStatus(PROCESSING)) {
+        return data;
+    }
+
+    if (items.isEmpty()) {
+        updateStatus(FINISHED);
+        return data;
+    }
 
     bool singleFileMode = m_fileItems.size() <= 1;
 
@@ -387,6 +439,7 @@ void FileMetaDataProviderPrivate::processFileItems(const KFileItemList &items)
         insertFilesListBasicData(items, data);
     }
 
+    auto finalStatus = FINISHED;
     if (!urls.isEmpty()) {
         // Editing only if all URLs are local
         bool canEdit = (urls.size() == items.size());
@@ -398,57 +451,167 @@ void FileMetaDataProviderPrivate::processFileItems(const KFileItemList &items)
             // Fully indexed by Baloo
             indexingMode = FileFetchJob::UseRealtimeIndexing::Fallback;
 
-            if (!m_config->fileIndexingEnabled() || !m_config->shouldBeIndexed(urls.first()) || m_config->onlyBasicIndexing()) {
+            if (!indexerConfig->fileIndexingEnabled() || !indexerConfig->shouldBeIndexed(urls.first()) || indexerConfig->onlyBasicIndexing()) {
                 // Not indexed or only basic file indexing (no content)
                 indexingMode = FileFetchJob::UseRealtimeIndexing::Only;
             }
         }
 
-        auto job = new FileFetchJob(urls, canEdit, indexingMode, this);
-        // Can be cancelled
-        m_fetchJob = job;
+        if (!updateStatus(PROCESSING)) {
+            return data;
+        }
 
-        m_data = data;
-        connect(job, &FileFetchJob::finished, this, &FileMetaDataProviderPrivate::slotFileFetchFinished);
-        job->start();
+        // We want to control when job will be deleted ourselves
+        auto job = std::make_unique<FileFetchJob>(urls, canEdit, indexingMode);
+        job->setAutoDelete(false);
+
+        std::unique_lock dataLock(m_dataMutex);
+        // Can be cancelled
+        m_fetchJob = job.get();
+        dataLock.unlock();
+
+        if (job->exec()) {
+            if (!updateStatus(PROCESSING)) {
+                return data;
+            }
+            m_readOnly = !processFetchResult(job.get(), data);
+        } else if (job->error() == KJob::KilledJobError) {
+            finalStatus = CANCELED;
+        } else {
+            finalStatus = ERRORED;
+        }
+        dataLock.lock();
+        m_fetchJob = nullptr;
+        dataLock.unlock();
     } else {
         // FIXME - are extended attributes supported for remote files?
         m_readOnly = true;
-        finish(data);
-    }
+    };
+
+    updateStatus(finalStatus);
+
+    return data;
 }
 
 void FileMetaDataProvider::cancel()
 {
-    if (d->m_fetchJob) {
-        auto job = d->m_fetchJob;
-        d->m_fetchJob = nullptr;
-        job->kill();
+    if (d->m_isAsync) {
+        d->m_uses++;
+        ThreadWeaver::enqueue([this]() {
+            if (!d->m_shouldAbort) {
+                d->cancelSync();
+            }
+            {
+                std::lock_guard lock(d->m_usesMutex);
+                d->m_uses--;
+            }
+            d->m_usesChange.notify_all();
+        });
+    } else {
+        d->cancelSync();
+    }
+}
+
+void FileMetaDataProviderPrivate::cancelSync()
+{
+    std::unique_lock statusLock(m_statusMutex);
+    if (m_status == PROCESSING) {
+        m_status = CANCELLING;
+        statusLock.unlock();
+        {
+             const std::lock_guard dataLock(m_dataMutex);
+             if (m_fetchJob) {
+                 m_fetchJob->kill();
+                 m_fetchJob = nullptr;
+             }
+        }
     }
 }
 
 void FileMetaDataProvider::setItems(const KFileItemList &items)
 {
-    d->m_fileItems = items;
-    d->m_data.clear();
-
-    refresh();
+    {
+        std::lock_guard lock(d->m_dataMutex);
+        // FIXME: Make KFileItemList threadsafe
+        d->m_fileItems = KFileItemList();
+        for (KFileItem item : items) {
+            d->m_fileItems.push_back(item);
+        }
+    }
+    d->doRefresh();
 }
 
 void FileMetaDataProvider::refresh()
 {
-    cancel();
+    // Lets skip refresh if we're already currently doing refresh
+    // becauses then it doesn't make sense to refresh again right after
+    // as it's unlikly that something will have changed
+    d->doRefresh(std::chrono::milliseconds(1));
+}
 
-    if (d->m_fileItems.isEmpty()) {
-        d->finish(QVariantMap());
+void FileMetaDataProviderPrivate::doRefresh(const std::chrono::milliseconds &skipMs)
+{
+    if (m_isAsync) {
+        m_uses++;
+        auto indexerConfig = m_config;
+        ThreadWeaver::enqueue([this, indexerConfig, skipMs]() {
+            if (!m_shouldAbort) {
+                refreshSync(indexerConfig, skipMs);
+            }
+            {
+                std::lock_guard lock(m_usesMutex);
+                m_uses--;
+            }
+            m_usesChange.notify_all();
+        });
     } else {
-        d->processFileItems(d->m_fileItems);
+        refreshSync(m_config, skipMs);
     }
+}
+
+void FileMetaDataProviderPrivate::refreshSync(std::shared_ptr<Baloo::IndexerConfig> indexerConfig, const std::chrono::milliseconds &skipMs)
+{
+    if (skipMs > skipMs.zero()) {
+        // If we need to wait more than skipMs (milliseconds) then we will skip refreshing
+        if (!m_processingMutex.try_lock_for(skipMs)) {
+            return;
+        }
+        m_processingMutex.unlock();
+    }
+    cancelSync();
+
+    std::unique_lock dataLock(m_dataMutex);
+    const QList<KFileItem> items = m_fileItems;
+    dataLock.unlock();
+
+    auto result = processFileItems(indexerConfig, items);
+    finish(result);
+}
+
+bool FileMetaDataProviderPrivate::updateStatus(FileMetaDataProviderPrivate::Status newStatus)
+{
+    std::lock_guard lock(m_statusMutex);
+    if (m_status == CANCELLING) {
+        m_status = CANCELED;
+        return false;
+    } else {
+        m_status = newStatus;
+    }
+    return true;
 }
 
 void FileMetaDataProviderPrivate::finish(const QVariantMap &data)
 {
-    m_data = data;
+    {
+        std::lock_guard lock(m_statusMutex);
+        if (m_status != FINISHED) {
+            return;
+        }
+    }
+    {
+        std::lock_guard lock(m_dataMutex);
+        m_data = data;
+    }
     Q_EMIT m_parent->loadingFinished();
 }
 
@@ -580,6 +743,7 @@ QString FileMetaDataProvider::group(const QString &label) const
 
 KFileItemList FileMetaDataProvider::items() const
 {
+    std::lock_guard lock(d->m_dataMutex);
     return d->m_fileItems;
 }
 
@@ -595,6 +759,7 @@ bool FileMetaDataProvider::isReadOnly() const
 
 QVariantMap FileMetaDataProvider::data() const
 {
+    std::lock_guard lock(d->m_dataMutex);
     return d->m_data;
 }
 
