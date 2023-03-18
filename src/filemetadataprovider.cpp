@@ -131,6 +131,8 @@ public:
 
     void insertEditableData();
 
+    void processFileItems();
+
     void setFileItem();
     void setFileItems();
 
@@ -335,43 +337,19 @@ FileMetaDataProvider::FileMetaDataProvider(QObject *parent)
 
 FileMetaDataProvider::~FileMetaDataProvider() = default;
 
-void FileMetaDataProviderPrivate::setFileItem()
+void FileMetaDataProviderPrivate::processFileItems()
 {
-    // There are 3 code paths -
+    // There are several code paths -
     // Remote file
     // Single local file -
     //   * Not Indexed
     //   * Indexed
     //
-    insertSingleFileBasicData();
-    const QUrl url = m_fileItems.first().targetUrl();
-    if (!url.isLocalFile() || m_fileItems.first().isSlow()) {
-        // FIXME - are extended attributes supported for remote files?
-        m_readOnly = true;
-        Q_EMIT m_parent->loadingFinished();
-        return;
-    }
-
-    const QString filePath = url.toLocalFile();
-
-    // Fully indexed by Baloo
-    auto indexingMode = FileFetchJob::UseRealtimeIndexing::Fallback;
-
-    // Not indexed or only basic file indexing (no content)
-    if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath) || m_config.onlyBasicIndexing()) {
-        indexingMode = FileFetchJob::UseRealtimeIndexing::Only;
-    }
-
-    auto job = new FileFetchJob(QStringList{filePath}, true, indexingMode, this);
-    connect(job, &FileFetchJob::finished, this, &FileMetaDataProviderPrivate::slotFileFetchFinished);
-    job->start();
-}
-
-void FileMetaDataProviderPrivate::setFileItems()
-{
     // Multiple Files -
     //   * Not Indexed
     //   * Indexed
+
+    bool multipleFileMode = m_fileItems.size() > 1;
 
     QStringList urls;
     urls.reserve(m_fileItems.size());
@@ -384,12 +362,30 @@ void FileMetaDataProviderPrivate::setFileItems()
         }
     }
 
-    insertFilesListBasicData();
+    if (multipleFileMode) {
+        insertFilesListBasicData();
+    } else {
+        insertSingleFileBasicData();
+    }
+
     if (!urls.isEmpty()) {
         // Editing only if all URLs are local
         bool canEdit = (urls.size() == m_fileItems.size());
 
-        auto job = new FileFetchJob(urls, canEdit, FileFetchJob::UseRealtimeIndexing::Disabled, this);
+        // Don't use indexing when we have multiple files
+        auto indexingMode = FileFetchJob::UseRealtimeIndexing::Disabled;
+
+        if (!multipleFileMode) {
+            // Fully indexed by Baloo
+            indexingMode = FileFetchJob::UseRealtimeIndexing::Fallback;
+
+            if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(urls.first()) || m_config.onlyBasicIndexing()) {
+                // Not indexed or only basic file indexing (no content)
+                indexingMode = FileFetchJob::UseRealtimeIndexing::Only;
+            }
+        }
+
+        auto job = new FileFetchJob(urls, canEdit, indexingMode, this);
         connect(job, &FileFetchJob::finished, this, &FileMetaDataProviderPrivate::slotFileFetchFinished);
         job->start();
 
@@ -407,10 +403,8 @@ void FileMetaDataProvider::setItems(const KFileItemList &items)
 
     if (items.isEmpty()) {
         Q_EMIT loadingFinished();
-    } else if (items.size() == 1) {
-        d->setFileItem();
     } else {
-        d->setFileItems();
+        d->processFileItems();
     }
 }
 
