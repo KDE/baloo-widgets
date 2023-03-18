@@ -119,12 +119,16 @@ void extractDerivedProperties(QVariantMap &data)
 class Q_DECL_HIDDEN Baloo::FileMetaDataProviderPrivate : public QObject
 {
 public:
-    FileMetaDataProviderPrivate(FileMetaDataProvider *parent)
+    FileMetaDataProviderPrivate(FileMetaDataProvider *parent, std::shared_ptr<Baloo::IndexerConfigData> indexerConfig)
         : QObject(parent)
         , m_parent(parent)
         , m_readOnly(false)
         , m_fetchJob(nullptr)
+        , m_config(indexerConfig)
     {
+        if (!m_config) {
+            m_config = std::make_shared<Baloo::IndexerConfig>();
+        }
     }
 
     ~FileMetaDataProviderPrivate()
@@ -156,7 +160,7 @@ public:
     QList<KFileItem> m_fileItems;
 
     QVariantMap m_data;
-    Baloo::IndexerConfig m_config;
+    std::shared_ptr<Baloo::IndexerConfigData> m_config;
 
     FileFetchJob *m_fetchJob;
 
@@ -338,9 +342,9 @@ void FileMetaDataProviderPrivate::insertEditableData()
     }
 }
 
-FileMetaDataProvider::FileMetaDataProvider(QObject *parent)
+FileMetaDataProvider::FileMetaDataProvider(QObject *parent, std::shared_ptr<Baloo::IndexerConfigData> indexerConfig)
     : QObject(parent)
-    , d(new FileMetaDataProviderPrivate(this))
+    , d(new FileMetaDataProviderPrivate(this, indexerConfig))
 {
 }
 
@@ -388,7 +392,7 @@ void FileMetaDataProviderPrivate::processFileItems()
             // Fully indexed by Baloo
             indexingMode = FileFetchJob::UseRealtimeIndexing::Fallback;
 
-            if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(urls.first()) || m_config.onlyBasicIndexing()) {
+            if (!m_config->fileIndexingEnabled() || !m_config->shouldBeIndexed(urls.first()) || m_config->onlyBasicIndexing()) {
                 // Not indexed or only basic file indexing (no content)
                 indexingMode = FileFetchJob::UseRealtimeIndexing::Only;
             }

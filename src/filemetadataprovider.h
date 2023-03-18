@@ -11,6 +11,7 @@
 #include <QString>
 #include <QVariant>
 
+#include <Baloo/IndexerConfig>
 #include <KFileItem>
 
 namespace Baloo
@@ -32,7 +33,7 @@ class FileMetaDataProvider : public QObject
     Q_OBJECT
 
 public:
-    explicit FileMetaDataProvider(QObject *parent = nullptr);
+    explicit FileMetaDataProvider(QObject *parent = nullptr, std::shared_ptr<Baloo::IndexerConfigData> indexerConfig = nullptr);
     ~FileMetaDataProvider() override;
 
     /**
