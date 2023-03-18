@@ -48,6 +48,11 @@ public:
     KFileItemList items() const;
 
     /**
+     * Cancel data loading if it's in progress
+     */
+    void cancel();
+
+    /**
      * If set to true, data such as the comment, tag or rating cannot be changed by the user.
      * Per default read-only is disabled. The method readOnlyChanged() can be overwritten
      * to react on the change.

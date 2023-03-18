@@ -123,11 +123,13 @@ public:
         : QObject(parent)
         , m_parent(parent)
         , m_readOnly(false)
+        , m_fetchJob(nullptr)
     {
     }
 
     ~FileMetaDataProviderPrivate()
     {
+        m_parent->cancel();
     }
 
     void insertEditableData();
@@ -156,6 +158,8 @@ public:
     QVariantMap m_data;
     Baloo::IndexerConfig m_config;
 
+    FileFetchJob *m_fetchJob;
+
 public Q_SLOTS:
     void slotFileFetchFinished(KJob *job);
 };
@@ -176,6 +180,10 @@ void FileMetaDataProviderPrivate::slotFileFetchFinished(KJob *job)
     m_readOnly = !fetchJob->canEditAll();
 
     insertEditableData();
+
+    // Not cancellable anymore
+    m_fetchJob = nullptr;
+
     Q_EMIT m_parent->loadingFinished();
 }
 
@@ -387,6 +395,9 @@ void FileMetaDataProviderPrivate::processFileItems()
         }
 
         auto job = new FileFetchJob(urls, canEdit, indexingMode, this);
+        // Can be cancelled
+        m_fetchJob = job;
+
         connect(job, &FileFetchJob::finished, this, &FileMetaDataProviderPrivate::slotFileFetchFinished);
         job->start();
 
@@ -394,6 +405,15 @@ void FileMetaDataProviderPrivate::processFileItems()
         // FIXME - are extended attributes supported for remote files?
         m_readOnly = true;
         Q_EMIT m_parent->loadingFinished();
+    }
+}
+
+void FileMetaDataProvider::cancel()
+{
+    if (d->m_fetchJob) {
+        auto job = d->m_fetchJob;
+        d->m_fetchJob = nullptr;
+        job->kill();
     }
 }
 
