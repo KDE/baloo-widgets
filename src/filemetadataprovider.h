@@ -53,6 +53,11 @@ public:
     void cancel();
 
     /**
+     *  Refresh data with latest info from storage
+     */
+    void refresh();
+
+    /**
      * If set to true, data such as the comment, tag or rating cannot be changed by the user.
      * Per default read-only is disabled. The method readOnlyChanged() can be overwritten
      * to react on the change.

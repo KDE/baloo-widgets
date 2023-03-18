@@ -422,7 +422,14 @@ void FileMetaDataProvider::setItems(const KFileItemList &items)
     d->m_fileItems = items;
     d->m_data.clear();
 
-    if (items.isEmpty()) {
+    refresh();
+}
+
+void FileMetaDataProvider::refresh()
+{
+    cancel();
+
+    if (d->m_fileItems.isEmpty()) {
         Q_EMIT loadingFinished();
     } else {
         d->processFileItems();
