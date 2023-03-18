@@ -136,9 +136,9 @@ public:
         m_parent->cancel();
     }
 
-    void insertEditableData();
+    void insertEditableData(QVariantMap &data);
 
-    void processFileItems();
+    void processFileItems(const KFileItemList &items);
 
     void setFileItem();
     void setFileItems();
@@ -146,14 +146,14 @@ public:
     /**
      * Insert basic data of a single file
      */
-    void insertSingleFileBasicData();
+    void insertSingleFileBasicData(const KFileItemList &items, QVariantMap &data);
 
     /**
      * Insert basic data of a list of files
      */
-    void insertFilesListBasicData();
+    void insertFilesListBasicData(const KFileItemList &items, QVariantMap &data);
 
-    void finish();
+    void finish(const QVariantMap &data);
 
     FileMetaDataProvider *m_parent;
 
@@ -177,29 +177,32 @@ void FileMetaDataProviderPrivate::slotFileFetchFinished(KJob *job)
 
     Q_ASSERT(!files.isEmpty());
 
-    if (files.size() > 1) {
-        Baloo::Private::mergeCommonData(m_data, files);
-    } else {
-        m_data = unite(m_data, files.first());
-    }
-    extractDerivedProperties(m_data);
-    m_readOnly = !fetchJob->canEditAll();
+    auto data = m_data;
 
-    insertEditableData();
+    if (files.size() > 1) {
+        Baloo::Private::mergeCommonData(data, files);
+    } else {
+        data = unite(data, files.first());
+    }
+    extractDerivedProperties(data);
+    m_readOnly = !fetchJob->canEditAll();
+    if (!m_readOnly) {
+        insertEditableData(data);
+    }
 
     // Not cancellable anymore
     m_fetchJob = nullptr;
 
-    finish();
+    finish(data);
 }
 
-void FileMetaDataProviderPrivate::insertSingleFileBasicData()
+void FileMetaDataProviderPrivate::insertSingleFileBasicData(const KFileItemList &items, QVariantMap &data)
 {
     // TODO: Handle case if remote URLs are used properly. isDir() does
     // not work, the modification date needs also to be adjusted...
-    Q_ASSERT(m_fileItems.count() == 1);
-    {
-        const KFileItem &item = m_fileItems.first();
+    Q_ASSERT(items.count() <= 1);
+    if (items.count() == 1) {
+        const KFileItem &item = items.first();
 
         KFormat format;
         if (item.isDir()) {
@@ -208,50 +211,50 @@ void FileMetaDataProviderPrivate::insertSingleFileBasicData()
                 const int count = counts.first;
                 if (count != -1) {
                     QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
-                    m_data.insert(QStringLiteral("kfileitem#size"), itemCountString);
+                    data.insert(QStringLiteral("kfileitem#size"), itemCountString);
 
                     const int hiddenCount = counts.second;
                     if (hiddenCount > 0) {
                         // add hidden items count
                         QString hiddenCountString = i18ncp("@item:intable", "%1 item", "%1 items", hiddenCount);
-                        m_data.insert(QStringLiteral("kfileitem#hiddenItems"), hiddenCountString);
+                        data.insert(QStringLiteral("kfileitem#hiddenItems"), hiddenCountString);
                     }
                 }
             } else if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
-                m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
+                data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
             }
             if (item.entry().contains(KIO::UDSEntry::UDS_RECURSIVE_SIZE)) {
-                m_data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(item.recursiveSize()));
+                data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(item.recursiveSize()));
             }
         } else {
             if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
-                m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
+                data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
             }
         }
 
-        m_data.insert(QStringLiteral("kfileitem#type"), item.mimeComment());
+        data.insert(QStringLiteral("kfileitem#type"), item.mimeComment());
         if (item.isLink()) {
-            m_data.insert(QStringLiteral("kfileitem#linkDest"), item.linkDest());
+            data.insert(QStringLiteral("kfileitem#linkDest"), item.linkDest());
         }
         if (item.entry().contains(KIO::UDSEntry::UDS_TARGET_URL)) {
-            m_data.insert(QStringLiteral("kfileitem#targetUrl"), KShell::tildeCollapse(item.targetUrl().toDisplayString(QUrl::PreferLocalFile)));
+            data.insert(QStringLiteral("kfileitem#targetUrl"), KShell::tildeCollapse(item.targetUrl().toDisplayString(QUrl::PreferLocalFile)));
         }
         QDateTime modificationTime = item.time(KFileItem::ModificationTime);
         if (modificationTime.isValid()) {
-            m_data.insert(QStringLiteral("kfileitem#modified"), modificationTime);
+            data.insert(QStringLiteral("kfileitem#modified"), modificationTime);
         }
         QDateTime creationTime = item.time(KFileItem::CreationTime);
         if (creationTime.isValid()) {
-            m_data.insert(QStringLiteral("kfileitem#created"), creationTime);
+            data.insert(QStringLiteral("kfileitem#created"), creationTime);
         }
         QDateTime accessTime = item.time(KFileItem::AccessTime);
         if (accessTime.isValid()) {
-            m_data.insert(QStringLiteral("kfileitem#accessed"), accessTime);
+            data.insert(QStringLiteral("kfileitem#accessed"), accessTime);
         }
 
-        m_data.insert(QStringLiteral("kfileitem#owner"), item.user());
-        m_data.insert(QStringLiteral("kfileitem#group"), item.group());
-        m_data.insert(QStringLiteral("kfileitem#permissions"), item.permissionsString());
+        data.insert(QStringLiteral("kfileitem#owner"), item.user());
+        data.insert(QStringLiteral("kfileitem#group"), item.group());
+        data.insert(QStringLiteral("kfileitem#permissions"), item.permissionsString());
 
         const auto extraFields = KProtocolInfo::extraFields(item.url());
         for (int i = 0; i < extraFields.count(); ++i) {
@@ -273,20 +276,20 @@ void FileMetaDataProviderPrivate::insertSingleFileBasicData()
                     continue;
                 }
 
-                m_data.insert(key, date);
+                data.insert(key, date);
             } else {
-                m_data.insert(key, text);
+                data.insert(key, text);
             }
         }
     }
 }
 
-void FileMetaDataProviderPrivate::insertFilesListBasicData()
+void FileMetaDataProviderPrivate::insertFilesListBasicData(const KFileItemList &items, QVariantMap &data)
 {
     // If all directories
-    Q_ASSERT(m_fileItems.count() > 1);
+    Q_ASSERT(items.count() > 1);
     bool allDirectories = true;
-    for (const KFileItem &item : std::as_const(m_fileItems)) {
+    for (const KFileItem &item : std::as_const(items)) {
         allDirectories &= item.isDir();
         if (!allDirectories) {
             break;
@@ -296,7 +299,7 @@ void FileMetaDataProviderPrivate::insertFilesListBasicData()
     if (allDirectories) {
         int count = 0;
         int hiddenCount = 0;
-        for (const KFileItem &item : std::as_const(m_fileItems)) {
+        for (const KFileItem &item : std::as_const(items)) {
             if (!item.isLocalFile() || item.isSlow()) {
                 return;
             }
@@ -312,35 +315,33 @@ void FileMetaDataProviderPrivate::insertFilesListBasicData()
         if (hiddenCount > 0) {
             // add hidden items count
             QString hiddenCountString = i18ncp("@item:intable", "%1 item", "%1 items", hiddenCount);
-            m_data.insert(QStringLiteral("kfileitem#hiddenItems"), hiddenCountString);
+            data.insert(QStringLiteral("kfileitem#hiddenItems"), hiddenCountString);
         }
-        m_data.insert(QStringLiteral("kfileitem#totalSize"), itemCountString);
+        data.insert(QStringLiteral("kfileitem#totalSize"), itemCountString);
 
     } else {
         // Calculate the size of all items
         quint64 totalSize = 0;
-        for (const KFileItem &item : std::as_const(m_fileItems)) {
+        for (const KFileItem &item : std::as_const(items)) {
             if (!item.isDir() && !item.isLink()) {
                 totalSize += item.size();
             }
         }
         KFormat format;
-        m_data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(totalSize));
+        data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(totalSize));
     }
 }
 
-void FileMetaDataProviderPrivate::insertEditableData()
+void FileMetaDataProviderPrivate::insertEditableData(QVariantMap &data)
 {
-    if (!m_readOnly) {
-        if (!m_data.contains(QStringLiteral("tags"))) {
-            m_data.insert(QStringLiteral("tags"), QVariant());
-        }
-        if (!m_data.contains(QStringLiteral("rating"))) {
-            m_data.insert(QStringLiteral("rating"), 0);
-        }
-        if (!m_data.contains(QStringLiteral("userComment"))) {
-            m_data.insert(QStringLiteral("userComment"), QVariant());
-        }
+    if (!data.contains(QStringLiteral("tags"))) {
+        data.insert(QStringLiteral("tags"), QVariant());
+    }
+    if (!data.contains(QStringLiteral("rating"))) {
+        data.insert(QStringLiteral("rating"), 0);
+    }
+    if (!data.contains(QStringLiteral("userComment"))) {
+        data.insert(QStringLiteral("userComment"), QVariant());
     }
 }
 
@@ -352,7 +353,7 @@ FileMetaDataProvider::FileMetaDataProvider(QObject *parent, std::shared_ptr<Balo
 
 FileMetaDataProvider::~FileMetaDataProvider() = default;
 
-void FileMetaDataProviderPrivate::processFileItems()
+void FileMetaDataProviderPrivate::processFileItems(const KFileItemList &items)
 {
     // There are several code paths -
     // Remote file
@@ -364,13 +365,16 @@ void FileMetaDataProviderPrivate::processFileItems()
     //   * Not Indexed
     //   * Indexed
 
+    auto data = QVariantMap();
+
     bool singleFileMode = m_fileItems.size() <= 1;
 
     QStringList urls;
-    urls.reserve(m_fileItems.size());
+    urls.reserve(items.size());
+
     // Only extract data from indexed files,
     // it would be too expensive otherwise.
-    for (const KFileItem &item : std::as_const(m_fileItems)) {
+    for (const KFileItem &item : std::as_const(items)) {
         const QUrl url = item.targetUrl();
         if (url.isLocalFile() && !item.isSlow()) {
             urls << url.toLocalFile();
@@ -378,14 +382,14 @@ void FileMetaDataProviderPrivate::processFileItems()
     }
 
     if (singleFileMode) {
-        insertSingleFileBasicData();
+        insertSingleFileBasicData(items, data);
     } else {
-        insertFilesListBasicData();
+        insertFilesListBasicData(items, data);
     }
 
     if (!urls.isEmpty()) {
         // Editing only if all URLs are local
-        bool canEdit = (urls.size() == m_fileItems.size());
+        bool canEdit = (urls.size() == items.size());
 
         // Don't use indexing when we have multiple files
         auto indexingMode = FileFetchJob::UseRealtimeIndexing::Disabled;
@@ -404,13 +408,13 @@ void FileMetaDataProviderPrivate::processFileItems()
         // Can be cancelled
         m_fetchJob = job;
 
+        m_data = data;
         connect(job, &FileFetchJob::finished, this, &FileMetaDataProviderPrivate::slotFileFetchFinished);
         job->start();
-
     } else {
         // FIXME - are extended attributes supported for remote files?
         m_readOnly = true;
-        finish();
+        finish(data);
     }
 }
 
@@ -436,14 +440,15 @@ void FileMetaDataProvider::refresh()
     cancel();
 
     if (d->m_fileItems.isEmpty()) {
-        d->finish();
+        d->finish(QVariantMap());
     } else {
-        d->processFileItems();
+        d->processFileItems(d->m_fileItems);
     }
 }
 
-void FileMetaDataProviderPrivate::finish()
+void FileMetaDataProviderPrivate::finish(const QVariantMap &data)
 {
+    m_data = data;
     Q_EMIT m_parent->loadingFinished();
 }
 
