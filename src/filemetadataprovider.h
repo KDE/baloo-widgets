@@ -107,11 +107,6 @@ private:
     void setFileItems();
 
     /**
-     * Insert intersection of common data of \p files
-     */
-    void insertCommonData(const QList<QVariantMap> &files);
-
-    /**
      * Insert basic data of a single file
      */
     void insertSingleFileBasicData();
@@ -120,13 +115,6 @@ private:
      * Insert basic data of a list of files
      */
     void insertFilesListBasicData();
-
-    /**
-     * Checks for the existence of \p uri in \p allProperties, and accordingly
-     * inserts the total integer value of that property in m_data. On completion
-     * it removes \p uri from \p allProperties
-     */
-    void totalPropertyAndInsert(const QString &prop, const QList<QVariantMap> &resources, QSet<QString> &allProperties);
 
     /**
      * @return The number of files and hidden files for the directory path.

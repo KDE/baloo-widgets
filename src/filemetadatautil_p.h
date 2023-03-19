@@ -37,12 +37,5 @@ QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMultiMap &propMap);
  */
 void mergeCommonData(QVariantMap& target, const QList<QVariantMap> &files);
 
-/**
- * Checks for the existence of \p uri in \p allProperties, and accordingly
- * inserts the total integer value of that property in \p target. On completion
- * it removes \p uri from \p allProperties
- */
-void totalProperties(QVariantMap& target, const QString &prop, const QList<QVariantMap> &resources, QSet<QString> &allProperties);
-
 } // namespace Private
 } // namespace Baloo

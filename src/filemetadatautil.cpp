@@ -57,6 +57,27 @@ QVariant intersect(const QVariant &v1, const QVariant &v2)
 
     return {};
 }
+
+void totalProperties(QVariantMap& target, const QString &prop, const QList<QVariantMap> &resources, QSet<QString> &allProperties)
+{
+    if (allProperties.contains(prop)) {
+        int total = 0;
+        for (const QVariantMap &map : resources) {
+            QVariantMap::const_iterator it = map.constFind(prop);
+            if (it == map.constEnd()) {
+                total = 0;
+                break;
+            } else {
+                total += it.value().toInt();
+            }
+        }
+
+        if (total) {
+            target.insert(prop, QVariant(total));
+        }
+        allProperties.remove(prop);
+    }
+}
 } // anonymous namespace
 
 namespace Baloo
@@ -134,27 +155,6 @@ QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMultiMap &propMap)
     }
 
     return map;
-}
-
-void totalProperties(QVariantMap& target, const QString &prop, const QList<QVariantMap> &resources, QSet<QString> &allProperties)
-{
-    if (allProperties.contains(prop)) {
-        int total = 0;
-        for (const QVariantMap &map : resources) {
-            QVariantMap::const_iterator it = map.constFind(prop);
-            if (it == map.constEnd()) {
-                total = 0;
-                break;
-            } else {
-                total += it.value().toInt();
-            }
-        }
-
-        if (total) {
-            target.insert(prop, QVariant(total));
-        }
-        allProperties.remove(prop);
-    }
 }
 
 void mergeCommonData(QVariantMap& target, const QList<QVariantMap> &files)

@@ -50,11 +50,6 @@ QVariantMap unite(const QVariantMap &v1, const QVariantMap &v2)
 }
 } // anonymous namespace
 
-void FileMetaDataProvider::totalPropertyAndInsert(const QString &prop, const QList<QVariantMap> &resources, QSet<QString> &allProperties)
-{
-    Baloo::Private::totalProperties(m_data, prop, resources, allProperties);
-}
-
 void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
 {
     auto fetchJob = static_cast<FileFetchJob *>(job);
@@ -63,7 +58,7 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
     Q_ASSERT(!files.isEmpty());
 
     if (files.size() > 1) {
-        insertCommonData(files);
+        Baloo::Private::mergeCommonData(m_data, files);
     } else {
         m_data = unite(m_data, files.first());
 
@@ -242,11 +237,6 @@ void FileMetaDataProvider::insertEditableData()
             m_data.insert(QStringLiteral("userComment"), QVariant());
         }
     }
-}
-
-void FileMetaDataProvider::insertCommonData(const QList<QVariantMap> &files)
-{
-    Baloo::Private::mergeCommonData(m_data, files);
 }
 
 FileMetaDataProvider::FileMetaDataProvider(QObject *parent)
