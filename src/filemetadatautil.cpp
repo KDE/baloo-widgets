@@ -197,15 +197,27 @@ QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMultiMap &propMap)
 
 void mergeCommonData(QVariantMap& target, const QList<QVariantMap> &files)
 {
+    if (files.empty()) {
+        target.clear();
+        return;
+    }
+
+    if (files.size() == 1) {
+        target = files[0];
+        return;
+    }
+
     //
     // Only report the stuff that is common to all the files
     //
-    QSet<QString> allProperties;
+    QList<QString> commonProperties = files[0].keys();
+    auto end = commonProperties.end();
     for (const QVariantMap &fileData : files) {
-        auto uniqueValues = fileData.keys();
-        uniqueValues.erase(std::unique(uniqueValues.begin(), uniqueValues.end()), uniqueValues.end());
-        allProperties += QSet<QString>(uniqueValues.begin(), uniqueValues.end());
+        end = std::remove_if(commonProperties.begin(), end,
+                [&fileData](const QString& prop) { return !fileData.contains(prop); }
+        );
     }
+    QSet<QString> allProperties = { commonProperties.begin(), end };
 
     // Special handling for certain properties
     totalProperties(target, QStringLiteral("duration"), files, allProperties);
