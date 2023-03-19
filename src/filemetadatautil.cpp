@@ -62,23 +62,21 @@ QVariant intersect(const QVariant &v1, const QVariant &v2)
     return {};
 }
 
-void totalProperties(QVariantMap& target, const QString &prop, const QList<QVariantMap> &resources, QSet<QString> &allProperties)
+// Precondition:
+// if allProperties contains <prop>, all <files> must also provide <prop>
+void totalProperties(QVariantMap& target, const QString &prop, const QList<QVariantMap> &files, QSet<QString> &allProperties)
 {
     if (allProperties.contains(prop)) {
         int total = 0;
-        for (const QVariantMap &map : resources) {
-            QVariantMap::const_iterator it = map.constFind(prop);
-            if (it == map.constEnd()) {
-                total = 0;
-                break;
-            } else {
-                total += it.value().toInt();
-            }
+        for (const QVariantMap &file : files) {
+            QVariantMap::const_iterator it = file.constFind(prop);
+            Q_ASSERT(it != file.constEnd());
+
+            total += it.value().toInt();
         }
 
-        if (total) {
-            target.insert(prop, QVariant(total));
-        }
+        target.insert(prop, QVariant(total));
+
         allProperties.remove(prop);
     }
 }
@@ -226,26 +224,19 @@ void mergeCommonData(QVariantMap& target, const QList<QVariantMap> &files)
     totalProperties(target, QStringLiteral("lineCount"), files, allProperties);
 
     for (const QString &propUri : std::as_const(allProperties)) {
-        for (const QVariantMap &map : files) {
-            QVariantMap::const_iterator it = map.find(propUri);
-            if (it == map.constEnd()) {
-                target.remove(propUri);
+        QVariant value = files[0][propUri];
+        for (const QVariantMap &file : files) {
+            QVariantMap::const_iterator it = file.find(propUri);
+            Q_ASSERT(it != file.constEnd());
+
+            value = intersect(it.value(), value);
+            if (!value.isValid()) {
                 break;
             }
-
-            QVariantMap::iterator dit = target.find(it.key());
-            if (dit == target.end()) {
-                target.insert(propUri, it.value());
-            } else {
-                QVariant finalValue = intersect(it.value(), dit.value());
-                if (finalValue.isValid()) {
-                    target[propUri] = finalValue;
-                } else {
-                    target.remove(propUri);
-                    break;
-                }
-            }
         }
+
+        if (value.isValid())
+            target[propUri] = value;
     }
 }
 
