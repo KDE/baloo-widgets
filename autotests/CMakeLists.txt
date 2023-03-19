@@ -5,6 +5,10 @@ ecm_add_test(extractortest.cpp
     LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test
     KF5::FileMetaData
 )
+target_include_directories(extractortest
+    PRIVATE ${CMAKE_SOURCE_DIR}/src
+)
+
 ecm_add_tests(
     filemetadatawidgettest.cpp
     filemetadataitemcounttest.cpp
@@ -18,8 +22,12 @@ ecm_add_tests(
     Qt${QT_MAJOR_VERSION}::Test
     Qt${QT_MAJOR_VERSION}::Widgets
 )
-
-target_include_directories(extractortest
+ecm_add_test(filemetadatamergedatatest.cpp ../src/filemetadatautil.cpp
+    TEST_NAME "mergedatatest"
+    LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test
+    KF5::FileMetaData
+)
+target_include_directories(mergedatatest
     PRIVATE ${CMAKE_SOURCE_DIR}/src
 )
 
