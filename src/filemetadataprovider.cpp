@@ -7,6 +7,7 @@
 */
 
 #include "filemetadataprovider.h"
+#include "filemetadatautil_p.h"
 #include "filefetchjob.h"
 
 #include <KFileMetaData/PropertyInfo>
@@ -29,51 +30,6 @@ using namespace Baloo;
 
 namespace
 {
-QVariant intersect(const QVariant &v1, const QVariant &v2)
-{
-    if (!v1.isValid() || !v2.isValid()) {
-        return {};
-    }
-
-    // List and String
-    if (v1.type() == QVariant::StringList && v2.type() == QVariant::String) {
-        QStringList list = v1.toStringList();
-        QString str = v2.toString();
-
-        if (!list.contains(str)) {
-            list << str;
-        }
-
-        return QVariant(list);
-    }
-
-    // String and List
-    if (v1.type() == QVariant::String && v2.type() == QVariant::StringList) {
-        QStringList list = v2.toStringList();
-        QString str = v1.toString();
-
-        if (!list.contains(str)) {
-            list << str;
-        }
-
-        return QVariant(list);
-    }
-
-    // List and List
-    if (v1.type() == QVariant::StringList && v2.type() == QVariant::StringList) {
-        QSet<QString> s1(v1.toStringList().cbegin(), v1.toStringList().cend());
-        QSet<QString> s2(v2.toStringList().cbegin(), v2.toStringList().cend());
-
-        return QVariant(s1.intersect(s2).values());
-    }
-
-    if (v1 == v2) {
-        return v1;
-    }
-
-    return {};
-}
-
 /**
  * The standard QMap::unite will contain the key multiple times if both \p v1 and \p v2
  * contain the same key.
@@ -96,23 +52,7 @@ QVariantMap unite(const QVariantMap &v1, const QVariantMap &v2)
 
 void FileMetaDataProvider::totalPropertyAndInsert(const QString &prop, const QList<QVariantMap> &resources, QSet<QString> &allProperties)
 {
-    if (allProperties.contains(prop)) {
-        int total = 0;
-        for (const QVariantMap &map : resources) {
-            QVariantMap::const_iterator it = map.constFind(prop);
-            if (it == map.constEnd()) {
-                total = 0;
-                break;
-            } else {
-                total += it.value().toInt();
-            }
-        }
-
-        if (total) {
-            m_data.insert(prop, QVariant(total));
-        }
-        allProperties.remove(prop);
-    }
+    Baloo::Private::totalProperties(m_data, prop, resources, allProperties);
 }
 
 void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
@@ -306,46 +246,7 @@ void FileMetaDataProvider::insertEditableData()
 
 void FileMetaDataProvider::insertCommonData(const QList<QVariantMap> &files)
 {
-    //
-    // Only report the stuff that is common to all the files
-    //
-    QSet<QString> allProperties;
-    QList<QVariantMap> propertyList;
-    for (const QVariantMap &fileData : files) {
-        propertyList << fileData;
-        auto uniqueValues = fileData.keys();
-        uniqueValues.erase(std::unique(uniqueValues.begin(), uniqueValues.end()), uniqueValues.end());
-        allProperties += QSet<QString>(uniqueValues.begin(), uniqueValues.end());
-    }
-
-    // Special handling for certain properties
-    totalPropertyAndInsert(QStringLiteral("duration"), propertyList, allProperties);
-    totalPropertyAndInsert(QStringLiteral("characterCount"), propertyList, allProperties);
-    totalPropertyAndInsert(QStringLiteral("wordCount"), propertyList, allProperties);
-    totalPropertyAndInsert(QStringLiteral("lineCount"), propertyList, allProperties);
-
-    for (const QString &propUri : std::as_const(allProperties)) {
-        for (const QVariantMap &map : std::as_const(propertyList)) {
-            QVariantMap::const_iterator it = map.find(propUri);
-            if (it == map.constEnd()) {
-                m_data.remove(propUri);
-                break;
-            }
-
-            QVariantMap::iterator dit = m_data.find(it.key());
-            if (dit == m_data.end()) {
-                m_data.insert(propUri, it.value());
-            } else {
-                QVariant finalValue = intersect(it.value(), dit.value());
-                if (finalValue.isValid()) {
-                    m_data[propUri] = finalValue;
-                } else {
-                    m_data.remove(propUri);
-                    break;
-                }
-            }
-        }
-    }
+    Baloo::Private::mergeCommonData(m_data, files);
 }
 
 FileMetaDataProvider::FileMetaDataProvider(QObject *parent)
