@@ -201,22 +201,20 @@ void mergeCommonData(QVariantMap& target, const QList<QVariantMap> &files)
     // Only report the stuff that is common to all the files
     //
     QSet<QString> allProperties;
-    QList<QVariantMap> propertyList;
     for (const QVariantMap &fileData : files) {
-        propertyList << fileData;
         auto uniqueValues = fileData.keys();
         uniqueValues.erase(std::unique(uniqueValues.begin(), uniqueValues.end()), uniqueValues.end());
         allProperties += QSet<QString>(uniqueValues.begin(), uniqueValues.end());
     }
 
     // Special handling for certain properties
-    totalProperties(target, QStringLiteral("duration"), propertyList, allProperties);
-    totalProperties(target, QStringLiteral("characterCount"), propertyList, allProperties);
-    totalProperties(target, QStringLiteral("wordCount"), propertyList, allProperties);
-    totalProperties(target, QStringLiteral("lineCount"), propertyList, allProperties);
+    totalProperties(target, QStringLiteral("duration"), files, allProperties);
+    totalProperties(target, QStringLiteral("characterCount"), files, allProperties);
+    totalProperties(target, QStringLiteral("wordCount"), files, allProperties);
+    totalProperties(target, QStringLiteral("lineCount"), files, allProperties);
 
     for (const QString &propUri : std::as_const(allProperties)) {
-        for (const QVariantMap &map : std::as_const(propertyList)) {
+        for (const QVariantMap &map : files) {
             QVariantMap::const_iterator it = map.find(propUri);
             if (it == map.constEnd()) {
                 target.remove(propUri);
