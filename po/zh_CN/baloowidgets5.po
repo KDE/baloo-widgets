@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"POT-Creation-Date: 2023-03-24 00:46+0000\n"
 "PO-Revision-Date: 2023-03-11 04:52\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,123 +17,123 @@ msgstr ""
 "X-Crowdin-File: /kf5-trunk/messages/baloo-widgets/baloowidgets5.pot\n"
 "X-Crowdin-File-ID: 5389\n"
 
-#: src/filemetadataprovider.cpp:133
+#: src/filemetadataprovider.cpp:68
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
 
-#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
-#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#: src/filemetadataprovider.cpp:102 src/filemetadataprovider.cpp:108
+#: src/filemetadataprovider.cpp:206 src/filemetadataprovider.cpp:209
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
 msgid_plural "%1 items"
 msgstr[0] "%1个条目"
 
-#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#: src/filemetadataprovider.cpp:336 src/filemetadataprovider.cpp:353
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "备注"
 
-#: src/filemetadataprovider.cpp:446
+#: src/filemetadataprovider.cpp:337
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "创建时间"
 
-#: src/filemetadataprovider.cpp:447
+#: src/filemetadataprovider.cpp:338
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "访问时间"
 
-#: src/filemetadataprovider.cpp:448
+#: src/filemetadataprovider.cpp:339
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "修改时间"
 
-#: src/filemetadataprovider.cpp:449
+#: src/filemetadataprovider.cpp:340
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "所有者"
 
-#: src/filemetadataprovider.cpp:450
+#: src/filemetadataprovider.cpp:341
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "用户组"
 
-#: src/filemetadataprovider.cpp:451
+#: src/filemetadataprovider.cpp:342
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "权限"
 
-#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#: src/filemetadataprovider.cpp:343 src/filemetadataprovider.cpp:352
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "评分"
 
-#: src/filemetadataprovider.cpp:453
+#: src/filemetadataprovider.cpp:344
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "大小"
 
-#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#: src/filemetadataprovider.cpp:345 src/filemetadataprovider.cpp:351
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "标签"
 
-#: src/filemetadataprovider.cpp:455
+#: src/filemetadataprovider.cpp:346
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "总大小"
 
-#: src/filemetadataprovider.cpp:456
+#: src/filemetadataprovider.cpp:347
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "隐藏项目"
 
-#: src/filemetadataprovider.cpp:457
+#: src/filemetadataprovider.cpp:348
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "类型"
 
-#: src/filemetadataprovider.cpp:458
+#: src/filemetadataprovider.cpp:349
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "链接到"
 
-#: src/filemetadataprovider.cpp:459
+#: src/filemetadataprovider.cpp:350
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr "指向"
 
-#: src/filemetadataprovider.cpp:463
+#: src/filemetadataprovider.cpp:354
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "下载来源"
 
-#: src/filemetadataprovider.cpp:464
+#: src/filemetadataprovider.cpp:355
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "尺寸"
 
-#: src/filemetadataprovider.cpp:465
+#: src/filemetadataprovider.cpp:356
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"

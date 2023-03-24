@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"POT-Creation-Date: 2023-03-24 00:46+0000\n"
 "PO-Revision-Date: 2012-12-30 03:45+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -17,27 +17,27 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 1.2\n"
 
-#: src/filemetadataprovider.cpp:133
+#: src/filemetadataprovider.cpp:68
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:167 src/filemetadataprovider.cpp:173
-#: src/filemetadataprovider.cpp:271 src/filemetadataprovider.cpp:274
+#: src/filemetadataprovider.cpp:102 src/filemetadataprovider.cpp:108
+#: src/filemetadataprovider.cpp:206 src/filemetadataprovider.cpp:209
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
 msgid_plural "%1 items"
 msgstr[0] "%1 аталым"
 
-#: src/filemetadataprovider.cpp:445 src/filemetadataprovider.cpp:462
+#: src/filemetadataprovider.cpp:336 src/filemetadataprovider.cpp:353
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "Түсініктеме"
 
-#: src/filemetadataprovider.cpp:446
+#: src/filemetadataprovider.cpp:337
 #, fuzzy, kde-format
 #| msgctxt "@label creation date"
 #| msgid "Created"
@@ -45,85 +45,85 @@ msgctxt "@label"
 msgid "Created"
 msgstr "Қашан құрылған:"
 
-#: src/filemetadataprovider.cpp:447
+#: src/filemetadataprovider.cpp:338
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:448
+#: src/filemetadataprovider.cpp:339
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "Өзгертілген"
 
-#: src/filemetadataprovider.cpp:449
+#: src/filemetadataprovider.cpp:340
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "Иесі"
 
-#: src/filemetadataprovider.cpp:450
+#: src/filemetadataprovider.cpp:341
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:451
+#: src/filemetadataprovider.cpp:342
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "Рұқсаттар"
 
-#: src/filemetadataprovider.cpp:452 src/filemetadataprovider.cpp:461
+#: src/filemetadataprovider.cpp:343 src/filemetadataprovider.cpp:352
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "Бағалауы"
 
-#: src/filemetadataprovider.cpp:453
+#: src/filemetadataprovider.cpp:344
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "Өлшемі"
 
-#: src/filemetadataprovider.cpp:454 src/filemetadataprovider.cpp:460
+#: src/filemetadataprovider.cpp:345 src/filemetadataprovider.cpp:351
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "Белгілері"
 
-#: src/filemetadataprovider.cpp:455
+#: src/filemetadataprovider.cpp:346
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "Жалпы өлшемі"
 
-#: src/filemetadataprovider.cpp:456
+#: src/filemetadataprovider.cpp:347
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:457
+#: src/filemetadataprovider.cpp:348
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "Түрі"
 
-#: src/filemetadataprovider.cpp:458
+#: src/filemetadataprovider.cpp:349
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:459
+#: src/filemetadataprovider.cpp:350
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:463
+#: src/filemetadataprovider.cpp:354
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Copied From"
@@ -131,13 +131,13 @@ msgctxt "@label"
 msgid "Downloaded From"
 msgstr "Мынаның көшірмесі:"
 
-#: src/filemetadataprovider.cpp:464
+#: src/filemetadataprovider.cpp:355
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:465
+#: src/filemetadataprovider.cpp:356
 #, fuzzy, kde-format
 #| msgctxt "@label file URL"
 #| msgid "Location"
