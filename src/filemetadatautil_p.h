@@ -17,7 +17,26 @@ namespace Private
  *
  * /sa: KFileMetaData::UserMetaData
  */
-QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData, const KFileMetaData::UserMetaData::Attributes &attributes);
+QVariantMap convertUserMetaData(const QMap<KFileMetaData::UserMetaData::Attribute, QVariant>& metaData);
+
+/**
+ * Fetches the data for the file assiciated with /p metadata
+ *
+ * /p wantedAttributes Set of attributes which should be fetched
+ *
+ * This may block
+ * /sa: KFileMetaData::UserMetaData
+ */
+QMap<KFileMetaData::UserMetaData::Attribute, QVariant>
+fetchUserMetaData(const KFileMetaData::UserMetaData &metaData, KFileMetaData::UserMetaData::Attributes wantedAttributes);
+
+/**
+ * Fetches and converts the data for the file assiciated with /p metadata
+ *
+ * This is an amalgation of fetchUserMetaData and convertUserMetaData,
+ * and thus may block.
+ */
+QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData);
 
 /**
  * Converts the property map into a variant map using the

@@ -84,42 +84,76 @@ namespace Baloo
 {
 namespace Private
 {
-using Attribute = KFileMetaData::UserMetaData::Attribute;
-using Attributes = KFileMetaData::UserMetaData::Attributes;
-
-QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData, const Attributes &attributes)
+QMap<KFileMetaData::UserMetaData::Attribute, QVariant>
+fetchUserMetaData(const KFileMetaData::UserMetaData &metaData, KFileMetaData::UserMetaData::Attributes wantedAttributes)
 {
-    QVariantMap properties;
+    using Attribute = KFileMetaData::UserMetaData::Attribute;
+
+    auto attributes = metaData.queryAttributes(wantedAttributes);
+
+    QMap<Attribute, QVariant> properties;
 
     if (attributes & Attribute::Tags) {
         QStringList tags = metaData.tags();
         if (!tags.isEmpty()) {
-            properties.insert(QStringLiteral("tags"), tags);
+            properties.insert(Attribute::Tags, tags);
         }
     }
 
     if (attributes & Attribute::Rating) {
         int rating = metaData.rating();
         if (rating) {
-            properties.insert(QStringLiteral("rating"), rating);
+            properties.insert(Attribute::Rating, rating);
         }
     }
 
     if (attributes & Attribute::Comment) {
         QString comment = metaData.userComment();
         if (!comment.isEmpty()) {
-            properties.insert(QStringLiteral("userComment"), comment);
+            properties.insert(Attribute::Comment, comment);
         }
     }
 
     if (attributes & Attribute::OriginUrl) {
         const QString originUrl = metaData.originUrl().toDisplayString();
         if (!originUrl.isEmpty()) {
-            properties.insert(QStringLiteral("originUrl"), originUrl);
+            properties.insert(Attribute::OriginUrl, originUrl);
         }
     }
 
     return properties;
+}
+
+QVariantMap convertUserMetaData(const QMap<KFileMetaData::UserMetaData::Attribute, QVariant>& metaData)
+{
+    using Attribute = KFileMetaData::UserMetaData::Attribute;
+
+    QVariantMap properties;
+    for (auto it = metaData.begin(); it != metaData.end(); ++it) {
+        if (it.key() == Attribute::Tags) {
+            properties.insert(QStringLiteral("tags"), it.value());
+
+        } else if (it.key() == Attribute::Rating) {
+            properties.insert(QStringLiteral("rating"), it.value());
+
+        } else if (it.key() == Attribute::Comment) {
+            properties.insert(QStringLiteral("userComment"), it.value());
+
+        } else if (it.key() == Attribute::OriginUrl) {
+            properties.insert(QStringLiteral("originUrl"), it.value());
+        }
+    }
+
+    return properties;
+}
+
+QVariantMap convertUserMetaData(const KFileMetaData::UserMetaData &metaData)
+{
+    using Attribute = KFileMetaData::UserMetaData::Attribute;
+
+    auto attributeData = fetchUserMetaData(metaData, Attribute::Tags | Attribute::Rating | Attribute::Comment | Attribute::OriginUrl);
+
+    return convertUserMetaData(attributeData);
 }
 
 QVariantMap toNamedVariantMap(const KFileMetaData::PropertyMultiMap &propMap)
