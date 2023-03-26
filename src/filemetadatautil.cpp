@@ -63,10 +63,12 @@ QVariant intersect(const QVariant &v1, const QVariant &v2)
 }
 
 // Precondition:
-// if allProperties contains <prop>, all <files> must also provide <prop>
-void totalProperties(QVariantMap& target, const QString &prop, const QList<QVariantMap> &files, QSet<QString> &allProperties)
+// if commonProperties contains <prop>, all <files> must also provide <prop>
+void totalProperties(QVariantMap& target, const QString &prop, const QList<QVariantMap> &files, QList<QString> &commonProperties)
 {
-    if (allProperties.contains(prop)) {
+    auto propIndex = commonProperties.indexOf(prop);
+
+    if (propIndex >= 0) {
         int total = 0;
         for (const QVariantMap &file : files) {
             QVariantMap::const_iterator it = file.constFind(prop);
@@ -77,7 +79,7 @@ void totalProperties(QVariantMap& target, const QString &prop, const QList<QVari
 
         target.insert(prop, QVariant(total));
 
-        allProperties.remove(prop);
+        commonProperties.removeAt(propIndex);
     }
 }
 } // anonymous namespace
@@ -215,15 +217,15 @@ void mergeCommonData(QVariantMap& target, const QList<QVariantMap> &files)
                 [&fileData](const QString& prop) { return !fileData.contains(prop); }
         );
     }
-    QSet<QString> allProperties = { commonProperties.begin(), end };
+    commonProperties.erase(end, commonProperties.end());
 
     // Special handling for certain properties
-    totalProperties(target, QStringLiteral("duration"), files, allProperties);
-    totalProperties(target, QStringLiteral("characterCount"), files, allProperties);
-    totalProperties(target, QStringLiteral("wordCount"), files, allProperties);
-    totalProperties(target, QStringLiteral("lineCount"), files, allProperties);
+    totalProperties(target, QStringLiteral("duration"), files, commonProperties);
+    totalProperties(target, QStringLiteral("characterCount"), files, commonProperties);
+    totalProperties(target, QStringLiteral("wordCount"), files, commonProperties);
+    totalProperties(target, QStringLiteral("lineCount"), files, commonProperties);
 
-    for (const QString &propUri : std::as_const(allProperties)) {
+    for (const QString &propUri : std::as_const(commonProperties)) {
         QVariant value = files[0][propUri];
         for (const QVariantMap &file : files) {
             QVariantMap::const_iterator it = file.find(propUri);
