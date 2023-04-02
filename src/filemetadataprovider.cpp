@@ -242,7 +242,6 @@ void FileMetaDataProvider::insertEditableData()
 FileMetaDataProvider::FileMetaDataProvider(QObject *parent)
     : QObject(parent)
     , m_readOnly(false)
-    , m_realTimeIndexing(false)
 {
 }
 
@@ -270,8 +269,6 @@ void FileMetaDataProvider::setFileItem()
 
     // Not indexed or only basic file indexing (no content)
     if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(filePath) || m_config.onlyBasicIndexing()) {
-        m_realTimeIndexing = true;
-
         job = new FileFetchJob(QStringList{filePath}, true, FileFetchJob::UseRealtimeIndexing::Only, this);
 
         // Fully indexed by Baloo
@@ -319,7 +316,6 @@ void FileMetaDataProvider::setItems(const KFileItemList &items)
 {
     m_fileItems = items;
     m_data.clear();
-    m_realTimeIndexing = false;
 
     if (items.isEmpty()) {
         Q_EMIT loadingFinished();
@@ -514,9 +510,4 @@ QPair<int, int> FileMetaDataProvider::subDirectoriesCount(const QString &path)
     }
     return QPair<int, int>(count, hiddenCount);
 #endif
-}
-
-bool FileMetaDataProvider::realTimeIndexing()
-{
-    return m_realTimeIndexing;
 }

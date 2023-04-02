@@ -82,14 +82,6 @@ public:
      */
     QVariantMap data() const;
 
-    /**
-     * Returns true if the items do not exist in the database and
-     * have just been indexed. This means, that we should not allow
-     * others to search through these items cause they do not exist
-     * in the database.
-     */
-    bool realTimeIndexing();
-
 Q_SIGNALS:
     /**
      * Emitted once per KFileMetaDataProvider::setItems()
@@ -123,8 +115,6 @@ private:
 
     bool m_readOnly;
 
-    /// Set to true when the file has been specially indexed and does not exist in the db
-    bool m_realTimeIndexing;
     QList<KFileItem> m_fileItems;
 
     QVariantMap m_data;
