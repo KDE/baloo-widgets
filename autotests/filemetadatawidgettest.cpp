@@ -45,28 +45,41 @@ void FileMetadataWidgetTest::initTestCase()
         settings.writeEntry(key, true);
     }
 
-    const QString exe = QStandardPaths::findExecutable(QStringLiteral("setfattr"));
+    m_sampleFiles = {
+        { "untagged", QFINDTESTDATA("samplefiles/test.mp3")},
+        { "taggedmp3", QFINDTESTDATA("samplefiles/testtagged.mp3")},
+        { "taggedm4a", QFINDTESTDATA("samplefiles/testtagged.m4a")},
+        { "multivalue", QFINDTESTDATA("samplefiles/test_multivalue.ogg")},
+    };
+    for (const auto &file : std::as_const(m_sampleFiles)) {
+        QVERIFY(!file.isEmpty());
+    }
 
+    const QString exe = QStandardPaths::findExecutable(QStringLiteral("setfattr"));
     if (exe.isEmpty()) {
         return;
     }
 
-    const QStringList args = {QStringLiteral("--name=user.baloo.rating"),
-                              QStringLiteral("--value=5"),
-                              QFINDTESTDATA("samplefiles/testtagged.mp3"),
-                              QFINDTESTDATA("samplefiles/testtagged.m4a")};
+    m_mayTestRating = true;
 
-    QProcess process;
-    process.start(exe, args);
-    if (!process.waitForFinished(10000)) {
-        qDebug() << "setfattr timed out";
-        return;
-    }
+    for (const auto &file : { "taggedmp3", "taggedm4a" }) {
+        const QStringList args = {QStringLiteral("--name=user.baloo.rating"),
+                                  QStringLiteral("--value=5"),
+                                  m_sampleFiles[file]};
 
-    if (process.exitStatus() == QProcess::NormalExit) {
-        m_mayTestRating = true;
-    } else {
-        qDebug() << "setfattr err:" << process.readAllStandardError();
+        QProcess process;
+        process.start(exe, args);
+        if (!process.waitForFinished(10000)) {
+            qDebug() << "setfattr timed out";
+            m_mayTestRating = false;
+            return;
+        }
+
+        if ((process.exitStatus() != QProcess::NormalExit) || (process.exitCode() != 0)) {
+            qDebug() << "setfattr err:" << process.readAllStandardError();
+            m_mayTestRating = false;
+            return;
+        }
     }
 }
 
@@ -91,7 +104,7 @@ void FileMetadataWidgetTest::shouldSignalOnceWithoutFile()
 void FileMetadataWidgetTest::shouldSignalOnceFile()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a")));
+    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(m_sampleFiles["taggedm4a"]));
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     QCOMPARE(m_widget->items().count(), 1);
@@ -100,9 +113,9 @@ void FileMetadataWidgetTest::shouldSignalOnceFile()
 void FileMetadataWidgetTest::shouldSignalOnceFiles()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/test.mp3"))
-                                       << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
-                                       << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a")));
+    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(m_sampleFiles["untagged"])
+                                       << QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])
+                                       << QUrl::fromLocalFile(m_sampleFiles["taggedm4a"]));
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     QCOMPARE(m_widget->items().count(), 3);
@@ -111,7 +124,7 @@ void FileMetadataWidgetTest::shouldSignalOnceFiles()
 void FileMetadataWidgetTest::shouldShowProperties()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3")));
+    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(m_sampleFiles["taggedmp3"]));
 
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
@@ -138,8 +151,8 @@ void FileMetadataWidgetTest::shouldShowProperties()
 void FileMetadataWidgetTest::shouldShowCommonProperties()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"))
-                                       << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.m4a")));
+    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])
+                                       << QUrl::fromLocalFile(m_sampleFiles["taggedm4a"]));
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
 
@@ -167,7 +180,7 @@ void FileMetadataWidgetTest::shouldShowCommonProperties()
 void FileMetadataWidgetTest::shouldShowMultiValueProperties()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/test_multivalue.ogg")));
+    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(m_sampleFiles["multivalue"]));
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     auto artistWidget = m_widget->findChild<QLabel *>(QStringLiteral("artist"));

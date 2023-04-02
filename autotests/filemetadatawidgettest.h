@@ -8,6 +8,9 @@
 #define FILEMETADATAWIDGETTEST_H
 
 #include <filemetadatawidget.h>
+#include <QByteArray>
+#include <QMap>
+#include <QString>
 
 class FileMetadataWidgetTest : public QObject
 {
@@ -27,6 +30,7 @@ private Q_SLOTS:
 private:
     Baloo::FileMetaDataWidget *m_widget;
     bool m_mayTestRating = false;
+    QMap<QByteArray, QString> m_sampleFiles;
 };
 
 #endif // FILEMETADATAWIDGETTEST_H
