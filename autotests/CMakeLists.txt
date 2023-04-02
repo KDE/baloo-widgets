@@ -13,15 +13,18 @@ ecm_add_tests(
     filemetadatawidgettest.cpp
     filemetadataitemcounttest.cpp
     filemetadatadatedisplaytest.cpp
-    LINK_LIBRARIES KF5::KIOCore
-    KF5::KIOWidgets
-    KF5::KIOFileWidgets
-    KF5::ConfigCore
+    LINK_LIBRARIES
     KF5::BalooWidgets
-    KF5::FileMetaData
     Qt${QT_MAJOR_VERSION}::Test
-    Qt${QT_MAJOR_VERSION}::Widgets
 )
+target_link_libraries(filemetadatawidgettest
+    KF5::WidgetsAddons
+    KF5::ConfigCore
+)
+target_link_libraries(filemetadataitemcounttest
+    KF5::ConfigCore
+)
+
 ecm_add_test(filemetadatamergedatatest.cpp ../src/filemetadatautil.cpp
     TEST_NAME "mergedatatest"
     LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test
