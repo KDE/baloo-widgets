@@ -73,7 +73,12 @@ target_link_libraries(KF5BalooWidgets
 
 target_include_directories(KF5BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets>")
 
-generate_export_header(KF5BalooWidgets BASE_NAME BALOO_WIDGETS EXPORT_FILE_NAME widgets_export.h)
+ecm_generate_export_header(KF5BalooWidgets
+    BASE_NAME BALOO_WIDGETS
+    EXPORT_FILE_NAME widgets_export.h
+    VERSION ${BALOO_WIDGETS_VERSION}
+    DEPRECATED_BASE_VERSION 0
+)
 
 install(TARGETS KF5BalooWidgets EXPORT KF5BalooWidgetsTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
