@@ -48,6 +48,49 @@ QVariantMap unite(const QVariantMap &v1, const QVariantMap &v2)
 
     return v;
 }
+
+/**
+* @return The number of files and hidden files for the directory path.
+*/
+QPair<int, int> subDirectoriesCount(const QString &path)
+{
+#ifdef Q_OS_WIN
+    QDir dir(path);
+    int count = dir.entryList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::System).count();
+    int hiddenCount = dir.entryList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::System | QDir::Hidden).count();
+    return QPair<int, int>(count, hiddenCount);
+#else
+    // Taken from kdelibs/kio/kio/kdirmodel.cpp
+    // SPDX-FileCopyrightText: 2006 David Faure <faure@kde.org>
+
+    int count = -1;
+    int hiddenCount = -1;
+    DIR *dir = ::opendir(QFile::encodeName(path).constData());
+    if (dir) {
+        count = 0;
+        hiddenCount = 0;
+        struct dirent *dirEntry = nullptr;
+        while ((dirEntry = ::readdir(dir))) { // krazy:exclude=syscalls
+            if (dirEntry->d_name[0] == '.') {
+                if (dirEntry->d_name[1] == '\0') {
+                    // Skip "."
+                    continue;
+                }
+                if (dirEntry->d_name[1] == '.' && dirEntry->d_name[2] == '\0') {
+                    // Skip ".."
+                    continue;
+                }
+                // hidden files
+                hiddenCount++;
+            } else {
+                ++count;
+            }
+        }
+        ::closedir(dir);
+    }
+    return QPair<int, int>(count, hiddenCount);
+#endif
+}
 } // anonymous namespace
 
 void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
@@ -470,44 +513,4 @@ bool FileMetaDataProvider::isReadOnly() const
 QVariantMap FileMetaDataProvider::data() const
 {
     return m_data;
-}
-
-QPair<int, int> FileMetaDataProvider::subDirectoriesCount(const QString &path)
-{
-#ifdef Q_OS_WIN
-    QDir dir(path);
-    int count = dir.entryList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::System).count();
-    int hiddenCount = dir.entryList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::System | QDir::Hidden).count();
-    return QPair<int, int>(count, hiddenCount);
-#else
-    // Taken from kdelibs/kio/kio/kdirmodel.cpp
-    // SPDX-FileCopyrightText: 2006 David Faure <faure@kde.org>
-
-    int count = -1;
-    int hiddenCount = -1;
-    DIR *dir = ::opendir(QFile::encodeName(path).constData());
-    if (dir) {
-        count = 0;
-        hiddenCount = 0;
-        struct dirent *dirEntry = nullptr;
-        while ((dirEntry = ::readdir(dir))) { // krazy:exclude=syscalls
-            if (dirEntry->d_name[0] == '.') {
-                if (dirEntry->d_name[1] == '\0') {
-                    // Skip "."
-                    continue;
-                }
-                if (dirEntry->d_name[1] == '.' && dirEntry->d_name[2] == '\0') {
-                    // Skip ".."
-                    continue;
-                }
-                // hidden files
-                hiddenCount++;
-            } else {
-                ++count;
-            }
-        }
-        ::closedir(dir);
-    }
-    return QPair<int, int>(count, hiddenCount);
-#endif
 }

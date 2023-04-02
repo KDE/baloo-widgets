@@ -108,11 +108,6 @@ private:
      */
     void insertFilesListBasicData();
 
-    /**
-     * @return The number of files and hidden files for the directory path.
-     */
-    static QPair<int, int> subDirectoriesCount(const QString &path);
-
     bool m_readOnly;
 
     QList<KFileItem> m_fileItems;
