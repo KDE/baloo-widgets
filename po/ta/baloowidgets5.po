@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-24 00:46+0000\n"
+"POT-Creation-Date: 2023-04-02 00:45+0000\n"
 "PO-Revision-Date: 2022-07-19 21:47+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -219,37 +219,37 @@ msgstr "புதிய குறிச்சொல்"
 msgid "New tag:"
 msgstr "புதிய குறிச்சொல்:"
 
-#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#: src/widgetfactory.cpp:70 src/widgetfactory.cpp:81
 #, kde-format
 msgctxt "String list separator"
 msgid ", "
 msgstr ", "
 
-#: src/widgetfactory.cpp:112
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
 msgstr "%1°தெ"
 
-#: src/widgetfactory.cpp:112
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
 msgstr "%1°வ"
 
-#: src/widgetfactory.cpp:113
+#: src/widgetfactory.cpp:108
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
 msgstr "%1°மே"
 
-#: src/widgetfactory.cpp:113
+#: src/widgetfactory.cpp:108
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
 msgstr "%1°கி"
 
-#: src/widgetfactory.cpp:122
+#: src/widgetfactory.cpp:117
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
