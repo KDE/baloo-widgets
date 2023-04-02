@@ -104,7 +104,7 @@ void FileMetadataWidgetTest::shouldSignalOnceWithoutFile()
 void FileMetadataWidgetTest::shouldSignalOnceFile()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(m_sampleFiles["taggedm4a"]));
+    m_widget->setItems({KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedm4a"])}});
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     QCOMPARE(m_widget->items().count(), 1);
@@ -113,9 +113,11 @@ void FileMetadataWidgetTest::shouldSignalOnceFile()
 void FileMetadataWidgetTest::shouldSignalOnceFiles()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(m_sampleFiles["untagged"])
-                                       << QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])
-                                       << QUrl::fromLocalFile(m_sampleFiles["taggedm4a"]));
+    m_widget->setItems({
+        KFileItem{QUrl::fromLocalFile(m_sampleFiles["untagged"])},
+        KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])},
+        KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedm4a"])},
+    });
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     QCOMPARE(m_widget->items().count(), 3);
@@ -124,7 +126,7 @@ void FileMetadataWidgetTest::shouldSignalOnceFiles()
 void FileMetadataWidgetTest::shouldShowProperties()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(m_sampleFiles["taggedmp3"]));
+    m_widget->setItems({KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])}});
 
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
@@ -151,8 +153,10 @@ void FileMetadataWidgetTest::shouldShowProperties()
 void FileMetadataWidgetTest::shouldShowCommonProperties()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])
-                                       << QUrl::fromLocalFile(m_sampleFiles["taggedm4a"]));
+    m_widget->setItems({
+        KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])},
+        KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedm4a"])},
+    });
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
 
@@ -180,7 +184,7 @@ void FileMetadataWidgetTest::shouldShowCommonProperties()
 void FileMetadataWidgetTest::shouldShowMultiValueProperties()
 {
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(m_sampleFiles["multivalue"]));
+    m_widget->setItems({KFileItem{QUrl::fromLocalFile(m_sampleFiles["multivalue"])}});
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
     auto artistWidget = m_widget->findChild<QLabel *>(QStringLiteral("artist"));

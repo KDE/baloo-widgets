@@ -55,7 +55,8 @@ void FileMetadataItemCountTest::testItemCount()
     const int widgetsPerItem = 2;
 
     QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList() << QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3")));
+    const auto fileUrl = QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"));
+    m_widget->setItems({KFileItem{fileUrl}});
 
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);

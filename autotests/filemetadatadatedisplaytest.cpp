@@ -128,7 +128,7 @@ void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates()
     const auto widget = new Baloo::FileMetaDataWidget();
     widget->setDateFormat(format);
     QSignalSpy spy(widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    widget->setItems(KFileItemList() << file);
+    widget->setItems({KFileItem{file}});
     QVERIFY(spy.wait());
 
     auto dateWidget = widget->findChild<QLabel *>(QStringLiteral("kfileitem#modified"), Qt::FindDirectChildrenOnly);
