@@ -17,11 +17,14 @@
 
 namespace Baloo
 {
+#if BALOO_WIDGETS_ENABLE_DEPRECATED_SINCE(23, 8)
 class FileMetaDataConfigWidgetPrivate;
 
 /**
  * @brief Widget which allows to configure which meta data should be shown
  *        in the FileMetadataWidget
+ * @deprecated Since 23.08, use FileMetaDataWidget::setConfigurationMode()
+ *             instead.
  */
 class BALOO_WIDGETS_EXPORT FileMetaDataConfigWidget : public QWidget
 {
@@ -61,6 +64,6 @@ private:
     Q_PRIVATE_SLOT(d, void loadMetaData())
     Q_PRIVATE_SLOT(d, void slotLoadingFinished())
 };
-
+#endif
 }
 #endif

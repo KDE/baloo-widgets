@@ -43,6 +43,9 @@ ecm_setup_version(PROJECT
 ecm_set_disabled_deprecation_versions(QT 5.15.2
      KF 5.102.0
     )
+
+set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
+
 add_subdirectory(src)
 if (BUILD_TESTING)
   add_subdirectory(test)
