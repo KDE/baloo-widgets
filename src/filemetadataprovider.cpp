@@ -231,16 +231,13 @@ void FileMetaDataProvider::insertFilesListBasicData()
     if (allDirectories) {
         int count = 0;
         int hiddenCount = 0;
-        bool isSizeKnown = true;
         for (const KFileItem &item : std::as_const(m_fileItems)) {
-            isSizeKnown = item.isLocalFile() && !item.isSlow();
-            if (!isSizeKnown) {
+            if (!item.isLocalFile() || item.isSlow()) {
                 return;
             }
             const QPair<int, int> counts = subDirectoriesCount(item.url().path());
             const int subcount = counts.first;
-            isSizeKnown = subcount != -1;
-            if (!isSizeKnown) {
+            if (subcount == -1) {
                 return;
             }
             count += subcount;
