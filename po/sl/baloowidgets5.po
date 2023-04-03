@@ -9,27 +9,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-02 00:45+0000\n"
-"PO-Revision-Date: 2022-07-18 06:57+0200\n"
+"POT-Creation-Date: 2023-04-03 00:44+0000\n"
+"PO-Revision-Date: 2023-04-02 09:08+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
-#: src/filemetadataprovider.cpp:68
+#: src/filemetadataprovider.cpp:111
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
 
-#: src/filemetadataprovider.cpp:102 src/filemetadataprovider.cpp:108
-#: src/filemetadataprovider.cpp:206 src/filemetadataprovider.cpp:209
+#: src/filemetadataprovider.cpp:145 src/filemetadataprovider.cpp:151
+#: src/filemetadataprovider.cpp:249 src/filemetadataprovider.cpp:252
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
@@ -39,109 +39,109 @@ msgstr[1] "%1 predmeta"
 msgstr[2] "%1 predmeti"
 msgstr[3] "%1 predmetov"
 
-#: src/filemetadataprovider.cpp:336 src/filemetadataprovider.cpp:353
+#: src/filemetadataprovider.cpp:375 src/filemetadataprovider.cpp:392
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "Opomba"
 
-#: src/filemetadataprovider.cpp:337
+#: src/filemetadataprovider.cpp:376
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "Ustvarjeno"
 
-#: src/filemetadataprovider.cpp:338
+#: src/filemetadataprovider.cpp:377
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "Dostopano"
 
-#: src/filemetadataprovider.cpp:339
+#: src/filemetadataprovider.cpp:378
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "Spremenjen"
 
-#: src/filemetadataprovider.cpp:340
+#: src/filemetadataprovider.cpp:379
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "Lastnik"
 
-#: src/filemetadataprovider.cpp:341
+#: src/filemetadataprovider.cpp:380
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "Skupina"
 
-#: src/filemetadataprovider.cpp:342
+#: src/filemetadataprovider.cpp:381
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "Dovoljenja"
 
-#: src/filemetadataprovider.cpp:343 src/filemetadataprovider.cpp:352
+#: src/filemetadataprovider.cpp:382 src/filemetadataprovider.cpp:391
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "Ocena"
 
-#: src/filemetadataprovider.cpp:344
+#: src/filemetadataprovider.cpp:383
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "Velikost"
 
-#: src/filemetadataprovider.cpp:345 src/filemetadataprovider.cpp:351
+#: src/filemetadataprovider.cpp:384 src/filemetadataprovider.cpp:390
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "Oznake"
 
-#: src/filemetadataprovider.cpp:346
+#: src/filemetadataprovider.cpp:385
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "Skupna velikost"
 
-#: src/filemetadataprovider.cpp:347
+#: src/filemetadataprovider.cpp:386
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "Skrite postavke"
 
-#: src/filemetadataprovider.cpp:348
+#: src/filemetadataprovider.cpp:387
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "Vrsta"
 
-#: src/filemetadataprovider.cpp:349
+#: src/filemetadataprovider.cpp:388
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "Poveži na"
 
-#: src/filemetadataprovider.cpp:350
+#: src/filemetadataprovider.cpp:389
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr "Kaže na"
 
-#: src/filemetadataprovider.cpp:354
+#: src/filemetadataprovider.cpp:393
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "Prejeto iz"
 
-#: src/filemetadataprovider.cpp:355
+#: src/filemetadataprovider.cpp:394
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "Dimenzije"
 
-#: src/filemetadataprovider.cpp:356
+#: src/filemetadataprovider.cpp:395
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
