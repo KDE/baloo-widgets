@@ -37,6 +37,9 @@ public:
     FileMetaDataWidgetPrivate(FileMetaDataWidget *parent);
     ~FileMetaDataWidgetPrivate();
 
+    FileMetaDataWidgetPrivate(const FileMetaDataWidgetPrivate&) = delete;
+    FileMetaDataWidget& operator=(const FileMetaDataWidgetPrivate&) = delete;
+
     void deleteRows();
 
     void slotLoadingFinished();
