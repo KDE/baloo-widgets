@@ -40,24 +40,23 @@ KCommentWidget::~KCommentWidget() = default;
 
 void KCommentWidget::setText(const QString &comment)
 {
-    QString text;
+    QString content;
     if (comment.isEmpty()) {
         if (m_readOnly) {
-            text = QStringLiteral("-");
+            content = QStringLiteral("-");
         } else {
-            text = QStringLiteral("<a href=\"addComment\">") + i18nc("@label", "Add...") + QStringLiteral("</a>");
+            content = QStringLiteral("<a href=\"addComment\">%1</a>").arg(i18nc("@label", "Add..."));
         }
     } else {
         if (m_readOnly) {
-            text = comment.toHtmlEscaped();
+            content = comment.toHtmlEscaped();
         } else {
-            text = QStringLiteral("<p>") + comment.toHtmlEscaped() + QStringLiteral(" <a href=\"editComment\">") + i18nc("@label", "Edit...")
-                + QStringLiteral("</a></p>");
+            content = QStringLiteral("<p>%1 <a href=\"editComment\">%2</a></p>").arg(comment.toHtmlEscaped(), i18nc("@label", "Edit..."));
         }
     }
 
-    m_label->setText(text);
-    m_sizeHintHelper->setText(text);
+    m_label->setText(content);
+    m_sizeHintHelper->setText(content);
     m_comment = comment;
 }
 
