@@ -14,6 +14,8 @@
 #include <KConfigGroup>
 #include <KFileItem>
 
+#include <memory>
+
 QTEST_MAIN(FileMetadataItemCountTest)
 
 void FileMetadataItemCountTest::initTestCase()
@@ -36,31 +38,23 @@ void FileMetadataItemCountTest::initTestCase()
     }
 }
 
-void FileMetadataItemCountTest::init()
-{
-    m_widget = new Baloo::FileMetaDataWidget;
-}
-
-void FileMetadataItemCountTest::cleanup()
-{
-    delete m_widget;
-}
-
 void FileMetadataItemCountTest::testItemCount()
 {
+    auto widget = std::make_unique<Baloo::FileMetaDataWidget>();
+
     // the number of items will increase in the future adding the file creation time field
     // when the system has KIO 5.58, glibc 2.28, linux 4.11 and a filesystem storing file creation times (btrfs, ext4...)
     // The expectedItems count will need to be updated
     const int expectedItems = 20;
     const int widgetsPerItem = 2;
 
-    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    QSignalSpy spy(widget.get(), &Baloo::FileMetaDataWidget::metaDataRequestFinished);
     const auto fileUrl = QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"));
-    m_widget->setItems({KFileItem{fileUrl}});
+    widget->setItems({KFileItem{fileUrl}});
 
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
 
-    QList<QWidget *> items = m_widget->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly);
+    QList<QWidget *> items = widget->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly);
     QCOMPARE(items.count(), expectedItems * widgetsPerItem);
 }

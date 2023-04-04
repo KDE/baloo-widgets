@@ -14,13 +14,8 @@ class FileMetadataItemCountTest : public QObject
     Q_OBJECT
 private Q_SLOTS:
     void initTestCase();
-    void init();
-    void cleanup();
 
     void testItemCount();
-
-private:
-    Baloo::FileMetaDataWidget *m_widget;
 };
 
 #endif // FILEMETADATAITEMCOUNTTEST_H
