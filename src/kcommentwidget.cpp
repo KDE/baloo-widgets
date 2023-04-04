@@ -7,6 +7,7 @@
 
 #include "kcommentwidget_p.h"
 #include "keditcommentdialog.h"
+#include "widgetsdebug.h"
 
 #include <KLocalizedString>
 #include <KSharedConfig>
@@ -103,19 +104,22 @@ void KCommentWidget::slotLinkActivated(const QString &link)
     KConfigGroup dialogConfig(KSharedConfig::openConfig(), "Baloo KEditCommentDialog");
     KWindowConfig::restoreWindowSize(dialog->windowHandle(), dialogConfig);
 
-    if (dialog->exec() == QDialog::Accepted) {
+    dialog->exec();
+    if (dialog.isNull()) {
+        qCWarning(Baloo::WIDGETS) << "Comment dialog destroyed while running";
+        Q_ASSERT(!dialog.isNull());
+        return;
+    }
+
+    if (dialog->result() == QDialog::Accepted) {
         const QString oldText = m_comment;
-        if (dialog != nullptr) {
-            setText(dialog->getCommentText());
-        }
+        setText(dialog->getCommentText());
+
         if (oldText != m_comment) {
             Q_EMIT commentChanged(m_comment);
         }
     }
 
-    if (dialog != nullptr) {
-        KWindowConfig::saveWindowSize(dialog->windowHandle(), dialogConfig);
-        delete dialog;
-        dialog = nullptr;
-    }
+    KWindowConfig::saveWindowSize(dialog->windowHandle(), dialogConfig);
+    delete dialog;
 }
