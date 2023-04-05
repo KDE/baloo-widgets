@@ -24,6 +24,9 @@ public:
     explicit FileMetaDataConfigWidgetPrivate(FileMetaDataConfigWidget *parent);
     ~FileMetaDataConfigWidgetPrivate();
 
+    FileMetaDataConfigWidgetPrivate(const FileMetaDataConfigWidgetPrivate&) = delete;
+    FileMetaDataConfigWidget& operator=(const FileMetaDataConfigWidgetPrivate&) = delete;
+
     void init();
     void loadMetaData();
     void addItem(const QString &property);
