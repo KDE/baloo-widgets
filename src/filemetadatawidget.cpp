@@ -34,7 +34,7 @@ public:
         QWidget *value;
     };
 
-    FileMetaDataWidgetPrivate(FileMetaDataWidget *parent);
+    explicit FileMetaDataWidgetPrivate(FileMetaDataWidget *parent);
     ~FileMetaDataWidgetPrivate();
 
     FileMetaDataWidgetPrivate(const FileMetaDataWidgetPrivate&) = delete;
