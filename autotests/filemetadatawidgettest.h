@@ -17,8 +17,6 @@ class FileMetadataWidgetTest : public QObject
     Q_OBJECT
 private Q_SLOTS:
     void initTestCase();
-    void init();
-    void cleanup();
 
     void shouldSignalOnceWithoutFile();
     void shouldSignalOnceFile();
@@ -28,7 +26,6 @@ private Q_SLOTS:
     void shouldShowMultiValueProperties();
 
 private:
-    Baloo::FileMetaDataWidget *m_widget;
     bool m_mayTestRating = false;
     QMap<QByteArray, QString> m_sampleFiles;
 };

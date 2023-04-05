@@ -83,77 +83,77 @@ void FileMetadataWidgetTest::initTestCase()
     }
 }
 
-void FileMetadataWidgetTest::init()
-{
-    m_widget = new Baloo::FileMetaDataWidget;
-}
-
-void FileMetadataWidgetTest::cleanup()
-{
-    delete m_widget;
-}
-
 void FileMetadataWidgetTest::shouldSignalOnceWithoutFile()
 {
-    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems(KFileItemList());
+    auto widget = std::make_unique<Baloo::FileMetaDataWidget>();
+
+    QSignalSpy spy(widget.get(), &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    widget->setItems(KFileItemList());
     QCOMPARE(spy.count(), 1);
-    QCOMPARE(m_widget->items().count(), 0);
+    QCOMPARE(widget->items().count(), 0);
 }
 
 void FileMetadataWidgetTest::shouldSignalOnceFile()
 {
-    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems({KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedm4a"])}});
+    auto widget = std::make_unique<Baloo::FileMetaDataWidget>();
+
+    QSignalSpy spy(widget.get(), &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    widget->setItems({KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedm4a"])}});
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
-    QCOMPARE(m_widget->items().count(), 1);
+    QCOMPARE(widget->items().count(), 1);
 }
 
 void FileMetadataWidgetTest::shouldSignalOnceFiles()
 {
-    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems({
+    auto widget = std::make_unique<Baloo::FileMetaDataWidget>();
+
+    QSignalSpy spy(widget.get(), &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    widget->setItems({
         KFileItem{QUrl::fromLocalFile(m_sampleFiles["untagged"])},
         KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])},
         KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedm4a"])},
     });
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
-    QCOMPARE(m_widget->items().count(), 3);
+    QCOMPARE(widget->items().count(), 3);
 }
 
 void FileMetadataWidgetTest::shouldShowProperties()
 {
-    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems({KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])}});
+    auto widget = std::make_unique<Baloo::FileMetaDataWidget>();
+
+    QSignalSpy spy(widget.get(), &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    widget->setItems({KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])}});
 
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
 
     // simple property
-    auto valueWidget = m_widget->findChild<QLabel *>(QStringLiteral("kfileitem#type"));
+    auto valueWidget = widget->findChild<QLabel *>(QStringLiteral("kfileitem#type"));
     QVERIFY2(valueWidget, "Type data missing");
     QCOMPARE(valueWidget->text(), QLatin1String("MP3 audio"));
 
     if (m_mayTestRating) {
         // editable property
-        auto ratingWidget = m_widget->findChild<KRatingWidget *>(QStringLiteral("rating"));
+        auto ratingWidget = widget->findChild<KRatingWidget *>(QStringLiteral("rating"));
         QVERIFY2(ratingWidget, "Rating data missing");
         QCOMPARE(ratingWidget->rating(), 5u);
     } else {
         qDebug() << "Skipped 'Rating' test";
     }
     // async property
-    valueWidget = m_widget->findChild<QLabel *>(QStringLiteral("albumArtist"));
+    valueWidget = widget->findChild<QLabel *>(QStringLiteral("albumArtist"));
     QVERIFY2(valueWidget, "albumArtist data was not found");
     QCOMPARE(valueWidget->text(), QLatin1String("Bill Laswell"));
 }
 
 void FileMetadataWidgetTest::shouldShowCommonProperties()
 {
-    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems({
+    auto widget = std::make_unique<Baloo::FileMetaDataWidget>();
+
+    QSignalSpy spy(widget.get(), &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    widget->setItems({
         KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedmp3"])},
         KFileItem{QUrl::fromLocalFile(m_sampleFiles["taggedm4a"])},
     });
@@ -161,16 +161,16 @@ void FileMetadataWidgetTest::shouldShowCommonProperties()
     QCOMPARE(spy.count(), 1);
 
     // simple property
-    auto valueWidget = m_widget->findChild<QLabel *>(QStringLiteral("kfileitem#type"));
+    auto valueWidget = widget->findChild<QLabel *>(QStringLiteral("kfileitem#type"));
     QVERIFY(!valueWidget);
 
-    valueWidget = m_widget->findChild<QLabel *>(QStringLiteral("kfileitem#totalSize"));
+    valueWidget = widget->findChild<QLabel *>(QStringLiteral("kfileitem#totalSize"));
     // circumvent i18n formatting
     QCOMPARE(valueWidget->text().left(3), QLatin1String("153"));
 
     // editable property
     if (m_mayTestRating) {
-        auto ratingWidget = m_widget->findChild<KRatingWidget *>(QStringLiteral("rating"));
+        auto ratingWidget = widget->findChild<KRatingWidget *>(QStringLiteral("rating"));
         QVERIFY2(ratingWidget, "Rating data missing");
         QCOMPARE(ratingWidget->rating(), 5u);
     } else {
@@ -183,14 +183,16 @@ void FileMetadataWidgetTest::shouldShowCommonProperties()
 
 void FileMetadataWidgetTest::shouldShowMultiValueProperties()
 {
-    QSignalSpy spy(m_widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
-    m_widget->setItems({KFileItem{QUrl::fromLocalFile(m_sampleFiles["multivalue"])}});
+    auto widget = std::make_unique<Baloo::FileMetaDataWidget>();
+
+    QSignalSpy spy(widget.get(), &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    widget->setItems({KFileItem{QUrl::fromLocalFile(m_sampleFiles["multivalue"])}});
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
-    auto artistWidget = m_widget->findChild<QLabel *>(QStringLiteral("artist"));
+    auto artistWidget = widget->findChild<QLabel *>(QStringLiteral("artist"));
     QVERIFY2(artistWidget, "artist not found");
     QCOMPARE(artistWidget->text(), QStringLiteral("Artist1 and Artist2"));
-    auto genreWidget = m_widget->findChild<QLabel *>(QStringLiteral("genre"));
+    auto genreWidget = widget->findChild<QLabel *>(QStringLiteral("genre"));
     QVERIFY2(genreWidget, "genre not found");
     QCOMPARE(genreWidget->text(), QStringLiteral("Genre1, Genre2, and Genre3"));
 }
