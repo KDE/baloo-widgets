@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-03 00:44+0000\n"
+"POT-Creation-Date: 2023-04-06 00:45+0000\n"
 "PO-Revision-Date: 2022-11-18 00:58+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -28,7 +28,7 @@ msgid "%1 × %2"
 msgstr "%1 × %2"
 
 #: src/filemetadataprovider.cpp:145 src/filemetadataprovider.cpp:151
-#: src/filemetadataprovider.cpp:249 src/filemetadataprovider.cpp:252
+#: src/filemetadataprovider.cpp:246 src/filemetadataprovider.cpp:249
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
@@ -38,109 +38,109 @@ msgstr[1] "%1 elementai"
 msgstr[2] "%1 elementų"
 msgstr[3] "%1 elementas"
 
-#: src/filemetadataprovider.cpp:375 src/filemetadataprovider.cpp:392
+#: src/filemetadataprovider.cpp:372 src/filemetadataprovider.cpp:389
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "Komentaras"
 
-#: src/filemetadataprovider.cpp:376
+#: src/filemetadataprovider.cpp:373
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "Sukurta"
 
-#: src/filemetadataprovider.cpp:377
+#: src/filemetadataprovider.cpp:374
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "Paskiausia prieiga"
 
-#: src/filemetadataprovider.cpp:378
+#: src/filemetadataprovider.cpp:375
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "Pakeista"
 
-#: src/filemetadataprovider.cpp:379
+#: src/filemetadataprovider.cpp:376
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "Savininkas"
 
-#: src/filemetadataprovider.cpp:380
+#: src/filemetadataprovider.cpp:377
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "Grupė"
 
-#: src/filemetadataprovider.cpp:381
+#: src/filemetadataprovider.cpp:378
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "Leidimai"
 
-#: src/filemetadataprovider.cpp:382 src/filemetadataprovider.cpp:391
+#: src/filemetadataprovider.cpp:379 src/filemetadataprovider.cpp:388
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "Įvertinimas"
 
-#: src/filemetadataprovider.cpp:383
+#: src/filemetadataprovider.cpp:380
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "Dydis"
 
-#: src/filemetadataprovider.cpp:384 src/filemetadataprovider.cpp:390
+#: src/filemetadataprovider.cpp:381 src/filemetadataprovider.cpp:387
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "Žymės"
 
-#: src/filemetadataprovider.cpp:385
+#: src/filemetadataprovider.cpp:382
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "Bendras dydis"
 
-#: src/filemetadataprovider.cpp:386
+#: src/filemetadataprovider.cpp:383
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "Paslėpti elementai"
 
-#: src/filemetadataprovider.cpp:387
+#: src/filemetadataprovider.cpp:384
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "Tipas"
 
-#: src/filemetadataprovider.cpp:388
+#: src/filemetadataprovider.cpp:385
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "Nuoroda į"
 
-#: src/filemetadataprovider.cpp:389
+#: src/filemetadataprovider.cpp:386
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr "Nurodo į"
 
-#: src/filemetadataprovider.cpp:393
+#: src/filemetadataprovider.cpp:390
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "Atsisiųsta iš"
 
-#: src/filemetadataprovider.cpp:394
+#: src/filemetadataprovider.cpp:391
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "Matmenys"
 
-#: src/filemetadataprovider.cpp:395
+#: src/filemetadataprovider.cpp:392
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
@@ -152,13 +152,13 @@ msgctxt "Tab page with file meta data"
 msgid "&Details"
 msgstr "&Išsamiau"
 
-#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:65
 #, kde-format
 msgctxt "@label"
 msgid "Add..."
 msgstr "Pridėti..."
 
-#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:65
 #, kde-format
 msgctxt "@label"
 msgid "Edit..."
