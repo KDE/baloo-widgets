@@ -136,12 +136,10 @@ void FileMetaDataProvider::insertSingleFileBasicData()
 
         KFormat format;
         if (item.isDir()) {
-            bool isSizeUnknown = !item.isLocalFile() || item.isSlow();
-            if (!isSizeUnknown) {
+            if (item.isLocalFile() && !item.isSlow()) {
                 const QPair<int, int> counts = subDirectoriesCount(item.url().path());
                 const int count = counts.first;
-                isSizeUnknown = count == -1;
-                if (!isSizeUnknown) {
+                if (count != -1) {
                     QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
                     m_data.insert(QStringLiteral("kfileitem#size"), itemCountString);
 
