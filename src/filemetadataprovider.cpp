@@ -130,8 +130,8 @@ void FileMetaDataProvider::insertSingleFileBasicData()
 {
     // TODO: Handle case if remote URLs are used properly. isDir() does
     // not work, the modification date needs also to be adjusted...
-    Q_ASSERT(m_fileItems.count() <= 1);
-    if (m_fileItems.count() == 1) {
+    Q_ASSERT(m_fileItems.count() == 1);
+    {
         const KFileItem &item = m_fileItems.first();
 
         KFormat format;
