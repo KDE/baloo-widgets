@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-06 00:45+0000\n"
+"POT-Creation-Date: 2023-04-09 00:46+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: \n"
@@ -24,21 +24,21 @@ msgctxt "width × height"
 msgid "%1 × %2"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:145 src/filemetadataprovider.cpp:151
-#: src/filemetadataprovider.cpp:246 src/filemetadataprovider.cpp:249
+#: src/filemetadataprovider.cpp:143 src/filemetadataprovider.cpp:149
+#: src/filemetadataprovider.cpp:244 src/filemetadataprovider.cpp:247
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
 msgid_plural "%1 items"
 msgstr[0] "%1 تۈر"
 
-#: src/filemetadataprovider.cpp:372 src/filemetadataprovider.cpp:389
+#: src/filemetadataprovider.cpp:370 src/filemetadataprovider.cpp:387
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "ئىزاھات"
 
-#: src/filemetadataprovider.cpp:373
+#: src/filemetadataprovider.cpp:371
 #, fuzzy, kde-format
 #| msgctxt "@label creation date"
 #| msgid "Created"
@@ -46,85 +46,85 @@ msgctxt "@label"
 msgid "Created"
 msgstr "قۇرغان ۋاقتى"
 
-#: src/filemetadataprovider.cpp:374
+#: src/filemetadataprovider.cpp:372
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:375
+#: src/filemetadataprovider.cpp:373
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "ئۆزگەرتىلگەن ۋاقتى"
 
-#: src/filemetadataprovider.cpp:376
+#: src/filemetadataprovider.cpp:374
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "ئىگىسى"
 
-#: src/filemetadataprovider.cpp:377
+#: src/filemetadataprovider.cpp:375
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:378
+#: src/filemetadataprovider.cpp:376
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "ئىمتىيازلار"
 
-#: src/filemetadataprovider.cpp:379 src/filemetadataprovider.cpp:388
+#: src/filemetadataprovider.cpp:377 src/filemetadataprovider.cpp:386
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "باھالاش"
 
-#: src/filemetadataprovider.cpp:380
+#: src/filemetadataprovider.cpp:378
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "چوڭلۇقى"
 
-#: src/filemetadataprovider.cpp:381 src/filemetadataprovider.cpp:387
+#: src/filemetadataprovider.cpp:379 src/filemetadataprovider.cpp:385
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "خەتكۈشلەر"
 
-#: src/filemetadataprovider.cpp:382
+#: src/filemetadataprovider.cpp:380
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "ئومۇمىي سىغىمى"
 
-#: src/filemetadataprovider.cpp:383
+#: src/filemetadataprovider.cpp:381
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:384
+#: src/filemetadataprovider.cpp:382
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "تىپى"
 
-#: src/filemetadataprovider.cpp:385
+#: src/filemetadataprovider.cpp:383
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:386
+#: src/filemetadataprovider.cpp:384
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:390
+#: src/filemetadataprovider.cpp:388
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Copied From"
@@ -132,13 +132,13 @@ msgctxt "@label"
 msgid "Downloaded From"
 msgstr "كۆچۈرۈلگەن ئورۇن"
 
-#: src/filemetadataprovider.cpp:391
+#: src/filemetadataprovider.cpp:389
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:392
+#: src/filemetadataprovider.cpp:390
 #, fuzzy, kde-format
 #| msgctxt "@label file URL"
 #| msgid "Location"
