@@ -80,5 +80,5 @@
         "Name[zh_TW]": "檔案中繼資料屬性頁面"
     },
     "MimeType": "inode/directory;application/octet-stream",
-    "X-KDE-Protocol": "file"
+    "X-KDE-Protocols": ["file", "desktop", "recentlyused"]
 }
