@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-24 00:46+0000\n"
+"POT-Creation-Date: 2023-04-09 00:46+0000\n"
 "PO-Revision-Date: 2022-07-27 20:15+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -19,14 +19,14 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: src/filemetadataprovider.cpp:68
+#: src/filemetadataprovider.cpp:111
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
 
-#: src/filemetadataprovider.cpp:102 src/filemetadataprovider.cpp:108
-#: src/filemetadataprovider.cpp:206 src/filemetadataprovider.cpp:209
+#: src/filemetadataprovider.cpp:143 src/filemetadataprovider.cpp:149
+#: src/filemetadataprovider.cpp:244 src/filemetadataprovider.cpp:247
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
@@ -34,109 +34,109 @@ msgid_plural "%1 items"
 msgstr[0] "%1 element"
 msgstr[1] "%1 element"
 
-#: src/filemetadataprovider.cpp:336 src/filemetadataprovider.cpp:353
+#: src/filemetadataprovider.cpp:370 src/filemetadataprovider.cpp:387
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "Kommentar"
 
-#: src/filemetadataprovider.cpp:337
+#: src/filemetadataprovider.cpp:371
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "Oppretta"
 
-#: src/filemetadataprovider.cpp:338
+#: src/filemetadataprovider.cpp:372
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "Opna"
 
-#: src/filemetadataprovider.cpp:339
+#: src/filemetadataprovider.cpp:373
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "Endra"
 
-#: src/filemetadataprovider.cpp:340
+#: src/filemetadataprovider.cpp:374
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "Eigar"
 
-#: src/filemetadataprovider.cpp:341
+#: src/filemetadataprovider.cpp:375
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "Gruppe"
 
-#: src/filemetadataprovider.cpp:342
+#: src/filemetadataprovider.cpp:376
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "Løyve"
 
-#: src/filemetadataprovider.cpp:343 src/filemetadataprovider.cpp:352
+#: src/filemetadataprovider.cpp:377 src/filemetadataprovider.cpp:386
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "Karakter"
 
-#: src/filemetadataprovider.cpp:344
+#: src/filemetadataprovider.cpp:378
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "Storleik"
 
-#: src/filemetadataprovider.cpp:345 src/filemetadataprovider.cpp:351
+#: src/filemetadataprovider.cpp:379 src/filemetadataprovider.cpp:385
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "Merkelappar"
 
-#: src/filemetadataprovider.cpp:346
+#: src/filemetadataprovider.cpp:380
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "Storleik i alt"
 
-#: src/filemetadataprovider.cpp:347
+#: src/filemetadataprovider.cpp:381
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "Gøymde element"
 
-#: src/filemetadataprovider.cpp:348
+#: src/filemetadataprovider.cpp:382
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "Type"
 
-#: src/filemetadataprovider.cpp:349
+#: src/filemetadataprovider.cpp:383
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "Lag lenkje til"
 
-#: src/filemetadataprovider.cpp:350
+#: src/filemetadataprovider.cpp:384
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr "Peikar til"
 
-#: src/filemetadataprovider.cpp:354
+#: src/filemetadataprovider.cpp:388
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "Lasta ned frå"
 
-#: src/filemetadataprovider.cpp:355
+#: src/filemetadataprovider.cpp:389
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "Storleik"
 
-#: src/filemetadataprovider.cpp:356
+#: src/filemetadataprovider.cpp:390
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
@@ -148,13 +148,13 @@ msgctxt "Tab page with file meta data"
 msgid "&Details"
 msgstr "&Detaljar"
 
-#: src/kcommentwidget.cpp:47 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:65
 #, kde-format
 msgctxt "@label"
 msgid "Add..."
 msgstr "Legg til …"
 
-#: src/kcommentwidget.cpp:53 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:65
 #, kde-format
 msgctxt "@label"
 msgid "Edit..."
@@ -221,37 +221,37 @@ msgstr "Ny merkelapp"
 msgid "New tag:"
 msgstr "Ny merkelapp:"
 
-#: src/widgetfactory.cpp:69 src/widgetfactory.cpp:80
+#: src/widgetfactory.cpp:70 src/widgetfactory.cpp:81
 #, kde-format
 msgctxt "String list separator"
 msgid ", "
 msgstr ", "
 
-#: src/widgetfactory.cpp:112
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
 msgstr "%1° S"
 
-#: src/widgetfactory.cpp:112
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
 msgstr "%1° N"
 
-#: src/widgetfactory.cpp:113
+#: src/widgetfactory.cpp:108
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
 msgstr "%1° V"
 
-#: src/widgetfactory.cpp:113
+#: src/widgetfactory.cpp:108
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
 msgstr "%1° A"
 
-#: src/widgetfactory.cpp:122
+#: src/widgetfactory.cpp:117
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
