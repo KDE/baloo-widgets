@@ -1,15 +1,15 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Marce Villarino <mvillarino@kde-espana.es>, 2012.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2016.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2018, 2019.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2018, 2019, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-09 00:46+0000\n"
-"PO-Revision-Date: 2019-10-19 15:16+0200\n"
+"PO-Revision-Date: 2023-04-30 10:13+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.11.70\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #: src/filemetadataprovider.cpp:111
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
-msgstr ""
+msgstr "%1 × %2"
 
 #: src/filemetadataprovider.cpp:143 src/filemetadataprovider.cpp:149
 #: src/filemetadataprovider.cpp:244 src/filemetadataprovider.cpp:247
@@ -116,13 +116,13 @@ msgstr "Tipo"
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
-msgstr ""
+msgstr "Ligazón a"
 
 #: src/filemetadataprovider.cpp:384
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
-msgstr ""
+msgstr "Apunta a"
 
 #: src/filemetadataprovider.cpp:388
 #, kde-format
@@ -134,15 +134,13 @@ msgstr "Descargado de"
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
-msgstr ""
+msgstr "Dimensións"
 
 #: src/filemetadataprovider.cpp:390
-#, fuzzy, kde-format
-#| msgctxt "@label file URL"
-#| msgid "Location"
+#, kde-format
 msgctxt "@label"
 msgid "GPS Location"
-msgstr "Lugar"
+msgstr "Localización GPS"
 
 #: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
 #, kde-format
@@ -233,31 +231,31 @@ msgstr ", "
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
-msgstr ""
+msgstr "%1°S"
 
 #: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
-msgstr ""
+msgstr "%1°N"
 
 #: src/widgetfactory.cpp:108
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
-msgstr ""
+msgstr "%1°W"
 
 #: src/widgetfactory.cpp:108
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
-msgstr ""
+msgstr "%1°E"
 
 #: src/widgetfactory.cpp:117
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
-msgstr ""
+msgstr "Mostrar a localización en %1"
 
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"
