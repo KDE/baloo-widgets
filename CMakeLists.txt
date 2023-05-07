@@ -7,20 +7,26 @@ set (RELEASE_SERVICE_VERSION_MICRO "70")
 set (RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}.${RELEASE_SERVICE_VERSION_MICRO}")
 project(baloo-widgets VERSION ${RELEASE_SERVICE_VERSION})
 
-set(QT_MIN_VERSION "5.15.2")
-set(KF5_MIN_VERSION "5.92.0")
+if (DEFINED BUILD_WITH_QT6)
+    set(QT_MIN_VERSION "6.4.0")
+    set(KF_MIN_VERSION "5.240.0")
+else()
+    set(QT_MIN_VERSION "5.15.2")
+    set(KF_MIN_VERSION "5.92.0")
+endif()
 
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_PATH})
+# ECM setup
+find_package(ECM ${KF_MIN_VERSION} CONFIG REQUIRED)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
 
-
+include(QtVersionOption)
+include(ECMSetupVersion)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
 
-include(ECMSetupVersion)
 include(ECMInstallIcons)
 
 include(FeatureSummary)
@@ -31,15 +37,16 @@ include(ECMQtDeclareLoggingCategory)
 include(CMakePackageConfigHelpers)
 include(ECMDeprecationSettings)
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Widgets Test)
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Config KIO I18n FileMetaData Baloo Service)
+
+find_package(Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS Core Widgets Test)
+find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS Config KIO I18n FileMetaData Baloo Service)
 
 ecm_setup_version(PROJECT
                   VARIABLE_PREFIX BALOO_WIDGETS
-                  SOVERSION 5
+                  SOVERSION ${QT_MAJOR_VERSION}
                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/baloowidgets_version.h"
-                  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake")
 
+                  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF${QT_MAJOR_VERSION}BalooWidgetsConfigVersion.cmake")
 ecm_set_disabled_deprecation_versions(QT 5.15.2
      KF 5.102.0
     )
@@ -55,25 +62,25 @@ endif()
 ki18n_install(po)
 
 # Config files
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5BalooWidgets")
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF${QT_MAJOR_VERSION}BalooWidgets")
 
 configure_package_config_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/KF5BalooWidgetsConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/KFBalooWidgetsConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/KF${QT_MAJOR_VERSION}BalooWidgetsConfig.cmake"
     INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
 )
 
 install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfig.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/KF5BalooWidgetsConfigVersion.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/KF${QT_MAJOR_VERSION}BalooWidgetsConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/KF${QT_MAJOR_VERSION}BalooWidgetsConfigVersion.cmake"
     DESTINATION ${CMAKECONFIG_INSTALL_DIR}
     COMPONENT devel
 )
 
-install(EXPORT KF5BalooWidgetsTargets
-        NAMESPACE KF5::
+install(EXPORT KF${QT_MAJOR_VERSION}BalooWidgetsTargets
+        NAMESPACE KF${QT_MAJOR_VERSION}::
         DESTINATION ${CMAKECONFIG_INSTALL_DIR}
-        FILE KF5BalooWidgetsTargets.cmake
+        FILE KFBalooWidgetsTargets.cmake
 )
 
 feature_summary(WHAT ALL
