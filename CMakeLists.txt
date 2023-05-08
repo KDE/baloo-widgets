@@ -80,7 +80,7 @@ install(FILES
 install(EXPORT KF${QT_MAJOR_VERSION}BalooWidgetsTargets
         NAMESPACE KF${QT_MAJOR_VERSION}::
         DESTINATION ${CMAKECONFIG_INSTALL_DIR}
-        FILE KFBalooWidgetsTargets.cmake
+        FILE KF${QT_MAJOR_VERSION}BalooWidgetsTargets.cmake
 )
 
 feature_summary(WHAT ALL
