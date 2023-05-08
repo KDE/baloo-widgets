@@ -70,24 +70,14 @@ void FileMetadataDateDisplayTest::cleanupTestCase()
 
 static QRegularExpression yesterdayShortRegex()
 {
-    // Checking for "yesterday" and a time indication
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    return QRegularExpression(QStringLiteral("Yesterday at ([1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
-#else
     // the last space is a Narrow No-Break Space (NNBSP) caracter
-    return QRegularExpression(QStringLiteral("Yesterday at ([1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
-#endif
+    return QRegularExpression(QStringLiteral("Yesterday at ([1-2][0-9]|[1-9]):[0-5][0-9][  ][AP]M"));
 }
 
 static QRegularExpression longAgoShortRegex()
 {
-    // Checking for a 1- or 2-digit day and an hour
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    return QRegularExpression(QStringLiteral("([1-3][0-9]|[1-9]) at ([1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
-#else
-    // the last space is a Narrow No-Break Space (NNBSP) caracter
-    return QRegularExpression(QStringLiteral("([1-3][0-9]|[1-9]) at ([1-2][0-9]|[1-9]):[0-5][0-9] [AP]M"));
-#endif
+    // the last space group includes is a Narrow No-Break Space (NNBSP) caracter
+    return QRegularExpression(QStringLiteral("([1-3][0-9]|[1-9]) at ([1-2][0-9]|[1-9]):[0-5][0-9][  ][AP]M"));
 }
 
 void FileMetadataDateDisplayTest::validateDateFormats()
@@ -121,23 +111,14 @@ void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates_data()
 
     QTest::addRow("Short date, yesterday") << Baloo::DateFormats::ShortFormat << urlYesterday << yesterdayShortRegex();
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    // the last space group includes is a Narrow No-Break Space (NNBSP) caracter
     QTest::addRow("Long date, long ago") << Baloo::DateFormats::LongFormat << urlLongAgo
                                          << QRegularExpression(QStringLiteral(
-                                                "[A-Z][a-z]+, [A-Z][a-z]+ ([1-3][0-9]|[1-9]), 20[0-9]{2} at (1[0-2]|[1-9]):[0-5][0-9] [AP]M"));
+                                                "[A-Z][a-z]+, [A-Z][a-z]+ ([1-3][0-9]|[1-9]), 20[0-9]{2} at (1[0-2]|[1-9]):[0-5][0-9][  ][AP]M"));
 
+    // the last space group includes is a Narrow No-Break Space (NNBSP) caracter
     QTest::addRow("Long date, yesterday") << Baloo::DateFormats::LongFormat << urlYesterday
-                                          << QRegularExpression(QStringLiteral("Yesterday at (1[0-2]|[1-9]):[0-5][0-9] [AP]M"));
-#else
-    // the last space is a Narrow No-Break Space (NNBSP) caracter
-    QTest::addRow("Long date, long ago") << Baloo::DateFormats::LongFormat << urlLongAgo
-                                         << QRegularExpression(QStringLiteral(
-                                                "[A-Z][a-z]+, [A-Z][a-z]+ ([1-3][0-9]|[1-9]), 20[0-9]{2} at (1[0-2]|[1-9]):[0-5][0-9] [AP]M"));
-
-    // the last space is a Narrow No-Break Space (NNBSP) caracter
-    QTest::addRow("Long date, yesterday") << Baloo::DateFormats::LongFormat << urlYesterday
-                                          << QRegularExpression(QStringLiteral("Yesterday at (1[0-2]|[1-9]):[0-5][0-9] [AP]M"));
-#endif
+                                          << QRegularExpression(QStringLiteral("Yesterday at (1[0-2]|[1-9]):[0-5][0-9][  ][AP]M"));
 }
 
 void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates()

@@ -91,7 +91,7 @@ ecm_generate_headers(KFBalooWidgets_CamelCase_HEADERS
     FileMetaDataConfigWidget
 
     PREFIX baloo
-    REQUIRED_HEADERS KF${QT_MAJOR_VERSION}BalooWidgets_HEADERS
+    REQUIRED_HEADERS KFBalooWidgets_HEADERS
 )
 
 install(FILES
@@ -102,7 +102,7 @@ install(FILES
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/widgets_export.h
-  ${KF${QT_MAJOR_VERSION}BalooWidgets_HEADERS}
+  ${KFBalooWidgets_HEADERS}
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets/baloo
   COMPONENT Devel
 )
