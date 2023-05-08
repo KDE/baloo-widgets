@@ -84,7 +84,7 @@ ecm_generate_export_header(KF${QT_MAJOR_VERSION}BalooWidgets
 
 install(TARGETS KF${QT_MAJOR_VERSION}BalooWidgets EXPORT KF${QT_MAJOR_VERSION}BalooWidgetsTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
-ecm_generate_headers(KF${QT_MAJOR_VERSION}BalooWidgets_CamelCase_HEADERS
+ecm_generate_headers(KFBalooWidgets_CamelCase_HEADERS
     HEADER_NAMES
     TagWidget
     FileMetaDataWidget
@@ -95,7 +95,7 @@ ecm_generate_headers(KF${QT_MAJOR_VERSION}BalooWidgets_CamelCase_HEADERS
 )
 
 install(FILES
-  ${KF${QT_MAJOR_VERSION}BalooWidgets_CamelCase_HEADERS}
+  ${KFBalooWidgets_CamelCase_HEADERS}
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets/Baloo
   COMPONENT Devel
 )
