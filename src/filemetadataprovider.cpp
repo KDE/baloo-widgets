@@ -91,6 +91,27 @@ QPair<int, int> subDirectoriesCount(const QString &path)
     return QPair<int, int>(count, hiddenCount);
 #endif
 }
+
+/**
+ * Fill \p data with properties can be derived from others
+ */
+void extractDerivedProperties(QVariantMap &data)
+{
+    const auto width = data.value(QStringLiteral("width"));
+    const auto height = data.value(QStringLiteral("height"));
+    if ((width.type() == QVariant::Double || width.type() == QVariant::Int) && (height.type() == QVariant::Double || height.type() == QVariant::Int)) {
+        data.insert(QStringLiteral("dimensions"), i18nc("width × height", "%1 × %2", width.toInt(), height.toInt()));
+    }
+
+    bool okLatitude;
+    const auto gpsLatitude = data.value(QStringLiteral("photoGpsLatitude")).toFloat(&okLatitude);
+    bool okLongitude;
+    const auto gpsLongitude = data.value(QStringLiteral("photoGpsLongitude")).toFloat(&okLongitude);
+
+    if (okLatitude && okLongitude) {
+        data.insert(QStringLiteral("gpsLocation"), QVariant::fromValue(QPair<float, float>(gpsLatitude, gpsLongitude)));
+    }
+}
 } // anonymous namespace
 
 void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
@@ -104,22 +125,8 @@ void FileMetaDataProvider::slotFileFetchFinished(KJob *job)
         Baloo::Private::mergeCommonData(m_data, files);
     } else {
         m_data = unite(m_data, files.first());
-
-        const auto width = m_data.value(QStringLiteral("width"));
-        const auto height = m_data.value(QStringLiteral("height"));
-        if ((width.type() == QVariant::Double || width.type() == QVariant::Int) && (height.type() == QVariant::Double || height.type() == QVariant::Int)) {
-            m_data.insert(QStringLiteral("dimensions"), i18nc("width × height", "%1 × %2", width.toInt(), height.toInt()));
-        }
-
-        bool okLatitude;
-        const auto gpsLatitude = m_data.value(QStringLiteral("photoGpsLatitude")).toFloat(&okLatitude);
-        bool okLongitude;
-        const auto gpsLongitude = m_data.value(QStringLiteral("photoGpsLongitude")).toFloat(&okLongitude);
-
-        if (okLatitude && okLongitude) {
-            m_data.insert(QStringLiteral("gpsLocation"), QVariant::fromValue(QPair<float, float>(gpsLatitude, gpsLongitude)));
-        }
     }
+    extractDerivedProperties(m_data);
     m_readOnly = !fetchJob->canEditAll();
 
     insertEditableData();
