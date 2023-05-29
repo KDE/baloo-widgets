@@ -32,7 +32,7 @@ void ExtractorTest::test()
     QByteArray bytearray = process.readAllStandardOutput();
     QDataStream in(&bytearray, QIODevice::ReadOnly);
 
-    KFileMetaData::PropertyMap data;
+    KFileMetaData::PropertyMultiMap data;
     in >> data;
 
     QCOMPARE(data.value(Property::Channels).toInt(), 2);
