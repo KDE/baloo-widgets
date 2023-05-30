@@ -5,7 +5,7 @@
 */
 
 #include "extractortest.h"
-#include <extractorutil_p.h>
+#include "ondemandextractor.h"
 
 #include <QDataStream>
 #include <QDebug>
@@ -18,22 +18,11 @@ void ExtractorTest::test()
     using namespace KFileMetaData::Property;
     QString fileUrl = QFINDTESTDATA("samplefiles/test.mp3");
 
-    QString exe = QStandardPaths::findExecutable(QLatin1String("baloo_filemetadata_temp_extractor"));
+    Baloo::Private::OnDemandExtractor extractor;
+    extractor.process(fileUrl);
+    QVERIFY(extractor.waitFinished());
 
-    QStringList args;
-    args << fileUrl;
-
-    QProcess process;
-    process.start(exe, args);
-    QVERIFY(process.waitForFinished(10000));
-    QCOMPARE(process.exitStatus(), QProcess::NormalExit);
-
-    qDebug() << process.readAllStandardError();
-    QByteArray bytearray = process.readAllStandardOutput();
-    QDataStream in(&bytearray, QIODevice::ReadOnly);
-
-    KFileMetaData::PropertyMultiMap data;
-    in >> data;
+    auto data = extractor.properties();
 
     QCOMPARE(data.value(Property::Channels).toInt(), 2);
     QCOMPARE(data.value(Property::SampleRate).toInt(), 44100);

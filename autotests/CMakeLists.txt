@@ -1,12 +1,13 @@
 include(ECMMarkAsTest)
 
-ecm_add_test(extractortest.cpp
+ecm_add_test(extractortest.cpp ../src/ondemandextractor.cpp ../src/widgetsdebug.cpp
     TEST_NAME "extractortest"
     LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test
     KF${QT_MAJOR_VERSION}::FileMetaData
 )
 target_include_directories(extractortest
     PRIVATE ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_BINARY_DIR}/src
 )
 
 ecm_add_tests(
