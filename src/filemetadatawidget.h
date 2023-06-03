@@ -104,7 +104,6 @@ private:
     std::unique_ptr<FileMetaDataWidgetPrivate> const d;
 
     Q_PRIVATE_SLOT(d, void slotLoadingFinished())
-    Q_PRIVATE_SLOT(d, void slotLinkActivated(QString))
 };
 
 }

@@ -43,7 +43,6 @@ public:
     void deleteRows();
 
     void slotLoadingFinished();
-    void slotLinkActivated(const QString &link);
 
     QStringList sortedKeys(const QVariantMap &data) const;
     QLabel *createLabel(const QString &key, const QString &itemLabel, FileMetaDataWidget *parent);
@@ -192,14 +191,6 @@ void FileMetaDataWidgetPrivate::slotLoadingFinished()
 
     q->updateGeometry();
     Q_EMIT q->metaDataRequestFinished(m_provider->items());
-}
-
-void FileMetaDataWidgetPrivate::slotLinkActivated(const QString &link)
-{
-    const QUrl url = QUrl::fromUserInput(link);
-    if (url.isValid()) {
-        Q_EMIT q->urlActivated(url);
-    }
 }
 
 QStringList FileMetaDataWidgetPrivate::sortedKeys(const QVariantMap &data) const
