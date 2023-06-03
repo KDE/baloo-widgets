@@ -160,7 +160,12 @@ QWidget *WidgetFactory::createTagWidget(const QStringList &tags, QWidget *parent
     tagWidget->setSelectedTags(tags);
 
     connect(tagWidget, &TagWidget::selectionChanged, this, &WidgetFactory::slotTagsChanged);
-    connect(tagWidget, &TagWidget::tagClicked, this, &WidgetFactory::slotTagClicked);
+    connect(tagWidget, &TagWidget::tagClicked, this, [this](const QString &tag) {
+        QUrl url;
+        url.setScheme(QStringLiteral("tags"));
+        url.setPath(tag);
+        Q_EMIT urlActivated(url);
+    });
 
     m_tagWidget = tagWidget;
     m_prevTags = tags;
@@ -243,7 +248,9 @@ QLabel *WidgetFactory::createLinkWidget(QWidget *parent)
 
     valueWidget->setTextInteractionFlags(Qt::TextBrowserInteraction);
     valueWidget->setTextFormat(Qt::RichText);
-    connect(valueWidget, &ValueWidget::linkActivated, this, &WidgetFactory::slotLinkActivated);
+    connect(valueWidget, &ValueWidget::linkActivated, this, [this](const QString &url) {
+        Q_EMIT this->urlActivated(QUrl::fromUserInput(url));
+    });
 
     return valueWidget;
 }
@@ -301,24 +308,6 @@ void WidgetFactory::slotTagsChanged(const QStringList &tags)
 
         m_prevTags = tags;
     }
-}
-
-//
-// Notifications
-//
-
-void WidgetFactory::slotLinkActivated(const QString &url)
-{
-    Q_EMIT urlActivated(QUrl::fromUserInput(url));
-}
-
-void WidgetFactory::slotTagClicked(const QString &tag)
-{
-    QUrl url;
-    url.setScheme(QStringLiteral("tags"));
-    url.setPath(tag);
-
-    Q_EMIT urlActivated(url);
 }
 
 //

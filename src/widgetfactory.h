@@ -45,9 +45,6 @@ private Q_SLOTS:
     void slotCommentChanged(const QString &comment);
     void slotRatingChanged(int rating);
 
-    void slotTagClicked(const QString &tag);
-    void slotLinkActivated(const QString &url);
-
 private:
     QWidget *createRatingWidget(int rating, QWidget *parent);
     QWidget *createTagWidget(const QStringList &tags, QWidget *parent);
