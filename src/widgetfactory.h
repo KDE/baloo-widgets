@@ -12,7 +12,6 @@
 #include <QObject>
 #include <QStringList>
 
-class KJob;
 class QLabel;
 class QUrl;
 class KCommentWidget;
@@ -20,7 +19,6 @@ class KRatingWidget;
 
 namespace Baloo
 {
-class Tag;
 class TagWidget;
 
 class WidgetFactory : public QObject
