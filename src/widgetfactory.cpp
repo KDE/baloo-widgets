@@ -262,8 +262,6 @@ void WidgetFactory::slotCommentChanged(const QString &comment)
         KFileMetaData::UserMetaData md(url.toLocalFile());
         md.setUserComment(comment);
     }
-    Q_EMIT dataChangeStarted();
-    Q_EMIT dataChangeFinished();
 }
 
 void WidgetFactory::slotRatingChanged(int rating)
@@ -276,8 +274,6 @@ void WidgetFactory::slotRatingChanged(int rating)
         KFileMetaData::UserMetaData md(url.toLocalFile());
         md.setRating(rating);
     }
-    Q_EMIT dataChangeStarted();
-    Q_EMIT dataChangeFinished();
 }
 
 void WidgetFactory::slotTagsChanged(const QStringList &tags)
@@ -304,8 +300,6 @@ void WidgetFactory::slotTagsChanged(const QStringList &tags)
         }
 
         m_prevTags = tags;
-        Q_EMIT dataChangeStarted();
-        Q_EMIT dataChangeFinished();
     }
 }
 

@@ -44,8 +44,6 @@ public:
 
     void slotLoadingFinished();
     void slotLinkActivated(const QString &link);
-    void slotDataChangeStarted();
-    void slotDataChangeFinished();
 
     QStringList sortedKeys(const QVariantMap &data) const;
     QLabel *createLabel(const QString &key, const QString &itemLabel, FileMetaDataWidget *parent);
@@ -202,16 +200,6 @@ void FileMetaDataWidgetPrivate::slotLinkActivated(const QString &link)
     if (url.isValid()) {
         Q_EMIT q->urlActivated(url);
     }
-}
-
-void FileMetaDataWidgetPrivate::slotDataChangeStarted()
-{
-    q->setEnabled(false);
-}
-
-void FileMetaDataWidgetPrivate::slotDataChangeFinished()
-{
-    q->setEnabled(true);
 }
 
 QStringList FileMetaDataWidgetPrivate::sortedKeys(const QVariantMap &data) const

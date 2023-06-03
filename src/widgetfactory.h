@@ -39,8 +39,6 @@ public:
 
 Q_SIGNALS:
     void urlActivated(const QUrl &url);
-    void dataChangeStarted();
-    void dataChangeFinished();
 
 private Q_SLOTS:
     void slotTagsChanged(const QStringList &tags);
