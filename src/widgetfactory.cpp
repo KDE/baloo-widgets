@@ -102,39 +102,38 @@ QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value,
         const auto latitude = pair.first;
         const auto longitude = pair.second;
 
-        const QString geoUri = QStringLiteral("geo:%1,%2").arg(latitude).arg(longitude);
-
         const QString latitudeStr = latitude < 0 ? i18nc("Latitude (South)", "%1°S", -latitude) : i18nc("Latitude (North)", "%1°N", latitude);
         const QString longitudeStr = longitude < 0 ? i18nc("Longitude (West)", "%1°W", -longitude) : i18nc("Longitude (East)", "%1°E", longitude);
         const QString gpsLocationStr = latitudeStr + QLatin1Char(' ') + longitudeStr;
 
-        QLabel *valueWidget = createValueWidget(parent);
-
         if (const auto geoService = KApplicationTrader::preferredService(QStringLiteral("x-scheme-handler/geo"))) {
-            valueWidget->setTextFormat(Qt::RichText);
-            valueWidget->setTextInteractionFlags(Qt::TextBrowserInteraction);
+            const QString geoUri = QStringLiteral("geo:%1,%2").arg(latitude).arg(longitude);
+            QLabel *valueWidget = createLinkWidget(parent);
+
             valueWidget->setText(QStringLiteral("<a href='%1'>%2</a>").arg(geoUri, gpsLocationStr));
             valueWidget->setToolTip(i18nc("@info:tooltip Show location in map viewer", "Show location in %1", geoService->name()));
+            widget = valueWidget;
         } else {
+            QLabel *valueWidget = createValueWidget(parent);
             valueWidget->setText(gpsLocationStr);
+            widget = valueWidget;
         }
 
+    } else if (prop == QLatin1String("originUrl")) {
+        QLabel *valueWidget = createLinkWidget(parent);
+        QString valueString = value.toUrl().toString();
+        // Shrink link label
+        auto labelString = KStringHandler::csqueeze(valueString, maxUrlLength);
+        valueString = QStringLiteral("<a href=\"%1\">%2</a>").arg(valueString, labelString);
+        valueWidget->setText(valueString);
         widget = valueWidget;
+
     } else {
         QString valueString;
         QLabel *valueWidget = createValueWidget(parent);
 
         auto pi = KFileMetaData::PropertyInfo::fromName(prop);
-        if (pi.name() == QLatin1String("originUrl")) {
-            auto url = value.toUrl();
-            valueString = url.toString();
-            // Shrink link label
-            auto labelString = KStringHandler::csqueeze(valueString, maxUrlLength);
-            valueString = QStringLiteral("<a href=\"%1\">%2</a>").arg(valueString, labelString);
-            valueWidget->setTextFormat(Qt::RichText);
-            valueWidget->setTextInteractionFlags(Qt::TextBrowserInteraction);
-
-        } else if (pi.name() != QLatin1String("empty")) {
+        if (pi.name() != QLatin1String("empty")) {
             if (pi.valueType() == QVariant::DateTime || pi.valueType() == QVariant::Date) {
                 valueString = formatDateTime(value, m_dateFormat);
             } else {
@@ -227,10 +226,23 @@ QSize ValueWidget::sizeHint() const
 QLabel *WidgetFactory::createValueWidget(QWidget *parent)
 {
     auto valueWidget = new ValueWidget(parent);
-    valueWidget->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    valueWidget->setTextFormat(Qt::PlainText);
     valueWidget->setWordWrap(true);
     valueWidget->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+
+    valueWidget->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    valueWidget->setTextFormat(Qt::PlainText);
+
+    return valueWidget;
+}
+
+QLabel *WidgetFactory::createLinkWidget(QWidget *parent)
+{
+    auto valueWidget = new ValueWidget(parent);
+    valueWidget->setWordWrap(true);
+    valueWidget->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+
+    valueWidget->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    valueWidget->setTextFormat(Qt::RichText);
     connect(valueWidget, &ValueWidget::linkActivated, this, &WidgetFactory::slotLinkActivated);
 
     return valueWidget;

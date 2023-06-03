@@ -55,6 +55,7 @@ private:
     QWidget *createTagWidget(const QStringList &tags, QWidget *parent);
     QWidget *createCommentWidget(const QString &comment, QWidget *parent);
     QLabel *createValueWidget(QWidget *parent);
+    QLabel *createLinkWidget(QWidget *parent);
 
     TagWidget *m_tagWidget = nullptr;
     KRatingWidget *m_ratingWidget = nullptr;
