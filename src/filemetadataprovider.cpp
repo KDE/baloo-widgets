@@ -99,7 +99,7 @@ void extractDerivedProperties(QVariantMap &data)
 {
     const auto width = data.value(QStringLiteral("width"));
     const auto height = data.value(QStringLiteral("height"));
-    if ((width.type() == QVariant::Double || width.type() == QVariant::Int) && (height.type() == QVariant::Double || height.type() == QVariant::Int)) {
+    if (!width.isNull() && !height.isNull()) {
         data.insert(QStringLiteral("dimensions"), i18nc("width × height", "%1 × %2", width.toInt(), height.toInt()));
     }
 
