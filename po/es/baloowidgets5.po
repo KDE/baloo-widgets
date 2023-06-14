@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-14 00:45+0000\n"
+"POT-Creation-Date: 2023-06-14 00:45+0000\n"
 "PO-Revision-Date: 2022-07-18 00:15+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -227,31 +227,31 @@ msgctxt "String list separator"
 msgid ", "
 msgstr ", "
 
-#: src/widgetfactory.cpp:107
+#: src/widgetfactory.cpp:105
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
 msgstr "%1°S"
 
-#: src/widgetfactory.cpp:107
+#: src/widgetfactory.cpp:105
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
 msgstr "%1°N"
 
-#: src/widgetfactory.cpp:108
+#: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
 msgstr "%1°O"
 
-#: src/widgetfactory.cpp:108
+#: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
 msgstr "%1°E"
 
-#: src/widgetfactory.cpp:117
+#: src/widgetfactory.cpp:114
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
