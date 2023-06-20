@@ -255,7 +255,7 @@ msgstr "%1°E"
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
-msgstr "Mostrar a localización en %1"
+msgstr "Amosar a localización en %1"
 
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"
