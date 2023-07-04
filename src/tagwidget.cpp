@@ -157,3 +157,5 @@ void TagWidget::slotKEditTagDialogFinished(int result)
     d->m_editTagsDialog->deleteLater();
     d->m_editTagsDialog = nullptr;
 }
+
+#include "moc_tagwidget.cpp"

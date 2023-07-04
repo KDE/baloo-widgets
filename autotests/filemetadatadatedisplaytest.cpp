@@ -137,3 +137,5 @@ void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates()
     QVERIFY2(dateWidget, "Date widget not found");
     QVERIFY2(regex.match(dateWidget->text()).hasMatch(), qPrintable(QStringLiteral("\"%1\" did not match \"%2\"").arg(dateWidget->text(), regex.pattern())));
 }
+
+#include "moc_filemetadatadatedisplaytest.cpp"

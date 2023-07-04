@@ -553,3 +553,5 @@ QVariantMap FileMetaDataProvider::data() const
 {
     return d->m_data;
 }
+
+#include "moc_filemetadataprovider.cpp"

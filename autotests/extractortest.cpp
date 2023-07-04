@@ -34,3 +34,5 @@ void ExtractorTest::test()
 }
 
 QTEST_MAIN(ExtractorTest)
+
+#include "moc_extractortest.cpp"

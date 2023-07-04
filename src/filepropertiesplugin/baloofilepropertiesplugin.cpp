@@ -65,3 +65,5 @@ BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QLis
 BalooFilePropertiesPlugin::~BalooFilePropertiesPlugin() = default;
 
 #include "baloofilepropertiesplugin.moc"
+
+#include "moc_baloofilepropertiesplugin.cpp"

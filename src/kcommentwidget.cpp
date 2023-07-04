@@ -122,3 +122,5 @@ void KCommentWidget::slotLinkActivated(const QString &link)
     KWindowConfig::saveWindowSize(dialog->windowHandle(), dialogConfig);
     delete dialog;
 }
+
+#include "moc_kcommentwidget_p.cpp"

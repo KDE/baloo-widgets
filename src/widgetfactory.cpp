@@ -332,3 +332,5 @@ void Baloo::WidgetFactory::setDateFormat(const Baloo::DateFormats format)
 {
     m_dateFormat = static_cast<QLocale::FormatType>(format);
 }
+
+#include "moc_widgetfactory.cpp"

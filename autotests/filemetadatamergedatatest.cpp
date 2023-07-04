@@ -79,3 +79,5 @@ void FileMetadataMergeDataTest::testMergeData_data()
                            {{sWidth, 100}, {sHeight,  1}} },  // file3
            {{sWidth, 100}} );
 }
+
+#include "moc_filemetadatamergedatatest.cpp"

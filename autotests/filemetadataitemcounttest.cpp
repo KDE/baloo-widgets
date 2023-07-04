@@ -58,3 +58,5 @@ void FileMetadataItemCountTest::testItemCount()
     QList<QWidget *> items = widget->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly);
     QCOMPARE(items.count(), expectedItems * widgetsPerItem);
 }
+
+#include "moc_filemetadataitemcounttest.cpp"

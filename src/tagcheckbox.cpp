@@ -85,3 +85,5 @@ void TagCheckBox::enableUrlHover(bool enable)
         m_child->setCursor(enable ? Qt::PointingHandCursor : Qt::ArrowCursor);
     }
 }
+
+#include "moc_tagcheckbox.cpp"

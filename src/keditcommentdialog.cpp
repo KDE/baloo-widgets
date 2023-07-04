@@ -45,3 +45,5 @@ QString KEditCommentDialog::getCommentText() const
 {
     return m_editor->toPlainText();
 }
+
+#include "moc_keditcommentdialog.cpp"

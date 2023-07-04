@@ -59,3 +59,5 @@ KFileMetaData::PropertyMultiMap OnDemandExtractor::properties() const
 
 } // namespace Private
 } // namespace Baloo
+
+#include "moc_ondemandextractor.cpp"

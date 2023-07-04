@@ -104,3 +104,5 @@ QList<QAction *> TagsFileItemAction::actions(const KFileItemListProperties &file
 }
 
 #include "tagsfileitemaction.moc"
+
+#include "moc_tagsfileitemaction.cpp"

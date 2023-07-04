@@ -196,3 +196,5 @@ void FileMetadataWidgetTest::shouldShowMultiValueProperties()
     QVERIFY2(genreWidget, "genre not found");
     QCOMPARE(genreWidget->text(), QStringLiteral("Genre1, Genre2, and Genre3"));
 }
+
+#include "moc_filemetadatawidgettest.cpp"

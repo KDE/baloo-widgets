@@ -206,3 +206,5 @@ void KEditTagsDialog::modifyTagWidget(const QString &tag)
         item->setCheckState(0, check ? Qt::Checked : Qt::Unchecked);
     }
 }
+
+#include "moc_kedittagsdialog_p.cpp"

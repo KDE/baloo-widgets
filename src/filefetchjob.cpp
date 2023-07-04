@@ -85,3 +85,5 @@ bool FileFetchJob::canEditAll() const
 {
     return m_canEditAll;
 }
+
+#include "moc_filefetchjob.cpp"
