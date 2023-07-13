@@ -349,7 +349,7 @@ void FileMetaDataProviderPrivate::processFileItems()
     //   * Not Indexed
     //   * Indexed
 
-    bool multipleFileMode = m_fileItems.size() > 1;
+    bool singleFileMode = m_fileItems.size() <= 1;
 
     QStringList urls;
     urls.reserve(m_fileItems.size());
@@ -362,10 +362,10 @@ void FileMetaDataProviderPrivate::processFileItems()
         }
     }
 
-    if (multipleFileMode) {
-        insertFilesListBasicData();
-    } else {
+    if (singleFileMode) {
         insertSingleFileBasicData();
+    } else {
+        insertFilesListBasicData();
     }
 
     if (!urls.isEmpty()) {
@@ -375,7 +375,7 @@ void FileMetaDataProviderPrivate::processFileItems()
         // Don't use indexing when we have multiple files
         auto indexingMode = FileFetchJob::UseRealtimeIndexing::Disabled;
 
-        if (!multipleFileMode) {
+        if (singleFileMode) {
             // Fully indexed by Baloo
             indexingMode = FileFetchJob::UseRealtimeIndexing::Fallback;
 
