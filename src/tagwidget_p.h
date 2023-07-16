@@ -26,8 +26,8 @@ public:
     void rebuild();
     void buildTagHash(const QStringList &tags);
 
-    /// lookup (and if necessary create) checkbox for tag
-    TagCheckBox *getTagCheckBox(const QString &tag);
+    /// create clickable tag label
+    void addTagLabel(const QString &tag);
 
     /// check the corresponding checkboxes and even
     /// add missing checkboxes

@@ -44,7 +44,7 @@ void TagWidgetPrivate::buildTagHash(const QStringList &tags)
     m_tagLabels.clear();
 
     for (const QString &tag : tags) {
-        getTagCheckBox(tag);
+        addTagLabel(tag);
     }
 
     delete m_showAllLinkLabel;
@@ -68,7 +68,7 @@ void TagWidgetPrivate::buildTagHash(const QStringList &tags)
     }
 }
 
-TagCheckBox *TagWidgetPrivate::getTagCheckBox(const QString &tag)
+void TagWidgetPrivate::addTagLabel(const QString &tag)
 {
     const auto it = m_tagLabels.find(tag);
     if (it == m_tagLabels.end()) {
@@ -76,9 +76,6 @@ TagCheckBox *TagWidgetPrivate::getTagCheckBox(const QString &tag)
         q->connect(label, &TagCheckBox::tagClicked, q, &TagWidget::tagClicked);
         m_tagLabels.insert(tag, label);
         m_flowLayout->addWidget(label);
-        return label;
-    } else {
-        return it.value();
     }
 }
 
