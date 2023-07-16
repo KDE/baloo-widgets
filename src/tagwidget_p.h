@@ -35,7 +35,7 @@ public:
 
     bool m_readOnly;
 
-    QMap<QString, TagCheckBox *> m_checkBoxHash;
+    QMap<QString, TagCheckBox *> m_tagLabels;
     QLabel *m_showAllLinkLabel;
     KBlockLayout *m_flowLayout;
     TagWidget *q;

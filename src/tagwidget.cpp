@@ -40,8 +40,8 @@ void TagWidgetPrivate::rebuild()
 
 void TagWidgetPrivate::buildTagHash(const QStringList &tags)
 {
-    qDeleteAll(m_checkBoxHash);
-    m_checkBoxHash.clear();
+    qDeleteAll(m_tagLabels);
+    m_tagLabels.clear();
 
     for (const QString &tag : tags) {
         getTagCheckBox(tag);
@@ -62,7 +62,7 @@ void TagWidgetPrivate::buildTagHash(const QStringList &tags)
         QFont f(q->font());
         f.setUnderline(true);
         m_showAllLinkLabel->setFont(f);
-        m_showAllLinkLabel->setText(QLatin1String("<a href=\"add_tags\">") + (m_checkBoxHash.isEmpty() ? i18nc("@label", "Add...") : i18nc("@label", "Edit..."))
+        m_showAllLinkLabel->setText(QLatin1String("<a href=\"add_tags\">") + (m_tagLabels.isEmpty() ? i18nc("@label", "Add...") : i18nc("@label", "Edit..."))
                                     + QLatin1String("</a>"));
         q->connect(m_showAllLinkLabel, SIGNAL(linkActivated(QString)), SLOT(slotShowAll()));
     }
@@ -70,14 +70,13 @@ void TagWidgetPrivate::buildTagHash(const QStringList &tags)
 
 TagCheckBox *TagWidgetPrivate::getTagCheckBox(const QString &tag)
 {
-    QMap<QString, TagCheckBox *>::iterator it = m_checkBoxHash.find(tag);
-    if (it == m_checkBoxHash.end()) {
-        // kDebug() << "Creating checkbox for" << tag.genericLabel();
-        auto checkBox = new TagCheckBox(tag, q);
-        q->connect(checkBox, SIGNAL(tagClicked(QString)), SIGNAL(tagClicked(QString)));
-        m_checkBoxHash.insert(tag, checkBox);
-        m_flowLayout->addWidget(checkBox);
-        return checkBox;
+    const auto it = m_tagLabels.find(tag);
+    if (it == m_tagLabels.end()) {
+        auto label = new TagCheckBox(tag, q);
+        q->connect(label, &TagCheckBox::tagClicked, q, &TagWidget::tagClicked);
+        m_tagLabels.insert(tag, label);
+        m_flowLayout->addWidget(label);
+        return label;
     } else {
         return it.value();
     }
@@ -100,12 +99,7 @@ TagWidget::~TagWidget() = default;
 
 QStringList TagWidget::selectedTags() const
 {
-    QStringList tags;
-    QMapIterator<QString, TagCheckBox *> it(d->m_checkBoxHash);
-    while (it.hasNext()) {
-        tags << it.next().key();
-    }
-    return tags;
+    return d->m_tagLabels.keys();
 }
 
 Qt::Alignment TagWidget::alignment() const
