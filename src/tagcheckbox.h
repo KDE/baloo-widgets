@@ -7,7 +7,7 @@
 #ifndef _BALOO_TAG_CHECKBOX_H_
 #define _BALOO_TAG_CHECKBOX_H_
 
-#include <QWidget>
+#include <QLabel>
 
 #include "tagwidget_p.h"
 
@@ -16,7 +16,7 @@ class QLabel;
 
 namespace Baloo
 {
-class TagCheckBox : public QWidget
+class TagCheckBox : public QLabel
 {
     Q_OBJECT
 
@@ -39,10 +39,6 @@ protected:
 private:
     QRect tagRect() const;
     void enableUrlHover(bool enabled);
-
-    // two modes: checkbox and simple label
-    QLabel *m_label = nullptr;
-    QWidget *m_child = nullptr;
 
     QString m_tag;
     bool m_urlHover = false;

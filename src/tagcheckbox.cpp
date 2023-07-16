@@ -15,22 +15,18 @@
 using namespace Baloo;
 
 TagCheckBox::TagCheckBox(const QString &tag, QWidget *parent)
-    : QWidget(parent)
+    : QLabel(parent)
     , m_tag(tag)
 {
-    auto layout = new QHBoxLayout(this);
-    layout->setContentsMargins(0, 0, 0, 0);
+    auto lastSegment = tag.split(QLatin1Char('/'), Qt::SkipEmptyParts).last();
+    setText(lastSegment);
 
-    m_label = new QLabel(tag.split(QLatin1Char('/'), Qt::SkipEmptyParts).last(), this);
-    m_label->setToolTip(tag);
-    m_label->setMouseTracking(true);
-    m_label->setTextFormat(Qt::PlainText);
-    m_label->setForegroundRole(parent->foregroundRole());
-    m_child = m_label;
+    setToolTip(tag);
+    setTextFormat(Qt::PlainText);
+    setForegroundRole(parent->foregroundRole());
 
-    m_child->installEventFilter(this);
-    m_child->setMouseTracking(true);
-    layout->addWidget(m_child);
+    installEventFilter(this);
+    setMouseTracking(true);
 }
 
 TagCheckBox::~TagCheckBox() = default;
@@ -43,7 +39,7 @@ void TagCheckBox::leaveEvent(QEvent *event)
 
 bool TagCheckBox::eventFilter(QObject *watched, QEvent *event)
 {
-    if (watched == m_child) {
+    if (watched == this) {
         switch (event->type()) {
         case QEvent::MouseMove: {
             auto me = static_cast<QMouseEvent *>(event);
@@ -71,7 +67,7 @@ bool TagCheckBox::eventFilter(QObject *watched, QEvent *event)
 
 QRect TagCheckBox::tagRect() const
 {
-    return QRect(QPoint(0, 0), m_label->size());
+    return QRect(QPoint(0, 0), size());
 }
 
 void TagCheckBox::enableUrlHover(bool enable)
@@ -79,10 +75,9 @@ void TagCheckBox::enableUrlHover(bool enable)
     if (m_urlHover != enable) {
         m_urlHover = enable;
         QFont f = font();
-        if (enable)
-            f.setUnderline(true);
-        m_child->setFont(f);
-        m_child->setCursor(enable ? Qt::PointingHandCursor : Qt::ArrowCursor);
+        f.setUnderline(enable);
+        setFont(f);
+        setCursor(enable ? Qt::PointingHandCursor : Qt::ArrowCursor);
     }
 }
 
