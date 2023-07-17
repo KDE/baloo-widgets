@@ -9,13 +9,37 @@
 #include "kblocklayout.h"
 #include "kedittagsdialog_p.h"
 #include "tagcheckbox.h"
-#include "tagwidget_p.h"
 
 #include <KLocalizedString>
 
 #include <QLabel>
+#include <QMap>
 
 using namespace Baloo;
+
+class Baloo::TagWidgetPrivate
+{
+public:
+    void init(TagWidget *parent);
+    void rebuild();
+    void buildTagHash(const QStringList &tags);
+
+    /// create clickable tag label
+    void addTagLabel(const QString &tag);
+
+    /// check the corresponding checkboxes and even
+    /// add missing checkboxes
+    void selectTags(const QStringList &tags);
+
+    bool m_readOnly;
+
+    QMap<QString, TagCheckBox *> m_tagLabels;
+    QLabel *m_showAllLinkLabel;
+    KBlockLayout *m_flowLayout;
+    TagWidget *q;
+
+    KEditTagsDialog *m_editTagsDialog;
+};
 
 void TagWidgetPrivate::init(TagWidget *parent)
 {

@@ -40,7 +40,6 @@ target_sources(KF${QT_MAJOR_VERSION}BalooWidgets PRIVATE
     tagcheckbox.h
     tagwidget.cpp
     tagwidget.h
-    tagwidget_p.h
     widgetfactory.cpp
     widgetfactory.h
 )

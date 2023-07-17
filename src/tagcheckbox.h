@@ -9,8 +9,6 @@
 
 #include <QLabel>
 
-#include "tagwidget_p.h"
-
 namespace Baloo
 {
 class TagCheckBox : public QLabel
