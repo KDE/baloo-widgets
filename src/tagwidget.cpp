@@ -31,22 +31,19 @@ public:
     /// add missing checkboxes
     void selectTags(const QStringList &tags);
 
-    bool m_readOnly;
+    bool m_readOnly = false;
 
     QMap<QString, TagCheckBox *> m_tagLabels;
-    QLabel *m_showAllLinkLabel;
-    KBlockLayout *m_flowLayout;
+    QLabel *m_showAllLinkLabel = nullptr;
+    KBlockLayout *m_flowLayout = nullptr;
     TagWidget *q;
 
-    KEditTagsDialog *m_editTagsDialog;
+    KEditTagsDialog *m_editTagsDialog = nullptr;
 };
 
 void TagWidgetPrivate::init(TagWidget *parent)
 {
     q = parent;
-    m_readOnly = false;
-    m_showAllLinkLabel = nullptr;
-    m_editTagsDialog = nullptr;
 
     auto mainLayout = new QGridLayout(q);
     mainLayout->setContentsMargins(0, 0, 0, 0);
