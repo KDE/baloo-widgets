@@ -79,9 +79,6 @@ void TagWidgetPrivate::buildTagHash(const QStringList &tags)
     if (m_readOnly) {
         m_showAllLinkLabel->setText(QStringLiteral("-"));
     } else {
-        QFont f(q->font());
-        f.setUnderline(true);
-        m_showAllLinkLabel->setFont(f);
         m_showAllLinkLabel->setText(QLatin1String("<a href=\"add_tags\">") + (m_tagLabels.isEmpty() ? i18nc("@label", "Add...") : i18nc("@label", "Edit..."))
                                     + QLatin1String("</a>"));
         q->connect(m_showAllLinkLabel, SIGNAL(linkActivated(QString)), SLOT(slotShowAll()));
