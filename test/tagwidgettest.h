@@ -18,13 +18,11 @@ public:
     TagWidgetTest();
     ~TagWidgetTest() override;
 
-public Q_SLOTS:
+private Q_SLOTS:
     void slotTagClicked(const QString &);
     void slotSelectionChanged(const QStringList &tags);
 
-private Q_SLOTS:
     void alignRight(bool enable);
-    void setReadOnly(bool enable);
 
 private:
     Baloo::TagWidget *m_tagWidget;

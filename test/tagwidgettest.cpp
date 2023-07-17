@@ -13,19 +13,23 @@
 TagWidgetTest::TagWidgetTest()
     : QWidget()
 {
-    m_tagWidget = new Baloo::TagWidget(this);
+    using TagWidget = Baloo::TagWidget;
+
+    m_tagWidget = new TagWidget(this);
     auto lay = new QVBoxLayout(this);
     lay->addWidget(m_tagWidget);
-    connect(m_tagWidget, SIGNAL(tagClicked(QString)), this, SLOT(slotTagClicked(QString)));
-    connect(m_tagWidget, SIGNAL(selectionChanged(QStringList)), this, SLOT(slotSelectionChanged(QStringList)));
+    connect(m_tagWidget, &TagWidget::tagClicked, this, &TagWidgetTest::slotTagClicked);
+    connect(m_tagWidget, &TagWidget::selectionChanged, this, &TagWidgetTest::slotSelectionChanged);
 
     auto box = new QCheckBox(QStringLiteral("Align Right"), this);
-    connect(box, SIGNAL(toggled(bool)), this, SLOT(alignRight(bool)));
+    connect(box, &QCheckBox::toggled, this, &TagWidgetTest::alignRight);
     lay->addWidget(box);
 
     box = new QCheckBox(QStringLiteral("Read only"), this);
-    connect(box, SIGNAL(toggled(bool)), this, SLOT(setReadOnly(bool)));
+    connect(box, &QCheckBox::toggled, m_tagWidget, &TagWidget::setReadyOnly);
     lay->addWidget(box);
+
+    m_tagWidget->setSelectedTags({});
 }
 
 TagWidgetTest::~TagWidgetTest() = default;
@@ -46,11 +50,6 @@ void TagWidgetTest::alignRight(bool enable)
         m_tagWidget->setAlignment(Qt::AlignRight);
     else
         m_tagWidget->setAlignment(Qt::AlignLeft);
-}
-
-void TagWidgetTest::setReadOnly(bool enable)
-{
-    m_tagWidget->setReadyOnly(enable);
 }
 
 #include "moc_tagwidgettest.cpp"
