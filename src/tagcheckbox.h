@@ -11,9 +11,6 @@
 
 #include "tagwidget_p.h"
 
-class QMouseEvent;
-class QLabel;
-
 namespace Baloo
 {
 class TagCheckBox : public QLabel

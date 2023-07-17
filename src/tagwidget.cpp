@@ -14,7 +14,6 @@
 #include <KLocalizedString>
 
 #include <QLabel>
-#include <QPushButton>
 
 using namespace Baloo;
 
