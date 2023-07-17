@@ -148,11 +148,6 @@ void TagWidget::setReadyOnly(bool readOnly)
     d->rebuild();
 }
 
-void TagWidget::slotTagUpdateDone()
-{
-    setEnabled(true);
-}
-
 void TagWidget::slotShowAll()
 {
     d->m_editTagsDialog = new KEditTagsDialog(selectedTags(), this);

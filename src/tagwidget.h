@@ -103,7 +103,6 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void slotShowAll();
-    void slotTagUpdateDone();
     void slotKEditTagDialogFinished(int result);
 
 private:
