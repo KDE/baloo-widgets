@@ -33,11 +33,9 @@ Q_SIGNALS:
     void tagClicked(const QString &tag);
 
 protected:
-    void leaveEvent(QEvent *event) override;
     bool eventFilter(QObject *watched, QEvent *event) override;
 
 private:
-    QRect tagRect() const;
     void enableUrlHover(bool enabled);
 
     QString m_tag;

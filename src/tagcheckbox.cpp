@@ -26,30 +26,31 @@ TagCheckBox::TagCheckBox(const QString &tag, QWidget *parent)
     setForegroundRole(parent->foregroundRole());
 
     installEventFilter(this);
-    setMouseTracking(true);
 }
 
 TagCheckBox::~TagCheckBox() = default;
-
-void TagCheckBox::leaveEvent(QEvent *event)
-{
-    QWidget::leaveEvent(event);
-    enableUrlHover(false);
-}
 
 bool TagCheckBox::eventFilter(QObject *watched, QEvent *event)
 {
     if (watched == this) {
         switch (event->type()) {
+        case QEvent::Enter: {
+            enableUrlHover(true);
+            break;
+        }
+        case QEvent::Leave: {
+            enableUrlHover(false);
+            break;
+        }
         case QEvent::MouseMove: {
             auto me = static_cast<QMouseEvent *>(event);
-            enableUrlHover(tagRect().contains(me->pos()));
+            enableUrlHover(rect().contains(me->pos()));
             break;
         }
 
         case QEvent::MouseButtonRelease: {
             auto me = static_cast<QMouseEvent *>(event);
-            if (me->button() == Qt::LeftButton && tagRect().contains(me->pos())) {
+            if (me->button() == Qt::LeftButton && rect().contains(me->pos())) {
                 Q_EMIT tagClicked(m_tag);
                 return true;
             }
@@ -63,11 +64,6 @@ bool TagCheckBox::eventFilter(QObject *watched, QEvent *event)
     }
 
     return QWidget::eventFilter(watched, event);
-}
-
-QRect TagCheckBox::tagRect() const
-{
-    return QRect(QPoint(0, 0), size());
 }
 
 void TagCheckBox::enableUrlHover(bool enable)
