@@ -73,6 +73,7 @@ KBlockLayout::~KBlockLayout()
 void KBlockLayout::setAlignment(Qt::Alignment a)
 {
     d->alignment = a;
+    QLayout::update();
 }
 
 Qt::Alignment KBlockLayout::alignment() const
