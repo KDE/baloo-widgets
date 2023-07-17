@@ -77,10 +77,11 @@ void TagWidgetPrivate::buildTagHash(const QStringList &tags)
     m_showAllLinkLabel = new QLabel(q);
     m_flowLayout->addWidget(m_showAllLinkLabel);
     if (m_readOnly) {
+        m_showAllLinkLabel->setTextFormat(Qt::PlainText);
         m_showAllLinkLabel->setText(QStringLiteral("-"));
     } else {
-        m_showAllLinkLabel->setText(QLatin1String("<a href=\"add_tags\">") + (m_tagLabels.isEmpty() ? i18nc("@label", "Add...") : i18nc("@label", "Edit..."))
-                                    + QLatin1String("</a>"));
+        m_showAllLinkLabel->setTextFormat(Qt::RichText);
+        m_showAllLinkLabel->setText(QStringLiteral("<a href=\"add_tags\">%1</a>").arg(m_tagLabels.isEmpty() ? i18nc("@label", "Add...") : i18nc("@label", "Edit...")));
         q->connect(m_showAllLinkLabel, SIGNAL(linkActivated(QString)), SLOT(slotShowAll()));
     }
 }
