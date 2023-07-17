@@ -38,6 +38,8 @@ public:
     KBlockLayout *m_flowLayout = nullptr;
     TagWidget *q;
 
+    void showEditDialog();
+    void kEditTagDialogFinished(int result);
     KEditTagsDialog *m_editTagsDialog = nullptr;
 };
 
@@ -82,7 +84,7 @@ void TagWidgetPrivate::buildTagHash(const QStringList &tags)
     } else {
         m_showAllLinkLabel->setTextFormat(Qt::RichText);
         m_showAllLinkLabel->setText(QStringLiteral("<a href=\"add_tags\">%1</a>").arg(m_tagLabels.isEmpty() ? i18nc("@label", "Add...") : i18nc("@label", "Edit...")));
-        q->connect(m_showAllLinkLabel, SIGNAL(linkActivated(QString)), SLOT(slotShowAll()));
+        q->connect(m_showAllLinkLabel, &QLabel::linkActivated, [this]{showEditDialog();});
     }
 }
 
@@ -143,23 +145,23 @@ void TagWidget::setReadyOnly(bool readOnly)
     d->rebuild();
 }
 
-void TagWidget::slotShowAll()
+void TagWidgetPrivate::showEditDialog()
 {
-    d->m_editTagsDialog = new KEditTagsDialog(selectedTags(), this);
-    d->m_editTagsDialog->setWindowModality(Qt::ApplicationModal);
-    connect(d->m_editTagsDialog, SIGNAL(finished(int)), this, SLOT(slotKEditTagDialogFinished(int)));
-    d->m_editTagsDialog->open();
+    m_editTagsDialog = new KEditTagsDialog(m_tagLabels.keys(), q);
+    m_editTagsDialog->setWindowModality(Qt::ApplicationModal);
+    q->connect(m_editTagsDialog, &QDialog::finished, q, [this](int result) {kEditTagDialogFinished(result);});
+    m_editTagsDialog->open();
 }
 
-void TagWidget::slotKEditTagDialogFinished(int result)
+void TagWidgetPrivate::kEditTagDialogFinished(int result)
 {
     if (result == QDialog::Accepted) {
-        setSelectedTags(d->m_editTagsDialog->tags());
-        Q_EMIT selectionChanged(selectedTags());
+        selectTags(m_editTagsDialog->tags());
+        Q_EMIT q->selectionChanged(m_tagLabels.keys());
     }
 
-    d->m_editTagsDialog->deleteLater();
-    d->m_editTagsDialog = nullptr;
+    m_editTagsDialog->deleteLater();
+    m_editTagsDialog = nullptr;
 }
 
 #include "moc_tagwidget.cpp"

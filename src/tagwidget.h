@@ -101,10 +101,6 @@ public Q_SLOTS:
      */
     void setReadyOnly(bool readOnly = true);
 
-private Q_SLOTS:
-    void slotShowAll();
-    void slotKEditTagDialogFinished(int result);
-
 private:
     std::unique_ptr<TagWidgetPrivate> const d;
 };
