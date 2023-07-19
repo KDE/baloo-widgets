@@ -133,7 +133,7 @@ QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value,
         QLabel *valueWidget = createValueWidget(parent);
 
         auto pi = KFileMetaData::PropertyInfo::fromName(prop);
-        if (pi.name() != QLatin1String("empty")) {
+        if (pi.property() != KFileMetaData::Property::Empty) {
             if (pi.valueType() == QVariant::DateTime || pi.valueType() == QVariant::Date) {
                 valueString = formatDateTime(value, m_dateFormat);
             } else {
