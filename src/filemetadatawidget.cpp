@@ -315,14 +315,15 @@ QSize FileMetaDataWidget::sizeHint() const
     }
 
     // Based on the available width calculate the required height
-    int height = getMargin() * 2 + d->m_gridLayout->spacing() * (d->m_rows.count() - 1);
+    const auto margins = d->m_gridLayout->contentsMargins();
+    int height = margins.top() + margins.bottom() + d->m_gridLayout->spacing() * (d->m_rows.count() - 1);
     for (const FileMetaDataWidgetPrivate::Row &row : std::as_const(d->m_rows)) {
         const QWidget *valueWidget = row.value;
         const int rowHeight = qMax(row.label->heightForWidth(leftWidthMax), valueWidget->heightForWidth(rightWidthMax));
         height += rowHeight;
     }
 
-    const int width = getMargin() * 2 + leftWidthMax + d->m_gridLayout->spacing() + rightWidthMax;
+    const int width = margins.left() + margins.right() + leftWidthMax + d->m_gridLayout->spacing() + rightWidthMax;
 
     return QSize{width, height};
 }
@@ -339,17 +340,6 @@ void FileMetaDataWidget::setConfigurationMode(ConfigurationMode mode)
     }
     d->m_visibilityChanged.clear();
     d->slotLoadingFinished();
-}
-
-int FileMetaDataWidget::getMargin() const
-{
-    int left, top, right, bottom;
-    d->m_gridLayout->getContentsMargins(&left, &top, &right, &bottom);
-    if (left == top && top == right && right == bottom) {
-        return left;
-    } else {
-        return -1;
-    }
 }
 
 #include "moc_filemetadatawidget.cpp"
