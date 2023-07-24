@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-14 00:45+0000\n"
+"POT-Creation-Date: 2023-07-24 07:30+0000\n"
 "PO-Revision-Date: 2019-05-11 16:27-0700\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -145,13 +145,13 @@ msgctxt "Tab page with file meta data"
 msgid "&Details"
 msgstr "詳細(&D)"
 
-#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Add..."
 msgstr "追加..."
 
-#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Edit..."

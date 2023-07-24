@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-14 00:45+0000\n"
-"PO-Revision-Date: 2023-07-18 11:10\n"
+"POT-Creation-Date: 2023-07-24 07:30+0000\n"
+"PO-Revision-Date: 2023-07-23 12:28\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -145,13 +145,13 @@ msgctxt "Tab page with file meta data"
 msgid "&Details"
 msgstr "详情(&D)"
 
-#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Add..."
 msgstr "添加..."
 
-#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Edit..."

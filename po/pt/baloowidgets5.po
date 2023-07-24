@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo_queryparser\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-14 00:45+0000\n"
+"POT-Creation-Date: 2023-07-24 07:30+0000\n"
 "PO-Revision-Date: 2022-07-17 16:19+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -147,13 +147,13 @@ msgctxt "Tab page with file meta data"
 msgid "&Details"
 msgstr "&Detalhes"
 
-#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Add..."
 msgstr "Adicionar..."
 
-#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Edit..."

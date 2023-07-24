@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloowidgets5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-14 00:45+0000\n"
+"POT-Creation-Date: 2023-07-24 07:30+0000\n"
 "PO-Revision-Date: 2022-07-18 22:49+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -150,13 +150,13 @@ msgctxt "Tab page with file meta data"
 msgid "&Details"
 msgstr "&Xehetasunak"
 
-#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Add..."
 msgstr "Gehitu..."
 
-#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Edit..."

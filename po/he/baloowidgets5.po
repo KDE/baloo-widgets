@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloowidgets5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-14 00:45+0000\n"
+"POT-Creation-Date: 2023-07-24 07:30+0000\n"
 "PO-Revision-Date: 2017-05-24 06:36-0400\n"
 "Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -145,13 +145,13 @@ msgctxt "Tab page with file meta data"
 msgid "&Details"
 msgstr ""
 
-#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Add..."
 msgstr ""
 
-#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:65
+#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Edit..."
