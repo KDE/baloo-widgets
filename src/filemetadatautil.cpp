@@ -24,7 +24,7 @@ QVariant intersect(const QVariant &v1, const QVariant &v2)
     }
 
     // List and String
-    if (v1.type() == QVariant::StringList && v2.type() == QVariant::String) {
+    if (v1.typeId() == QMetaType::QStringList && v2.typeId() == QMetaType::QString) {
         QStringList list = v1.toStringList();
         QString str = v2.toString();
 
@@ -36,7 +36,7 @@ QVariant intersect(const QVariant &v1, const QVariant &v2)
     }
 
     // String and List
-    if (v1.type() == QVariant::String && v2.type() == QVariant::StringList) {
+    if (v1.typeId() == QMetaType::QString && v2.typeId() == QMetaType::QStringList) {
         QStringList list = v2.toStringList();
         QString str = v1.toString();
 
@@ -48,7 +48,7 @@ QVariant intersect(const QVariant &v1, const QVariant &v2)
     }
 
     // List and List
-    if (v1.type() == QVariant::StringList && v2.type() == QVariant::StringList) {
+    if (v1.typeId() == QMetaType::QStringList && v2.typeId() == QMetaType::QStringList) {
         QSet<QString> s1(v1.toStringList().cbegin(), v1.toStringList().cend());
         QSet<QString> s2(v2.toStringList().cbegin(), v2.toStringList().cend());
 

@@ -61,18 +61,18 @@ static QString formatDateTime(const QVariant &value, QLocale::FormatType dateFor
 
 static QString toString(const QVariant &value, QLocale::FormatType dateFormat)
 {
-    switch (value.type()) {
-    case QVariant::Int:
+    switch (value.typeId()) {
+    case QMetaType::Int:
         return QLocale().toString(value.toInt());
-    case QVariant::Double:
+    case QMetaType::Double:
         return QLocale().toString(value.toDouble());
-    case QVariant::StringList:
+    case QMetaType::QStringList:
         return value.toStringList().join(i18nc("String list separator", ", "));
-    case QVariant::Date:
-    case QVariant::DateTime: {
+    case QMetaType::QDate:
+    case QMetaType::QDateTime: {
         return formatDateTime(value, dateFormat);
     }
-    case QVariant::List: {
+    case QMetaType::QVariantList: {
         QStringList list;
         const auto valueList = value.toList();
         for (const QVariant &var : valueList) {
@@ -134,7 +134,7 @@ QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value,
 
         auto pi = KFileMetaData::PropertyInfo::fromName(prop);
         if (pi.property() != KFileMetaData::Property::Empty) {
-            if (pi.valueType() == QVariant::DateTime || pi.valueType() == QVariant::Date) {
+            if (pi.valueType() == QMetaType::QDateTime || pi.valueType() == QMetaType::QDate) {
                 valueString = formatDateTime(value, m_dateFormat);
             } else {
                 valueString = pi.formatAsDisplayString(value);
