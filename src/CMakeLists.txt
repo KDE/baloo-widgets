@@ -67,7 +67,6 @@ target_link_libraries(KF${QT_MAJOR_VERSION}BalooWidgets
   KF${QT_MAJOR_VERSION}::Baloo
   KF${QT_MAJOR_VERSION}::CoreAddons
   KF${QT_MAJOR_VERSION}::ConfigGui
-  KF${QT_MAJOR_VERSION}::Service
 )
 
 target_include_directories(KF${QT_MAJOR_VERSION}BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets>")

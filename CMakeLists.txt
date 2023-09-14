@@ -39,7 +39,7 @@ include(ECMDeprecationSettings)
 
 
 find_package(Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS Core Widgets Test)
-find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS Config KIO I18n FileMetaData Baloo Service)
+find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS Config KIO I18n FileMetaData Baloo)
 
 ecm_setup_version(PROJECT
                   VARIABLE_PREFIX BALOO_WIDGETS
