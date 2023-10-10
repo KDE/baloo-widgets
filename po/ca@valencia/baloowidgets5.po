@@ -183,7 +183,7 @@ msgstr "Guarda"
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Tags"
-msgstr "Editeu les d'etiquetes"
+msgstr "Editeu les etiquetes"
 
 #: src/kedittagsdialog.cpp:28
 #, kde-format
