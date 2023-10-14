@@ -124,7 +124,7 @@ msgstr "Enllaç cap a"
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
-msgstr "Apunta a"
+msgstr "Apunta cap a"
 
 #: src/filemetadataprovider.cpp:432
 #, kde-format
