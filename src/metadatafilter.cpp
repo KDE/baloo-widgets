@@ -29,13 +29,13 @@ void MetadataFilter::initMetaInformationSettings()
     // properties should be updated
 
     KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
-    if (config.group("Misc").readEntry("version", 0) < currentVersion) {
+    if (config.group(QStringLiteral("Misc")).readEntry("version", 0) < currentVersion) {
         // The resource file is read the first time. Assure
         // that some meta information is disabled per default.
 
         // clear old info
-        config.deleteGroup("Show");
-        KConfigGroup settings = config.group("Show");
+        config.deleteGroup(QStringLiteral("Show"));
+        KConfigGroup settings = config.group(QStringLiteral("Show"));
 
         static const char *const disabledProperties[] = {
             "width",
@@ -75,7 +75,7 @@ void MetadataFilter::initMetaInformationSettings()
         }
 
         // mark the group as initialized
-        config.group("Misc").writeEntry("version", currentVersion);
+        config.group(QStringLiteral("Misc")).writeEntry("version", currentVersion);
     }
 }
 
@@ -89,7 +89,7 @@ QVariantMap MetadataFilter::filter(const QVariantMap &data)
     //
     // Remove all items, that are marked as hidden in kmetainformationrc
     KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
-    KConfigGroup settings = config.group("Show");
+    KConfigGroup settings = config.group(QStringLiteral("Show"));
     QVariantMap::iterator it = finalData.begin();
     while (it != finalData.end()) {
         const QString uriString = it.key();

@@ -100,7 +100,7 @@ void KCommentWidget::slotLinkActivated(const QString &link)
 
     QPointer<KEditCommentDialog> dialog = new KEditCommentDialog(this, m_comment, caption);
 
-    KConfigGroup dialogConfig(KSharedConfig::openConfig(), "Baloo KEditCommentDialog");
+    KConfigGroup dialogConfig(KSharedConfig::openConfig(), QStringLiteral("Baloo KEditCommentDialog"));
     KWindowConfig::restoreWindowSize(dialog->windowHandle(), dialogConfig);
 
     dialog->exec();

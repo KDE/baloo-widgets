@@ -230,7 +230,7 @@ void FileMetaDataWidgetPrivate::saveConfig()
     }
 
     KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
-    KConfigGroup showGroup = config.group("Show");
+    KConfigGroup showGroup = config.group(QStringLiteral("Show"));
 
     auto changedIt = m_visibilityChanged.constBegin();
     while (changedIt != m_visibilityChanged.constEnd()) {

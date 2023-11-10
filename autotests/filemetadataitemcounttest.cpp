@@ -25,13 +25,13 @@ void FileMetadataItemCountTest::initTestCase()
     QStandardPaths::setTestModeEnabled(true);
 
     KConfig balooConfig(QStringLiteral("baloofilerc"), KConfig::NoGlobals);
-    KConfigGroup balooSettings = balooConfig.group("General");
+    KConfigGroup balooSettings = balooConfig.group(QStringLiteral("General"));
     // If we use .writePathEntry here, the test will fail.
     balooSettings.writeEntry(QStringLiteral("folders"), QString());
 
     // Ensure show configuration
     KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
-    KConfigGroup settings = config.group("Show");
+    KConfigGroup settings = config.group(QStringLiteral("Show"));
     const auto keys = settings.keyList();
     for (const auto &key : keys) {
         settings.writeEntry(key, true);

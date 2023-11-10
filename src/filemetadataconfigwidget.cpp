@@ -97,7 +97,7 @@ void FileMetaDataConfigWidgetPrivate::addItem(const QString &key)
 
     // the item is not hidden, add it to the list
     KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
-    KConfigGroup settings = config.group("Show");
+    KConfigGroup settings = config.group(QStringLiteral("Show"));
 
     const QString label = m_provider->label(key);
 
@@ -154,7 +154,7 @@ KFileItemList FileMetaDataConfigWidget::items() const
 void FileMetaDataConfigWidget::save()
 {
     KConfig config(QStringLiteral("baloofileinformationrc"), KConfig::NoGlobals);
-    KConfigGroup showGroup = config.group("Show");
+    KConfigGroup showGroup = config.group(QStringLiteral("Show"));
 
     const int count = d->m_metaDataList->count();
     for (int i = 0; i < count; ++i) {
