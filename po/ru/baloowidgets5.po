@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:28+0000\n"
+"POT-Creation-Date: 2023-11-26 00:40+0000\n"
 "PO-Revision-Date: 2022-08-10 15:20+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -148,7 +148,7 @@ msgctxt "@label"
 msgid "GPS Location"
 msgstr "Местоположение GPS"
 
-#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:65
 #, kde-format
 msgctxt "Tab page with file meta data"
 msgid "&Details"

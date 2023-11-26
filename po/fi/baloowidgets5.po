@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:28+0000\n"
+"POT-Creation-Date: 2023-11-26 00:40+0000\n"
 "PO-Revision-Date: 2022-08-09 10:32+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -141,7 +141,7 @@ msgctxt "@label"
 msgid "GPS Location"
 msgstr "GPS-sijainti"
 
-#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:65
 #, kde-format
 msgctxt "Tab page with file meta data"
 msgid "&Details"

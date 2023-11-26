@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:28+0000\n"
+"POT-Creation-Date: 2023-11-26 00:40+0000\n"
 "PO-Revision-Date: 2019-12-12 13:28+0000\n"
 "Last-Translator: Preyas Prathap <preyasprathap@protonmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -141,7 +141,7 @@ msgctxt "@label"
 msgid "GPS Location"
 msgstr ""
 
-#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:65
 #, kde-format
 msgctxt "Tab page with file meta data"
 msgid "&Details"
