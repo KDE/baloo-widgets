@@ -1,5 +1,5 @@
 # translation of baloowidgets.po to Slovak
-# Roman Paholik <wizzardsk@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2022.
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2022, 2023 Roman Paholik <wizzardsk@gmail.com>
 # Mthw <jari_45@hotmail.com>, 2018, 2019.
 # Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2020.
 msgid ""
@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: baloowidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-14 00:45+0000\n"
-"PO-Revision-Date: 2022-04-07 18:01+0200\n"
+"PO-Revision-Date: 2023-12-04 17:15+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/filemetadataprovider.cpp:104
@@ -121,7 +121,7 @@ msgstr "Spojiť s"
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
-msgstr ""
+msgstr "Ukazuje na"
 
 #: src/filemetadataprovider.cpp:432
 #, kde-format
@@ -139,7 +139,7 @@ msgstr "Rozmery"
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
-msgstr ""
+msgstr "GPS poloha"
 
 #: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:61
 #, kde-format
@@ -230,31 +230,31 @@ msgstr ", "
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
-msgstr ""
+msgstr "%1°S"
 
 #: src/widgetfactory.cpp:105
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
-msgstr ""
+msgstr "%1°N"
 
 #: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
-msgstr ""
+msgstr "%1°W"
 
 #: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
-msgstr ""
+msgstr "%1°E"
 
 #: src/widgetfactory.cpp:114
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
-msgstr ""
+msgstr "Zobraziť polohu v %1"
 
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"
