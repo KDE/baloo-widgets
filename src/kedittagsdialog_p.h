@@ -12,10 +12,13 @@
 
 class QLineEdit;
 class KJob;
-class QTreeWidget;
+class QTreeView;
 class QTreeWidgetItem;
 class QPushButton;
 class QTimer;
+class QStandardItemModel;
+class QSortFilterProxyModel;
+class QStandardItem;
 
 /**
  * @brief Dialog to edit a list of Baloo tags.
@@ -40,20 +43,21 @@ private Q_SLOTS:
     void slotTextEdited(const QString &text);
     void slotAcceptedButtonClicked();
 
-    void slotItemActivated(const QTreeWidgetItem *item, int column);
+    void slotItemActivated(const QModelIndex &index);
 
 private:
-    void loadTagWidget();
-    void modifyTagWidget(const QString &tag);
+    void setupModel(const QStringList &allTags, const QStringList &selectedTags);
+    QStandardItem *ensureItemForTagExists(const QString tag);
 
-private:
     QHash<QString, QTreeWidgetItem *> m_allTagTreeItems;
     QStringList m_tags;
     QStringList m_allTags;
-    QString m_newTag;
 
-    QTreeWidget *m_tagTree = nullptr;
+    QTreeView *m_treeView = nullptr;
     QLineEdit *m_newTagEdit = nullptr;
+    QStandardItemModel *m_model = nullptr;
+    QSortFilterProxyModel *m_proxyModel = nullptr;
+    QStandardItem *m_newItem = nullptr;
 };
 
 #endif
