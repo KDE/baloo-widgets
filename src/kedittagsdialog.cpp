@@ -15,11 +15,19 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QSortFilterProxyModel>
+#include <QStandardItem>
+#include <QStandardItemModel>
 #include <QTreeWidget>
 #include <QVBoxLayout>
 #include <QWidget>
 
 #include <Baloo/TagListJob>
+
+namespace
+{
+const int canonicalTagPathRole = Qt::UserRole + 1;
+}
 
 KEditTagsDialog::KEditTagsDialog(const QStringList &tags, QWidget *parent)
     : QDialog(parent)
@@ -43,37 +51,108 @@ KEditTagsDialog::KEditTagsDialog(const QStringList &tags, QWidget *parent)
                                   "be applied."),
                             this);
 
-    m_tagTree = new QTreeWidget();
-    m_tagTree->setSortingEnabled(true);
-    m_tagTree->setSelectionMode(QAbstractItemView::NoSelection);
-    m_tagTree->setHeaderHidden(true);
+    m_model = new QStandardItemModel(this);
+
+    m_treeView = new QTreeView(this);
+    m_treeView->setSortingEnabled(true);
+    m_treeView->setSelectionMode(QAbstractItemView::NoSelection);
+    m_treeView->setHeaderHidden(true);
+    m_treeView->setExpandsOnDoubleClick(true);
+    m_treeView->setModel(m_model);
+    connect(m_treeView, &QTreeView::clicked, this, &KEditTagsDialog::slotItemActivated);
 
     auto newTagLabel = new QLabel(i18nc("@label", "Create new tag:"));
     m_newTagEdit = new QLineEdit(this);
     m_newTagEdit->setClearButtonEnabled(true);
     m_newTagEdit->setFocus();
     connect(m_newTagEdit, &QLineEdit::textEdited, this, &KEditTagsDialog::slotTextEdited);
-    connect(m_tagTree, &QTreeWidget::itemActivated, this, &KEditTagsDialog::slotItemActivated);
 
     auto newTagLayout = new QHBoxLayout();
     newTagLayout->addWidget(newTagLabel);
     newTagLayout->addWidget(m_newTagEdit, 1);
 
     topLayout->addWidget(label);
-    topLayout->addWidget(m_tagTree);
+    topLayout->addWidget(m_treeView);
     topLayout->addLayout(newTagLayout);
     topLayout->addWidget(buttonBox);
 
     resize(sizeHint());
 
     auto job = new Baloo::TagListJob();
-    connect(job, &Baloo::TagListJob::finished, [this](KJob *job) {
+    connect(job, &Baloo::TagListJob::finished, this, [this](KJob *job) {
         auto tjob = static_cast<Baloo::TagListJob *>(job);
         m_allTags = tjob->tags();
-        loadTagWidget();
+        setupModel(m_allTags, m_tags);
     });
 
     job->start();
+}
+
+void KEditTagsDialog::setupModel(const QStringList &allTags, const QStringList &selectedTags)
+{
+    for (const auto &tag : allTags) {
+        ensureItemForTagExists(tag);
+    }
+
+    for (const auto &tag : selectedTags) {
+        auto currentItem = ensureItemForTagExists(tag);
+        currentItem->setCheckState(Qt::Checked);
+    }
+
+    m_treeView->expandAll();
+}
+
+QStandardItem *KEditTagsDialog::addTag(QStandardItem *parentItem, const QString &cannonicalTagPath, const QString &tagName)
+{
+    auto newItem = new QStandardItem(tagName);
+    newItem->setIcon(QIcon::fromTheme(QLatin1String("tag")));
+    newItem->setCheckable(true);
+    newItem->setData(cannonicalTagPath, canonicalTagPathRole);
+    parentItem->appendRow(newItem);
+    return newItem;
+}
+
+QStandardItem *KEditTagsDialog::findSubItem(QString currentName, QStandardItem *parentItem)
+{
+    for (int i = 0; i < parentItem->rowCount(); ++i) {
+        auto child = parentItem->child(i);
+        if (child->text() == currentName) {
+            return child;
+        }
+    }
+    return nullptr;
+}
+
+QStandardItem *KEditTagsDialog::findTag(const QString tag)
+{
+    QStandardItem *subItem = m_model->invisibleRootItem();
+    const QStringList splitTags = tag.split(QLatin1Char('/'), Qt::SkipEmptyParts);
+    for (int i = 0; i < splitTags.size() && subItem != nullptr; ++i) {
+        auto currentName = splitTags[i];
+        subItem = findSubItem(currentName, subItem);
+    }
+
+    return subItem;
+}
+
+QStandardItem *KEditTagsDialog::ensureItemForTagExists(const QString tag)
+{
+    QStandardItem *parentItem = m_model->invisibleRootItem();
+    QStandardItem *currentItem = nullptr;
+    const QStringList splitTags = tag.split(QLatin1Char('/'), Qt::SkipEmptyParts);
+    for (int i = 0; i < splitTags.size(); ++i) {
+        auto currentName = splitTags[i];
+
+        currentItem = findSubItem(currentName, parentItem);
+        if (currentItem == nullptr) {
+            QString tagPath = QLatin1Char('/') + splitTags.mid(0, i + 1).join(QLatin1Char('/'));
+            currentItem = addTag(parentItem, tagPath, currentName);
+        }
+
+        parentItem = currentItem;
+    }
+
+    return currentItem;
 }
 
 KEditTagsDialog::~KEditTagsDialog() = default;
@@ -87,20 +166,25 @@ void KEditTagsDialog::slotAcceptedButtonClicked()
 {
     m_tags.clear();
 
-    for (const QTreeWidgetItem *item : std::as_const(m_allTagTreeItems)) {
-        if (item->checkState(0) == Qt::Checked) {
-            m_tags << qvariant_cast<QString>(item->data(0, Qt::UserRole));
+    std::function<void(QStandardItem *)> recurseInTree;
+    recurseInTree = [this, &recurseInTree](QStandardItem *item) {
+        QString canonicalPath = item->data(canonicalTagPathRole).toString();
+        if (item->checkState() == Qt::Checked) {
+            m_tags << canonicalPath;
         }
-    }
+
+        for (int i = 0; i < item->rowCount(); ++i) {
+            recurseInTree(item->child(i));
+        }
+    };
+    recurseInTree(m_model->invisibleRootItem());
 
     accept();
 }
 
-void KEditTagsDialog::slotItemActivated(const QTreeWidgetItem *item, int column)
+void KEditTagsDialog::slotItemActivated(const QModelIndex &index)
 {
-    Q_UNUSED(column)
-
-    const auto tag = qvariant_cast<QString>(item->data(0, Qt::UserRole));
+    const auto tag = m_treeView->model()->data(index, canonicalTagPathRole).toString();
     m_newTagEdit->setText(tag + QLatin1Char('/'));
     m_newTagEdit->setFocus();
 }
@@ -111,100 +195,37 @@ void KEditTagsDialog::slotTextEdited(const QString &text)
     // mandatory, as the user cannot see the difference
     // between a tag "Test" and "Test ".
     QString tagText = text.simplified();
-    while (tagText.endsWith(QLatin1String("//"))) {
+    while (tagText.endsWith(QLatin1Char('/'))) {
         tagText.chop(1);
-        m_newTagEdit->setText(tagText);
+    }
+
+    while(m_newItem != nullptr) {
+        auto parent = m_newItem->parent();
+        if (!parent) {
+            parent = m_model->invisibleRootItem();
+        }
+        parent->removeRow(m_newItem->row());
+        QString canonicalPath = parent->data(canonicalTagPathRole).toString();
+        if (m_allTags.contains(canonicalPath) || m_tags.contains(canonicalPath) || parent == m_model->invisibleRootItem()) {
+            m_newItem = nullptr;
+        } else {
+            m_newItem = parent;
+        }
+    }
+
+    if (tagText.isEmpty()) {
+        m_treeView->setModel(m_model);
+        m_treeView->expandAll();
         return;
     }
 
-    // Remove all tree items related to the previous new tag
-    const QStringList splitTag = m_newTag.split(QLatin1Char('/'), Qt::SkipEmptyParts);
-    for (int i = splitTag.size() - 1; i >= 0 && i < splitTag.size(); --i) {
-        QString itemTag = m_newTag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
-        QTreeWidgetItem *item = m_allTagTreeItems.value(itemTag);
-
-        if (!m_allTags.contains(m_newTag) && (item->childCount() == 0)) {
-            if (i != 0) {
-                QTreeWidgetItem *parentItem = item->parent();
-                parentItem->removeChild(item);
-            } else {
-                const int row = m_tagTree->indexOfTopLevelItem(item);
-                m_tagTree->takeTopLevelItem(row);
-            }
-
-            m_allTagTreeItems.remove(itemTag);
-        }
-
-        if (!m_tags.contains(itemTag)) {
-            item->setCheckState(0, Qt::Unchecked);
-        }
-
-        item->setExpanded(false);
+    if (!findTag(text)) {
+        m_newItem = ensureItemForTagExists(text);
+        m_newItem->setIcon(QIcon::fromTheme(QStringLiteral("tag-new")));
+        m_newItem->setCheckState(Qt::Checked);
     }
 
-    if (!tagText.isEmpty()) {
-        m_newTag = tagText;
-        modifyTagWidget(tagText);
-        m_tagTree->sortItems(0, Qt::SortOrder::AscendingOrder);
-    } else {
-        m_newTag.clear();
-        m_allTagTreeItems.clear();
-        m_tagTree->clear();
-        loadTagWidget();
-    }
-}
-
-void KEditTagsDialog::loadTagWidget()
-{
-    for (const QString &tag : std::as_const(m_tags)) {
-        modifyTagWidget(tag);
-    }
-
-    for (const QString &tag : std::as_const(m_allTags)) {
-        modifyTagWidget(tag);
-    }
-
-    m_tagTree->sortItems(0, Qt::SortOrder::AscendingOrder);
-}
-
-void KEditTagsDialog::modifyTagWidget(const QString &tag)
-{
-    const QStringList splitTag = tag.split(QLatin1Char('/'), Qt::SkipEmptyParts);
-    for (int i = 0; i < splitTag.size(); ++i) {
-        QTreeWidgetItem *item;
-        QString itemTag = tag.section(QLatin1Char('/'), 0, i, QString::SectionSkipEmpty);
-
-        if (!m_allTagTreeItems.contains(itemTag)) {
-            item = new QTreeWidgetItem();
-            item->setText(0, splitTag.at(i));
-            item->setIcon(0, QIcon::fromTheme(QLatin1String("tag")));
-            item->setData(0, Qt::UserRole, itemTag);
-            m_allTagTreeItems.insert(itemTag, item);
-            QString parentTag = tag.section(QLatin1Char('/'), 0, (i - 1), QString::SectionSkipEmpty);
-            QTreeWidgetItem *parentItem = m_allTagTreeItems.value(parentTag);
-
-            if (i != 0) {
-                parentItem->addChild(item);
-            } else {
-                m_tagTree->addTopLevelItem(item);
-            }
-        } else {
-            item = m_allTagTreeItems.value(itemTag);
-        }
-
-        if (!m_allTags.contains(tag)) {
-            m_tagTree->scrollToItem(item, QAbstractItemView::PositionAtCenter);
-        }
-
-        if (((item->childCount() != 0) && m_tags.contains(tag)) || (m_newTag == tag)) {
-            item->setExpanded(true);
-        } else if (item->parent() && m_tags.contains(tag)) {
-            item->parent()->setExpanded(true);
-        }
-
-        const bool check = (m_tags.contains(itemTag) || (m_newTag == itemTag));
-        item->setCheckState(0, check ? Qt::Checked : Qt::Unchecked);
-    }
+    m_treeView->expandAll();
 }
 
 #include "moc_kedittagsdialog_p.cpp"
