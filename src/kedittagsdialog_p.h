@@ -48,6 +48,8 @@ private Q_SLOTS:
 private:
     void setupModel(const QStringList &allTags, const QStringList &selectedTags);
     QStandardItem *ensureItemForTagExists(const QString tag);
+    QStandardItem *addTag(QStandardItem *parentItem, const QString &parentCannonicalTagPath, const QString &tagName);
+    QStandardItem *findTag(const QString tag);
 
     QHash<QString, QTreeWidgetItem *> m_allTagTreeItems;
     QStringList m_tags;

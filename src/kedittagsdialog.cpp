@@ -29,52 +29,6 @@ namespace
 const int cannonicalTagPathRole = Qt::UserRole + 1;
 }
 
-void KEditTagsDialog::setupModel(const QStringList &allTags, const QStringList &selectedTags)
-{
-    for (const auto &tag : allTags) {
-        ensureItemForTagExists(tag);
-    }
-
-    for (const auto &tag : selectedTags) {
-        auto currentItem = ensureItemForTagExists(tag);
-        currentItem->setCheckState(Qt::Checked);
-    }
-
-    m_treeView->expandAll();
-}
-
-QStandardItem *KEditTagsDialog::ensureItemForTagExists(const QString tag)
-{
-    QStandardItem *parentItem = m_model->invisibleRootItem();
-    QStandardItem *currentItem = nullptr;
-    const QStringList splitTags = tag.split(QLatin1Char('/'), Qt::SkipEmptyParts);
-    for (int i = 0; i < splitTags.size(); ++i) {
-        auto split = splitTags[i];
-        currentItem = nullptr;
-
-        for (int i = 0; i < parentItem->rowCount(); ++i) {
-            auto child = parentItem->child(i);
-            if (child->text() == split) {
-                currentItem = child;
-                break;
-            }
-        }
-
-        if (currentItem == nullptr) {
-            currentItem = new QStandardItem(split);
-            currentItem->setIcon(QIcon::fromTheme(QLatin1String("tag")));
-            currentItem->setCheckable(true);
-            QString cannonicalTagPath = QLatin1Char('/') + splitTags.mid(0, i + 1).join(QLatin1Char('/'));
-            currentItem->setData(cannonicalTagPath, cannonicalTagPathRole);
-            parentItem->appendRow(currentItem);
-        }
-
-        parentItem = currentItem;
-    }
-
-    return currentItem;
-}
-
 KEditTagsDialog::KEditTagsDialog(const QStringList &tags, QWidget *parent)
     : QDialog(parent)
     , m_tags(tags)
@@ -110,13 +64,13 @@ KEditTagsDialog::KEditTagsDialog(const QStringList &tags, QWidget *parent)
     m_treeView->setHeaderHidden(true);
     m_treeView->setExpandsOnDoubleClick(true);
     m_treeView->setModel(m_model);
+    connect(m_treeView, &QTreeView::clicked, this, &KEditTagsDialog::slotItemActivated);
 
     auto newTagLabel = new QLabel(i18nc("@label", "Create new tag and filter:"));
     m_newTagEdit = new QLineEdit(this);
     m_newTagEdit->setClearButtonEnabled(true);
     m_newTagEdit->setFocus();
     connect(m_newTagEdit, &QLineEdit::textEdited, this, &KEditTagsDialog::slotTextEdited);
-    connect(m_treeView, &QTreeView::clicked, this, &KEditTagsDialog::slotItemActivated);
 
     auto newTagLayout = new QHBoxLayout();
     newTagLayout->addWidget(newTagLabel);
@@ -137,6 +91,73 @@ KEditTagsDialog::KEditTagsDialog(const QStringList &tags, QWidget *parent)
     });
 
     job->start();
+}
+
+void KEditTagsDialog::setupModel(const QStringList &allTags, const QStringList &selectedTags)
+{
+    for (const auto &tag : allTags) {
+        ensureItemForTagExists(tag);
+    }
+
+    for (const auto &tag : selectedTags) {
+        auto currentItem = ensureItemForTagExists(tag);
+        currentItem->setCheckState(Qt::Checked);
+    }
+
+    m_treeView->expandAll();
+}
+
+QStandardItem *KEditTagsDialog::addTag(QStandardItem *parentItem, const QString &parentCannonicalTagPath, const QString &tagName)
+{
+    auto newItem = new QStandardItem(tagName);
+    newItem->setIcon(QIcon::fromTheme(QLatin1String("tag")));
+    newItem->setCheckable(true);
+    QString cannonicalTagPath = QLatin1Char('/') + parentCannonicalTagPath;
+    newItem->setData(cannonicalTagPath, cannonicalTagPathRole);
+    parentItem->appendRow(newItem);
+    return newItem;
+}
+
+QStandardItem *KEditTagsDialog::findTag(const QString tag)
+{
+    QStandardItem *parentItem = m_model->invisibleRootItem();
+    QStandardItem *currentItem = nullptr;
+    const QStringList splitTags = tag.split(QLatin1Char('/'), Qt::SkipEmptyParts);
+    for (int i = 0; i < splitTags.size(); ++i) {
+        auto split = splitTags[i];
+        currentItem = nullptr;
+
+        for (int i = 0; i < parentItem->rowCount(); ++i) {
+            auto child = parentItem->child(i);
+            if (child->text() == split) {
+                currentItem = child;
+                parentItem = currentItem;
+                break;
+            }
+        }
+    }
+
+    return currentItem;
+}
+
+QStandardItem *KEditTagsDialog::ensureItemForTagExists(const QString tag)
+{
+    QStandardItem *parentItem = m_model->invisibleRootItem();
+    QStandardItem *currentItem = nullptr;
+    const QStringList splitTags = tag.split(QLatin1Char('/'), Qt::SkipEmptyParts);
+    for (int i = 0; i < splitTags.size(); ++i) {
+        auto split = splitTags[i];
+
+        auto tagPath = splitTags.mid(0, i + 1).join(QLatin1Char('/'));
+        currentItem = findTag(tagPath);
+        if (currentItem == nullptr) {
+            currentItem = addTag(parentItem, tagPath, split);
+        }
+
+        parentItem = currentItem;
+    }
+
+    return currentItem;
 }
 
 KEditTagsDialog::~KEditTagsDialog() = default;
@@ -179,8 +200,17 @@ void KEditTagsDialog::slotTextEdited(const QString &text)
     // mandatory, as the user cannot see the difference
     // between a tag "Test" and "Test ".
     QString tagText = text.simplified();
-    while (tagText.endsWith(QLatin1String("//"))) {
+    while (tagText.endsWith(QLatin1Char('/'))) {
         tagText.chop(1);
+    }
+
+    if (m_newItem) {
+        auto parent = m_newItem->parent();
+        if (!parent) {
+            parent = m_model->invisibleRootItem();
+        }
+        parent->removeRow(m_newItem->row());
+        m_newItem = nullptr;
     }
 
     if (tagText.isEmpty()) {
@@ -192,15 +222,11 @@ void KEditTagsDialog::slotTextEdited(const QString &text)
     m_proxyModel->setFilterFixedString(tagText);
     m_treeView->setModel(m_proxyModel);
 
-    if (m_newItem) {
-        auto parent = m_newItem->parent();
-        if (!parent) {
-            parent = m_model->invisibleRootItem();
-        }
-        parent->removeRow(m_newItem->row());
+    if (!findTag(text)) {
+        m_newItem = ensureItemForTagExists(text);
+        m_newItem->setIcon(QIcon::fromTheme(QStringLiteral("tag-new")));
+        m_newItem->setCheckState(Qt::Checked);
     }
-    m_newItem = ensureItemForTagExists(text);
-    m_newItem->setCheckState(Qt::Checked);
 
     m_treeView->expandAll();
 }
