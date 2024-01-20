@@ -50,7 +50,7 @@ private:
     QStandardItem *ensureItemForTagExists(const QString tag);
     QStandardItem *addTag(QStandardItem *parentItem, const QString &cannonicalTagPath, const QString &tagName);
     QStandardItem *findTag(const QString tag);
-    QStandardItem * findSubItem(QString split, QStandardItem *parentItem);
+    QStandardItem *findSubItem(QString split, QStandardItem *parentItem);
 
     QStringList m_tags;
     QStringList m_allTags;
