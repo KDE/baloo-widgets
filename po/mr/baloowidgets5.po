@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 00:40+0000\n"
+"POT-Creation-Date: 2024-02-16 01:39+0000\n"
 "PO-Revision-Date: 2013-02-08 16:27+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -178,12 +178,12 @@ msgctxt "@title:window"
 msgid "Add Comment"
 msgstr "टीप जोडा"
 
-#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
 #, kde-format
 msgid "Save"
 msgstr ""
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"
@@ -191,7 +191,7 @@ msgctxt "@title:window"
 msgid "Edit Tags"
 msgstr "टॅग्स जोडा"
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Add Tags..."
@@ -199,13 +199,13 @@ msgctxt "@title:window"
 msgid "Add Tags"
 msgstr "टॅग्स जोडा..."
 
-#: src/kedittagsdialog.cpp:42
+#: src/kedittagsdialog.cpp:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
 msgstr "कोणते टॅग्स लागु करायचे ते संयोजीत करा."
 
-#: src/kedittagsdialog.cpp:51
+#: src/kedittagsdialog.cpp:64
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Create new tag:"

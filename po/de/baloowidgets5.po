@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 00:40+0000\n"
+"POT-Creation-Date: 2024-02-16 01:39+0000\n"
 "PO-Revision-Date: 2022-07-23 23:10+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -168,30 +168,30 @@ msgctxt "@title:window"
 msgid "Add Comment"
 msgstr "Kommentar hinzufügen"
 
-#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
 #, kde-format
 msgid "Save"
 msgstr "Speichern"
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Tags"
 msgstr "Stichwörter bearbeiten"
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Tags"
 msgstr "Stichwörter hinzufügen"
 
-#: src/kedittagsdialog.cpp:42
+#: src/kedittagsdialog.cpp:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
 msgstr "Richten Sie hier ein, welche Stichwörter hinzugefügt werden sollen."
 
-#: src/kedittagsdialog.cpp:51
+#: src/kedittagsdialog.cpp:64
 #, kde-format
 msgctxt "@label"
 msgid "Create new tag:"

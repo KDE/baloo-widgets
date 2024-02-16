@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 00:40+0000\n"
+"POT-Creation-Date: 2024-02-16 01:39+0000\n"
 "PO-Revision-Date: 2020-01-13 11:02+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -172,30 +172,30 @@ msgctxt "@title:window"
 msgid "Add Comment"
 msgstr "Kommentaari lisamine"
 
-#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
 #, kde-format
 msgid "Save"
 msgstr "Salvesta"
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Tags"
 msgstr "Siltide muutmine"
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Tags"
 msgstr "Siltide lisamine"
 
-#: src/kedittagsdialog.cpp:42
+#: src/kedittagsdialog.cpp:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
 msgstr "Määramine, milliseid silte rakendada."
 
-#: src/kedittagsdialog.cpp:51
+#: src/kedittagsdialog.cpp:64
 #, kde-format
 msgctxt "@label"
 msgid "Create new tag:"

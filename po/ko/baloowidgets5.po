@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 00:40+0000\n"
+"POT-Creation-Date: 2024-02-16 01:39+0000\n"
 "PO-Revision-Date: 2022-08-09 13:40+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -170,30 +170,30 @@ msgctxt "@title:window"
 msgid "Add Comment"
 msgstr "설명 추가"
 
-#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
 #, kde-format
 msgid "Save"
 msgstr "저장"
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Tags"
 msgstr "태그 편집"
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Tags"
 msgstr "태그 추가"
 
-#: src/kedittagsdialog.cpp:42
+#: src/kedittagsdialog.cpp:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
 msgstr "적용할 태그를 설정합니다."
 
-#: src/kedittagsdialog.cpp:51
+#: src/kedittagsdialog.cpp:64
 #, kde-format
 msgctxt "@label"
 msgid "Create new tag:"

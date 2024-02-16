@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 00:40+0000\n"
+"POT-Creation-Date: 2024-02-16 01:39+0000\n"
 "PO-Revision-Date: 2012-09-21 16:01-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -181,12 +181,12 @@ msgctxt "@title:window"
 msgid "Add Comment"
 msgstr "Cuir Nóta Leis"
 
-#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
 #, kde-format
 msgid "Save"
 msgstr ""
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"
@@ -194,7 +194,7 @@ msgctxt "@title:window"
 msgid "Edit Tags"
 msgstr "Cuir Clibeanna Leis"
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Add Tags..."
@@ -202,13 +202,13 @@ msgctxt "@title:window"
 msgid "Add Tags"
 msgstr "Cuir Clibeanna Leis..."
 
-#: src/kedittagsdialog.cpp:42
+#: src/kedittagsdialog.cpp:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
 msgstr "Cumraigh na clibeanna ba mhaith leat cur i bhfeidhm."
 
-#: src/kedittagsdialog.cpp:51
+#: src/kedittagsdialog.cpp:64
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Create new tag:"
