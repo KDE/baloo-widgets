@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloowidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 01:39+0000\n"
+"POT-Creation-Date: 2024-02-26 01:37+0000\n"
 "PO-Revision-Date: 2022-04-07 18:01+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -17,14 +17,8 @@ msgstr ""
 "X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: src/filemetadataprovider.cpp:104
-#, kde-format
-msgctxt "width × height"
-msgid "%1 × %2"
-msgstr "%1 × %2"
-
-#: src/filemetadataprovider.cpp:195 src/filemetadataprovider.cpp:201
-#: src/filemetadataprovider.cpp:296 src/filemetadataprovider.cpp:299
+#: src/filemetadataprovider.cpp:196 src/filemetadataprovider.cpp:202
+#: src/filemetadataprovider.cpp:297 src/filemetadataprovider.cpp:300
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
@@ -33,109 +27,109 @@ msgstr[0] "%1 položka"
 msgstr[1] "%1 položky"
 msgstr[2] "%1 položiek"
 
-#: src/filemetadataprovider.cpp:414 src/filemetadataprovider.cpp:431
+#: src/filemetadataprovider.cpp:415 src/filemetadataprovider.cpp:432
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "Komentár"
 
-#: src/filemetadataprovider.cpp:415
+#: src/filemetadataprovider.cpp:416
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "Vytvorené"
 
-#: src/filemetadataprovider.cpp:416
+#: src/filemetadataprovider.cpp:417
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "Pristupované"
 
-#: src/filemetadataprovider.cpp:417
+#: src/filemetadataprovider.cpp:418
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "Zmenené"
 
-#: src/filemetadataprovider.cpp:418
+#: src/filemetadataprovider.cpp:419
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "Vlastník"
 
-#: src/filemetadataprovider.cpp:419
+#: src/filemetadataprovider.cpp:420
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "Skupina"
 
-#: src/filemetadataprovider.cpp:420
+#: src/filemetadataprovider.cpp:421
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "Práva"
 
-#: src/filemetadataprovider.cpp:421 src/filemetadataprovider.cpp:430
+#: src/filemetadataprovider.cpp:422 src/filemetadataprovider.cpp:431
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "Hodnotenie"
 
-#: src/filemetadataprovider.cpp:422
+#: src/filemetadataprovider.cpp:423
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "Veľkosť"
 
-#: src/filemetadataprovider.cpp:423 src/filemetadataprovider.cpp:429
+#: src/filemetadataprovider.cpp:424 src/filemetadataprovider.cpp:430
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "Značky"
 
-#: src/filemetadataprovider.cpp:424
+#: src/filemetadataprovider.cpp:425
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "Celková veľkosť"
 
-#: src/filemetadataprovider.cpp:425
+#: src/filemetadataprovider.cpp:426
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "Skryté položky"
 
-#: src/filemetadataprovider.cpp:426
+#: src/filemetadataprovider.cpp:427
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "Typ"
 
-#: src/filemetadataprovider.cpp:427
+#: src/filemetadataprovider.cpp:428
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "Spojiť s"
 
-#: src/filemetadataprovider.cpp:428
+#: src/filemetadataprovider.cpp:429
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:432
+#: src/filemetadataprovider.cpp:433
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "Stiahnuté z"
 
-#: src/filemetadataprovider.cpp:433
+#: src/filemetadataprovider.cpp:434
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "Rozmery"
 
-#: src/filemetadataprovider.cpp:434
+#: src/filemetadataprovider.cpp:435
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
@@ -220,41 +214,47 @@ msgstr "Nová značka"
 msgid "New tag:"
 msgstr "Nová značka:"
 
-#: src/widgetfactory.cpp:70 src/widgetfactory.cpp:81
+#: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
 msgctxt "String list separator"
 msgid ", "
 msgstr ", "
 
-#: src/widgetfactory.cpp:105
+#: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
 msgstr ""
 
-#: src/widgetfactory.cpp:105
+#: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
 msgstr ""
 
-#: src/widgetfactory.cpp:106
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
 msgstr ""
 
-#: src/widgetfactory.cpp:106
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
 msgstr ""
 
-#: src/widgetfactory.cpp:114
+#: src/widgetfactory.cpp:115
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
 msgstr ""
+
+#: src/widgetfactory.cpp:137
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
 
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"

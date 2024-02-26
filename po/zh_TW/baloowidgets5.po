@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 01:39+0000\n"
+"POT-Creation-Date: 2024-02-26 01:37+0000\n"
 "PO-Revision-Date: 2023-01-29 23:29+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -20,123 +20,117 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 22.12.1\n"
 
-#: src/filemetadataprovider.cpp:104
-#, kde-format
-msgctxt "width × height"
-msgid "%1 × %2"
-msgstr "%1 × %2"
-
-#: src/filemetadataprovider.cpp:195 src/filemetadataprovider.cpp:201
-#: src/filemetadataprovider.cpp:296 src/filemetadataprovider.cpp:299
+#: src/filemetadataprovider.cpp:196 src/filemetadataprovider.cpp:202
+#: src/filemetadataprovider.cpp:297 src/filemetadataprovider.cpp:300
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
 msgid_plural "%1 items"
 msgstr[0] "%1 個項目"
 
-#: src/filemetadataprovider.cpp:414 src/filemetadataprovider.cpp:431
+#: src/filemetadataprovider.cpp:415 src/filemetadataprovider.cpp:432
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "註解"
 
-#: src/filemetadataprovider.cpp:415
+#: src/filemetadataprovider.cpp:416
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "已建立"
 
-#: src/filemetadataprovider.cpp:416
+#: src/filemetadataprovider.cpp:417
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "已存取"
 
-#: src/filemetadataprovider.cpp:417
+#: src/filemetadataprovider.cpp:418
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "已變更"
 
-#: src/filemetadataprovider.cpp:418
+#: src/filemetadataprovider.cpp:419
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "擁有者"
 
-#: src/filemetadataprovider.cpp:419
+#: src/filemetadataprovider.cpp:420
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "群組"
 
-#: src/filemetadataprovider.cpp:420
+#: src/filemetadataprovider.cpp:421
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "權限"
 
-#: src/filemetadataprovider.cpp:421 src/filemetadataprovider.cpp:430
+#: src/filemetadataprovider.cpp:422 src/filemetadataprovider.cpp:431
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "評分"
 
-#: src/filemetadataprovider.cpp:422
+#: src/filemetadataprovider.cpp:423
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "大小"
 
-#: src/filemetadataprovider.cpp:423 src/filemetadataprovider.cpp:429
+#: src/filemetadataprovider.cpp:424 src/filemetadataprovider.cpp:430
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "標籤"
 
-#: src/filemetadataprovider.cpp:424
+#: src/filemetadataprovider.cpp:425
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "總共大小"
 
-#: src/filemetadataprovider.cpp:425
+#: src/filemetadataprovider.cpp:426
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "隱藏項目"
 
-#: src/filemetadataprovider.cpp:426
+#: src/filemetadataprovider.cpp:427
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "類型"
 
-#: src/filemetadataprovider.cpp:427
+#: src/filemetadataprovider.cpp:428
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "連結到"
 
-#: src/filemetadataprovider.cpp:428
+#: src/filemetadataprovider.cpp:429
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr "指向"
 
-#: src/filemetadataprovider.cpp:432
+#: src/filemetadataprovider.cpp:433
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "已下載從"
 
-#: src/filemetadataprovider.cpp:433
+#: src/filemetadataprovider.cpp:434
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "尺寸"
 
-#: src/filemetadataprovider.cpp:434
+#: src/filemetadataprovider.cpp:435
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
@@ -221,41 +215,47 @@ msgstr "新標籤"
 msgid "New tag:"
 msgstr "新標籤："
 
-#: src/widgetfactory.cpp:70 src/widgetfactory.cpp:81
+#: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
 msgctxt "String list separator"
 msgid ", "
 msgstr ", "
 
-#: src/widgetfactory.cpp:105
+#: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
 msgstr "%1°S"
 
-#: src/widgetfactory.cpp:105
+#: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
 msgstr "%1°N"
 
-#: src/widgetfactory.cpp:106
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
 msgstr "%1°W"
 
-#: src/widgetfactory.cpp:106
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
 msgstr "%1°E"
 
-#: src/widgetfactory.cpp:114
+#: src/widgetfactory.cpp:115
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
 msgstr "用 %1 顯示位置"
+
+#: src/widgetfactory.cpp:137
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
 
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"

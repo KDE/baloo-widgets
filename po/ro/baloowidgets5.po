@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 01:39+0000\n"
+"POT-Creation-Date: 2024-02-26 01:37+0000\n"
 "PO-Revision-Date: 2022-12-28 13:53+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -19,14 +19,8 @@ msgstr ""
 "20)) ? 1 : 2;\n"
 "X-Generator: Lokalize 21.12.3\n"
 
-#: src/filemetadataprovider.cpp:104
-#, kde-format
-msgctxt "width × height"
-msgid "%1 × %2"
-msgstr "%1 × %2"
-
-#: src/filemetadataprovider.cpp:195 src/filemetadataprovider.cpp:201
-#: src/filemetadataprovider.cpp:296 src/filemetadataprovider.cpp:299
+#: src/filemetadataprovider.cpp:196 src/filemetadataprovider.cpp:202
+#: src/filemetadataprovider.cpp:297 src/filemetadataprovider.cpp:300
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
@@ -35,109 +29,109 @@ msgstr[0] "%1 element"
 msgstr[1] "%1 elemente"
 msgstr[2] "%1 de elemente"
 
-#: src/filemetadataprovider.cpp:414 src/filemetadataprovider.cpp:431
+#: src/filemetadataprovider.cpp:415 src/filemetadataprovider.cpp:432
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "Comentariu"
 
-#: src/filemetadataprovider.cpp:415
+#: src/filemetadataprovider.cpp:416
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "Creat"
 
-#: src/filemetadataprovider.cpp:416
+#: src/filemetadataprovider.cpp:417
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "Accesat"
 
-#: src/filemetadataprovider.cpp:417
+#: src/filemetadataprovider.cpp:418
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "Modificat"
 
-#: src/filemetadataprovider.cpp:418
+#: src/filemetadataprovider.cpp:419
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "Proprietar"
 
-#: src/filemetadataprovider.cpp:419
+#: src/filemetadataprovider.cpp:420
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "Grup"
 
-#: src/filemetadataprovider.cpp:420
+#: src/filemetadataprovider.cpp:421
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "Permisiuni"
 
-#: src/filemetadataprovider.cpp:421 src/filemetadataprovider.cpp:430
+#: src/filemetadataprovider.cpp:422 src/filemetadataprovider.cpp:431
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "Evaluare"
 
-#: src/filemetadataprovider.cpp:422
+#: src/filemetadataprovider.cpp:423
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "Dimensiune"
 
-#: src/filemetadataprovider.cpp:423 src/filemetadataprovider.cpp:429
+#: src/filemetadataprovider.cpp:424 src/filemetadataprovider.cpp:430
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "Marcaje"
 
-#: src/filemetadataprovider.cpp:424
+#: src/filemetadataprovider.cpp:425
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "Dimensiune totală"
 
-#: src/filemetadataprovider.cpp:425
+#: src/filemetadataprovider.cpp:426
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "Elemente ascunse"
 
-#: src/filemetadataprovider.cpp:426
+#: src/filemetadataprovider.cpp:427
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "Tip"
 
-#: src/filemetadataprovider.cpp:427
+#: src/filemetadataprovider.cpp:428
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "Legătură la"
 
-#: src/filemetadataprovider.cpp:428
+#: src/filemetadataprovider.cpp:429
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr "Indică spre"
 
-#: src/filemetadataprovider.cpp:432
+#: src/filemetadataprovider.cpp:433
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "Descărcat de la"
 
-#: src/filemetadataprovider.cpp:433
+#: src/filemetadataprovider.cpp:434
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "Dimensiuni"
 
-#: src/filemetadataprovider.cpp:434
+#: src/filemetadataprovider.cpp:435
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
@@ -222,41 +216,47 @@ msgstr "Marcaj nou"
 msgid "New tag:"
 msgstr "Marcaj nou:"
 
-#: src/widgetfactory.cpp:70 src/widgetfactory.cpp:81
+#: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
 msgctxt "String list separator"
 msgid ", "
 msgstr ", "
 
-#: src/widgetfactory.cpp:105
+#: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
 msgstr "%1°S"
 
-#: src/widgetfactory.cpp:105
+#: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
 msgstr "%1°N"
 
-#: src/widgetfactory.cpp:106
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
 msgstr "%1°V"
 
-#: src/widgetfactory.cpp:106
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
 msgstr "%1°E"
 
-#: src/widgetfactory.cpp:114
+#: src/widgetfactory.cpp:115
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
 msgstr "Arată amplasarea în %1"
+
+#: src/widgetfactory.cpp:137
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
 
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"
