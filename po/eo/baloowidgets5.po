@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-26 01:37+0000\n"
-"PO-Revision-Date: 2024-02-26 21:30+0100\n"
+"PO-Revision-Date: 2024-03-24 10:34+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo.org>\n"
 "Language: eo\n"
@@ -97,7 +97,7 @@ msgstr "Tuta grandeco"
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
-msgstr ""
+msgstr "Kaŝitaj aĵoj"
 
 #: src/filemetadataprovider.cpp:427
 #, kde-format
@@ -109,13 +109,13 @@ msgstr "Tipo"
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
-msgstr ""
+msgstr "Ligo al"
 
 #: src/filemetadataprovider.cpp:429
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
-msgstr ""
+msgstr "Punktas al"
 
 #: src/filemetadataprovider.cpp:433
 #, kde-format
@@ -157,13 +157,13 @@ msgstr "Redakti..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Comment"
-msgstr ""
+msgstr "Redakti Komenton"
 
 #: src/kcommentwidget.cpp:99
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Comment"
-msgstr ""
+msgstr "Aldoni Komenton"
 
 #: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
 #, kde-format
@@ -186,13 +186,13 @@ msgstr "Aldoni Etikedojn"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
-msgstr ""
+msgstr "Agordi kiuj etikedoj devas esti aplikataj."
 
 #: src/kedittagsdialog.cpp:64
 #, kde-format
 msgctxt "@label"
 msgid "Create new tag:"
-msgstr ""
+msgstr "Krei novan etikedon:"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
 #, kde-format
@@ -212,7 +212,7 @@ msgstr "Nova etikedo"
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
 #, kde-format
 msgid "New tag:"
-msgstr ""
+msgstr "Nova etikedo:"
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
@@ -224,31 +224,31 @@ msgstr ", "
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
-msgstr ""
+msgstr "%1°S"
 
 #: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
-msgstr ""
+msgstr "%1°N"
 
 #: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
-msgstr ""
+msgstr "%1°W"
 
 #: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
-msgstr ""
+msgstr "%1°O"
 
 #: src/widgetfactory.cpp:115
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
-msgstr ""
+msgstr "Montri lokon en %1"
 
 #: src/widgetfactory.cpp:137
 #, kde-format
