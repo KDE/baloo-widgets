@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 00:40+0000\n"
+"POT-Creation-Date: 2024-02-26 01:37+0000\n"
 "PO-Revision-Date: 2022-08-09 13:40+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -18,123 +18,117 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 21.12.3\n"
 
-#: src/filemetadataprovider.cpp:104
-#, kde-format
-msgctxt "width × height"
-msgid "%1 × %2"
-msgstr "%1 × %2"
-
-#: src/filemetadataprovider.cpp:195 src/filemetadataprovider.cpp:201
-#: src/filemetadataprovider.cpp:296 src/filemetadataprovider.cpp:299
+#: src/filemetadataprovider.cpp:196 src/filemetadataprovider.cpp:202
+#: src/filemetadataprovider.cpp:297 src/filemetadataprovider.cpp:300
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
 msgid_plural "%1 items"
 msgstr[0] "항목 %1개"
 
-#: src/filemetadataprovider.cpp:414 src/filemetadataprovider.cpp:431
+#: src/filemetadataprovider.cpp:415 src/filemetadataprovider.cpp:432
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "설명"
 
-#: src/filemetadataprovider.cpp:415
+#: src/filemetadataprovider.cpp:416
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "생성됨"
 
-#: src/filemetadataprovider.cpp:416
+#: src/filemetadataprovider.cpp:417
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "접근함"
 
-#: src/filemetadataprovider.cpp:417
+#: src/filemetadataprovider.cpp:418
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "수정됨"
 
-#: src/filemetadataprovider.cpp:418
+#: src/filemetadataprovider.cpp:419
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "소유자"
 
-#: src/filemetadataprovider.cpp:419
+#: src/filemetadataprovider.cpp:420
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "그룹"
 
-#: src/filemetadataprovider.cpp:420
+#: src/filemetadataprovider.cpp:421
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "권한"
 
-#: src/filemetadataprovider.cpp:421 src/filemetadataprovider.cpp:430
+#: src/filemetadataprovider.cpp:422 src/filemetadataprovider.cpp:431
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "별점"
 
-#: src/filemetadataprovider.cpp:422
+#: src/filemetadataprovider.cpp:423
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "크기"
 
-#: src/filemetadataprovider.cpp:423 src/filemetadataprovider.cpp:429
+#: src/filemetadataprovider.cpp:424 src/filemetadataprovider.cpp:430
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "태그"
 
-#: src/filemetadataprovider.cpp:424
+#: src/filemetadataprovider.cpp:425
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "총 크기"
 
-#: src/filemetadataprovider.cpp:425
+#: src/filemetadataprovider.cpp:426
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "숨겨진 항목"
 
-#: src/filemetadataprovider.cpp:426
+#: src/filemetadataprovider.cpp:427
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "종류"
 
-#: src/filemetadataprovider.cpp:427
+#: src/filemetadataprovider.cpp:428
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "링크 대상"
 
-#: src/filemetadataprovider.cpp:428
+#: src/filemetadataprovider.cpp:429
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr "가리키는 곳"
 
-#: src/filemetadataprovider.cpp:432
+#: src/filemetadataprovider.cpp:433
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "다운로드한 위치"
 
-#: src/filemetadataprovider.cpp:433
+#: src/filemetadataprovider.cpp:434
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "크기"
 
-#: src/filemetadataprovider.cpp:434
+#: src/filemetadataprovider.cpp:435
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
@@ -170,30 +164,30 @@ msgctxt "@title:window"
 msgid "Add Comment"
 msgstr "설명 추가"
 
-#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:32
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
 #, kde-format
 msgid "Save"
 msgstr "저장"
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Tags"
 msgstr "태그 편집"
 
-#: src/kedittagsdialog.cpp:28
+#: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Tags"
 msgstr "태그 추가"
 
-#: src/kedittagsdialog.cpp:42
+#: src/kedittagsdialog.cpp:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
 msgstr "적용할 태그를 설정합니다."
 
-#: src/kedittagsdialog.cpp:51
+#: src/kedittagsdialog.cpp:64
 #, kde-format
 msgctxt "@label"
 msgid "Create new tag:"
@@ -219,41 +213,47 @@ msgstr "새 태그"
 msgid "New tag:"
 msgstr "새 태그:"
 
-#: src/widgetfactory.cpp:70 src/widgetfactory.cpp:81
+#: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
 msgctxt "String list separator"
 msgid ", "
 msgstr ", "
 
-#: src/widgetfactory.cpp:105
+#: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
 msgstr "%1°S"
 
-#: src/widgetfactory.cpp:105
+#: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
 msgstr "%1°N"
 
-#: src/widgetfactory.cpp:106
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
 msgstr "%1°W"
 
-#: src/widgetfactory.cpp:106
+#: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
 msgstr "%1°E"
 
-#: src/widgetfactory.cpp:114
+#: src/widgetfactory.cpp:115
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
 msgstr "%1에 위치 표시"
+
+#: src/widgetfactory.cpp:137
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
 
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"
