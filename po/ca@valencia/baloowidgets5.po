@@ -148,13 +148,13 @@ msgstr "&Detalls"
 #, kde-format
 msgctxt "@label"
 msgid "Add..."
-msgstr "Afig..."
+msgstr "Afig…"
 
 #: src/kcommentwidget.cpp:54 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Edit..."
-msgstr "Edita..."
+msgstr "Edita…"
 
 #: src/kcommentwidget.cpp:99
 #, kde-format
@@ -205,7 +205,7 @@ msgstr "Assigna etiquetes"
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
 #, kde-format
 msgid "Create New..."
-msgstr "Crea nova..."
+msgstr "Crea nova…"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
 #, kde-format
