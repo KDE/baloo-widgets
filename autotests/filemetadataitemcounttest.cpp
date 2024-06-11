@@ -42,15 +42,17 @@ void FileMetadataItemCountTest::testItemCount()
 {
     auto widget = std::make_unique<Baloo::FileMetaDataWidget>();
 
-    // the number of items will increase in the future adding the file creation time field
-    // when the system has KIO 5.58, glibc 2.28, linux 4.11 and a filesystem storing file creation times (btrfs, ext4...)
-    // The expectedItems count will need to be updated
-    const int expectedItems = 20;
+    // TODO this test needs improving to not have a "random" number but actually check things
+    int expectedItems = 20;
     const int widgetsPerItem = 2;
 
     QSignalSpy spy(widget.get(), &Baloo::FileMetaDataWidget::metaDataRequestFinished);
     const auto fileUrl = QUrl::fromLocalFile(QFINDTESTDATA("samplefiles/testtagged.mp3"));
-    widget->setItems({KFileItem{fileUrl}});
+    const KFileItem fileItem = KFileItem{fileUrl};
+    if (fileItem.time(KFileItem::CreationTime).isValid()) {
+        ++expectedItems;
+    }
+    widget->setItems({fileItem});
 
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 1);
