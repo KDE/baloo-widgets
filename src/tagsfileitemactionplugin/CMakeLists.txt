@@ -2,10 +2,10 @@ add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets5\")
 
 kcoreaddons_add_plugin(tagsfileitemaction
     SOURCES tagsfileitemaction.cpp tagsfileitemaction.h
-    INSTALL_NAMESPACE "kf${QT_MAJOR_VERSION}/kfileitemaction")
+    INSTALL_NAMESPACE "kf6/kfileitemaction")
 
 target_link_libraries(tagsfileitemaction
-    KF${QT_MAJOR_VERSION}::KIOWidgets
-    KF${QT_MAJOR_VERSION}::I18n
-    KF${QT_MAJOR_VERSION}::FileMetaData
+    KF6::KIOWidgets
+    KF6::I18n
+    KF6::FileMetaData
 )

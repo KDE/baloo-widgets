@@ -2,8 +2,8 @@ include(ECMMarkAsTest)
 
 ecm_add_test(extractortest.cpp ../src/ondemandextractor.cpp ../src/widgetsdebug.cpp
     TEST_NAME "extractortest"
-    LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test
-    KF${QT_MAJOR_VERSION}::FileMetaData
+    LINK_LIBRARIES Qt6::Test
+    KF6::FileMetaData
 )
 target_include_directories(extractortest
     PRIVATE ${CMAKE_SOURCE_DIR}/src
@@ -15,21 +15,21 @@ ecm_add_tests(
     filemetadataitemcounttest.cpp
     filemetadatadatedisplaytest.cpp
     LINK_LIBRARIES
-    KF${QT_MAJOR_VERSION}::BalooWidgets
-    Qt${QT_MAJOR_VERSION}::Test
+    KF6::BalooWidgets
+    Qt6::Test
 )
 target_link_libraries(filemetadatawidgettest
-    KF${QT_MAJOR_VERSION}::WidgetsAddons
-    KF${QT_MAJOR_VERSION}::ConfigCore
+    KF6::WidgetsAddons
+    KF6::ConfigCore
 )
 target_link_libraries(filemetadataitemcounttest
-    KF${QT_MAJOR_VERSION}::ConfigCore
+    KF6::ConfigCore
 )
 
 ecm_add_test(filemetadatamergedatatest.cpp ../src/filemetadatautil.cpp
     TEST_NAME "mergedatatest"
-    LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test
-    KF${QT_MAJOR_VERSION}::FileMetaData
+    LINK_LIBRARIES Qt6::Test
+    KF6::FileMetaData
 )
 target_include_directories(mergedatatest
     PRIVATE ${CMAKE_SOURCE_DIR}/src

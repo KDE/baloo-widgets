@@ -3,15 +3,15 @@ add_definitions(-DTRANSLATION_DOMAIN=\"baloowidgets5\")
 add_subdirectory(filepropertiesplugin)
 add_subdirectory(tagsfileitemactionplugin)
 
-add_library(KF${QT_MAJOR_VERSION}BalooWidgets)
-add_library(KF${QT_MAJOR_VERSION}::BalooWidgets ALIAS KF${QT_MAJOR_VERSION}BalooWidgets)
-set_target_properties(KF${QT_MAJOR_VERSION}BalooWidgets PROPERTIES
+add_library(KF6BalooWidgets)
+add_library(KF6::BalooWidgets ALIAS KF6BalooWidgets)
+set_target_properties(KF6BalooWidgets PROPERTIES
     VERSION     ${BALOO_WIDGETS_VERSION}
     SOVERSION   ${BALOO_WIDGETS_SOVERSION}
     EXPORT_NAME BalooWidgets
 )
 
-target_sources(KF${QT_MAJOR_VERSION}BalooWidgets PRIVATE
+target_sources(KF6BalooWidgets PRIVATE
     extractor.cpp
     extractorutil_p.h
     filefetchjob.cpp
@@ -44,7 +44,7 @@ target_sources(KF${QT_MAJOR_VERSION}BalooWidgets PRIVATE
     widgetfactory.h
 )
 
-ecm_qt_declare_logging_category(KF${QT_MAJOR_VERSION}BalooWidgets
+ecm_qt_declare_logging_category(KF6BalooWidgets
     HEADER "widgetsdebug.h"
     IDENTIFIER "Baloo::WIDGETS"
     DEFAULT_SEVERITY Warning
@@ -53,26 +53,26 @@ ecm_qt_declare_logging_category(KF${QT_MAJOR_VERSION}BalooWidgets
     EXPORT BALOO_WIDGETS
 )
 
-target_link_libraries(KF${QT_MAJOR_VERSION}BalooWidgets
+target_link_libraries(KF6BalooWidgets
   PUBLIC
-  Qt${QT_MAJOR_VERSION}::Widgets
-  Qt${QT_MAJOR_VERSION}::Core
-  KF${QT_MAJOR_VERSION}::KIOCore # KFileItem
-  KF${QT_MAJOR_VERSION}::CoreAddons # KProcess, KJob
+  Qt6::Widgets
+  Qt6::Core
+  KF6::KIOCore # KFileItem
+  KF6::CoreAddons # KProcess, KJob
 
   PRIVATE
-  KF${QT_MAJOR_VERSION}::I18n
-  KF${QT_MAJOR_VERSION}::FileMetaData
-  KF${QT_MAJOR_VERSION}::WidgetsAddons
-  KF${QT_MAJOR_VERSION}::Baloo
-  KF${QT_MAJOR_VERSION}::CoreAddons
-  KF${QT_MAJOR_VERSION}::ConfigGui
-  KF${QT_MAJOR_VERSION}::Service
+  KF6::I18n
+  KF6::FileMetaData
+  KF6::WidgetsAddons
+  KF6::Baloo
+  KF6::CoreAddons
+  KF6::ConfigGui
+  KF6::Service
 )
 
-target_include_directories(KF${QT_MAJOR_VERSION}BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets>")
+target_include_directories(KF6BalooWidgets INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/BalooWidgets>")
 
-ecm_generate_export_header(KF${QT_MAJOR_VERSION}BalooWidgets
+ecm_generate_export_header(KF6BalooWidgets
     BASE_NAME BALOO_WIDGETS
     EXPORT_FILE_NAME widgets_export.h
     VERSION ${BALOO_WIDGETS_VERSION}
@@ -81,7 +81,7 @@ ecm_generate_export_header(KF${QT_MAJOR_VERSION}BalooWidgets
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
 )
 
-install(TARGETS KF${QT_MAJOR_VERSION}BalooWidgets EXPORT KF${QT_MAJOR_VERSION}BalooWidgetsTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF6BalooWidgets EXPORT KF6BalooWidgetsTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 ecm_generate_headers(KFBalooWidgets_CamelCase_HEADERS
     HEADER_NAMES
@@ -111,9 +111,9 @@ install(FILES
 #
 add_executable(baloo_filemetadata_temp_extractor extractor.cpp)
 target_link_libraries(baloo_filemetadata_temp_extractor
-  Qt${QT_MAJOR_VERSION}::Core
-  KF${QT_MAJOR_VERSION}::I18n
-  KF${QT_MAJOR_VERSION}::FileMetaData
+  Qt6::Core
+  KF6::I18n
+  KF6::FileMetaData
 )
 
 install(TARGETS baloo_filemetadata_temp_extractor DESTINATION ${KDE_INSTALL_BINDIR})
