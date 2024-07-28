@@ -1,19 +1,22 @@
-# Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
-# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the baloo-widgets package.
+#
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
-"Project-Id-Version: baloowidgets5\n"
+"Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-26 01:37+0000\n"
-"PO-Revision-Date: 2024-01-07 22:35+0200\n"
+"PO-Revision-Date: 2024-07-27 15:13+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: src/filemetadataprovider.cpp:196 src/filemetadataprovider.cpp:202
 #: src/filemetadataprovider.cpp:297 src/filemetadataprovider.cpp:300
@@ -21,8 +24,10 @@ msgstr ""
 msgctxt "@item:intable"
 msgid "%1 item"
 msgid_plural "%1 items"
-msgstr[0] "פריט %1"
-msgstr[1] "%1 פריטים"
+msgstr[0] "פריט"
+msgstr[1] "שני פריטים"
+msgstr[2] "%1 פריטים"
+msgstr[3] "%1 פריטים"
 
 #: src/filemetadataprovider.cpp:415 src/filemetadataprovider.cpp:432
 #, kde-format
@@ -34,25 +39,25 @@ msgstr "הערה"
 #, kde-format
 msgctxt "@label"
 msgid "Created"
-msgstr "נוצר"
+msgstr "מועד יצירה"
 
 #: src/filemetadataprovider.cpp:417
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
-msgstr "גישה אחרונה"
+msgstr "מועד גישה"
 
 #: src/filemetadataprovider.cpp:418
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
-msgstr "מועד שינוי"
+msgstr "מועד עריכה"
 
 #: src/filemetadataprovider.cpp:419
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
-msgstr "בעלים"
+msgstr "בעלות"
 
 #: src/filemetadataprovider.cpp:420
 #, kde-format
@@ -112,13 +117,13 @@ msgstr "קישור אל"
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
-msgstr "מפנה אל"
+msgstr "הפנייה אל"
 
 #: src/filemetadataprovider.cpp:433
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
-msgstr "התקבל מ־"
+msgstr "ירד מ־"
 
 #: src/filemetadataprovider.cpp:434
 #, kde-format
@@ -130,7 +135,7 @@ msgstr "ממדים"
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
-msgstr "מיקום נווטן"
+msgstr "מקום GPS"
 
 #: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:65
 #, kde-format
@@ -199,7 +204,7 @@ msgstr "הקצאת תגיות"
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
 #, kde-format
 msgid "Create New..."
-msgstr "יצירת חדשה…"
+msgstr "יצירת חדש…"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
 #, kde-format
@@ -245,34 +250,10 @@ msgstr "%1° מז׳"
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
-msgstr "הצגת המקום תחת %1"
+msgstr "הצגת מקום ב־%1"
 
 #: src/widgetfactory.cpp:137
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgctxt "unknown file size"
-#~ msgid "Unknown"
-#~ msgstr "לא ידוע"
-
-#~ msgctxt "@label bitrate (per second)"
-#~ msgid "%1/s"
-#~ msgstr "%1 לשנייה"
-
-#~ msgctxt "@label"
-#~ msgid "Change..."
-#~ msgstr "שינוי..."
-
-#~ msgctxt "@title:window"
-#~ msgid "Change Comment"
-#~ msgstr "שנה הערה"
-
-#~ msgctxt "@title:window"
-#~ msgid "Change Tags"
-#~ msgstr "שנה תגיות"
-
-#~ msgctxt "@label"
-#~ msgid "Add Comment..."
-#~ msgstr "הוסף הערה..."

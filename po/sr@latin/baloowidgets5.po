@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloowidgets5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-05-31 18:04+0200\n"
+"POT-Creation-Date: 2024-02-26 01:37+0000\n"
 "PO-Revision-Date: 2017-09-09 22:51+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 "X-Environment: kde\n"
 
-#: src/filemetadataprovider.cpp:163 src/filemetadataprovider.cpp:169
-#: src/filemetadataprovider.cpp:239 src/filemetadataprovider.cpp:242
+#: src/filemetadataprovider.cpp:196 src/filemetadataprovider.cpp:202
+#: src/filemetadataprovider.cpp:297 src/filemetadataprovider.cpp:300
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
@@ -29,13 +29,13 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/filemetadataprovider.cpp:417 src/filemetadataprovider.cpp:433
+#: src/filemetadataprovider.cpp:415 src/filemetadataprovider.cpp:432
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:418
+#: src/filemetadataprovider.cpp:416
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Create new tag:"
@@ -43,120 +43,138 @@ msgctxt "@label"
 msgid "Created"
 msgstr "Napravi novu oznaku:"
 
-#: src/filemetadataprovider.cpp:419
+#: src/filemetadataprovider.cpp:417
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:420
+#: src/filemetadataprovider.cpp:418
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:421
+#: src/filemetadataprovider.cpp:419
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:422
+#: src/filemetadataprovider.cpp:420
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:423
+#: src/filemetadataprovider.cpp:421
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:424 src/filemetadataprovider.cpp:432
+#: src/filemetadataprovider.cpp:422 src/filemetadataprovider.cpp:431
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:425
+#: src/filemetadataprovider.cpp:423
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:426 src/filemetadataprovider.cpp:431
+#: src/filemetadataprovider.cpp:424 src/filemetadataprovider.cpp:430
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:427
+#: src/filemetadataprovider.cpp:425
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:428
+#: src/filemetadataprovider.cpp:426
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:429
+#: src/filemetadataprovider.cpp:427
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:430
+#: src/filemetadataprovider.cpp:428
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr ""
 
-#: src/filemetadataprovider.cpp:434
+#: src/filemetadataprovider.cpp:429
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:433
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr ""
 
-#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:67
+#: src/filemetadataprovider.cpp:434
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr ""
+
+#: src/filemetadataprovider.cpp:435
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr ""
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:65
 #, kde-format
 msgctxt "Tab page with file meta data"
 msgid "&Details"
 msgstr ""
 
-#: src/kcommentwidget.cpp:67 src/tagwidget.cpp:85
+#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Add..."
 msgstr ""
 
-#: src/kcommentwidget.cpp:73 src/tagwidget.cpp:85
+#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:86
 #, kde-format
 msgctxt "@label"
 msgid "Edit..."
 msgstr ""
 
-#: src/kcommentwidget.cpp:119
+#: src/kcommentwidget.cpp:99
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Comment"
 msgstr ""
 
-#: src/kcommentwidget.cpp:120
+#: src/kcommentwidget.cpp:99
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Comment"
 msgstr ""
 
-#: src/keditcommentdialog.cpp:45 src/kedittagsdialog.cpp:52
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
 #, kde-format
 msgid "Save"
 msgstr ""
 
-#: src/kedittagsdialog.cpp:47
+#: src/kedittagsdialog.cpp:36
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"
@@ -164,7 +182,7 @@ msgctxt "@title:window"
 msgid "Edit Tags"
 msgstr "Dodavanje oznaka"
 
-#: src/kedittagsdialog.cpp:48
+#: src/kedittagsdialog.cpp:36
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"
@@ -172,13 +190,13 @@ msgctxt "@title:window"
 msgid "Add Tags"
 msgstr "Dodavanje oznaka"
 
-#: src/kedittagsdialog.cpp:62
+#: src/kedittagsdialog.cpp:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
 msgstr ""
 
-#: src/kedittagsdialog.cpp:70
+#: src/kedittagsdialog.cpp:64
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Create new tag:"
@@ -186,34 +204,70 @@ msgctxt "@label"
 msgid "Create new tag:"
 msgstr "Napravi novu oznaku:"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:44
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"
 msgid "Assign Tags"
 msgstr "Dodavanje oznaka"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:79
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Create new tag:"
 msgid "Create New..."
 msgstr "Napravi novu oznaku:"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:83
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
 #, kde-format
 msgid "New tag"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:83
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Create new tag:"
 msgid "New tag:"
 msgstr "Napravi novu oznaku:"
 
-#: src/widgetfactory.cpp:85 src/widgetfactory.cpp:95
+#: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
 msgctxt "String list separator"
 msgid ", "
+msgstr ""
+
+#: src/widgetfactory.cpp:106
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr ""
+
+#: src/widgetfactory.cpp:106
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr ""
+
+#: src/widgetfactory.cpp:107
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr ""
+
+#: src/widgetfactory.cpp:107
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr ""
+
+#: src/widgetfactory.cpp:115
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr ""
+
+#: src/widgetfactory.cpp:137
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
 msgstr ""
