@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/baloo-widgets/baloowidgets5.pot\n"
-"X-Crowdin-File-ID: 5389\n"
+"X-Crowdin-File: /kf6-trunk/messages/baloo-widgets/baloowidgets5.pot\n"
+"X-Crowdin-File-ID: 55056\n"
 
 #: src/filemetadataprovider.cpp:196 src/filemetadataprovider.cpp:202
 #: src/filemetadataprovider.cpp:297 src/filemetadataprovider.cpp:300
@@ -23,13 +23,13 @@ msgstr ""
 msgctxt "@item:intable"
 msgid "%1 item"
 msgid_plural "%1 items"
-msgstr[0] "%1个条目"
+msgstr[0] "%1个项目"
 
 #: src/filemetadataprovider.cpp:415 src/filemetadataprovider.cpp:432
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
-msgstr "备注"
+msgstr "注释"
 
 #: src/filemetadataprovider.cpp:416
 #, kde-format
@@ -155,7 +155,7 @@ msgstr "编辑..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Comment"
-msgstr "编辑评论"
+msgstr "编辑注释"
 
 #: src/kcommentwidget.cpp:99
 #, kde-format
@@ -184,7 +184,7 @@ msgstr "添加标记"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
-msgstr "配置应该应用哪些标记。"
+msgstr "配置要应用的标签。"
 
 #: src/kedittagsdialog.cpp:64
 #, kde-format
