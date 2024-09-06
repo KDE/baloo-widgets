@@ -2,7 +2,7 @@
 # Frederik Schwarzer <schwarzer@kde.org>, 2012, 2014, 2016, 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: baloowidgets5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-26 01:37+0000\n"
 "PO-Revision-Date: 2022-07-23 23:10+0200\n"
