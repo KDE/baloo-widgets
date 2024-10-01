@@ -3,13 +3,13 @@
 #
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2014.
 # Kiszel Kristóf <kiszel.kristof@gmail.com>, 2017, 2018, 2020.
-# Kristof Kiszel <ulysses@fsf.hu>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-26 01:37+0000\n"
-"PO-Revision-Date: 2022-02-08 09:25+0100\n"
+"PO-Revision-Date: 2024-09-30 22:01+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.07.70\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: src/filemetadataprovider.cpp:196 src/filemetadataprovider.cpp:202
 #: src/filemetadataprovider.cpp:297 src/filemetadataprovider.cpp:300
@@ -116,7 +116,7 @@ msgstr "Hivatkozás erre:"
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
-msgstr ""
+msgstr "Ide mutat:"
 
 #: src/filemetadataprovider.cpp:433
 #, kde-format
@@ -131,12 +131,10 @@ msgid "Dimensions"
 msgstr "Méretek"
 
 #: src/filemetadataprovider.cpp:435
-#, fuzzy, kde-format
-#| msgctxt "@label file URL"
-#| msgid "Location"
+#, kde-format
 msgctxt "@label"
 msgid "GPS Location"
-msgstr "Hely"
+msgstr "GPS hely"
 
 #: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:65
 #, kde-format
@@ -227,31 +225,31 @@ msgstr ", "
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
-msgstr ""
+msgstr "%1°D"
 
 #: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
-msgstr ""
+msgstr "%1°É"
 
 #: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
-msgstr ""
+msgstr "%1°Ny"
 
 #: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
-msgstr ""
+msgstr "%1°K"
 
 #: src/widgetfactory.cpp:115
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
-msgstr ""
+msgstr "Hely megjelenítése itt: %1"
 
 #: src/widgetfactory.cpp:137
 #, kde-format
