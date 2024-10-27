@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloowidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-26 01:37+0000\n"
+"POT-Creation-Date: 2024-10-27 00:39+0000\n"
 "PO-Revision-Date: 2023-01-04 10:34+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -20,8 +20,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 21.12.3\n"
 
-#: src/filemetadataprovider.cpp:196 src/filemetadataprovider.cpp:202
-#: src/filemetadataprovider.cpp:297 src/filemetadataprovider.cpp:300
+#: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
+#: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
@@ -29,109 +29,109 @@ msgid_plural "%1 items"
 msgstr[0] "%1 αντικείμενο"
 msgstr[1] "%1 αντικείμενα"
 
-#: src/filemetadataprovider.cpp:415 src/filemetadataprovider.cpp:432
+#: src/filemetadataprovider.cpp:442 src/filemetadataprovider.cpp:459
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "Σχόλιο"
 
-#: src/filemetadataprovider.cpp:416
+#: src/filemetadataprovider.cpp:443
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "Δημιουργήθηκε"
 
-#: src/filemetadataprovider.cpp:417
+#: src/filemetadataprovider.cpp:444
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "Προσπελάστηκε"
 
-#: src/filemetadataprovider.cpp:418
+#: src/filemetadataprovider.cpp:445
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "Τροποποιήθηκε"
 
-#: src/filemetadataprovider.cpp:419
+#: src/filemetadataprovider.cpp:446
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "Ιδιοκτήτης"
 
-#: src/filemetadataprovider.cpp:420
+#: src/filemetadataprovider.cpp:447
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "Ομάδα"
 
-#: src/filemetadataprovider.cpp:421
+#: src/filemetadataprovider.cpp:448
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "Δικαιώματα"
 
-#: src/filemetadataprovider.cpp:422 src/filemetadataprovider.cpp:431
+#: src/filemetadataprovider.cpp:449 src/filemetadataprovider.cpp:458
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "Αξιολόγηση"
 
-#: src/filemetadataprovider.cpp:423
+#: src/filemetadataprovider.cpp:450
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "Μέγεθος"
 
-#: src/filemetadataprovider.cpp:424 src/filemetadataprovider.cpp:430
+#: src/filemetadataprovider.cpp:451 src/filemetadataprovider.cpp:457
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "Ετικέτες"
 
-#: src/filemetadataprovider.cpp:425
+#: src/filemetadataprovider.cpp:452
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "Συνολικό μέγεθος"
 
-#: src/filemetadataprovider.cpp:426
+#: src/filemetadataprovider.cpp:453
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "Κρυμμένα αντικείμενα"
 
-#: src/filemetadataprovider.cpp:427
+#: src/filemetadataprovider.cpp:454
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "Τύπος"
 
-#: src/filemetadataprovider.cpp:428
+#: src/filemetadataprovider.cpp:455
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "Δεσμός στο"
 
-#: src/filemetadataprovider.cpp:429
+#: src/filemetadataprovider.cpp:456
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr "Δείχνει στο"
 
-#: src/filemetadataprovider.cpp:433
+#: src/filemetadataprovider.cpp:460
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "Ελήφθη από"
 
-#: src/filemetadataprovider.cpp:434
+#: src/filemetadataprovider.cpp:461
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "Διαστάσεις"
 
-#: src/filemetadataprovider.cpp:435
+#: src/filemetadataprovider.cpp:462
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
