@@ -1,0 +1,258 @@
+# Sanskrit translations for baloo-widgets package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the baloo-widgets package.
+# Kali <EMAIL@ADDRESS>, 2024.
+#
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: baloo-widgets\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"PO-Revision-Date: 2024-12-14 01:10+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
+"Language: sa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>2);\n"
+"X-Generator: Lokalize 24.08.2\n"
+
+#: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
+#: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
+#, kde-format
+msgctxt "@item:intable"
+msgid "%1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 द्रव्यम्"
+msgstr[1] "%1 द्रव्यम्"
+
+#: src/filemetadataprovider.cpp:442 src/filemetadataprovider.cpp:459
+#, kde-format
+msgctxt "@label"
+msgid "Comment"
+msgstr "टिप्पणी"
+
+#: src/filemetadataprovider.cpp:443
+#, kde-format
+msgctxt "@label"
+msgid "Created"
+msgstr "निर्मितम्"
+
+#: src/filemetadataprovider.cpp:444
+#, kde-format
+msgctxt "@label"
+msgid "Accessed"
+msgstr "अभिगमनम्"
+
+#: src/filemetadataprovider.cpp:445
+#, kde-format
+msgctxt "@label"
+msgid "Modified"
+msgstr "परिवर्तित"
+
+#: src/filemetadataprovider.cpp:446
+#, kde-format
+msgctxt "@label"
+msgid "Owner"
+msgstr "स्वामी"
+
+#: src/filemetadataprovider.cpp:447
+#, kde-format
+msgctxt "@label"
+msgid "Group"
+msgstr "समूह"
+
+#: src/filemetadataprovider.cpp:448
+#, kde-format
+msgctxt "@label"
+msgid "Permissions"
+msgstr "अनुमतिः"
+
+#: src/filemetadataprovider.cpp:449 src/filemetadataprovider.cpp:458
+#, kde-format
+msgctxt "@label"
+msgid "Rating"
+msgstr "रेटिंग्"
+
+#: src/filemetadataprovider.cpp:450
+#, kde-format
+msgctxt "@label"
+msgid "Size"
+msgstr "आकृति"
+
+#: src/filemetadataprovider.cpp:451 src/filemetadataprovider.cpp:457
+#, kde-format
+msgctxt "@label"
+msgid "Tags"
+msgstr "टैग्स"
+
+#: src/filemetadataprovider.cpp:452
+#, kde-format
+msgctxt "@label"
+msgid "Total Size"
+msgstr "कुल आकार"
+
+#: src/filemetadataprovider.cpp:453
+#, kde-format
+msgctxt "@label"
+msgid "Hidden items"
+msgstr "गुप्तवस्तूनि"
+
+#: src/filemetadataprovider.cpp:454
+#, kde-format
+msgctxt "@label"
+msgid "Type"
+msgstr "प्रकारः"
+
+#: src/filemetadataprovider.cpp:455
+#, kde-format
+msgctxt "@label"
+msgid "Link to"
+msgstr "लिङ्क् to"
+
+#: src/filemetadataprovider.cpp:456
+#, kde-format
+msgctxt "@label"
+msgid "Points to"
+msgstr "दर्शयति"
+
+#: src/filemetadataprovider.cpp:460
+#, kde-format
+msgctxt "@label"
+msgid "Downloaded From"
+msgstr "Downloaded From"
+
+#: src/filemetadataprovider.cpp:461
+#, kde-format
+msgctxt "@label"
+msgid "Dimensions"
+msgstr "आयामाः"
+
+#: src/filemetadataprovider.cpp:462
+#, kde-format
+msgctxt "@label"
+msgid "GPS Location"
+msgstr "जीपीएस स्थानम्"
+
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:65
+#, kde-format
+msgctxt "Tab page with file meta data"
+msgid "&Details"
+msgstr "&वर्णन"
+
+#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:86
+#, kde-format
+msgctxt "@label"
+msgid "Add..."
+msgstr "संयोजयति..."
+
+#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:86
+#, kde-format
+msgctxt "@label"
+msgid "Edit..."
+msgstr "सम्पादन..."
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Comment"
+msgstr "टिप्पणी सम्पादयतु"
+
+#: src/kcommentwidget.cpp:99
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Comment"
+msgstr "टिप्पणीं योजयतु"
+
+#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
+#, kde-format
+msgid "Save"
+msgstr "रक्ष्"
+
+#: src/kedittagsdialog.cpp:36
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Tags"
+msgstr "टैग सम्पादयतु"
+
+#: src/kedittagsdialog.cpp:36
+#, kde-format
+msgctxt "@title:window"
+msgid "Add Tags"
+msgstr "टैग्स् योजयतु"
+
+#: src/kedittagsdialog.cpp:50
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Configure which tags should be applied."
+msgstr "केषां टैग्स् प्रयोक्तव्याः इति विन्यस्यताम् ।"
+
+#: src/kedittagsdialog.cpp:64
+#, kde-format
+msgctxt "@label"
+msgid "Create new tag:"
+msgstr "नूतनं टैगं रचयन्तु : १."
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#, kde-format
+msgid "Assign Tags"
+msgstr "टैग्स नियुक्त करें"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#, kde-format
+msgid "Create New..."
+msgstr "नूतनं रचयतु..."
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag"
+msgstr "नवीन टैग"
+
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#, kde-format
+msgid "New tag:"
+msgstr "नवीनं टैगम् : १."
+
+#: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", ९. "
+
+#: src/widgetfactory.cpp:106
+#, kde-format
+msgctxt "Latitude (South)"
+msgid "%1°S"
+msgstr "%1°S"
+
+#: src/widgetfactory.cpp:106
+#, kde-format
+msgctxt "Latitude (North)"
+msgid "%1°N"
+msgstr "%1°उ"
+
+#: src/widgetfactory.cpp:107
+#, kde-format
+msgctxt "Longitude (West)"
+msgid "%1°W"
+msgstr "%1°प"
+
+#: src/widgetfactory.cpp:107
+#, kde-format
+msgctxt "Longitude (East)"
+msgid "%1°E"
+msgstr "%1°ई"
+
+#: src/widgetfactory.cpp:115
+#, kde-format
+msgctxt "@info:tooltip Show location in map viewer"
+msgid "Show location in %1"
+msgstr "%1 मध्ये स्थानं दर्शयतु"
+
+#: src/widgetfactory.cpp:137
+#, kde-format
+msgctxt "width × height"
+msgid "%1 × %2"
+msgstr "%1 × %2"
