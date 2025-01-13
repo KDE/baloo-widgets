@@ -24,7 +24,9 @@ public:
     QList<QAction *> actions(const KFileItemListProperties &fileItemInfos, QWidget *parentWidget) override;
 
 private:
-    KFileMetaData::UserMetaData *m_metaData = nullptr;
+    void manageTagsForSingleFile(const KFileItemList &items);
+    void manageTagsForMultipleFiles(const KFileItemList &items);
+    QList<KFileMetaData::UserMetaData> m_metaDataList;
     KCoreDirLister m_tagsLister;
     QMenu *m_menu;
     QAction *newAction;
