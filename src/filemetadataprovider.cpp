@@ -362,11 +362,12 @@ void FileMetaDataProviderPrivate::processFileItems()
 
     QStringList urls;
     urls.reserve(m_fileItems.size());
-    // Only extract data from indexed files,
+    // Only extract data from local files,
+    // and in cifs/nfs/sftp mounts only in singleFileMode
     // it would be too expensive otherwise.
     for (const KFileItem &item : std::as_const(m_fileItems)) {
         const QUrl url = item.targetUrl();
-        if (url.isLocalFile() && !item.isSlow()) {
+        if (url.isLocalFile() && (!item.isSlow() || singleFileMode)) {
             urls << url.toLocalFile();
         }
     }
