@@ -189,85 +189,84 @@ void FileMetaDataProviderPrivate::insertSingleFileBasicData()
     // TODO: Handle case if remote URLs are used properly. isDir() does
     // not work, the modification date needs also to be adjusted...
     Q_ASSERT(m_fileItems.count() == 1);
-    {
-        const KFileItem &item = m_fileItems.first();
 
-        KFormat format;
-        if (item.isDir()) {
-            if (item.isLocalFile() && !item.isSlow()) {
-                const QPair<int, int> counts = subDirectoriesCount(item.url().path());
-                const int count = counts.first;
-                if (count != -1) {
-                    QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
-                    m_data.insert(QStringLiteral("kfileitem#size"), itemCountString);
+    const KFileItem &item = m_fileItems.first();
 
-                    const int hiddenCount = counts.second;
-                    if (hiddenCount > 0) {
-                        // add hidden items count
-                        QString hiddenCountString = i18ncp("@item:intable", "%1 item", "%1 items", hiddenCount);
-                        m_data.insert(QStringLiteral("kfileitem#hiddenItems"), hiddenCountString);
-                    }
+    KFormat format;
+    if (item.isDir()) {
+        if (item.isLocalFile() && !item.isSlow()) {
+            const QPair<int, int> counts = subDirectoriesCount(item.url().path());
+            const int count = counts.first;
+            if (count != -1) {
+                QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
+                m_data.insert(QStringLiteral("kfileitem#size"), itemCountString);
+
+                const int hiddenCount = counts.second;
+                if (hiddenCount > 0) {
+                    // add hidden items count
+                    QString hiddenCountString = i18ncp("@item:intable", "%1 item", "%1 items", hiddenCount);
+                    m_data.insert(QStringLiteral("kfileitem#hiddenItems"), hiddenCountString);
                 }
-            } else if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
-                m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
             }
-            if (item.entry().contains(KIO::UDSEntry::UDS_RECURSIVE_SIZE)) {
-                m_data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(item.recursiveSize()));
+        } else if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
+            m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
+        }
+        if (item.entry().contains(KIO::UDSEntry::UDS_RECURSIVE_SIZE)) {
+            m_data.insert(QStringLiteral("kfileitem#totalSize"), format.formatByteSize(item.recursiveSize()));
+        }
+    } else {
+        if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
+            m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
+        }
+    }
+
+    m_data.insert(QStringLiteral("kfileitem#type"), item.mimeComment());
+    if (item.isLink()) {
+        m_data.insert(QStringLiteral("kfileitem#linkDest"), item.linkDest());
+    }
+    if (item.entry().contains(KIO::UDSEntry::UDS_TARGET_URL)) {
+        m_data.insert(QStringLiteral("kfileitem#targetUrl"), KShell::tildeCollapse(item.targetUrl().toDisplayString(QUrl::PreferLocalFile)));
+    }
+    QDateTime modificationTime = item.time(KFileItem::ModificationTime);
+    if (modificationTime.isValid()) {
+        m_data.insert(QStringLiteral("kfileitem#modified"), modificationTime);
+    }
+    QDateTime creationTime = item.time(KFileItem::CreationTime);
+    if (creationTime.isValid()) {
+        m_data.insert(QStringLiteral("kfileitem#created"), creationTime);
+    }
+    QDateTime accessTime = item.time(KFileItem::AccessTime);
+    if (accessTime.isValid()) {
+        m_data.insert(QStringLiteral("kfileitem#accessed"), accessTime);
+    }
+
+    m_data.insert(QStringLiteral("kfileitem#owner"), item.user());
+    m_data.insert(QStringLiteral("kfileitem#group"), item.group());
+    m_data.insert(QStringLiteral("kfileitem#permissions"), item.permissionsString());
+
+    const auto extraFields = KProtocolInfo::extraFields(item.url());
+    for (int i = 0; i < extraFields.count(); ++i) {
+        const auto &field = extraFields.at(i);
+        if (field.type == KProtocolInfo::ExtraField::Invalid) {
+            continue;
+        }
+
+        const QString text = item.entry().stringValue(KIO::UDSEntry::UDS_EXTRA + i);
+        if (text.isEmpty()) {
+            continue;
+        }
+
+        const QString key = QStringLiteral("kfileitem#extra_%1_%2").arg(item.url().scheme(), QString::number(i + 1));
+
+        if (field.type == KProtocolInfo::ExtraField::DateTime) {
+            const QDateTime date = QDateTime::fromString(text, Qt::ISODate);
+            if (!date.isValid()) {
+                continue;
             }
+
+            m_data.insert(key, date);
         } else {
-            if (item.entry().contains(KIO::UDSEntry::UDS_SIZE)) {
-                m_data.insert(QStringLiteral("kfileitem#size"), format.formatByteSize(item.size()));
-            }
-        }
-
-        m_data.insert(QStringLiteral("kfileitem#type"), item.mimeComment());
-        if (item.isLink()) {
-            m_data.insert(QStringLiteral("kfileitem#linkDest"), item.linkDest());
-        }
-        if (item.entry().contains(KIO::UDSEntry::UDS_TARGET_URL)) {
-            m_data.insert(QStringLiteral("kfileitem#targetUrl"), KShell::tildeCollapse(item.targetUrl().toDisplayString(QUrl::PreferLocalFile)));
-        }
-        QDateTime modificationTime = item.time(KFileItem::ModificationTime);
-        if (modificationTime.isValid()) {
-            m_data.insert(QStringLiteral("kfileitem#modified"), modificationTime);
-        }
-        QDateTime creationTime = item.time(KFileItem::CreationTime);
-        if (creationTime.isValid()) {
-            m_data.insert(QStringLiteral("kfileitem#created"), creationTime);
-        }
-        QDateTime accessTime = item.time(KFileItem::AccessTime);
-        if (accessTime.isValid()) {
-            m_data.insert(QStringLiteral("kfileitem#accessed"), accessTime);
-        }
-
-        m_data.insert(QStringLiteral("kfileitem#owner"), item.user());
-        m_data.insert(QStringLiteral("kfileitem#group"), item.group());
-        m_data.insert(QStringLiteral("kfileitem#permissions"), item.permissionsString());
-
-        const auto extraFields = KProtocolInfo::extraFields(item.url());
-        for (int i = 0; i < extraFields.count(); ++i) {
-            const auto &field = extraFields.at(i);
-            if (field.type == KProtocolInfo::ExtraField::Invalid) {
-                continue;
-            }
-
-            const QString text = item.entry().stringValue(KIO::UDSEntry::UDS_EXTRA + i);
-            if (text.isEmpty()) {
-                continue;
-            }
-
-            const QString key = QStringLiteral("kfileitem#extra_%1_%2").arg(item.url().scheme(), QString::number(i + 1));
-
-            if (field.type == KProtocolInfo::ExtraField::DateTime) {
-                const QDateTime date = QDateTime::fromString(text, Qt::ISODate);
-                if (!date.isValid()) {
-                    continue;
-                }
-
-                m_data.insert(key, date);
-            } else {
-                m_data.insert(key, text);
-            }
+            m_data.insert(key, text);
         }
     }
 }
