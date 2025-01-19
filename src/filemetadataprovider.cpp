@@ -136,9 +136,6 @@ public:
 
     void processFileItems();
 
-    void setFileItem();
-    void setFileItems();
-
     /**
      * Insert basic data of a single file
      */
