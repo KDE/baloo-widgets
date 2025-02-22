@@ -12,6 +12,7 @@
 #include "filemetadatautil_p.h"
 #include "kcommentwidget_p.h"
 #include "tagwidget.h"
+#include "widgetfactory_p.h"
 
 #include <KFileMetaData/PropertyInfo>
 #include <KFileMetaData/UserMetaData>
@@ -34,6 +35,7 @@ WidgetFactory::WidgetFactory(QObject *parent)
     : QObject(parent)
     , m_dateFormat(QLocale::LongFormat)
 {
+    m_localTimeZone = QTimeZone(QTimeZone::LocalTime);
 }
 
 WidgetFactory::~WidgetFactory() = default;
@@ -41,52 +43,6 @@ WidgetFactory::~WidgetFactory() = default;
 //
 // Widget Creation
 //
-static QString formatDateTime(const QVariant &value, QLocale::FormatType dateFormat)
-{
-    const QString valueString = value.toString();
-    QDateTime dt = QDateTime::fromString(valueString, Qt::ISODate);
-
-    if (dt.isValid()) {
-        KFormat form;
-        QTime time = dt.time();
-        // Check if Date/DateTime
-        if (!time.hour() && !time.minute() && !time.second()) {
-            return form.formatRelativeDate(dt.date(), dateFormat);
-        } else {
-            return form.formatRelativeDateTime(dt, dateFormat);
-        }
-    }
-
-    return valueString;
-}
-
-static QString toString(const QVariant &value, QLocale::FormatType dateFormat)
-{
-    switch (value.type()) {
-    case QVariant::Int:
-        return QLocale().toString(value.toInt());
-    case QVariant::Double:
-        return QLocale().toString(value.toDouble());
-    case QVariant::StringList:
-        return value.toStringList().join(i18nc("String list separator", ", "));
-    case QVariant::Date:
-    case QVariant::DateTime: {
-        return formatDateTime(value, dateFormat);
-    }
-    case QVariant::List: {
-        QStringList list;
-        const auto valueList = value.toList();
-        for (const QVariant &var : valueList) {
-            list << toString(var, dateFormat);
-        }
-        return list.join(i18nc("String list separator", ", "));
-    }
-
-    default:
-        return value.toString();
-    }
-}
-
 QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value, QWidget *parent)
 {
     QWidget *widget = nullptr;
@@ -139,12 +95,12 @@ QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value,
             auto pi = KFileMetaData::PropertyInfo::fromName(prop);
             if (pi.property() != KFileMetaData::Property::Empty) {
                 if (pi.valueType() == QVariant::DateTime || pi.valueType() == QVariant::Date) {
-                    valueString = formatDateTime(value, m_dateFormat);
+                    valueString = formatDateTime(value, m_dateFormat, m_localTimeZone);
                 } else {
                     valueString = pi.formatAsDisplayString(value);
                 }
             } else {
-                valueString = toString(value, m_dateFormat);
+                valueString = valuetoString(value, m_dateFormat);
             }
         }
 
@@ -316,6 +272,33 @@ void WidgetFactory::slotTagsChanged(const QStringList &tags)
         }
 
         m_prevTags = tags;
+    }
+}
+
+QString WidgetFactory::valuetoString(const QVariant &value, QLocale::FormatType dateFormat)
+{
+    switch (value.type()) {
+    case QVariant::Int:
+        return QLocale().toString(value.toInt());
+    case QVariant::Double:
+        return QLocale().toString(value.toDouble());
+    case QVariant::StringList:
+        return value.toStringList().join(i18nc("String list separator", ", "));
+    case QVariant::Date:
+    case QVariant::DateTime: {
+        return formatDateTime(value, dateFormat, m_localTimeZone);
+    }
+    case QVariant::List: {
+        QStringList list;
+        const auto valueList = value.toList();
+        for (const QVariant &var : valueList) {
+            list << valuetoString(var, dateFormat);
+        }
+        return list.join(i18nc("String list separator", ", "));
+    }
+
+    default:
+        return value.toString();
     }
 }
 
