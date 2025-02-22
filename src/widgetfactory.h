@@ -11,6 +11,7 @@
 
 #include <QObject>
 #include <QStringList>
+#include <QTimeZone>
 
 class QLabel;
 class QUrl;
@@ -52,6 +53,8 @@ private:
     QLabel *createValueWidget(QWidget *parent);
     QLabel *createLinkWidget(QWidget *parent);
 
+    QString valuetoString(const QVariant &value, QLocale::FormatType dateFormat);
+
     TagWidget *m_tagWidget = nullptr;
     KRatingWidget *m_ratingWidget = nullptr;
     KCommentWidget *m_commentWidget = nullptr;
@@ -60,6 +63,7 @@ private:
     QStringList m_prevTags;
     bool m_readOnly = false;
     QLocale::FormatType m_dateFormat;
+    QTimeZone m_localTimeZone;
 };
 }
 

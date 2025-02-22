@@ -40,6 +40,7 @@ target_sources(KF6BalooWidgets PRIVATE
     tagwidget.h
     widgetfactory.cpp
     widgetfactory.h
+    widgetfactory_p.h
 )
 
 ecm_qt_declare_logging_category(KF6BalooWidgets
