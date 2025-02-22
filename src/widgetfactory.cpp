@@ -21,6 +21,7 @@
 #include <QLocale>
 #include <QMetaType>
 #include <QTime>
+#include <QTimeZone>
 #include <QUrl>
 
 #include <KApplicationTrader>
@@ -49,11 +50,12 @@ static QString formatDateTime(const QVariant &value, QLocale::FormatType dateFor
     if (dt.isValid()) {
         KFormat form;
         QTime time = dt.time();
+        static QTimeZone localTimezone = QTimeZone(QTimeZone::LocalTime);
         // Check if Date/DateTime
         if (!time.hour() && !time.minute() && !time.second()) {
-            return form.formatRelativeDate(dt.date(), dateFormat);
+            return form.formatRelativeDate(dt.toTimeZone(localTimezone).date(), dateFormat);
         } else {
-            return form.formatRelativeDateTime(dt, dateFormat);
+            return form.formatRelativeDateTime(dt.toTimeZone(localTimezone), dateFormat);
         }
     }
 
