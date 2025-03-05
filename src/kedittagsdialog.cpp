@@ -145,7 +145,7 @@ QStandardItem *KEditTagsDialog::ensureItemForTagExists(const QString tag)
 
         currentItem = findSubItem(currentName, parentItem);
         if (currentItem == nullptr) {
-            QString tagPath = QLatin1Char('/') + splitTags.mid(0, i + 1).join(QLatin1Char('/'));
+            const QString tagPath = splitTags.mid(0, i + 1).join(QLatin1Char('/'));
             currentItem = addTag(parentItem, tagPath, currentName);
         }
 
