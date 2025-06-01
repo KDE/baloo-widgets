@@ -25,10 +25,20 @@ TagsFileItemAction::TagsFileItemAction(QObject *parent, const QVariantList &)
     : KAbstractFileItemActionPlugin(parent)
     , m_tagsLister()
 {
-    m_menu = new QMenu(i18n("Assign Tags"));
-    m_menu->setIcon(QIcon::fromTheme(QStringLiteral("tag")));
-
     connect(&m_tagsLister, &KCoreDirLister::itemsAdded, this, [this](const QUrl &, const KFileItemList &items) {
+        auto newAction = m_menu->addAction(QIcon::fromTheme(QStringLiteral("tag-new")), i18n("Create New..."));
+
+        m_menu->addSeparator();
+
+        connect(newAction, &QAction::triggered, this, [this] {
+            QString newTag = QInputDialog::getText(m_menu, i18n("New tag"), i18n("New tag:"), QLineEdit::Normal);
+            QStringList tags = m_metaData->tags();
+            if (!tags.contains(newTag)) {
+                tags.append(newTag);
+                m_metaData->setTags(tags);
+            }
+        });
+
         const QStringList fileTags = m_metaData->tags();
 
         // The file may be located outside an indexed path, or is not indexed yet
@@ -58,18 +68,6 @@ TagsFileItemAction::TagsFileItemAction(QObject *parent, const QVariantList &)
             });
         }
     });
-
-    newAction = new QAction(i18n("Create New..."));
-    newAction->setIcon(QIcon::fromTheme(QStringLiteral("tag-new")));
-
-    connect(newAction, &QAction::triggered, this, [this] {
-        QString newTag = QInputDialog::getText(m_menu, i18n("New tag"), i18n("New tag:"), QLineEdit::Normal);
-        QStringList tags = m_metaData->tags();
-        if (!tags.contains(newTag)) {
-            tags.append(newTag);
-            m_metaData->setTags(tags);
-        }
-    });
 }
 
 TagsFileItemAction::~TagsFileItemAction()
@@ -93,12 +91,12 @@ QList<QAction *> TagsFileItemAction::actions(const KFileItemListProperties &file
         return {};
     }
 
-    m_tagsLister.openUrl(QUrl(QStringLiteral("tags:/")), KCoreDirLister::OpenUrlFlag::Reload);
+    // must construct QMenu before `m_tagsLister.openUrl` triggers `m_tagsLister, &KCoreDirLister::itemsAdded`
+    m_menu = new QMenu(i18n("Assign Tags"), parentWidget);
+    m_menu->setIcon(QIcon::fromTheme(QStringLiteral("tag")));
 
-    m_menu->clear();
-    m_menu->addAction(newAction);
-    m_menu->addSeparator();
-    m_menu->setParent(parentWidget, Qt::Popup);
+    // loads the actions into the menu
+    m_tagsLister.openUrl(QUrl(QStringLiteral("tags:/")), KCoreDirLister::OpenUrlFlag::Reload);
 
     return {m_menu->menuAction()};
 }

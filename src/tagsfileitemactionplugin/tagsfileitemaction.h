@@ -27,7 +27,6 @@ private:
     KFileMetaData::UserMetaData *m_metaData = nullptr;
     KCoreDirLister m_tagsLister;
     QMenu *m_menu;
-    QAction *newAction;
 };
 
 #endif // TAGSFILEITEMACTION_H
