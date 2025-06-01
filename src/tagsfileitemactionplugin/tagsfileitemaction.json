@@ -101,7 +101,7 @@
             "application/octet-stream",
             "inode/directory"
         ],
-        "Name": "Tags",
+        "Name": "Assign Tags",
         "Name[ar]": "الوسوم",
         "Name[az]": "Yarlıqlar",
         "Name[bg]": "Етикети",
