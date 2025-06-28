@@ -175,6 +175,7 @@ void FileMetaDataWidgetPrivate::slotLoadingFinished()
 
         row.value = m_widgetFactory->createWidget(key, data[key], q);
         m_gridLayout->addWidget(row.value, rowIndex, labelColumn + 2, Qt::AlignLeft);
+        row.label->setBuddy(row.value);
 
         m_gridLayout->setRowStretch(rowIndex, 0);
 

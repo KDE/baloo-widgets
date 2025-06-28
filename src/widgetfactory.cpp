@@ -151,6 +151,10 @@ QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value,
         valueWidget->setText(valueString);
         widget = valueWidget;
     }
+    if (QLabel *label = qobject_cast<QLabel *>(widget)) {
+        // Allow keyboard focus to go to the label for accessibility software like screen readers.
+        label->setTextInteractionFlags(Qt::TextBrowserInteraction | Qt::TextSelectableByKeyboard);
+    }
 
     widget->setForegroundRole(parent->foregroundRole());
     widget->setFont(parent->font());

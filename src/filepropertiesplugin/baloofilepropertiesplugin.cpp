@@ -58,6 +58,7 @@ BalooFilePropertiesPlugin::BalooFilePropertiesPlugin(QObject *parent, const QLis
     auto metaDataArea = new QScrollArea();
 
     metaDataArea->setWidget(widgetContainer);
+    metaDataArea->setFocusProxy(widgetContainer);
     metaDataArea->setWidgetResizable(true);
     metaDataArea->setFrameShape(QFrame::NoFrame);
 
