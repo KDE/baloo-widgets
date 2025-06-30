@@ -25,51 +25,6 @@ TagsFileItemAction::TagsFileItemAction(QObject *parent, const QVariantList &)
     : KAbstractFileItemActionPlugin(parent)
     , m_tagsLister()
 {
-    m_menu = new QMenu(i18n("Assign Tags"));
-    m_menu->setIcon(QIcon::fromTheme(QStringLiteral("tag")));
-
-    connect(&m_tagsLister, &KCoreDirLister::itemsAdded, this, [this](const QUrl &, const KFileItemList &items) {
-        const QStringList fileTags = m_metaData->tags();
-
-        // The file may be located outside an indexed path, or is not indexed yet
-        // Show the complete tag list, i.e. the union of file and index DB tags
-        QStringList allTags;
-        allTags.reserve(fileTags.size() + items.size());
-        allTags.append(fileTags);
-        for (const KFileItem &item : items) {
-            allTags.append(item.name());
-        }
-        allTags.sort(Qt::CaseInsensitive);
-        allTags.removeDuplicates();
-
-        for (const QString &name : std::as_const(allTags)) {
-            QAction *action = m_menu->addAction(QIcon::fromTheme(QStringLiteral("tag")), name);
-            action->setCheckable(true);
-            action->setChecked(fileTags.contains(name));
-
-            connect(action, &QAction::triggered, this, [this, name](bool isChecked) {
-                QStringList newTags = m_metaData->tags();
-                if (isChecked) {
-                    newTags.append(name);
-                } else {
-                    newTags.removeAll(name);
-                }
-                m_metaData->setTags(newTags);
-            });
-        }
-    });
-
-    newAction = new QAction(i18n("Create New..."));
-    newAction->setIcon(QIcon::fromTheme(QStringLiteral("tag-new")));
-
-    connect(newAction, &QAction::triggered, this, [this] {
-        QString newTag = QInputDialog::getText(m_menu, i18n("New tag"), i18n("New tag:"), QLineEdit::Normal);
-        QStringList tags = m_metaData->tags();
-        if (!tags.contains(newTag)) {
-            tags.append(newTag);
-            m_metaData->setTags(tags);
-        }
-    });
 }
 
 TagsFileItemAction::~TagsFileItemAction()
@@ -93,14 +48,58 @@ QList<QAction *> TagsFileItemAction::actions(const KFileItemListProperties &file
         return {};
     }
 
+    QMenu *menu = new QMenu(i18n("Assign Tags"), parentWidget);
+    menu->setIcon(QIcon::fromTheme(QStringLiteral("tag")));
+
+    connect(&m_tagsLister, &KCoreDirLister::itemsAdded, this, [this, menu](const QUrl &, const KFileItemList &items) {
+        const QStringList fileTags = m_metaData->tags();
+
+        // The file may be located outside an indexed path, or is not indexed yet
+        // Show the complete tag list, i.e. the union of file and index DB tags
+        QStringList allTags;
+        allTags.reserve(fileTags.size() + items.size());
+        allTags.append(fileTags);
+        for (const KFileItem &item : items) {
+            allTags.append(item.name());
+        }
+        allTags.sort(Qt::CaseInsensitive);
+        allTags.removeDuplicates();
+
+        for (const QString &name : std::as_const(allTags)) {
+            QAction *action = menu->addAction(QIcon::fromTheme(QStringLiteral("tag")), name);
+            action->setCheckable(true);
+            action->setChecked(fileTags.contains(name));
+
+            connect(action, &QAction::triggered, this, [this, name](bool isChecked) {
+                QStringList newTags = m_metaData->tags();
+                if (isChecked) {
+                    newTags.append(name);
+                } else {
+                    newTags.removeAll(name);
+                }
+                m_metaData->setTags(newTags);
+            });
+        }
+    });
+
+    QAction *newAction = new QAction(i18n("Create New..."), menu);
+    newAction->setIcon(QIcon::fromTheme(QStringLiteral("tag-new")));
+
+    connect(newAction, &QAction::triggered, this, [this, parentWidget] {
+        QString newTag = QInputDialog::getText(parentWidget, i18n("New tag"), i18n("New tag:"), QLineEdit::Normal);
+        QStringList tags = m_metaData->tags();
+        if (!tags.contains(newTag)) {
+            tags.append(newTag);
+            m_metaData->setTags(tags);
+        }
+    });
+
     m_tagsLister.openUrl(QUrl(QStringLiteral("tags:/")), KCoreDirLister::OpenUrlFlag::Reload);
+    menu->addAction(newAction);
+    menu->addSeparator();
+    menu->setParent(parentWidget, Qt::Popup);
 
-    m_menu->clear();
-    m_menu->addAction(newAction);
-    m_menu->addSeparator();
-    m_menu->setParent(parentWidget, Qt::Popup);
-
-    return {m_menu->menuAction()};
+    return {menu->menuAction()};
 }
 
 #include "tagsfileitemaction.moc"
