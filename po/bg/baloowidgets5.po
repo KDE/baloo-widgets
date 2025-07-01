@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloowidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"POT-Creation-Date: 2025-07-01 00:40+0000\n"
 "PO-Revision-Date: 2022-08-02 07:45+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -196,22 +196,22 @@ msgctxt "@label"
 msgid "Create new tag:"
 msgstr "Създаване на нов етикет:"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
 msgid "Assign Tags"
 msgstr "Задаване на етикети"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
 #, kde-format
 msgid "Create New..."
 msgstr "Създаване на нов..."
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag"
 msgstr "Нов етикет"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag:"
 msgstr "Нов етикет:"

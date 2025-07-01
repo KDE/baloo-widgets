@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"POT-Creation-Date: 2025-07-01 00:40+0000\n"
 "PO-Revision-Date: 2024-10-04 01:12+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -196,22 +196,22 @@ msgctxt "@label"
 msgid "Create new tag:"
 msgstr "Yeni künye oluştur:"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
 msgid "Assign Tags"
 msgstr "Künye Ata"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
 #, kde-format
 msgid "Create New..."
 msgstr "Yeni Oluştur…"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag"
 msgstr "Yeni Künye"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag:"
 msgstr "Yeni künye:"

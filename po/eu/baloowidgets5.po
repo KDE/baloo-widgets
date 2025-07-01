@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloowidgets5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"POT-Creation-Date: 2025-07-01 00:40+0000\n"
 "PO-Revision-Date: 2022-07-18 22:49+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -197,22 +197,22 @@ msgctxt "@label"
 msgid "Create new tag:"
 msgstr "Sortu etiketa berria:"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
 msgid "Assign Tags"
 msgstr "Esleitu etiketak"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
 #, kde-format
 msgid "Create New..."
 msgstr "Sortu... berria"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag"
 msgstr "Etiketa berria"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag:"
 msgstr "Etiketa berria:"

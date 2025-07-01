@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"POT-Creation-Date: 2025-07-01 00:40+0000\n"
 "PO-Revision-Date: 2024-12-20 21:51+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -195,22 +195,22 @@ msgctxt "@label"
 msgid "Create new tag:"
 msgstr "नूतनं टैगं रचयन्तु :"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
 msgid "Assign Tags"
 msgstr "टैग्स नियुक्त करें"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
 #, kde-format
 msgid "Create New..."
 msgstr "नूतनं रचयतु..."
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag"
 msgstr "नवीन टैग"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag:"
 msgstr "नवीनं टैगम् :"

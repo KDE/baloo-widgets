@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"POT-Creation-Date: 2025-07-01 00:40+0000\n"
 "PO-Revision-Date: 2013-02-08 16:27+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -207,26 +207,26 @@ msgctxt "@label"
 msgid "Create new tag:"
 msgstr "नवीन टॅग तयार करा :"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:28
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"
 msgid "Assign Tags"
 msgstr "टॅग्स जोडा"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:62
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Create new tag:"
 msgid "Create New..."
 msgstr "नवीन टॅग तयार करा :"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:66
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Create new tag:"
