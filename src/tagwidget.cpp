@@ -14,6 +14,8 @@
 
 #include <QLabel>
 #include <QMap>
+#include <QPushButton>
+#include <QStyle>
 
 using namespace Baloo;
 
@@ -34,7 +36,7 @@ public:
     bool m_readOnly = false;
 
     QMap<QString, TagCheckBox *> m_tagLabels;
-    QLabel *m_showAllLinkLabel = nullptr;
+    QPushButton *m_editTagsButton = nullptr;
     KBlockLayout *m_flowLayout = nullptr;
     TagWidget *q;
 
@@ -69,22 +71,19 @@ void TagWidgetPrivate::buildTagHash(const QStringList &tags)
         addTagLabel(tag);
     }
 
-    delete m_showAllLinkLabel;
-    m_showAllLinkLabel = nullptr;
-
-    if (m_readOnly && !tags.isEmpty()) {
-        return;
+    if (m_editTagsButton) {
+        delete m_editTagsButton;
     }
+    m_editTagsButton = nullptr;
 
-    m_showAllLinkLabel = new QLabel(q);
-    m_flowLayout->addWidget(m_showAllLinkLabel);
-    if (m_readOnly) {
-        m_showAllLinkLabel->setTextFormat(Qt::PlainText);
-        m_showAllLinkLabel->setText(QStringLiteral("-"));
-    } else {
-        m_showAllLinkLabel->setTextFormat(Qt::RichText);
-        m_showAllLinkLabel->setText(QStringLiteral("<a href=\"add_tags\">%1</a>").arg(m_tagLabels.isEmpty() ? i18nc("@label", "Add...") : i18nc("@label", "Edit...")));
-        q->connect(m_showAllLinkLabel, &QLabel::linkActivated, [this]{showEditDialog();});
+    if (!m_readOnly) {
+        m_editTagsButton = new QPushButton(q);
+        m_flowLayout->addWidget(m_editTagsButton);
+        m_editTagsButton->setIcon(QIcon::fromTheme(m_tagLabels.isEmpty() ? QStringLiteral("tag-new-symbolic") : QStringLiteral("document-edit")));
+        m_editTagsButton->setToolTip(m_tagLabels.isEmpty() ? i18nc("@action:button", "Add tags…") : i18nc("@action:button", "Edit tags…"));
+        m_editTagsButton->setFlat(true);
+        m_editTagsButton->setMaximumHeight(m_editTagsButton->sizeHint().height() - q->style()->pixelMetric(QStyle::PM_ButtonMargin));
+        q->connect(m_editTagsButton, &QAbstractButton::clicked, [this]{showEditDialog();});
     }
 }
 

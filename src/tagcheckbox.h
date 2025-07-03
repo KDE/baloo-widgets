@@ -1,5 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2010 Sebastian Trueg <trueg@kde.org>
+    SPDX-FileCopyrightText: 2025 Felix Ernst <felixernst@kde.org>
 
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
@@ -7,11 +8,11 @@
 #ifndef _BALOO_TAG_CHECKBOX_H_
 #define _BALOO_TAG_CHECKBOX_H_
 
-#include <QLabel>
+#include <QToolButton>
 
 namespace Baloo
 {
-class TagCheckBox : public QLabel
+class TagCheckBox : public QToolButton
 {
     Q_OBJECT
 
@@ -28,13 +29,12 @@ Q_SIGNALS:
     void tagClicked(const QString &tag);
 
 protected:
-    bool eventFilter(QObject *watched, QEvent *event) override;
+    QSize minimumSizeHint() const override;
+    /** Reduce the preferred size so this component is not visually identical to a normal button. */
+    QSize sizeHint() const override;
 
 private:
-    void enableUrlHover(bool enabled);
-
     QString m_tag;
-    bool m_urlHover = false;
 };
 }
 

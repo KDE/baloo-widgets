@@ -28,8 +28,6 @@ target_sources(KF6BalooWidgets PRIVATE
     kblocklayout.h
     kcommentwidget.cpp
     kcommentwidget_p.h
-    keditcommentdialog.cpp
-    keditcommentdialog.h
     kedittagsdialog.cpp
     kedittagsdialog_p.h
     metadatafilter.cpp

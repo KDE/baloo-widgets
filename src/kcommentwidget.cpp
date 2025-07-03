@@ -1,37 +1,67 @@
 /*
     SPDX-FileCopyrightText: 2008 Sebastian Trueg <trueg@kde.org>
     SPDX-FileCopyrightText: 2009 Peter Penz <peter.penz@gmx.at>
+    SPDX-FileCopyrightText: 2025 Felix Ernst <felixernst@kde.org>
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
 #include "kcommentwidget_p.h"
-#include "keditcommentdialog.h"
 #include "widgetsdebug.h"
 
 #include <KLocalizedString>
-#include <KSharedConfig>
-#include <KWindowConfig>
 
 #include <QEvent>
-#include <QLabel>
-#include <QPointer>
+#include <QFontMetrics>
 #include <QVBoxLayout>
+#include <QPlainTextEdit>
+#include <QPointer>
+#include <QTimer>
+#include <QToolButton>
+
+namespace
+{
+    void setHeightToFitContent(QPlainTextEdit *plainTextEdit)
+    {
+        // `plainTextEdit->document()->size()` is reported wrongly until it is shown the first time, so we delay the height change.
+        QTimer::singleShot(1, plainTextEdit, [plainTextEdit](){
+            const int numberOfLinesToShow(plainTextEdit->document()->size().height() + 1);
+            plainTextEdit->setFixedHeight(numberOfLinesToShow * QFontMetrics(plainTextEdit->font()).lineSpacing() + plainTextEdit->contentsMargins().top() + plainTextEdit->contentsMargins().bottom());
+        });
+    };
+}
 
 KCommentWidget::KCommentWidget(QWidget *parent)
     : QWidget(parent)
-    , m_label(new QLabel(this))
-    , m_sizeHintHelper(new QLabel(this))
+    , m_plainTextEdit{new QPlainTextEdit(this)}
+    , m_saveButton{new QToolButton{this}}
 {
-    m_label->setWordWrap(true);
-    m_label->setAlignment(Qt::AlignTop);
-    connect(m_label, &QLabel::linkActivated, this, &KCommentWidget::slotLinkActivated);
+    setFocusProxy(m_plainTextEdit);
+    m_plainTextEdit->setAccessibleName(i18nc("accessible name for file metadata comment text box", "Comment"));
+    m_plainTextEdit->setTabChangesFocus(true);
+    m_plainTextEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_plainTextEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    connect(m_plainTextEdit, &QPlainTextEdit::textChanged, this, [this](){
+        const bool canSave{!m_readOnly && m_plainTextEdit->toPlainText() != m_comment};
+        m_saveButton->setEnabled(canSave);
+        if (canSave) {
+            m_saveButton->setVisible(true);
+        }
+        setHeightToFitContent(m_plainTextEdit);
+    });
 
-    m_sizeHintHelper->hide();
+    m_saveButton->setText(i18nc("@action:button file metadata comment", "Save Comment"));
+    m_saveButton->hide();
+    connect(m_saveButton, &QAbstractButton::clicked, this, [this](){
+        m_comment = m_plainTextEdit->toPlainText();
+        Q_EMIT commentChanged(m_plainTextEdit->toPlainText());
+        m_saveButton->setDisabled(true);
+    });
 
     auto layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
-    layout->addWidget(m_label);
+    layout->addWidget(m_plainTextEdit);
+    layout->addWidget(m_saveButton);
 
     setText(m_comment);
 }
@@ -40,24 +70,10 @@ KCommentWidget::~KCommentWidget() = default;
 
 void KCommentWidget::setText(const QString &comment)
 {
-    QString content;
-    if (comment.isEmpty()) {
-        if (m_readOnly) {
-            content = QStringLiteral("-");
-        } else {
-            content = QStringLiteral("<a href=\"addComment\">%1</a>").arg(i18nc("@label", "Add..."));
-        }
-    } else {
-        if (m_readOnly) {
-            content = comment.toHtmlEscaped();
-        } else {
-            content = QStringLiteral("<p>%1 <a href=\"editComment\">%2</a></p>").arg(comment.toHtmlEscaped(), i18nc("@label", "Edit..."));
-        }
-    }
-
-    m_label->setText(content);
-    m_sizeHintHelper->setText(content);
     m_comment = comment;
+    m_plainTextEdit->setPlainText(comment);
+    setHeightToFitContent(m_plainTextEdit);
+    m_saveButton->hide();
 }
 
 QString KCommentWidget::text() const
@@ -68,6 +84,7 @@ QString KCommentWidget::text() const
 void KCommentWidget::setReadOnly(bool readOnly)
 {
     m_readOnly = readOnly;
+    m_plainTextEdit->setReadOnly(readOnly);
     setText(m_comment);
 }
 
@@ -76,51 +93,12 @@ bool KCommentWidget::isReadOnly() const
     return m_readOnly;
 }
 
-QSize KCommentWidget::sizeHint() const
-{
-    // Per default QLabel tries to provide a square size hint. This
-    // does not work well for complex layouts that rely on a heightForWidth()
-    // functionality with unclipped content. Use an unwrapped text label
-    // as layout helper instead, that returns the preferred size of
-    // the rich-text line.
-    return m_sizeHintHelper->sizeHint();
-}
-
 bool KCommentWidget::event(QEvent *event)
 {
-    if (event->type() == QEvent::Polish) {
-        m_label->setForegroundRole(foregroundRole());
+    if (event->type() == QEvent::Show) {
+        setHeightToFitContent(m_plainTextEdit);
     }
     return QWidget::event(event);
-}
-
-void KCommentWidget::slotLinkActivated(const QString &link)
-{
-    const QString caption = (link == QLatin1String("editComment")) ? i18nc("@title:window", "Edit Comment") : i18nc("@title:window", "Add Comment");
-
-    QPointer<KEditCommentDialog> dialog = new KEditCommentDialog(this, m_comment, caption);
-
-    KConfigGroup dialogConfig(KSharedConfig::openConfig(), QStringLiteral("Baloo KEditCommentDialog"));
-    KWindowConfig::restoreWindowSize(dialog->windowHandle(), dialogConfig);
-
-    dialog->exec();
-    if (dialog.isNull()) {
-        qCWarning(Baloo::WIDGETS) << "Comment dialog destroyed while running";
-        Q_ASSERT(!dialog.isNull());
-        return;
-    }
-
-    if (dialog->result() == QDialog::Accepted) {
-        const QString oldText = m_comment;
-        setText(dialog->getCommentText());
-
-        if (oldText != m_comment) {
-            Q_EMIT commentChanged(m_comment);
-        }
-    }
-
-    KWindowConfig::saveWindowSize(dialog->windowHandle(), dialogConfig);
-    delete dialog;
 }
 
 #include "moc_kcommentwidget_p.cpp"
