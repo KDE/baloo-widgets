@@ -42,7 +42,7 @@ KCommentWidget::KCommentWidget(QWidget *parent)
     m_plainTextEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_plainTextEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     connect(m_plainTextEdit, &QPlainTextEdit::textChanged, this, [this](){
-        const bool canSave{!m_readOnly && m_plainTextEdit->toPlainText() != m_comment};
+        const bool canSave{!m_plainTextEdit->isReadOnly() && m_plainTextEdit->toPlainText() != m_comment};
         m_saveButton->setEnabled(canSave);
         if (canSave) {
             m_saveButton->setVisible(true);
@@ -83,14 +83,13 @@ QString KCommentWidget::text() const
 
 void KCommentWidget::setReadOnly(bool readOnly)
 {
-    m_readOnly = readOnly;
     m_plainTextEdit->setReadOnly(readOnly);
     setText(m_comment);
 }
 
 bool KCommentWidget::isReadOnly() const
 {
-    return m_readOnly;
+    return m_plainTextEdit->isReadOnly();
 }
 
 bool KCommentWidget::event(QEvent *event)

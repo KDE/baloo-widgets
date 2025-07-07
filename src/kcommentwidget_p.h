@@ -44,7 +44,6 @@ protected:
     bool event(QEvent *event) override;
 
 private:
-    bool m_readOnly = false;
     QPlainTextEdit *const m_plainTextEdit;
     QToolButton *const m_saveButton;
     QString m_comment;
