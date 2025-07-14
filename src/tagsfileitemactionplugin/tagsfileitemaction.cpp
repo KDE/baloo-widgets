@@ -99,6 +99,11 @@ QList<QAction *> TagsFileItemAction::actions(const KFileItemListProperties &file
     menu->addSeparator();
     menu->setParent(parentWidget, Qt::Popup);
 
+    connect(menu, &QObject::destroyed, this, [this]() {
+        disconnect(&m_tagsLister, &KCoreDirLister::itemsAdded, this, nullptr);
+        m_tagsLister.stop();
+    });
+
     return {menu->menuAction()};
 }
 
