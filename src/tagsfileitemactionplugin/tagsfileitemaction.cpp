@@ -19,6 +19,8 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
+#include "kedittagsdialog_p.h"
+
 K_PLUGIN_FACTORY_WITH_JSON(TagsFileItemActionFactory, "tagsfileitemaction.json", registerPlugin<TagsFileItemAction>();)
 
 TagsFileItemAction::TagsFileItemAction(QObject *parent, const QVariantList &)
@@ -82,16 +84,20 @@ QList<QAction *> TagsFileItemAction::actions(const KFileItemListProperties &file
         }
     });
 
-    QAction *newAction = new QAction(i18n("Create New..."), menu);
+    QAction *newAction = new QAction(i18n("Edit tags..."), menu);
     newAction->setIcon(QIcon::fromTheme(QStringLiteral("tag-new")));
 
     connect(newAction, &QAction::triggered, this, [this, parentWidget] {
-        QString newTag = QInputDialog::getText(parentWidget, i18n("New tag"), i18n("New tag:"), QLineEdit::Normal);
-        QStringList tags = m_metaData->tags();
-        if (!tags.contains(newTag)) {
-            tags.append(newTag);
-            m_metaData->setTags(tags);
-        }
+        // Use KEditTagsDialog so the user can create and select hierarchical tags
+        KEditTagsDialog *editDialog = new KEditTagsDialog(m_metaData->tags(), parentWidget);
+        editDialog->setWindowModality(Qt::WindowModal);
+        connect(editDialog, &QDialog::finished, this, [this, editDialog](int result) {
+            if (result == QDialog::Accepted) {
+                m_metaData->setTags(editDialog->tags());
+            }
+            editDialog->deleteLater();
+        });
+        editDialog->open();
     });
 
     m_tagsLister.openUrl(QUrl(QStringLiteral("tags:/")), KCoreDirLister::OpenUrlFlag::Reload);

@@ -8,4 +8,5 @@ target_link_libraries(tagsfileitemaction
     KF6::KIOWidgets
     KF6::I18n
     KF6::FileMetaData
+    KF6::BalooWidgets
 )
