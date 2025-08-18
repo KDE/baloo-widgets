@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:40+0000\n"
+"POT-Creation-Date: 2025-08-18 00:40+0000\n"
 "PO-Revision-Date: 2024-09-30 22:01+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -136,40 +136,27 @@ msgctxt "@label"
 msgid "GPS Location"
 msgstr "GPS hely"
 
-#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:65
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:66
 #, kde-format
 msgctxt "Tab page with file meta data"
 msgid "&Details"
 msgstr "&Részletek"
 
-#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:86
-#, kde-format
-msgctxt "@label"
-msgid "Add..."
-msgstr "Hozzáadás…"
+#: src/kcommentwidget.cpp:40
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Comment"
+msgctxt "accessible name for file metadata comment text box"
+msgid "Comment"
+msgstr "Megjegyzés"
 
-#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:86
-#, kde-format
-msgctxt "@label"
-msgid "Edit..."
-msgstr "Szerkesztés…"
-
-#: src/kcommentwidget.cpp:99
-#, kde-format
-msgctxt "@title:window"
-msgid "Edit Comment"
-msgstr "Megjegyzés szerkesztése"
-
-#: src/kcommentwidget.cpp:99
-#, kde-format
-msgctxt "@title:window"
-msgid "Add Comment"
-msgstr "Megjegyzés hozzáadása"
-
-#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
-#, kde-format
-msgid "Save"
-msgstr "Mentés"
+#: src/kcommentwidget.cpp:53
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Change Comment"
+msgctxt "@action:button file metadata comment"
+msgid "Save Comment"
+msgstr "Megjegyzés módosítása"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
@@ -183,6 +170,11 @@ msgctxt "@title:window"
 msgid "Add Tags"
 msgstr "Címkék hozzáadása"
 
+#: src/kedittagsdialog.cpp:40
+#, kde-format
+msgid "Save"
+msgstr "Mentés"
+
 #: src/kedittagsdialog.cpp:50
 #, kde-format
 msgctxt "@label:textbox"
@@ -194,6 +186,22 @@ msgstr "Alkalmazandó címkék beállítása."
 msgctxt "@label"
 msgid "Create new tag:"
 msgstr "Új címke létrehozása:"
+
+#: src/tagcheckbox.cpp:23
+#, fuzzy, kde-format
+#| msgid "New tag"
+msgctxt "accessible name for tag, %1 is the tag label"
+msgid "%1 tag"
+msgstr "Új címke"
+
+#. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
+#. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
+#. to show the list of items with the same tag %1.
+#: src/tagcheckbox.cpp:27
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Show everything tagged “%1”"
+msgstr ""
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
@@ -214,6 +222,22 @@ msgstr "Új címke"
 #, kde-format
 msgid "New tag:"
 msgstr "Új címke:"
+
+#: src/tagwidget.cpp:83
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgctxt "@action:button"
+msgid "Add tags…"
+msgstr "Címkék hozzáadása"
+
+#: src/tagwidget.cpp:83
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Edit Tags"
+msgctxt "@action:button"
+msgid "Edit tags…"
+msgstr "Címkék szerkesztése"
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
@@ -257,6 +281,22 @@ msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
 
+#~ msgctxt "@label"
+#~ msgid "Add..."
+#~ msgstr "Hozzáadás…"
+
+#~ msgctxt "@label"
+#~ msgid "Edit..."
+#~ msgstr "Szerkesztés…"
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit Comment"
+#~ msgstr "Megjegyzés szerkesztése"
+
+#~ msgctxt "@title:window"
+#~ msgid "Add Comment"
+#~ msgstr "Megjegyzés hozzáadása"
+
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"
 #~ msgstr "Ismeretlen"
@@ -272,10 +312,6 @@ msgstr "%1 × %2"
 #~ msgctxt "@label"
 #~ msgid "Change..."
 #~ msgstr "Módosítás…"
-
-#~ msgctxt "@title:window"
-#~ msgid "Change Comment"
-#~ msgstr "Megjegyzés módosítása"
 
 #~ msgctxt "@title:window"
 #~ msgid "Change Tags"

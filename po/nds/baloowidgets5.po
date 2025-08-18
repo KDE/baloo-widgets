@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-01 00:40+0000\n"
+"POT-Creation-Date: 2025-08-18 00:40+0000\n"
 "PO-Revision-Date: 2014-09-18 16:35+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -136,42 +136,27 @@ msgctxt "@label"
 msgid "GPS Location"
 msgstr ""
 
-#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:65
+#: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:66
 #, kde-format
 msgctxt "Tab page with file meta data"
 msgid "&Details"
 msgstr ""
 
-#: src/kcommentwidget.cpp:48 src/tagwidget.cpp:86
-#, kde-format
-msgctxt "@label"
-msgid "Add..."
-msgstr ""
+#: src/kcommentwidget.cpp:40
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Comment"
+msgctxt "accessible name for file metadata comment text box"
+msgid "Comment"
+msgstr "Kommentar"
 
-#: src/kcommentwidget.cpp:54 src/tagwidget.cpp:86
-#, kde-format
-msgctxt "@label"
-msgid "Edit..."
-msgstr ""
-
-#: src/kcommentwidget.cpp:99
+#: src/kcommentwidget.cpp:53
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
-#| msgid "Add Comment"
-msgctxt "@title:window"
-msgid "Edit Comment"
-msgstr "Kommentar tofögen"
-
-#: src/kcommentwidget.cpp:99
-#, kde-format
-msgctxt "@title:window"
-msgid "Add Comment"
-msgstr "Kommentar tofögen"
-
-#: src/keditcommentdialog.cpp:33 src/kedittagsdialog.cpp:40
-#, kde-format
-msgid "Save"
-msgstr "Sekern"
+#| msgid "Change Comment"
+msgctxt "@action:button file metadata comment"
+msgid "Save Comment"
+msgstr "Kommentar ännern"
 
 #: src/kedittagsdialog.cpp:36
 #, fuzzy, kde-format
@@ -189,6 +174,11 @@ msgctxt "@title:window"
 msgid "Add Tags"
 msgstr "Slötelwöör tofögen..."
 
+#: src/kedittagsdialog.cpp:40
+#, kde-format
+msgid "Save"
+msgstr "Sekern"
+
 #: src/kedittagsdialog.cpp:50
 #, kde-format
 msgctxt "@label:textbox"
@@ -202,6 +192,21 @@ msgstr "De Slötelwöör fastleggen, de Du bruken wullt"
 msgctxt "@label"
 msgid "Create new tag:"
 msgstr "Nieg Slötelwoort opstellen:"
+
+#: src/tagcheckbox.cpp:23
+#, kde-format
+msgctxt "accessible name for tag, %1 is the tag label"
+msgid "%1 tag"
+msgstr ""
+
+#. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
+#. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
+#. to show the list of items with the same tag %1.
+#: src/tagcheckbox.cpp:27
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Show everything tagged “%1”"
+msgstr ""
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, fuzzy, kde-format
@@ -228,6 +233,22 @@ msgstr ""
 #| msgid "Create new tag:"
 msgid "New tag:"
 msgstr "Nieg Slötelwoort opstellen:"
+
+#: src/tagwidget.cpp:83
+#, fuzzy, kde-format
+#| msgctxt "@label"
+#| msgid "Add Tags..."
+msgctxt "@action:button"
+msgid "Add tags…"
+msgstr "Slötelwöör tofögen..."
+
+#: src/tagwidget.cpp:83
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgctxt "@action:button"
+msgid "Edit tags…"
+msgstr "Slötelwöör tofögen"
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
@@ -271,6 +292,17 @@ msgctxt "width × height"
 msgid "%1 × %2"
 msgstr ""
 
+#, fuzzy
+#~| msgctxt "@title:window"
+#~| msgid "Add Comment"
+#~ msgctxt "@title:window"
+#~ msgid "Edit Comment"
+#~ msgstr "Kommentar tofögen"
+
+#~ msgctxt "@title:window"
+#~ msgid "Add Comment"
+#~ msgstr "Kommentar tofögen"
+
 #~ msgctxt "unknown file size"
 #~ msgid "Unknown"
 #~ msgstr "Nich begäng"
@@ -278,10 +310,6 @@ msgstr ""
 #~ msgctxt "@label"
 #~ msgid "Change..."
 #~ msgstr "Ännern..."
-
-#~ msgctxt "@title:window"
-#~ msgid "Change Comment"
-#~ msgstr "Kommentar ännern"
 
 #~ msgctxt "@title:window"
 #~ msgid "Change Tags"
