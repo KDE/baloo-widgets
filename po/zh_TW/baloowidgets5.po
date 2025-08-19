@@ -4,21 +4,21 @@
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2012, 2014, 2015, 2017.
 # Jeff Huang <s8321414@gmail.com>, 2016.
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
-# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2023.
+# SPDX-FileCopyrightText: 2023, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-18 00:40+0000\n"
-"PO-Revision-Date: 2023-01-29 23:29+0900\n"
+"PO-Revision-Date: 2025-08-19 04:55+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 25.11.70\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -143,20 +143,16 @@ msgid "&Details"
 msgstr "詳細資訊(&D)"
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
 msgstr "註解"
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "註解"
+msgstr "儲存註解"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
@@ -188,11 +184,10 @@ msgid "Create new tag:"
 msgstr "建立新標籤："
 
 #: src/tagcheckbox.cpp:23
-#, fuzzy, kde-format
-#| msgid "New tag"
+#, kde-format
 msgctxt "accessible name for tag, %1 is the tag label"
 msgid "%1 tag"
-msgstr "新標籤"
+msgstr "%1 標籤"
 
 #. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
 #. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
@@ -201,7 +196,7 @@ msgstr "新標籤"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
-msgstr ""
+msgstr "顯示所有有「%1」標籤的項目"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
@@ -224,20 +219,16 @@ msgid "New tag:"
 msgstr "新標籤："
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "新增標籤"
+msgstr "新增標籤…"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "編輯標籤"
+msgstr "編輯標籤…"
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format

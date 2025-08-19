@@ -140,20 +140,16 @@ msgid "&Details"
 msgstr "详情(&D)"
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
 msgstr "注释"
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "注释"
+msgstr ""
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
@@ -185,11 +181,10 @@ msgid "Create new tag:"
 msgstr "创建新标签："
 
 #: src/tagcheckbox.cpp:23
-#, fuzzy, kde-format
-#| msgid "New tag"
+#, kde-format
 msgctxt "accessible name for tag, %1 is the tag label"
 msgid "%1 tag"
-msgstr "新建标签"
+msgstr ""
 
 #. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
 #. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
@@ -221,20 +216,16 @@ msgid "New tag:"
 msgstr "新标签："
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "添加标记"
+msgstr ""
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "编辑标签"
+msgstr ""
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
@@ -277,19 +268,3 @@ msgstr "使用 %1 显示此位置"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgctxt "@label"
-#~ msgid "Add..."
-#~ msgstr "添加..."
-
-#~ msgctxt "@label"
-#~ msgid "Edit..."
-#~ msgstr "编辑..."
-
-#~ msgctxt "@title:window"
-#~ msgid "Edit Comment"
-#~ msgstr "编辑注释"
-
-#~ msgctxt "@title:window"
-#~ msgid "Add Comment"
-#~ msgstr "添加注释"

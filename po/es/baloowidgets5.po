@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: baloowidgets5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-18 00:40+0000\n"
-"PO-Revision-Date: 2025-05-04 01:44+0100\n"
+"PO-Revision-Date: 2025-08-19 00:07+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -144,20 +144,16 @@ msgid "&Details"
 msgstr "&Detalles"
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
 msgstr "Comentario"
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "Comentario"
+msgstr "Guardar comentario"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
@@ -189,11 +185,10 @@ msgid "Create new tag:"
 msgstr "Crear nueva etiqueta:"
 
 #: src/tagcheckbox.cpp:23
-#, fuzzy, kde-format
-#| msgid "New tag"
+#, kde-format
 msgctxt "accessible name for tag, %1 is the tag label"
 msgid "%1 tag"
-msgstr "Nueva etiqueta"
+msgstr "Etiqueta %1"
 
 #. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
 #. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
@@ -202,7 +197,7 @@ msgstr "Nueva etiqueta"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
-msgstr ""
+msgstr "Mostrar todo lo que tenga la etiqueta «%1»"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
@@ -225,20 +220,16 @@ msgid "New tag:"
 msgstr "Nueva etiqueta:"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "Añadir etiquetas"
+msgstr "Añadir etiquetas…"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "Editar etiquetas"
+msgstr "Editar etiquetas…"
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
@@ -281,19 +272,3 @@ msgstr "Mostrar ubicación en %1"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgctxt "@label"
-#~ msgid "Add..."
-#~ msgstr "Añadir…"
-
-#~ msgctxt "@label"
-#~ msgid "Edit..."
-#~ msgstr "Editar…"
-
-#~ msgctxt "@title:window"
-#~ msgid "Edit Comment"
-#~ msgstr "Editar comentario"
-
-#~ msgctxt "@title:window"
-#~ msgid "Add Comment"
-#~ msgstr "Añadir comentario"
