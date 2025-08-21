@@ -280,19 +280,3 @@ msgstr "Vis posisjonen i %1"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgctxt "@label"
-#~ msgid "Add..."
-#~ msgstr "Legg til …"
-
-#~ msgctxt "@label"
-#~ msgid "Edit..."
-#~ msgstr "Rediger …"
-
-#~ msgctxt "@title:window"
-#~ msgid "Edit Comment"
-#~ msgstr "Rediger kommentarar"
-
-#~ msgctxt "@title:window"
-#~ msgid "Add Comment"
-#~ msgstr "Legg til kommentar"

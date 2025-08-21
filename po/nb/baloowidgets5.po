@@ -277,7 +277,3 @@ msgstr ""
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr ""
-
-#~ msgctxt "@title:window"
-#~ msgid "Add Comment"
-#~ msgstr "Legg til kommentar"
