@@ -2,7 +2,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Joëlle Cornavin <jcorn@free.fr>, 2013.
-# Xavier Besnard <xavier.besnard@kde.org>, 2013, 2022.
+# SPDX-FileCopyrightText: 2013, 2022, 2025 Xavier Besnard <xavier.besnard@kde.org>
 # Vincent Pinon <vincent.pinon@laposte.net>, 2014, 2017.
 # Geoffray Levasseur <geoffray.levasseurbrandin@numericable.fr>, 2014, 2015.
 # Sophie ABBAD <abbadsophie@gmail.com>, 2015.
@@ -13,17 +13,17 @@ msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-18 00:40+0000\n"
-"PO-Revision-Date: 2022-07-18 08:42+0200\n"
-"Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
-"Language-Team: French <kde-francophone@kde.org>\n"
+"PO-Revision-Date: 2025-08-19 08:54+0200\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
+"Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.04.3\n"
-"X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
+"X-Environment: kde\n"
+"X-Generator: Lokalize 25.08.0\n"
 "X-Text-Markup: kde4\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
@@ -150,20 +150,16 @@ msgid "&Details"
 msgstr "&Détails"
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
 msgstr "Commentaire"
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Change Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "Modifier un commentaire"
+msgstr "Enregistrer un commentaire"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
@@ -195,11 +191,10 @@ msgid "Create new tag:"
 msgstr "Créer une nouvelle étiquette :"
 
 #: src/tagcheckbox.cpp:23
-#, fuzzy, kde-format
-#| msgid "New tag"
+#, kde-format
 msgctxt "accessible name for tag, %1 is the tag label"
 msgid "%1 tag"
-msgstr "Nouvelle étiquette"
+msgstr "Étiquette %1"
 
 #. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
 #. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
@@ -208,7 +203,7 @@ msgstr "Nouvelle étiquette"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
-msgstr ""
+msgstr "Afficher tout ce qui est étiqueté « %1 »"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
@@ -231,20 +226,16 @@ msgid "New tag:"
 msgstr "Nouvelle étiquette :"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "Ajouter des étiquettes"
+msgstr "Ajouter des étiquettes..."
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "Modifier les étiquettes"
+msgstr "Modifier des étiquettes..."
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
