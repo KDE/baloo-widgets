@@ -142,20 +142,16 @@ msgid "&Details"
 msgstr "Po&drobnosti"
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
-msgstr "Komentář"
+msgstr ""
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "Komentář"
+msgstr ""
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
@@ -187,11 +183,10 @@ msgid "Create new tag:"
 msgstr "Vytvořit novou značku:"
 
 #: src/tagcheckbox.cpp:23
-#, fuzzy, kde-format
-#| msgid "New tag"
+#, kde-format
 msgctxt "accessible name for tag, %1 is the tag label"
 msgid "%1 tag"
-msgstr "Nová značka"
+msgstr ""
 
 #. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
 #. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
@@ -223,20 +218,16 @@ msgid "New tag:"
 msgstr "Nová značka:"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "Přidat značky"
+msgstr ""
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "Upravit značky"
+msgstr ""
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
@@ -279,19 +270,3 @@ msgstr "Zobrazit umístění na %1"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgctxt "@label"
-#~ msgid "Add..."
-#~ msgstr "Přidat..."
-
-#~ msgctxt "@label"
-#~ msgid "Edit..."
-#~ msgstr "Upravit..."
-
-#~ msgctxt "@title:window"
-#~ msgid "Edit Comment"
-#~ msgstr "Upravit komentář"
-
-#~ msgctxt "@title:window"
-#~ msgid "Add Comment"
-#~ msgstr "Přidat komentář"
