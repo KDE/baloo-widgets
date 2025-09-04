@@ -3,13 +3,13 @@
 #
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2014.
 # Kiszel Kristóf <kiszel.kristof@gmail.com>, 2017, 2018, 2020.
-# SPDX-FileCopyrightText: 2022, 2024 Kristof Kiszel <ulysses@fsf.hu>
+# SPDX-FileCopyrightText: 2022, 2024, 2025 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-09-30 22:01+0200\n"
+"PO-Revision-Date: 2025-09-03 20:50+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -143,20 +143,16 @@ msgid "&Details"
 msgstr "&Részletek"
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
 msgstr "Megjegyzés"
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Change Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "Megjegyzés módosítása"
+msgstr "Megjegyzés mentése"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
@@ -188,11 +184,10 @@ msgid "Create new tag:"
 msgstr "Új címke létrehozása:"
 
 #: src/tagcheckbox.cpp:23
-#, fuzzy, kde-format
-#| msgid "New tag"
+#, kde-format
 msgctxt "accessible name for tag, %1 is the tag label"
 msgid "%1 tag"
-msgstr "Új címke"
+msgstr "%1 címke"
 
 #. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
 #. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
@@ -201,7 +196,7 @@ msgstr "Új címke"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
-msgstr ""
+msgstr "Minden „%1” címkéjű elem megjelenítése"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
@@ -224,20 +219,16 @@ msgid "New tag:"
 msgstr "Új címke:"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "Címkék hozzáadása"
+msgstr "Címkék hozzáadása…"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "Címkék szerkesztése"
+msgstr "Címkék szerkesztése…"
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
