@@ -1,13 +1,13 @@
 # KDE Finnish translation sprint participants:
 # Author: Lliehu
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2022, 2025 Tommi Nieminen <translator@legisign.org>
 # Lasse Liehu <lasse.liehu@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2018.
-# Tommi Nieminen <translator@legisign.org>, 2018, 2019, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-01 00:40+0000\n"
-"PO-Revision-Date: 2022-08-09 10:32+0300\n"
+"PO-Revision-Date: 2025-09-04 10:10+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,6 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -83,7 +84,7 @@ msgstr "Koko"
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
-msgstr "Tunnisteet"
+msgstr "Luokitukset"
 
 #: src/filemetadataprovider.cpp:452
 #, kde-format
@@ -172,30 +173,30 @@ msgstr "Tallenna"
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Tags"
-msgstr "Muokkaa tunnisteita"
+msgstr "Muokkaa luokituksia"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Tags"
-msgstr "Tunnisteiden lisääminen"
+msgstr "Luokitusten lisääminen"
 
 #: src/kedittagsdialog.cpp:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
-msgstr "Valitse käytettävät tunnisteet."
+msgstr "Valitse käytettävät luokitukset."
 
 #: src/kedittagsdialog.cpp:64
 #, kde-format
 msgctxt "@label"
 msgid "Create new tag:"
-msgstr "Luo uusi tunniste:"
+msgstr "Luo uusi luokitus:"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
 msgid "Assign Tags"
-msgstr "Liitä tunnisteita"
+msgstr "Kytke luokituksia"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
 #, kde-format
@@ -205,12 +206,12 @@ msgstr "Luo uusi…"
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag"
-msgstr "Uusi tunniste"
+msgstr "Uusi luokitus"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag:"
-msgstr "Uusi tunniste:"
+msgstr "Uusi luokitus:"
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
