@@ -1,13 +1,13 @@
 # KDE Finnish translation sprint participants:
 # Author: Lliehu
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2022, 2025 Tommi Nieminen <translator@legisign.org>
 # Lasse Liehu <lasse.liehu@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2018.
-# Tommi Nieminen <translator@legisign.org>, 2018, 2019, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-18 00:40+0000\n"
-"PO-Revision-Date: 2022-08-09 10:32+0300\n"
+"PO-Revision-Date: 2025-09-04 10:10+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,6 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -83,7 +84,7 @@ msgstr "Koko"
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
-msgstr "Tunnisteet"
+msgstr "Luokitukset"
 
 #: src/filemetadataprovider.cpp:452
 #, kde-format
@@ -140,32 +141,28 @@ msgid "&Details"
 msgstr "&Yksityiskohdat"
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
 msgstr "Kommentti"
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Change Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "Kommentin muuttaminen"
+msgstr "Tallenna kommentti"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Tags"
-msgstr "Muokkaa tunnisteita"
+msgstr "Muokkaa luokituksia"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Tags"
-msgstr "Tunnisteiden lisääminen"
+msgstr "Luokitusten lisääminen"
 
 #: src/kedittagsdialog.cpp:40
 #, kde-format
@@ -176,20 +173,19 @@ msgstr "Tallenna"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Configure which tags should be applied."
-msgstr "Valitse käytettävät tunnisteet."
+msgstr "Valitse käytettävät luokitukset."
 
 #: src/kedittagsdialog.cpp:64
 #, kde-format
 msgctxt "@label"
 msgid "Create new tag:"
-msgstr "Luo uusi tunniste:"
+msgstr "Luo uusi luokitus:"
 
 #: src/tagcheckbox.cpp:23
-#, fuzzy, kde-format
-#| msgid "New tag"
+#, kde-format
 msgctxt "accessible name for tag, %1 is the tag label"
 msgid "%1 tag"
-msgstr "Uusi tunniste"
+msgstr "Luokitus ”%1”"
 
 #. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
 #. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
@@ -198,12 +194,12 @@ msgstr "Uusi tunniste"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
-msgstr ""
+msgstr "Näytä kaikki luokituksella ”%1”"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
 msgid "Assign Tags"
-msgstr "Liitä tunnisteita"
+msgstr "Kytke luokituksia"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
 #, kde-format
@@ -213,28 +209,24 @@ msgstr "Luo uusi…"
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag"
-msgstr "Uusi tunniste"
+msgstr "Uusi luokitus"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "New tag:"
-msgstr "Uusi tunniste:"
+msgstr "Uusi luokitus:"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "Tunnisteiden lisääminen"
+msgstr "Lisää luokituksia…"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "Muokkaa tunnisteita"
+msgstr "Muokkaa luokituksia…"
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
