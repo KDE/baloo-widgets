@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
+# SPDX-FileCopyrightText: 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2025 Shinjo Park <kde@peremen.name>
 # Minori Hiraoka <minori@mnetwork.co.kr>, 2018.
 # JungHee Lee <daemul72@gmail.com>, 2019.
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-18 00:40+0000\n"
-"PO-Revision-Date: 2022-08-09 13:40+0200\n"
+"PO-Revision-Date: 2025-10-09 00:08+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -141,20 +141,16 @@ msgid "&Details"
 msgstr "자세히(&D)"
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
 msgstr "설명"
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Change Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "설명 변경"
+msgstr "설명 저장"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
@@ -186,11 +182,10 @@ msgid "Create new tag:"
 msgstr "새 태그 만들기:"
 
 #: src/tagcheckbox.cpp:23
-#, fuzzy, kde-format
-#| msgid "New tag"
+#, kde-format
 msgctxt "accessible name for tag, %1 is the tag label"
 msgid "%1 tag"
-msgstr "새 태그"
+msgstr "%1 태그"
 
 #. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
 #. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
@@ -199,7 +194,7 @@ msgstr "새 태그"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
-msgstr ""
+msgstr "\"%1\" 태그가 붙은 모든 항목 표시"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
 #, kde-format
@@ -222,20 +217,16 @@ msgid "New tag:"
 msgstr "새 태그:"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "태그 추가"
+msgstr "태그 추가…"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "태그 편집"
+msgstr "태그 편집…"
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
