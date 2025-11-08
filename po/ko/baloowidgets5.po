@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-08 00:40+0000\n"
 "PO-Revision-Date: 2025-10-09 00:08+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -196,25 +196,17 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr "\"%1\" 태그가 붙은 모든 항목 표시"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
 msgid "Assign Tags"
 msgstr "태그 할당"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
-#, kde-format
-msgid "Create New..."
-msgstr "새로 만들기..."
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr "새 태그"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag:"
-msgstr "새 태그:"
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Edit Tags"
+msgid "Edit tags..."
+msgstr "태그 편집"
 
 #: src/tagwidget.cpp:83
 #, kde-format
@@ -269,6 +261,15 @@ msgstr "%1에 위치 표시"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
+
+#~ msgid "Create New..."
+#~ msgstr "새로 만들기..."
+
+#~ msgid "New tag"
+#~ msgstr "새 태그"
+
+#~ msgid "New tag:"
+#~ msgstr "새 태그:"
 
 #~ msgctxt "@label"
 #~ msgid "Add..."

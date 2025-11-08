@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-08 00:40+0000\n"
 "PO-Revision-Date: 2025-08-18 13:32+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -196,25 +196,17 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr "Alles tonen met tag “%1”"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
 msgid "Assign Tags"
 msgstr "Tags toekennen"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
-#, kde-format
-msgid "Create New..."
-msgstr "Nieuwe aanmaken..."
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr "Nieuwe tag"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag:"
-msgstr "Nieuwe tag:"
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Edit Tags"
+msgid "Edit tags..."
+msgstr "Tags bewerken"
 
 #: src/tagwidget.cpp:83
 #, kde-format
@@ -269,6 +261,15 @@ msgstr "Locatie in %1 tonen"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
+
+#~ msgid "Create New..."
+#~ msgstr "Nieuwe aanmaken..."
+
+#~ msgid "New tag"
+#~ msgstr "Nieuwe tag"
+
+#~ msgid "New tag:"
+#~ msgstr "Nieuwe tag:"
 
 #~ msgctxt "@label"
 #~ msgid "Add..."

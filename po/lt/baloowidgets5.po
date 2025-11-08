@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-08 00:40+0000\n"
 "PO-Revision-Date: 2025-09-10 01:44+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -202,25 +202,17 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr "Rodyti viską, kas pažymėta „%1“ žyme"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
 msgid "Assign Tags"
 msgstr "Priskirti žymes"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
-#, kde-format
-msgid "Create New..."
-msgstr "Sukurti naują..."
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr "Nauja žymė"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag:"
-msgstr "Nauja žymė:"
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Edit Tags"
+msgid "Edit tags..."
+msgstr "Taisyti žymes"
 
 #: src/tagwidget.cpp:83
 #, kde-format
@@ -275,6 +267,15 @@ msgstr "Rodyti vietą %1"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
+
+#~ msgid "Create New..."
+#~ msgstr "Sukurti naują..."
+
+#~ msgid "New tag"
+#~ msgstr "Nauja žymė"
+
+#~ msgid "New tag:"
+#~ msgstr "Nauja žymė:"
 
 #~ msgctxt "@label"
 #~ msgid "Add..."

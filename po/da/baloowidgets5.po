@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-08 00:40+0000\n"
 "PO-Revision-Date: 2022-08-08 17:36+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -203,25 +203,17 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
 msgid "Assign Tags"
 msgstr "Tildel mærker"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
-#, kde-format
-msgid "Create New..."
-msgstr "Opret ny..."
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr "Nyt mærke"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag:"
-msgstr "Nyt mærke:"
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Edit Tags"
+msgid "Edit tags..."
+msgstr "Redigér mærker"
 
 #: src/tagwidget.cpp:83
 #, fuzzy, kde-format
@@ -280,6 +272,15 @@ msgstr ""
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
+
+#~ msgid "Create New..."
+#~ msgstr "Opret ny..."
+
+#~ msgid "New tag"
+#~ msgstr "Nyt mærke"
+
+#~ msgid "New tag:"
+#~ msgstr "Nyt mærke:"
 
 #~ msgctxt "@label"
 #~ msgid "Add..."

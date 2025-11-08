@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-08 00:40+0000\n"
 "PO-Revision-Date: 2024-12-20 21:51+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -203,25 +203,17 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
 msgid "Assign Tags"
 msgstr "टैग्स नियुक्त करें"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
-#, kde-format
-msgid "Create New..."
-msgstr "नूतनं रचयतु..."
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr "नवीन टैग"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag:"
-msgstr "नवीनं टैगम् :"
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Edit Tags"
+msgid "Edit tags..."
+msgstr "टैग सम्पादयतु"
 
 #: src/tagwidget.cpp:83
 #, fuzzy, kde-format
@@ -280,6 +272,15 @@ msgstr "%1 मध्ये स्थानं दर्शयतु"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
+
+#~ msgid "Create New..."
+#~ msgstr "नूतनं रचयतु..."
+
+#~ msgid "New tag"
+#~ msgstr "नवीन टैग"
+
+#~ msgid "New tag:"
+#~ msgstr "नवीनं टैगम् :"
 
 #~ msgctxt "@label"
 #~ msgid "Add..."

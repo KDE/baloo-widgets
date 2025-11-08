@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-08 00:40+0000\n"
 "PO-Revision-Date: 2025-08-18 08:47+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -197,25 +197,17 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr "ჩვენება ყველაფრის ჭდით '%1'"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
 msgid "Assign Tags"
 msgstr "ჭდეების მინიჭება"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
-#, kde-format
-msgid "Create New..."
-msgstr "ახლის შექმნა..."
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr "ახალი ჭდე"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag:"
-msgstr "ახალი ჭდე:"
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Edit Tags"
+msgid "Edit tags..."
+msgstr "ჭდეების ჩასწორება"
 
 #: src/tagwidget.cpp:83
 #, kde-format
@@ -270,6 +262,15 @@ msgstr "მდებარეობების %1-ში ჩვენება"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
+
+#~ msgid "Create New..."
+#~ msgstr "ახლის შექმნა..."
+
+#~ msgid "New tag"
+#~ msgstr "ახალი ჭდე"
+
+#~ msgid "New tag:"
+#~ msgstr "ახალი ჭდე:"
 
 #~ msgctxt "@label"
 #~ msgid "Add..."

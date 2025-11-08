@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloowidgets5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-08 00:40+0000\n"
 "PO-Revision-Date: 2022-07-23 23:10+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -199,25 +199,17 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
 msgid "Assign Tags"
 msgstr "Stichwörter zuweisen"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
-#, kde-format
-msgid "Create New..."
-msgstr "Neu erstellen ..."
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr "Neues Stichwort"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag:"
-msgstr "Neues Stichwort:"
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Edit Tags"
+msgid "Edit tags..."
+msgstr "Stichwörter bearbeiten"
 
 #: src/tagwidget.cpp:83
 #, fuzzy, kde-format
@@ -276,6 +268,15 @@ msgstr "Position in %1 anzeigen"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
+
+#~ msgid "Create New..."
+#~ msgstr "Neu erstellen ..."
+
+#~ msgid "New tag"
+#~ msgstr "Neues Stichwort"
+
+#~ msgid "New tag:"
+#~ msgstr "Neues Stichwort:"
 
 #~ msgctxt "@label"
 #~ msgid "Add..."

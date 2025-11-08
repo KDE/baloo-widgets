@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-08 00:40+0000\n"
 "PO-Revision-Date: 2012-09-21 16:01-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -215,31 +215,19 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"
 msgid "Assign Tags"
 msgstr "Cuir Clibeanna Leis"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
 #, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Create new tag:"
-msgid "Create New..."
-msgstr "Cruthaigh clib nua:"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr ""
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Create new tag:"
-msgid "New tag:"
-msgstr "Cruthaigh clib nua:"
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgid "Edit tags..."
+msgstr "Cuir Clibeanna Leis"
 
 #: src/tagwidget.cpp:83
 #, fuzzy, kde-format
@@ -298,6 +286,18 @@ msgstr ""
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Create new tag:"
+#~ msgid "Create New..."
+#~ msgstr "Cruthaigh clib nua:"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Create new tag:"
+#~ msgid "New tag:"
+#~ msgstr "Cruthaigh clib nua:"
 
 #, fuzzy
 #~| msgctxt "@title:window"

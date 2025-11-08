@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-08 00:40+0000\n"
 "PO-Revision-Date: 2025-08-19 08:54+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -205,25 +205,17 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr "Afficher tout ce qui est étiqueté « %1 »"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
 msgid "Assign Tags"
 msgstr "Attribuer des étiquettes"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
-#, kde-format
-msgid "Create New..."
-msgstr "Créer un nouveau..."
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr "Nouvelle étiquette"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag:"
-msgstr "Nouvelle étiquette :"
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Edit Tags"
+msgid "Edit tags..."
+msgstr "Modifier les étiquettes"
 
 #: src/tagwidget.cpp:83
 #, kde-format
@@ -278,6 +270,15 @@ msgstr "Afficher la position dans %1"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
+
+#~ msgid "Create New..."
+#~ msgstr "Créer un nouveau..."
+
+#~ msgid "New tag"
+#~ msgstr "Nouvelle étiquette"
+
+#~ msgid "New tag:"
+#~ msgstr "Nouvelle étiquette :"
 
 #~ msgctxt "@label"
 #~ msgid "Add..."
