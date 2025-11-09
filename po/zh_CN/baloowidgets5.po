@@ -201,11 +201,9 @@ msgid "Assign Tags"
 msgstr "分配标签"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgid "Edit tags..."
-msgstr "编辑标签"
+msgstr ""
 
 #: src/tagwidget.cpp:83
 #, kde-format
@@ -260,12 +258,3 @@ msgstr "使用 %1 显示此位置"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgid "Create New..."
-#~ msgstr "新建..."
-
-#~ msgid "New tag"
-#~ msgstr "新建标签"
-
-#~ msgid "New tag:"
-#~ msgstr "新标签："
