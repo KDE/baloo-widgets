@@ -203,7 +203,7 @@ msgstr "分配标签"
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
 #, kde-format
 msgid "Edit tags..."
-msgstr ""
+msgstr "编辑标签..."
 
 #: src/tagwidget.cpp:83
 #, kde-format

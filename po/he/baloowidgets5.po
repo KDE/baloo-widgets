@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-08 00:40+0000\n"
-"PO-Revision-Date: 2025-10-09 13:14+0300\n"
+"PO-Revision-Date: 2025-11-08 19:59+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -205,11 +205,9 @@ msgid "Assign Tags"
 msgstr "הקצאת תגיות"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgid "Edit tags..."
-msgstr "עריכת תגיות"
+msgstr "עריכת תגיות…"
 
 #: src/tagwidget.cpp:83
 #, kde-format
