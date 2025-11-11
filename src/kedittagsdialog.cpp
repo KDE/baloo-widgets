@@ -95,8 +95,10 @@ void KEditTagsDialog::setupModel(const QStringList &allTags, const QStringList &
     }
 
     for (const auto &tag : selectedTags) {
-        auto currentItem = ensureItemForTagExists(tag);
-        currentItem->setCheckState(Qt::Checked);
+        // no item will be returned if the tag name is invalid, e.g. only contains slashes
+        if (auto currentItem = ensureItemForTagExists(tag); currentItem) {
+            currentItem->setCheckState(Qt::Checked);
+        }
     }
 
     m_treeView->expandAll();

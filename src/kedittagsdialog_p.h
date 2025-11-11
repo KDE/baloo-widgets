@@ -7,6 +7,8 @@
 #ifndef KEDIT_TAGS_DIALOG_H
 #define KEDIT_TAGS_DIALOG_H
 
+#include "widgets_export.h"
+
 #include <QDialog>
 #include <QHash>
 
@@ -28,7 +30,7 @@ class QStandardItem;
  *
  * @see KMetaDataConfigurationDialog
  */
-class KEditTagsDialog : public QDialog
+class BALOO_WIDGETS_EXPORT KEditTagsDialog : public QDialog
 {
     Q_OBJECT
 
