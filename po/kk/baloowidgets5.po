@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-13 02:37+0000\n"
 "PO-Revision-Date: 2012-12-30 03:45+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -211,31 +211,19 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"
 msgid "Assign Tags"
 msgstr "Белгілерін қосу"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
 #, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Create new tag:"
-msgid "Create New..."
-msgstr "Жаңа белгіні құру:"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr ""
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Create new tag:"
-msgid "New tag:"
-msgstr "Жаңа белгіні құру:"
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgid "Edit tags..."
+msgstr "Белгілерін қосу"
 
 #: src/tagwidget.cpp:83
 #, fuzzy, kde-format
@@ -294,6 +282,18 @@ msgstr ""
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Create new tag:"
+#~ msgid "Create New..."
+#~ msgstr "Жаңа белгіні құру:"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Create new tag:"
+#~ msgid "New tag:"
+#~ msgstr "Жаңа белгіні құру:"
 
 #, fuzzy
 #~| msgctxt "@title:window"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-13 02:37+0000\n"
 "PO-Revision-Date: 2019-12-12 13:28+0000\n"
 "Last-Translator: Preyas Prathap <preyasprathap@protonmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -202,25 +202,17 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
 msgid "Assign Tags"
 msgstr "മുദ്രകൾ എല്പിക്കുക"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
-#, kde-format
-msgid "Create New..."
-msgstr "പുതിയതായി ഉണ്ടാക്കുക..."
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr "പുതിയ മുദ്ര"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag:"
-msgstr "പുതിയ മുദ്ര:"
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Edit Tags"
+msgid "Edit tags..."
+msgstr "മുദ്രകളിൽ മാറ്റം വരുത്തുക"
 
 #: src/tagwidget.cpp:83
 #, fuzzy, kde-format
@@ -279,6 +271,15 @@ msgstr ""
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr ""
+
+#~ msgid "Create New..."
+#~ msgstr "പുതിയതായി ഉണ്ടാക്കുക..."
+
+#~ msgid "New tag"
+#~ msgstr "പുതിയ മുദ്ര"
+
+#~ msgid "New tag:"
+#~ msgstr "പുതിയ മുദ്ര:"
 
 #~ msgctxt "@label"
 #~ msgid "Add..."

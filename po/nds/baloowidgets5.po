@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-11-13 02:37+0000\n"
 "PO-Revision-Date: 2014-09-18 16:35+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -208,31 +208,19 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:51
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"
 msgid "Assign Tags"
 msgstr "Slötelwöör tofögen"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:85
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
 #, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Create new tag:"
-msgid "Create New..."
-msgstr "Nieg Slötelwoort opstellen:"
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, kde-format
-msgid "New tag"
-msgstr ""
-
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Create new tag:"
-msgid "New tag:"
-msgstr "Nieg Slötelwoort opstellen:"
+#| msgctxt "@title:window"
+#| msgid "Add Tags"
+msgid "Edit tags..."
+msgstr "Slötelwöör tofögen"
 
 #: src/tagwidget.cpp:83
 #, fuzzy, kde-format
@@ -291,6 +279,18 @@ msgstr ""
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Create new tag:"
+#~ msgid "Create New..."
+#~ msgstr "Nieg Slötelwoort opstellen:"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Create new tag:"
+#~ msgid "New tag:"
+#~ msgstr "Nieg Slötelwoort opstellen:"
 
 #, fuzzy
 #~| msgctxt "@title:window"
