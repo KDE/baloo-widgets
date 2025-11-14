@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: baloowidgets5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-13 02:37+0000\n"
-"PO-Revision-Date: 2025-08-19 00:07+0100\n"
+"PO-Revision-Date: 2025-11-14 00:49+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -205,11 +205,9 @@ msgid "Assign Tags"
 msgstr "Asignar etiquetas"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgid "Edit tags..."
-msgstr "Editar etiquetas"
+msgstr "Editar etiquetas…"
 
 #: src/tagwidget.cpp:83
 #, kde-format
@@ -264,12 +262,3 @@ msgstr "Mostrar ubicación en %1"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgid "Create New..."
-#~ msgstr "Crear nueva…"
-
-#~ msgid "New tag"
-#~ msgstr "Nueva etiqueta"
-
-#~ msgid "New tag:"
-#~ msgstr "Nueva etiqueta:"

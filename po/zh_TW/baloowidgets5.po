@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-13 02:37+0000\n"
-"PO-Revision-Date: 2025-08-19 04:55+0900\n"
+"PO-Revision-Date: 2025-11-13 21:51+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -204,11 +204,9 @@ msgid "Assign Tags"
 msgstr "分配標籤"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgid "Edit tags..."
-msgstr "編輯標籤"
+msgstr "編輯標籤…"
 
 #: src/tagwidget.cpp:83
 #, kde-format
