@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-13 02:37+0000\n"
-"PO-Revision-Date: 2025-08-18 09:36+0200\n"
+"PO-Revision-Date: 2025-11-13 09:37+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -206,11 +206,9 @@ msgid "Assign Tags"
 msgstr "Assigna etiquetes"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgid "Edit tags..."
-msgstr "Editeu les etiquetes"
+msgstr "Editeu les etiquetes…"
 
 #: src/tagwidget.cpp:83
 #, kde-format
@@ -265,12 +263,3 @@ msgstr "Mostra l'emplaçament en %1"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgid "Create New..."
-#~ msgstr "Crea nova…"
-
-#~ msgid "New tag"
-#~ msgstr "Etiqueta nova"
-
-#~ msgid "New tag:"
-#~ msgstr "Etiqueta nova:"

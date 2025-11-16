@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-13 02:37+0000\n"
-"PO-Revision-Date: 2025-08-18 13:19+0200\n"
+"PO-Revision-Date: 2025-11-15 21:07+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -202,11 +202,9 @@ msgid "Assign Tags"
 msgstr "Tilldela etiketter"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgid "Edit tags..."
-msgstr "Redigera etiketter"
+msgstr "Redigera etiketter..."
 
 #: src/tagwidget.cpp:83
 #, kde-format
