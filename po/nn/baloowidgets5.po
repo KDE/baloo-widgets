@@ -272,12 +272,3 @@ msgstr "Vis posisjonen i %1"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgid "Create New..."
-#~ msgstr "Lag ny …"
-
-#~ msgid "New tag"
-#~ msgstr "Ny merkelapp"
-
-#~ msgid "New tag:"
-#~ msgstr "Ny merkelapp:"
