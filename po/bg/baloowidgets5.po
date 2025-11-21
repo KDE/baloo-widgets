@@ -262,28 +262,3 @@ msgstr "Показване на локация %1"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgid "Create New..."
-#~ msgstr "Създаване на нов..."
-
-#~ msgid "New tag"
-#~ msgstr "Нов етикет"
-
-#~ msgid "New tag:"
-#~ msgstr "Нов етикет:"
-
-#~ msgctxt "@label"
-#~ msgid "Add..."
-#~ msgstr "Добавяне..."
-
-#~ msgctxt "@label"
-#~ msgid "Edit..."
-#~ msgstr "Редактиране..."
-
-#~ msgctxt "@title:window"
-#~ msgid "Edit Comment"
-#~ msgstr "Редактиране на коментар"
-
-#~ msgctxt "@title:window"
-#~ msgid "Add Comment"
-#~ msgstr "Добавяне на коментар"
