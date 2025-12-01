@@ -263,28 +263,3 @@ msgstr "Mostra l'emplaçament al %1"
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
-
-#~ msgid "Create New..."
-#~ msgstr "Crea nova..."
-
-#~ msgid "New tag"
-#~ msgstr "Etiqueta nova"
-
-#~ msgid "New tag:"
-#~ msgstr "Etiqueta nova:"
-
-#~ msgctxt "@label"
-#~ msgid "Add..."
-#~ msgstr "Afegeix..."
-
-#~ msgctxt "@label"
-#~ msgid "Edit..."
-#~ msgstr "Edita..."
-
-#~ msgctxt "@title:window"
-#~ msgid "Edit Comment"
-#~ msgstr "Edició de comentari"
-
-#~ msgctxt "@title:window"
-#~ msgid "Add Comment"
-#~ msgstr "Afegeix un comentari"
