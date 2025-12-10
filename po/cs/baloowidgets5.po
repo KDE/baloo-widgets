@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Vit Pelcak <vit@pelcak.org>, 2012, 2014, 2015, 2017, 2018, 2019, 2020, 2022, 2023.
+# SPDX-FileCopyrightText: 2012, 2014, 2015, 2017, 2018, 2019, 2020, 2022, 2023, 2025 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:40+0000\n"
-"PO-Revision-Date: 2023-01-03 16:06+0100\n"
+"PO-Revision-Date: 2025-12-02 11:48+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -145,13 +145,13 @@ msgstr "Po&drobnosti"
 #, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
-msgstr ""
+msgstr "Komentář"
 
 #: src/kcommentwidget.cpp:53
 #, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr ""
+msgstr "Uložit komentář"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
@@ -186,7 +186,7 @@ msgstr "Vytvořit novou značku:"
 #, kde-format
 msgctxt "accessible name for tag, %1 is the tag label"
 msgid "%1 tag"
-msgstr ""
+msgstr "%1 značka"
 
 #. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
 #. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
@@ -195,7 +195,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
-msgstr ""
+msgstr "Zobrazit vše označené “%1”"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
@@ -203,23 +203,21 @@ msgid "Assign Tags"
 msgstr "Přiřadit značky"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgid "Edit tags..."
-msgstr "Upravit značky"
+msgstr "Upravit značky..."
 
 #: src/tagwidget.cpp:83
 #, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr ""
+msgstr "Přidat značky…"
 
 #: src/tagwidget.cpp:83
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr ""
+msgstr "Upravit značky..."
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
