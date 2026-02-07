@@ -35,6 +35,15 @@ target_include_directories(mergedatatest
     PRIVATE ${CMAKE_SOURCE_DIR}/src
 )
 
+ecm_add_test(widgetfactorytest.cpp
+    TEST_NAME "widgetfactorytest"
+    LINK_LIBRARIES Qt6::Test
+    KF6::CoreAddons
+)
+target_include_directories(widgetfactorytest
+    PRIVATE ${CMAKE_SOURCE_DIR}/src
+)
+
 # Set PATH so baloo_filemetadata_temp_extractor from the build directory is used
 if(WIN32)
    set_property(TEST "extractortest"               PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin\\;$ENV{PATH}")
