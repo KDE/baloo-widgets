@@ -102,6 +102,15 @@
             "inode/directory"
         ],
         "Name": "Assign Tags",
+        "Name[ca@valencia]": "Assignació d'etiquetes",
+        "Name[ca]": "Assignació d'etiquetes",
+        "Name[es]": "Asignar etiquetas",
+        "Name[he]": "הקצאת תגיות",
+        "Name[ka]": "ჭდეების მინიჭება",
+        "Name[nl]": "Tags toekennen",
+        "Name[pt_BR]": "Atribuir etiquetas",
+        "Name[sl]": "Dodeli oznake",
+        "Name[uk]": "Призначення міток",
         "ServiceTypes": [
             "KFileItemAction/Plugin"
         ]
