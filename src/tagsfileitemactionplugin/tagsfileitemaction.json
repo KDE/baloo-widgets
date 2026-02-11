@@ -91,7 +91,7 @@
         "Description[sl]": "Zamenjaj oznake v datoteki",
         "Description[sv]": "Ändra filetiketter",
         "Description[ta]": "குறிச்சொற்களை மாற்று",
-        "Description[tr]": "Dosya künyelerini değiştir",
+        "Description[tr]": "Dosya künyelerini değiştirin",
         "Description[uk]": "Зміна міток файлів",
         "Description[zh_CN]": "更改文件标签",
         "Description[zh_TW]": "變更檔案標籤",
@@ -102,15 +102,20 @@
             "inode/directory"
         ],
         "Name": "Assign Tags",
+        "Name[bg]": "Прилагане на етикети",
         "Name[ca@valencia]": "Assignació d'etiquetes",
         "Name[ca]": "Assignació d'etiquetes",
         "Name[es]": "Asignar etiquetas",
         "Name[he]": "הקצאת תגיות",
+        "Name[ia]": "Assigna Etiquettas",
         "Name[ka]": "ჭდეების მინიჭება",
         "Name[nl]": "Tags toekennen",
         "Name[pt_BR]": "Atribuir etiquetas",
+        "Name[ro]": "Atribuie marcaje",
         "Name[sl]": "Dodeli oznake",
+        "Name[tr]": "Künyeler Ata",
         "Name[uk]": "Призначення міток",
+        "Name[zh_CN]": "分配标签",
         "ServiceTypes": [
             "KFileItemAction/Plugin"
         ]
