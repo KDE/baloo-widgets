@@ -102,6 +102,7 @@
             "inode/directory"
         ],
         "Name": "Assign Tags",
+        "Name[ar]": "أسند وسومًا",
         "Name[bg]": "Прилагане на етикети",
         "Name[ca@valencia]": "Assignació d'etiquetes",
         "Name[ca]": "Assignació d'etiquetes",
