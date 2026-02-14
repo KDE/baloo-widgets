@@ -119,6 +119,7 @@
         "Name[tr]": "Künyeler Ata",
         "Name[uk]": "Призначення міток",
         "Name[zh_CN]": "分配标签",
+        "Name[zh_TW]": "指定標籤",
         "ServiceTypes": [
             "KFileItemAction/Plugin"
         ]
