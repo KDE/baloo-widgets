@@ -25,9 +25,6 @@ msgid "%1 item"
 msgid_plural "%1 items"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: src/filemetadataprovider.cpp:442 src/filemetadataprovider.cpp:459
 #, kde-format
@@ -36,12 +33,10 @@ msgid "Comment"
 msgstr "Nóta Tráchta"
 
 #: src/filemetadataprovider.cpp:443
-#, fuzzy, kde-format
-#| msgctxt "@label creation date"
-#| msgid "Created"
+#, kde-format
 msgctxt "@label"
 msgid "Created"
-msgstr "Cruthaithe"
+msgstr ""
 
 #: src/filemetadataprovider.cpp:444
 #, kde-format
@@ -122,12 +117,10 @@ msgid "Points to"
 msgstr ""
 
 #: src/filemetadataprovider.cpp:460
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Copied From"
+#, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
-msgstr "Cóipeáilte Ó"
+msgstr ""
 
 #: src/filemetadataprovider.cpp:461
 #, kde-format
@@ -136,12 +129,10 @@ msgid "Dimensions"
 msgstr ""
 
 #: src/filemetadataprovider.cpp:462
-#, fuzzy, kde-format
-#| msgctxt "@label file URL"
-#| msgid "Location"
+#, kde-format
 msgctxt "@label"
 msgid "GPS Location"
-msgstr "Suíomh"
+msgstr ""
 
 #: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:66
 #, kde-format
@@ -150,36 +141,28 @@ msgid "&Details"
 msgstr ""
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
-msgstr "Nóta Tráchta"
+msgstr ""
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Change Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "Athraigh Nóta"
+msgstr ""
 
 #: src/kedittagsdialog.cpp:36
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@title:window"
 msgid "Edit Tags"
-msgstr "Cuir Clibeanna Leis"
+msgstr ""
 
 #: src/kedittagsdialog.cpp:36
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Add Tags..."
+#, kde-format
 msgctxt "@title:window"
 msgid "Add Tags"
-msgstr "Cuir Clibeanna Leis..."
+msgstr ""
 
 #: src/kedittagsdialog.cpp:40
 #, kde-format
@@ -193,12 +176,10 @@ msgid "Configure which tags should be applied."
 msgstr "Cumraigh na clibeanna ba mhaith leat cur i bhfeidhm."
 
 #: src/kedittagsdialog.cpp:64
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Create new tag:"
+#, kde-format
 msgctxt "@label"
 msgid "Create new tag:"
-msgstr "Cruthaigh clib nua:"
+msgstr ""
 
 #: src/tagcheckbox.cpp:23
 #, kde-format
@@ -216,34 +197,26 @@ msgid "Show everything tagged “%1”"
 msgstr ""
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgid "Assign Tags"
-msgstr "Cuir Clibeanna Leis"
+msgstr ""
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgid "Edit tags..."
-msgstr "Cuir Clibeanna Leis"
+msgstr ""
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Add Tags..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "Cuir Clibeanna Leis..."
+msgstr ""
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "Cuir Clibeanna Leis"
+msgstr ""
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
@@ -286,565 +259,3 @@ msgstr ""
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr ""
-
-#, fuzzy
-#~| msgctxt "@label"
-#~| msgid "Create new tag:"
-#~ msgid "Create New..."
-#~ msgstr "Cruthaigh clib nua:"
-
-#, fuzzy
-#~| msgctxt "@label"
-#~| msgid "Create new tag:"
-#~ msgid "New tag:"
-#~ msgstr "Cruthaigh clib nua:"
-
-#, fuzzy
-#~| msgctxt "@title:window"
-#~| msgid "Add Comment"
-#~ msgctxt "@title:window"
-#~ msgid "Edit Comment"
-#~ msgstr "Cuir Nóta Leis"
-
-#~ msgctxt "@title:window"
-#~ msgid "Add Comment"
-#~ msgstr "Cuir Nóta Leis"
-
-#~ msgctxt "@label"
-#~ msgid "Change..."
-#~ msgstr "Athraigh..."
-
-#~ msgctxt "@title:window"
-#~ msgid "Change Tags"
-#~ msgstr "Athraigh Clibeanna"
-
-#, fuzzy
-#~| msgctxt "@option:check A filter on resource type"
-#~| msgid "Contacts"
-#~ msgctxt "Pattern placeholder for a contact identifier"
-#~ msgid "[contact]"
-#~ msgstr "Teagmhálacha"
-
-#~ msgctxt "@label"
-#~ msgid "Add Comment..."
-#~ msgstr "Cuir Nóta Leis..."
-
-#, fuzzy
-#~| msgctxt "@label"
-#~| msgid "Description"
-#~ msgid "Comment or description"
-#~ msgstr "Cur Síos"
-
-#, fuzzy
-#~| msgctxt "@label"
-#~| msgid "Size"
-#~ msgid "Size"
-#~ msgstr "Méid"
-
-#, fuzzy
-#~| msgctxt ""
-#~| "referring to a filter on the modification and usage date of files/"
-#~| "resources"
-#~| msgid "Yesterday"
-#~ msgctxt "One day ago"
-#~ msgid "yesterday"
-#~ msgstr "Inné"
-
-#, fuzzy
-#~| msgctxt ""
-#~| "referring to a filter on the modification and usage date of files/"
-#~| "resources"
-#~| msgid "Yesterday"
-#~ msgid "Yesterday"
-#~ msgstr "Inné"
-
-#, fuzzy
-#~| msgid "Today"
-#~ msgctxt "The current day"
-#~ msgid "today"
-#~ msgstr "Inniu"
-
-#~ msgid "Today"
-#~ msgstr "Inniu"
-
-#, fuzzy
-#~| msgid "Anytime"
-#~ msgid "A time"
-#~ msgstr "Am Ar Bith"
-
-#~ msgid "After"
-#~ msgstr "Tar éis"
-
-#~ msgid "Before"
-#~ msgstr "Roimh"
-
-#, fuzzy
-#~| msgctxt "@label"
-#~| msgid "Content"
-#~ msgctxt "Space-separated list of words meaning 10"
-#~ msgid "ten tenth"
-#~ msgstr "Ábhar"
-
-#~ msgctxt "@label file content size"
-#~ msgid "Size"
-#~ msgstr "Méid"
-
-#~ msgctxt "@label file depends from"
-#~ msgid "Depends"
-#~ msgstr "Braitheann"
-
-#~ msgctxt "@label Software used to generate content"
-#~ msgid "Generator"
-#~ msgstr "Gineadóir"
-
-#~ msgctxt ""
-#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
-#~ "nie#hasPart"
-#~ msgid "Has Part"
-#~ msgstr "Comhpháirt Aige"
-
-#~ msgctxt ""
-#~ "@label see http://www.semanticdesktop.org/ontologies/2007/01/19/"
-#~ "nie#hasLogicalPart"
-#~ msgid "Has Logical Part"
-#~ msgstr "Comhpháirt Loighciúil Aige"
-
-#~ msgctxt "@label parent directory"
-#~ msgid "Part of"
-#~ msgstr "Cuid de"
-
-#~ msgctxt "@label"
-#~ msgid "Keyword"
-#~ msgstr "Lorgfhocal"
-
-#~ msgctxt "@label modified date of file"
-#~ msgid "Modified"
-#~ msgstr "Athraithe"
-
-#~ msgctxt "@label"
-#~ msgid "MIME Type"
-#~ msgstr "Cineál MIME"
-
-#~ msgctxt "@label"
-#~ msgid "Related To"
-#~ msgstr "Baint Le"
-
-#~ msgctxt "@label"
-#~ msgid "Subject"
-#~ msgstr "Ábhar"
-
-#~ msgctxt "@label music title"
-#~ msgid "Title"
-#~ msgstr "Teideal"
-
-#~ msgctxt "@label"
-#~ msgid "Creator"
-#~ msgstr "Cruthaitheoir"
-
-#~ msgctxt "@label"
-#~ msgid "Average Bitrate"
-#~ msgstr "Meánráta Giotán"
-
-#~ msgctxt "@label"
-#~ msgid "Channels"
-#~ msgstr "Cainéil"
-
-#~ msgctxt "@label number of characters"
-#~ msgid "Characters"
-#~ msgstr "Carachtair"
-
-#~ msgctxt "@label"
-#~ msgid "Codec"
-#~ msgstr "Codec"
-
-#~ msgctxt "@label"
-#~ msgid "Color Depth"
-#~ msgstr "Doimhneacht Datha"
-
-#~ msgctxt "@label"
-#~ msgid "Duration"
-#~ msgstr "Aga"
-
-#~ msgctxt "@label"
-#~ msgid "Filename"
-#~ msgstr "Ainm Comhaid"
-
-#~ msgctxt "@label"
-#~ msgid "Hash"
-#~ msgstr "Hais"
-
-#~ msgctxt "@label"
-#~ msgid "Height"
-#~ msgstr "Airde"
-
-#~ msgctxt "@label"
-#~ msgid "Interlace Mode"
-#~ msgstr "Mód Crosfhite"
-
-#~ msgctxt "@label number of lines"
-#~ msgid "Lines"
-#~ msgstr "Línte"
-
-#~ msgctxt "@label"
-#~ msgid "Programming Language"
-#~ msgstr "Teanga Ríomhchlárúcháin"
-
-#~ msgctxt "@label"
-#~ msgid "Sample Rate"
-#~ msgstr "Ráta Samplála"
-
-#~ msgctxt "@label"
-#~ msgid "Width"
-#~ msgstr "Leithead"
-
-#~ msgctxt "@label number of words"
-#~ msgid "Words"
-#~ msgstr "Focail"
-
-#~ msgctxt "@label EXIF aperture value"
-#~ msgid "Aperture"
-#~ msgstr "Cró"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "Exposure Bias Value"
-#~ msgstr "Laofacht Nochta"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "Exposure Time"
-#~ msgstr "Am Nochta"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "Flash"
-#~ msgstr "Splanc"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "Focal Length"
-#~ msgstr "Fad Fócasach"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "Focal Length 35 mm"
-#~ msgstr "Fad Fócasach 35mm"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "ISO Speed Ratings"
-#~ msgstr "Rátálacha Luais ISO"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "Make"
-#~ msgstr "Déanamh"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "Metering Mode"
-#~ msgstr "Mód Méadraithe"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "Model"
-#~ msgstr "Samhail"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "Orientation"
-#~ msgstr "Treoshuíomh"
-
-#~ msgctxt "@label EXIF"
-#~ msgid "White Balance"
-#~ msgstr "Cothromaíocht Bhán"
-
-#~ msgctxt "@label video director"
-#~ msgid "Director"
-#~ msgstr "Stiúrthóir"
-
-#~ msgctxt "@label music genre"
-#~ msgid "Genre"
-#~ msgstr "Seánra"
-
-#~ msgctxt "@label music album"
-#~ msgid "Album"
-#~ msgstr "Albam"
-
-#, fuzzy
-#~| msgctxt "@label"
-#~| msgid "Sample Rate"
-#~ msgctxt "@label"
-#~ msgid "Frame Rate"
-#~ msgstr "Ráta Samplála"
-
-#~ msgctxt "@label"
-#~ msgid "Release Date"
-#~ msgstr "Dáta Foilsithe"
-
-#~ msgctxt "@label music track number"
-#~ msgid "Track"
-#~ msgstr "Amhrán"
-
-#~ msgctxt "@label resource created time"
-#~ msgid "Resource Created"
-#~ msgstr "Acmhainn Cruthaithe"
-
-#~ msgctxt "@label"
-#~ msgid "Sub Resource"
-#~ msgstr "Fo-acmhainn"
-
-#~ msgctxt "@label resource last modified"
-#~ msgid "Resource Modified"
-#~ msgstr "Acmhainn Athraithe"
-
-#~ msgctxt "@label"
-#~ msgid "Numeric Rating"
-#~ msgstr "Rátáil Uimhriúil"
-
-#~ msgctxt "@label"
-#~ msgid "First Usage"
-#~ msgstr "An Chéad Úsáid"
-
-#~ msgctxt "@label"
-#~ msgid "Last Usage"
-#~ msgstr "An Úsáid Deiridh"
-
-#~ msgctxt "@label"
-#~ msgid "Usage Count"
-#~ msgstr "Líon Úsáidte"
-
-#~ msgctxt "@label"
-#~ msgid "Unix File Group"
-#~ msgstr "Grúpa Comhaid Unix"
-
-#~ msgctxt "@label"
-#~ msgid "Unix File Mode"
-#~ msgstr "Mód Comhaid Unix"
-
-#~ msgctxt "@label"
-#~ msgid "Unix File Owner"
-#~ msgstr "Úinéir Comhaid Unix"
-
-#~ msgctxt "@label file type"
-#~ msgid "Type"
-#~ msgstr "Cineál"
-
-#~ msgctxt "@label Number of fuzzy translations"
-#~ msgid "Fuzzy Translations"
-#~ msgstr "Aistriúcháin Doiléire"
-
-#~ msgctxt "@label Name of last translator"
-#~ msgid "Last Translator"
-#~ msgstr "Aistritheoir Is Déanaí"
-
-#~ msgctxt "@label Number of obsolete translations"
-#~ msgid "Obsolete Translations"
-#~ msgstr "Aistriúcháin I Léig"
-
-#~ msgctxt "@label"
-#~ msgid "Translation Source Date"
-#~ msgstr "Dáta Fhoinse an Aistriúcháin"
-
-#~ msgctxt "@label Number of total translations"
-#~ msgid "Total Translations"
-#~ msgstr "Líon na nAistriúchán"
-
-#~ msgctxt "@label Number of translated strings"
-#~ msgid "Translated"
-#~ msgstr "Aistrithe"
-
-#~ msgctxt "@label"
-#~ msgid "Translation Date"
-#~ msgstr "Dáta an Aistriúcháin"
-
-#~ msgctxt "@label Number of untranslated strings"
-#~ msgid "Untranslated"
-#~ msgstr "Gan aistriú"
-
-#~ msgctxt "@info"
-#~ msgid "Delete tag"
-#~ msgstr "Scrios clib"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Should the tag <resource>%1</resource> really be deleted for all files?"
-#~ msgstr ""
-#~ "An bhfuil tú cinnte gur mhaith leat clib <resource>%1</resource> a "
-#~ "scriosadh ó gach comhad?"
-
-#~ msgctxt "@title"
-#~ msgid "Delete tag"
-#~ msgstr "Scrios clib"
-
-#~ msgctxt "@action:button"
-#~ msgid "Delete"
-#~ msgstr "Scrios"
-
-#~ msgctxt "@action:button"
-#~ msgid "Cancel"
-#~ msgstr "Cealaigh"
-
-#~ msgctxt "@label"
-#~ msgid "Performer"
-#~ msgstr "Ealaíontóir"
-
-#~ msgctxt "@label"
-#~ msgid "Show all tags..."
-#~ msgstr "Taispeáin gach clib..."
-
-#~ msgctxt ""
-#~ "@title KCategorizedSortFilterProxyModel grouping for all Nepomukj "
-#~ "resources that are of type rdfs:Resource"
-#~ msgid "Miscellaneous"
-#~ msgstr "Acmhainní Éagsúla"
-
-#~ msgctxt "@title:column The Nepomuk resource label and icon"
-#~ msgid "Resource"
-#~ msgstr "Acmhainn"
-
-#~ msgctxt "@title:column The Nepomuk resource's RDF type"
-#~ msgid "Resource Type"
-#~ msgstr "Cineál na hAcmhainne"
-
-#~ msgctxt ""
-#~ "referring to a filter on the modification and usage date of files/"
-#~ "resources"
-#~ msgid "Anytime"
-#~ msgstr "Am Ar Bith"
-
-#~ msgctxt ""
-#~ "referring to a filter on the modification and usage date of files/"
-#~ "resources"
-#~ msgid "Today"
-#~ msgstr "Inniu"
-
-#~ msgctxt ""
-#~ "referring to a filter on the modification and usage date of files/"
-#~ "resources"
-#~ msgid "This Week"
-#~ msgstr "An tSeachtain Seo"
-
-#~ msgctxt ""
-#~ "referring to a filter on the modification and usage date of files/"
-#~ "resources"
-#~ msgid "Last Week"
-#~ msgstr "An tSeachtain Seo Caite"
-
-#~ msgctxt ""
-#~ "referring to a filter on the modification and usage date of files/"
-#~ "resources"
-#~ msgid "This Month"
-#~ msgstr "An Mhí Seo"
-
-#~ msgctxt ""
-#~ "referring to a filter on the modification and usage date of files/"
-#~ "resources"
-#~ msgid "Last Month"
-#~ msgstr "An Mhí Seo Caite"
-
-#~ msgctxt ""
-#~ "referring to a filter on the modification and usage date of files/"
-#~ "resources"
-#~ msgid "This Year"
-#~ msgstr "An Bhliain Seo"
-
-#~ msgctxt ""
-#~ "referring to a filter on the modification and usage date of files/"
-#~ "resources"
-#~ msgid "Last Year"
-#~ msgstr "Anuraidh"
-
-#~ msgctxt ""
-#~ "referring to a filter on the modification and usage date of files/"
-#~ "resources that will open a dialog to choose a date range"
-#~ msgid "Custom..."
-#~ msgstr "Saincheap..."
-
-#~ msgid "This Week"
-#~ msgstr "An tSeachtain Seo"
-
-#~ msgid "This Month"
-#~ msgstr "An Mhí Seo"
-
-#~ msgctxt ""
-#~ "@option:check An item in a list of resources that allows to query for "
-#~ "more resources to put in the list"
-#~ msgid "More..."
-#~ msgstr "Tuilleadh..."
-
-#~ msgctxt "@option:check A filter on file type"
-#~ msgid "Documents"
-#~ msgstr "Cáipéisí"
-
-#~ msgctxt "@option:check A filter on file type - audio files"
-#~ msgid "Audio"
-#~ msgstr "Fuaim"
-
-#~ msgctxt "@option:check A filter on file type - media video"
-#~ msgid "Video"
-#~ msgstr "Fís"
-
-#~ msgctxt "@option:check A filter on file type"
-#~ msgid "Images"
-#~ msgstr "Íomhánna"
-
-#~ msgctxt ""
-#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
-#~ msgid "No priority"
-#~ msgstr "Gan tosaíocht"
-
-#~ msgctxt ""
-#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
-#~ msgid "Last modified"
-#~ msgstr "Athrú is déanaí"
-
-#~ msgctxt ""
-#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
-#~ msgid "Most important"
-#~ msgstr "Is tábhachtaí"
-
-#~ msgctxt ""
-#~ "@option:radio A filter on prioritizing/sorting a selection of resources"
-#~ msgid "Never opened"
-#~ msgstr "Nach oscailte riamh"
-
-#~ msgctxt "@option:radio A filter on the rating of a resource"
-#~ msgid "Any Rating"
-#~ msgstr "Rátáil Ar Bith"
-
-#~ msgctxt "@option:radio A filter on the rating of a resource"
-#~ msgid "1 or more"
-#~ msgstr "1 nó níos fearr"
-
-#~ msgctxt "@option:radio A filter on the rating of a resource"
-#~ msgid "2 or more"
-#~ msgstr "2 nó níos fearr"
-
-#~ msgctxt "@option:radio A filter on the rating of a resource"
-#~ msgid "3 or more"
-#~ msgstr "3 nó níos fearr"
-
-#~ msgctxt "@option:radio A filter on the rating of a resource"
-#~ msgid "4 or more"
-#~ msgstr "4 nó níos fearr"
-
-#~ msgctxt "@option:radio A filter on the rating of a resource"
-#~ msgid "Max Rating"
-#~ msgstr "Rátáil Uasta"
-
-#~ msgid "Enter Search Terms..."
-#~ msgstr "Cuir Téarmaí Cuardaigh Isteach..."
-
-#~ msgid "Search"
-#~ msgstr "Cuardaigh"
-
-#~ msgctxt "@option:check A filter on resource type"
-#~ msgid "Emails"
-#~ msgstr "Ríomhphost"
-
-#~ msgctxt "@option:check A filter on resource type"
-#~ msgid "Tasks"
-#~ msgstr "Tascanna"
-
-#~ msgctxt "@option:check A filter on resource type"
-#~ msgid "Tags"
-#~ msgstr "Clibeanna"
-
-#~ msgctxt "@option:check Do filter on type - show only files"
-#~ msgid "Files"
-#~ msgstr "Comhaid"
-
-#~ msgctxt "@option:check Do filter on type - show everything but files"
-#~ msgid "Other"
-#~ msgstr "Eile"
