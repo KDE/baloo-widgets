@@ -466,22 +466,14 @@ QString FileMetaDataProvider::label(const QString &metaDataLabel) const
     if (value.isEmpty()) {
         static const auto extraPrefix = QStringLiteral("kfileitem#extra_");
         if (metaDataLabel.startsWith(extraPrefix)) {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-            const auto parts = metaDataLabel.splitRef(QLatin1Char('_'));
-#else
             const auto parts = metaDataLabel.split(QLatin1Char('_'));
-#endif
             Q_ASSERT(parts.count() == 3);
             const auto protocol = parts.at(1);
             const int extraNumber = parts.at(2).toInt() - 1;
 
             // Have to construct a dummy URL for KProtocolInfo::extraFields...
             QUrl url;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-            url.setScheme(protocol.toString());
-#else
             url.setScheme(protocol);
-#endif
             const auto extraFields = KProtocolInfo::extraFields(url);
             auto field = extraFields.value(extraNumber);
             if (field.type != KProtocolInfo::ExtraField::Invalid) {
