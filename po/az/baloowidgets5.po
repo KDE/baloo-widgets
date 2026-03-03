@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:51+0000\n"
+"POT-Creation-Date: 2026-03-03 00:44+0000\n"
 "PO-Revision-Date: 2022-07-20 11:16+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -229,47 +229,47 @@ msgctxt "@action:button"
 msgid "Edit tags…"
 msgstr "Yarlıqlara Düzəliş"
 
-#: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
-#, kde-format
-msgctxt "String list separator"
-msgid ", "
-msgstr ", "
-
-#: src/widgetfactory.cpp:106
+#: src/widgetfactory.cpp:62
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
 msgstr "%1°Cən."
 
-#: src/widgetfactory.cpp:106
+#: src/widgetfactory.cpp:62
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
 msgstr "%1°Şim."
 
-#: src/widgetfactory.cpp:107
+#: src/widgetfactory.cpp:63
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
 msgstr "%1°Qərb"
 
-#: src/widgetfactory.cpp:107
+#: src/widgetfactory.cpp:63
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
 msgstr "%1°Şərq"
 
-#: src/widgetfactory.cpp:115
+#: src/widgetfactory.cpp:71
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
 msgstr "Məkana %1-də baxın"
 
-#: src/widgetfactory.cpp:137
+#: src/widgetfactory.cpp:93
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
 msgstr "%1 × %2"
+
+#: src/widgetfactory.cpp:286 src/widgetfactory.cpp:297
+#, kde-format
+msgctxt "String list separator"
+msgid ", "
+msgstr ", "
 
 #~ msgid "Create New..."
 #~ msgstr "Yenisini yaratmaq..."
