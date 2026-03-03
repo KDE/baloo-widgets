@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2026 Mint <5602mint@gmail.com>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019.
 msgid ""
@@ -5,9 +6,9 @@ msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:40+0000\n"
-"PO-Revision-Date: 2019-05-11 16:27-0700\n"
-"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
-"Language-Team: Japanese <kde-jp@kde.org>\n"
+"PO-Revision-Date: 2026-03-01 16:45+0900\n"
+"Last-Translator: Mint <5602mint@gmail.com>\n"
+"Language-Team: Japanese <kde-i18n-doc@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 19.04.0\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -95,7 +96,7 @@ msgstr "合計サイズ"
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
-msgstr ""
+msgstr "隠しアイテム"
 
 #: src/filemetadataprovider.cpp:454
 #, kde-format
@@ -107,13 +108,13 @@ msgstr "タイプ"
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
-msgstr ""
+msgstr "リンク先"
 
 #: src/filemetadataprovider.cpp:456
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
-msgstr ""
+msgstr "参照先"
 
 #: src/filemetadataprovider.cpp:460
 #, kde-format
@@ -125,13 +126,13 @@ msgstr "ダウンロード元"
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
-msgstr ""
+msgstr "寸法"
 
 #: src/filemetadataprovider.cpp:462
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
-msgstr ""
+msgstr "GPS 位置情報"
 
 #: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:66
 #, kde-format
@@ -140,20 +141,16 @@ msgid "&Details"
 msgstr "詳細(&D)"
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
 msgstr "コメント"
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "コメント"
+msgstr "コメントを保存"
 
 #: src/kedittagsdialog.cpp:36
 #, kde-format
@@ -185,11 +182,10 @@ msgid "Create new tag:"
 msgstr "新しいタグを作成:"
 
 #: src/tagcheckbox.cpp:23
-#, fuzzy, kde-format
-#| msgid "New tag"
+#, kde-format
 msgctxt "accessible name for tag, %1 is the tag label"
 msgid "%1 tag"
-msgstr "新しいタグ"
+msgstr "%1 タグ"
 
 #. i18n: A tag is a keyword to add to files and folders for organization and to quickly find all items with the same tag later. "Everything" refers to
 #. files and folders, but this is obvious to the user because the user usually has tagged those items previously. This is about clicking a tag in the UI
@@ -198,7 +194,7 @@ msgstr "新しいタグ"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
-msgstr ""
+msgstr "\"%1\" タグのついたすべてのファイルを見る"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
 #, kde-format
@@ -206,91 +202,60 @@ msgid "Assign Tags"
 msgstr "タグを付ける"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgid "Edit tags..."
-msgstr "タグを編集"
+msgstr "タグを編集..."
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "タグを追加"
+msgstr "タグを追加…"
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Edit Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "タグを編集"
+msgstr "タグを編集…"
 
 #: src/widgetfactory.cpp:71 src/widgetfactory.cpp:82
 #, kde-format
 msgctxt "String list separator"
 msgid ", "
-msgstr ""
+msgstr "、"
 
 #: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (South)"
 msgid "%1°S"
-msgstr ""
+msgstr "南緯 %1°"
 
 #: src/widgetfactory.cpp:106
 #, kde-format
 msgctxt "Latitude (North)"
 msgid "%1°N"
-msgstr ""
+msgstr "北緯 %1°"
 
 #: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (West)"
 msgid "%1°W"
-msgstr ""
+msgstr "西経 %1°"
 
 #: src/widgetfactory.cpp:107
 #, kde-format
 msgctxt "Longitude (East)"
 msgid "%1°E"
-msgstr ""
+msgstr "東経 %1°"
 
 #: src/widgetfactory.cpp:115
 #, kde-format
 msgctxt "@info:tooltip Show location in map viewer"
 msgid "Show location in %1"
-msgstr ""
+msgstr "%1 で場所を見る"
 
 #: src/widgetfactory.cpp:137
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
-msgstr ""
-
-#~ msgid "Create New..."
-#~ msgstr "新しく作成..."
-
-#~ msgid "New tag"
-#~ msgstr "新しいタグ"
-
-#~ msgid "New tag:"
-#~ msgstr "新しいタグ:"
-
-#~ msgctxt "@label"
-#~ msgid "Add..."
-#~ msgstr "追加..."
-
-#~ msgctxt "@label"
-#~ msgid "Edit..."
-#~ msgstr "編集..."
-
-#~ msgctxt "@title:window"
-#~ msgid "Edit Comment"
-#~ msgstr "コメントを編集"
-
-#~ msgctxt "@title:window"
-#~ msgid "Add Comment"
-#~ msgstr "コメントを追加"
+msgstr "%1 × %2"
