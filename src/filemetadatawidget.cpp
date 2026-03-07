@@ -98,7 +98,6 @@ void FileMetaDataWidgetPrivate::deleteRows()
 QLabel *FileMetaDataWidgetPrivate::createLabel(const QString &key, const QString &itemLabel, FileMetaDataWidget *parent)
 {
     auto label = new QLabel(itemLabel + QLatin1Char(':'), parent);
-    label->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextSelectableByKeyboard);
     label->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
     label->setForegroundRole(parent->foregroundRole());
     label->setFont(parent->font());
@@ -176,6 +175,7 @@ void FileMetaDataWidgetPrivate::slotLoadingFinished()
         row.value = m_widgetFactory->createWidget(key, data[key], q);
         m_gridLayout->addWidget(row.value, rowIndex, labelColumn + 2, Qt::AlignLeft);
         row.label->setBuddy(row.value);
+        row.value->setAccessibleName(m_provider->label(key));
 
         m_gridLayout->setRowStretch(rowIndex, 0);
 
