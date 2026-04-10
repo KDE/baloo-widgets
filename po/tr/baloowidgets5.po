@@ -4,21 +4,21 @@
 # Translators:
 # zeugma <sunder67@hotmail.com>, 2013.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2015.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-03 00:44+0000\n"
-"PO-Revision-Date: 2025-11-08 21:11+0300\n"
-"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
+"PO-Revision-Date: 2026-04-09 15:33+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -207,7 +207,7 @@ msgstr "Künye Ata"
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
 #, kde-format
 msgid "Edit tags..."
-msgstr "Künyeleri düzenle…"
+msgstr "Künyeleri Düzenle…"
 
 #: src/tagwidget.cpp:83
 #, kde-format
