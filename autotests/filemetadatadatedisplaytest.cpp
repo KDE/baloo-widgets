@@ -127,9 +127,9 @@ void FileMetadataDateDisplayTest::shouldDisplayLongAndShortDates()
     QFETCH(QUrl, file);
     QFETCH(QRegularExpression, regex);
 
-    const auto widget = new Baloo::FileMetaDataWidget();
+    auto widget = std::make_unique<Baloo::FileMetaDataWidget>();
     widget->setDateFormat(format);
-    QSignalSpy spy(widget, &Baloo::FileMetaDataWidget::metaDataRequestFinished);
+    QSignalSpy spy(widget.get(), &Baloo::FileMetaDataWidget::metaDataRequestFinished);
     widget->setItems({KFileItem{file}});
     QVERIFY(spy.wait());
 
