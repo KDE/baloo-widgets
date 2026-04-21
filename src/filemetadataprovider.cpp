@@ -388,7 +388,7 @@ void FileMetaDataProviderPrivate::processFileItems()
             // Fully indexed by Baloo
             indexingMode = FileFetchJob::UseRealtimeIndexing::Fallback;
 
-            if (!m_config.fileIndexingEnabled() || !m_config.shouldBeIndexed(urls.first()) || m_config.onlyBasicIndexing()) {
+            if (!m_config.fileIndexingEnabled() || m_config.onlyBasicIndexing()) {
                 // Not indexed or only basic file indexing (no content)
                 indexingMode = FileFetchJob::UseRealtimeIndexing::Only;
             }
