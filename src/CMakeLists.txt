@@ -46,7 +46,6 @@ target_sources(KF6BalooWidgets PRIVATE
 ecm_qt_declare_logging_category(KF6BalooWidgets
     HEADER "widgetsdebug.h"
     IDENTIFIER "Baloo::WIDGETS"
-    DEFAULT_SEVERITY Warning
     CATEGORY_NAME "org.kde.baloo.widgets"
     DESCRIPTION "Baloo Widgets"
     EXPORT BALOO_WIDGETS
