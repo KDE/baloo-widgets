@@ -16,8 +16,6 @@ target_sources(KF6BalooWidgets PRIVATE
     extractorutil_p.h
     filefetchjob.cpp
     filefetchjob.h
-    filemetadataconfigwidget.cpp
-    filemetadataconfigwidget.h
     filemetadataprovider.cpp
     filemetadataprovider.h
     filemetadatautil.cpp
@@ -75,7 +73,7 @@ ecm_generate_export_header(KF6BalooWidgets
     EXPORT_FILE_NAME widgets_export.h
     VERSION ${BALOO_WIDGETS_VERSION}
     DEPRECATED_BASE_VERSION 0
-    DEPRECATION_VERSIONS 23.08
+    DEPRECATION_VERSIONS
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
 )
 
@@ -85,7 +83,6 @@ ecm_generate_headers(KFBalooWidgets_CamelCase_HEADERS
     HEADER_NAMES
     TagWidget
     FileMetaDataWidget
-    FileMetaDataConfigWidget
 
     PREFIX baloo
     REQUIRED_HEADERS KFBalooWidgets_HEADERS
