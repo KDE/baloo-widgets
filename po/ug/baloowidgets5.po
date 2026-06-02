@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-03 00:44+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-28 17:15-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: \n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 3.9\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
@@ -33,9 +33,7 @@ msgid "Comment"
 msgstr "ئىزاھات"
 
 #: src/filemetadataprovider.cpp:443
-#, fuzzy, kde-format
-#| msgctxt "@label creation date"
-#| msgid "Created"
+#, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "قۇرغان ۋاقتى"
@@ -44,7 +42,7 @@ msgstr "قۇرغان ۋاقتى"
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
-msgstr ""
+msgstr "ﺯﯨﻴﺎﺭﻩﺕ ﯞﺍﻗﺘﻰ"
 
 #: src/filemetadataprovider.cpp:445
 #, kde-format
@@ -56,19 +54,19 @@ msgstr "ئۆزگەرتىلگەن ۋاقتى"
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
-msgstr "ئىگىسى"
+msgstr "ئىگىدار"
 
 #: src/filemetadataprovider.cpp:447
 #, kde-format
 msgctxt "@label"
 msgid "Group"
-msgstr ""
+msgstr "گۇرۇپپا"
 
 #: src/filemetadataprovider.cpp:448
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
-msgstr "ئىمتىيازلار"
+msgstr "ئىجازەت"
 
 #: src/filemetadataprovider.cpp:449 src/filemetadataprovider.cpp:458
 #, kde-format
@@ -86,7 +84,7 @@ msgstr "چوڭلۇقى"
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
-msgstr "خەتكۈشلەر"
+msgstr "بەلگە"
 
 #: src/filemetadataprovider.cpp:452
 #, kde-format
@@ -104,7 +102,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label"
 msgid "Type"
-msgstr "تىپى"
+msgstr "تۈرى"
 
 #: src/filemetadataprovider.cpp:455
 #, kde-format
@@ -119,69 +117,57 @@ msgid "Points to"
 msgstr ""
 
 #: src/filemetadataprovider.cpp:460
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Copied From"
+#, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
-msgstr "كۆچۈرۈلگەن ئورۇن"
+msgstr "چۈشۈرگەن ئورنى"
 
 #: src/filemetadataprovider.cpp:461
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
-msgstr ""
+msgstr "ئۆلچەم"
 
 #: src/filemetadataprovider.cpp:462
-#, fuzzy, kde-format
-#| msgctxt "@label file URL"
-#| msgid "Location"
+#, kde-format
 msgctxt "@label"
 msgid "GPS Location"
-msgstr "ئورنى"
+msgstr ""
 
 #: src/filepropertiesplugin/baloofilepropertiesplugin.cpp:66
 #, kde-format
 msgctxt "Tab page with file meta data"
 msgid "&Details"
-msgstr ""
+msgstr "تەپسىلاتى(&D)"
 
 #: src/kcommentwidget.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Comment"
+#, kde-format
 msgctxt "accessible name for file metadata comment text box"
 msgid "Comment"
 msgstr "ئىزاھات"
 
 #: src/kcommentwidget.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Change Comment"
+#, kde-format
 msgctxt "@action:button file metadata comment"
 msgid "Save Comment"
-msgstr "ئىزاھات ئۆزگەرت"
+msgstr ""
 
 #: src/kedittagsdialog.cpp:36
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@title:window"
 msgid "Edit Tags"
-msgstr "خەتكۈش قوش"
+msgstr "بەلگە تەھرىر"
 
 #: src/kedittagsdialog.cpp:36
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Add Tags..."
+#, kde-format
 msgctxt "@title:window"
 msgid "Add Tags"
-msgstr "بەلگە قوش…"
+msgstr "خەتكۈش قوش"
 
 #: src/kedittagsdialog.cpp:40
 #, kde-format
 msgid "Save"
-msgstr ""
+msgstr "ساقلا"
 
 #: src/kedittagsdialog.cpp:50
 #, kde-format
@@ -190,9 +176,7 @@ msgid "Configure which tags should be applied."
 msgstr "قايسى بەلگە ئىشلىتىش سەپلىنىدۇ."
 
 #: src/kedittagsdialog.cpp:64
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Create new tag:"
+#, kde-format
 msgctxt "@label"
 msgid "Create new tag:"
 msgstr "يېڭى بەلگە قۇر:"
@@ -213,34 +197,26 @@ msgid "Show everything tagged “%1”"
 msgstr ""
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgid "Assign Tags"
-msgstr "خەتكۈش قوش"
+msgstr "بەلگە تەقسىملە"
 
 #: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgid "Edit tags..."
-msgstr "خەتكۈش قوش"
+msgstr ""
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Add Tags..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Add tags…"
-msgstr "بەلگە قوش…"
+msgstr ""
 
 #: src/tagwidget.cpp:83
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Add Tags"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit tags…"
-msgstr "خەتكۈش قوش"
+msgstr ""
 
 #: src/widgetfactory.cpp:62
 #, kde-format
@@ -276,27 +252,24 @@ msgstr ""
 #, kde-format
 msgctxt "width × height"
 msgid "%1 × %2"
-msgstr ""
+msgstr "%1 × %2"
 
 #: src/widgetfactory.cpp:286 src/widgetfactory.cpp:297
 #, kde-format
 msgctxt "String list separator"
 msgid ", "
-msgstr ""
+msgstr "، "
 
-#, fuzzy
 #~| msgctxt "@label"
 #~| msgid "Create new tag:"
 #~ msgid "Create New..."
 #~ msgstr "يېڭى بەلگە قۇر:"
 
-#, fuzzy
 #~| msgctxt "@label"
 #~| msgid "Create new tag:"
 #~ msgid "New tag:"
 #~ msgstr "يېڭى بەلگە قۇر:"
 
-#, fuzzy
 #~| msgctxt "@title:window"
 #~| msgid "Add Comment"
 #~ msgctxt "@title:window"
@@ -319,19 +292,16 @@ msgstr ""
 #~ msgid "Add Comment..."
 #~ msgstr "ئىزاھات قوش…"
 
-#, fuzzy
 #~| msgctxt "@label"
 #~| msgid "Description"
 #~ msgid "Comment or description"
 #~ msgstr "چۈشەندۈرۈش"
 
-#, fuzzy
 #~| msgctxt "@label"
 #~| msgid "Size"
 #~ msgid "Size"
 #~ msgstr "چوڭلۇقى"
 
-#, fuzzy
 #~| msgctxt "@label"
 #~| msgid "Content"
 #~ msgctxt "Space-separated list of words meaning 10"
@@ -514,7 +484,6 @@ msgstr ""
 #~ msgid "Album"
 #~ msgstr "ئالبوم"
 
-#, fuzzy
 #~| msgctxt "@label"
 #~| msgid "Sample Rate"
 #~ msgctxt "@label"
