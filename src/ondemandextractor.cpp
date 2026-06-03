@@ -9,6 +9,7 @@
 #include "widgetsdebug.h"
 
 #include <QDataStream>
+#include <QSignalBlocker>
 #include <QStandardPaths>
 
 namespace Baloo
@@ -18,6 +19,9 @@ namespace Private
 OnDemandExtractor::OnDemandExtractor(QObject *parent)
     : QObject(parent)
 {
+    m_process.setReadChannel(QProcess::StandardOutput);
+    connect(&m_process, &QProcess::finished, this, &OnDemandExtractor::slotIndexedFile);
+    connect(&m_process, &QProcess::errorOccurred, this, &OnDemandExtractor::slotProcessError);
 }
 
 OnDemandExtractor::~OnDemandExtractor() = default;
@@ -26,9 +30,6 @@ void OnDemandExtractor::process(const QString &filePath)
 {
     const QString exe = QStandardPaths::findExecutable(QLatin1String("baloo_filemetadata_temp_extractor"));
 
-    m_process.setReadChannel(QProcess::StandardOutput);
-
-    connect(&m_process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &OnDemandExtractor::slotIndexedFile);
     m_process.start(exe, QStringList{filePath});
 }
 
@@ -36,6 +37,7 @@ void OnDemandExtractor::slotIndexedFile(int, QProcess::ExitStatus exitStatus)
 {
     if (exitStatus == QProcess::CrashExit) {
         qCWarning(WIDGETS) << "Extractor crashed when processing" << m_process.arguments();
+        m_properties.clear();
         Q_EMIT fileFinished(exitStatus);
         return;
     }
@@ -47,9 +49,28 @@ void OnDemandExtractor::slotIndexedFile(int, QProcess::ExitStatus exitStatus)
     Q_EMIT fileFinished(QProcess::NormalExit);
 }
 
+void OnDemandExtractor::slotProcessError(QProcess::ProcessError error)
+{
+    if (error != QProcess::FailedToStart) {
+        return;
+    }
+    qCWarning(WIDGETS) << "Failed to start extractor for" << m_process.arguments();
+    m_properties.clear();
+    Q_EMIT fileFinished(QProcess::CrashExit);
+}
+
 bool OnDemandExtractor::waitFinished()
 {
     return m_process.waitForFinished();
+}
+
+void OnDemandExtractor::cancel()
+{
+    if (m_process.state() != QProcess::NotRunning) {
+        const QSignalBlocker blocker(&m_process);
+        m_process.kill();
+        m_process.waitForFinished();
+    }
 }
 
 KFileMetaData::PropertyMultiMap OnDemandExtractor::properties() const

@@ -23,6 +23,7 @@ public:
     ~OnDemandExtractor() override;
 
     void process(const QString &filePath);
+    void cancel();
 
     bool waitFinished();
     KFileMetaData::PropertyMultiMap properties() const;
@@ -32,6 +33,7 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void slotIndexedFile(int exitCode, QProcess::ExitStatus exitStatus);
+    void slotProcessError(QProcess::ProcessError error);
 
 private:
     QProcess m_process;

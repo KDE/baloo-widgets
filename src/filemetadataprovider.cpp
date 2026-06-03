@@ -398,7 +398,7 @@ void FileMetaDataProviderPrivate::processFileItems()
         // Can be cancelled
         m_fetchJob = job;
 
-        connect(job, &FileFetchJob::finished, this, &FileMetaDataProviderPrivate::slotFileFetchFinished);
+        connect(job, &FileFetchJob::result, this, &FileMetaDataProviderPrivate::slotFileFetchFinished);
         job->start();
 
     } else {

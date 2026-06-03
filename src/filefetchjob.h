@@ -29,12 +29,18 @@ public:
 
     void start() override;
 
+protected:
+    bool doKill() override;
+
 private Q_SLOTS:
     void doStart();
+    void slotExtractorFinished();
 
 private:
     QStringList m_urls;
+    qsizetype m_index = 0;
     QList<QVariantMap> m_data;
+    QVariantMap m_currentData;
     bool m_canEditAll;
     UseRealtimeIndexing m_useRealtime;
     Private::OnDemandExtractor m_extractor;

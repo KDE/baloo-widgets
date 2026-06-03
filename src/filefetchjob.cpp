@@ -22,17 +22,22 @@ FileFetchJob::FileFetchJob(const QStringList &urls, bool canEditAll, FileFetchJo
     , m_canEditAll(canEditAll)
     , m_useRealtime(useRealtime)
 {
+    connect(&m_extractor, &Private::OnDemandExtractor::fileFinished, this, &FileFetchJob::slotExtractorFinished);
 }
 
 void FileFetchJob::start()
 {
-    QTimer::singleShot(0, this, SLOT(doStart()));
+    QTimer::singleShot(0, this, &FileFetchJob::doStart);
 }
 
 void FileFetchJob::doStart()
 {
-    for (const QString &filePath : std::as_const(m_urls)) {
-        bool extractorRunning = false;
+    if (isFinished()) {
+        return;
+    }
+
+    while (m_index < m_urls.size()) {
+        const QString &filePath = m_urls.at(m_index);
         KFileMetaData::PropertyMultiMap fileProperties;
 
         // UseRealtimeIndexing::Fallback: try DB first, then filesystem
@@ -43,10 +48,6 @@ void FileFetchJob::doStart()
             file.load();
             fileProperties = file.properties();
             qCDebug(WIDGETS) << filePath << "DB properties:" << fileProperties;
-        }
-        if (fileProperties.empty() && m_useRealtime != UseRealtimeIndexing::Disabled) {
-            extractorRunning = true;
-            m_extractor.process(filePath);
         }
 
         QVariantMap prop;
@@ -63,17 +64,37 @@ void FileFetchJob::doStart()
             m_canEditAll = QFileInfo(filePath).isWritable();
         }
 
-        if (extractorRunning) {
-            m_extractor.waitFinished();
-            fileProperties = m_extractor.properties();
-            qCDebug(WIDGETS) << filePath << "  properties:" << fileProperties;
+        if (fileProperties.empty() && m_useRealtime != UseRealtimeIndexing::Disabled) {
+            m_currentData = prop;
+            m_extractor.process(filePath);
+            return;
         }
         prop.insert(Baloo::Private::toNamedVariantMap(fileProperties));
 
         m_data << prop;
+        ++m_index;
     }
 
     emitResult();
+}
+
+void FileFetchJob::slotExtractorFinished()
+{
+    const KFileMetaData::PropertyMultiMap fileProperties = m_extractor.properties();
+    qCDebug(WIDGETS) << m_urls.at(m_index) << "  properties:" << fileProperties;
+
+    m_currentData.insert(Baloo::Private::toNamedVariantMap(fileProperties));
+    m_data << m_currentData;
+    m_currentData.clear();
+    ++m_index;
+
+    doStart();
+}
+
+bool FileFetchJob::doKill()
+{
+    m_extractor.cancel();
+    return true;
 }
 
 QList<QVariantMap> Baloo::FileFetchJob::data() const
