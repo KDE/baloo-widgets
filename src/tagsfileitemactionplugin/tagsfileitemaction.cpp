@@ -36,7 +36,9 @@ TagsFileItemAction::~TagsFileItemAction()
 
 QList<QAction *> TagsFileItemAction::actions(const KFileItemListProperties &fileItemInfos, QWidget *parentWidget)
 {
-    if (fileItemInfos.urlList().size() > 1) {
+    // This action only applies to a single file. Bail out for multiple
+    // selection or empty list.
+    if (fileItemInfos.urlList().size() != 1) {
         return {};
     }
 
