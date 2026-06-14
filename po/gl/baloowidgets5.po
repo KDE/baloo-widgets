@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-03 00:44+0000\n"
+"POT-Creation-Date: 2026-06-14 02:31+0000\n"
 "PO-Revision-Date: 2023-06-24 10:58+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -203,12 +203,12 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:55
 #, kde-format
 msgid "Assign Tags"
 msgstr "Asignar etiquetas"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Edit Tags"

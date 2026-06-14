@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloowidgets5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-03 00:44+0000\n"
+"POT-Creation-Date: 2026-06-14 02:31+0000\n"
 "PO-Revision-Date: 2017-09-09 22:51+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -207,14 +207,14 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:55
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"
 msgid "Assign Tags"
 msgstr "Dodavanje oznaka"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add Tags"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-03 00:44+0000\n"
+"POT-Creation-Date: 2026-06-14 02:31+0000\n"
 "PO-Revision-Date: 2012-09-21 16:01-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -196,12 +196,12 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:53
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:55
 #, kde-format
 msgid "Assign Tags"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:87
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
 #, kde-format
 msgid "Edit tags..."
 msgstr ""
