@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/baloo-widgets/baloowidgets5.pot\n"
-"X-Crowdin-File-ID: 55056\n"
+"X-Crowdin-File: /kf6-stable/messages/baloo-widgets/baloowidgets5.pot\n"
+"X-Crowdin-File-ID: 56440\n"
 
 #: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
 #: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
