@@ -12,6 +12,8 @@
 #include <KFileItemListProperties>
 #include <KFileMetaData/UserMetaData>
 
+#include <memory>
+
 class QAction;
 class QWidget;
 
@@ -20,11 +22,10 @@ class TagsFileItemAction : public KAbstractFileItemActionPlugin
     Q_OBJECT
 public:
     TagsFileItemAction(QObject *parent, const QVariantList &args);
-    ~TagsFileItemAction() override;
     QList<QAction *> actions(const KFileItemListProperties &fileItemInfos, QWidget *parentWidget) override;
 
 private:
-    KFileMetaData::UserMetaData *m_metaData = nullptr;
+    std::unique_ptr<KFileMetaData::UserMetaData> m_metaData;
     KCoreDirLister m_tagsLister;
 };
 

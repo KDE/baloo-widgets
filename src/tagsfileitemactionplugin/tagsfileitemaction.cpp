@@ -29,11 +29,6 @@ TagsFileItemAction::TagsFileItemAction(QObject *parent, const QVariantList &)
 {
 }
 
-TagsFileItemAction::~TagsFileItemAction()
-{
-    delete m_metaData;
-}
-
 QList<QAction *> TagsFileItemAction::actions(const KFileItemListProperties &fileItemInfos, QWidget *parentWidget)
 {
     // This action only applies to a single file. Bail out for multiple
@@ -47,7 +42,7 @@ QList<QAction *> TagsFileItemAction::actions(const KFileItemListProperties &file
         return {};
     }
 
-    m_metaData = new KFileMetaData::UserMetaData(filePath);
+    m_metaData = std::make_unique<KFileMetaData::UserMetaData>(filePath);
     if (!m_metaData->isSupported()) {
         return {};
     }
