@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloowidgets5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:42+0000\n"
+"POT-Creation-Date: 2026-08-17 00:43+0000\n"
 "PO-Revision-Date: 2025-12-21 23:29+0100\n"
 "Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -196,12 +196,12 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr "Alles mit Stichwort „%1“ anzeigen"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:55
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:50
 #, kde-format
 msgid "Assign Tags"
 msgstr "Stichwörter zuweisen"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:84
 #, kde-format
 msgid "Edit tags..."
 msgstr "Stichwörter bearbeiten …"

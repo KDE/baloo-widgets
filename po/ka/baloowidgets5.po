@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:42+0000\n"
+"POT-Creation-Date: 2026-08-17 00:43+0000\n"
 "PO-Revision-Date: 2025-11-08 07:29+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -197,12 +197,12 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr "ჩვენება ყველაფრის ჭდით '%1'"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:55
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:50
 #, kde-format
 msgid "Assign Tags"
 msgstr "ჭდეების მინიჭება"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:84
 #, kde-format
 msgid "Edit tags..."
 msgstr "ჭდეების ჩასწორება..."

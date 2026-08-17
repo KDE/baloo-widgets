@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:42+0000\n"
+"POT-Creation-Date: 2026-08-17 00:43+0000\n"
 "PO-Revision-Date: 2026-01-28 16:54+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -204,12 +204,12 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr "Показать все объекты с меткой «%1»"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:55
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:50
 #, kde-format
 msgid "Assign Tags"
 msgstr "Присвоить метки"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:84
 #, kde-format
 msgid "Edit tags..."
 msgstr "Изменить метки..."

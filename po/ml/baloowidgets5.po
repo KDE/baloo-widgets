@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:42+0000\n"
+"POT-Creation-Date: 2026-08-17 00:43+0000\n"
 "PO-Revision-Date: 2019-12-12 13:28+0000\n"
 "Last-Translator: Preyas Prathap <preyasprathap@protonmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -202,12 +202,12 @@ msgctxt "@info:tooltip"
 msgid "Show everything tagged “%1”"
 msgstr ""
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:55
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:50
 #, kde-format
 msgid "Assign Tags"
 msgstr "മുദ്രകൾ എല്പിക്കുക"
 
-#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:89
+#: src/tagsfileitemactionplugin/tagsfileitemaction.cpp:84
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Edit Tags"
