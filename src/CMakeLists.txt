@@ -118,3 +118,17 @@ ecm_qt_install_logging_categories(
     FILE baloo-widgets.categories
     DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
 )
+
+if(${ECM_VERSION} VERSION_GREATER_EQUAL 6.30)
+include(ECMInstalledLibraryCheck)
+
+ecm_add_installed_library_check(KF6BalooWidgets
+    PACKAGE_NAME "KF6BalooWidgets"
+    PACKAGE_TARGET_NAMESPACE "KF6::"
+)
+
+ecm_installed_library_check_include_strings(KF6BalooWidgets
+    HEADERS ${KFBalooWidgets_CamelCase_HEADERS}
+    PREFIX Baloo
+)
+endif()
