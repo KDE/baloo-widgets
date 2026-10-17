@@ -10,6 +10,18 @@ target_include_directories(extractortest
     ${CMAKE_BINARY_DIR}/src
 )
 
+ecm_add_test(filefetchjobtest.cpp ../src/filefetchjob.cpp ../src/ondemandextractor.cpp ../src/filemetadatautil.cpp ../src/widgetsdebug.cpp
+    TEST_NAME "filefetchjobtest"
+    LINK_LIBRARIES Qt6::Test
+    KF6::Baloo
+    KF6::FileMetaData
+    KF6::CoreAddons
+)
+target_include_directories(filefetchjobtest
+    PRIVATE ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_BINARY_DIR}/src
+)
+
 ecm_add_tests(
     filemetadatawidgettest.cpp
     filemetadataitemcounttest.cpp
@@ -47,11 +59,13 @@ target_include_directories(widgetfactorytest
 # Set PATH so baloo_filemetadata_temp_extractor from the build directory is used
 if(WIN32)
    set_property(TEST "extractortest"               PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin\\;$ENV{PATH}")
+   set_property(TEST "filefetchjobtest"            PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin\\;$ENV{PATH}")
    set_property(TEST "filemetadatawidgettest"      PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin\\;$ENV{PATH}")
    set_property(TEST "filemetadataitemcounttest"   PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin\\;$ENV{PATH}")
    set_property(TEST "filemetadatadatedisplaytest" PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin\\;$ENV{PATH}")
 else()
    set_property(TEST "extractortest"               PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin:$ENV{PATH}")
+   set_property(TEST "filefetchjobtest"            PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin:$ENV{PATH}")
    set_property(TEST "filemetadatawidgettest"      PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin:$ENV{PATH}")
    set_property(TEST "filemetadataitemcounttest"   PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin:$ENV{PATH}")
    set_property(TEST "filemetadatadatedisplaytest" PROPERTY ENVIRONMENT "PATH=${CMAKE_BINARY_DIR}/bin:$ENV{PATH}")

@@ -18,6 +18,15 @@ namespace Private
 OnDemandExtractor::OnDemandExtractor(QObject *parent)
     : QObject(parent)
 {
+    m_process.setReadChannel(QProcess::StandardOutput);
+    connect(&m_process, &QProcess::finished, this, &OnDemandExtractor::slotIndexedFile);
+    connect(&m_process, &QProcess::errorOccurred, this, [this](QProcess::ProcessError error) {
+        // A process that could not start does not finish either.
+        if (error == QProcess::FailedToStart) {
+            qCWarning(WIDGETS) << "Extractor could not be started for" << m_process.arguments() << m_process.errorString();
+            Q_EMIT fileFinished(QProcess::CrashExit);
+        }
+    });
 }
 
 OnDemandExtractor::~OnDemandExtractor() = default;
@@ -26,9 +35,7 @@ void OnDemandExtractor::process(const QString &filePath)
 {
     const QString exe = QStandardPaths::findExecutable(QLatin1String("baloo_filemetadata_temp_extractor"));
 
-    m_process.setReadChannel(QProcess::StandardOutput);
-
-    connect(&m_process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &OnDemandExtractor::slotIndexedFile);
+    m_properties.clear();
     m_process.start(exe, QStringList{filePath});
 }
 
