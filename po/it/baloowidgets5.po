@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nepomukwidgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-17 00:43+0000\n"
+"POT-Creation-Date: 2026-10-18 00:47+0000\n"
 "PO-Revision-Date: 2025-11-09 07:39+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 25.08.3\n"
 
-#: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
-#: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
+#: src/filemetadataprovider.cpp:201 src/filemetadataprovider.cpp:207
+#: src/filemetadataprovider.cpp:302 src/filemetadataprovider.cpp:305
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
@@ -28,109 +28,109 @@ msgid_plural "%1 items"
 msgstr[0] "%1 elemento"
 msgstr[1] "%1 elementi"
 
-#: src/filemetadataprovider.cpp:442 src/filemetadataprovider.cpp:459
+#: src/filemetadataprovider.cpp:439 src/filemetadataprovider.cpp:456
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "Commento"
 
-#: src/filemetadataprovider.cpp:443
+#: src/filemetadataprovider.cpp:440
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "Creato"
 
-#: src/filemetadataprovider.cpp:444
+#: src/filemetadataprovider.cpp:441
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "Aperto di recente"
 
-#: src/filemetadataprovider.cpp:445
+#: src/filemetadataprovider.cpp:442
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "Modificato"
 
-#: src/filemetadataprovider.cpp:446
+#: src/filemetadataprovider.cpp:443
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "Proprietario"
 
-#: src/filemetadataprovider.cpp:447
+#: src/filemetadataprovider.cpp:444
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "Gruppo"
 
-#: src/filemetadataprovider.cpp:448
+#: src/filemetadataprovider.cpp:445
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "Permessi"
 
-#: src/filemetadataprovider.cpp:449 src/filemetadataprovider.cpp:458
+#: src/filemetadataprovider.cpp:446 src/filemetadataprovider.cpp:455
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "Voto"
 
-#: src/filemetadataprovider.cpp:450
+#: src/filemetadataprovider.cpp:447
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "Dimensione"
 
-#: src/filemetadataprovider.cpp:451 src/filemetadataprovider.cpp:457
+#: src/filemetadataprovider.cpp:448 src/filemetadataprovider.cpp:454
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "Etichette"
 
-#: src/filemetadataprovider.cpp:452
+#: src/filemetadataprovider.cpp:449
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "Dimensione totale"
 
-#: src/filemetadataprovider.cpp:453
+#: src/filemetadataprovider.cpp:450
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "Elementi nascosti"
 
-#: src/filemetadataprovider.cpp:454
+#: src/filemetadataprovider.cpp:451
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "Tipo"
 
-#: src/filemetadataprovider.cpp:455
+#: src/filemetadataprovider.cpp:452
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "Collegamento a"
 
-#: src/filemetadataprovider.cpp:456
+#: src/filemetadataprovider.cpp:453
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr "Punta a"
 
-#: src/filemetadataprovider.cpp:460
+#: src/filemetadataprovider.cpp:457
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "Scaricato da"
 
-#: src/filemetadataprovider.cpp:461
+#: src/filemetadataprovider.cpp:458
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "Dimensioni"
 
-#: src/filemetadataprovider.cpp:462
+#: src/filemetadataprovider.cpp:459
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"

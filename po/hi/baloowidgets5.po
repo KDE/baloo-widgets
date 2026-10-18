@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: baloo-widgets\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-17 00:43+0000\n"
+"POT-Creation-Date: 2026-10-18 00:47+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: src/filemetadataprovider.cpp:204 src/filemetadataprovider.cpp:210
-#: src/filemetadataprovider.cpp:305 src/filemetadataprovider.cpp:308
+#: src/filemetadataprovider.cpp:201 src/filemetadataprovider.cpp:207
+#: src/filemetadataprovider.cpp:302 src/filemetadataprovider.cpp:305
 #, kde-format
 msgctxt "@item:intable"
 msgid "%1 item"
@@ -26,109 +26,109 @@ msgid_plural "%1 items"
 msgstr[0] "%1आइटम"
 msgstr[1] "%1आइटम"
 
-#: src/filemetadataprovider.cpp:442 src/filemetadataprovider.cpp:459
+#: src/filemetadataprovider.cpp:439 src/filemetadataprovider.cpp:456
 #, kde-format
 msgctxt "@label"
 msgid "Comment"
 msgstr "टिप्पणी"
 
-#: src/filemetadataprovider.cpp:443
+#: src/filemetadataprovider.cpp:440
 #, kde-format
 msgctxt "@label"
 msgid "Created"
 msgstr "बनाया था"
 
-#: src/filemetadataprovider.cpp:444
+#: src/filemetadataprovider.cpp:441
 #, kde-format
 msgctxt "@label"
 msgid "Accessed"
 msgstr "एक्सेस किया गया"
 
-#: src/filemetadataprovider.cpp:445
+#: src/filemetadataprovider.cpp:442
 #, kde-format
 msgctxt "@label"
 msgid "Modified"
 msgstr "संशोधित"
 
-#: src/filemetadataprovider.cpp:446
+#: src/filemetadataprovider.cpp:443
 #, kde-format
 msgctxt "@label"
 msgid "Owner"
 msgstr "मालिक"
 
-#: src/filemetadataprovider.cpp:447
+#: src/filemetadataprovider.cpp:444
 #, kde-format
 msgctxt "@label"
 msgid "Group"
 msgstr "समूह"
 
-#: src/filemetadataprovider.cpp:448
+#: src/filemetadataprovider.cpp:445
 #, kde-format
 msgctxt "@label"
 msgid "Permissions"
 msgstr "अनुमतियां"
 
-#: src/filemetadataprovider.cpp:449 src/filemetadataprovider.cpp:458
+#: src/filemetadataprovider.cpp:446 src/filemetadataprovider.cpp:455
 #, kde-format
 msgctxt "@label"
 msgid "Rating"
 msgstr "रेटिंग"
 
-#: src/filemetadataprovider.cpp:450
+#: src/filemetadataprovider.cpp:447
 #, kde-format
 msgctxt "@label"
 msgid "Size"
 msgstr "आकार"
 
-#: src/filemetadataprovider.cpp:451 src/filemetadataprovider.cpp:457
+#: src/filemetadataprovider.cpp:448 src/filemetadataprovider.cpp:454
 #, kde-format
 msgctxt "@label"
 msgid "Tags"
 msgstr "टैग"
 
-#: src/filemetadataprovider.cpp:452
+#: src/filemetadataprovider.cpp:449
 #, kde-format
 msgctxt "@label"
 msgid "Total Size"
 msgstr "कुल आकार"
 
-#: src/filemetadataprovider.cpp:453
+#: src/filemetadataprovider.cpp:450
 #, kde-format
 msgctxt "@label"
 msgid "Hidden items"
 msgstr "छिपी हुई वस्तुएं"
 
-#: src/filemetadataprovider.cpp:454
+#: src/filemetadataprovider.cpp:451
 #, kde-format
 msgctxt "@label"
 msgid "Type"
 msgstr "प्रकार"
 
-#: src/filemetadataprovider.cpp:455
+#: src/filemetadataprovider.cpp:452
 #, kde-format
 msgctxt "@label"
 msgid "Link to"
 msgstr "से लिंक करें"
 
-#: src/filemetadataprovider.cpp:456
+#: src/filemetadataprovider.cpp:453
 #, kde-format
 msgctxt "@label"
 msgid "Points to"
 msgstr "का संकेत"
 
-#: src/filemetadataprovider.cpp:460
+#: src/filemetadataprovider.cpp:457
 #, kde-format
 msgctxt "@label"
 msgid "Downloaded From"
 msgstr "यहाँ से डाउनलोड किया गया"
 
-#: src/filemetadataprovider.cpp:461
+#: src/filemetadataprovider.cpp:458
 #, kde-format
 msgctxt "@label"
 msgid "Dimensions"
 msgstr "DIMENSIONS"
 
-#: src/filemetadataprovider.cpp:462
+#: src/filemetadataprovider.cpp:459
 #, kde-format
 msgctxt "@label"
 msgid "GPS Location"
