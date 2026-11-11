@@ -55,7 +55,7 @@ QWidget *WidgetFactory::createWidget(const QString &prop, const QVariant &value,
     } else if (prop == QLatin1String("tags")) {
         widget = createTagWidget(Baloo::Private::sortTags(value.toStringList()), parent);
     } else if (prop == QLatin1String("gpsLocation")) {
-        const auto pair = value.value<QPair<float, float>>();
+        const auto pair = value.value<std::pair<float, float>>();
         const auto latitude = pair.first;
         const auto longitude = pair.second;
 

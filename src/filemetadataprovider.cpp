@@ -17,7 +17,6 @@
 #include <KProtocolInfo>
 #include <KShell>
 
-#include <QPair>
 #include <QSize>
 
 // Required includes for subDirectoriesCount():
@@ -27,6 +26,8 @@
 #include <QFile>
 #include <dirent.h>
 #endif
+
+#include <utility>
 
 using namespace Baloo;
 
@@ -54,13 +55,13 @@ QVariantMap unite(const QVariantMap &v1, const QVariantMap &v2)
 /**
 * @return The number of files and hidden files for the directory path.
 */
-QPair<int, int> subDirectoriesCount(const QString &path)
+std::pair<int, int> subDirectoriesCount(const QString &path)
 {
 #ifdef Q_OS_WIN
     QDir dir(path);
     int count = dir.entryList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::System).count();
     int hiddenCount = dir.entryList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::System | QDir::Hidden).count();
-    return QPair<int, int>(count, hiddenCount);
+    return std::pair<int, int>(count, hiddenCount);
 #else
     // Taken from kdelibs/kio/kio/kdirmodel.cpp
     // SPDX-FileCopyrightText: 2006 David Faure <faure@kde.org>
@@ -90,7 +91,7 @@ QPair<int, int> subDirectoriesCount(const QString &path)
         }
         ::closedir(dir);
     }
-    return QPair<int, int>(count, hiddenCount);
+    return std::pair<int, int>(count, hiddenCount);
 #endif
 }
 
@@ -111,7 +112,7 @@ void extractDerivedProperties(QVariantMap &data)
     const auto gpsLongitude = data.value(QStringLiteral("photoGpsLongitude")).toFloat(&okLongitude);
 
     if (okLatitude && okLongitude) {
-        data.insert(QStringLiteral("gpsLocation"), QVariant::fromValue(QPair<float, float>(gpsLatitude, gpsLongitude)));
+        data.insert(QStringLiteral("gpsLocation"), QVariant::fromValue(std::pair<float, float>(gpsLatitude, gpsLongitude)));
     }
 }
 } // anonymous namespace
@@ -195,7 +196,7 @@ void FileMetaDataProviderPrivate::insertSingleFileBasicData()
         KFormat format;
         if (item.isDir()) {
             if (item.isLocalFile() && !item.isSlow()) {
-                const QPair<int, int> counts = subDirectoriesCount(item.url().path());
+                const std::pair<int, int> counts = subDirectoriesCount(item.url().path());
                 const int count = counts.first;
                 if (count != -1) {
                     QString itemCountString = i18ncp("@item:intable", "%1 item", "%1 items", count);
@@ -291,7 +292,7 @@ void FileMetaDataProviderPrivate::insertFilesListBasicData()
             if (!item.isLocalFile() || item.isSlow()) {
                 return;
             }
-            const QPair<int, int> counts = subDirectoriesCount(item.url().path());
+            const std::pair<int, int> counts = subDirectoriesCount(item.url().path());
             const int subcount = counts.first;
             if (subcount == -1) {
                 return;
